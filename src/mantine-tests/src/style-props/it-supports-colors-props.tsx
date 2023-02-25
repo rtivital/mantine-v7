@@ -20,10 +20,10 @@ export function itSupportsColorsProps<Props>(
     const { container: bg } = render(<options.component {...options.props} bg="orange" />);
     const { container: opacity } = render(<options.component {...options.props} opacity={0.85} />);
 
-    expect(theme.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-red-6)' });
+    expect(theme.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-red-filled)' });
     expect(themeIndex.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-red-4)' });
     expect(cssColor.querySelector(selector)).toHaveStyle({ color: '#FEFEFE' });
-    expect(bg.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-orange-6)' });
+    expect(bg.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-orange-filled)' });
     expect(opacity.querySelector(selector)).toHaveStyle({ color: '0.85' });
   });
 }
