@@ -15,16 +15,16 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
       acc.light = `${acc.light}
       --mantine-color-${color}-filled: ${theme.colors[color][lightPrimaryShade]};
-      --mantine-color-${color}-filled-hover: ${lightFilledHover}}`;
+      --mantine-color-${color}-filled-hover: ${lightFilledHover};`;
 
       acc.dark = `${acc.dark}
       --mantine-color-${color}-filled: ${theme.colors[color][darkPrimaryShade]};
-      --mantine-color-${color}-filled-hover: ${darkFilledHover}}`;
+      --mantine-color-${color}-filled-hover: ${darkFilledHover};`;
 
       return acc;
     },
     { light: '', dark: '' }
   );
 
-  return `@media (prefers-color-scheme: dark) {${selector}{${colors.dark}}}\n@media (prefers-color-scheme: light) {${selector}{${colors.light}}}`;
+  return `@media (prefers-color-scheme: dark) { ${selector} {${colors.dark}} }\n@media (prefers-color-scheme: light) { ${selector} {${colors.light}} }`;
 }

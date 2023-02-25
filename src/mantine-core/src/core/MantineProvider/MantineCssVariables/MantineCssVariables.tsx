@@ -18,7 +18,7 @@ export function MantineCssVariables({
       {`${cssVariablesSelector}{${getThemeCssVariables(
         theme,
         colorScheme
-      )}}${getVariantsCssVariables(theme, cssVariablesSelector)}`}
+      )}} ${getVariantsCssVariables(theme, cssVariablesSelector)}`}
     </style>
   );
 }
