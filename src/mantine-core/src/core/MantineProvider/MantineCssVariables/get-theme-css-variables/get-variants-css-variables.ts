@@ -8,8 +8,19 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
   const colors = keys(theme.colors).reduce<{ light: string; dark: string }>(
     (acc, color) => {
-      acc.light = `${acc.light}--mantine-color-${color}-filled: ${theme.colors[color][lightPrimaryShade]};`;
-      acc.dark = `${acc.dark}--mantine-color-${color}-filled: ${theme.colors[color][darkPrimaryShade]};`;
+      const lightFilledHover =
+        lightPrimaryShade === 9 ? theme.colors[color][8] : theme.colors[color][lightPrimaryShade];
+      const darkFilledHover =
+        darkPrimaryShade === 9 ? theme.colors[color][8] : theme.colors[color][darkPrimaryShade];
+
+      acc.light = `${acc.light}
+      --mantine-color-${color}-filled: ${theme.colors[color][lightPrimaryShade]};
+      --mantine-color-${color}-filled-hover: ${lightFilledHover}}`;
+
+      acc.dark = `${acc.dark}
+      --mantine-color-${color}-filled: ${theme.colors[color][darkPrimaryShade]};
+      --mantine-color-${color}-filled-hover: ${darkFilledHover}}`;
+
       return acc;
     },
     { light: '', dark: '' }
