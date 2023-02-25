@@ -1,6 +1,10 @@
 import React from 'react';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, UnstyledButton } from '@mantine/core';
 
 export default function App() {
-  return <MantineProvider>app</MantineProvider>;
+  return (
+    <MantineProvider>
+      <UnstyledButton>Hello</UnstyledButton>
+    </MantineProvider>
+  );
 }
