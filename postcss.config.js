@@ -26,14 +26,14 @@ const hoverMixin = {
 };
 
 module.exports = {
-  plugins: [
-    require('postcss-nested'),
-    require('postcss-mixins')({
+  plugins: {
+    'postcss-nested': {},
+    'postcss-mixins': {
       mixins: {
         light: colorSchemeMixin('light'),
         dark: colorSchemeMixin('dark'),
         hover: hoverMixin,
       },
-    }),
-  ],
+    },
+  },
 };
