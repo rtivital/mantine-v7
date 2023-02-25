@@ -1,13 +1,8 @@
-type Value = {
-  node: HTMLElement;
-  ariaHidden: string;
-};
-
 export function createAriaHider(
   containerNode: HTMLElement,
   selector: string = 'body > :not(script)'
 ) {
-  const rootNodes: Value[] = Array.from<HTMLElement>(document.querySelectorAll(selector)).map(
+  const rootNodes: any[] = Array.from<HTMLElement>(document.querySelectorAll(selector)).map(
     (node) => {
       if (node?.shadowRoot?.contains(containerNode) || node.contains(containerNode)) {
         return undefined;

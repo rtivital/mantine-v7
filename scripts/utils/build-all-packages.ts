@@ -15,7 +15,7 @@ export async function buildAllPackages(options?: BuildOptions) {
   };
 
   for (const item of packages) {
-    await buildPackage(item.packageJson.name, options);
+    await buildPackage(item!.packageJson.name, options);
   }
 
   return packages;

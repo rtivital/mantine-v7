@@ -1,3 +1,4 @@
+import React from 'react';
 import { MantineTheme, DEFAULT_THEME } from '@mantine/core';
 import { render } from '../render';
 

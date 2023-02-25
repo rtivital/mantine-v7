@@ -1,7 +1,7 @@
 import './styles/css-reset.css';
 import './styles/global-styles.css';
 
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { MantineCssVariables } from './MantineCssVariables';
 import { mergeMantineTheme } from './merge-mantine-theme';
 import type { MantineColorScheme, MantineThemeOverride } from './theme.types';

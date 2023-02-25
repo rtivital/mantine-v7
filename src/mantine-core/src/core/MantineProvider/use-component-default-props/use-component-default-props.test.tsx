@@ -1,3 +1,4 @@
+import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { useComponentDefaultProps } from './use-component-default-props';
 import { MantineProvider } from '../MantineProvider';

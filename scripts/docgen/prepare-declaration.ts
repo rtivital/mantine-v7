@@ -13,7 +13,7 @@ const replace = {
 };
 
 export function prepareDeclaration(declaration: ComponentDoc) {
-  const data = { ...declaration };
+  const data: any = { ...declaration };
   delete data.tags;
   delete data.methods;
 
@@ -23,7 +23,7 @@ export function prepareDeclaration(declaration: ComponentDoc) {
     delete data.description;
 
     if (data.props[prop].type.name in replace) {
-      data.props[prop].type.name = replace[data.props[prop].type.name];
+      data.props[prop].type.name = (replace as any)[data.props[prop].type.name];
     }
 
     if (data.props[prop].type.name === 'enum') {
@@ -36,7 +36,7 @@ export function prepareDeclaration(declaration: ComponentDoc) {
   // This sorts the props object in ascending order
   const ordered = Object.keys(data.props)
     .sort()
-    .reduce((obj, key) => {
+    .reduce<Record<string, any>>((obj, key) => {
       // eslint-disable-next-line no-param-reassign
       obj[key] = data.props[key];
       return obj;

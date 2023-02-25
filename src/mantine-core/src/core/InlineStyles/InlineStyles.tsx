@@ -1,3 +1,4 @@
+import React from 'react';
 import { InlineStylesInput, stylesToString } from './styles-to-string/styles-to-string';
 
 export interface InlineStylesProps

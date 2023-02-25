@@ -111,8 +111,8 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
       onScrub({ x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY });
     };
 
-    ref.current.addEventListener('mousedown', onMouseDown);
-    ref.current.addEventListener('touchstart', onTouchStart, { passive: false });
+    ref.current?.addEventListener('mousedown', onMouseDown);
+    ref.current?.addEventListener('touchstart', onTouchStart, { passive: false });
 
     return () => {
       if (ref.current) {

@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import type { MantineTheme } from '../MantineProvider';
 import type { CssVarsProp, CssVariable } from '../Box';
 
@@ -15,7 +14,7 @@ export interface StylesApiProps<
   variant?: Variant;
   classNames?: Partial<Record<StylesNames, string>>;
   styles?:
-    | StylesRecord<StylesNames, CSSProperties>
-    | ((theme: MantineTheme) => StylesRecord<StylesNames, CSSProperties>);
+    | StylesRecord<StylesNames, React.CSSProperties>
+    | ((theme: MantineTheme) => StylesRecord<StylesNames, React.CSSProperties>);
   vars?: CssVarsProp<Variables | (string & {})>;
 }

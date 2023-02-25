@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { render } from '../render';
 
 interface Options<Props = any> {

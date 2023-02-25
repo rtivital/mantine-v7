@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { cssObjectToString } from '../css-object-to-string/css-object-to-string';
 
 function padLines(string: string, count: number) {
@@ -8,12 +7,12 @@ function padLines(string: string, count: number) {
 
 export interface InlineStylesMediaQuery {
   query: string;
-  styles: CSSProperties;
+  styles: React.CSSProperties;
 }
 
 export interface InlineStylesInput {
   selector: string;
-  styles?: CSSProperties;
+  styles?: React.CSSProperties;
   media?: InlineStylesMediaQuery[];
 }
 

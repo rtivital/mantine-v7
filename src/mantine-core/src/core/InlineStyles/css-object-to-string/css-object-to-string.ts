@@ -1,7 +1,6 @@
-import type { CSSProperties } from 'react';
 import { keys, camelToKebabCase } from '../../utils';
 
-export function cssObjectToString(css: CSSProperties) {
+export function cssObjectToString(css: React.CSSProperties) {
   return keys(css)
     .reduce(
       (acc, rule) =>

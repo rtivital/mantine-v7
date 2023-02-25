@@ -1,10 +1,9 @@
-import type { CSSProperties } from 'react';
 import type { MantineTheme } from '../../MantineProvider';
 import type { MantineStyleProp, CssVarsProp } from '../Box.types';
 
 interface GetBoxStyleOptions {
   theme: MantineTheme;
-  styleProps: CSSProperties;
+  styleProps: React.CSSProperties;
   style?: MantineStyleProp;
   vars?: CssVarsProp;
 }
@@ -12,9 +11,9 @@ interface GetBoxStyleOptions {
 function mergeStyles(
   styles: MantineStyleProp | CssVarsProp | undefined,
   theme: MantineTheme
-): CSSProperties {
+): React.CSSProperties {
   const flat = Array.isArray(styles) ? styles : styles ? [styles] : [];
-  return flat.reduce<CSSProperties>((acc, item) => {
+  return flat.reduce<React.CSSProperties>((acc, item) => {
     if (typeof item === 'function') {
       return { ...acc, ...item(theme) };
     }
@@ -23,7 +22,12 @@ function mergeStyles(
   }, {});
 }
 
-export function getBoxStyle({ theme, style, vars, styleProps }: GetBoxStyleOptions): CSSProperties {
+export function getBoxStyle({
+  theme,
+  style,
+  vars,
+  styleProps,
+}: GetBoxStyleOptions): React.CSSProperties {
   const _style = mergeStyles(style, theme);
   const _vars = mergeStyles(vars, theme);
   return { ...styleProps, ..._style, ..._vars };

@@ -1,11 +1,4 @@
-// pos
-// top
-// left
-// bottom
-// right
-// inset
-// display
-
+import React from 'react';
 import { render } from '../render';
 
 interface Options<Props = any> {

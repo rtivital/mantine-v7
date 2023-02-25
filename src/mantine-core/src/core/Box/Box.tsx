@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import cx from 'clsx';
 import { useMantineTheme, useMantineColorScheme } from '../MantineProvider';
 import { InlineStyles } from '../InlineStyles';

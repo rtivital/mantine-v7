@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@mantine/tests';
 import { InlineStyles } from './InlineStyles';
 

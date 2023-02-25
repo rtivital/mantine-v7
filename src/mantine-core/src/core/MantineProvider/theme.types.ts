@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import type { DeepPartial } from '../utils';
 
 export interface MantineTheme {
@@ -108,7 +107,7 @@ export type MantineColorScheme = 'light' | 'dark' | 'auto';
 
 export type MantineThemeOverride = DeepPartial<MantineTheme>;
 
-export type MantineStylesRecord = Record<string, CSSProperties>;
+export type MantineStylesRecord = Record<string, React.CSSProperties>;
 
 export interface MantineThemeComponent {
   classNames?: Record<string, string>;

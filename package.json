@@ -11,6 +11,7 @@
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "dev": "cd dev && npm run dev",
     "demos": "esno scripts/demo-import",
     "sync-branches": "sh scripts/sync-branches.sh",
     "changelog": "esno scripts/changelog",
@@ -46,7 +47,7 @@
     "release:major": "npm run _release major && npm run docs:deploy"
   },
   "resolutions": {
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.28",
     "prosemirror-model": "1.18.1",
     "prosemirror-state": "1.4.1",
     "prosemirror-transform": "1.7.0",
@@ -67,7 +68,7 @@
     "@types/fs-extra": "^9.0.11",
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.1",
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.28",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "18.0.4",
     "@types/react-transition-group": "^4.4.4",

@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import type {
   MantineBreakpoint,
   MantineSpacing,
@@ -29,36 +28,36 @@ export interface MantineStyleProps {
 
   bg?: StyleProp<MantineColor>;
   c?: StyleProp<MantineColor>;
-  opacity?: StyleProp<CSSProperties['opacity']>;
+  opacity?: StyleProp<React.CSSProperties['opacity']>;
 
-  ff?: StyleProp<CSSProperties['fontFamily']>;
+  ff?: StyleProp<React.CSSProperties['fontFamily']>;
   fz?: StyleProp<MantineFontSize>;
-  fw?: StyleProp<CSSProperties['fontWeight']>;
-  lts?: StyleProp<CSSProperties['letterSpacing']>;
-  ta?: StyleProp<CSSProperties['textAlign']>;
-  lh?: StyleProp<CSSProperties['lineHeight']>;
-  fs?: StyleProp<CSSProperties['fontStyle']>;
-  tt?: StyleProp<CSSProperties['textTransform']>;
-  td?: StyleProp<CSSProperties['textDecoration']>;
+  fw?: StyleProp<React.CSSProperties['fontWeight']>;
+  lts?: StyleProp<React.CSSProperties['letterSpacing']>;
+  ta?: StyleProp<React.CSSProperties['textAlign']>;
+  lh?: StyleProp<React.CSSProperties['lineHeight']>;
+  fs?: StyleProp<React.CSSProperties['fontStyle']>;
+  tt?: StyleProp<React.CSSProperties['textTransform']>;
+  td?: StyleProp<React.CSSProperties['textDecoration']>;
 
-  w?: StyleProp<CSSProperties['width']>;
-  miw?: StyleProp<CSSProperties['minWidth']>;
-  maw?: StyleProp<CSSProperties['maxWidth']>;
-  h?: StyleProp<CSSProperties['height']>;
-  mih?: StyleProp<CSSProperties['minHeight']>;
-  mah?: StyleProp<CSSProperties['maxHeight']>;
+  w?: StyleProp<React.CSSProperties['width']>;
+  miw?: StyleProp<React.CSSProperties['minWidth']>;
+  maw?: StyleProp<React.CSSProperties['maxWidth']>;
+  h?: StyleProp<React.CSSProperties['height']>;
+  mih?: StyleProp<React.CSSProperties['minHeight']>;
+  mah?: StyleProp<React.CSSProperties['maxHeight']>;
 
-  bgsz?: StyleProp<CSSProperties['backgroundSize']>;
-  bgp?: StyleProp<CSSProperties['backgroundPosition']>;
-  bgr?: StyleProp<CSSProperties['backgroundRepeat']>;
-  bga?: StyleProp<CSSProperties['backgroundAttachment']>;
+  bgsz?: StyleProp<React.CSSProperties['backgroundSize']>;
+  bgp?: StyleProp<React.CSSProperties['backgroundPosition']>;
+  bgr?: StyleProp<React.CSSProperties['backgroundRepeat']>;
+  bga?: StyleProp<React.CSSProperties['backgroundAttachment']>;
 
-  pos?: StyleProp<CSSProperties['position']>;
-  top?: StyleProp<CSSProperties['top']>;
-  left?: StyleProp<CSSProperties['left']>;
-  bottom?: StyleProp<CSSProperties['bottom']>;
-  right?: StyleProp<CSSProperties['right']>;
-  inset?: StyleProp<CSSProperties['inset']>;
+  pos?: StyleProp<React.CSSProperties['position']>;
+  top?: StyleProp<React.CSSProperties['top']>;
+  left?: StyleProp<React.CSSProperties['left']>;
+  bottom?: StyleProp<React.CSSProperties['bottom']>;
+  right?: StyleProp<React.CSSProperties['right']>;
+  inset?: StyleProp<React.CSSProperties['inset']>;
 
-  display?: StyleProp<CSSProperties['display']>;
+  display?: StyleProp<React.CSSProperties['display']>;
 }

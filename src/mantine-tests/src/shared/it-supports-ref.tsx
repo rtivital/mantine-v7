@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import React, { createRef } from 'react';
 import { render } from '../render';
 
 interface Options<Props = any> {

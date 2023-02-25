@@ -61,7 +61,7 @@ describe('@mantine/hooks/use-timeout', () => {
   });
 
   it('callback should fire without calling start when autoInvoke is true', () => {
-    const { timeout, advanceTimerToNextTick } = setupTimer(null);
+    const { timeout, advanceTimerToNextTick } = setupTimer();
     renderHook(() => useTimeout(callback, timeout, { autoInvoke: true }));
 
     advanceTimerToNextTick();

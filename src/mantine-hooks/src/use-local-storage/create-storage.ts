@@ -17,7 +17,7 @@ export interface IStorageProperties<T> {
   serialize?(value: T): string;
 
   /** Function to deserialize string value from storage to value */
-  deserialize?(value: string): T;
+  deserialize?(value: string | undefined): T;
 }
 
 function serializeJSON<T>(value: T, hookName: string) {

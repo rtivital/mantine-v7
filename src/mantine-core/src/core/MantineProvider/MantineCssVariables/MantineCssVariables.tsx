@@ -1,3 +1,4 @@
+import React from 'react';
 import { getThemeCssVariables } from './get-theme-css-variables';
 import type { MantineColorScheme, MantineTheme } from '../theme.types';
 

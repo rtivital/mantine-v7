@@ -5,7 +5,7 @@ export function useTimeout(
   delay: number,
   options: { autoInvoke: boolean } = { autoInvoke: false }
 ) {
-  const timeoutRef = useRef<number>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   const start = (...callbackParams: any[]) => {
     if (!timeoutRef.current) {

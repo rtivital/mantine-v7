@@ -1,3 +1,4 @@
+import React from 'react';
 import { rem } from '@mantine/core';
 import { render } from '../render';
 
