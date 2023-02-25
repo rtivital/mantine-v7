@@ -9,6 +9,7 @@ import json from '@rollup/plugin-json';
 import alias, { Alias } from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import visualizer from 'rollup-plugin-visualizer';
+import postcss from 'rollup-plugin-postcss';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 interface PkgConfigInput {
@@ -45,6 +46,12 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     json(),
     alias({ entries: aliasEntries }),
     replace({ preventAssignment: true }),
+    postcss({
+      extract: true,
+      modules: {
+        generateScopedName: 'mantine-[hash:base64:7]',
+      },
+    }),
   ];
 
   let externals;

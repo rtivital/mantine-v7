@@ -1,0 +1,11 @@
+.root {
+  background: red;
+
+  &:hover {
+    background-attachment: fixed;
+  }
+
+  @mixin light {
+    background: blue;
+  }
+}

@@ -9,5 +9,6 @@ module.exports = {
   moduleNameMapper: {
     '@mantine/core/src/styles.api': '<rootDir>/src/mantine-core/src/styles.api',
     '@mantine/(.*)': '<rootDir>/src/mantine-$1/src',
+    '\\.(css)$': 'identity-obj-proxy',
   },
 };
