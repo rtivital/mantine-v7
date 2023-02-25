@@ -1,0 +1,22 @@
+:root {
+  color-scheme: var(--mantine-color-scheme);
+}
+
+body {
+  font-family: var(--mantine-font-family);
+  font-size: var(--mantine-font-size-md);
+  line-height: var(--mantine-line-height);
+
+  -webkit-font-smoothing: var(--mantine-webkit-font-smoothing);
+  -moz-osx-font-smoothing: var(--mantine-moz-font-smoothing);
+
+  @mixin light {
+    color: var(--mantine-color-black);
+    background-color: var(--mantine-color-white);
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-dark-0);
+    background-color: var(--mantine-color-dark-7);
+  }
+}

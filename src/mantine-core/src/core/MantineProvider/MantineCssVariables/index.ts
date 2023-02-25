@@ -1,0 +1,1 @@
+export { MantineCssVariables } from './MantineCssVariables';
