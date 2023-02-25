@@ -30,7 +30,9 @@ export function parseThemeColor({
     return {
       color: _color,
       shade: colorShade,
-      variable: `--mantine-color-${_color}-${colorShade}`,
+      variable: shade
+        ? `--mantine-color-${_color}-${colorShade}`
+        : `--mantine-color-${_color}-filled`,
     };
   }
 

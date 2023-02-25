@@ -1,5 +1,5 @@
 import React from 'react';
-import { getThemeCssVariables } from './get-theme-css-variables';
+import { getThemeCssVariables, getVariantsCssVariables } from './get-theme-css-variables';
 import type { MantineColorScheme, MantineTheme } from '../theme.types';
 
 interface MantineCssVariablesProps {
@@ -15,7 +15,10 @@ export function MantineCssVariables({
 }: MantineCssVariablesProps) {
   return (
     <style data-mantine-styles>
-      {`${cssVariablesSelector} { ${getThemeCssVariables(theme, colorScheme)} }`}
+      {`${cssVariablesSelector}{${getThemeCssVariables(
+        theme,
+        colorScheme
+      )}}${getVariantsCssVariables(theme, cssVariablesSelector)}`}
     </style>
   );
 }
