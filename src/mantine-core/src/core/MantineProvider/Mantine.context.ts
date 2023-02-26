@@ -10,17 +10,27 @@ interface MantineContextValue {
   clearColorScheme(): void;
   colorSchemeManager: MantineColorSchemeManager;
   getRootElement(): HTMLElement | undefined;
+  classNamesPrefix: string;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
 
-export function useMantineTheme() {
+export function useMantineContext() {
   const ctx = useContext(MantineContext);
+
   if (!ctx) {
     throw new Error('[@mantine/core] MantineProvider was not found in tree');
   }
 
-  return ctx.theme;
+  return ctx;
+}
+
+export function useMantineTheme() {
+  return useMantineContext().theme;
+}
+
+export function useMantineClassNamesPrefix() {
+  return useMantineContext().classNamesPrefix;
 }
 
 export function useSafeMantineTheme() {
