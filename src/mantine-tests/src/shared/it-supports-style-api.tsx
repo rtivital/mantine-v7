@@ -12,6 +12,7 @@ interface Options<Props extends Record<string, any> = any, Selectors extends str
   component: React.ComponentType<Props>;
   props: Props;
   selectors: Selectors[];
+  providerName: string;
 }
 
 export function itSupportsStylesApi<
@@ -45,6 +46,15 @@ export function itSupportsStylesApi<
       expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
         ...styles[selector],
       });
+    });
+  });
+
+  it(`${name}: static classNames (default)`, () => {
+    const { container } = render(<options.component {...options.props} />);
+    options.selectors.forEach((selector) => {
+      expect(
+        container.querySelector(`.mantine-${options.providerName}-${selector}`)
+      ).toBeInTheDocument();
     });
   });
 }

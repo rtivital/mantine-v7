@@ -46,28 +46,27 @@ export function useStylesApi<StylesNames extends string>({
     {}
   );
 
-  const getClassName = (selector: StylesNames) => {
+  return (selector: StylesNames) => {
     const themeClassNames = themeName.map((n) => theme.components?.[n]?.classNames?.[selector]);
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
-    return cx(
+    const _className = cx(
       themeClassNames,
       classNames?.[selector],
       className && { [className]: rootSelector === selector },
       { [classes[selector]]: !unstyled },
       staticClassNames
     );
-  };
 
-  const getStyle = (selector: StylesNames): CSSProperties => {
     const themeStyles = themeName
       .map((n) => resolveStyles(theme.components?.[n]?.styles, theme)?.[selector])
       .reduce((acc, val) => ({ ...acc, ...val }), {});
 
-    return { ...themeStyles, ...resolvedStyles?.[selector], ...resolvedStyle } as CSSProperties;
-  };
+    const _style = {
+      ...themeStyles,
+      ...resolvedStyles?.[selector],
+      ...resolvedStyle,
+    } as CSSProperties;
 
-  return (selector: StylesNames) => ({
-    className: getClassName(selector),
-    style: getStyle(selector),
-  });
+    return { className: _className, style: _style };
+  };
 }

@@ -33,14 +33,19 @@ export function itSupportsSystemProps<
   Props extends Record<string, any>,
   StylesApiSelectors extends string = string
 >(options: Options<Props, StylesApiSelectors>) {
+  const splittedDisplayName = options.displayName ? options.displayName.split('/') : [];
+  const predictedProviderName = options.displayName
+    ? splittedDisplayName[splittedDisplayName.length - 1]
+    : undefined;
+  const providerName = options.providerName || predictedProviderName;
+
   itSupportsClassName(options);
   itSupportsStyle(options);
   itSupportsOthers(options);
   options.refType && itSupportsRef({ ...options, refType: options.refType });
   options.polymorphic && itIsPolymorphic(options);
   options.children && itRendersChildren(options);
-  typeof options.providerName === 'string' &&
-    itSupportsProviderDefaultProps({ ...options, providerName: options.providerName });
+  typeof providerName === 'string' && itSupportsProviderDefaultProps({ ...options, providerName });
 
   if (options.styleProps) {
     itSupportsMarginsProps(options);
@@ -52,10 +57,11 @@ export function itSupportsSystemProps<
     itSupportsPositionProps(options);
   }
 
-  if (Array.isArray(options.stylesApiSelectors)) {
+  if (Array.isArray(options.stylesApiSelectors) && providerName) {
     itSupportsStylesApi<Props, StylesApiSelectors>({
       ...options,
       selectors: options.stylesApiSelectors,
+      providerName,
     });
   }
 
