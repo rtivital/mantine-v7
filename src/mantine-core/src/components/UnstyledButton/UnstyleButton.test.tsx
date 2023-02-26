@@ -1,4 +1,5 @@
-import { tests } from '@mantine/tests';
+import React from 'react';
+import { tests, render } from '@mantine/tests';
 import { UnstyledButton, UnstyledButtonProps } from './UnstyledButton';
 
 const defaultProps: UnstyledButtonProps = {};
@@ -18,5 +19,13 @@ describe('@mantine/core/UnstyledButton', () => {
     refType: HTMLButtonElement,
     displayName: '@mantine/core/UnstyledButton',
     providerName: 'UnstyledButton',
+  });
+
+  it('adds type="button" to root element if component="button"', () => {
+    const { container: buttonContainer } = render(<UnstyledButton component="button" />);
+    expect(buttonContainer.querySelector('button')).toHaveAttribute('type', 'button');
+
+    const { container: divContainer } = render(<UnstyledButton component="div" />);
+    expect(divContainer.querySelector('div')).not.toHaveAttribute('type');
   });
 });
