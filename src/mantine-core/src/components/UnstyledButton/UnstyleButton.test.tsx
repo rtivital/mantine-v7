@@ -1,6 +1,6 @@
 import React from 'react';
 import { tests, render } from '@mantine/tests';
-import { UnstyledButton, UnstyledButtonProps } from './UnstyledButton';
+import { UnstyledButton, UnstyledButtonProps, UnstyledButtonStylesNames } from './UnstyledButton';
 
 const defaultProps: UnstyledButtonProps = {};
 
@@ -10,7 +10,7 @@ describe('@mantine/core/UnstyledButton', () => {
     props: defaultProps,
   });
 
-  tests.itSupportsSystemProps<UnstyledButtonProps>({
+  tests.itSupportsSystemProps<UnstyledButtonProps, UnstyledButtonStylesNames>({
     component: UnstyledButton,
     props: defaultProps,
     polymorphic: true,
@@ -19,6 +19,7 @@ describe('@mantine/core/UnstyledButton', () => {
     refType: HTMLButtonElement,
     displayName: '@mantine/core/UnstyledButton',
     providerName: 'UnstyledButton',
+    stylesApiSelectors: ['root'],
   });
 
   it('adds type="button" to root element if component="button"', () => {

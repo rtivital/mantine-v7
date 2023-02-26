@@ -18,7 +18,7 @@ export default function App() {
       <UnstyledButton style={(theme) => ({ color: theme.colors.pink[6] })} p="xl">
         Hello
       </UnstyledButton>
-      <UnstyledButton style={{ color: 'red' }}>Hello</UnstyledButton>
+      <UnstyledButton classNames={{ root: 'test-root' }}>Hello</UnstyledButton>
     </MantineProvider>
   );
 }

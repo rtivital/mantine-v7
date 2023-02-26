@@ -7,6 +7,7 @@ import { itSupportsRef } from './shared/it-supports-ref';
 import { itSupportsStyle } from './shared/it-supports-style';
 import { itSupportsFocusEvents } from './shared/it-supports-focus-events';
 import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-default-props';
+import { itSupportsStylesApi } from './shared/it-supports-style-api';
 
 // Style props tests
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
@@ -29,6 +30,7 @@ export const tests = {
   itSupportsStyle,
   itSupportsFocusEvents,
   itSupportsProviderDefaultProps,
+  itSupportsStylesApi,
 
   itSupportsMarginsProps,
   itSupportsPaddingsProps,

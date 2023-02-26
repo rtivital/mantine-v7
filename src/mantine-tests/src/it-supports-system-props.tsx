@@ -5,6 +5,7 @@ import { itSupportsOthers } from './shared/it-supports-others';
 import { itIsPolymorphic } from './shared/it-is-polymorphic';
 import { itRendersChildren } from './shared/it-renders-children';
 import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-default-props';
+import { itSupportsStylesApi } from './shared/it-supports-style-api';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -14,7 +15,7 @@ import { itSupportsSizeProps } from './style-props/it-supports-size-props';
 import { itSupportsBackgroundProps } from './style-props/it-supports-background-props';
 import { itSupportsPositionProps } from './style-props/it-supports-position-props';
 
-interface Options<Props = any> {
+interface Options<Props extends Record<string, any>, StylesApiSelectors extends string> {
   component: React.ComponentType<Props>;
   props: Props;
   styleProps?: boolean;
@@ -25,9 +26,13 @@ interface Options<Props = any> {
   refType?: any;
   refProp?: string;
   providerName?: string;
+  stylesApiSelectors?: StylesApiSelectors[];
 }
 
-export function itSupportsSystemProps<Props>(options: Options<Props>) {
+export function itSupportsSystemProps<
+  Props extends Record<string, any>,
+  StylesApiSelectors extends string = string
+>(options: Options<Props, StylesApiSelectors>) {
   itSupportsClassName(options);
   itSupportsStyle(options);
   itSupportsOthers(options);
@@ -45,6 +50,13 @@ export function itSupportsSystemProps<Props>(options: Options<Props>) {
     itSupportsSizeProps(options);
     itSupportsBackgroundProps(options);
     itSupportsPositionProps(options);
+  }
+
+  if (Array.isArray(options.stylesApiSelectors)) {
+    itSupportsStylesApi<Props, StylesApiSelectors>({
+      ...options,
+      selectors: options.stylesApiSelectors,
+    });
   }
 
   if (options.displayName) {
