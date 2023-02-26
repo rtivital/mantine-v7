@@ -19,7 +19,7 @@ export function itSupportsStylesApi<
   Props extends Record<string, any>,
   Selectors extends string = string
 >(options: Options<Props, Selectors>, name = 'supports styles api') {
-  it(`${name}: classNames`, () => {
+  it(`${name}: classNames (inline)`, () => {
     const classNames = getTestClassNames(options.selectors);
     const { container } = render(<options.component {...options.props} classNames={classNames} />);
 
@@ -28,7 +28,7 @@ export function itSupportsStylesApi<
     });
   });
 
-  it(`${name}: styles`, () => {
+  it(`${name}: styles (inline)`, () => {
     const classNames = getTestClassNames(options.selectors);
     const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
       (acc, selector) => {
@@ -54,6 +54,61 @@ export function itSupportsStylesApi<
     options.selectors.forEach((selector) => {
       expect(
         container.querySelector(`.mantine-${options.providerName}-${selector}`)
+      ).toBeInTheDocument();
+    });
+  });
+
+  it(`${name}: classNames (MantineProvider)`, () => {
+    const classNames = getTestClassNames(options.selectors);
+    const { container } = render(<options.component {...options.props} classNames={classNames} />, {
+      components: {
+        [options.providerName]: {
+          classNames,
+        },
+      },
+    });
+
+    options.selectors.forEach((selector) => {
+      expect(container.querySelector(`.${classNames[selector]}`)).toBeInTheDocument();
+    });
+  });
+
+  it(`${name}: styles (MantineProvider)`, () => {
+    const classNames = getTestClassNames(options.selectors);
+    const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
+      (acc, selector) => {
+        acc[selector] = { color: `#${getRandomColor()}` };
+        return acc;
+      },
+      {}
+    );
+
+    const { container } = render(<options.component {...options.props} />, {
+      components: {
+        [options.providerName]: {
+          styles,
+          classNames,
+        },
+      },
+    });
+
+    options.selectors.forEach((selector) => {
+      expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
+        ...styles[selector],
+      });
+    });
+  });
+
+  it(`${name}: static classNames (MantineProvider)`, () => {
+    const { container } = render(
+      <options.component {...options.props} />,
+      {},
+      { classNamesPrefix: 'test' }
+    );
+
+    options.selectors.forEach((selector) => {
+      expect(
+        container.querySelector(`.test-${options.providerName}-${selector}`)
       ).toBeInTheDocument();
     });
   });

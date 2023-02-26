@@ -1,10 +1,16 @@
 import React from 'react';
 import { render as testingLibraryRender } from '@testing-library/react';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, MantineThemeOverride, MantineProviderProps } from '@mantine/core';
 
-export function render(children: React.ReactNode) {
+export function render(
+  children: React.ReactNode,
+  themeOverride?: MantineThemeOverride,
+  providerProps?: Omit<MantineProviderProps, 'theme'>
+) {
   const { rerender, ...others } = testingLibraryRender(
-    <MantineProvider>{children}</MantineProvider>
+    <MantineProvider theme={themeOverride} {...providerProps}>
+      {children}
+    </MantineProvider>
   );
 
   return {
