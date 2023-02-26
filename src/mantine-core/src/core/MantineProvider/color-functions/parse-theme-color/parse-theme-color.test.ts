@@ -7,13 +7,19 @@ describe('@mantine/core/parse-theme-color', () => {
     expect(parseThemeColor({ color: 'red', colorScheme: 'light', theme: DEFAULT_THEME })).toEqual({
       color: 'red',
       shade: getPrimaryShade(DEFAULT_THEME, 'light'),
-      variable: `--mantine-color-red-${getPrimaryShade(DEFAULT_THEME, 'light')}`,
+      variable: '--mantine-color-red-filled',
     });
 
     expect(parseThemeColor({ color: 'red', colorScheme: 'dark', theme: DEFAULT_THEME })).toEqual({
       color: 'red',
       shade: getPrimaryShade(DEFAULT_THEME, 'dark'),
-      variable: `--mantine-color-red-${getPrimaryShade(DEFAULT_THEME, 'dark')}`,
+      variable: '--mantine-color-red-filled',
+    });
+
+    expect(parseThemeColor({ color: 'red', colorScheme: 'auto', theme: DEFAULT_THEME })).toEqual({
+      color: 'red',
+      shade: getPrimaryShade(DEFAULT_THEME, 'light'),
+      variable: '--mantine-color-red-filled',
     });
   });
 

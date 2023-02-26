@@ -1,14 +1,11 @@
 import { colorResolver } from './color-resolver';
-import { DEFAULT_THEME, getPrimaryShade } from '../../../../MantineProvider';
+import { DEFAULT_THEME } from '../../../../MantineProvider';
 
 describe('@mantine/core/Box/color-resolver', () => {
   it('resolves theme color', () => {
-    expect(colorResolver('red', DEFAULT_THEME, 'light')).toBe(
-      `var(--mantine-color-red-${getPrimaryShade(DEFAULT_THEME, 'light')})`
-    );
-    expect(colorResolver('red', DEFAULT_THEME, 'dark')).toBe(
-      `var(--mantine-color-red-${getPrimaryShade(DEFAULT_THEME, 'dark')})`
-    );
+    expect(colorResolver('red', DEFAULT_THEME, 'light')).toBe('var(--mantine-color-red-filled)');
+    expect(colorResolver('red', DEFAULT_THEME, 'dark')).toBe('var(--mantine-color-red-filled)');
+    expect(colorResolver('red', DEFAULT_THEME, 'auto')).toBe('var(--mantine-color-red-filled)');
     expect(colorResolver('red.5', DEFAULT_THEME, 'light')).toBe('var(--mantine-color-red-5)');
     expect(colorResolver('red.5', DEFAULT_THEME, 'dark')).toBe('var(--mantine-color-red-5)');
   });
