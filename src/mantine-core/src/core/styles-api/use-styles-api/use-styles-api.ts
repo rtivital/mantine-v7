@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import cx from 'clsx';
-import { MantineTheme, useMantineTheme } from '../../MantineProvider';
+import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
 import { StylesRecord } from '../styles-api.types';
 
@@ -37,6 +37,7 @@ export function useStylesApi<StylesNames extends string>({
   styles,
 }: UseStylesApiInput<StylesNames>) {
   const theme = useMantineTheme();
+  const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = Array.isArray(name) ? name : [name];
   const resolvedStyles = resolveStyles(styles, theme);
   const _resolvedStyle = Array.isArray(style) ? style : [style];
@@ -47,11 +48,13 @@ export function useStylesApi<StylesNames extends string>({
 
   const getClassName = (selector: StylesNames) => {
     const themeClassNames = themeName.map((n) => theme.components?.[n]?.classNames?.[selector]);
+    const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     return cx(
       themeClassNames,
       classNames?.[selector],
       className && { [className]: rootSelector === selector },
-      { [classes[selector]]: !unstyled }
+      { [classes[selector]]: !unstyled },
+      staticClassNames
     );
   };
 
