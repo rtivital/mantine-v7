@@ -8,4 +8,6 @@
   text-align: left;
   text-decoration: none;
   color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
