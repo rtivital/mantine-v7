@@ -6846,6 +6846,14 @@ postcss-reduce-transforms@^5.1.0:
   dependencies:
     postcss-value-parser "^4.2.0"
 
+postcss-rem@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-rem/-/postcss-rem-2.0.2.tgz#5633589f6e816516be60f9ab6df5d8037f64ff41"
+  integrity sha512-rhREfkcljKJtCY7adt5e+sRkPkj4z4GEW8utwiqsDgC6xF4U3guQZ08Dlu7XQDrwtUD4PGXwoh/qyD+RJpJq7g==
+  dependencies:
+    postcss "^8.3.5"
+    startijenn-rem "^1.0.1"
+
 postcss-selector-parser@^6.0.11, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.9:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.11.tgz#2e41dc39b7ad74046e1615185185cd0b17d0c8dc"
@@ -6888,7 +6896,7 @@ postcss@8.4.5:
     picocolors "^1.0.0"
     source-map-js "^1.0.1"
 
-postcss@^8.4.21:
+postcss@^8.3.5, postcss@^8.4.21:
   version "8.4.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
   integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
@@ -7759,6 +7767,11 @@ stack-utils@^2.0.3:
   integrity sha512-xrQcmYhOsn/1kX+Vraq+7j4oE2j/6BFscZ0etmYg81xuM8Gq0022Pxb8+IqgOFUIaxHs0KaSb7T1+OegiNrNFA==
   dependencies:
     escape-string-regexp "^2.0.0"
+
+startijenn-rem@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/startijenn-rem/-/startijenn-rem-1.1.0.tgz#08aa3423bb9ac60c4fd19b01ffa20bfcf40391f2"
+  integrity sha512-nwTgM+M2kqWGollfk3/iXHpN23JVvuMgDWHL0foUp/rjl/pYUulnMBrANMnHgMSbR41pEBL2Yw5jdKPQM7q+Gw==
 
 static-extend@^0.1.1:
   version "0.1.2"

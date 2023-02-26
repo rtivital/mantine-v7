@@ -10,4 +10,8 @@
   color: inherit;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+
+  &:focus:focus-visible {
+    outline: 2px solid var(--mantine-color-blue-filled);
+  }
 }

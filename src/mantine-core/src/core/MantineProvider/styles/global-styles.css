@@ -20,3 +20,21 @@ body {
     background-color: var(--mantine-color-dark-7);
   }
 }
+
+.mantine-focus-auto {
+  &:focus:focus-visible {
+    outline: rem(2px) solid var(--mantine-color-blue-filled);
+  }
+}
+
+.mantine-focus-always {
+  &:focus {
+    outline: rem(2px) solid var(--mantine-color-blue-filled);
+  }
+}
+
+.mantine-focus-never {
+  &:focus {
+    outline: none;
+  }
+}

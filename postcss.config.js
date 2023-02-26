@@ -28,6 +28,7 @@ const hoverMixin = {
 module.exports = {
   plugins: {
     'postcss-nested': {},
+    'postcss-rem': {},
     'postcss-mixins': {
       mixins: {
         light: colorSchemeMixin('light'),
