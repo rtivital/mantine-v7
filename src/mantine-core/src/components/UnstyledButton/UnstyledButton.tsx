@@ -41,7 +41,7 @@ export const _UnstyledButton = forwardRef<
 
   return (
     <Box
-      {...getStyles('root')}
+      {...getStyles('root', { focusable: true })}
       component={component}
       ref={ref}
       type={component === 'button' ? 'button' : undefined}
