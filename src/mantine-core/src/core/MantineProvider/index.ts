@@ -10,6 +10,7 @@ export {
   useMantineTheme,
   useMantineContext,
   useMantineClassNamesPrefix,
+  useMantineStyleNonce,
 } from './Mantine.context';
 export type { MantineProviderProps } from './MantineProvider';
 export { useComponentDefaultProps } from './use-component-default-props/use-component-default-props';

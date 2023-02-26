@@ -11,6 +11,7 @@ interface MantineContextValue {
   colorSchemeManager: MantineColorSchemeManager;
   getRootElement(): HTMLElement | undefined;
   classNamesPrefix: string;
+  styleNonce: string | undefined;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
@@ -35,4 +36,8 @@ export function useMantineClassNamesPrefix() {
 
 export function useSafeMantineTheme() {
   return useContext(MantineContext)?.theme || DEFAULT_THEME;
+}
+
+export function useMantineStyleNonce() {
+  return useMantineContext().styleNonce;
 }

@@ -35,6 +35,9 @@ export interface MantineProviderProps {
   /** A prefix for components static classNames (for example {selector}-Text-root), `mantine` by default */
   classNamesPrefix?: string;
 
+  /** nonce attribute added to all generated `<style />` tags */
+  styleNonce?: string;
+
   /** Your application */
   children?: React.ReactNode;
 }
@@ -42,6 +45,7 @@ export interface MantineProviderProps {
 export function MantineProvider({
   theme,
   children,
+  styleNonce,
   inherit = false,
   withCssVariables = true,
   cssVariablesSelector = ':root',
@@ -72,6 +76,7 @@ export function MantineProvider({
         clearColorScheme,
         getRootElement,
         classNamesPrefix,
+        styleNonce,
       }}
     >
       {withCssVariables && (
