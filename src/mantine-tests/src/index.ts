@@ -5,6 +5,7 @@ import { itSupportsClassName } from './shared/it-supports-classname';
 import { itSupportsOthers } from './shared/it-supports-others';
 import { itSupportsRef } from './shared/it-supports-ref';
 import { itSupportsStyle } from './shared/it-supports-style';
+import { itSupportsFocusEvents } from './shared/it-supports-focus-events';
 
 // Style props tests
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
@@ -25,6 +26,7 @@ export const tests = {
   itSupportsOthers,
   itSupportsRef,
   itSupportsStyle,
+  itSupportsFocusEvents,
 
   itSupportsMarginsProps,
   itSupportsPaddingsProps,
