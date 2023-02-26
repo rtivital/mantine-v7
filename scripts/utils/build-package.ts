@@ -1,5 +1,7 @@
 /* eslint-disable no-await-in-loop, no-restricted-syntax */
 import chalk from 'chalk';
+import fs from 'fs-extra';
+import path from 'path';
 import createPackageConfig from '../../configuration/rollup/create-package-config';
 import locatePackage from './locate-package';
 import compile from './compile';
@@ -41,6 +43,12 @@ export async function buildPackage(_packageName: string, options?: BuildOptions)
 
         logger.info(`Building to ${chalk.cyan(format)} format...`);
         await compile(config);
+      }
+      if (fs.existsSync(path.join(packagePath, 'esm/index.css'))) {
+        fs.copyFileSync(
+          path.join(packagePath, 'esm/index.css'),
+          path.join(packagePath, 'styles.css')
+        );
       }
     }
 

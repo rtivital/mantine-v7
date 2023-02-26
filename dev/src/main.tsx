@@ -1,4 +1,4 @@
-import '@mantine/core/esm/index.css';
+import '@mantine/core/styles.css';
 
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
