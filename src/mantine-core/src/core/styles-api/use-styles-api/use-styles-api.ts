@@ -55,7 +55,7 @@ export function useStylesApi<StylesNames extends string>({
     const themeClassNames = themeName.map((n) => theme.components?.[n]?.classNames?.[selector]);
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     const _className = cx(
-      options?.focusable && STATIC_CLASSES.focus[theme.focusRing],
+      options?.focusable && !unstyled && STATIC_CLASSES.focus[theme.focusRing],
       themeClassNames,
       classNames?.[selector],
       className && { [className]: rootSelector === selector },
