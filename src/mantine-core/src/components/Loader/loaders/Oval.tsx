@@ -1,15 +1,13 @@
 import React from 'react';
 import { SvgLoaderProps } from '../Loader.types';
 
-export function Oval({ size, color, ...others }: SvgLoaderProps) {
+export function Oval({ size, color, style, ...others }: SvgLoaderProps) {
   return (
     <svg
-      width={size}
-      height={size}
+      {...others}
+      style={{ ...style, width: size, height: size, stroke: 'var(--mantine-color-blue-filled)' }}
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
-      stroke={color}
-      {...others}
     >
       <g fill="none" fillRule="evenodd">
         <g transform="translate(2.5 2.5)" strokeWidth="5">

@@ -1,14 +1,13 @@
 import React from 'react';
 import { SvgLoaderProps } from '../Loader.types';
 
-export function Bars({ size, color, ...others }: SvgLoaderProps) {
+export function Bars({ size, color, style, ...others }: SvgLoaderProps) {
   return (
     <svg
+      {...others}
+      style={{ ...style, width: size, height: size, fill: 'var(--test-var)' }}
       viewBox="0 0 135 140"
       xmlns="http://www.w3.org/2000/svg"
-      fill={color}
-      width={size}
-      {...others}
     >
       <rect y="10" width="15" height="120" rx="6">
         <animate

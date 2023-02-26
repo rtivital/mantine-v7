@@ -4,5 +4,6 @@ export { deepMerge } from './deep-merge/deep-merge';
 export { camelToKebabCase } from './camel-to-kebab-case/camel-to-kebab-case';
 export { px, rem, em } from './units-converters';
 export { filterProps } from './filter-props/filter-props';
+export { isNumberLike } from './is-number-like/is-number-like';
 
 export type { DeepPartial } from './deep-merge/deep-merge';

@@ -1,4 +1,5 @@
 import type { DeepPartial } from '../utils';
+import type { MantineLoader } from '../../components/Loader/Loader.types';
 
 export interface MantineTheme {
   /** Text direction, rtl – right to left, ltr – left to right, ltr by default */
@@ -15,7 +16,7 @@ export interface MantineTheme {
   fontSmoothing: boolean;
 
   /** Determines which loader will be used in all components that reference `Loader` component, `oval` by default */
-  loader: MantineLoaderType;
+  loader: MantineLoader;
 
   /** White color, used with `light` color scheme */
   white: string;
@@ -158,7 +159,6 @@ export type MantineColorsTuple = readonly [
 ];
 
 export type MantineColorShade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export type MantineLoaderType = 'bars' | 'oval' | 'dots' | (string & {});
 
 export interface MantinePrimaryShade {
   light: MantineColorShade;

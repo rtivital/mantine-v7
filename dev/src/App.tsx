@@ -1,5 +1,5 @@
 import React from 'react';
-import { MantineProvider, UnstyledButton } from '@mantine/core';
+import { MantineProvider, UnstyledButton, Loader } from '@mantine/core';
 
 export default function App() {
   return (
@@ -15,12 +15,9 @@ export default function App() {
         },
       }}
     >
-      <UnstyledButton style={(theme) => ({ color: theme.colors.pink[6] })} p="xl">
-        Hello
-      </UnstyledButton>
-      <UnstyledButton classNames={{ root: 'test-root' }} unstyled>
-        Hello
-      </UnstyledButton>
+      <Loader />
+      <Loader type="bars" />
+      <Loader type="dots" />
     </MantineProvider>
   );
 }
