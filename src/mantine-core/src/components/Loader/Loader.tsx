@@ -68,7 +68,7 @@ export function Loader(props: LoaderProps) {
       {...getStyles('root')}
       component={LOADERS[loader] || LOADERS.bars}
       vars={{
-        '--test-var': 'blue',
+        '--mantine-loader-size': 'blue',
         ...vars,
       }}
       size="5rem"
