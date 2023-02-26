@@ -40,7 +40,10 @@ export function useStylesApi<StylesNames extends string>({
   const themeName = Array.isArray(name) ? name : [name];
   const resolvedStyles = resolveStyles(styles, theme);
   const _resolvedStyle = Array.isArray(style) ? style : [style];
-  const resolvedStyle = _resolvedStyle.reduce((acc, val) => ({ ...acc, ...val }), {});
+  const resolvedStyle = _resolvedStyle.reduce(
+    (acc, val) => ({ ...acc, ...(typeof val === 'function' ? val(theme) : val) }),
+    {}
+  );
 
   const getClassName = (selector: StylesNames) => {
     const themeClassNames = themeName.map((n) => theme.components?.[n]?.classNames?.[selector]);

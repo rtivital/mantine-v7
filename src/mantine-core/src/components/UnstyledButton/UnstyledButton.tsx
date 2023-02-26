@@ -31,6 +31,7 @@ export const _UnstyledButton = forwardRef<
   const getStyles = useStylesApi({
     name: 'UnstyledButton',
     classes,
+    className,
     classNames,
     styles,
     style,

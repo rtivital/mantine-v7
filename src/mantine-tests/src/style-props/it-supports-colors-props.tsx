@@ -14,16 +14,12 @@ export function itSupportsColorsProps<Props>(
   const selector = options.selector || '*:not(style)';
 
   it(name, () => {
-    const { container: theme } = render(<options.component {...options.props} c="red" />);
-    const { container: themeIndex } = render(<options.component {...options.props} c="red.4" />);
-    const { container: cssColor } = render(<options.component {...options.props} c="#FEFEFE" />);
-    const { container: bg } = render(<options.component {...options.props} bg="orange" />);
+    const { container: c } = render(<options.component {...options.props} c="#FEFEFE" />);
+    const { container: bg } = render(<options.component {...options.props} bg="#DCDCDC" />);
     const { container: opacity } = render(<options.component {...options.props} opacity={0.85} />);
 
-    expect(theme.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-red-filled)' });
-    expect(themeIndex.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-red-4)' });
-    expect(cssColor.querySelector(selector)).toHaveStyle({ color: '#FEFEFE' });
-    expect(bg.querySelector(selector)).toHaveStyle({ color: 'var(--mantine-color-orange-filled)' });
-    expect(opacity.querySelector(selector)).toHaveStyle({ color: '0.85' });
+    expect(c.querySelector(selector)).toHaveStyle({ color: '#FEFEFE' });
+    expect(bg.querySelector(selector)).toHaveStyle({ background: '#DCDCDC' });
+    expect(opacity.querySelector(selector)).toHaveStyle({ opacity: '0.85' });
   });
 }

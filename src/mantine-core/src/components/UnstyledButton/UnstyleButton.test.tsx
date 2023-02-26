@@ -1,0 +1,16 @@
+import { tests } from '@mantine/tests';
+import { UnstyledButton, UnstyledButtonProps } from './UnstyledButton';
+
+const defaultProps: UnstyledButtonProps = {};
+
+describe('@mantine/core/UnstyledButton', () => {
+  tests.itSupportsSystemProps<UnstyledButtonProps>({
+    component: UnstyledButton,
+    props: defaultProps,
+    polymorphic: true,
+    styleProps: true,
+    children: true,
+    refType: HTMLButtonElement,
+    displayName: '@mantine/core/UnstyledButton',
+  });
+});

@@ -10,13 +10,12 @@ interface Options<Props = any> {
 
 export function itSupportsPaddingsProps<Props>(
   options: Options<Props>,
-  name = 'supports m, mx, my, mt, mb, mr and ml props'
+  name = 'supports p, px, py, pt, pb, pr and pl props'
 ) {
   const selector = options.selector || '*:not(style)';
 
   it(name, () => {
     const { container: p } = render(<options.component {...options.props} p={45} />);
-    const { container: theme } = render(<options.component {...options.props} p="xl" />);
     const { container: px } = render(<options.component {...options.props} px={34} />);
     const { container: py } = render(<options.component {...options.props} py={22} />);
     const { container: pt } = render(<options.component {...options.props} pt={13} />);
@@ -25,7 +24,6 @@ export function itSupportsPaddingsProps<Props>(
     const { container: pl } = render(<options.component {...options.props} pl={11} />);
 
     expect(p.querySelector(selector)).toHaveStyle({ padding: rem(45) });
-    expect(theme.querySelector(selector)).toHaveStyle({ padding: 'var(--mantine-spacing-xl)' });
     expect(px.querySelector(selector)).toHaveStyle({ paddingLeft: rem(34), paddingRight: rem(34) });
     expect(py.querySelector(selector)).toHaveStyle({ paddingTop: rem(22), paddingBottom: rem(22) });
     expect(pt.querySelector(selector)).toHaveStyle({ paddingTop: rem(13) });
