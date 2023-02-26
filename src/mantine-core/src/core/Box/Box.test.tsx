@@ -12,5 +12,6 @@ describe('@mantine/core/Box', () => {
     children: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Box',
+    providerName: null,
   });
 });

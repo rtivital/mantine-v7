@@ -25,7 +25,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   selector?: string;
   refType?: any;
   refProp?: string;
-  providerName?: string;
+  providerName?: string | null;
   stylesApiSelectors?: StylesApiSelectors[];
 }
 
@@ -45,7 +45,9 @@ export function itSupportsSystemProps<
   options.refType && itSupportsRef({ ...options, refType: options.refType });
   options.polymorphic && itIsPolymorphic(options);
   options.children && itRendersChildren(options);
-  typeof providerName === 'string' && itSupportsProviderDefaultProps({ ...options, providerName });
+  typeof providerName === 'string' &&
+    options.providerName !== null &&
+    itSupportsProviderDefaultProps({ ...options, providerName });
 
   if (options.styleProps) {
     itSupportsMarginsProps(options);
