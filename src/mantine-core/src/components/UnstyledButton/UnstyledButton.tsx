@@ -11,9 +11,13 @@ import classes from './UnstyledButton.module.css';
 
 export type UnstyledButtonStylesNames = 'root';
 
-export interface UnstyledButtonProps extends BoxProps, StylesApiProps<UnstyledButtonStylesNames> {}
+export interface UnstyledButtonProps extends BoxProps, StylesApiProps<UnstyledButtonStylesNames> {
+  __staticSelector?: string;
+}
 
-const defaultProps: Partial<UnstyledButtonProps> = {};
+const defaultProps: Partial<UnstyledButtonProps> = {
+  __staticSelector: 'UnstyledButton',
+};
 
 export const _UnstyledButton = forwardRef<
   HTMLButtonElement,
@@ -22,6 +26,7 @@ export const _UnstyledButton = forwardRef<
   const {
     className,
     component = 'button',
+    __staticSelector,
     unstyled,
     variant,
     classNames,
@@ -31,12 +36,13 @@ export const _UnstyledButton = forwardRef<
   } = useComponentDefaultProps('UnstyledButton', defaultProps, props);
 
   const getStyles = useStylesApi({
-    name: 'UnstyledButton',
-    classes,
+    name: __staticSelector!,
     className,
+    style,
+    classes,
     classNames,
     styles,
-    style,
+    unstyled,
   });
 
   return (
