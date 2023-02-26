@@ -4,6 +4,7 @@ import { itSupportsRef } from './shared/it-supports-ref';
 import { itSupportsOthers } from './shared/it-supports-others';
 import { itIsPolymorphic } from './shared/it-is-polymorphic';
 import { itRendersChildren } from './shared/it-renders-children';
+import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-default-props';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -23,6 +24,7 @@ interface Options<Props = any> {
   selector?: string;
   refType?: any;
   refProp?: string;
+  providerName?: string;
 }
 
 export function itSupportsSystemProps<Props>(options: Options<Props>) {
@@ -32,6 +34,8 @@ export function itSupportsSystemProps<Props>(options: Options<Props>) {
   options.refType && itSupportsRef({ ...options, refType: options.refType });
   options.polymorphic && itIsPolymorphic(options);
   options.children && itRendersChildren(options);
+  typeof options.providerName === 'string' &&
+    itSupportsProviderDefaultProps({ ...options, providerName: options.providerName });
 
   if (options.styleProps) {
     itSupportsMarginsProps(options);

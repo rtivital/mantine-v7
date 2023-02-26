@@ -17,5 +17,6 @@ describe('@mantine/core/UnstyledButton', () => {
     children: true,
     refType: HTMLButtonElement,
     displayName: '@mantine/core/UnstyledButton',
+    providerName: 'UnstyledButton',
   });
 });

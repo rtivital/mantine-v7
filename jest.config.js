@@ -7,7 +7,6 @@ module.exports = {
   testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
   setupFilesAfterEnv: ['./configuration/jest/jsdom.mocks.js'],
   moduleNameMapper: {
-    '@mantine/core/src/styles.api': '<rootDir>/src/mantine-core/src/styles.api',
     '@mantine/(.*)': '<rootDir>/src/mantine-$1/src',
     '\\.(css)$': 'identity-obj-proxy',
   },

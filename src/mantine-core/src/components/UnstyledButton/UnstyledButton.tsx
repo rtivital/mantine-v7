@@ -13,6 +13,8 @@ export type UnstyledButtonStylesNames = 'root';
 
 export interface UnstyledButtonProps extends BoxProps, StylesApiProps<UnstyledButtonStylesNames> {}
 
+const defaultProps: Partial<UnstyledButtonProps> = {};
+
 export const _UnstyledButton = forwardRef<
   HTMLButtonElement,
   UnstyledButtonProps & { component?: any }
@@ -26,7 +28,7 @@ export const _UnstyledButton = forwardRef<
     styles,
     style,
     ...others
-  } = useComponentDefaultProps('UnstyledButton', {}, props);
+  } = useComponentDefaultProps('UnstyledButton', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'UnstyledButton',
