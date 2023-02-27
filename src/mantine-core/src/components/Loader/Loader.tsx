@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   Box,
   MantineSize,
@@ -50,7 +50,7 @@ const defaultProps: Partial<LoaderProps> = {
   loaders: defaultLoaders,
 };
 
-export function Loader(props: LoaderProps) {
+export const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
   const {
     size,
     color,
@@ -83,6 +83,7 @@ export function Loader(props: LoaderProps) {
   return (
     <Box
       {...getStyles('root')}
+      ref={ref}
       component={loaders![loader]}
       vars={{
         '--mantine-loader-size': isNumberLike(size)
@@ -94,6 +95,6 @@ export function Loader(props: LoaderProps) {
       {...others}
     />
   );
-}
+});
 
 Loader.displayName = '@mantine/core/Loader';

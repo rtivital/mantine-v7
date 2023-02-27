@@ -7,4 +7,8 @@ export interface SvgLoaderProps extends React.ComponentPropsWithoutRef<'svg'> {
   vars?: CssVarsProp<LoaderCssVariables>;
 }
 
-export type MantineLoadersRecord = Record<MantineLoader, (props: SvgLoaderProps) => JSX.Element>;
+export type MantineLoaderComponent = React.ForwardRefExoticComponent<
+  SvgLoaderProps & React.RefAttributes<SVGSVGElement>
+>;
+
+export type MantineLoadersRecord = Record<MantineLoader, MantineLoaderComponent>;
