@@ -5,7 +5,7 @@ export function colorResolver(
   theme: MantineTheme,
   colorScheme: MantineColorScheme
 ) {
-  const parsedColor = parseThemeColor({ color, colorScheme, theme });
+  const parsedColor = parseThemeColor({ color, theme });
 
   if (parsedColor.color === 'white') {
     return 'var(--mantine-color-white)';
