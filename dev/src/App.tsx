@@ -1,5 +1,6 @@
 import React from 'react';
-import { MantineProvider, UnstyledButton, Loader } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
+import { LoaderCustomComponent } from './Loader.stories/Loader.customComponent';
 
 export default function App() {
   return (
@@ -15,9 +16,7 @@ export default function App() {
         },
       }}
     >
-      <Loader />
-      <Loader type="bars" />
-      <Loader type="dots" />
+      <LoaderCustomComponent />
     </MantineProvider>
   );
 }

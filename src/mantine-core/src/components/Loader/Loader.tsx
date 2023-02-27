@@ -15,14 +15,14 @@ import {
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
 import { Dots } from './loaders/Dots';
-import { MantineLoader } from './Loader.types';
+import type { MantineLoader, MantineLoadersRecord } from './Loader.types';
 import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
 export type LoaderCssVariables = '--mantine-loader-size' | '--mantine-loader-color';
 
-const LOADERS = {
+export const defaultLoaders: MantineLoadersRecord = {
   bars: Bars,
   oval: Oval,
   dots: Dots,
@@ -40,15 +40,30 @@ export interface LoaderProps
 
   /** Loader type, default value is `theme.loader` */
   type?: MantineLoader;
+
+  /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
+  loaders?: MantineLoadersRecord;
 }
 
 const defaultProps: Partial<LoaderProps> = {
   size: 'md',
+  loaders: defaultLoaders,
 };
 
 export function Loader(props: LoaderProps) {
-  const { size, color, type, vars, className, style, classNames, styles, unstyled, ...others } =
-    useComponentDefaultProps('Loader', defaultProps, props);
+  const {
+    size,
+    color,
+    type,
+    vars,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    loaders,
+    ...others
+  } = useComponentDefaultProps('Loader', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'Loader',
@@ -61,14 +76,14 @@ export function Loader(props: LoaderProps) {
   });
 
   const theme = useMantineTheme();
-  const loader = type! in LOADERS ? type! : theme.loader;
+  const loader = type! in loaders! ? type! : theme.loader;
   const _loaderColor = parseThemeColor({ color: color || theme.primaryColor, theme });
   const loaderColor = _loaderColor.variable ? `var(${_loaderColor.variable})` : color;
 
   return (
     <Box
       {...getStyles('root')}
-      component={LOADERS[loader] || LOADERS.bars}
+      component={loaders![loader]}
       vars={{
         '--mantine-loader-size': isNumberLike(size)
           ? rem(size)
