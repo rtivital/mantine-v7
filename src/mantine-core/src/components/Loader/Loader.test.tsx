@@ -29,4 +29,19 @@ describe('@mantine/core/Loader', () => {
     );
     expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();
   });
+
+  it('supports custom loaders on MantineProvider', () => {
+    const { container } = render(<Loader />, {
+      loader: 'custom',
+      components: {
+        Loader: {
+          defaultProps: {
+            loaders: { ...defaultLoaders, custom: customLoader },
+          },
+        },
+      },
+    });
+
+    expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();
+  });
 });
