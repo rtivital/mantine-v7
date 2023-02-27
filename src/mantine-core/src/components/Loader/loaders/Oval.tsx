@@ -1,11 +1,16 @@
 import React from 'react';
 import { SvgLoaderProps } from '../Loader.types';
 
-export function Oval({ size, color, style, ...others }: SvgLoaderProps) {
+export function Oval({ style, ...others }: SvgLoaderProps) {
   return (
     <svg
       {...others}
-      style={{ ...style, width: size, height: size, stroke: 'var(--mantine-color-blue-filled)' }}
+      style={{
+        ...style,
+        width: 'var(--mantine-loader-size)',
+        height: 'var(--mantine-loader-size)',
+        stroke: 'var(--mantine-loader-color)',
+      }}
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
     >

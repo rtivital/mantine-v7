@@ -9,6 +9,8 @@ import {
   parseThemeColor,
   StylesApiProps,
   useStylesApi,
+  isNumberLike,
+  rem,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -18,7 +20,7 @@ import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
-export type LoaderCssVariables = '--mantine-loader-size';
+export type LoaderCssVariables = '--mantine-loader-size' | '--mantine-loader-color';
 
 const LOADERS = {
   bars: Bars,
@@ -68,11 +70,12 @@ export function Loader(props: LoaderProps) {
       {...getStyles('root')}
       component={LOADERS[loader] || LOADERS.bars}
       vars={{
-        '--mantine-loader-size': 'blue',
+        '--mantine-loader-size': isNumberLike(size)
+          ? rem(size)
+          : `var(--mantine-loader-size-${size})`,
+        '--mantine-loader-color': loaderColor,
         ...vars,
       }}
-      size="5rem"
-      color={loaderColor}
       {...others}
     />
   );

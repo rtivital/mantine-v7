@@ -1,13 +1,16 @@
 import React from 'react';
 import { SvgLoaderProps } from '../Loader.types';
 
-export function Dots({ size, color, ...others }: SvgLoaderProps) {
+export function Dots({ style, ...others }: SvgLoaderProps) {
   return (
     <svg
-      width={size}
       viewBox="0 0 120 30"
       xmlns="http://www.w3.org/2000/svg"
-      fill={color}
+      style={{
+        ...style,
+        width: 'var(--mantine-loader-size)',
+        fill: 'var(--mantine-loader-color)',
+      }}
       {...others}
     >
       <circle cx="15" cy="15" r="15">

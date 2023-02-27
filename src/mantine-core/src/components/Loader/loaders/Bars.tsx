@@ -1,11 +1,16 @@
 import React from 'react';
 import { SvgLoaderProps } from '../Loader.types';
 
-export function Bars({ size, color, style, ...others }: SvgLoaderProps) {
+export function Bars({ style, ...others }: SvgLoaderProps) {
   return (
     <svg
       {...others}
-      style={{ ...style, width: size, height: size, fill: 'var(--test-var)' }}
+      style={{
+        ...style,
+        width: 'var(--mantine-loader-size)',
+        height: 'var(--mantine-loader-size)',
+        fill: 'var(--mantine-loader-color)',
+      }}
       viewBox="0 0 135 140"
       xmlns="http://www.w3.org/2000/svg"
     >
