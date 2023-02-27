@@ -4,7 +4,7 @@ export function isNumberLike(value: unknown) {
   }
 
   if (typeof value === 'string') {
-    if (value.startsWith('calc(')) {
+    if (value.startsWith('calc(') || value.startsWith('var(')) {
       return true;
     }
 

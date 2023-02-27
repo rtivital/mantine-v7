@@ -22,6 +22,7 @@ describe('@mantine/core/isNumberLike', () => {
     expect(isNumberLike('0.1')).toBe(true);
     expect(isNumberLike('-0.1')).toBe(true);
     expect(isNumberLike('calc(10rem - 5px)')).toBe(true);
+    expect(isNumberLike('var(--test-var)')).toBe(true);
   });
 
   it('returns false for strings that do not start with number', () => {
