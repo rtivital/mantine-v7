@@ -1,9 +1,17 @@
+code.hljs {
+  display: inline-block;
+  background: var(--mantine-color-dark-8);
+  padding: rem(2px) rem(4px);
+  font-size: rem(13px);
+  border-radius: var(--mantine-radius-xs);
+  line-height: var(--mantine-line-height);
+  font-family: var(--mantine-font-family-monospace);
+}
+
 pre code.hljs {
   display: block;
   overflow-x: auto;
   padding: var(--mantine-spacing-md);
-  font-family: var(--mantine-font-family-monospace);
-  font-size: rem(13px);
   line-height: 1.7;
 
   @mixin dark {

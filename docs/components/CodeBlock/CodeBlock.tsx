@@ -79,11 +79,17 @@ function Demo() {
 `.trim();
 
 export function CodeBlock() {
-  const myHtml = hljs.highlight(sampleCode, { language: 'tsx' }).value;
+  const block = hljs.highlight(sampleCode, { language: 'tsx' }).value;
+  const inline = hljs.highlight('import React from "react";', { language: 'tsx' }).value;
 
   return (
-    <pre>
-      <code className="hljs" dangerouslySetInnerHTML={{ __html: myHtml }} />
-    </pre>
+    <>
+      Inline: <code className="hljs" dangerouslySetInnerHTML={{ __html: inline }} />
+      <div />
+      Block:
+      <pre>
+        <code className="hljs" dangerouslySetInnerHTML={{ __html: block }} />
+      </pre>
+    </>
   );
 }
