@@ -3,9 +3,10 @@ import '@mantine/core/esm/index.css';
 import React from 'react';
 import NextApp, { AppContext, AppProps as NextAppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
-import { MdxProvider } from '@/components/MdxProvider';
 import { getNavbarData } from '@/mdx';
 import { NavbarData } from '@/types';
+import { MdxProvider } from '@/components/MdxProvider';
+import { AppProvider } from '@/components/AppContext';
 
 interface AppProps extends NextAppProps {
   navbarData: NavbarData;
@@ -13,15 +14,17 @@ interface AppProps extends NextAppProps {
 
 export default function App({ Component, pageProps, navbarData }: AppProps) {
   return (
-    <MantineProvider>
-      <MdxProvider>
-        <Component {...pageProps} />
-      </MdxProvider>
-    </MantineProvider>
+    <AppProvider value={{ navbarData }}>
+      <MantineProvider>
+        <MdxProvider>
+          <Component {...pageProps} />
+        </MdxProvider>
+      </MantineProvider>
+    </AppProvider>
   );
 }
 
-export const getInitialProps = async (appContext: AppContext) => {
+App.getInitialProps = async (appContext: AppContext) => {
   const navbarData = await getNavbarData();
   const appProps = await NextApp.getInitialProps(appContext);
 
@@ -30,5 +33,3 @@ export const getInitialProps = async (appContext: AppContext) => {
     navbarData,
   };
 };
-
-App.getInitialProps = getInitialProps;
