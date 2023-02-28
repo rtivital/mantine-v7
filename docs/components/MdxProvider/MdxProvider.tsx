@@ -1,16 +1,7 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
-import { MdxLayout } from '@/components/MdxLayout';
+import { Demo } from '@/components/Demo';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <MDXProvider
-      components={{
-        Test: () => <div>Test</div>,
-        MdxLayout,
-      }}
-    >
-      {children}
-    </MDXProvider>
-  );
+  return <MDXProvider components={{ Demo }}>{children}</MDXProvider>;
 }

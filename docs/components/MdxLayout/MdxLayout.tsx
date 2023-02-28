@@ -15,7 +15,7 @@ export function MdxLayout({ meta, children }: MdxLayoutProps) {
       </Head>
       <div>Header: {meta.title}</div>
       <div>Navbar</div>
-      <div style={{ background: 'pink' }}>{children}</div>
+      <div style={{ background: 'rgba(0, 0, 0, 0.4)' }}>{children}</div>
       <div>Footer</div>
     </>
   );
