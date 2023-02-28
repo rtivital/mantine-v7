@@ -1,0 +1,88 @@
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: var(--mantine-spacing-md);
+  font-family: var(--mantine-font-family-monospace);
+  font-size: rem(13px);
+  line-height: 1.7;
+
+  @mixin dark {
+    color: var(--mantine-color-dark-1);
+    background: var(--mantine-color-dark-8);
+  }
+}
+
+.hljs {
+  color: var(--mantine-color-dark-1);
+  background: var(--mantine-color-dark-8);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--mantine-color-dark-3);
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: var(--mantine-color-violet-3);
+}
+
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: var(--mantine-color-yellow-4);
+}
+
+.hljs-literal {
+  color: var(--mantine-color-blue-4);
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: var(--mantine-color-green-6);
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: var(--mantine-color-blue-2);
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: var(--mantine-color-orange-5);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: var(--mantine-color-orange-5);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
