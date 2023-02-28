@@ -1,9 +1,15 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { getMdxPaths } from '@/mdx';
+import { MDXRemote } from 'next-mdx-remote';
+import { getMdxPaths, getMdxContent } from '@/mdx';
+import { MdxContent } from '@/types';
 
-export default function MdxPage() {
-  return <div>Mdx page</div>;
+interface MdxPageProps {
+  page: MdxContent;
+}
+
+export default function MdxPage({ page }: MdxPageProps) {
+  return <MDXRemote compiledSource={page.content} components={{}} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -14,9 +20,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
+export const getStaticProps: GetStaticProps<{ page: MdxContent }, { mdx: string[] }> = async (
+  context
+) => {
+  const filePath = context.params!.mdx.join('/');
+  const mdxContent = await getMdxContent(filePath);
+
   return {
-    props: {},
+    props: {
+      page: mdxContent,
+    },
   };
 };

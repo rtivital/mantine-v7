@@ -1,7 +1,4 @@
-export interface Frontmatter {
-  title: string;
-  package: string;
-}
+import type { Frontmatter } from './MdxContent';
 
 export interface NavbarItem {
   slug: string;
