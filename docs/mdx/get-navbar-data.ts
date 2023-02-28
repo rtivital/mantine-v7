@@ -1,10 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
+import { NavbarData, Frontmatter } from '@/types';
 
 const dataPath = path.join(process.cwd(), 'content');
 
-export async function getNavbarData() {
+export async function getNavbarData(): Promise<NavbarData> {
   const content = await fs.readdir(dataPath);
   const folders = await Promise.all(
     content.map(async (folder) => {
@@ -12,6 +13,8 @@ export async function getNavbarData() {
       return { folder, content: folderContent };
     })
   );
+
+  console.log({ folders });
 
   const data = await Promise.all(
     folders.map(async (folder) =>
@@ -21,12 +24,12 @@ export async function getNavbarData() {
           const serialized = await serialize(fileContent, { parseFrontmatter: true });
           return {
             slug: `/${folder.folder}/${file.replace('.mdx', '')}/`,
-            data: serialized.frontmatter,
+            data: serialized.frontmatter as unknown as Frontmatter,
           };
         })
       )
     )
   );
 
-  return data.reduce((acc, curr) => [...acc, ...curr], []);
+  return { items: data.reduce((acc, curr) => [...acc, ...curr], []) };
 }

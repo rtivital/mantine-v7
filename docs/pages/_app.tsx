@@ -1,15 +1,17 @@
 import '@mantine/core/esm/index.css';
-import fs from 'fs/promises';
-import path from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
+
 import React from 'react';
-import type { AppProps } from 'next/app';
+import NextApp, { AppContext, AppProps as NextAppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { MdxProvider } from '@/components/MdxProvider';
 import { getNavbarData } from '@/mdx';
+import { NavbarData } from '@/types';
 
-export default function App({ Component, pageProps, pages, ...others }: AppProps) {
-  console.log(pages);
+interface AppProps extends NextAppProps {
+  navbarData: NavbarData;
+}
+
+export default function App({ Component, pageProps, navbarData }: AppProps) {
   return (
     <MantineProvider>
       <MdxProvider>
@@ -19,13 +21,13 @@ export default function App({ Component, pageProps, pages, ...others }: AppProps
   );
 }
 
-// const corePath = path.join(process.cwd(), 'pages/core');
-
-export const getInitialProps = async () => {
-  const pages = await getNavbarData();
+export const getInitialProps = async (appContext: AppContext) => {
+  const navbarData = await getNavbarData();
+  const appProps = await NextApp.getInitialProps(appContext);
 
   return {
-    pages,
+    ...appProps,
+    navbarData,
   };
 };
 
