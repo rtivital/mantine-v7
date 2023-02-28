@@ -1,1 +1,3 @@
-export { usage } from './Loader.demo.usage';
+import { usage } from './Loader.demo.usage';
+
+export default { usage };

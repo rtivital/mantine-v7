@@ -8,7 +8,6 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
       components={{
         Test: () => <div>Test</div>,
         MdxLayout,
-        Layout: (meta: any) => (props: any) => <MdxLayout meta={meta} {...props} />,
       }}
     >
       {children}
