@@ -1,4 +1,5 @@
 import React from 'react';
+import { CodeBlock } from '@/components/CodeBlock';
 
 export function Demo({ data: { component: Component, code } }: any) {
   return (
@@ -7,9 +8,7 @@ export function Demo({ data: { component: Component, code } }: any) {
         <Component />
       </div>
       <div>
-        <pre>
-          <code>{code}</code>
-        </pre>
+        <CodeBlock language="tsx">{code}</CodeBlock>
       </div>
     </div>
   );
