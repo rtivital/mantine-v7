@@ -3,7 +3,7 @@ import '@mantine/core/esm/index.css';
 import React from 'react';
 import NextApp, { AppContext, AppProps as NextAppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
-import { getNavbarData } from '@/mdx';
+import { getNavbarData, MDX_META } from '@/mdx';
 import { NavbarData } from '@/types';
 import { MdxProvider } from '@/components/MdxProvider';
 import { AppProvider } from '@/components/AppContext';
@@ -13,6 +13,7 @@ interface AppProps extends NextAppProps {
 }
 
 export default function App({ Component, pageProps, navbarData }: AppProps) {
+  console.log(MDX_META);
   return (
     <AppProvider value={{ navbarData }}>
       <MantineProvider>
