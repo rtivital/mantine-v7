@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head';
 import { MDXRemote } from 'next-mdx-remote';
 import { getMdxPaths, getMdxContent } from '@/mdx';
 import { MdxContent } from '@/types';
@@ -9,7 +10,20 @@ interface MdxPageProps {
 }
 
 export default function MdxPage({ page }: MdxPageProps) {
-  return <MDXRemote compiledSource={page.content} components={{}} />;
+  return (
+    <>
+      <Head>
+        <title>{`${page.data.title} | Mantine`}</title>
+      </Head>
+      <div>
+        Header: {page.data.title}
+        Package {page.data.package}
+      </div>
+      <div>Navbar</div>
+      <MDXRemote compiledSource={page.content} components={{}} />
+      <div>Footer</div>
+    </>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
