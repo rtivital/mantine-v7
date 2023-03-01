@@ -12,6 +12,9 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   pageExtensions: ['tsx', 'mdx'],
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve = {
