@@ -10,6 +10,6 @@ module.exports = {
     'import/extensions': 'off',
   },
   parserOptions: {
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
   },
 };
