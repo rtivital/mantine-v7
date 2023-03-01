@@ -10,7 +10,7 @@ type Styles<StylesNames extends string> =
   | ((theme: MantineTheme) => StylesRecord<StylesNames, CSSProperties>);
 
 export interface UseStylesApiInput<StylesNames extends string> {
-  name: string | string[];
+  name: string | (string | undefined)[];
   classes: Record<StylesNames, string>;
   className?: string;
   style?: MantineStyleProp;
@@ -43,7 +43,7 @@ export function useStylesApi<StylesNames extends string>({
 }: UseStylesApiInput<StylesNames>) {
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
-  const themeName = Array.isArray(name) ? name : [name];
+  const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];
   const resolvedStyles = resolveStyles(styles, theme);
   const _resolvedStyle = Array.isArray(style) ? style : [style];
   const resolvedStyle = _resolvedStyle.reduce(
@@ -52,7 +52,9 @@ export function useStylesApi<StylesNames extends string>({
   );
 
   return (selector: StylesNames, options?: GetPropsOptions) => {
-    const themeClassNames = themeName.map((n) => theme.components?.[n]?.classNames?.[selector]);
+    const themeClassNames = themeName
+      .filter((n) => n)
+      .map((n) => theme.components?.[n]?.classNames?.[selector]);
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     const _className = cx(
       options?.focusable && !unstyled && STATIC_CLASSES.focus[theme.focusRing],
