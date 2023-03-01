@@ -7,7 +7,7 @@ function setColorSchemeAttribute(
   colorScheme: MantineColorScheme,
   getRootElement: () => HTMLElement | undefined
 ) {
-  getRootElement()?.setAttribute('data-color-scheme', colorScheme);
+  getRootElement()?.setAttribute('data-mantine-color-scheme', colorScheme);
 }
 
 interface UseProviderColorSchemeOptions {

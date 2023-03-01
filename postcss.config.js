@@ -1,6 +1,6 @@
 function colorSchemeMixin(colorScheme) {
   return {
-    [`[data-color-scheme="${colorScheme}"] &`]: {
+    [`[data-mantine-color-scheme="${colorScheme}"] &`]: {
       '@mixin-content': {},
     },
 

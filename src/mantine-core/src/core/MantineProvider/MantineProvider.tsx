@@ -29,7 +29,7 @@ export interface MantineProviderProps {
   /** Determines whether theme css variables should be added to given `cssVariablesSelector`, `true` by default */
   withCssVariables?: boolean;
 
-  /** Function ro resolve root element to set `data-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
+  /** Function ro resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?: () => HTMLElement | undefined;
 
   /** A prefix for components static classNames (for example {selector}-Text-root), `mantine` by default */
