@@ -26,5 +26,9 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
     { light: '', dark: '' }
   );
 
-  return `@media (prefers-color-scheme: dark) { ${selector} {${colors.dark}} }\n@media (prefers-color-scheme: light) { ${selector} {${colors.light}} }`;
+  return `
+  ${selector}[data-mantine-color-scheme="dark"] {${colors.dark}}
+  ${selector}[data-mantine-color-scheme="light"] {${colors.light}}
+  @media (prefers-color-scheme: dark) { ${selector} {${colors.dark}} }
+  @media (prefers-color-scheme: light) { ${selector} {${colors.light}} }`;
 }
