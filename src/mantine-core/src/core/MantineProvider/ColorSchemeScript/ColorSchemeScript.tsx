@@ -10,8 +10,10 @@ const getScript = ({
   defaultColorScheme,
   localStorageKey,
 }: Pick<ColorSchemeScriptProps, 'defaultColorScheme' | 'localStorageKey'>) => `
-  window.localStorage.getItem('${localStorageKey}') || '${defaultColorScheme}';
-  document.documentElement.setAttribute('data-mantine-color-scheme', '${defaultColorScheme}');
+  try {
+    var colorScheme = window.localStorage.getItem('${localStorageKey}') || '${defaultColorScheme}';
+    document.documentElement.setAttribute('data-mantine-color-scheme', colorScheme);
+  } catch (e) {}
 `;
 
 export function ColorSchemeScript({
