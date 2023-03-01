@@ -1,6 +1,6 @@
 import React from 'react';
-import { MantineProvider } from '@mantine/core';
-import { LoaderCustomComponent } from './Loader.stories/Loader.customComponent';
+import { MantineProvider, ActionIcon } from '@mantine/core';
+import { IconUserSearch } from '@tabler/icons-react';
 
 export default function App() {
   return (
@@ -16,7 +16,11 @@ export default function App() {
         },
       }}
     >
-      <LoaderCustomComponent />
+      <div style={{ padding: 40 }}>
+        <ActionIcon>
+          <IconUserSearch size={20} />
+        </ActionIcon>
+      </div>
     </MantineProvider>
   );
 }

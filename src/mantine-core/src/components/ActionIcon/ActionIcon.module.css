@@ -1,0 +1,12 @@
+.root {
+  --mantine-action-icon-size-xs: rem(18px);
+  --mantine-action-icon-size-sm: rem(22px);
+  --mantine-action-icon-size-md: rem(28px);
+  --mantine-action-icon-size-lg: rem(34px);
+  --mantine-action-icon-size-xl: rem(44px);
+
+  background: red;
+  width: var(--mantine-action-icon-size);
+  height: var(--mantine-action-icon-size);
+  border-radius: var(--mantine-action-icon-radius);
+}

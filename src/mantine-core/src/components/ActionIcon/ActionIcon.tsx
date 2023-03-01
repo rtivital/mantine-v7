@@ -8,6 +8,8 @@ import {
   MantineSize,
   MantineColor,
   MantineGradient,
+  getRadius,
+  useMantineTheme,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -61,6 +63,8 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
       ...others
     } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
+    const theme = useMantineTheme();
+
     const getStyles = useStylesApi({
       name: ['ActionIcon', __staticSelector],
       className,
@@ -78,7 +82,8 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
         data-variant={variant}
         ref={ref}
         vars={{
-          '--mantine-color': 'red',
+          '--mantine-action-icon-size': `var(--mantine-action-icon-size-${size})`,
+          '--mantine-action-icon-radius': getRadius(theme, radius),
         }}
       />
     );

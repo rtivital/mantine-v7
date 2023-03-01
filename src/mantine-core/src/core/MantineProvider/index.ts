@@ -15,3 +15,4 @@ export {
 } from './Mantine.context';
 export type { MantineProviderProps } from './MantineProvider';
 export { useComponentDefaultProps } from './use-component-default-props/use-component-default-props';
+export { getRadius } from './get-radius/get-radius';
