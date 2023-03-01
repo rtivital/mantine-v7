@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
   "include": [
-    "./dev",
-    "./docs",
     "src/mantine-*/src",
     "src/mantine-*/demos",
     "./types",

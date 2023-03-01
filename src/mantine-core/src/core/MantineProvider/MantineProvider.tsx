@@ -80,11 +80,7 @@ export function MantineProvider({
       }}
     >
       {withCssVariables && (
-        <MantineCssVariables
-          theme={mergedTheme}
-          colorScheme={colorScheme}
-          cssVariablesSelector={cssVariablesSelector}
-        />
+        <MantineCssVariables theme={mergedTheme} cssVariablesSelector={cssVariablesSelector} />
       )}
       {children}
     </MantineContext.Provider>

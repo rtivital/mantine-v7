@@ -65,10 +65,7 @@ const result = `
 describe('@mantine/core/get-theme-css-variables', () => {
   it('returns correct css variables for given theme', () => {
     expect(
-      getThemeCssVariables(
-        { ...DEFAULT_THEME, colors: { blue: DEFAULT_THEME.colors.blue } } as any,
-        'auto'
-      )
+      getThemeCssVariables({ ...DEFAULT_THEME, colors: { blue: DEFAULT_THEME.colors.blue } } as any)
     ).toBe(result);
   });
 });

@@ -1,4 +1,4 @@
-import type { MantineColorScheme, MantineTheme } from '../../theme.types';
+import type { MantineTheme } from '../../theme.types';
 import { keys } from '../../../utils';
 
 function assignSizeVariables(
@@ -11,11 +11,11 @@ function assignSizeVariables(
   );
 }
 
-export function getThemeCssVariables(theme: MantineTheme, colorScheme: MantineColorScheme) {
+export function getThemeCssVariables(theme: MantineTheme) {
   const variables: Record<string, string> = {
     '--mantine-webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
+    '--mantine-color-scheme': 'light dark',
     '--mantine-moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
-    '--mantine-color-scheme': colorScheme === 'auto' ? 'light dark' : colorScheme,
     '--mantine-color-white': theme.white,
     '--mantine-color-black': theme.black,
     '--mantine-line-height': theme.lineHeight,

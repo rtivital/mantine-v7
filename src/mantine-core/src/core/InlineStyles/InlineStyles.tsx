@@ -9,8 +9,10 @@ export interface InlineStylesProps
 export function InlineStyles({ selector, styles, media }: InlineStylesInput) {
   const nonce = useMantineStyleNonce();
   return (
-    <style data-mantine-styles="inline" nonce={nonce}>
-      {stylesToString({ selector, styles, media })}
-    </style>
+    <style
+      data-mantine-styles="inline"
+      nonce={nonce}
+      dangerouslySetInnerHTML={{ __html: stylesToString({ selector, styles, media }) }}
+    />
   );
 }

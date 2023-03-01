@@ -1,29 +1,25 @@
 import React from 'react';
-import { getThemeCssVariables, getVariantsCssVariables } from './get-theme-css-variables';
+import {
+  getThemeCssVariables,
+  getVariantsCssVariables,
+  getColorSchemeCssVariables,
+} from './get-theme-css-variables';
 import { useMantineStyleNonce } from '../Mantine.context';
-import type { MantineColorScheme, MantineTheme } from '../theme.types';
+import type { MantineTheme } from '../theme.types';
 
 interface MantineCssVariablesProps {
   theme: MantineTheme;
-  colorScheme: MantineColorScheme;
   cssVariablesSelector: string;
 }
 
-export function MantineCssVariables({
-  theme,
-  colorScheme,
-  cssVariablesSelector,
-}: MantineCssVariablesProps) {
+export function MantineCssVariables({ theme, cssVariablesSelector }: MantineCssVariablesProps) {
   const nonce = useMantineStyleNonce();
 
-  return (
-    <style data-mantine-styles nonce={nonce}>
-      {`${cssVariablesSelector}{${getThemeCssVariables(
-        theme,
-        colorScheme
-      )}} ${getVariantsCssVariables(theme, cssVariablesSelector)}`}
-    </style>
-  );
+  const css = `${cssVariablesSelector}{${getThemeCssVariables(
+    theme
+  )}} ${getColorSchemeCssVariables()} ${getVariantsCssVariables(theme, cssVariablesSelector)}`;
+
+  return <style data-mantine-styles nonce={nonce} dangerouslySetInnerHTML={{ __html: css }} />;
 }
 
 MantineCssVariables.displayName = '@mantine/CssVariables';
