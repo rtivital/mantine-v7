@@ -22,6 +22,7 @@ export function ColorSchemeScript({
   return (
     <script
       {...others}
+      data-mantine-script
       dangerouslySetInnerHTML={{ __html: getScript({ defaultColorScheme, localStorageKey }) }}
     />
   );
