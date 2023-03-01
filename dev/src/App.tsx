@@ -20,6 +20,9 @@ export default function App() {
         <ActionIcon>
           <IconUserSearch size={20} />
         </ActionIcon>
+        <ActionIcon size="xl" mt="xl">
+          <IconUserSearch size={20} />
+        </ActionIcon>
       </div>
     </MantineProvider>
   );
