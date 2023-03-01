@@ -1,6 +1,5 @@
 code.hljs {
   display: inline-block;
-  background: var(--mantine-color-dark-8);
   padding: rem(2px) rem(4px);
   font-size: rem(13px);
   border-radius: var(--mantine-radius-xs);
@@ -13,28 +12,43 @@ pre code.hljs {
   overflow-x: auto;
   padding: var(--mantine-spacing-md);
   line-height: 1.7;
+}
 
+.hljs {
   @mixin dark {
     color: var(--mantine-color-dark-1);
     background: var(--mantine-color-dark-8);
   }
-}
 
-.hljs {
-  color: var(--mantine-color-dark-1);
-  background: var(--mantine-color-dark-8);
+  @mixin light {
+    color: var(--mantine-color-gray-7);
+    background: var(--mantine-color-gray-0);
+  }
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: var(--mantine-color-dark-3);
   font-style: italic;
+
+  @mixin dark {
+    color: var(--mantine-color-dark-3);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-gray-6);
+  }
 }
 
 .hljs-doctag,
 .hljs-formula,
 .hljs-keyword {
-  color: var(--mantine-color-violet-3);
+  @mixin dark {
+    color: var(--mantine-color-violet-3);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-violet-8);
+  }
 }
 
 .hljs-deletion,
@@ -42,11 +56,23 @@ pre code.hljs {
 .hljs-section,
 .hljs-selector-tag,
 .hljs-subst {
-  color: var(--mantine-color-yellow-4);
+  @mixin dark {
+    color: var(--mantine-color-yellow-4);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-red-9);
+  }
 }
 
 .hljs-literal {
-  color: var(--mantine-color-blue-4);
+  @mixin dark {
+    color: var(--mantine-color-blue-4);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-blue-6);
+  }
 }
 
 .hljs-addition,
@@ -54,7 +80,13 @@ pre code.hljs {
 .hljs-meta .hljs-string,
 .hljs-regexp,
 .hljs-string {
-  color: var(--mantine-color-green-6);
+  @mixin dark {
+    color: var(--mantine-color-green-6);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-blue-9);
+  }
 }
 
 .hljs-attr,
@@ -65,7 +97,13 @@ pre code.hljs {
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable {
-  color: var(--mantine-color-blue-2);
+  @mixin dark {
+    color: var(--mantine-color-blue-2);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-lime-9);
+  }
 }
 
 .hljs-bullet,
@@ -73,14 +111,17 @@ pre code.hljs {
 .hljs-meta,
 .hljs-selector-id,
 .hljs-symbol,
-.hljs-title {
-  color: var(--mantine-color-orange-5);
-}
-
+.hljs-title,
 .hljs-built_in,
 .hljs-class .hljs-title,
 .hljs-title.class_ {
-  color: var(--mantine-color-orange-5);
+  @mixin dark {
+    color: var(--mantine-color-orange-5);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-orange-9);
+  }
 }
 
 .hljs-emphasis {
