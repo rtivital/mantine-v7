@@ -2,6 +2,7 @@ export * from './theme.types';
 export * from './color-scheme-managers';
 export * from './color-functions';
 export * from './use-mantine-color-scheme';
+export * from './ColorSchemeScript';
 export { DEFAULT_THEME } from './default-theme';
 export { validateMantineTheme, mergeMantineTheme } from './merge-mantine-theme';
 export { MantineProvider } from './MantineProvider';
