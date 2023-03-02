@@ -6,7 +6,7 @@ import {
   BoxProps,
   useComponentDefaultProps,
   useMantineTheme,
-  parseThemeColor,
+  getThemeColor,
   StylesApiProps,
   useStylesApi,
   isNumberLike,
@@ -77,8 +77,6 @@ export const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
 
   const theme = useMantineTheme();
   const loader = type! in loaders! ? type! : theme.loader;
-  const _loaderColor = parseThemeColor({ color: color || theme.primaryColor, theme });
-  const loaderColor = _loaderColor.variable ? `var(${_loaderColor.variable})` : color;
 
   return (
     <Box
@@ -89,7 +87,7 @@ export const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
         '--mantine-loader-size': isNumberLike(size)
           ? rem(size)
           : `var(--mantine-loader-size-${size})`,
-        '--mantine-loader-color': loaderColor,
+        '--mantine-loader-color': getThemeColor(color, theme),
         ...vars,
       }}
       {...others}
