@@ -130,6 +130,7 @@
     "rollup-plugin-visualizer": "^5.5.0",
     "simple-git": "^2.39.0",
     "storybook-css-modules": "^1.0.8",
+    "storybook-dark-mode": "^2.1.1",
     "stylis": "^4.0.10",
     "syncpack": "^5.7.11",
     "tsconfig-paths-webpack-plugin": "^4.0.0",

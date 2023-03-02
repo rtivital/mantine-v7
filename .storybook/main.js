@@ -4,6 +4,7 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.story.@(js|jsx|ts|tsx)'],
   addons: [
+    'storybook-dark-mode',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
