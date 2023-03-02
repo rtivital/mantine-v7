@@ -44,7 +44,9 @@
     "release:prepare": "npm run clean && npm test",
     "release:patch": "npm run _release patch && npm run docs:deploy",
     "release:minor": "npm run _release minor && npm run docs:deploy",
-    "release:major": "npm run _release major && npm run docs:deploy"
+    "release:major": "npm run _release major && npm run docs:deploy",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "resolutions": {
     "@types/react": "18.0.28",
@@ -54,12 +56,22 @@
     "prosemirror-view": "1.28.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-replace": "^2.4.2",
     "@rollup/plugin-typescript": "^8.2.1",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@sucrase/jest-plugin": "^2.1.1",
     "@testing-library/dom": "8.13.0",
     "@testing-library/jest-dom": "5.16.4",
@@ -77,6 +89,7 @@
     "@types/yargs": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
+    "babel-loader": "^8.3.0",
     "chalk": "^4.1.1",
     "esbuild": "^0.12.5",
     "esbuild-jest": "^0.5.0",
@@ -116,9 +129,10 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^5.5.0",
     "simple-git": "^2.39.0",
+    "storybook-css-modules": "^1.0.8",
     "stylis": "^4.0.10",
     "syncpack": "^5.7.11",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "4.9.3",
     "webpack": "^5.75.0",
     "yargs": "^17.0.1"
