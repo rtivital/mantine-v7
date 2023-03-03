@@ -1,6 +1,7 @@
 import { MantineColor, MantineTheme } from '../../theme.types';
 import { parseThemeColor } from '../parse-theme-color/parse-theme-color';
 import { darken } from '../darken/darken';
+import { rem } from '../../../utils';
 
 interface GetVariantColorsInput {
   color: MantineColor | undefined;
@@ -25,6 +26,8 @@ export function getVariantColors({
         return {
           [`--mantine-${name}-bg`]: `var(--mantine-color-${color}-filled)`,
           [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-filled-hover)`,
+          [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
         };
       }
 
@@ -33,12 +36,16 @@ export function getVariantColors({
         [`--mantine-${name}-hover`]: `var(--mantine-color-${parsed.color}-${
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
+        [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
       [`--mantine-${name}-bg`]: color!,
       [`--mantine-${name}-hover`]: darken(color!, 0.1),
+      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
     };
   }
 

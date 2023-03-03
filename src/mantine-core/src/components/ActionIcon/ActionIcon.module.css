@@ -18,6 +18,8 @@
   min-height: var(--mantine-action-icon-size);
   border-radius: var(--mantine-action-icon-radius);
   background: var(--mantine-action-icon-bg);
+  color: var(--mantine-action-icon-color);
+  border: var(--mantine-action-icon-border);
 
   @mixin hover {
     background: var(--mantine-action-icon-hover);
