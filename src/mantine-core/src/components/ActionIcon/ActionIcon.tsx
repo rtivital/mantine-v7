@@ -12,6 +12,7 @@ import {
   useMantineTheme,
   isNumberLike,
   rem,
+  getVariantColors,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -42,7 +43,7 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStyl
 }
 
 const defaultProps: Partial<ActionIconProps> = {
-  variant: 'subtle',
+  variant: 'filled',
   color: 'gray',
   size: 'md',
 };
@@ -88,6 +89,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
             ? rem(size)
             : `var(--mantine-action-icon-size-${size})`,
           '--mantine-action-icon-radius': getRadius(theme, radius),
+          ...getVariantColors({ color, theme, variant: variant!, name: 'action-icon' }),
         }}
       />
     );

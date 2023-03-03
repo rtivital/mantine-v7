@@ -5,18 +5,21 @@
   --mantine-action-icon-size-lg: rem(34px);
   --mantine-action-icon-size-xl: rem(44px);
 
-  background: pink;
-
-  width: var(--mantine-action-icon-size);
-  height: var(--mantine-action-icon-size);
-  min-width: var(--mantine-action-icon-size);
-  min-height: var(--mantine-action-icon-size);
-  border-radius: var(--mantine-action-icon-radius);
-
   line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   user-select: none;
+
+  width: var(--mantine-action-icon-size);
+  height: var(--mantine-action-icon-size);
+  min-width: var(--mantine-action-icon-size);
+  min-height: var(--mantine-action-icon-size);
+  border-radius: var(--mantine-action-icon-radius);
+  background: var(--mantine-action-icon-bg);
+
+  @mixin hover {
+    background: var(--mantine-action-icon-hover);
+  }
 }

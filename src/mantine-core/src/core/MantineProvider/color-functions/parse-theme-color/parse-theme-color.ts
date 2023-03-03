@@ -9,6 +9,7 @@ interface ParseThemeColorResult {
   color: string;
   shade: MantineColorShade | undefined;
   variable: `--${string}` | undefined;
+  isThemeColor: boolean;
 }
 
 export function parseThemeColor({ color, theme }: ParseThemeColorOptions): ParseThemeColorResult {
@@ -18,11 +19,13 @@ export function parseThemeColor({ color, theme }: ParseThemeColorOptions): Parse
 
   const [_color, shade] = color.split('.');
   const colorShade = shade ? (Number(shade) as MantineColorShade) : undefined;
+  const isThemeColor = _color in theme.colors;
 
-  if (_color in theme.colors) {
+  if (isThemeColor) {
     return {
       color: _color,
       shade: colorShade,
+      isThemeColor,
       variable: shade
         ? `--mantine-color-${_color}-${colorShade}`
         : `--mantine-color-${_color}-filled`,
@@ -31,6 +34,7 @@ export function parseThemeColor({ color, theme }: ParseThemeColorOptions): Parse
 
   return {
     color,
+    isThemeColor,
     shade: colorShade,
     variable: undefined,
   };

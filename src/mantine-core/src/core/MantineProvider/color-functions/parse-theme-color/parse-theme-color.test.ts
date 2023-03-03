@@ -6,6 +6,7 @@ describe('@mantine/core/parse-theme-color', () => {
     expect(parseThemeColor({ color: 'red', theme: DEFAULT_THEME })).toEqual({
       color: 'red',
       shade: undefined,
+      isThemeColor: true,
       variable: '--mantine-color-red-filled',
     });
   });
@@ -14,6 +15,7 @@ describe('@mantine/core/parse-theme-color', () => {
     expect(parseThemeColor({ color: 'orange.5', theme: DEFAULT_THEME })).toEqual({
       color: 'orange',
       shade: 5,
+      isThemeColor: true,
       variable: '--mantine-color-orange-5',
     });
   });
@@ -21,6 +23,7 @@ describe('@mantine/core/parse-theme-color', () => {
   it('parses non theme color correctly', () => {
     expect(parseThemeColor({ color: '#FEFEFE', theme: DEFAULT_THEME })).toEqual({
       color: '#FEFEFE',
+      isThemeColor: false,
       shade: undefined,
       variable: undefined,
     });
