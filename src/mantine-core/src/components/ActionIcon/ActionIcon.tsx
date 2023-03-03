@@ -79,7 +79,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
 
     return (
       <UnstyledButton
-        {...getStyles('root', { focusable: true })}
+        {...getStyles('root', { focusable: true, active: true })}
         {...others}
         data-variant={variant}
         ref={ref}

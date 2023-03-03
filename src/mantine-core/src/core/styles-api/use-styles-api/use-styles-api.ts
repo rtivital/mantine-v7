@@ -22,6 +22,7 @@ export interface UseStylesApiInput<StylesNames extends string> {
 
 export interface GetPropsOptions {
   focusable?: boolean;
+  active?: boolean;
 }
 
 function resolveStyles<StylesNames extends string>(
@@ -58,6 +59,7 @@ export function useStylesApi<StylesNames extends string>({
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     const _className = cx(
       options?.focusable && !unstyled && STATIC_CLASSES.focus[theme.focusRing],
+      options?.active && !unstyled && STATIC_CLASSES.active,
       themeClassNames,
       classNames?.[selector],
       className && { [className]: rootSelector === selector },

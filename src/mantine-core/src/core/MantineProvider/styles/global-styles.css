@@ -38,3 +38,9 @@ body {
     outline: none;
   }
 }
+
+.mantine-active {
+  &:active {
+    transform: translateY(rem(1px));
+  }
+}
