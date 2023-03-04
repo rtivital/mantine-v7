@@ -29,10 +29,18 @@ export function Usage() {
       <Colors variant="light" />
       Light variant index:
       <Colors variant="light" index={5} />
+      Subtle variant:
+      <Colors variant="subtle" />
+      Subtle variant index:
+      <Colors variant="subtle" index={5} />
       Outline variant:
       <Colors variant="outline" />
       Outline variant index:
       <Colors variant="outline" index={4} />
+      Transparent variant:
+      <Colors variant="transparent" />
+      Transparent variant index:
+      <Colors variant="transparent" index={4} />
     </>
   );
 }
@@ -55,6 +63,18 @@ export function CssColor() {
       Outline variant
       <div>
         <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="outline">
+          $$
+        </ActionIcon>
+      </div>
+      Subtle variant
+      <div>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="subtle">
+          $$
+        </ActionIcon>
+      </div>
+      Transparent variant
+      <div>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="transparent">
           $$
         </ActionIcon>
       </div>

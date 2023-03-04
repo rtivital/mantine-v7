@@ -112,11 +112,65 @@ export function getVariantColors({
   }
 
   if (variant === 'subtle') {
-    return {};
+    if (parsed.isThemeColor) {
+      if (parsed.shade === undefined) {
+        return {
+          [`--mantine-${name}-bg`]: 'transparent',
+          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-light-hover)`,
+          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
+          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        };
+      }
+
+      const parsedColor = theme.colors[parsed.color][parsed.shade];
+
+      return {
+        [`--mantine-${name}-bg`]: 'transparent',
+        [`--mantine-${name}-hover`]: rgba(parsedColor, 0.12),
+        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
+          parsed.shade,
+          6
+        )})`,
+        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      };
+    }
+
+    return {
+      [`--mantine-${name}-bg`]: 'transparent',
+      [`--mantine-${name}-hover`]: rgba(color!, 0.12),
+      [`--mantine-${name}-color`]: color!,
+      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+    };
   }
 
   if (variant === 'transparent') {
-    return {};
+    if (parsed.isThemeColor) {
+      if (parsed.shade === undefined) {
+        return {
+          [`--mantine-${name}-bg`]: 'transparent',
+          [`--mantine-${name}-hover`]: 'transparent',
+          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
+          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        };
+      }
+
+      return {
+        [`--mantine-${name}-bg`]: 'transparent',
+        [`--mantine-${name}-hover`]: 'transparent',
+        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
+          parsed.shade,
+          6
+        )})`,
+        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      };
+    }
+
+    return {
+      [`--mantine-${name}-bg`]: 'transparent',
+      [`--mantine-${name}-hover`]: 'transparent',
+      [`--mantine-${name}-color`]: color!,
+      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+    };
   }
 
   if (variant === 'gradient') {
