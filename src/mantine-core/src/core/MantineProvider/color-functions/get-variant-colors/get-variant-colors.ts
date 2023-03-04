@@ -1,5 +1,6 @@
-import { MantineColor, MantineTheme } from '../../theme.types';
+import { MantineColor, MantineTheme, MantineGradient } from '../../theme.types';
 import { parseThemeColor } from '../parse-theme-color/parse-theme-color';
+import { getGradient } from '../get-gradient/get-gradient';
 import { darken } from '../darken/darken';
 import { rgba } from '../rgba/rgba';
 import { rem } from '../../../utils';
@@ -9,6 +10,7 @@ interface GetVariantColorsInput {
   theme: MantineTheme;
   variant: string;
   name: string;
+  gradient?: MantineGradient;
 }
 
 type GetVariantColorsResult = Record<`--${string}`, string>;
@@ -18,6 +20,7 @@ export function getVariantColors({
   theme,
   variant,
   name,
+  gradient,
 }: GetVariantColorsInput): GetVariantColorsResult {
   const parsed = parseThemeColor({ color, theme });
 
@@ -201,7 +204,12 @@ export function getVariantColors({
   }
 
   if (variant === 'gradient') {
-    return {};
+    return {
+      [`--mantine-${name}-bg`]: getGradient(theme, gradient),
+      [`--mantine-${name}-hover`]: getGradient(theme, gradient),
+      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+      [`--mantine-${name}-border`]: 'none',
+    };
   }
 
   if (variant === 'default') {

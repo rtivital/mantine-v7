@@ -95,3 +95,19 @@ export function CssColor() {
     </div>
   );
 }
+
+export function GradientVariant() {
+  return (
+    <div style={{ padding: 40, display: 'flex', gap: 40 }}>
+      <ActionIcon size="lg" variant="gradient">
+        $$
+      </ActionIcon>
+      <ActionIcon size="lg" variant="gradient" gradient={{ from: 'red', to: 'cyan' }}>
+        $$
+      </ActionIcon>
+      <ActionIcon size="lg" variant="gradient" gradient={{ from: '#FF00FF', to: '#00FF00' }}>
+        $$
+      </ActionIcon>
+    </div>
+  );
+}

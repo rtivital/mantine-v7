@@ -23,5 +23,10 @@
 
   @mixin hover {
     background: var(--mantine-action-icon-hover);
+
+    &[data-variant='gradient'] {
+      background-position: center;
+      background-size: 200%;
+    }
   }
 }

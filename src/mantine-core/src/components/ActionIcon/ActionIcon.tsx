@@ -63,6 +63,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
       color,
       radius,
       __staticSelector,
+      gradient,
       ...others
     } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
@@ -80,7 +81,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
 
     return (
       <UnstyledButton
-        {...getStyles('root', { focusable: true, active: true })}
+        {...getStyles('root', { active: true })}
         {...others}
         data-variant={variant}
         ref={ref}
@@ -89,7 +90,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
             ? rem(size)
             : `var(--mantine-action-icon-size-${size})`,
           '--mantine-action-icon-radius': getRadius(theme, radius),
-          ...getVariantColors({ color, theme, variant: variant!, name: 'action-icon' }),
+          ...getVariantColors({ color, theme, gradient, variant: variant!, name: 'action-icon' }),
         }}
       />
     );
