@@ -9,7 +9,6 @@ interface GetVariantColorsInput {
   color: MantineColor | undefined;
   theme: MantineTheme;
   variant: string;
-  name: string;
   gradient?: MantineGradient;
 }
 
@@ -19,7 +18,6 @@ export function getVariantColors({
   color,
   theme,
   variant,
-  name,
   gradient,
 }: GetVariantColorsInput): GetVariantColorsResult {
   const parsed = parseThemeColor({ color, theme });
@@ -28,28 +26,28 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: `var(--mantine-color-${color}-filled)`,
-          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-filled-hover)`,
-          [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
-          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+          '--bg': `var(--mantine-color-${color}-filled)`,
+          '--hover': `var(--mantine-color-${color}-filled-hover)`,
+          '--color': 'var(--mantine-color-white)',
+          '--border': `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        [`--mantine-${name}-bg`]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        [`--mantine-${name}-hover`]: `var(--mantine-color-${parsed.color}-${
+        '--bg': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        '--hover': `var(--mantine-color-${parsed.color}-${
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
-        [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
-        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        '--color': 'var(--mantine-color-white)',
+        '--border': `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: color!,
-      [`--mantine-${name}-hover`]: darken(color!, 0.1),
-      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
-      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      '--bg': color!,
+      '--hover': darken(color!, 0.1),
+      '--color': 'var(--mantine-color-white)',
+      '--border': `${rem(1)} solid transparent`,
     };
   }
 
@@ -57,31 +55,28 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: `var(--mantine-color-${color}-light)`,
-          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-light-hover)`,
-          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
-          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+          '--bg': `var(--mantine-color-${color}-light)`,
+          '--hover': `var(--mantine-color-${color}-light-hover)`,
+          '--color': `var(--mantine-color-${color}-light-color)`,
+          '--border': `${rem(1)} solid transparent`,
         };
       }
 
       const parsedColor = theme.colors[parsed.color][parsed.shade];
 
       return {
-        [`--mantine-${name}-bg`]: rgba(parsedColor, 0.1),
-        [`--mantine-${name}-hover`]: rgba(parsedColor, 0.12),
-        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
-          parsed.shade,
-          6
-        )})`,
-        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        '--bg': rgba(parsedColor, 0.1),
+        '--hover': rgba(parsedColor, 0.12),
+        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        '--border': `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: rgba(color!, 0.1),
-      [`--mantine-${name}-hover`]: rgba(color!, 0.12),
-      [`--mantine-${name}-color`]: color!,
-      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      '--bg': rgba(color!, 0.1),
+      '--hover': rgba(color!, 0.12),
+      '--color': color!,
+      '--border': `${rem(1)} solid transparent`,
     };
   }
 
@@ -89,28 +84,26 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: 'transparent',
-          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-outline-hover)`,
-          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-outline)`,
-          [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-${color}-outline)`,
+          '--bg': 'transparent',
+          '--hover': `var(--mantine-color-${color}-outline-hover)`,
+          '--color': `var(--mantine-color-${color}-outline)`,
+          '--border': `${rem(1)} solid var(--mantine-color-${color}-outline)`,
         };
       }
 
       return {
-        [`--mantine-${name}-bg`]: 'transparent',
-        [`--mantine-${name}-hover`]: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
-        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-${parsed.color}-${
-          parsed.shade
-        })`,
+        '--bg': 'transparent',
+        '--hover': rgba(theme.colors[parsed.color][parsed.shade], 0.05),
+        '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        '--border': `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: 'transparent',
-      [`--mantine-${name}-hover`]: rgba(color!, 0.05),
-      [`--mantine-${name}-color`]: color!,
-      [`--mantine-${name}-border`]: `${rem(1)} solid ${color}`,
+      '--bg': 'transparent',
+      '--hover': rgba(color!, 0.05),
+      '--color': color!,
+      '--border': `${rem(1)} solid ${color}`,
     };
   }
 
@@ -118,31 +111,28 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: 'transparent',
-          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-light-hover)`,
-          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
-          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+          '--bg': 'transparent',
+          '--hover': `var(--mantine-color-${color}-light-hover)`,
+          '--color': `var(--mantine-color-${color}-light-color)`,
+          '--border': `${rem(1)} solid transparent`,
         };
       }
 
       const parsedColor = theme.colors[parsed.color][parsed.shade];
 
       return {
-        [`--mantine-${name}-bg`]: 'transparent',
-        [`--mantine-${name}-hover`]: rgba(parsedColor, 0.12),
-        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
-          parsed.shade,
-          6
-        )})`,
-        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        '--bg': 'transparent',
+        '--hover': rgba(parsedColor, 0.12),
+        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        '--border': `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: 'transparent',
-      [`--mantine-${name}-hover`]: rgba(color!, 0.12),
-      [`--mantine-${name}-color`]: color!,
-      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      '--bg': 'transparent',
+      '--hover': rgba(color!, 0.12),
+      '--color': color!,
+      '--border': `${rem(1)} solid transparent`,
     };
   }
 
@@ -150,29 +140,26 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: 'transparent',
-          [`--mantine-${name}-hover`]: 'transparent',
-          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
-          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+          '--bg': 'transparent',
+          '--hover': 'transparent',
+          '--color': `var(--mantine-color-${color}-light-color)`,
+          '--border': `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        [`--mantine-${name}-bg`]: 'transparent',
-        [`--mantine-${name}-hover`]: 'transparent',
-        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
-          parsed.shade,
-          6
-        )})`,
-        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        '--bg': 'transparent',
+        '--hover': 'transparent',
+        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        '--border': `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: 'transparent',
-      [`--mantine-${name}-hover`]: 'transparent',
-      [`--mantine-${name}-color`]: color!,
-      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      '--bg': 'transparent',
+      '--hover': 'transparent',
+      '--color': color!,
+      '--border': `${rem(1)} solid transparent`,
     };
   }
 
@@ -180,44 +167,44 @@ export function getVariantColors({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
-          [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
-          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-filled)`,
-          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+          '--bg': 'var(--mantine-color-white)',
+          '--hover': darken(theme.white, 0.01),
+          '--color': `var(--mantine-color-${color}-filled)`,
+          '--border': `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
-        [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
-        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        '--bg': 'var(--mantine-color-white)',
+        '--hover': darken(theme.white, 0.01),
+        '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        '--border': `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
-      [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
-      [`--mantine-${name}-color`]: color!,
-      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      '--bg': 'var(--mantine-color-white)',
+      '--hover': darken(theme.white, 0.01),
+      '--color': color!,
+      '--border': `${rem(1)} solid transparent`,
     };
   }
 
   if (variant === 'gradient') {
     return {
-      [`--mantine-${name}-bg`]: getGradient(theme, gradient),
-      [`--mantine-${name}-hover`]: getGradient(theme, gradient),
-      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
-      [`--mantine-${name}-border`]: 'none',
+      '--bg': getGradient(theme, gradient),
+      '--hover': getGradient(theme, gradient),
+      '--color': 'var(--mantine-color-white)',
+      '--border': 'none',
     };
   }
 
   if (variant === 'default') {
     return {
-      [`--mantine-${name}-bg`]: 'var(--mantine-color-default)',
-      [`--mantine-${name}-hover`]: 'var(--mantine-color-default-hover)',
-      [`--mantine-${name}-color`]: 'var(--mantine-color-default-color)',
-      [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-default-border)`,
+      '--bg': 'var(--mantine-color-default)',
+      '--hover': 'var(--mantine-color-default-hover)',
+      '--color': 'var(--mantine-color-default-color)',
+      '--border': `${rem(1)} solid var(--mantine-color-default-border)`,
     };
   }
 

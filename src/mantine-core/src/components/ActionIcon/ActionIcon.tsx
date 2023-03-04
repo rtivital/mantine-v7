@@ -86,11 +86,9 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
         data-variant={variant}
         ref={ref}
         vars={{
-          '--mantine-action-icon-size': isNumberLike(size)
-            ? rem(size)
-            : `var(--mantine-action-icon-size-${size})`,
-          '--mantine-action-icon-radius': getRadius(theme, radius),
-          ...getVariantColors({ color, theme, gradient, variant: variant!, name: 'action-icon' }),
+          '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
+          '--radius': getRadius(theme, radius),
+          ...getVariantColors({ color, theme, gradient, variant: variant! }),
         }}
       />
     );
