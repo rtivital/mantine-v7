@@ -39,7 +39,7 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStyl
   /** Width and height of the button. Action has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). `md` by default */
   size?: MantineSize | string | number;
 
-  /** Key of `theme.colors` or any valid CSS color, default value is `gray`  */
+  /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor | string;
 
   /** Key of theme.radius or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
@@ -51,7 +51,6 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStyl
 
 const defaultProps: Partial<ActionIconProps> = {
   variant: 'filled',
-  color: 'gray',
   size: 'md',
 };
 
@@ -95,7 +94,12 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
         vars={{
           '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
           '--radius': getRadius(theme, radius),
-          ...theme.variantColorResolver({ color, theme, gradient, variant: variant! }),
+          ...theme.variantColorResolver({
+            color: color || theme.primaryColor,
+            theme,
+            gradient,
+            variant: variant!,
+          }),
         }}
       />
     );

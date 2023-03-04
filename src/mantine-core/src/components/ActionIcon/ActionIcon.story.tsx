@@ -111,3 +111,13 @@ export function GradientVariant() {
     </div>
   );
 }
+
+export function AsLink() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon size="xl" component="a" href="https://mantine.dev">
+        $$
+      </ActionIcon>
+    </div>
+  );
+}
