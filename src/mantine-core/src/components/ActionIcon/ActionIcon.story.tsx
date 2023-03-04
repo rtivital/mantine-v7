@@ -21,6 +21,8 @@ function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
 export function Usage() {
   return (
     <>
+      Default variant:
+      <Colors variant="default" />
       Filled variant:
       <Colors />
       Filled variant index

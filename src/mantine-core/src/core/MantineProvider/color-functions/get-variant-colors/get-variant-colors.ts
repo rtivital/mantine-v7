@@ -205,7 +205,12 @@ export function getVariantColors({
   }
 
   if (variant === 'default') {
-    return {};
+    return {
+      [`--mantine-${name}-bg`]: 'var(--mantine-color-default)',
+      [`--mantine-${name}-hover`]: 'var(--mantine-color-default-hover)',
+      [`--mantine-${name}-color`]: 'var(--mantine-color-default-color)',
+      [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-default-border)`,
+    };
   }
 
   return {};

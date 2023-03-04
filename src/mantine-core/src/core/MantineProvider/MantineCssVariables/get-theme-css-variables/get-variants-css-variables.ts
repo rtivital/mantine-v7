@@ -6,6 +6,20 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const darkPrimaryShade = getPrimaryShade(theme, 'dark');
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
 
+  const lightDefaultVariant = `
+    --mantine-color-default: ${theme.white};
+    --mantine-color-default-hover: ${theme.colors.gray[0]};
+    --mantine-color-default-color: ${theme.black};
+    --mantine-color-default-border: ${theme.colors.gray[4]};
+  `;
+
+  const darkDefaultVariant = `
+    --mantine-color-default: ${theme.colors.dark[6]};
+    --mantine-color-default-hover: ${theme.colors.dark[5]};
+    --mantine-color-default-color: ${theme.white};
+    --mantine-color-default-border: ${theme.colors.dark[4]};
+  `;
+
   const colors = keys(theme.colors).reduce<{ light: string; dark: string }>(
     (acc, color) => {
       const lightFilledHover =
@@ -41,7 +55,7 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
       return acc;
     },
-    { light: '', dark: '' }
+    { light: lightDefaultVariant, dark: darkDefaultVariant }
   );
 
   return `
