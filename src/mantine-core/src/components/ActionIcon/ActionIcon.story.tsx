@@ -41,6 +41,12 @@ export function Usage() {
       <Colors variant="transparent" />
       Transparent variant index:
       <Colors variant="transparent" index={4} />
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
+        White variant:
+        <Colors variant="white" />
+        White variant index:
+        <Colors variant="white" index={4} />
+      </div>
     </>
   );
 }
@@ -75,6 +81,12 @@ export function CssColor() {
       Transparent variant
       <div>
         <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="transparent">
+          $$
+        </ActionIcon>
+      </div>
+      White variant
+      <div style={{ backgroundColor: 'rgba(0,0,0,.5)' }}>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="white">
           $$
         </ActionIcon>
       </div>

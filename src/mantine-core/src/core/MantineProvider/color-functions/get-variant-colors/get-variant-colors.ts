@@ -173,6 +173,33 @@ export function getVariantColors({
     };
   }
 
+  if (variant === 'white') {
+    if (parsed.isThemeColor) {
+      if (parsed.shade === undefined) {
+        return {
+          [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
+          [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
+          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-filled)`,
+          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        };
+      }
+
+      return {
+        [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
+        [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
+        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      };
+    }
+
+    return {
+      [`--mantine-${name}-bg`]: 'var(--mantine-color-white)',
+      [`--mantine-${name}-hover`]: darken(theme.white, 0.01),
+      [`--mantine-${name}-color`]: color!,
+      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+    };
+  }
+
   if (variant === 'gradient') {
     return {};
   }
