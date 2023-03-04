@@ -5,7 +5,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeExternals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import esbuild from 'rollup-plugin-esbuild';
-// import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import alias, { Alias } from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
@@ -44,9 +43,6 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
       sourceMap: false,
       tsconfig: path.resolve(process.cwd(), 'tsconfig.json'),
     }),
-    // typescript({
-    //   project: path.resolve(process.cwd(), 'tsconfig.json'),
-    // }),
     json(),
     alias({ entries: aliasEntries }),
     replace({ preventAssignment: true }),
