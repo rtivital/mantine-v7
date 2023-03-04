@@ -5,26 +5,30 @@ import { darken } from '../darken/darken';
 import { rgba } from '../rgba/rgba';
 import { rem } from '../../../utils';
 
-interface GetVariantColorsInput {
+export interface VariantColorsResolverInput {
   color: MantineColor | undefined;
   theme: MantineTheme;
   variant: string;
   gradient?: MantineGradient;
 }
 
-interface GetVariantColorsResult {
+export interface VariantColorResolverResult {
   '--bg': string;
   '--hover': string;
   '--color': string;
   '--bd': string;
 }
 
-export function getVariantColors({
+export type VariantCarolsResolver = (
+  input: VariantColorsResolverInput
+) => VariantColorResolverResult;
+
+export const defaultVariantColorsResolver: VariantCarolsResolver = ({
   color,
   theme,
   variant,
   gradient,
-}: GetVariantColorsInput): GetVariantColorsResult {
+}) => {
   const parsed = parseThemeColor({ color, theme });
 
   if (variant === 'filled') {
@@ -213,5 +217,5 @@ export function getVariantColors({
     };
   }
 
-  return {} as GetVariantColorsResult;
-}
+  return {} as VariantColorResolverResult;
+};

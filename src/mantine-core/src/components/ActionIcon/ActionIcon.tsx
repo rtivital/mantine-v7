@@ -12,7 +12,6 @@ import {
   useMantineTheme,
   isNumberLike,
   rem,
-  getVariantColors,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -96,7 +95,7 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
         vars={{
           '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
           '--radius': getRadius(theme, radius),
-          ...getVariantColors({ color, theme, gradient, variant: variant! }),
+          ...theme.variantColorResolver({ color, theme, gradient, variant: variant! }),
         }}
       />
     );

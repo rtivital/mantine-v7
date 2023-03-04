@@ -1,5 +1,6 @@
 import type { DeepPartial } from '../utils';
 import type { MantineLoader } from '../../components/Loader/Loader.types';
+import type { VariantCarolsResolver } from './color-functions';
 
 export interface MantineTheme {
   /** Text direction, rtl – right to left, ltr – left to right, ltr by default */
@@ -43,6 +44,12 @@ export interface MantineTheme {
    * Default value – `blue`
    * */
   primaryColor: string;
+
+  /** Function to resolve colors based on variant.
+   * Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
+   * and other components that use colors from theme.
+   * */
+  variantColorResolver: VariantCarolsResolver;
 
   /** font-family used in all components, system fonts by default */
   fontFamily: string;

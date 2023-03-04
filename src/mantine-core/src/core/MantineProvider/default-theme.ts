@@ -1,5 +1,6 @@
 import type { MantineTheme } from './theme.types';
 import { DEFAULT_COLORS } from './default-colors';
+import { defaultVariantColorsResolver } from './color-functions';
 
 const DEFAULT_FONT_FAMILY =
   '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji';
@@ -14,6 +15,7 @@ export const DEFAULT_THEME: MantineTheme = {
   colors: DEFAULT_COLORS,
   primaryShade: { light: 6, dark: 8 },
   primaryColor: 'blue',
+  variantColorResolver: defaultVariantColorsResolver,
   fontFamily: DEFAULT_FONT_FAMILY,
   fontFamilyMonospace:
     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
