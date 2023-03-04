@@ -29,17 +29,11 @@ export function Usage() {
       <Colors variant="light" />
       Light variant index:
       <Colors variant="light" index={5} />
+      Outline variant:
+      <Colors variant="outline" />
+      Outline variant index:
+      <Colors variant="outline" index={4} />
     </>
-  );
-}
-
-export function ColorIndex() {
-  return (
-    <div style={{ padding: 40 }}>
-      <ActionIcon size="xl" radius="xl" color="pink.3">
-        $$
-      </ActionIcon>
-    </div>
   );
 }
 
@@ -55,6 +49,12 @@ export function CssColor() {
       Light variant
       <div>
         <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="light">
+          $$
+        </ActionIcon>
+      </div>
+      Outline variant
+      <div>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="outline">
           $$
         </ActionIcon>
       </div>

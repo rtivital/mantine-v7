@@ -83,7 +83,32 @@ export function getVariantColors({
   }
 
   if (variant === 'outline') {
-    return {};
+    if (parsed.isThemeColor) {
+      if (parsed.shade === undefined) {
+        return {
+          [`--mantine-${name}-bg`]: 'transparent',
+          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-outline-hover)`,
+          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-outline)`,
+          [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-${color}-outline)`,
+        };
+      }
+
+      return {
+        [`--mantine-${name}-bg`]: 'transparent',
+        [`--mantine-${name}-hover`]: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
+        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [`--mantine-${name}-border`]: `${rem(1)} solid var(--mantine-color-${parsed.color}-${
+          parsed.shade
+        })`,
+      };
+    }
+
+    return {
+      [`--mantine-${name}-bg`]: 'transparent',
+      [`--mantine-${name}-hover`]: rgba(color!, 0.05),
+      [`--mantine-${name}-color`]: color!,
+      [`--mantine-${name}-border`]: `${rem(1)} solid ${color}`,
+    };
   }
 
   if (variant === 'subtle') {
