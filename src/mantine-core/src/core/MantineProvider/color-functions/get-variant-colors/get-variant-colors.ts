@@ -1,6 +1,7 @@
 import { MantineColor, MantineTheme } from '../../theme.types';
 import { parseThemeColor } from '../parse-theme-color/parse-theme-color';
 import { darken } from '../darken/darken';
+import { rgba } from '../rgba/rgba';
 import { rem } from '../../../utils';
 
 interface GetVariantColorsInput {
@@ -50,7 +51,35 @@ export function getVariantColors({
   }
 
   if (variant === 'light') {
-    return {};
+    if (parsed.isThemeColor) {
+      if (parsed.shade === undefined) {
+        return {
+          [`--mantine-${name}-bg`]: `var(--mantine-color-${color}-light)`,
+          [`--mantine-${name}-hover`]: `var(--mantine-color-${color}-light-hover)`,
+          [`--mantine-${name}-color`]: `var(--mantine-color-${color}-light-color)`,
+          [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+        };
+      }
+
+      const parsedColor = theme.colors[parsed.color][parsed.shade];
+
+      return {
+        [`--mantine-${name}-bg`]: rgba(parsedColor, 0.1),
+        [`--mantine-${name}-hover`]: rgba(parsedColor, 0.12),
+        [`--mantine-${name}-color`]: `var(--mantine-color-${parsed.color}-${Math.min(
+          parsed.shade,
+          6
+        )})`,
+        [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+      };
+    }
+
+    return {
+      [`--mantine-${name}-bg`]: color!,
+      [`--mantine-${name}-hover`]: darken(color!, 0.1),
+      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+      [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
+    };
   }
 
   if (variant === 'subtle') {

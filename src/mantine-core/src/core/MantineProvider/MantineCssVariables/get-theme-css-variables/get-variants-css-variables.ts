@@ -1,6 +1,6 @@
 import { keys } from '../../../utils';
 import { MantineTheme } from '../../theme.types';
-import { getPrimaryShade } from '../../color-functions';
+import { getPrimaryShade, rgba } from '../../color-functions';
 
 export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const darkPrimaryShade = getPrimaryShade(theme, 'dark');
@@ -18,11 +18,19 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
       acc.light = `${acc.light}
       --mantine-color-${color}-filled: ${theme.colors[color][lightPrimaryShade]};
-      --mantine-color-${color}-filled-hover: ${lightFilledHover};`;
+      --mantine-color-${color}-filled-hover: ${lightFilledHover};
+      --mantine-color-${color}-light: ${rgba(theme.colors[color][lightPrimaryShade], 0.1)};
+      --mantine-color-${color}-light-hover: ${rgba(theme.colors[color][lightPrimaryShade], 0.12)};
+      --mantine-color-${color}-light-color: ${theme.colors[color][lightPrimaryShade]};
+      `;
 
       acc.dark = `${acc.dark}
       --mantine-color-${color}-filled: ${theme.colors[color][darkPrimaryShade]};
-      --mantine-color-${color}-filled-hover: ${darkFilledHover};`;
+      --mantine-color-${color}-filled-hover: ${darkFilledHover};
+      --mantine-color-${color}-light: ${rgba(theme.colors[color][darkPrimaryShade], 0.1)};
+      --mantine-color-${color}-light-hover: ${rgba(theme.colors[color][darkPrimaryShade], 0.12)};
+      --mantine-color-${color}-light-color: ${theme.colors[color][Math.min(darkPrimaryShade, 6)]};
+      `;
 
       return acc;
     },
