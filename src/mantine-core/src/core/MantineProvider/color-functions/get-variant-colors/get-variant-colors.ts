@@ -12,7 +12,12 @@ interface GetVariantColorsInput {
   gradient?: MantineGradient;
 }
 
-type GetVariantColorsResult = Record<`--${string}`, string>;
+interface GetVariantColorsResult {
+  '--bg': string;
+  '--hover': string;
+  '--color': string;
+  '--bd': string;
+}
 
 export function getVariantColors({
   color,
@@ -29,7 +34,7 @@ export function getVariantColors({
           '--bg': `var(--mantine-color-${color}-filled)`,
           '--hover': `var(--mantine-color-${color}-filled-hover)`,
           '--color': 'var(--mantine-color-white)',
-          '--border': `${rem(1)} solid transparent`,
+          '--bd': `${rem(1)} solid transparent`,
         };
       }
 
@@ -39,7 +44,7 @@ export function getVariantColors({
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
         '--color': 'var(--mantine-color-white)',
-        '--border': `${rem(1)} solid transparent`,
+        '--bd': `${rem(1)} solid transparent`,
       };
     }
 
@@ -47,7 +52,7 @@ export function getVariantColors({
       '--bg': color!,
       '--hover': darken(color!, 0.1),
       '--color': 'var(--mantine-color-white)',
-      '--border': `${rem(1)} solid transparent`,
+      '--bd': `${rem(1)} solid transparent`,
     };
   }
 
@@ -58,7 +63,7 @@ export function getVariantColors({
           '--bg': `var(--mantine-color-${color}-light)`,
           '--hover': `var(--mantine-color-${color}-light-hover)`,
           '--color': `var(--mantine-color-${color}-light-color)`,
-          '--border': `${rem(1)} solid transparent`,
+          '--bd': `${rem(1)} solid transparent`,
         };
       }
 
@@ -68,7 +73,7 @@ export function getVariantColors({
         '--bg': rgba(parsedColor, 0.1),
         '--hover': rgba(parsedColor, 0.12),
         '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--border': `${rem(1)} solid transparent`,
+        '--bd': `${rem(1)} solid transparent`,
       };
     }
 
@@ -76,7 +81,7 @@ export function getVariantColors({
       '--bg': rgba(color!, 0.1),
       '--hover': rgba(color!, 0.12),
       '--color': color!,
-      '--border': `${rem(1)} solid transparent`,
+      '--bd': `${rem(1)} solid transparent`,
     };
   }
 
@@ -87,7 +92,7 @@ export function getVariantColors({
           '--bg': 'transparent',
           '--hover': `var(--mantine-color-${color}-outline-hover)`,
           '--color': `var(--mantine-color-${color}-outline)`,
-          '--border': `${rem(1)} solid var(--mantine-color-${color}-outline)`,
+          '--bd': `${rem(1)} solid var(--mantine-color-${color}-outline)`,
         };
       }
 
@@ -95,7 +100,7 @@ export function getVariantColors({
         '--bg': 'transparent',
         '--hover': rgba(theme.colors[parsed.color][parsed.shade], 0.05),
         '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        '--border': `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        '--bd': `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
       };
     }
 
@@ -103,7 +108,7 @@ export function getVariantColors({
       '--bg': 'transparent',
       '--hover': rgba(color!, 0.05),
       '--color': color!,
-      '--border': `${rem(1)} solid ${color}`,
+      '--bd': `${rem(1)} solid ${color}`,
     };
   }
 
@@ -114,7 +119,7 @@ export function getVariantColors({
           '--bg': 'transparent',
           '--hover': `var(--mantine-color-${color}-light-hover)`,
           '--color': `var(--mantine-color-${color}-light-color)`,
-          '--border': `${rem(1)} solid transparent`,
+          '--bd': `${rem(1)} solid transparent`,
         };
       }
 
@@ -124,7 +129,7 @@ export function getVariantColors({
         '--bg': 'transparent',
         '--hover': rgba(parsedColor, 0.12),
         '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--border': `${rem(1)} solid transparent`,
+        '--bd': `${rem(1)} solid transparent`,
       };
     }
 
@@ -132,7 +137,7 @@ export function getVariantColors({
       '--bg': 'transparent',
       '--hover': rgba(color!, 0.12),
       '--color': color!,
-      '--border': `${rem(1)} solid transparent`,
+      '--bd': `${rem(1)} solid transparent`,
     };
   }
 
@@ -143,7 +148,7 @@ export function getVariantColors({
           '--bg': 'transparent',
           '--hover': 'transparent',
           '--color': `var(--mantine-color-${color}-light-color)`,
-          '--border': `${rem(1)} solid transparent`,
+          '--bd': `${rem(1)} solid transparent`,
         };
       }
 
@@ -151,7 +156,7 @@ export function getVariantColors({
         '--bg': 'transparent',
         '--hover': 'transparent',
         '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--border': `${rem(1)} solid transparent`,
+        '--bd': `${rem(1)} solid transparent`,
       };
     }
 
@@ -159,7 +164,7 @@ export function getVariantColors({
       '--bg': 'transparent',
       '--hover': 'transparent',
       '--color': color!,
-      '--border': `${rem(1)} solid transparent`,
+      '--bd': `${rem(1)} solid transparent`,
     };
   }
 
@@ -170,7 +175,7 @@ export function getVariantColors({
           '--bg': 'var(--mantine-color-white)',
           '--hover': darken(theme.white, 0.01),
           '--color': `var(--mantine-color-${color}-filled)`,
-          '--border': `${rem(1)} solid transparent`,
+          '--bd': `${rem(1)} solid transparent`,
         };
       }
 
@@ -178,7 +183,7 @@ export function getVariantColors({
         '--bg': 'var(--mantine-color-white)',
         '--hover': darken(theme.white, 0.01),
         '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        '--border': `${rem(1)} solid transparent`,
+        '--bd': `${rem(1)} solid transparent`,
       };
     }
 
@@ -186,7 +191,7 @@ export function getVariantColors({
       '--bg': 'var(--mantine-color-white)',
       '--hover': darken(theme.white, 0.01),
       '--color': color!,
-      '--border': `${rem(1)} solid transparent`,
+      '--bd': `${rem(1)} solid transparent`,
     };
   }
 
@@ -195,7 +200,7 @@ export function getVariantColors({
       '--bg': getGradient(theme, gradient),
       '--hover': getGradient(theme, gradient),
       '--color': 'var(--mantine-color-white)',
-      '--border': 'none',
+      '--bd': 'none',
     };
   }
 
@@ -204,9 +209,9 @@ export function getVariantColors({
       '--bg': 'var(--mantine-color-default)',
       '--hover': 'var(--mantine-color-default-hover)',
       '--color': 'var(--mantine-color-default-color)',
-      '--border': `${rem(1)} solid var(--mantine-color-default-border)`,
+      '--bd': `${rem(1)} solid var(--mantine-color-default-border)`,
     };
   }
 
-  return {};
+  return {} as GetVariantColorsResult;
 }

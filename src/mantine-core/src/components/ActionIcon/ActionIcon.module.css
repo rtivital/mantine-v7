@@ -19,7 +19,7 @@
   border-radius: var(--radius);
   background: var(--bg);
   color: var(--color);
-  border: var(--border);
+  border: var(--bd);
 
   @mixin hover {
     background: var(--hover);

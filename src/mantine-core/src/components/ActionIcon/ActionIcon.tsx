@@ -18,7 +18,15 @@ import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
 import classes from './ActionIcon.module.css';
 
+export type ActionIconVariant = 'filled' | 'light';
 export type ActionIconStylesNames = 'root';
+export type ActionIconCssVariables =
+  | '--radius'
+  | '--size'
+  | '--bg'
+  | '--hover'
+  | '--color'
+  | '--bd';
 
 export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStylesNames> {
   __staticSelector?: string;
