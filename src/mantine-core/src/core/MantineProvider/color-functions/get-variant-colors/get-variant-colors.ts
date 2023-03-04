@@ -75,18 +75,18 @@ export function getVariantColors({
     }
 
     return {
-      [`--mantine-${name}-bg`]: color!,
-      [`--mantine-${name}-hover`]: darken(color!, 0.1),
-      [`--mantine-${name}-color`]: 'var(--mantine-color-white)',
+      [`--mantine-${name}-bg`]: rgba(color!, 0.1),
+      [`--mantine-${name}-hover`]: rgba(color!, 0.12),
+      [`--mantine-${name}-color`]: color!,
       [`--mantine-${name}-border`]: `${rem(1)} solid transparent`,
     };
   }
 
-  if (variant === 'subtle') {
+  if (variant === 'outline') {
     return {};
   }
 
-  if (variant === 'outline') {
+  if (variant === 'subtle') {
     return {};
   }
 

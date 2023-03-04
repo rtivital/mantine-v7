@@ -46,9 +46,18 @@ export function ColorIndex() {
 export function CssColor() {
   return (
     <div style={{ padding: 40 }}>
-      <ActionIcon size="xl" radius="xl" color="#ff00ff">
-        $$
-      </ActionIcon>
+      Filled variant
+      <div>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff">
+          $$
+        </ActionIcon>
+      </div>
+      Light variant
+      <div>
+        <ActionIcon size="xl" radius="xl" color="#ff00ff" variant="light">
+          $$
+        </ActionIcon>
+      </div>
     </div>
   );
 }

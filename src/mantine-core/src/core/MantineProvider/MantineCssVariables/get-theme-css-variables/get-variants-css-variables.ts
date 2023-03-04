@@ -22,6 +22,8 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
       --mantine-color-${color}-light: ${rgba(theme.colors[color][lightPrimaryShade], 0.1)};
       --mantine-color-${color}-light-hover: ${rgba(theme.colors[color][lightPrimaryShade], 0.12)};
       --mantine-color-${color}-light-color: ${theme.colors[color][lightPrimaryShade]};
+      --mantine-color-${color}-outline: ${theme.colors[color][lightPrimaryShade]};
+      --mantine-color-${color}-outline-hover: ${rgba(theme.colors[color][lightPrimaryShade], 0.05)};
       `;
 
       acc.dark = `${acc.dark}
