@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { MantineLoaderComponent, defaultLoaders } from '@mantine/core';
-import { Loader } from './Loader';
+import { Loader, defaultLoaders } from './Loader';
+import { MantineLoaderComponent } from './Loader.types';
 
 export default { title: 'Loader' };
 
@@ -28,9 +28,9 @@ const RingLoader: MantineLoaderComponent = forwardRef(({ style, ...others }, ref
     {...others}
     ref={ref}
     style={{
-      width: 'var(--mantine-loader-size)',
-      height: 'var(--mantine-loader-size)',
-      stroke: 'var(--mantine-loader-color)',
+      width: 'var(--size)',
+      height: 'var(--size)',
+      stroke: 'var(--color)',
       ...style,
     }}
     viewBox="0 0 45 45"

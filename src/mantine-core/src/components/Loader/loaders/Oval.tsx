@@ -6,9 +6,9 @@ export const Oval: MantineLoaderComponent = forwardRef(({ style, ...others }, re
     {...others}
     ref={ref}
     style={{
-      width: 'var(--mantine-loader-size)',
-      height: 'var(--mantine-loader-size)',
-      stroke: 'var(--mantine-loader-color)',
+      width: 'var(--size)',
+      height: 'var(--size)',
+      stroke: 'var(--color)',
       ...style,
     }}
     viewBox="0 0 38 38"

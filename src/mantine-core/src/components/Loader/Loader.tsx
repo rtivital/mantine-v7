@@ -20,7 +20,7 @@ import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
-export type LoaderCssVariables = '--mantine-loader-size' | '--mantine-loader-color';
+export type LoaderCssVariables = '--size' | '--color';
 
 export const defaultLoaders: MantineLoadersRecord = {
   bars: Bars,
@@ -84,10 +84,8 @@ export const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
       ref={ref}
       component={loaders![loader]}
       vars={{
-        '--mantine-loader-size': isNumberLike(size)
-          ? rem(size)
-          : `var(--mantine-loader-size-${size})`,
-        '--mantine-loader-color': getThemeColor(color, theme),
+        '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
+        '--color': getThemeColor(color, theme),
         ...vars,
       }}
       {...others}
