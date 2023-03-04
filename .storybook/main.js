@@ -8,7 +8,17 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-css-modules',
+    {
+      name: 'storybook-css-modules',
+      options: {
+        cssModulesLoaderOptions: {
+          importLoaders: 1,
+          modules: {
+            localIdentName: 'mantine-[hash:base64:7]',
+          },
+        },
+      },
+    },
     {
       name: '@storybook/addon-postcss',
       options: {
