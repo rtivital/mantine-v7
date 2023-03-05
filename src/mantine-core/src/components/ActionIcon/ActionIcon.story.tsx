@@ -159,3 +159,13 @@ export function Loading() {
     </div>
   );
 }
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
+      <ActionIcon disabled size="lg">
+        $$
+      </ActionIcon>
+    </div>
+  );
+}

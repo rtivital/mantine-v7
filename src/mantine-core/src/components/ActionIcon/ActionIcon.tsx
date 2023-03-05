@@ -71,6 +71,9 @@ export interface ActionIconProps
   /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
 
+  /** Indicates disabled state */
+  disabled?: boolean;
+
   /** Icon displayed inside button */
   children?: React.ReactNode;
 }
@@ -107,6 +110,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     gradient,
     vars,
     children,
+    disabled,
     ...others
   } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
@@ -137,10 +141,11 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
 
   return (
     <UnstyledButton
-      {...getStyles('root', { active: true })}
+      {...getStyles('root', { active: !disabled })}
       {...others}
       data-variant={variant}
       data-loading={loading || undefined}
+      data-disabled={disabled || undefined}
       ref={ref}
       vars={{
         '--size': getSize(size),

@@ -48,6 +48,23 @@
       }
     }
   }
+
+  &:disabled,
+  &[data-disabled] {
+    background-image: none;
+    border-color: transparent;
+    cursor: not-allowed;
+
+    @mixin light {
+      background-color: var(--mantine-color-gray-1);
+      color: var(--mantine-color-gray-5);
+    }
+
+    @mixin dark {
+      background-color: var(--mantine-color-dark-6);
+      color: var(--mantine-color-dark-3);
+    }
+  }
 }
 
 .loader {
