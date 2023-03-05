@@ -5,7 +5,7 @@ export type DataAttributes = Record<`data-${string}`, any>;
 
 export interface ExtendPayload {
   props: Record<string, any>;
-  ref: any;
+  ref?: any;
   stylesNames?: string;
   vars?: string;
   variant?: string;
