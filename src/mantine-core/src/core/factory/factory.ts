@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { MantineTheme, MantineThemeComponent } from '../MantineProvider';
+import type { MantineTheme, MantineThemeComponent } from '../MantineProvider';
 
 export type DataAttributes = Record<`data-${string}`, any>;
 
@@ -10,6 +10,7 @@ export interface ExtendPayload {
   vars?: string;
   variant?: string;
   styleParams?: Record<string, any>;
+  staticComponents?: Record<string, any>;
 }
 
 export type ExtendStyles<StylesNames extends string> =
@@ -31,13 +32,21 @@ export interface ExtendComponent<Payload extends ExtendPayload> {
     : never;
 }
 
+export type StaticComponents<Input> = Input extends Record<string, any>
+  ? Input
+  : Record<string, never>;
+
+export interface ThemeExtend<Payload extends ExtendPayload> {
+  extend: (input: ExtendComponent<Payload>) => MantineThemeComponent;
+}
+
 export type MantineComponent<Payload extends ExtendPayload> = React.ForwardRefExoticComponent<
   Payload['props'] & React.RefAttributes<Payload['ref']>
-> & {
-  extend: (input: ExtendComponent<Payload>) => MantineThemeComponent;
-};
+> &
+  ThemeExtend<Payload> &
+  StaticComponents<Payload['staticComponents']>;
 
-function identity<T>(value: T): T {
+export function identity<T>(value: T): T {
   return value;
 }
 

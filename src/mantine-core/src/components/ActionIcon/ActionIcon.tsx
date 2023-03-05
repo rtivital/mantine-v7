@@ -1,8 +1,7 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import {
   BoxProps,
   useComponentDefaultProps,
-  createPolymorphicComponent,
   StylesApiProps,
   useStylesApi,
   MantineSize,
@@ -12,6 +11,7 @@ import {
   useMantineTheme,
   isNumberLike,
   rem,
+  polymorphicFactory,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -49,64 +49,73 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStyl
   gradient?: MantineGradient;
 }
 
+export interface ActionIconFactory {
+  props: ActionIconProps;
+  defaultComponent: 'button';
+  defaultRef: HTMLButtonElement;
+  stylesNames: ActionIconStylesNames;
+  variant: ActionIconVariant;
+  vars: ActionIconCssVariables;
+  stylesParams: {
+    color?: MantineColor | string;
+    size?: MantineSize | string | number;
+    radius?: MantineSize | string | number;
+  };
+}
+
 const defaultProps: Partial<ActionIconProps> = {
   variant: 'filled',
   size: 'md',
 };
 
-export const _ActionIcon: MantineComponent<ActionIconProps, HTMLButtonElement> = forwardRef(
-  (props, ref) => {
-    const {
-      className,
-      unstyled,
-      variant,
-      classNames,
-      styles,
-      style,
-      loading,
-      loaderProps,
-      size,
-      color,
-      radius,
-      __staticSelector,
-      gradient,
-      ...others
-    } = useComponentDefaultProps('ActionIcon', defaultProps, props);
+export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => {
+  const {
+    className,
+    unstyled,
+    variant,
+    classNames,
+    styles,
+    style,
+    loading,
+    loaderProps,
+    size,
+    color,
+    radius,
+    __staticSelector,
+    gradient,
+    ...others
+  } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
-    const theme = useMantineTheme();
+  const theme = useMantineTheme();
 
-    const getStyles = useStylesApi({
-      name: ['ActionIcon', __staticSelector],
-      className,
-      style,
-      classes,
-      classNames,
-      styles,
-      unstyled,
-    });
+  const getStyles = useStylesApi({
+    name: ['ActionIcon', __staticSelector],
+    className,
+    style,
+    classes,
+    classNames,
+    styles,
+    unstyled,
+  });
 
-    return (
-      <UnstyledButton
-        {...getStyles('root', { active: true })}
-        {...others}
-        data-variant={variant}
-        ref={ref}
-        vars={{
-          '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
-          '--radius': getRadius(theme, radius),
-          ...theme.variantColorResolver({
-            color: color || theme.primaryColor,
-            theme,
-            gradient,
-            variant: variant!,
-          }),
-        }}
-      />
-    );
-  }
-);
+  return (
+    <UnstyledButton
+      {...getStyles('root', { active: true })}
+      {...others}
+      data-variant={variant}
+      ref={ref}
+      vars={{
+        '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
+        '--radius': getRadius(theme, radius),
+        ...theme.variantColorResolver({
+          color: color || theme.primaryColor,
+          theme,
+          gradient,
+          variant: variant!,
+        }),
+      }}
+    />
+  );
+});
 
-_ActionIcon.displayName = '@mantine/core/ActionIcon';
-_ActionIcon.extend = 10;
-
-export const ActionIcon = createPolymorphicComponent<'button', ActionIconProps>(_ActionIcon);
+ActionIcon.displayName = '@mantine/core/ActionIcon';
