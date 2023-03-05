@@ -29,6 +29,22 @@ describe('@mantine/core/parse-theme-color', () => {
     });
   });
 
+  it('parses white and black colors correctly', () => {
+    expect(parseThemeColor({ color: 'white', theme: DEFAULT_THEME })).toEqual({
+      color: 'white',
+      isThemeColor: false,
+      shade: undefined,
+      variable: '--mantine-color-white',
+    });
+
+    expect(parseThemeColor({ color: 'black', theme: DEFAULT_THEME })).toEqual({
+      color: 'black',
+      isThemeColor: false,
+      shade: undefined,
+      variable: '--mantine-color-black',
+    });
+  });
+
   it('throws error if color is not string', () => {
     expect(() => parseThemeColor({ color: 1, theme: DEFAULT_THEME })).toThrow();
   });

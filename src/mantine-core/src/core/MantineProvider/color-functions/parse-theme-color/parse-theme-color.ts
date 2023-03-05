@@ -17,6 +17,15 @@ export function parseThemeColor({ color, theme }: ParseThemeColorOptions): Parse
     throw new Error(`[@mantine/core] Failed to parse color. Instead got ${typeof color}`);
   }
 
+  if (color === 'white' || color === 'black') {
+    return {
+      color,
+      shade: undefined,
+      isThemeColor: false,
+      variable: `--mantine-color-${color}`,
+    };
+  }
+
   const [_color, shade] = color.split('.');
   const colorShade = shade ? (Number(shade) as MantineColorShade) : undefined;
   const isThemeColor = _color in theme.colors;
