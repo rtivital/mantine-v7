@@ -3,8 +3,8 @@ import { DEFAULT_THEME } from '../../default-theme';
 
 const result = `
 --mantine-webkit-font-smoothing: antialiased;
---mantine-moz-font-smoothing: grayscale;
 --mantine-color-scheme: light dark;
+--mantine-moz-font-smoothing: grayscale;
 --mantine-color-white: ${DEFAULT_THEME.white};
 --mantine-color-black: ${DEFAULT_THEME.black};
 --mantine-line-height: ${DEFAULT_THEME.lineHeight};
