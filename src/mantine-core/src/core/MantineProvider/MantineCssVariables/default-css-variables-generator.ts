@@ -121,7 +121,7 @@ function getThemeCssVariables(theme: MantineTheme) {
     .trim();
 }
 
-export function generateCssVariables(theme: MantineTheme, cssVariablesSelector: string) {
+export function defaultCssVariablesGenerator(theme: MantineTheme, cssVariablesSelector: string) {
   return `${cssVariablesSelector}{${getThemeCssVariables(theme)}} ${getColorSchemeCssVariables(
     cssVariablesSelector
   )} ${getVariantsCssVariables(theme, cssVariablesSelector)}`;

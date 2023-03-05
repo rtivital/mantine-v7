@@ -2,9 +2,9 @@ import './styles/css-reset.css';
 import './styles/global-styles.css';
 
 import React, { useMemo } from 'react';
-import { MantineCssVariables } from './MantineCssVariables';
+import { MantineCssVariables, defaultCssVariablesGenerator } from './MantineCssVariables';
 import { mergeMantineTheme } from './merge-mantine-theme';
-import type { MantineColorScheme, MantineThemeOverride } from './theme.types';
+import type { MantineColorScheme, MantineTheme, MantineThemeOverride } from './theme.types';
 import { localStorageColorSchemeManager, MantineColorSchemeManager } from './color-scheme-managers';
 import { MantineContext, useSafeMantineTheme } from './Mantine.context';
 import { DEFAULT_THEME } from './default-theme';
@@ -38,6 +38,9 @@ export interface MantineProviderProps {
   /** nonce attribute added to all generated `<style />` tags */
   styleNonce?: string;
 
+  /** Function to generate CSS variables styles based on theme object */
+  generateCssVariables?(theme: MantineTheme, selector: string): string;
+
   /** Your application */
   children?: React.ReactNode;
 }
@@ -53,6 +56,7 @@ export function MantineProvider({
   colorSchemeManager = localStorageColorSchemeManager(),
   defaultColorScheme = 'auto',
   getRootElement = () => document.documentElement,
+  generateCssVariables = defaultCssVariablesGenerator,
 }: MantineProviderProps) {
   const parentTheme = useSafeMantineTheme();
   const mergedTheme = useMemo(
@@ -77,6 +81,7 @@ export function MantineProvider({
         getRootElement,
         classNamesPrefix,
         styleNonce,
+        generateCssVariables,
       }}
     >
       {withCssVariables && (

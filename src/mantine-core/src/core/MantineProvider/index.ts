@@ -12,6 +12,7 @@ export {
   useMantineContext,
   useMantineClassNamesPrefix,
   useMantineStyleNonce,
+  useMantineCssVariablesGenerator,
 } from './Mantine.context';
 export type { MantineProviderProps } from './MantineProvider';
 export { useComponentDefaultProps } from './use-component-default-props/use-component-default-props';

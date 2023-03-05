@@ -12,6 +12,7 @@ interface MantineContextValue {
   getRootElement(): HTMLElement | undefined;
   classNamesPrefix: string;
   styleNonce: string | undefined;
+  generateCssVariables(theme: MantineTheme, selector: string): string;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
@@ -28,6 +29,10 @@ export function useMantineContext() {
 
 export function useMantineTheme() {
   return useMantineContext().theme;
+}
+
+export function useMantineCssVariablesGenerator() {
+  return useMantineContext().generateCssVariables;
 }
 
 export function useMantineClassNamesPrefix() {
