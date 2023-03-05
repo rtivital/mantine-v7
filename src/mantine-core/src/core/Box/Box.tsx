@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import cx from 'clsx';
 import { useMantineTheme, useMantineColorScheme } from '../MantineProvider';
 import { InlineStyles } from '../InlineStyles';
-import { createPolymorphicComponent } from '../utils';
+import { createPolymorphicComponent } from '../factory';
 import type { MantineStyleProp, CssVarsProp } from './Box.types';
 import { getBoxStyle } from './get-box-style/get-box-style';
 import { useRandomClassName } from './use-random-classname/use-random-classname';
