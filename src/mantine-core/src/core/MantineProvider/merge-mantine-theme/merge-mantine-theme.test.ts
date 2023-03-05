@@ -1,5 +1,9 @@
 import { DEFAULT_THEME } from '../default-theme';
-import { mergeMantineTheme, INVALID_PRIMARY_COLOR_ERROR } from './merge-mantine-theme';
+import {
+  mergeMantineTheme,
+  INVALID_PRIMARY_COLOR_ERROR,
+  INVALID_PRIMARY_SHADE_ERROR,
+} from './merge-mantine-theme';
 
 describe('@mantine/core/merge-mantine-theme', () => {
   it('throws error when theme.primaryColor is invalid', () => {
@@ -10,6 +14,32 @@ describe('@mantine/core/merge-mantine-theme', () => {
     expect(() => mergeMantineTheme(DEFAULT_THEME, { primaryColor: 'unknown' })).toThrow(
       INVALID_PRIMARY_COLOR_ERROR
     );
+  });
+
+  it('throws error when theme.primaryShade is invalid', () => {
+    expect(() => mergeMantineTheme({ ...DEFAULT_THEME, primaryShade: 10 as any })).toThrow(
+      INVALID_PRIMARY_SHADE_ERROR
+    );
+
+    expect(() =>
+      mergeMantineTheme({ ...DEFAULT_THEME, primaryShade: { light: 0, dark: 10 as any } })
+    ).toThrow(INVALID_PRIMARY_SHADE_ERROR);
+
+    expect(() =>
+      mergeMantineTheme({ ...DEFAULT_THEME, primaryShade: { light: 10 as any, dark: 0 } })
+    ).toThrow(INVALID_PRIMARY_SHADE_ERROR);
+
+    expect(() => mergeMantineTheme(DEFAULT_THEME, { primaryShade: 10 as any })).toThrow(
+      INVALID_PRIMARY_SHADE_ERROR
+    );
+
+    expect(() =>
+      mergeMantineTheme(DEFAULT_THEME, { primaryShade: { light: 0, dark: 10 as any } })
+    ).toThrow(INVALID_PRIMARY_SHADE_ERROR);
+
+    expect(() =>
+      mergeMantineTheme(DEFAULT_THEME, { primaryShade: { light: 10 as any, dark: 0 } })
+    ).toThrow(INVALID_PRIMARY_SHADE_ERROR);
   });
 
   it('merges theme and override correctly', () => {
@@ -43,6 +73,21 @@ describe('@mantine/core/merge-mantine-theme', () => {
             fontSize: 'test-font-size',
           },
         },
+      },
+    });
+  });
+
+  it('assigns fontFamily to headings.fontFamily if it is not defined', () => {
+    expect(
+      mergeMantineTheme(DEFAULT_THEME, {
+        fontFamily: 'test-font-family',
+      })
+    ).toStrictEqual({
+      ...DEFAULT_THEME,
+      fontFamily: 'test-font-family',
+      headings: {
+        ...DEFAULT_THEME.headings,
+        fontFamily: 'test-font-family',
       },
     });
   });
