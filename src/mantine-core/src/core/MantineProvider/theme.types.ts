@@ -121,7 +121,9 @@ export interface MantineThemeComponent {
   classNames?: Record<string, string>;
   styles?: MantineStylesRecord | ((theme: MantineTheme) => MantineStylesRecord);
   defaultProps?: Record<string, any> | ((theme: MantineTheme) => Record<string, any>);
-  vars?: Record<string, string> | ((params: Record<string, any>) => Record<string, string>);
+  vars?:
+    | Record<string, string | undefined>
+    | ((params: Record<string, any>) => Record<string, string | undefined>);
 }
 
 export type MantineThemeComponents = Record<string, MantineThemeComponent>;

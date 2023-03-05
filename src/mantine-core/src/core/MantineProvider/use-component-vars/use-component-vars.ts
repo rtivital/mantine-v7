@@ -1,9 +1,14 @@
 import { useMantineTheme } from '../Mantine.context';
-import { MantineThemeComponent } from '../theme.types';
 
 const EMPTY_PARAMS = {};
 
-function resolveVars(vars: MantineThemeComponent['vars'], params: Record<string, any> | undefined) {
+function resolveVars(
+  vars:
+    | Record<string, string | undefined>
+    | ((params: Record<string, any>) => Record<string, string | undefined>)
+    | undefined,
+  params: Record<string, any> | undefined
+) {
   if (typeof vars === 'function') {
     return vars(params || EMPTY_PARAMS);
   }
@@ -11,13 +16,15 @@ function resolveVars(vars: MantineThemeComponent['vars'], params: Record<string,
   return vars;
 }
 
-export function useComponentVars(
+export function useComponentVars<Params extends Record<string, any> = never>(
   name: string,
-  vars?: MantineThemeComponent['vars'],
-  params?: Record<string, any>
+  vars?:
+    | Record<string, string | undefined>
+    | ((params: Params) => Record<string, string | undefined>),
+  params?: Params
 ) {
   const theme = useMantineTheme();
   const themeVars = resolveVars(theme.components[name]?.vars, params);
-  const componentVars = resolveVars(vars, params);
+  const componentVars = resolveVars(vars as any, params);
   return { ...themeVars, ...componentVars };
 }

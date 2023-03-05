@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionIcon, ActionIconProps } from './ActionIcon';
+import { ActionIcon, ActionIconCssVariables, ActionIconProps } from './ActionIcon';
 import { DEFAULT_THEME } from '../../core';
 
 export default { title: 'ActionIcon' };
@@ -116,6 +116,28 @@ export function AsLink() {
   return (
     <div style={{ padding: 40 }}>
       <ActionIcon size="xl" component="a" href="https://mantine.dev">
+        $$
+      </ActionIcon>
+    </div>
+  );
+}
+
+export function Variables() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon
+        size="xl"
+        vars={(params) => {
+          const result: Partial<Record<ActionIconCssVariables, string>> = {};
+          if (params.size === 'xl') {
+            result['--size'] = '12rem';
+            result['--bg'] = 'pink';
+            result['--hover'] = 'orange';
+          }
+
+          return result;
+        }}
+      >
         $$
       </ActionIcon>
     </div>

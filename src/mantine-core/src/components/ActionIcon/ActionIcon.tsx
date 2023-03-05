@@ -12,6 +12,7 @@ import {
   isNumberLike,
   rem,
   polymorphicFactory,
+  useComponentVars,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -28,9 +29,9 @@ export type ActionIconCssVariables =
   | '--bd';
 
 export interface ActionIconStylesParams {
-  color?: MantineColor | string;
-  size?: MantineSize | string | number;
-  radius?: MantineSize | string | number;
+  color: MantineColor | string | undefined;
+  size: MantineSize | string | number | undefined;
+  radius: MantineSize | string | number | undefined;
 }
 
 export interface ActionIconProps
@@ -97,6 +98,11 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
   } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
   const theme = useMantineTheme();
+  const _vars = useComponentVars<ActionIconStylesParams>('ActionIcon', vars, {
+    color,
+    size,
+    radius,
+  });
 
   const getStyles = useStylesApi({
     name: ['ActionIcon', __staticSelector],
@@ -123,6 +129,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
           gradient,
           variant: variant!,
         }),
+        ..._vars,
       }}
     />
   );
