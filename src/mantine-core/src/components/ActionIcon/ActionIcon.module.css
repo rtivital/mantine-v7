@@ -29,4 +29,27 @@
       background-size: 200%;
     }
   }
+
+  &[data-loading] {
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: rem(-1px);
+      border-radius: var(--radius);
+
+      @mixin light {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+
+      @mixin dark {
+        background-color: rgba(0, 0, 0, 0.35);
+      }
+    }
+  }
+}
+
+.loader {
+  z-index: 1;
 }

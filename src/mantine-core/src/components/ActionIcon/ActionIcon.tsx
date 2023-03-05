@@ -14,7 +14,7 @@ import {
   getSize,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
-import { LoaderProps } from '../Loader';
+import { LoaderProps, Loader } from '../Loader';
 import classes from './ActionIcon.module.css';
 
 export type ActionIconVariant =
@@ -27,7 +27,7 @@ export type ActionIconVariant =
   | 'default'
   | 'gradient';
 
-export type ActionIconStylesNames = 'root';
+export type ActionIconStylesNames = 'root' | 'loader';
 export type ActionIconCssVariables =
   | '--radius'
   | '--size'
@@ -70,6 +70,9 @@ export interface ActionIconProps
 
   /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
+
+  /** Icon displayed inside button */
+  children?: React.ReactNode;
 }
 
 export interface ActionIconFactory {
@@ -103,6 +106,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     __staticSelector,
     gradient,
     vars,
+    children,
     ...others
   } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 
@@ -124,24 +128,38 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     unstyled,
   });
 
+  const colorsVars = theme.variantColorResolver({
+    color: color || theme.primaryColor,
+    theme,
+    gradient,
+    variant: variant!,
+  });
+
   return (
     <UnstyledButton
       {...getStyles('root', { active: true })}
       {...others}
       data-variant={variant}
+      data-loading={loading || undefined}
       ref={ref}
       vars={{
         '--size': getSize(size),
         '--radius': getRadius(theme, radius),
-        ...theme.variantColorResolver({
-          color: color || theme.primaryColor,
-          theme,
-          gradient,
-          variant: variant!,
-        }),
+        ...colorsVars,
         ..._vars,
       }}
-    />
+    >
+      {loading ? (
+        <Loader
+          {...getStyles('loader')}
+          color={colorsVars['--color']}
+          size="70%"
+          {...loaderProps}
+        />
+      ) : (
+        children
+      )}
+    </UnstyledButton>
   );
 });
 

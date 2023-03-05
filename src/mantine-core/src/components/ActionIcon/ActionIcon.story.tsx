@@ -143,3 +143,19 @@ export function Variables() {
     </div>
   );
 }
+
+export function Loading() {
+  return (
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
+      <ActionIcon loading size="lg">
+        $$
+      </ActionIcon>
+      <ActionIcon loading variant="subtle" size="lg">
+        $$
+      </ActionIcon>
+      <ActionIcon loading variant="subtle" color="orange" size="lg">
+        $$
+      </ActionIcon>
+    </div>
+  );
+}
