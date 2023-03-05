@@ -27,7 +27,20 @@ export type ActionIconCssVariables =
   | '--color'
   | '--bd';
 
-export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconStylesNames> {
+export interface ActionIconStylesParams {
+  color?: MantineColor | string;
+  size?: MantineSize | string | number;
+  radius?: MantineSize | string | number;
+}
+
+export interface ActionIconProps
+  extends BoxProps,
+    StylesApiProps<
+      ActionIconStylesNames,
+      ActionIconVariant,
+      ActionIconCssVariables,
+      ActionIconStylesParams
+    > {
   __staticSelector?: string;
 
   /** Determines whether Loader component should be displayed instead of the icon */
@@ -56,11 +69,7 @@ export interface ActionIconFactory {
   stylesNames: ActionIconStylesNames;
   variant: ActionIconVariant;
   vars: ActionIconCssVariables;
-  stylesParams: {
-    color?: MantineColor | string;
-    size?: MantineSize | string | number;
-    radius?: MantineSize | string | number;
-  };
+  stylesParams: ActionIconStylesParams;
 }
 
 const defaultProps: Partial<ActionIconProps> = {
@@ -83,6 +92,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     radius,
     __staticSelector,
     gradient,
+    vars,
     ...others
   } = useComponentDefaultProps('ActionIcon', defaultProps, props);
 

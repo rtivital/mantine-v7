@@ -5,4 +5,5 @@ export type {
   ActionIconFactory,
   ActionIconCssVariables,
   ActionIconVariant,
+  ActionIconStylesParams,
 } from './ActionIcon';

@@ -1,4 +1,4 @@
-import type { DeepPartial } from '../utils';
+import type { PartialDeep } from 'type-fest';
 import type { MantineLoader } from '../../components/Loader/Loader.types';
 import type { VariantCarolsResolver } from './color-functions';
 
@@ -113,7 +113,7 @@ export interface MantineTheme {
 
 export type MantineColorScheme = 'light' | 'dark' | 'auto';
 
-export type MantineThemeOverride = DeepPartial<MantineTheme>;
+export type MantineThemeOverride = PartialDeep<MantineTheme>;
 
 export type MantineStylesRecord = Record<string, React.CSSProperties>;
 
@@ -121,6 +121,7 @@ export interface MantineThemeComponent {
   classNames?: Record<string, string>;
   styles?: MantineStylesRecord | ((theme: MantineTheme) => MantineStylesRecord);
   defaultProps?: Record<string, any> | ((theme: MantineTheme) => Record<string, any>);
+  vars?: Record<string, string> | ((params: Record<string, any>) => Record<string, string>);
 }
 
 export type MantineThemeComponents = Record<string, MantineThemeComponent>;

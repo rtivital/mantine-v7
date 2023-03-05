@@ -1,14 +1,10 @@
-export type DeepPartial<T> = T extends object
-  ? {
-      [P in keyof T]?: DeepPartial<T[P]>;
-    }
-  : T;
+import type { PartialDeep } from 'type-fest';
 
 function isObject(item: unknown) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
 
-export function deepMerge<T extends object>(target: T, source: DeepPartial<T>): T {
+export function deepMerge<T extends object>(target: T, source: PartialDeep<T>): T {
   const result: Record<string, any> = { ...target };
   const _source: Record<string, any> = source;
 
