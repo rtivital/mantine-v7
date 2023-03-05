@@ -21,6 +21,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   styleProps?: boolean;
   polymorphic?: boolean;
   children?: boolean;
+  extend?: boolean;
   displayName?: string;
   selector?: string;
   refType?: any;
@@ -64,6 +65,12 @@ export function itSupportsSystemProps<
       ...options,
       selectors: options.stylesApiSelectors,
       providerName,
+    });
+  }
+
+  if (options.extend) {
+    it('has static extend function', () => {
+      expect(typeof (options.component as any).extend).toBe('function');
     });
   }
 

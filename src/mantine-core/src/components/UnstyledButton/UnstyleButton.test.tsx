@@ -16,6 +16,7 @@ describe('@mantine/core/UnstyledButton', () => {
     polymorphic: true,
     styleProps: true,
     children: true,
+    extend: true,
     refType: HTMLButtonElement,
     displayName: '@mantine/core/UnstyledButton',
     stylesApiSelectors: ['root'],
