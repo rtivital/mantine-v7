@@ -18,7 +18,16 @@ import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
 import classes from './ActionIcon.module.css';
 
-export type ActionIconVariant = 'filled' | 'light';
+export type ActionIconVariant =
+  | 'filled'
+  | 'light'
+  | 'outline'
+  | 'transparent'
+  | 'white'
+  | 'subtle'
+  | 'default'
+  | 'gradient';
+
 export type ActionIconStylesNames = 'root';
 export type ActionIconCssVariables =
   | '--radius'
@@ -32,6 +41,7 @@ export interface ActionIconStylesParams {
   color: MantineColor | string | undefined;
   size: MantineSize | string | number | undefined;
   radius: MantineSize | string | number | undefined;
+  gradient: MantineGradient | undefined;
 }
 
 export interface ActionIconProps
@@ -102,6 +112,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     color,
     size,
     radius,
+    gradient,
   });
 
   const getStyles = useStylesApi({

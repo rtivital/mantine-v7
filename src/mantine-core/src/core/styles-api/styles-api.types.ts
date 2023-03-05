@@ -12,7 +12,7 @@ export interface StylesApiProps<
   StylesParams extends Record<string, any> = Record<string, any>
 > {
   unstyled?: boolean;
-  variant?: Variant;
+  variant?: Variant | (string & {});
   classNames?: Partial<Record<StylesNames, string>>;
   styles?:
     | StylesRecord<StylesNames, React.CSSProperties>
