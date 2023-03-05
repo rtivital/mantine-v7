@@ -6,4 +6,4 @@ export type {
   MantineLoadersRecord,
   MantineLoaderComponent,
 } from './Loader.types';
-export type { LoaderProps, LoaderStylesNames, LoaderCssVariables } from './Loader';
+export type { LoaderProps, LoaderStylesNames, LoaderCssVariables, LoaderFactory } from './Loader';

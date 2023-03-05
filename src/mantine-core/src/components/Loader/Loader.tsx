@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import {
   Box,
   MantineSize,
@@ -11,6 +11,7 @@ import {
   useStylesApi,
   isNumberLike,
   rem,
+  factory,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -45,12 +46,24 @@ export interface LoaderProps
   loaders?: MantineLoadersRecord;
 }
 
+export interface LoaderFactory {
+  props: LoaderProps;
+  ref: SVGSVGElement;
+  stylesNames: LoaderStylesNames;
+  variant: LoaderVariant;
+  vars: LoaderCssVariables;
+  stylesParams: {
+    color?: MantineColor | string;
+    size?: MantineSize | string | number;
+  };
+}
+
 const defaultProps: Partial<LoaderProps> = {
   size: 'md',
   loaders: defaultLoaders,
 };
 
-export const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
+export const Loader = factory<LoaderFactory>((props, ref) => {
   const {
     size,
     color,

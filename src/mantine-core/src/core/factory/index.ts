@@ -1,0 +1,1 @@
+export { factory } from './factory';

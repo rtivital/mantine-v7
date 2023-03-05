@@ -54,7 +54,7 @@ const defaultProps: Partial<ActionIconProps> = {
   size: 'md',
 };
 
-export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { component?: any }>(
+export const _ActionIcon: MantineComponent<ActionIconProps, HTMLButtonElement> = forwardRef(
   (props, ref) => {
     const {
       className,
@@ -107,5 +107,6 @@ export const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps & { com
 );
 
 _ActionIcon.displayName = '@mantine/core/ActionIcon';
+_ActionIcon.extend = 10;
 
 export const ActionIcon = createPolymorphicComponent<'button', ActionIconProps>(_ActionIcon);
