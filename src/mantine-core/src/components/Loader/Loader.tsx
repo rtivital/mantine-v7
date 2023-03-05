@@ -12,6 +12,7 @@ import {
   isNumberLike,
   rem,
   factory,
+  useComponentVars,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -46,16 +47,18 @@ export interface LoaderProps
   loaders?: MantineLoadersRecord;
 }
 
+export interface LoaderStylesParams {
+  color: MantineColor | string | undefined;
+  size: MantineSize | string | number | undefined;
+  variant: LoaderVariant | undefined;
+}
+
 export interface LoaderFactory {
   props: LoaderProps;
   ref: SVGSVGElement;
   stylesNames: LoaderStylesNames;
-  variant: LoaderVariant;
   vars: LoaderCssVariables;
-  stylesParams: {
-    color?: MantineColor | string;
-    size?: MantineSize | string | number;
-  };
+  stylesParams: LoaderStylesParams;
 }
 
 const defaultProps: Partial<LoaderProps> = {
@@ -75,8 +78,15 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     styles,
     unstyled,
     loaders,
+    variant,
     ...others
   } = useComponentDefaultProps('Loader', defaultProps, props);
+
+  const _vars = useComponentVars<LoaderStylesParams>('Loader', vars, {
+    color,
+    size,
+    variant,
+  });
 
   const getStyles = useStylesApi({
     name: 'Loader',
@@ -96,10 +106,11 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       {...getStyles('root')}
       ref={ref}
       component={loaders![loader]}
+      data-variant={variant}
       vars={{
         '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
         '--color': getThemeColor(color, theme),
-        ...vars,
+        ..._vars,
       }}
       {...others}
     />

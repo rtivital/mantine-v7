@@ -17,9 +17,9 @@ export type ExtendStyles<StylesNames extends string> =
   | Partial<Record<StylesNames, React.CSSProperties>>
   | ((theme: MantineTheme) => Partial<Record<StylesNames, React.CSSProperties>>);
 
-export type ExtendVars<Vars extends string, Variant, StyleParams = {}> =
+export type ExtendVars<Vars extends string, StyleParams = {}> =
   | Partial<Record<Vars, string>>
-  | ((payload: { variant?: Variant } & StyleParams) => Partial<Record<Vars, string>>);
+  | ((payload: StyleParams) => Partial<Record<Vars, string>>);
 
 export interface ExtendComponent<Payload extends ExtendPayload> {
   defaultProps?: Partial<Payload['props']> & DataAttributes;
@@ -28,7 +28,7 @@ export interface ExtendComponent<Payload extends ExtendPayload> {
     : never;
   styles?: Payload['stylesNames'] extends string ? ExtendStyles<Payload['stylesNames']> : never;
   vars?: Payload['vars'] extends string
-    ? ExtendVars<Payload['vars'], Payload['variant'], Payload['styleParams']>
+    ? ExtendVars<Payload['vars'], Payload['styleParams']>
     : never;
 }
 
