@@ -9,10 +9,9 @@ import {
   getThemeColor,
   StylesApiProps,
   useStylesApi,
-  isNumberLike,
-  rem,
   factory,
   useComponentVars,
+  getSize,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -108,7 +107,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       component={loaders![loader]}
       data-variant={variant}
       vars={{
-        '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
+        '--size': getSize(size),
         '--color': getThemeColor(color, theme),
         ..._vars,
       }}

@@ -9,10 +9,9 @@ import {
   MantineGradient,
   getRadius,
   useMantineTheme,
-  isNumberLike,
-  rem,
   polymorphicFactory,
   useComponentVars,
+  getSize,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps } from '../Loader';
@@ -132,7 +131,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       data-variant={variant}
       ref={ref}
       vars={{
-        '--size': isNumberLike(size) ? rem(size) : `var(--size-${size})`,
+        '--size': getSize(size),
         '--radius': getRadius(theme, radius),
         ...theme.variantColorResolver({
           color: color || theme.primaryColor,
