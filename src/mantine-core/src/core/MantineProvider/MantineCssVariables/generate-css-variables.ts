@@ -1,8 +1,15 @@
-import { keys } from '../../../utils';
-import { MantineTheme } from '../../theme.types';
-import { getPrimaryShade, rgba } from '../../color-functions';
+import { MantineTheme } from '../theme.types';
+import { keys } from '../../utils';
+import { getPrimaryShade, rgba } from '../color-functions';
 
-export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
+function getColorSchemeCssVariables(selector: string) {
+  return `
+  ${selector}[data-mantine-color-scheme="dark"] { --mantine-color-scheme: dark; }
+  ${selector}[data-mantine-color-scheme="light"] { --mantine-color-scheme: light; }
+`;
+}
+
+function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const darkPrimaryShade = getPrimaryShade(theme, 'dark');
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
 
@@ -63,4 +70,59 @@ export function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   ${selector}[data-mantine-color-scheme="light"] {${colors.light}}
   @media (prefers-color-scheme: dark) { ${selector} {${colors.dark}} }
   @media (prefers-color-scheme: light) { ${selector} {${colors.light}} }`;
+}
+
+function assignSizeVariables(
+  variables: Record<string, string>,
+  sizes: Record<string, string>,
+  name: string
+) {
+  keys(sizes).forEach((size) =>
+    Object.assign(variables, { [`--mantine-${name}-${size}`]: sizes[size] })
+  );
+}
+
+function getThemeCssVariables(theme: MantineTheme) {
+  const variables: Record<string, string> = {
+    '--mantine-webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
+    '--mantine-color-scheme': 'light dark',
+    '--mantine-moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
+    '--mantine-color-white': theme.white,
+    '--mantine-color-black': theme.black,
+    '--mantine-line-height': theme.lineHeight,
+    '--mantine-font-family': theme.fontFamily,
+    '--mantine-font-family-monospace': theme.fontFamilyMonospace,
+    '--mantine-font-family-headings': theme.headings.fontFamily,
+    '--mantine-heading-font-weight': theme.headings.fontWeight,
+  };
+
+  assignSizeVariables(variables, theme.shadows, 'shadow');
+  assignSizeVariables(variables, theme.fontSizes, 'font-size');
+  assignSizeVariables(variables, theme.radius, 'radius');
+  assignSizeVariables(variables, theme.spacing, 'spacing');
+
+  keys(theme.colors).forEach((color) => {
+    theme.colors[color].forEach((shade, index) => {
+      variables[`--mantine-color-${color}-${index}`] = shade;
+    });
+  });
+
+  const headings = theme.headings.sizes;
+
+  keys(headings).forEach((heading) => {
+    variables[`--mantine-${heading}-font-size`] = headings[heading].fontSize;
+    variables[`--mantine-${heading}-line-height`] = headings[heading].lineHeight;
+    variables[`--mantine-${heading}-font-weight`] =
+      headings[heading].fontWeight || theme.headings.fontWeight;
+  });
+
+  return keys(variables)
+    .reduce((acc, variable) => `${acc}${variable}: ${variables[variable]};\n`, '')
+    .trim();
+}
+
+export function generateCssVariables(theme: MantineTheme, cssVariablesSelector: string) {
+  return `${cssVariablesSelector}{${getThemeCssVariables(theme)}} ${getColorSchemeCssVariables(
+    cssVariablesSelector
+  )} ${getVariantsCssVariables(theme, cssVariablesSelector)}`;
 }
