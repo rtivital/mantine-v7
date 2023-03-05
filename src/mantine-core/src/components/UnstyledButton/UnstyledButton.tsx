@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import {
   Box,
   BoxProps,
   useComponentDefaultProps,
-  createPolymorphicComponent,
   StylesApiProps,
   useStylesApi,
+  polymorphicFactory,
 } from '../../core';
 import classes from './UnstyledButton.module.css';
 
@@ -19,45 +19,47 @@ const defaultProps: Partial<UnstyledButtonProps> = {
   __staticSelector: 'UnstyledButton',
 };
 
-export const _UnstyledButton = forwardRef<
-  HTMLButtonElement,
-  UnstyledButtonProps & { component?: any }
->((props, ref) => {
-  const {
-    className,
-    component = 'button',
-    __staticSelector,
-    unstyled,
-    variant,
-    classNames,
-    styles,
-    style,
-    ...others
-  } = useComponentDefaultProps('UnstyledButton', defaultProps, props);
+export interface UnstyledButtonFactory {
+  props: UnstyledButtonProps;
+  stylesNames: UnstyledButtonStylesNames;
+  defaultComponent: 'button';
+  defaultRef: HTMLButtonElement;
+}
 
-  const getStyles = useStylesApi({
-    name: __staticSelector!,
-    className,
-    style,
-    classes,
-    classNames,
-    styles,
-    unstyled,
-  });
+export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
+  (props: UnstyledButtonProps & { component?: any }, ref) => {
+    const {
+      className,
+      component = 'button',
+      __staticSelector,
+      unstyled,
+      variant,
+      classNames,
+      styles,
+      style,
+      ...others
+    } = useComponentDefaultProps('UnstyledButton', defaultProps, props);
 
-  return (
-    <Box
-      {...getStyles('root', { focusable: true })}
-      component={component}
-      ref={ref}
-      type={component === 'button' ? 'button' : undefined}
-      {...others}
-    />
-  );
-});
+    const getStyles = useStylesApi({
+      name: __staticSelector!,
+      className,
+      style,
+      classes,
+      classNames,
+      styles,
+      unstyled,
+    });
 
-_UnstyledButton.displayName = '@mantine/core/UnstyledButton';
-
-export const UnstyledButton = createPolymorphicComponent<'button', UnstyledButtonProps>(
-  _UnstyledButton
+    return (
+      <Box
+        {...getStyles('root', { focusable: true })}
+        component={component}
+        ref={ref}
+        type={component === 'button' ? 'button' : undefined}
+        {...others}
+      />
+    );
+  }
 );
+
+UnstyledButton.displayName = '@mantine/core/UnstyledButton';
