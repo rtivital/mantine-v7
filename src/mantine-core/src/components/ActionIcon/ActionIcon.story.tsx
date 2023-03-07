@@ -173,9 +173,36 @@ export function Disabled() {
 export function ActionIconGroup() {
   return (
     <div style={{ padding: 40, display: 'flex', gap: 20 }}>
+      <ActionIcon size="lg" variant="default">
+        S
+      </ActionIcon>
+      <ActionIcon.Group>
+        <ActionIcon size="lg" variant="default">
+          S
+        </ActionIcon>
+      </ActionIcon.Group>
+
       <ActionIcon.Group>
         <ActionIcon size="lg" variant="default">
           1
+        </ActionIcon>
+        <ActionIcon size="lg" variant="default">
+          2
+        </ActionIcon>
+        <ActionIcon size="lg" variant="default">
+          2
+        </ActionIcon>
+        <ActionIcon size="lg" variant="default">
+          3
+        </ActionIcon>
+      </ActionIcon.Group>
+
+      <ActionIcon.Group orientation="vertical">
+        <ActionIcon size="lg" variant="default">
+          1
+        </ActionIcon>
+        <ActionIcon size="lg" variant="default">
+          2
         </ActionIcon>
         <ActionIcon size="lg" variant="default">
           2

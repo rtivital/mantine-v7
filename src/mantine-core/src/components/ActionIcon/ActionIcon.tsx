@@ -147,6 +147,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     <UnstyledButton
       {...getStyles('root', { active: !disabled })}
       {...others}
+      data-action-icon
       data-variant={variant}
       data-loading={loading || undefined}
       data-disabled={disabled || undefined}

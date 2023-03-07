@@ -62,4 +62,4 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
 
 _Box.displayName = '@mantine/core/Box';
 
-export const Box = createPolymorphicComponent<'div', BoxProps>(_Box);
+export const Box = createPolymorphicComponent<'div', BoxComponentProps>(_Box);

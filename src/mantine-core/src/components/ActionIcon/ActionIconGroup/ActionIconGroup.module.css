@@ -1,2 +1,51 @@
 .root {
+  display: flex;
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+
+    & [data-action-icon] {
+      &:not(:only-child):first-of-type {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right-width: calc(var(--border-width) / 2);
+      }
+
+      &:not(:only-child):last-of-type {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left-width: calc(var(--border-width) / 2);
+      }
+
+      &:not(:only-child):not(:first-of-type):not(:last-of-type) {
+        border-radius: 0;
+        border-right-width: calc(var(--border-width) / 2);
+        border-left-width: calc(var(--border-width) / 2);
+      }
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+
+    & [data-action-icon] {
+      &:not(:only-child):first-of-type {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-width: calc(var(--border-width) / 2);
+      }
+
+      &:not(:only-child):last-of-type {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-width: calc(var(--border-width) / 2);
+      }
+
+      &:not(:only-child):not(:first-of-type):not(:last-of-type) {
+        border-radius: 0;
+        border-bottom-width: calc(var(--border-width) / 2);
+        border-top-width: calc(var(--border-width) / 2);
+      }
+    }
+  }
 }
