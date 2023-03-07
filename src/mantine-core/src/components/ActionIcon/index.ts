@@ -7,3 +7,10 @@ export type {
   ActionIconVariant,
   ActionIconStylesParams,
 } from './ActionIcon';
+export type {
+  ActionIconGroupProps,
+  ActionIconGroupCssVariables,
+  ActionIconGroupStylesNames,
+  ActionIconGroupStylesParams,
+  ActionIconGroupFactory,
+} from './ActionIconGroup/ActionIconGroup';
