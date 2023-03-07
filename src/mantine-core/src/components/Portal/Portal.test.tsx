@@ -1,8 +1,14 @@
 import React from 'react';
-import { render } from '@mantine/tests';
+import { render, tests } from '@mantine/tests';
 import { Portal } from './Portal';
 
 describe('@mantine/core/Portal', () => {
+  tests.itSupportsRef({
+    component: Portal,
+    props: { children: 'test' },
+    refType: HTMLDivElement,
+  });
+
   it('renders content inside portal', () => {
     render(<Portal className="test-portal">test-portal</Portal>);
     const portal = document.querySelector('.test-portal')!;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Portal, PortalProps } from './Portal';
 
 export interface OptionalPortalProps extends PortalProps {
-  /** Determines if children should be rendered in Portal */
+  /** Determines whether children should be rendered inside `<Portal />` */
   withinPortal?: boolean;
 }
 

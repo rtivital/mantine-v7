@@ -1,63 +1,57 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useIsomorphicEffect } from '@mantine/hooks';
 import { useComponentDefaultProps } from '../../core';
 
 export interface PortalProps extends React.ComponentPropsWithoutRef<'div'> {
-  /** Portal children, for example, modal or popover */
+  /** Portal children, for example, custom modal or popover */
   children: React.ReactNode;
 
-  /** Element where portal should be rendered, by default new div element is created and appended to document.body */
+  /** Element inside which portal should be created, by default a new div element is created and appended to the `document.body` */
   target?: HTMLElement | string;
-
-  /** Root element className */
-  className?: string;
-
-  /** Root element ref */
-  innerRef?: React.MutableRefObject<HTMLDivElement>;
 }
 
 const defaultProps: Partial<PortalProps> = {};
 
-export function Portal(props: PortalProps) {
-  const { children, target, className, innerRef, ...others } = useComponentDefaultProps(
+export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
+  const { children, target, className, ...others } = useComponentDefaultProps(
     'Portal',
     defaultProps,
     props
   );
 
   const [mounted, setMounted] = useState(false);
-  const ref = useRef<HTMLElement | null>(null);
+  const nodeRef = useRef<HTMLElement | null>(null);
 
   useIsomorphicEffect(() => {
     setMounted(true);
-    ref.current = !target
+    nodeRef.current = !target
       ? document.createElement('div')
       : typeof target === 'string'
       ? document.querySelector(target)
       : target;
 
-    if (!target && ref.current) {
-      document.body.appendChild(ref.current);
+    if (!target && nodeRef.current) {
+      document.body.appendChild(nodeRef.current);
     }
 
     return () => {
-      if (!target && ref.current) {
-        document.body.removeChild(ref.current);
+      if (!target && nodeRef.current) {
+        document.body.removeChild(nodeRef.current);
       }
     };
   }, [target]);
 
-  if (!mounted || !ref.current) {
+  if (!mounted || !nodeRef.current) {
     return null;
   }
 
   return createPortal(
-    <div className={className} ref={innerRef} {...others}>
+    <div className={className} ref={ref} {...others}>
       {children}
     </div>,
-    ref.current
+    nodeRef.current
   );
-}
+});
 
 Portal.displayName = '@mantine/core/Portal';
