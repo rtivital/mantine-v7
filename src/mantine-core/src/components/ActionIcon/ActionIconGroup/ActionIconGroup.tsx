@@ -16,6 +16,7 @@ export type ActionIconGroupVariant = string;
 export type ActionIconGroupCssVariables = '--border-width';
 export interface ActionIconGroupStylesParams {
   borderWidth: number | string | undefined;
+  orientation: 'horizontal' | 'vertical' | undefined;
 }
 
 export interface ActionIconGroupProps
@@ -40,6 +41,7 @@ export interface ActionIconGroupFactory {
   props: ActionIconGroupProps;
   ref: HTMLDivElement;
   stylesNames: ActionIconGroupStylesNames;
+  stylesParams: ActionIconGroupStylesParams;
   vars: ActionIconGroupCssVariables;
 }
 
@@ -63,6 +65,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
 
   const _vars = useComponentVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
     borderWidth,
+    orientation,
   });
 
   const getStyles = useStylesApi({
