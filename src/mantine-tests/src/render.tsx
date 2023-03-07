@@ -1,5 +1,5 @@
 import React from 'react';
-import { render as testingLibraryRender } from '@testing-library/react';
+import { render as testingLibraryRender, act, RenderResult } from '@testing-library/react';
 import { MantineProvider, MantineThemeOverride, MantineProviderProps } from '@mantine/core';
 
 export function render(
@@ -14,4 +14,12 @@ export function render(
       </MantineProvider>
     ),
   });
+}
+
+export async function renderWithAct(ui: React.ReactNode) {
+  let result: RenderResult | null = null;
+  await act(async () => {
+    result = render(ui);
+  });
+  return result!;
 }

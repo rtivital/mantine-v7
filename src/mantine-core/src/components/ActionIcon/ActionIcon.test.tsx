@@ -6,6 +6,14 @@ import { ActionIconGroup } from './ActionIconGroup/ActionIconGroup';
 const defaultProps: ActionIconProps = {};
 
 describe('@mantine/core/ActionIcon', () => {
+  tests.axe([
+    <ActionIcon aria-label="test" />,
+    <ActionIcon.Group aria-label="test">
+      <ActionIcon aria-label="test-1" />
+      <ActionIcon aria-label="test-2" />
+    </ActionIcon.Group>,
+  ]);
+
   tests.itSupportsFocusEvents<ActionIconProps>({
     component: ActionIcon,
     props: defaultProps,

@@ -20,6 +20,7 @@ import { itSupportsPositionProps } from './style-props/it-supports-position-prop
 
 // High level tests
 import { itSupportsSystemProps } from './it-supports-system-props';
+import { axe } from './axe';
 
 export const tests = {
   itIsPolymorphic,
@@ -40,7 +41,8 @@ export const tests = {
   itSupportsBackgroundProps,
   itSupportsPositionProps,
 
+  axe,
   itSupportsSystemProps,
 };
 
-export { render } from './render';
+export { render, renderWithAct } from './render';
