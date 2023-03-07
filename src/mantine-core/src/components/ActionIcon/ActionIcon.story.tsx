@@ -182,7 +182,7 @@ export function ActionIconGroup() {
         </ActionIcon>
       </ActionIcon.Group>
 
-      <ActionIcon.Group>
+      <ActionIcon.Group borderWidth={1}>
         <ActionIcon size="lg" variant="default">
           1
         </ActionIcon>

@@ -14,13 +14,17 @@ import classes from './ActionIconGroup.module.css';
 export type ActionIconGroupStylesNames = 'root';
 export type ActionIconGroupVariant = string;
 export type ActionIconGroupCssVariables = '--border-width';
+export interface ActionIconGroupStylesParams {
+  borderWidth: number | string | undefined;
+}
 
 export interface ActionIconGroupProps
   extends BoxProps,
     StylesApiProps<
       ActionIconGroupStylesNames,
       ActionIconGroupVariant,
-      ActionIconGroupCssVariables
+      ActionIconGroupCssVariables,
+      ActionIconGroupStylesParams
     > {
   /** `<ActionIcon />` components */
   children?: React.ReactNode;
@@ -28,7 +32,7 @@ export interface ActionIconGroupProps
   /** Horizontal or vertical orientation */
   orientation?: 'horizontal' | 'vertical';
 
-  /** Child `<ActionIcon />` border width, default value in 1, numbers are converted to rem (1rem = 16px) */
+  /** Controls border-width of child `<ActionIcon />` components. Default value in `1`. Numbers are converted to rem (1rem = 16px). */
   borderWidth?: number | string;
 }
 
@@ -56,7 +60,10 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     borderWidth,
     ...others
   } = useComponentDefaultProps('ActionIconGroup', defaultProps, props);
-  const _vars = useComponentVars('ActionIconGroup', vars);
+
+  const _vars = useComponentVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
+    borderWidth,
+  });
 
   const getStyles = useStylesApi({
     name: 'ActionIconGroup',
@@ -74,7 +81,10 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
       ref={ref}
       data-orientation={orientation}
       vars={{ '--border-width': rem(borderWidth), ..._vars }}
+      role="group"
       {...others}
     />
   );
 });
+
+ActionIconGroup.displayName = '@mantine/core/ActionIconGroup';
