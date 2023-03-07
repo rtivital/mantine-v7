@@ -151,6 +151,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       data-variant={variant}
       data-loading={loading || undefined}
       data-disabled={disabled || undefined}
+      disabled={disabled}
       ref={ref}
       vars={{
         '--size': getSize(size),
