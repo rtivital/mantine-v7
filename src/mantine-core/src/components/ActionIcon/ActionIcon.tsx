@@ -15,6 +15,7 @@ import {
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps, Loader } from '../Loader';
+import { ActionIconGroup } from './ActionIconGroup/ActionIconGroup';
 import classes from './ActionIcon.module.css';
 
 export type ActionIconVariant =
@@ -86,6 +87,9 @@ export interface ActionIconFactory {
   variant: ActionIconVariant;
   vars: ActionIconCssVariables;
   stylesParams: ActionIconStylesParams;
+  staticComponents: {
+    Group: typeof ActionIconGroup;
+  };
 }
 
 const defaultProps: Partial<ActionIconProps> = {
@@ -169,3 +173,4 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
 });
 
 ActionIcon.displayName = '@mantine/core/ActionIcon';
+ActionIcon.Group = ActionIconGroup;
