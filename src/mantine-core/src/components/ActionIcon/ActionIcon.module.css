@@ -31,7 +31,13 @@
   }
 
   &[data-loading] {
-    pointer-events: none;
+    cursor: not-allowed;
+
+    @mixin hover {
+      background: var(--bg);
+      background-size: unset;
+      background-position: unset;
+    }
 
     &::before {
       content: '';
@@ -49,7 +55,7 @@
     }
   }
 
-  &:disabled,
+  &:disabled:not([data-loading]),
   &[data-disabled] {
     background-image: none;
     border-color: transparent;

@@ -145,13 +145,13 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
 
   return (
     <UnstyledButton
-      {...getStyles('root', { active: !disabled })}
+      {...getStyles('root', { active: !disabled && !loading })}
       {...others}
       data-action-icon
       data-variant={variant}
       data-loading={loading || undefined}
-      data-disabled={disabled || undefined}
-      disabled={disabled}
+      data-disabled={(disabled && !loading) || undefined}
+      disabled={disabled || loading}
       ref={ref}
       vars={{
         '--size': getSize(size),
