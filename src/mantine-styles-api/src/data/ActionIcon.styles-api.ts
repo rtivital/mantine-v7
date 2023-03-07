@@ -12,6 +12,7 @@ export const ActionIconStylesApi: StylesApiData<ActionIconFactory> = {
     color: 'color prop',
     radius: 'radius prop',
     gradient: 'gradient prop',
+    variant: 'variant prop',
   },
 
   vars: {

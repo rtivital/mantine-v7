@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
-import { ExtendPayload, StaticComponents, ThemeExtend, identity } from './factory';
+import { FactoryPayload, StaticComponents, ThemeExtend, identity } from './factory';
 import { PolymorphicComponentProps } from './create-polymorphic-component';
 
-export interface ExtendPolymorphicPayload extends ExtendPayload {
+export interface ExtendPolymorphicPayload extends FactoryPayload {
   defaultComponent: any;
   defaultRef: any;
 }

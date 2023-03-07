@@ -42,6 +42,7 @@ export interface ActionIconStylesParams {
   size: MantineSize | string | number | undefined;
   radius: MantineSize | string | number | undefined;
   gradient: MantineGradient | undefined;
+  variant: string | undefined;
 }
 
 export interface ActionIconProps
@@ -124,6 +125,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     size,
     radius,
     gradient,
+    variant,
   });
 
   const getStyles = useStylesApi({
