@@ -4,7 +4,7 @@ const HEX = '#228BE6';
 const RGB = 'rgb(46, 149, 11)';
 const RGBA = 'rgba(219, 91, 17, 0.6)';
 
-describe('@mantine/styles/lighten', () => {
+describe('@mantine/core/lighten', () => {
   it('correctly lightens a color by 10%', () => {
     expect(lighten(HEX, 0.1)).toBe('rgba(56, 151, 233, 1)');
     expect(lighten(RGB, 0.1)).toBe('rgba(67, 160, 35, 1)');

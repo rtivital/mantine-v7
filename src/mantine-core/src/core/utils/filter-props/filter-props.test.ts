@@ -1,6 +1,6 @@
 import { filterProps } from './filter-props';
 
-describe('@mantine/styles filterProps', () => {
+describe('@mantine/core/filterProps', () => {
   it('filters out props with undefined value', () => {
     expect(
       filterProps({

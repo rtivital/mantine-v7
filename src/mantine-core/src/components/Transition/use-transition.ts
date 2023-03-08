@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReducedMotion, useDidUpdate } from '@mantine/hooks';
-import { useMantineTheme } from '@mantine/styles';
+import { useMantineTheme } from '../../core';
 
 export type TransitionStatus =
   | 'entered'
@@ -75,6 +75,6 @@ export function useTransition({
   return {
     transitionDuration,
     transitionStatus,
-    transitionTimingFunction: timingFunction || theme.transitionTimingFunction,
+    transitionTimingFunction: timingFunction || 'ease',
   };
 }

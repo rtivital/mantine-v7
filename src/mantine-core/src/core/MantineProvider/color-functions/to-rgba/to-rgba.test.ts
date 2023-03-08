@@ -1,6 +1,6 @@
 import { toRgba } from './to-rgba';
 
-describe('@mantine/styles/to-rgba', () => {
+describe('@mantine/core/to-rgba', () => {
   it('returns the correct rgba values when given a hex string', () => {
     expect(toRgba('#F03E3E')).toStrictEqual({ r: 240, g: 62, b: 62, a: 1 });
     expect(toRgba('#D6336C')).toStrictEqual({ r: 214, g: 51, b: 108, a: 1 });

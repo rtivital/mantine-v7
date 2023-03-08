@@ -5,3 +5,4 @@ export { px, rem, em } from './units-converters';
 export { filterProps } from './filter-props/filter-props';
 export { isNumberLike } from './is-number-like/is-number-like';
 export { getSize } from './get-size/get-size';
+export { isElement } from './is-element/is-element';
