@@ -47,7 +47,7 @@ export interface TextProps
 }
 
 export interface TextFactory {
-  props: Record<string, any>;
+  props: TextProps;
   defaultComponent: 'div';
   defaultRef: HTMLDivElement;
   stylesNames?: TextStylesNames;
@@ -101,6 +101,9 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       {...getStyles('root', { focusable: true })}
       ref={ref}
       component={span ? 'span' : 'div'}
+      data-truncate={
+        truncate === 'end' || truncate ? 'end' : truncate === 'start' ? 'start' : undefined
+      }
       vars={{
         ..._vars,
       }}
