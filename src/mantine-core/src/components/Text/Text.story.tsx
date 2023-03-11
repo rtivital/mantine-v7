@@ -21,6 +21,20 @@ export function Truncate() {
   );
 }
 
+export function Gradient() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Text variant="gradient" fz={50} fw="bold" gradient={{ from: 'red', to: 'cyan', deg: 180 }}>
+        This is gradient text
+      </Text>
+
+      <Text variant="gradient" fz={80} fw="bold">
+        This is gradient text 2
+      </Text>
+    </div>
+  );
+}
+
 export function StyleProps() {
   return (
     <div style={{ padding: 40 }}>

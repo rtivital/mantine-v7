@@ -8,6 +8,8 @@ import {
   useStylesApi,
   useComponentDefaultProps,
   useComponentVars,
+  getGradient,
+  useMantineTheme,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -27,7 +29,7 @@ function getTextTruncate(truncate: TextTruncate | undefined) {
 
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
-export type TextCssVariables = '--placeholder';
+export type TextCssVariables = '--gradient';
 export interface TextStylesParams {
   gradient: MantineGradient | undefined;
   lineClamp: number | undefined;
@@ -93,6 +95,8 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     ...others
   } = useComponentDefaultProps('Text', defaultProps, props);
 
+  const theme = useMantineTheme();
+
   const _vars = useComponentVars<TextStylesParams>('Text', vars, {
     lineClamp,
     truncate,
@@ -120,6 +124,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       data-truncate={getTextTruncate(truncate)}
       vars={{
         ..._vars,
+        '--gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
       }}
       {...others}
     />

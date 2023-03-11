@@ -31,7 +31,7 @@ export interface MantineStyleProps {
   opacity?: StyleProp<React.CSSProperties['opacity']>;
 
   ff?: StyleProp<React.CSSProperties['fontFamily']>;
-  fz?: StyleProp<MantineFontSize>;
+  fz?: StyleProp<MantineFontSize | number | (string & {})>;
   fw?: StyleProp<React.CSSProperties['fontWeight']>;
   lts?: StyleProp<React.CSSProperties['letterSpacing']>;
   ta?: StyleProp<React.CSSProperties['textAlign']>;
