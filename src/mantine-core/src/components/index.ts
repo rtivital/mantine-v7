@@ -1,5 +1,6 @@
 export * from './ActionIcon';
 export * from './Anchor';
+export * from './CloseButton';
 export * from './Collapse';
 export * from './Loader';
 export * from './Portal';
