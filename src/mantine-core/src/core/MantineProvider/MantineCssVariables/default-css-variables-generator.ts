@@ -14,6 +14,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
 
   const lightDefaultVariant = `
+    --mantine-anchor-color: ${theme.colors[theme.primaryColor][lightPrimaryShade]};
     --mantine-color-default: ${theme.white};
     --mantine-color-default-hover: ${theme.colors.gray[0]};
     --mantine-color-default-color: ${theme.black};
@@ -21,6 +22,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   `;
 
   const darkDefaultVariant = `
+    --mantine-anchor-color: ${theme.colors[theme.primaryColor][4]};
     --mantine-color-default: ${theme.colors.dark[6]};
     --mantine-color-default-hover: ${theme.colors.dark[5]};
     --mantine-color-default-color: ${theme.white};
