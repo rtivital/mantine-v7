@@ -47,3 +47,4 @@ export const tests = {
 
 export { render, renderWithAct } from './render';
 export { wait } from './wait';
+export { patchConsoleError } from './patch-console-error';

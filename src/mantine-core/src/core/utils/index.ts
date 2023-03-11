@@ -6,3 +6,5 @@ export { filterProps } from './filter-props/filter-props';
 export { isNumberLike } from './is-number-like/is-number-like';
 export { getSize } from './get-size/get-size';
 export { isElement } from './is-element/is-element';
+export { createSafeContext } from './create-safe-context/create-safe-context';
+export { getSafeId } from './get-safe-id/get-safe-id';
