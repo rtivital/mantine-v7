@@ -1,4 +1,8 @@
 .root {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  line-height: var(--mantine-line-height);
+
   &[data-truncate] {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,5 +31,16 @@
     display: -webkit-box;
     -webkit-line-clamp: var(--line-clamp);
     -webkit-box-orient: vertical;
+  }
+
+  &[data-inline] {
+    line-height: 1;
+  }
+
+  &[data-inherit] {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-wight: inherit;
   }
 }

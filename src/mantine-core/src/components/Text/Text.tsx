@@ -74,6 +74,7 @@ export interface TextFactory {
 
 const defaultProps: Partial<TextProps> = {
   variant: 'text',
+  inherit: true,
 };
 
 export const Text = polymorphicFactory<TextFactory>((props, ref) => {
@@ -123,6 +124,8 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       data-variant={variant}
       data-truncate={getTextTruncate(truncate)}
       data-line-clamp={typeof lineClamp === 'number' || undefined}
+      data-inline={inline || undefined}
+      data-inherit={inherit || undefined}
       vars={{
         ..._vars,
         '--gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
