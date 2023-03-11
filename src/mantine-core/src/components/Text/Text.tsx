@@ -29,7 +29,7 @@ function getTextTruncate(truncate: TextTruncate | undefined) {
 
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
-export type TextCssVariables = '--gradient';
+export type TextCssVariables = '--gradient' | '--line-clamp';
 export interface TextStylesParams {
   gradient: MantineGradient | undefined;
   lineClamp: number | undefined;
@@ -122,9 +122,11 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       component={span ? 'span' : 'div'}
       data-variant={variant}
       data-truncate={getTextTruncate(truncate)}
+      data-line-clamp={typeof lineClamp === 'number' || undefined}
       vars={{
         ..._vars,
         '--gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
+        '--line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
       }}
       {...others}
     />
