@@ -1,2 +1,9 @@
 .root {
+  &[data-orientataion='vertical'] {
+    display: flex;
+
+    &[data-placement='right'] {
+      flex-direction: row-reverse;
+    }
+  }
 }

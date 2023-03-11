@@ -150,7 +150,16 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         getStyles,
       }}
     >
-      <Box ref={ref} id={uid} {...getStyles('root')} {...others}>
+      <Box
+        ref={ref}
+        id={uid}
+        data-tabs
+        data-variant={variant}
+        data-orientation={orientation}
+        data-placement={placement}
+        {...getStyles('root')}
+        {...others}
+      >
         {children}
       </Box>
     </TabsProvider>
