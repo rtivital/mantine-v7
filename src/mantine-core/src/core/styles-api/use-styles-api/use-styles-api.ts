@@ -21,6 +21,7 @@ export interface UseStylesApiInput<StylesNames extends string> {
 }
 
 export interface GetPropsOptions {
+  className?: string;
   focusable?: boolean;
   active?: boolean;
 }
@@ -72,6 +73,7 @@ export function useStylesApi<StylesNames extends string>({
       classNames?.[selector],
       className && { [className]: rootSelector === selector },
       { [classes[selector]]: !unstyled },
+      options?.className,
       staticClassNames
     );
 

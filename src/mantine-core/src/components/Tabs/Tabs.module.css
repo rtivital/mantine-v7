@@ -7,3 +7,16 @@
     }
   }
 }
+
+.tabsList {
+  display: flex;
+  flex-wrap: wrap;
+
+  &[data-orientation='vertial'] {
+    flex-direction: column;
+  }
+
+  &[data-grow] [role='tab'] {
+    flex-grow: 1;
+  }
+}

@@ -12,9 +12,10 @@ import {
   useStylesApi,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
+import { TabsListStylesNames } from './TabsList/TabsList';
 import classes from './Tabs.module.css';
 
-export type TabsStylesNames = 'root';
+export type TabsStylesNames = 'root' | TabsListStylesNames;
 export type TabsVariant = 'default' | 'outline' | 'pills';
 export type TabsCssVariables = '--test';
 export interface TabsStylesParams {}
