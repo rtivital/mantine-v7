@@ -32,6 +32,14 @@ function resolveStyles<StylesNames extends string>(
   return typeof styles === 'function' ? styles(theme) : styles;
 }
 
+export type GetStylesApi<StylesNames extends string> = (
+  selector: StylesNames,
+  options?: GetPropsOptions
+) => {
+  className: string;
+  style: CSSProperties;
+};
+
 export function useStylesApi<StylesNames extends string>({
   name,
   className,
@@ -41,7 +49,7 @@ export function useStylesApi<StylesNames extends string>({
   unstyled,
   classNames,
   styles,
-}: UseStylesApiInput<StylesNames>) {
+}: UseStylesApiInput<StylesNames>): GetStylesApi<StylesNames> {
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];

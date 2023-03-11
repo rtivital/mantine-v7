@@ -9,8 +9,10 @@ import {
   factory,
   useComponentDefaultProps,
   getSafeId,
+  useStylesApi,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
+import classes from './Tabs.module.css';
 
 export type TabsStylesNames = 'root';
 export type TabsVariant = 'default' | 'outline' | 'pills';
@@ -102,6 +104,8 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    className,
+    style,
     ...others
   } = useComponentDefaultProps('Tabs', defaultProps, props);
 
@@ -112,6 +116,16 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     defaultValue,
     finalValue: null,
     onChange,
+  });
+
+  const getStyles = useStylesApi({
+    name: 'Tabs',
+    className,
+    style,
+    classes,
+    classNames,
+    styles,
+    unstyled,
   });
 
   return (
@@ -133,9 +147,10 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         inverted,
         keepMounted,
         unstyled,
+        getStyles,
       }}
     >
-      <Box ref={ref} id={uid} {...others}>
+      <Box ref={ref} id={uid} {...getStyles('root')} {...others}>
         {children}
       </Box>
     </TabsProvider>
