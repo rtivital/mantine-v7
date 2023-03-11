@@ -33,9 +33,6 @@ export type TextCssVariables = '--gradient' | '--line-clamp';
 export interface TextStylesParams {
   gradient: MantineGradient | undefined;
   lineClamp: number | undefined;
-  truncate: 'end' | 'start' | true | undefined;
-  inline: boolean | undefined;
-  inherit: boolean | undefined;
 }
 
 export interface TextProps
@@ -100,9 +97,6 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
 
   const _vars = useComponentVars<TextStylesParams>('Text', vars, {
     lineClamp,
-    truncate,
-    inline,
-    inherit,
     gradient,
   });
 

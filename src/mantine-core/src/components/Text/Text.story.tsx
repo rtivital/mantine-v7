@@ -52,7 +52,7 @@ export function StyleProps() {
 export function LineClamp() {
   return (
     <div style={{ padding: 40, maxWidth: 600 }}>
-      <Text lineClamp={3}>
+      <Text lineClamp={3} inherit>
         From Bulbapedia: Bulbasaur is a small, quadrupedal Pokémon that has blue-green skin with
         darker patches. It has red eyes with white pupils, pointed, ear-like structures on top of
         its head, and a short, blunt snout with a wide mouth. A pair of small, pointed teeth are
