@@ -63,10 +63,10 @@ export interface TextFactory {
   props: TextProps;
   defaultComponent: 'div';
   defaultRef: HTMLDivElement;
-  stylesNames?: TextStylesNames;
-  vars?: TextCssVariables;
-  variant?: TextVariant;
-  stylesParams?: TextStylesParams;
+  stylesNames: TextStylesNames;
+  vars: TextCssVariables;
+  variant: TextVariant;
+  stylesParams: TextStylesParams;
 }
 
 const defaultProps: Partial<TextProps> = {
