@@ -1,2 +1,17 @@
 .root {
+  &[data-truncate] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &[data-truncate='start'] {
+    direction: rtl;
+    text-align: right;
+
+    [dir='rtl'] & {
+      direction: ltr;
+      text-align: left;
+    }
+  }
 }

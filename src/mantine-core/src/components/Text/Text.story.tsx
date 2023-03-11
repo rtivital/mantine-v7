@@ -11,6 +11,16 @@ export function Usage() {
   );
 }
 
+export function Truncate() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300 }}>
+      <Text truncate>Please truncate this text from the end</Text>
+      <Text truncate="start">Please truncate this text from the start</Text>
+      <Text truncate="end">Please truncate this text from the end</Text>
+    </div>
+  );
+}
+
 export function StyleProps() {
   return (
     <div style={{ padding: 40 }}>

@@ -11,6 +11,20 @@ import {
 } from '../../core';
 import classes from './Text.module.css';
 
+type TextTruncate = 'end' | 'start' | true;
+
+function getTextTruncate(truncate: TextTruncate | undefined) {
+  if (truncate === 'start') {
+    return 'start';
+  }
+
+  if (truncate === 'end' || truncate) {
+    return 'end';
+  }
+
+  return undefined;
+}
+
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
 export type TextCssVariables = '--placeholder';
@@ -75,6 +89,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    variant,
     ...others
   } = useComponentDefaultProps('Text', defaultProps, props);
 
@@ -101,9 +116,8 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       {...getStyles('root', { focusable: true })}
       ref={ref}
       component={span ? 'span' : 'div'}
-      data-truncate={
-        truncate === 'end' || truncate ? 'end' : truncate === 'start' ? 'start' : undefined
-      }
+      data-variant={variant}
+      data-truncate={getTextTruncate(truncate)}
       vars={{
         ..._vars,
       }}
