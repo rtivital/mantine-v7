@@ -2,6 +2,7 @@
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   line-height: var(--mantine-line-height);
+  font-weight: normal;
 
   &[data-truncate] {
     overflow: hidden;
@@ -13,7 +14,7 @@
     direction: rtl;
     text-align: right;
 
-    [dir='rtl'] & {
+    @mixin rtl {
       direction: ltr;
       text-align: left;
     }

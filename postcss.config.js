@@ -25,6 +25,12 @@ const hoverMixin = {
   },
 };
 
+const rtlMixin = {
+  '[dir="rtl"] &': {
+    '@mixin-content': {},
+  },
+};
+
 module.exports = {
   plugins: {
     'postcss-nested': {},
@@ -34,6 +40,7 @@ module.exports = {
         light: colorSchemeMixin('light'),
         dark: colorSchemeMixin('dark'),
         hover: hoverMixin,
+        rtl: rtlMixin,
       },
     },
   },
