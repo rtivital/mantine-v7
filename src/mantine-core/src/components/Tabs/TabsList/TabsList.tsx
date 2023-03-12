@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, BoxProps, useComponentDefaultProps, factory } from '../../../core';
+import { Box, BoxProps, useComponentDefaultProps, factory, ElementProps } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
-export type TabsListStylesNames = 'tabsList';
+export type TabsListStylesNames = 'list';
 
-export interface TabsListProps
-  extends BoxProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'style'> {
+export interface TabsListProps extends BoxProps, ElementProps<'div'> {
   /** <Tabs.Tab /> components */
   children: React.ReactNode;
 
@@ -40,7 +38,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...getStyles('tabsList', { className })}
+      {...getStyles('list', { className })}
       ref={ref}
       role="tablist"
       aria-orientation={orientation}
