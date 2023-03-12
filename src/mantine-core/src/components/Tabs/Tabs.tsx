@@ -15,9 +15,15 @@ import {
 import { TabsProvider } from './Tabs.context';
 import { TabsListStylesNames } from './TabsList/TabsList';
 import { TabsPanelStylesNames } from './TabsPanel/TabsPanel';
+import { TabsTabStylesNames } from './TabsTab/TabsTab';
 import classes from './Tabs.module.css';
 
-export type TabsStylesNames = 'root' | TabsListStylesNames | TabsPanelStylesNames;
+export type TabsStylesNames =
+  | 'root'
+  | TabsListStylesNames
+  | TabsPanelStylesNames
+  | TabsTabStylesNames;
+
 export type TabsVariant = 'default' | 'outline' | 'pills';
 export type TabsCssVariables = '--test';
 export interface TabsStylesParams {}

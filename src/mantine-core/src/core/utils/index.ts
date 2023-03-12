@@ -8,3 +8,5 @@ export { getSize } from './get-size/get-size';
 export { isElement } from './is-element/is-element';
 export { createSafeContext } from './create-safe-context/create-safe-context';
 export { getSafeId } from './get-safe-id/get-safe-id';
+export { createScopedKeydownHandler } from './create-scoped-keydown-handler/create-scoped-keydown-handler';
+export { findElementAncestor } from './find-element-ancestor/find-element-ancestor';
