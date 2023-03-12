@@ -5,6 +5,7 @@ import {
   ElementProps,
   MantineColor,
   createScopedKeydownHandler,
+  useDirection,
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
@@ -40,6 +41,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
   const { className, children, rightSection, leftSection, value, onClick, onKeyDown, ...others } =
     useComponentDefaultProps('TabsTab', defaultProps, props);
 
+  const { dir } = useDirection();
   const ctx = useTabsContext();
   const isActive = value === ctx.value;
   const activateTab = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -65,8 +67,8 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
         parentSelector: '[role="tablist"]',
         activateOnFocus: ctx.activateTabWithKeyboard,
         loop: ctx.loop,
-        dir: 'ltr',
         orientation: ctx.orientation!,
+        dir,
         onKeyDown,
       })}
     >
