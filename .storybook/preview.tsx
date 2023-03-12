@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import addons from '@storybook/addons';
 import { IconTextDirectionLtr, IconTextDirectionRtl } from '@tabler/icons-react';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-import { MantineProvider, useMantineColorScheme, ActionIcon } from '@mantine/core';
-import { DirectionProvider, useDirection } from '@mantine/direction-manager';
+import {
+  MantineProvider,
+  useMantineColorScheme,
+  ActionIcon,
+  DirectionProvider,
+  useDirection,
+} from '@mantine/core';
 
 const channel = addons.getChannel();
 
