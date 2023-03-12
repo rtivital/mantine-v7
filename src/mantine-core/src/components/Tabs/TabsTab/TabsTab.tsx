@@ -55,6 +55,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
       {...ctx.getStyles('tab', { className })}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}
+      data-variant={ctx.variant}
       ref={ref}
       role="tab"
       id={ctx.getTabId(value)}

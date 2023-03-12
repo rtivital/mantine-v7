@@ -30,3 +30,38 @@
     flex-grow: 1;
   }
 }
+
+.tab {
+  /* paddingLeft: params.withIcon ? theme.spacing.xs : undefined,
+    paddingRight: params.withRightSection ? theme.spacing.xs : undefined, */
+  /* justifyContent: params.orientation === 'horizontal' ? 'center' : undefined, */
+  /* ...getVariantStyles(theme, params, variant), */
+
+  position: relative;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  font-size: var(--mantine-font-size-sm);
+  white-space: nowrap;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  &:disabled,
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    z-index: 1;
+  }
+}
+
+.tabLabel {
+}
+
+.tabLeftSection {
+}
+
+.tabRightSection {
+}
