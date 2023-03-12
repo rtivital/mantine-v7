@@ -10,12 +10,14 @@ import {
   useComponentDefaultProps,
   getSafeId,
   useStylesApi,
+  ElementProps,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
 import { TabsListStylesNames } from './TabsList/TabsList';
+import { TabsPanelStylesNames } from './TabsPanel/TabsPanel';
 import classes from './Tabs.module.css';
 
-export type TabsStylesNames = 'root' | TabsListStylesNames;
+export type TabsStylesNames = 'root' | TabsListStylesNames | TabsPanelStylesNames;
 export type TabsVariant = 'default' | 'outline' | 'pills';
 export type TabsCssVariables = '--test';
 export interface TabsStylesParams {}
@@ -23,7 +25,7 @@ export interface TabsStylesParams {}
 export interface TabsProps
   extends BoxProps,
     StylesApiProps<TabsStylesNames, TabsVariant, TabsCssVariables, TabsStylesParams>,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'style' | 'defaultValue' | 'value' | 'onChange'> {
+    Omit<ElementProps<'div'>, 'defaultValue' | 'value' | 'onChange'> {
   /** Default value for uncontrolled component */
   defaultValue?: string | null;
 

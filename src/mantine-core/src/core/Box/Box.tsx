@@ -21,6 +21,11 @@ export interface BoxProps extends MantineStyleProps {
   style?: MantineStyleProp;
 }
 
+export type ElementProps<T extends React.ElementType> = Omit<
+  React.ComponentPropsWithoutRef<T>,
+  'style'
+>;
+
 export interface BoxComponentProps extends BoxProps {
   /** CSS variables defined on root component element */
   vars?: CssVarsProp;
