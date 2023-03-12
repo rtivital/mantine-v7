@@ -19,39 +19,6 @@
   &[data-grow] [role='tab'] {
     flex-grow: 1;
   }
-
-  &[data-variant='default'] {
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-
-      @mixin light {
-        border-color: var(--mantine-color-gray-3);
-      }
-
-      @mixin dark {
-        border-color: var(--mantine-color-dark-4);
-      }
-    }
-
-    &[data-orientation='horizontal']:before {
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-bottom-width: rem(2px);
-      border-bottom-style: solid;
-    }
-
-    &[data-orientation='vertical']:before {
-      bottom: 0;
-      top: 0;
-      right: 0;
-      border-right-width: rem(2px);
-      border-right-style: solid;
-    }
-  }
 }
 
 .panel {
@@ -88,45 +55,6 @@
   &:focus {
     z-index: 1;
   }
-
-  &[data-variant='default'] {
-    &[data-orientation='horizontal'] {
-      border-bottom: rem(2px) solid transparent;
-      border-top-right-radius: var(--radius);
-      border-top-left-radius: var(--radius);
-    }
-
-    &[data-orientation='vertical'] {
-      border-right: rem(2px) solid transparent;
-      border-bottom-left-radius: var(--radius);
-      border-top-left-radius: var(--radius);
-    }
-
-    @mixin hover {
-      @mixin light {
-        background-color: var(--mantine-color-gray-0);
-
-        &:not([data-active]) {
-          border-color: var(--mantine-color-gray-3);
-        }
-      }
-
-      @mixin dark {
-        background-color: var(--mantine-color-dark-6);
-      }
-    }
-
-    &:disabled,
-    &[data-disabled] {
-      @mixin hover {
-        background-color: transparent;
-      }
-    }
-
-    &[data-active] {
-      border-color: var(--color);
-    }
-  }
 }
 
 .tabLabel {
@@ -136,4 +64,94 @@
 }
 
 .tabRightSection {
+}
+
+/*************************************** default variant ***************************************/
+.list[data-variant='default'] {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+
+    @mixin light {
+      border-color: var(--mantine-color-gray-3);
+    }
+
+    @mixin dark {
+      border-color: var(--mantine-color-dark-4);
+    }
+  }
+
+  &[data-orientation='horizontal']:before {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom-width: rem(2px);
+    border-bottom-style: solid;
+  }
+
+  &[data-orientation='vertical']:before {
+    bottom: 0;
+    top: 0;
+    right: 0;
+    border-right-width: rem(2px);
+    border-right-style: solid;
+
+    @mixin rtl {
+      left: 0;
+      right: unset;
+    }
+  }
+}
+
+.tab[data-variant='default'] {
+  &[data-orientation='horizontal'] {
+    border-bottom: rem(2px) solid transparent;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+  }
+
+  &[data-orientation='vertical'] {
+    border-right: rem(2px) solid transparent;
+    border-bottom-left-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+
+    @mixin rtl {
+      border-left: rem(2px) solid transparent;
+      border-right: unset;
+      border-bottom-left-radius: unset;
+      border-top-left-radius: unset;
+      border-bottom-right-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+  }
+
+  @mixin hover {
+    @mixin light {
+      background-color: var(--mantine-color-gray-0);
+
+      &:not([data-active]) {
+        border-color: var(--mantine-color-gray-3);
+      }
+    }
+
+    @mixin dark {
+      background-color: var(--mantine-color-dark-6);
+    }
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    @mixin hover {
+      background-color: transparent;
+    }
+  }
+
+  &[data-active] {
+    border-color: var(--color);
+    @mixin rtl {
+      border-color: var(--color);
+    }
+  }
 }
