@@ -67,7 +67,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
         parentSelector: '[role="tablist"]',
         activateOnFocus: ctx.activateTabWithKeyboard,
         loop: ctx.loop,
-        orientation: ctx.orientation!,
+        orientation: ctx.orientation || 'horizontal',
         dir,
         onKeyDown,
       })}
