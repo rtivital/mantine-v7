@@ -13,9 +13,9 @@ import {
   ElementProps,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
-import { TabsListStylesNames } from './TabsList/TabsList';
-import { TabsPanelStylesNames } from './TabsPanel/TabsPanel';
-import { TabsTabStylesNames } from './TabsTab/TabsTab';
+import { TabsList, TabsListStylesNames } from './TabsList/TabsList';
+import { TabsPanel, TabsPanelStylesNames } from './TabsPanel/TabsPanel';
+import { TabsTab, TabsTabStylesNames } from './TabsTab/TabsTab';
 import classes from './Tabs.module.css';
 
 export type TabsStylesNames =
@@ -84,6 +84,11 @@ export interface TabsFactory {
   stylesNames: TabsStylesNames;
   vars: TabsCssVariables;
   stylesParams: TabsStylesParams;
+  staticComponents: {
+    Tab: typeof TabsTab;
+    Panel: typeof TabsPanel;
+    List: typeof TabsList;
+  };
 }
 
 const VALUE_ERROR =
@@ -174,3 +179,8 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     </TabsProvider>
   );
 });
+
+Tabs.displayName = '@mantine/core/Tabs';
+Tabs.Tab = TabsTab;
+Tabs.Panel = TabsPanel;
+Tabs.List = TabsList;
