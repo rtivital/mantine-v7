@@ -57,7 +57,15 @@ const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...prop
 export function Usage() {
   return (
     <div>
+      <Wrapper color="#FF00FF" defaultValue="react" variant="none">
+        {base}
+      </Wrapper>
+
       <Wrapper color="#FF00FF" defaultValue="react">
+        {base}
+      </Wrapper>
+
+      <Wrapper color="#FF00FF" defaultValue="react" inverted>
         {base}
       </Wrapper>
 

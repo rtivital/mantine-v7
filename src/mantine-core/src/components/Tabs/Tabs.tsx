@@ -62,9 +62,6 @@ export interface TabsProps
   /** Tabs content */
   children: React.ReactNode;
 
-  /** Changes tabs visuals */
-  variant?: TabsVariant;
-
   /** Changes colors of Tabs.Tab components when variant is `pills` and `default`, does nothing for other variants */
   color?: MantineColor;
 
