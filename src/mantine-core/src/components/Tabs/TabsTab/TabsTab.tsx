@@ -60,6 +60,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}
       data-variant={ctx.variant}
+      data-orientation={ctx.orientation}
       ref={ref}
       role="tab"
       id={ctx.getTabId(value)}

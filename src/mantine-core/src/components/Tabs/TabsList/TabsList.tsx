@@ -33,16 +33,17 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
     props
   );
 
-  const { orientation, getStyles } = useTabsContext();
+  const ctx = useTabsContext();
 
   return (
     <Box
       {...others}
-      {...getStyles('list', { className })}
+      {...ctx.getStyles('list', { className })}
       ref={ref}
       role="tablist"
-      aria-orientation={orientation}
-      data-orientation={orientation}
+      aria-orientation={ctx.orientation}
+      data-orientation={ctx.orientation}
+      data-variant={ctx.variant}
       data-grow={grow || undefined}
     >
       {children}

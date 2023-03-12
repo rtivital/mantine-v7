@@ -1,5 +1,5 @@
 .root {
-  &[data-orientataion='vertical'] {
+  &[data-orientation='vertical'] {
     display: flex;
 
     &[data-placement='right'] {
@@ -12,12 +12,45 @@
   display: flex;
   flex-wrap: wrap;
 
-  &[data-orientation='vertial'] {
+  &[data-orientation='vertical'] {
     flex-direction: column;
   }
 
   &[data-grow] [role='tab'] {
     flex-grow: 1;
+  }
+
+  &[data-variant='default'] {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+
+      @mixin light {
+        border-color: var(--mantine-color-gray-3);
+      }
+
+      @mixin dark {
+        border-color: var(--mantine-color-dark-4);
+      }
+    }
+
+    &[data-orientation='horizontal']:before {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-bottom-width: rem(2px);
+      border-bottom-style: solid;
+    }
+
+    &[data-orientation='vertical']:before {
+      bottom: 0;
+      top: 0;
+      right: 0;
+      border-right-width: rem(2px);
+      border-right-style: solid;
+    }
   }
 }
 
@@ -57,17 +90,36 @@
   }
 
   &[data-variant='default'] {
-    border-bottom: 2px solid transparent;
-    border-top-right-radius: var(--radius);
-    border-top-left-radius: var(--radius);
+    &[data-orientation='horizontal'] {
+      border-bottom: rem(2px) solid transparent;
+      border-top-right-radius: var(--radius);
+      border-top-left-radius: var(--radius);
+    }
+
+    &[data-orientation='vertical'] {
+      border-right: rem(2px) solid transparent;
+      border-bottom-left-radius: var(--radius);
+      border-top-left-radius: var(--radius);
+    }
 
     @mixin hover {
       @mixin light {
         background-color: var(--mantine-color-gray-0);
+
+        &:not([data-active]) {
+          border-color: var(--mantine-color-gray-3);
+        }
       }
 
       @mixin dark {
         background-color: var(--mantine-color-dark-6);
+      }
+    }
+
+    &:disabled,
+    &[data-disabled] {
+      @mixin hover {
+        background-color: transparent;
       }
     }
 
