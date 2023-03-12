@@ -55,6 +55,26 @@
   &:focus {
     z-index: 1;
   }
+
+  &[data-variant='default'] {
+    border-bottom: 2px solid transparent;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+
+    @mixin hover {
+      @mixin light {
+        background-color: var(--mantine-color-gray-0);
+      }
+
+      @mixin dark {
+        background-color: var(--mantine-color-dark-6);
+      }
+    }
+
+    &[data-active] {
+      border-color: var(--color);
+    }
+  }
 }
 
 .tabLabel {

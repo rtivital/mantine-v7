@@ -54,6 +54,14 @@ const verticalBase = (
 
 const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...props} />;
 
+export function Usage() {
+  return (
+    <Wrapper color="orange" defaultValue="react">
+      {base}
+    </Wrapper>
+  );
+}
+
 export const NoLoop = () => (
   <Wrapper defaultValue="react" loop={false}>
     {base}

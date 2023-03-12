@@ -96,6 +96,14 @@ const VALUE_ERROR =
 
 const defaultProps: Partial<TabsProps> = {
   keepMounted: true,
+  orientation: 'horizontal',
+  loop: true,
+  activateTabWithKeyboard: true,
+  allowTabDeactivation: false,
+  unstyled: false,
+  inverted: false,
+  variant: 'default',
+  placement: 'left',
 };
 
 export const Tabs = factory<TabsFactory>((props, ref) => {
