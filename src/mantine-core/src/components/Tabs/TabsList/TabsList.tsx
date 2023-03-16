@@ -44,6 +44,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
       aria-orientation={ctx.orientation}
       data-orientation={ctx.orientation}
       data-placement={ctx.placement}
+      data-position={position}
       data-inverted={ctx.inverted || undefined}
       data-variant={ctx.variant}
       data-grow={grow || undefined}

@@ -19,6 +19,22 @@
   &[data-grow] [role='tab'] {
     flex-grow: 1;
   }
+
+  &[data-position='left'] {
+    justify-content: flex-start;
+  }
+
+  &[data-position='right'] {
+    justify-content: flex-end;
+  }
+
+  &[data-position='center'] {
+    justify-content: center;
+  }
+
+  &[data-position='apart'] {
+    justify-content: space-between;
+  }
 }
 
 .panel {
