@@ -98,6 +98,28 @@ export function OutlineVariant() {
   );
 }
 
+export function PillsVariant() {
+  return (
+    <div>
+      <Wrapper variant="pills" defaultValue="react">
+        {base}
+      </Wrapper>
+
+      <Wrapper variant="pills" defaultValue="react" inverted>
+        {base}
+      </Wrapper>
+
+      <Wrapper variant="pills" defaultValue="react" orientation="vertical">
+        {base}
+      </Wrapper>
+
+      <Wrapper variant="pills" defaultValue="react" orientation="vertical" placement="right">
+        {base}
+      </Wrapper>
+    </div>
+  );
+}
+
 export const NoLoop = () => (
   <Wrapper defaultValue="react" loop={false}>
     {base}
