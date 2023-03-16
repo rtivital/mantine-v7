@@ -68,6 +68,10 @@ export function DefaultVariant() {
       <Wrapper color="orange" defaultValue="react" orientation="vertical">
         {base}
       </Wrapper>
+
+      <Wrapper color="orange" defaultValue="react" orientation="vertical" placement="right">
+        {base}
+      </Wrapper>
     </div>
   );
 }
