@@ -286,38 +286,31 @@
 .tab[data-variant='outline'] {
   border: rem(1px) solid transparent;
 
-  &[data-orientation='horizontal'] {
-    border-top-right-radius: var(--radius);
-    border-top-left-radius: var(--radius);
-
-    &[data-inverted] {
-      border-top-right-radius: unset;
-      border-top-left-radius: unset;
-      border-bottom-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-    }
-  }
-
   &[data-active] {
     @mixin light {
       border-color: var(--mantine-color-gray-3);
-      border-bottom-color: var(--mantine-color-white);
+      background-color: var(--mantine-color-white);
     }
 
     @mixin dark {
       border-color: var(--mantine-color-dark-4);
-      border-bottom-color: var(--mantine-color-dark-7);
+      background-color: var(--mantine-color-dark-7);
     }
 
-    &[data-inverted][data-orientation='horizontal'] {
-      @mixin light {
-        border-color: var(--mantine-color-gray-3);
-        border-top-color: var(--mantine-color-white);
+    &[data-orientation='horizontal'] {
+      border-top-right-radius: var(--radius);
+      border-top-left-radius: var(--radius);
+
+      &:not([data-inverted]) {
+        border-bottom-color: transparent;
       }
 
-      @mixin dark {
-        border-color: var(--mantine-color-dark-4);
-        border-top-color: var(--mantine-color-dark-7);
+      &[data-inverted] {
+        border-top-color: transparent;
+        border-top-right-radius: unset;
+        border-top-left-radius: unset;
+        border-bottom-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
       }
     }
 
@@ -326,33 +319,16 @@
         border-bottom-left-radius: var(--radius);
         border-top-left-radius: var(--radius);
 
+        @mixin not-rtl {
+          border-right-color: transparent;
+        }
+
         @mixin rtl {
+          border-left-color: transparent;
           border-bottom-left-radius: unset;
           border-top-left-radius: unset;
           border-bottom-right-radius: var(--radius);
           border-top-right-radius: var(--radius);
-        }
-
-        @mixin light {
-          border-color: var(--mantine-color-gray-3);
-          border-right-color: var(--mantine-color-white);
-        }
-
-        @mixin dark {
-          border-color: var(--mantine-color-dark-4);
-          border-right-color: var(--mantine-color-dark-7);
-        }
-
-        @mixin rtl {
-          @mixin light {
-            border-color: var(--mantine-color-gray-3);
-            border-left-color: var(--mantine-color-white);
-          }
-
-          @mixin dark {
-            border-color: var(--mantine-color-dark-4);
-            border-left-color: var(--mantine-color-dark-7);
-          }
         }
       }
 
@@ -360,33 +336,16 @@
         border-bottom-right-radius: var(--radius);
         border-top-right-radius: var(--radius);
 
+        @mixin not-rtl {
+          border-left-color: transparent;
+        }
+
         @mixin rtl {
+          border-right-color: transparent;
           border-bottom-right-radius: unset;
           border-top-right-radius: unset;
           border-bottom-left-radius: var(--radius);
           border-top-left-radius: var(--radius);
-        }
-
-        @mixin light {
-          border-color: var(--mantine-color-gray-3);
-          border-left-color: var(--mantine-color-white);
-        }
-
-        @mixin dark {
-          border-color: var(--mantine-color-dark-4);
-          border-left-color: var(--mantine-color-dark-7);
-        }
-
-        @mixin rtl {
-          @mixin light {
-            border-color: var(--mantine-color-gray-3);
-            border-right-color: var(--mantine-color-white);
-          }
-
-          @mixin dark {
-            border-color: var(--mantine-color-dark-4);
-            border-right-color: var(--mantine-color-dark-7);
-          }
         }
       }
     }

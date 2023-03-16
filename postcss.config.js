@@ -31,6 +31,12 @@ const rtlMixin = {
   },
 };
 
+const notRtlMixin = {
+  ':root:not([dir="rtl"]) &': {
+    '@mixin-content': {},
+  },
+};
+
 module.exports = {
   plugins: {
     'postcss-nested': {},
@@ -41,6 +47,7 @@ module.exports = {
         dark: colorSchemeMixin('dark'),
         hover: hoverMixin,
         rtl: rtlMixin,
+        'not-rtl': notRtlMixin,
       },
     },
   },
