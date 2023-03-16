@@ -41,8 +41,17 @@ export interface TabsTabFactory {
 const defaultProps: Partial<TabsTabProps> = {};
 
 export const TabsTab = factory<TabsTabFactory>((props, ref) => {
-  const { className, children, rightSection, leftSection, value, onClick, onKeyDown, ...others } =
-    useComponentDefaultProps('TabsTab', defaultProps, props);
+  const {
+    className,
+    children,
+    rightSection,
+    leftSection,
+    value,
+    onClick,
+    onKeyDown,
+    disabled,
+    ...others
+  } = useComponentDefaultProps('TabsTab', defaultProps, props);
 
   const theme = useMantineTheme();
   const { dir } = useDirection();
@@ -57,12 +66,14 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     <UnstyledButton
       {...others}
       {...ctx.getStyles('tab', { className })}
+      disabled={disabled}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}
       data-variant={ctx.variant}
       data-orientation={ctx.orientation}
       data-inverted={ctx.inverted || undefined}
       data-placement={ctx.placement}
+      data-disabled={disabled || undefined}
       ref={ref}
       role="tab"
       id={ctx.getTabId(value)}

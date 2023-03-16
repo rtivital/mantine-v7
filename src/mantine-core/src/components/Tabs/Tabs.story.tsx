@@ -101,19 +101,25 @@ export function OutlineVariant() {
 export function PillsVariant() {
   return (
     <div>
-      <Wrapper variant="pills" defaultValue="react">
+      <Wrapper variant="pills" color="green.9" defaultValue="react">
         {base}
       </Wrapper>
 
-      <Wrapper variant="pills" defaultValue="react" inverted>
+      <Wrapper variant="pills" color="green.9" defaultValue="react" inverted>
         {base}
       </Wrapper>
 
-      <Wrapper variant="pills" defaultValue="react" orientation="vertical">
+      <Wrapper variant="pills" color="green.9" defaultValue="react" orientation="vertical">
         {base}
       </Wrapper>
 
-      <Wrapper variant="pills" defaultValue="react" orientation="vertical" placement="right">
+      <Wrapper
+        variant="pills"
+        color="green.9"
+        defaultValue="react"
+        orientation="vertical"
+        placement="right"
+      >
         {base}
       </Wrapper>
     </div>

@@ -401,17 +401,19 @@
 .tab[data-variant='pills'] {
   border-radius: var(--radius);
 
-  @mixin hover {
-    @mixin light {
-      background-color: var(--mantine-color-gray-0);
-    }
+  &:not([data-disabled]) {
+    @mixin hover {
+      @mixin light {
+        background-color: var(--mantine-color-gray-0);
+      }
 
-    @mixin dark {
-      background-color: var(--mantine-color-dark-6);
+      @mixin dark {
+        background-color: var(--mantine-color-dark-6);
+      }
     }
   }
 
-  &[data-active] {
+  &[data-active][data-active] {
     background-color: var(--color);
     color: var(--mantine-color-white);
 
