@@ -6,7 +6,6 @@ import {
   MantineColor,
   createScopedKeydownHandler,
   useDirection,
-  getRadius,
   useMantineTheme,
   getThemeColor,
 } from '../../../core';
@@ -50,6 +49,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     onClick,
     onKeyDown,
     disabled,
+    color,
     ...others
   } = useComponentDefaultProps('TabsTab', defaultProps, props);
 
@@ -81,10 +81,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
       tabIndex={isActive || ctx.value === null ? 0 : -1}
       aria-controls={ctx.getPanelId(value)}
       onClick={activateTab}
-      vars={{
-        '--radius': getRadius(theme, ctx.radius),
-        '--color': getThemeColor(ctx.color, theme),
-      }}
+      vars={{ '--tabs-color': color ? getThemeColor(color, theme) : undefined }}
       onKeyDown={createScopedKeydownHandler({
         siblingSelector: '[role="tab"]',
         parentSelector: '[role="tablist"]',

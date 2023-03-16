@@ -173,47 +173,47 @@
 .tab[data-variant='default'] {
   &[data-orientation='horizontal'] {
     border-bottom: rem(2px) solid transparent;
-    border-top-right-radius: var(--radius);
-    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--tabs-radius);
+    border-top-left-radius: var(--tabs-radius);
 
     &[data-inverted] {
       border-bottom: unset;
       border-top: rem(2px) solid transparent;
       border-top-right-radius: unset;
       border-top-left-radius: unset;
-      border-bottom-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--tabs-radius);
+      border-bottom-left-radius: var(--tabs-radius);
     }
   }
 
   &[data-orientation='vertical'] {
     &[data-placement='left'] {
       border-right: rem(2px) solid transparent;
-      border-bottom-left-radius: var(--radius);
-      border-top-left-radius: var(--radius);
+      border-bottom-left-radius: var(--tabs-radius);
+      border-top-left-radius: var(--tabs-radius);
 
       @mixin rtl {
         border-left: rem(2px) solid transparent;
         border-right: unset;
         border-bottom-left-radius: unset;
         border-top-left-radius: unset;
-        border-bottom-right-radius: var(--radius);
-        border-top-right-radius: var(--radius);
+        border-bottom-right-radius: var(--tabs-radius);
+        border-top-right-radius: var(--tabs-radius);
       }
     }
 
     &[data-placement='right'] {
       border-left: rem(2px) solid transparent;
-      border-bottom-right-radius: var(--radius);
-      border-top-right-radius: var(--radius);
+      border-bottom-right-radius: var(--tabs-radius);
+      border-top-right-radius: var(--tabs-radius);
 
       @mixin rtl {
         border-right: rem(2px) solid transparent;
         border-left: unset;
         border-bottom-right-radius: unset;
         border-top-right-radius: unset;
-        border-bottom-left-radius: var(--radius);
-        border-top-left-radius: var(--radius);
+        border-bottom-left-radius: var(--tabs-radius);
+        border-top-left-radius: var(--tabs-radius);
       }
     }
   }
@@ -244,10 +244,10 @@
   }
 
   &[data-active][data-active] {
-    border-color: var(--color);
+    border-color: var(--tabs-color);
 
     @mixin rtl {
-      border-color: var(--color);
+      border-color: var(--tabs-color);
     }
   }
 }
@@ -336,8 +336,8 @@
     }
 
     &[data-orientation='horizontal'] {
-      border-top-right-radius: var(--radius);
-      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--tabs-radius);
+      border-top-left-radius: var(--tabs-radius);
 
       &:not([data-inverted]) {
         border-bottom-color: transparent;
@@ -347,15 +347,15 @@
         border-top-color: transparent;
         border-top-right-radius: unset;
         border-top-left-radius: unset;
-        border-bottom-right-radius: var(--radius);
-        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--tabs-radius);
+        border-bottom-left-radius: var(--tabs-radius);
       }
     }
 
     &[data-orientation='vertical'] {
       &[data-placement='left'] {
-        border-bottom-left-radius: var(--radius);
-        border-top-left-radius: var(--radius);
+        border-bottom-left-radius: var(--tabs-radius);
+        border-top-left-radius: var(--tabs-radius);
 
         @mixin not-rtl {
           border-right-color: transparent;
@@ -365,14 +365,14 @@
           border-left-color: transparent;
           border-bottom-left-radius: unset;
           border-top-left-radius: unset;
-          border-bottom-right-radius: var(--radius);
-          border-top-right-radius: var(--radius);
+          border-bottom-right-radius: var(--tabs-radius);
+          border-top-right-radius: var(--tabs-radius);
         }
       }
 
       &[data-placement='right'] {
-        border-bottom-right-radius: var(--radius);
-        border-top-right-radius: var(--radius);
+        border-bottom-right-radius: var(--tabs-radius);
+        border-top-right-radius: var(--tabs-radius);
 
         @mixin not-rtl {
           border-left-color: transparent;
@@ -382,8 +382,8 @@
           border-right-color: transparent;
           border-bottom-right-radius: unset;
           border-top-right-radius: unset;
-          border-bottom-left-radius: var(--radius);
-          border-top-left-radius: var(--radius);
+          border-bottom-left-radius: var(--tabs-radius);
+          border-top-left-radius: var(--tabs-radius);
         }
       }
     }
@@ -396,7 +396,7 @@
 }
 
 .tab[data-variant='pills'] {
-  border-radius: var(--radius);
+  border-radius: var(--tabs-radius);
 
   &:not([data-disabled]) {
     @mixin hover {
@@ -411,11 +411,11 @@
   }
 
   &[data-active][data-active] {
-    background-color: var(--color);
+    background-color: var(--tabs-color);
     color: var(--mantine-color-white);
 
     @mixin hover {
-      background-color: var(--color);
+      background-color: var(--tabs-color);
     }
   }
 }

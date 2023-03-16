@@ -8,9 +8,13 @@ import {
   StylesApiProps,
   factory,
   useComponentDefaultProps,
+  useComponentVars,
   getSafeId,
   useStylesApi,
   ElementProps,
+  getRadius,
+  getThemeColor,
+  useMantineTheme,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
 import { TabsList, TabsListStylesNames } from './TabsList/TabsList';
@@ -25,8 +29,11 @@ export type TabsStylesNames =
   | TabsTabStylesNames;
 
 export type TabsVariant = 'default' | 'outline' | 'pills';
-export type TabsCssVariables = '--test';
-export interface TabsStylesParams {}
+export type TabsCssVariables = '--tabs-color' | '--tabs-radius';
+export interface TabsStylesParams {
+  color: MantineColor | undefined;
+  radius: MantineRadius | number | string | undefined;
+}
 
 export interface TabsProps
   extends BoxProps,
@@ -125,8 +132,10 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     unstyled,
     className,
     style,
+    vars,
     ...others
   } = useComponentDefaultProps('Tabs', defaultProps, props);
+  const theme = useMantineTheme();
 
   const uid = useId(id);
 
@@ -145,6 +154,11 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+  });
+
+  const _vars = useComponentVars<TabsStylesParams>('Tabs', vars, {
+    color,
+    radius,
   });
 
   return (
@@ -176,6 +190,11 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         data-variant={variant}
         data-orientation={orientation}
         data-placement={placement}
+        vars={{
+          '--tabs-radius': getRadius(theme, radius),
+          '--tabs-color': getThemeColor(color, theme),
+          ..._vars,
+        }}
         {...getStyles('root')}
         {...others}
       >
