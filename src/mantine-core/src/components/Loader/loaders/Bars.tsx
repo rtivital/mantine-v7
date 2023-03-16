@@ -5,9 +5,9 @@ export const Bars: MantineLoaderComponent = forwardRef(({ style, ...others }, re
   <svg
     ref={ref}
     style={{
-      width: 'var(--size)',
-      height: 'var(--size)',
-      fill: 'var(--color)',
+      width: 'var(--loader-size)',
+      height: 'var(--loader-size)',
+      fill: 'var(--loader-color)',
       ...style,
     }}
     viewBox="0 0 135 140"

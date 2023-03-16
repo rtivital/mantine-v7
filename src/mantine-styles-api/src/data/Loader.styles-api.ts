@@ -13,7 +13,7 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
   },
 
   vars: {
-    '--size': 'Loader width, controlled by size prop',
-    '--color': 'Svg stroke/fille color, controlled by color prop',
+    '--loader-size': 'Loader width, controlled by size prop',
+    '--loader-color': 'Svg stroke/fille color, controlled by color prop',
   },
 };

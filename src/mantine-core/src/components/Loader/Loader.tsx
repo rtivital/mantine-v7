@@ -21,7 +21,7 @@ import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
-export type LoaderCssVariables = '--size' | '--color';
+export type LoaderCssVariables = '--loader-size' | '--loader-color';
 
 export const defaultLoaders: MantineLoadersRecord = {
   bars: Bars,
@@ -107,8 +107,8 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       component={loaders![loader]}
       data-variant={variant}
       vars={{
-        '--size': getSize(size),
-        '--color': getThemeColor(color, theme),
+        '--loader-size': getSize(size, 'loader-size'),
+        '--loader-color': getThemeColor(color, theme),
         ..._vars,
       }}
       {...others}

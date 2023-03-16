@@ -1,7 +1,7 @@
 .root {
-  --size-xs: rem(18px);
-  --size-sm: rem(22px);
-  --size-md: rem(36px);
-  --size-lg: rem(44px);
-  --size-xl: rem(58px);
+  --loader-size-xs: rem(18px);
+  --loader-size-sm: rem(22px);
+  --loader-size-md: rem(36px);
+  --loader-size-lg: rem(44px);
+  --loader-size-xl: rem(58px);
 }

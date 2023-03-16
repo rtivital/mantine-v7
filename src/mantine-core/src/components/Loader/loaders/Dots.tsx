@@ -7,8 +7,8 @@ export const Dots: MantineLoaderComponent = forwardRef(({ style, ...others }, re
     viewBox="0 0 120 30"
     xmlns="http://www.w3.org/2000/svg"
     style={{
-      width: 'var(--size)',
-      fill: 'var(--color)',
+      width: 'var(--loader-size)',
+      fill: 'var(--loader-color)',
       ...style,
     }}
     {...others}
