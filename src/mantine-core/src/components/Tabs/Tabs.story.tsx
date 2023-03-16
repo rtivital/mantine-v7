@@ -90,6 +90,10 @@ export function OutlineVariant() {
       <Wrapper variant="outline" defaultValue="react" orientation="vertical">
         {base}
       </Wrapper>
+
+      <Wrapper variant="outline" defaultValue="react" orientation="vertical" placement="right">
+        {base}
+      </Wrapper>
     </div>
   );
 }
