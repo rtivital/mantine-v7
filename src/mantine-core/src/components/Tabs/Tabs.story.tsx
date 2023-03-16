@@ -54,13 +54,9 @@ const verticalBase = (
 
 const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...props} />;
 
-export function Usage() {
+export function DefaultVariant() {
   return (
     <div>
-      <Wrapper color="#FF00FF" defaultValue="react" variant="none">
-        {base}
-      </Wrapper>
-
       <Wrapper color="#FF00FF" defaultValue="react">
         {base}
       </Wrapper>
@@ -70,6 +66,24 @@ export function Usage() {
       </Wrapper>
 
       <Wrapper color="orange" defaultValue="react" orientation="vertical">
+        {base}
+      </Wrapper>
+    </div>
+  );
+}
+
+export function OutlineVariant() {
+  return (
+    <div>
+      <Wrapper variant="outline" defaultValue="react">
+        {base}
+      </Wrapper>
+
+      <Wrapper variant="outline" defaultValue="react" inverted>
+        {base}
+      </Wrapper>
+
+      <Wrapper variant="outline" defaultValue="react" orientation="vertical">
         {base}
       </Wrapper>
     </div>
