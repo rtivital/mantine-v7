@@ -9,7 +9,13 @@ export default {
 const base = (
   <>
     <Tabs.List>
-      <Tabs.Tab value="react">React</Tabs.Tab>
+      <Tabs.Tab
+        value="react"
+        leftSection={<IconPackage size={16} />}
+        rightSection={<IconPackage size={16} />}
+      >
+        React
+      </Tabs.Tab>
       <Tabs.Tab value="sv">Svelte</Tabs.Tab>
       <Tabs.Tab value="ng">Wrapped tab</Tabs.Tab>
       <Tabs.Tab value="ds" disabled>

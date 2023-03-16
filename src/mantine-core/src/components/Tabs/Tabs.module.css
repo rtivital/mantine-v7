@@ -32,11 +32,6 @@
 }
 
 .tab {
-  /* paddingLeft: params.withIcon ? theme.spacing.xs : undefined,
-    paddingRight: params.withRightSection ? theme.spacing.xs : undefined, */
-  /* justifyContent: params.orientation === 'horizontal' ? 'center' : undefined, */
-  /* ...getVariantStyles(theme, params, variant), */
-
   position: relative;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   font-size: var(--mantine-font-size-sm);
@@ -46,6 +41,10 @@
   align-items: center;
   line-height: 1;
   user-select: none;
+
+  &[data-orientation='horizontal'] {
+    justify-content: center;
+  }
 
   &:disabled,
   &[data-disabled] {
@@ -61,10 +60,29 @@
 .tabLabel {
 }
 
+.tabLeftSection,
+.tabRightSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .tabLeftSection {
+  margin-right: var(--mantine-spacing-xs);
+
+  @mixin rtl {
+    margin-right: 0;
+    margin-left: var(--mantine-spacing-xs);
+  }
 }
 
 .tabRightSection {
+  margin-left: var(--mantine-spacing-xs);
+
+  @mixin rtl {
+    margin-left: 0;
+    margin-right: var(--mantine-spacing-xs);
+  }
 }
 
 /*************************************** default variant ***************************************/
