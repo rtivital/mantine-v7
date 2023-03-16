@@ -68,20 +68,24 @@
 }
 
 .tabLeftSection {
-  margin-right: var(--mantine-spacing-xs);
+  &:not(:only-child) {
+    margin-right: var(--mantine-spacing-xs);
 
-  @mixin rtl {
-    margin-right: 0;
-    margin-left: var(--mantine-spacing-xs);
+    @mixin rtl {
+      margin-right: 0;
+      margin-left: var(--mantine-spacing-xs);
+    }
   }
 }
 
 .tabRightSection {
-  margin-left: var(--mantine-spacing-xs);
+  &:not(:only-child) {
+    margin-left: var(--mantine-spacing-xs);
 
-  @mixin rtl {
-    margin-left: 0;
-    margin-right: var(--mantine-spacing-xs);
+    @mixin rtl {
+      margin-left: 0;
+      margin-right: var(--mantine-spacing-xs);
+    }
   }
 }
 
