@@ -21,7 +21,7 @@
   }
 
   &[data-variant='gradient'] {
-    background-image: var(--gradient);
+    background-image: var(--text-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -30,7 +30,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: var(--line-clamp);
+    -webkit-line-clamp: var(--text-line-clamp);
     -webkit-box-orient: vertical;
   }
 

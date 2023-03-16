@@ -12,8 +12,8 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
   },
 
   vars: {
-    '--gradient': 'Text fill gradient, controlled by gradient prop',
-    '--line-clamp': 'Number of lines that should be visible, controlled by lineClamp prop',
+    '--text-gradient': 'Text fill gradient, controlled by gradient prop',
+    '--text-line-clamp': 'Number of lines that should be visible, controlled by lineClamp prop',
   },
 
   modifiers: [
