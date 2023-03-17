@@ -13,13 +13,16 @@ const defaultProps: TabsTabProps = {
 const TestContainer = createContextContainer(TabsTab, Tabs);
 
 describe('@mantine/core/TabsTab', () => {
-  // itThrowsContextError(TabsTab, defaultProps, TABS_ERRORS.context);
-  // itSupportsFocusEvents(TestContainer, defaultProps, '[role="tab"]');
-
   tests.itSupportsFocusEvents({
     component: TestContainer,
     props: defaultProps,
     selector: '[role="tab"]',
+  });
+
+  tests.itThrowsContextError({
+    component: TabsTab,
+    props: defaultProps,
+    error: 'Tabs component was not found in the tree',
   });
 
   tests.itSupportsSystemProps({
