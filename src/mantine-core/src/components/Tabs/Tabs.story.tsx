@@ -13,6 +13,8 @@ const base = (
         value="react"
         leftSection={<IconPackage size={16} />}
         rightSection={<IconPackage size={16} />}
+        className="super-class"
+        style={{ color: 'blue' }}
       >
         React
       </Tabs.Tab>
@@ -63,7 +65,7 @@ const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...prop
 export function DefaultVariant() {
   return (
     <div>
-      <Wrapper color="#FF00FF" defaultValue="react">
+      <Wrapper color="#FF00FF" defaultValue="react" style={{ color: 'pink' }}>
         {base}
       </Wrapper>
 

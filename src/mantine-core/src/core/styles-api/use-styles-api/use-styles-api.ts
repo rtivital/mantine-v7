@@ -22,6 +22,7 @@ export interface UseStylesApiInput<StylesNames extends string> {
 
 export interface GetPropsOptions {
   className?: string;
+  style?: MantineStyleProp;
   focusable?: boolean;
   active?: boolean;
 }
@@ -31,6 +32,18 @@ function resolveStyles<StylesNames extends string>(
   theme: MantineTheme
 ) {
   return typeof styles === 'function' ? styles(theme) : styles;
+}
+
+function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) {
+  if (style == null) {
+    return {};
+  }
+
+  const arrayStyle = Array.isArray(style) ? style : [style];
+  return arrayStyle.reduce(
+    (acc, val) => ({ ...acc, ...(typeof val === 'function' ? val(theme) : val) }),
+    {}
+  );
 }
 
 export type GetStylesApi<StylesNames extends string> = (
@@ -55,11 +68,7 @@ export function useStylesApi<StylesNames extends string>({
   const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];
   const resolvedStyles = resolveStyles(styles, theme);
-  const _resolvedStyle = Array.isArray(style) ? style : [style];
-  const resolvedStyle = _resolvedStyle.reduce(
-    (acc, val) => ({ ...acc, ...(typeof val === 'function' ? val(theme) : val) }),
-    {}
-  );
+  const resolvedStyle = resolveStyle(style, theme);
 
   return (selector: StylesNames, options?: GetPropsOptions) => {
     const themeClassNames = themeName
@@ -84,7 +93,8 @@ export function useStylesApi<StylesNames extends string>({
     const _style = {
       ...themeStyles,
       ...resolvedStyles?.[selector],
-      ...resolvedStyle,
+      ...(rootSelector === selector ? resolvedStyle : {}),
+      ...resolveStyle(options?.style, theme),
     } as CSSProperties;
 
     return { className: _className, style: _style };

@@ -50,6 +50,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     onKeyDown,
     disabled,
     color,
+    style,
     ...others
   } = useComponentDefaultProps('TabsTab', defaultProps, props);
 
@@ -65,7 +66,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...others}
-      {...ctx.getStyles('tab', { className })}
+      {...ctx.getStyles('tab', { className, style })}
       disabled={disabled}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}
@@ -98,3 +99,5 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     </UnstyledButton>
   );
 });
+
+TabsTab.displayName = '@mantine/core/TabsTab';

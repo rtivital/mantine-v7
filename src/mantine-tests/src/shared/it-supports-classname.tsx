@@ -14,6 +14,7 @@ export function itSupportsClassName<Props>(
     const { container } = render(
       <options.component {...options.props} className="test-class-name" />
     );
+
     expect(container.querySelector('.test-class-name')).toBeInTheDocument();
   });
 }
