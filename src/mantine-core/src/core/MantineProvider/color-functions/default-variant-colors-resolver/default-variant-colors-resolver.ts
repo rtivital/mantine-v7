@@ -9,15 +9,11 @@ export interface VariantColorsResolverInput {
   color: MantineColor | undefined;
   theme: MantineTheme;
   variant: string;
+  prefix: string;
   gradient?: MantineGradient;
 }
 
-export interface VariantColorResolverResult {
-  '--bg': string;
-  '--hover': string;
-  '--color': string;
-  '--bd': string;
-}
+export type VariantColorResolverResult = Record<`--${string}`, string>;
 
 export type VariantCarolsResolver = (
   input: VariantColorsResolverInput
@@ -28,35 +24,40 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
   theme,
   variant,
   gradient,
+  prefix,
 }) => {
   const parsed = parseThemeColor({ color, theme });
+  const bgVar = `--${prefix}-bg`;
+  const hoverVqr = `--${prefix}-hover`;
+  const colorVar = `--${prefix}-color`;
+  const bdVar = `--${prefix}-bd`;
 
   if (variant === 'filled') {
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': `var(--mantine-color-${color}-filled)`,
-          '--hover': `var(--mantine-color-${color}-filled-hover)`,
-          '--color': 'var(--mantine-color-white)',
-          '--bd': `${rem(1)} solid transparent`,
+          [bgVar]: `var(--mantine-color-${color}-filled)`,
+          [hoverVqr]: `var(--mantine-color-${color}-filled-hover)`,
+          [colorVar]: 'var(--mantine-color-white)',
+          [bdVar]: `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        '--bg': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        '--hover': `var(--mantine-color-${parsed.color}-${
+        [bgVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [hoverVqr]: `var(--mantine-color-${parsed.color}-${
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
-        '--color': 'var(--mantine-color-white)',
-        '--bd': `${rem(1)} solid transparent`,
+        [colorVar]: 'var(--mantine-color-white)',
+        [bdVar]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      '--bg': color!,
-      '--hover': darken(color!, 0.1),
-      '--color': 'var(--mantine-color-white)',
-      '--bd': `${rem(1)} solid transparent`,
+      [bgVar]: color!,
+      [hoverVqr]: darken(color!, 0.1),
+      [colorVar]: 'var(--mantine-color-white)',
+      [bdVar]: `${rem(1)} solid transparent`,
     };
   }
 
@@ -64,28 +65,28 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': `var(--mantine-color-${color}-light)`,
-          '--hover': `var(--mantine-color-${color}-light-hover)`,
-          '--color': `var(--mantine-color-${color}-light-color)`,
-          '--bd': `${rem(1)} solid transparent`,
+          [bgVar]: `var(--mantine-color-${color}-light)`,
+          [hoverVqr]: `var(--mantine-color-${color}-light-hover)`,
+          [colorVar]: `var(--mantine-color-${color}-light-color)`,
+          [bdVar]: `${rem(1)} solid transparent`,
         };
       }
 
       const parsedColor = theme.colors[parsed.color][parsed.shade];
 
       return {
-        '--bg': rgba(parsedColor, 0.1),
-        '--hover': rgba(parsedColor, 0.12),
-        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--bd': `${rem(1)} solid transparent`,
+        [bgVar]: rgba(parsedColor, 0.1),
+        [hoverVqr]: rgba(parsedColor, 0.12),
+        [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        [bdVar]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      '--bg': rgba(color!, 0.1),
-      '--hover': rgba(color!, 0.12),
-      '--color': color!,
-      '--bd': `${rem(1)} solid transparent`,
+      [bgVar]: rgba(color!, 0.1),
+      [hoverVqr]: rgba(color!, 0.12),
+      [colorVar]: color!,
+      [bdVar]: `${rem(1)} solid transparent`,
     };
   }
 
@@ -93,26 +94,26 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': 'transparent',
-          '--hover': `var(--mantine-color-${color}-outline-hover)`,
-          '--color': `var(--mantine-color-${color}-outline)`,
-          '--bd': `${rem(1)} solid var(--mantine-color-${color}-outline)`,
+          [bgVar]: 'transparent',
+          [hoverVqr]: `var(--mantine-color-${color}-outline-hover)`,
+          [colorVar]: `var(--mantine-color-${color}-outline)`,
+          [bdVar]: `${rem(1)} solid var(--mantine-color-${color}-outline)`,
         };
       }
 
       return {
-        '--bg': 'transparent',
-        '--hover': rgba(theme.colors[parsed.color][parsed.shade], 0.05),
-        '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        '--bd': `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [bgVar]: 'transparent',
+        [hoverVqr]: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
+        [colorVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [bdVar]: `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
       };
     }
 
     return {
-      '--bg': 'transparent',
-      '--hover': rgba(color!, 0.05),
-      '--color': color!,
-      '--bd': `${rem(1)} solid ${color}`,
+      [bgVar]: 'transparent',
+      [hoverVqr]: rgba(color!, 0.05),
+      [colorVar]: color!,
+      [bdVar]: `${rem(1)} solid ${color}`,
     };
   }
 
@@ -120,28 +121,28 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': 'transparent',
-          '--hover': `var(--mantine-color-${color}-light-hover)`,
-          '--color': `var(--mantine-color-${color}-light-color)`,
-          '--bd': `${rem(1)} solid transparent`,
+          [bgVar]: 'transparent',
+          [hoverVqr]: `var(--mantine-color-${color}-light-hover)`,
+          [colorVar]: `var(--mantine-color-${color}-light-color)`,
+          [bdVar]: `${rem(1)} solid transparent`,
         };
       }
 
       const parsedColor = theme.colors[parsed.color][parsed.shade];
 
       return {
-        '--bg': 'transparent',
-        '--hover': rgba(parsedColor, 0.12),
-        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--bd': `${rem(1)} solid transparent`,
+        [bgVar]: 'transparent',
+        [hoverVqr]: rgba(parsedColor, 0.12),
+        [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        [bdVar]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      '--bg': 'transparent',
-      '--hover': rgba(color!, 0.12),
-      '--color': color!,
-      '--bd': `${rem(1)} solid transparent`,
+      [bgVar]: 'transparent',
+      [hoverVqr]: rgba(color!, 0.12),
+      [colorVar]: color!,
+      [bdVar]: `${rem(1)} solid transparent`,
     };
   }
 
@@ -149,26 +150,26 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': 'transparent',
-          '--hover': 'transparent',
-          '--color': `var(--mantine-color-${color}-light-color)`,
-          '--bd': `${rem(1)} solid transparent`,
+          [bgVar]: 'transparent',
+          [hoverVqr]: 'transparent',
+          [colorVar]: `var(--mantine-color-${color}-light-color)`,
+          [bdVar]: `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        '--bg': 'transparent',
-        '--hover': 'transparent',
-        '--color': `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
-        '--bd': `${rem(1)} solid transparent`,
+        [bgVar]: 'transparent',
+        [hoverVqr]: 'transparent',
+        [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+        [bdVar]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      '--bg': 'transparent',
-      '--hover': 'transparent',
-      '--color': color!,
-      '--bd': `${rem(1)} solid transparent`,
+      [bgVar]: 'transparent',
+      [hoverVqr]: 'transparent',
+      [colorVar]: color!,
+      [bdVar]: `${rem(1)} solid transparent`,
     };
   }
 
@@ -176,44 +177,44 @@ export const defaultVariantColorsResolver: VariantCarolsResolver = ({
     if (parsed.isThemeColor) {
       if (parsed.shade === undefined) {
         return {
-          '--bg': 'var(--mantine-color-white)',
-          '--hover': darken(theme.white, 0.01),
-          '--color': `var(--mantine-color-${color}-filled)`,
-          '--bd': `${rem(1)} solid transparent`,
+          [bgVar]: 'var(--mantine-color-white)',
+          [hoverVqr]: darken(theme.white, 0.01),
+          [colorVar]: `var(--mantine-color-${color}-filled)`,
+          [bdVar]: `${rem(1)} solid transparent`,
         };
       }
 
       return {
-        '--bg': 'var(--mantine-color-white)',
-        '--hover': darken(theme.white, 0.01),
-        '--color': `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        '--bd': `${rem(1)} solid transparent`,
+        [bgVar]: 'var(--mantine-color-white)',
+        [hoverVqr]: darken(theme.white, 0.01),
+        [colorVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+        [bdVar]: `${rem(1)} solid transparent`,
       };
     }
 
     return {
-      '--bg': 'var(--mantine-color-white)',
-      '--hover': darken(theme.white, 0.01),
-      '--color': color!,
-      '--bd': `${rem(1)} solid transparent`,
+      [bgVar]: 'var(--mantine-color-white)',
+      [hoverVqr]: darken(theme.white, 0.01),
+      [colorVar]: color!,
+      [bdVar]: `${rem(1)} solid transparent`,
     };
   }
 
   if (variant === 'gradient') {
     return {
-      '--bg': getGradient(theme, gradient),
-      '--hover': getGradient(theme, gradient),
-      '--color': 'var(--mantine-color-white)',
-      '--bd': 'none',
+      [bgVar]: getGradient(theme, gradient),
+      [hoverVqr]: getGradient(theme, gradient),
+      [colorVar]: 'var(--mantine-color-white)',
+      [bdVar]: 'none',
     };
   }
 
   if (variant === 'default') {
     return {
-      '--bg': 'var(--mantine-color-default)',
-      '--hover': 'var(--mantine-color-default-hover)',
-      '--color': 'var(--mantine-color-default-color)',
-      '--bd': `${rem(1)} solid var(--mantine-color-default-border)`,
+      [bgVar]: 'var(--mantine-color-default)',
+      [hoverVqr]: 'var(--mantine-color-default-hover)',
+      [colorVar]: 'var(--mantine-color-default-color)',
+      [bdVar]: `${rem(1)} solid var(--mantine-color-default-border)`,
     };
   }
 

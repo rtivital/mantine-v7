@@ -13,7 +13,7 @@ import classes from './ActionIconGroup.module.css';
 
 export type ActionIconGroupStylesNames = 'root';
 export type ActionIconGroupVariant = string;
-export type ActionIconGroupCssVariables = '--border-width';
+export type ActionIconGroupCssVariables = '--ai-border-width';
 export interface ActionIconGroupStylesParams {
   borderWidth: number | string | undefined;
   orientation: 'horizontal' | 'vertical' | undefined;
@@ -83,7 +83,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
       {...getStyles('root')}
       ref={ref}
       data-orientation={orientation}
-      vars={{ '--border-width': rem(borderWidth), ..._vars }}
+      vars={{ '--ai-border-width': rem(borderWidth), ..._vars }}
       role="group"
       {...others}
     />

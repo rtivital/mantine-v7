@@ -30,12 +30,12 @@ export type ActionIconVariant =
 
 export type ActionIconStylesNames = 'root' | 'loader';
 export type ActionIconCssVariables =
-  | '--radius'
-  | '--size'
-  | '--bg'
-  | '--hover'
-  | '--color'
-  | '--bd';
+  | '--ai-radius'
+  | '--ai-size'
+  | '--ai-bg'
+  | '--ai-hover'
+  | '--ai-color'
+  | '--ai-bd';
 
 export interface ActionIconStylesParams {
   color: MantineColor | string | undefined;
@@ -143,6 +143,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     theme,
     gradient,
     variant: variant!,
+    prefix: 'ai',
   });
 
   return (
@@ -157,8 +158,8 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       disabled={disabled || loading}
       ref={ref}
       vars={{
-        '--size': getSize(size),
-        '--radius': getRadius(theme, radius),
+        '--ai-size': getSize(size, 'ai-size'),
+        '--ai-radius': getRadius(theme, radius),
         ...colorsVars,
         ..._vars,
       }}

@@ -1,9 +1,9 @@
 .root {
-  --size-xs: rem(18px);
-  --size-sm: rem(22px);
-  --size-md: rem(28px);
-  --size-lg: rem(34px);
-  --size-xl: rem(44px);
+  --ai-size-xs: rem(18px);
+  --ai-size-sm: rem(22px);
+  --ai-size-md: rem(28px);
+  --ai-size-lg: rem(34px);
+  --ai-size-xl: rem(44px);
 
   line-height: 1;
   display: inline-flex;
@@ -12,17 +12,17 @@
   position: relative;
   user-select: none;
 
-  width: var(--size);
-  height: var(--size);
-  min-width: var(--size);
-  min-height: var(--size);
-  border-radius: var(--radius);
-  background: var(--bg);
-  color: var(--color);
-  border: var(--bd);
+  width: var(--ai-size);
+  height: var(--ai-size);
+  min-width: var(--ai-size);
+  min-height: var(--ai-size);
+  border-radius: var(--ai-radius);
+  background: var(--ai-bg);
+  color: var(--ai-color);
+  border: var(--ai-bd);
 
   @mixin hover {
-    background: var(--hover);
+    background: var(--ai-hover);
 
     &[data-variant='gradient'] {
       background-position: center;
@@ -43,7 +43,7 @@
       content: '';
       position: absolute;
       inset: rem(-1px);
-      border-radius: var(--radius);
+      border-radius: var(--ai-radius);
 
       @mixin light {
         background-color: rgba(255, 255, 255, 0.35);
