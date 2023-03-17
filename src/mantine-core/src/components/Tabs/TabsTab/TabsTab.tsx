@@ -69,17 +69,19 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     onClick?.(event);
   };
 
+  const stylesApiProps = { classNames, styles };
+
   return (
     <UnstyledButton
       {...others}
-      {...ctx.getStyles('tab', { className, style, classNames, styles })}
+      {...ctx.getStyles('tab', { className, style, ...stylesApiProps })}
       disabled={disabled}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}
       data-variant={ctx.variant}
       data-orientation={ctx.orientation}
       data-inverted={ctx.inverted || undefined}
-      data-placement={ctx.placement}
+      data-placement={ctx.orientation === 'vertical' ? ctx.placement : undefined}
       data-disabled={disabled || undefined}
       ref={ref}
       role="tab"
@@ -99,9 +101,13 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
         onKeyDown,
       })}
     >
-      {leftSection && <span {...ctx.getStyles('tabLeftSection')}>{leftSection}</span>}
-      {children && <span {...ctx.getStyles('tabLabel')}>{children}</span>}
-      {rightSection && <span {...ctx.getStyles('tabRightSection')}>{rightSection}</span>}
+      {leftSection && (
+        <span {...ctx.getStyles('tabLeftSection', stylesApiProps)}>{leftSection}</span>
+      )}
+      {children && <span {...ctx.getStyles('tabLabel', stylesApiProps)}>{children}</span>}
+      {rightSection && (
+        <span {...ctx.getStyles('tabRightSection', stylesApiProps)}>{rightSection}</span>
+      )}
     </UnstyledButton>
   );
 });

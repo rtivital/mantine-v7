@@ -14,7 +14,12 @@ const base = (
         leftSection={<IconPackage size={16} />}
         rightSection={<IconPackage size={16} />}
         className="super-class"
-        style={{ color: 'blue' }}
+        styles={{
+          tab: { color: 'cyan' },
+          tabLabel: { color: 'red' },
+          tabLeftSection: { color: 'blue' },
+          tabRightSection: { color: 'green' },
+        }}
       >
         React
       </Tabs.Tab>
