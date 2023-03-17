@@ -186,7 +186,6 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
       <Box
         ref={ref}
         id={uid}
-        data-tabs
         data-variant={variant}
         data-orientation={orientation}
         data-placement={placement}
