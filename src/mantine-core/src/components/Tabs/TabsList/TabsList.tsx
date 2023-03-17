@@ -1,10 +1,20 @@
 import React from 'react';
-import { Box, BoxProps, useComponentDefaultProps, factory, ElementProps } from '../../../core';
+import {
+  Box,
+  BoxProps,
+  useComponentDefaultProps,
+  factory,
+  ElementProps,
+  StylesApiProps,
+} from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsListStylesNames = 'list';
 
-export interface TabsListProps extends BoxProps, ElementProps<'div'> {
+export interface TabsListProps
+  extends BoxProps,
+    StylesApiProps<TabsListStylesNames>,
+    ElementProps<'div'> {
   /** <Tabs.Tab /> components */
   children: React.ReactNode;
 
@@ -21,29 +31,23 @@ export interface TabsListFactory {
   stylesNames: TabsListStylesNames;
 }
 
-const defaultProps: Partial<TabsListProps> = {
-  grow: false,
-  position: 'left',
-};
+const defaultProps: Partial<TabsListProps> = {};
 
 export const TabsList = factory<TabsListFactory>((props, ref) => {
-  const { children, className, grow, position, ...others } = useComponentDefaultProps(
-    'TabsList',
-    defaultProps,
-    props
-  );
+  const { children, className, grow, position, classNames, styles, style, ...others } =
+    useComponentDefaultProps('TabsList', defaultProps, props);
 
   const ctx = useTabsContext();
 
   return (
     <Box
       {...others}
-      {...ctx.getStyles('list', { className })}
+      {...ctx.getStyles('list', { className, style, classNames, styles })}
       ref={ref}
       role="tablist"
       aria-orientation={ctx.orientation}
       data-orientation={ctx.orientation}
-      data-placement={ctx.placement}
+      data-placement={ctx.orientation === 'vertical' ? ctx.placement : undefined}
       data-position={position}
       data-inverted={ctx.inverted || undefined}
       data-variant={ctx.variant}
@@ -53,3 +57,5 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
     </Box>
   );
 });
+
+TabsList.displayName = '@mantine/core/TabsList';
