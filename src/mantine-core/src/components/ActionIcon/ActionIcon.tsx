@@ -138,14 +138,6 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     unstyled,
   });
 
-  const colorsVars = theme.variantColorResolver({
-    color: color || theme.primaryColor,
-    theme,
-    gradient,
-    variant: variant!,
-    prefix: 'ai',
-  });
-
   return (
     <UnstyledButton
       {...getStyles('root', { active: !disabled && !loading })}
@@ -160,17 +152,18 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       vars={{
         '--ai-size': getSize(size, 'ai-size'),
         '--ai-radius': getRadius(theme, radius),
-        ...colorsVars,
+        ...theme.variantColorResolver({
+          color: color || theme.primaryColor,
+          theme,
+          gradient,
+          variant: variant!,
+          prefix: 'ai',
+        }),
         ..._vars,
       }}
     >
       {loading ? (
-        <Loader
-          {...getStyles('loader')}
-          color={colorsVars['--color']}
-          size="70%"
-          {...loaderProps}
-        />
+        <Loader {...getStyles('loader')} color="var(--ai-color)" size="70%" {...loaderProps} />
       ) : (
         children
       )}

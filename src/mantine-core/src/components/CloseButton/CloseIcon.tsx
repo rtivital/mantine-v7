@@ -6,7 +6,7 @@ export interface CloseIconProps extends React.ComponentPropsWithoutRef<'svg'> {
 }
 
 export const CloseIcon = forwardRef<SVGSVGElement, CloseIconProps>(
-  ({ size = 'var(--icon-size)', style, ...others }, ref) => (
+  ({ size = 'var(--cb-icon-size)', style, ...others }, ref) => (
     <svg
       viewBox="0 0 15 15"
       fill="none"

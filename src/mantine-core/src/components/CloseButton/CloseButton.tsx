@@ -54,7 +54,7 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>((props, ref) =
     <ActionIcon
       ref={ref}
       {...others}
-      vars={{ '--icon-size': rem(iconsSize), ...vars }}
+      vars={{ '--cb-icon-size': rem(iconsSize), ...vars }}
       __staticSelector="CloseButton"
     >
       {children || <CloseIcon />}
