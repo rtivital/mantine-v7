@@ -20,11 +20,13 @@ export interface UseStylesApiInput<StylesNames extends string> {
   styles?: Styles<StylesNames>;
 }
 
-export interface GetPropsOptions {
+export interface GetPropsOptions<StylesNames extends string> {
   className?: string;
   style?: MantineStyleProp;
   focusable?: boolean;
   active?: boolean;
+  classNames?: Partial<Record<StylesNames, string>>;
+  styles?: Styles<StylesNames>;
 }
 
 function resolveStyles<StylesNames extends string>(
@@ -48,7 +50,7 @@ function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) 
 
 export type GetStylesApi<StylesNames extends string> = (
   selector: StylesNames,
-  options?: GetPropsOptions
+  options?: GetPropsOptions<StylesNames>
 ) => {
   className: string;
   style: CSSProperties;
@@ -70,7 +72,7 @@ export function useStylesApi<StylesNames extends string>({
   const resolvedStyles = resolveStyles(styles, theme);
   const resolvedStyle = resolveStyle(style, theme);
 
-  return (selector: StylesNames, options?: GetPropsOptions) => {
+  return (selector: StylesNames, options?: GetPropsOptions<StylesNames>) => {
     const themeClassNames = themeName
       .filter((n) => n)
       .map((n) => theme.components?.[n]?.classNames?.[selector]);
@@ -80,6 +82,7 @@ export function useStylesApi<StylesNames extends string>({
       options?.active && !unstyled && STATIC_CLASSES.active,
       themeClassNames,
       classNames?.[selector],
+      options?.classNames?.[selector],
       className && { [className]: rootSelector === selector },
       { [classes[selector]]: !unstyled },
       options?.className,
@@ -90,9 +93,12 @@ export function useStylesApi<StylesNames extends string>({
       .map((n) => resolveStyles(theme.components?.[n]?.styles, theme)?.[selector])
       .reduce((acc, val) => ({ ...acc, ...val }), {});
 
+    const componentStyles = resolveStyles(options?.styles, theme);
+
     const _style = {
       ...themeStyles,
       ...resolvedStyles?.[selector],
+      ...componentStyles?.[selector],
       ...(rootSelector === selector ? resolvedStyle : {}),
       ...resolveStyle(options?.style, theme),
     } as CSSProperties;

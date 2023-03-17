@@ -8,13 +8,17 @@ import {
   useDirection,
   useMantineTheme,
   getThemeColor,
+  StylesApiProps,
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsTabStylesNames = 'tab' | 'tabRightSection' | 'tabLeftSection' | 'tabLabel';
 
-export interface TabsTabProps extends UnstyledButtonProps, ElementProps<'button'> {
+export interface TabsTabProps
+  extends Omit<UnstyledButtonProps, 'classNames' | 'styles'>,
+    StylesApiProps<TabsTabStylesNames>,
+    ElementProps<'button'> {
   /** Value that is used to connect Tab with associated panel */
   value: string;
 
@@ -51,6 +55,8 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     disabled,
     color,
     style,
+    classNames,
+    styles,
     ...others
   } = useComponentDefaultProps('TabsTab', defaultProps, props);
 
@@ -66,7 +72,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...others}
-      {...ctx.getStyles('tab', { className, style })}
+      {...ctx.getStyles('tab', { className, style, classNames, styles })}
       disabled={disabled}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}

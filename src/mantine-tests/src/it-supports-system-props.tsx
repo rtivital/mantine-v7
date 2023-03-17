@@ -27,6 +27,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   refType?: any;
   refProp?: string;
   providerName?: string | null;
+  stylesApiName?: string;
   stylesApiSelectors?: StylesApiSelectors[];
 }
 
@@ -39,6 +40,7 @@ export function itSupportsSystemProps<
     ? splittedDisplayName[splittedDisplayName.length - 1]
     : undefined;
   const providerName = options.providerName || predictedProviderName;
+  const stylesApiName = options.stylesApiName || providerName;
 
   itSupportsClassName(options);
   itSupportsStyle(options);
@@ -60,11 +62,11 @@ export function itSupportsSystemProps<
     itSupportsPositionProps(options);
   }
 
-  if (Array.isArray(options.stylesApiSelectors) && providerName) {
+  if (Array.isArray(options.stylesApiSelectors) && stylesApiName) {
     itSupportsStylesApi<Props, StylesApiSelectors>({
       ...options,
       selectors: options.stylesApiSelectors,
-      providerName,
+      providerName: stylesApiName,
     });
   }
 

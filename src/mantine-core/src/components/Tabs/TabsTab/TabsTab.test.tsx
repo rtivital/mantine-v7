@@ -2,12 +2,14 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import { tests, createContextContainer, render } from '@mantine/tests';
-import { TabsTab, TabsTabProps } from './TabsTab';
+import { TabsTab, TabsTabProps, TabsTabStylesNames } from './TabsTab';
 import { Tabs } from '../Tabs';
 
 const defaultProps: TabsTabProps = {
   value: 'test',
   children: 'Test tab',
+  rightSection: 'r',
+  leftSection: 'l',
 };
 
 const TestContainer = createContextContainer(TabsTab, Tabs);
@@ -25,7 +27,7 @@ describe('@mantine/core/TabsTab', () => {
     error: 'Tabs component was not found in the tree',
   });
 
-  tests.itSupportsSystemProps({
+  tests.itSupportsSystemProps<TabsTabProps, TabsTabStylesNames>({
     component: TestContainer,
     props: defaultProps,
     refType: HTMLButtonElement,
@@ -34,7 +36,8 @@ describe('@mantine/core/TabsTab', () => {
     styleProps: true,
     children: true,
     selector: '[role="tab"]',
-    // stylesApiSelectors: ['root', 'icon', 'label', 'rightSection'],
+    stylesApiName: 'Tabs',
+    stylesApiSelectors: ['tab'],
   });
 
   it('calls onClick function from props', async () => {
