@@ -3,7 +3,7 @@ import type { FactoryPayload } from '@mantine/core';
 
 export interface Modifier<StylesNames extends string> {
   modifier: string;
-  selector: StylesNames;
+  selector: StylesNames | StylesNames[];
   condition?: string;
   value?: string;
 }
