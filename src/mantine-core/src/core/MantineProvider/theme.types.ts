@@ -104,6 +104,16 @@ export interface MantineTheme {
   /** Controls gradient that will be used by components that support `variant="gradient"` */
   defaultGradient: MantineGradient;
 
+  /** Class added to elements that have active styles, for example, `Button` and `ActionIcon` */
+  activeClassName: string;
+
+  /** Class added to elements that have focus styles based on `theme.focusRing`, for example, `Button` and `ActionIcon` */
+  focusClassNames: {
+    auto: string;
+    always: string;
+    never: string;
+  };
+
   /** Allows to add `classNames`, `styles` and `defaultProps` to any component */
   components: MantineThemeComponents;
 

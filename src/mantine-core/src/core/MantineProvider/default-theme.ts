@@ -24,6 +24,12 @@ export const DEFAULT_THEME: MantineTheme = {
   cursorType: 'default',
   defaultGradient: { from: 'blue', to: 'cyan', deg: 45 },
   defaultRadius: 'sm',
+  activeClassName: 'mantine-active',
+  focusClassNames: {
+    auto: 'mantine-focus-auto',
+    always: 'mantine-focus-always',
+    never: 'mantine-focus-never',
+  },
 
   headings: {
     fontFamily: DEFAULT_FONT_FAMILY,

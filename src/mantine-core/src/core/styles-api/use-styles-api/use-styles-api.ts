@@ -3,7 +3,6 @@ import cx from 'clsx';
 import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
 import { StylesRecord } from '../styles-api.types';
-import { STATIC_CLASSES } from '../static-classes';
 
 type Styles<StylesNames extends string> =
   | StylesRecord<StylesNames, CSSProperties>
@@ -78,8 +77,8 @@ export function useStylesApi<StylesNames extends string>({
       .map((n) => theme.components?.[n]?.classNames?.[selector]);
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     const _className = cx(
-      options?.focusable && !unstyled && STATIC_CLASSES.focus[theme.focusRing],
-      options?.active && !unstyled && STATIC_CLASSES.active,
+      options?.focusable && !unstyled && theme.focusClassNames[theme.focusRing],
+      options?.active && !unstyled && theme.activeClassName,
       themeClassNames,
       classNames?.[selector],
       options?.classNames?.[selector],
