@@ -130,9 +130,9 @@ export function Variables() {
         vars={(params) => {
           const result: Partial<Record<ActionIconCssVariables, string>> = {};
           if (params.size === 'xl') {
-            result['--size'] = '12rem';
-            result['--bg'] = 'pink';
-            result['--hover'] = 'orange';
+            result['--ai-size'] = '12rem';
+            result['--ai-bg'] = 'pink';
+            result['--ai-hover'] = 'orange';
           }
 
           return result;

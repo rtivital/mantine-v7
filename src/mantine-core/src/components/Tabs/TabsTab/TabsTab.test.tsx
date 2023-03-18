@@ -66,9 +66,7 @@ describe('@mantine/core/TabsTab', () => {
     const ActiveContainer = createContextContainer(TabsTab, Tabs, { value: 'test' });
     const InactiveContainer = createContextContainer(TabsTab, Tabs, { value: 'test2' });
 
-    const { rerender } = render(<ActiveContainer {...defaultProps} value="test" />, {
-      value: 'test',
-    });
+    const { rerender } = render(<ActiveContainer {...defaultProps} value="test" />);
     expect(screen.getByRole('tab')).toHaveAttribute('data-active', 'true');
 
     rerender(<InactiveContainer {...defaultProps} value="test" />);
