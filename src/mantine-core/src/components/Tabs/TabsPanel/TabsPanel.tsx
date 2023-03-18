@@ -1,10 +1,20 @@
 import React from 'react';
-import { Box, BoxProps, useComponentDefaultProps, factory, ElementProps } from '../../../core';
+import {
+  Box,
+  BoxProps,
+  useComponentDefaultProps,
+  factory,
+  ElementProps,
+  StylesApiProps,
+} from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsPanelStylesNames = 'panel';
 
-export interface TabsPanelProps extends BoxProps, ElementProps<'div'> {
+export interface TabsPanelProps
+  extends BoxProps,
+    StylesApiProps<TabsPanelStylesNames>,
+    ElementProps<'div'> {
   /** Panel content */
   children: React.ReactNode;
 
@@ -21,11 +31,8 @@ export interface TabsPanelFactory {
 const defaultProps: Partial<TabsPanelProps> = {};
 
 export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
-  const { children, className, value, ...others } = useComponentDefaultProps(
-    'TabsPanel',
-    defaultProps,
-    props
-  );
+  const { children, className, value, classNames, styles, style, ...others } =
+    useComponentDefaultProps('TabsPanel', defaultProps, props);
 
   const ctx = useTabsContext();
 
@@ -35,7 +42,7 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('panel', { className })}
+      {...ctx.getStyles('panel', { className, classNames, styles, style })}
       ref={ref}
       data-hidden={!active || undefined}
       data-orientation={ctx.orientation}
@@ -47,3 +54,5 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
     </Box>
   );
 });
+
+TabsPanel.displayName = '@mantine/core/TabsPanel';
