@@ -50,6 +50,68 @@ function rgbStringToRgba(color: string): RGBA {
   return { r, g, b, a: a || 1 };
 }
 
+function hslStringToRgba(hslaString: string): RGBA {
+  const hslaRegex =
+    /^hsla?\(\s*(\d+)\s*,\s*(\d+%)\s*,\s*(\d+%)\s*(,\s*(0?\.\d+|\d+(\.\d+)?))?\s*\)$/i;
+
+  const matches = hslaString.match(hslaRegex);
+  if (!matches) {
+    return {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 1,
+    };
+  }
+
+  const h = parseInt(matches[1], 10);
+  const s = parseInt(matches[2], 10) / 100;
+  const l = parseInt(matches[3], 10) / 100;
+  const a = matches[5] ? parseFloat(matches[5]) : undefined;
+
+  const chroma = (1 - Math.abs(2 * l - 1)) * s;
+  const huePrime = h / 60;
+  const x = chroma * (1 - Math.abs((huePrime % 2) - 1));
+  const m = l - chroma / 2;
+
+  let r: number;
+  let g: number;
+  let b: number;
+
+  if (huePrime >= 0 && huePrime < 1) {
+    r = chroma;
+    g = x;
+    b = 0;
+  } else if (huePrime >= 1 && huePrime < 2) {
+    r = x;
+    g = chroma;
+    b = 0;
+  } else if (huePrime >= 2 && huePrime < 3) {
+    r = 0;
+    g = chroma;
+    b = x;
+  } else if (huePrime >= 3 && huePrime < 4) {
+    r = 0;
+    g = x;
+    b = chroma;
+  } else if (huePrime >= 4 && huePrime < 5) {
+    r = x;
+    g = 0;
+    b = chroma;
+  } else {
+    r = chroma;
+    g = 0;
+    b = x;
+  }
+
+  return {
+    r: Math.round((r + m) * 255),
+    g: Math.round((g + m) * 255),
+    b: Math.round((b + m) * 255),
+    a: a || 1,
+  };
+}
+
 export function toRgba(color: string): RGBA {
   if (isHexColor(color)) {
     return hexToRgba(color);
@@ -57,6 +119,10 @@ export function toRgba(color: string): RGBA {
 
   if (color.startsWith('rgb')) {
     return rgbStringToRgba(color);
+  }
+
+  if (color.startsWith('hsl')) {
+    return hslStringToRgba(color);
   }
 
   return {

@@ -21,4 +21,11 @@ describe('@mantine/core/to-rgba', () => {
     expect(toRgba('rgb(214, 51, 108, 1)')).toStrictEqual({ r: 214, g: 51, b: 108, a: 1 });
     expect(toRgba('rgb(112, 72, 232, .2)')).toStrictEqual({ r: 112, g: 72, b: 232, a: 0.2 });
   });
+
+  it('returns the correct rgba values when given an hsl string', () => {
+    expect(toRgba('hsl(0, 0%, 0%)')).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 });
+    expect(toRgba('hsl(120, 100%, 50%)')).toStrictEqual({ r: 0, g: 255, b: 0, a: 1 });
+    expect(toRgba('hsla(240, 100%, 50%, 0.5)')).toStrictEqual({ r: 0, g: 0, b: 255, a: 0.5 });
+    expect(toRgba('hsla(300, 50%, 25%, 0.75)')).toStrictEqual({ r: 96, g: 32, b: 96, a: 0.75 });
+  });
 });
