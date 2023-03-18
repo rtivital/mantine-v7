@@ -1,6 +1,10 @@
 import { toRgba } from '../to-rgba/to-rgba';
 
 export function lighten(color: string, alpha: number) {
+  if (color.startsWith('var(')) {
+    return color;
+  }
+
   const { r, g, b, a } = toRgba(color);
 
   const light = (input: number) => Math.round(input + (255 - input) * alpha);
