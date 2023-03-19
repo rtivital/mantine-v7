@@ -8,7 +8,7 @@ import {
   useComponentDefaultProps,
   FactoryPayload,
 } from '../../core';
-import { useTableContext } from './Table.context';
+import { useTableContext, TableContextValue } from './Table.context';
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
@@ -64,8 +64,42 @@ export interface TableCaptionFactory {
   stylesNames: 'caption';
 }
 
+interface TableElementOptions {
+  columnBorder?: true;
+  rowBorder?: true;
+  striped?: true;
+  highlightOnHover?: true;
+}
+
+function getDataAttributes(ctx: TableContextValue, options?: TableElementOptions) {
+  if (!options) {
+    return undefined;
+  }
+
+  const data: Record<string, boolean | string> = {};
+
+  if (options.columnBorder && ctx.withColumnBorders) {
+    data['data-with-column-border'] = true;
+  }
+
+  if (options.rowBorder && ctx.withRowBorders) {
+    data['data-with-row-border'] = true;
+  }
+
+  if (options.striped && ctx.striped) {
+    data['data-striped'] = true;
+  }
+
+  if (options.highlightOnHover && ctx.highlightOnHover) {
+    data['data-hover'] = true;
+  }
+
+  return data;
+}
+
 export function tableElement<Factory extends FactoryPayload>(
-  element: 'th' | 'td' | 'tr' | 'thead' | 'tbody' | 'tfoot' | 'caption'
+  element: 'th' | 'td' | 'tr' | 'thead' | 'tbody' | 'tfoot' | 'caption',
+  options?: TableElementOptions
 ) {
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = factory<Factory>((props, ref) => {
@@ -81,6 +115,7 @@ export function tableElement<Factory extends FactoryPayload>(
       <Box
         component={element}
         ref={ref}
+        {...getDataAttributes(ctx, options)}
         {...ctx.getStyles(element, { className, classNames, style, styles })}
         {...others}
       />
@@ -91,9 +126,13 @@ export function tableElement<Factory extends FactoryPayload>(
   return Component;
 }
 
-export const TableTh = tableElement<TableThFactory>('th');
-export const TableTd = tableElement<TableTdFactory>('td');
-export const TableTr = tableElement<TableTrFactory>('tr');
+export const TableTh = tableElement<TableThFactory>('th', { columnBorder: true });
+export const TableTd = tableElement<TableTdFactory>('td', { columnBorder: true });
+export const TableTr = tableElement<TableTrFactory>('tr', {
+  rowBorder: true,
+  striped: true,
+  highlightOnHover: true,
+});
 export const TableThead = tableElement<TableTheadFactory>('thead');
 export const TableTbody = tableElement<TableTbodyFactory>('tbody');
 export const TableTfoot = tableElement<TableTfootFactory>('tfoot');

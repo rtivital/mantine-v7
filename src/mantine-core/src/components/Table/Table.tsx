@@ -124,6 +124,9 @@ export const Table = factory<TableFactory>((props, ref) => {
     highlightOnHoverColor,
     striped,
     highlightOnHover,
+    withColumnBorders,
+    withRowBorders,
+    withTableBorder,
     ...others
   } = useComponentDefaultProps('Table', defaultProps, props);
 
@@ -148,10 +151,19 @@ export const Table = factory<TableFactory>((props, ref) => {
   });
 
   return (
-    <TableProvider value={{ getStyles }}>
+    <TableProvider
+      value={{
+        getStyles,
+        striped: striped === true ? 'odd' : striped || undefined,
+        highlightOnHover,
+        withColumnBorders,
+        withRowBorders,
+      }}
+    >
       <Box
         component="table"
         ref={ref}
+        data-with-table-border={withTableBorder || undefined}
         vars={{
           '--table-caption-side': captionSide,
           '--table-horizontal-spacing': getSpacing(horizontalSpacing),
