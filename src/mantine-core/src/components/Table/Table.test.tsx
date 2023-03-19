@@ -2,6 +2,15 @@ import React from 'react';
 import { render, tests } from '@mantine/tests';
 import { screen } from '@testing-library/react';
 import { Table, TableProps, TableStylesNames } from './Table';
+import {
+  TableCaption,
+  TableTbody,
+  TableTd,
+  TableTfoot,
+  TableTh,
+  TableTr,
+  TableThead,
+} from './Table.components';
 
 const defaultProps: TableProps = {
   children: (
@@ -55,5 +64,15 @@ describe('@mantine/core/Table', () => {
   it('sets data-with-table-border attribute when withTableBorder prop is set', () => {
     render(<Table withTableBorder />);
     expect(screen.getByRole('table')).toHaveAttribute('data-with-table-border');
+  });
+
+  it('exposes Table.Caption, Table.Tbody, Table.Td, Table.Tfoot, Table.Th, Table.Tr, Table.Thead components', () => {
+    expect(Table.Caption).toBe(TableCaption);
+    expect(Table.Tbody).toBe(TableTbody);
+    expect(Table.Td).toBe(TableTd);
+    expect(Table.Tfoot).toBe(TableTfoot);
+    expect(Table.Th).toBe(TableTh);
+    expect(Table.Tr).toBe(TableTr);
+    expect(Table.Thead).toBe(TableThead);
   });
 });
