@@ -41,7 +41,7 @@ export function Usage() {
 export function FixedLayout() {
   return (
     <div style={{ padding: 40 }}>
-      <Table fixed>
+      <Table layout="fixed">
         <Table.Thead>
           <Table.Tr>
             <Table.Th w={200}>Element position</Table.Th>

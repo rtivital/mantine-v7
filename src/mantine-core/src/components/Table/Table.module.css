@@ -3,6 +3,7 @@
   border-collapse: collapse;
   line-height: var(--mantine-line-height);
   font-size: var(--mantine-font-size-sm);
+  table-layout: var(--mantine-table-layout, auto);
 
   @mixin light {
     --m__border-color: var(--table-border-color, var(--mantine-color-gray-3));
@@ -14,10 +15,6 @@
 
   &[data-with-table-border] {
     border: rem(1px) solid var(--m__border-color);
-  }
-
-  &[data-fixed] {
-    table-layout: fixed;
   }
 }
 

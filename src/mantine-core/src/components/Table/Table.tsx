@@ -38,6 +38,7 @@ export type TableStylesNames =
 
 export type TableVariant = string;
 export type TableCssVariables =
+  | '--table-layout'
   | '--table-caption-side'
   | '--table-horizontal-spacing'
   | '--table-vertical-spacing'
@@ -51,14 +52,15 @@ export interface TableStylesParams {
   verticalSpacing: MantineSpacing | number | string | undefined;
   stripedColor: MantineColor | string | undefined;
   highlightOnHoverColor: MantineColor | string | undefined;
+  layout: React.CSSProperties['tableLayout'] | undefined;
 }
 
 export interface TableProps
   extends BoxProps,
     StylesApiProps<TableStylesNames, TableVariant, TableCssVariables>,
     ElementProps<'table'> {
-  /** Determines whether the table should have `table-layout: fixed;` styles, `false` by default */
-  fixed?: boolean;
+  /** Value of `table-layout` style, `unset` by default */
+  layout?: React.CSSProperties['tableLayout'];
 
   /** Determines on which side `Table.Caption` is displayed, `bottom` by default */
   captionSide?: 'top' | 'bottom';
@@ -137,13 +139,14 @@ export const Table = factory<TableFactory>((props, ref) => {
     withRowBorders,
     withTableBorder,
     borderColor,
-    fixed,
+    layout,
     ...others
   } = useComponentDefaultProps('Table', defaultProps, props);
 
   const theme = useMantineTheme();
 
   const _vars = useComponentVars<TableStylesParams>('Table', vars, {
+    layout,
     borderColor,
     captionSide,
     horizontalSpacing,
@@ -177,8 +180,8 @@ export const Table = factory<TableFactory>((props, ref) => {
         component="table"
         ref={ref}
         data-with-table-border={withTableBorder || undefined}
-        data-fixed={fixed || undefined}
         vars={{
+          '--table-layout': layout,
           '--table-caption-side': captionSide,
           '--table-horizontal-spacing': getSpacing(horizontalSpacing),
           '--table-vertical-spacing': getSpacing(verticalSpacing),
