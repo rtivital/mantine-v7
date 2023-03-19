@@ -13,7 +13,7 @@ describe('@mantine/core/Table', () => {
     extend: true,
     refType: HTMLTableElement,
     displayName: '@mantine/core/Table',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['table'],
   });
 
   it('renders children', () => {

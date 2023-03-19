@@ -27,7 +27,7 @@ import { TableProvider } from './Table.context';
 import classes from './Table.module.css';
 
 export type TableStylesNames =
-  | 'root'
+  | 'table'
   | 'thead'
   | 'tbody'
   | 'tfoot'
@@ -45,6 +45,7 @@ export type TableCssVariables =
   | '--table-highlight-on-hover-color';
 
 export interface TableStylesParams {
+  borderColor: MantineColor | string | undefined;
   captionSide: 'top' | 'bottom' | undefined;
   horizontalSpacing: MantineSpacing | number | string | undefined;
   verticalSpacing: MantineSpacing | number | string | undefined;
@@ -58,6 +59,9 @@ export interface TableProps
     ElementProps<'table'> {
   /** Determines on which side `Table.Caption` is displayed, `bottom` by default */
   captionSide?: 'top' | 'bottom';
+
+  /** Color of border, key of `theme.colors` or any valid CSS color, by default inferred from current color scheme */
+  borderColor?: MantineColor | string;
 
   /** Determines whether the table should have outer border, `false` by default */
   withTableBorder?: boolean;
@@ -127,12 +131,14 @@ export const Table = factory<TableFactory>((props, ref) => {
     withColumnBorders,
     withRowBorders,
     withTableBorder,
+    borderColor,
     ...others
   } = useComponentDefaultProps('Table', defaultProps, props);
 
   const theme = useMantineTheme();
 
   const _vars = useComponentVars<TableStylesParams>('Table', vars, {
+    borderColor,
     captionSide,
     horizontalSpacing,
     verticalSpacing,
@@ -140,7 +146,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     highlightOnHoverColor,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStylesApi<TableStylesNames>({
     name: 'Table',
     className,
     style,
@@ -148,6 +154,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'table',
   });
 
   return (
@@ -168,6 +175,7 @@ export const Table = factory<TableFactory>((props, ref) => {
           '--table-caption-side': captionSide,
           '--table-horizontal-spacing': getSpacing(horizontalSpacing),
           '--table-vertical-spacing': getSpacing(verticalSpacing),
+          '--table-border-color': borderColor ? getThemeColor(borderColor, theme) : undefined,
           '--table-striped-color':
             striped && stripedColor ? getThemeColor(stripedColor, theme) : undefined,
           '--table-highlight-on-hover-color':
@@ -176,7 +184,7 @@ export const Table = factory<TableFactory>((props, ref) => {
               : undefined,
           ..._vars,
         }}
-        {...getStyles('root')}
+        {...getStyles('table')}
         {...others}
       />
     </TableProvider>

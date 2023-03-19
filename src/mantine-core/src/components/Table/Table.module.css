@@ -1,2 +1,10 @@
 .table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: var(--mantine-line-height);
+  font-size: var(--mantine-font-size-sm);
+}
+
+.th {
+  text-align: left;
 }
