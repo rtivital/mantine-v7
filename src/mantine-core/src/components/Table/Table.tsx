@@ -8,9 +8,28 @@ import {
   useComponentDefaultProps,
   useStylesApi,
 } from '../../core';
+import {
+  TableCaption,
+  TableTbody,
+  TableTd,
+  TableTfoot,
+  TableTh,
+  TableTr,
+  TableThead,
+} from './Table.components';
+import { TableProvider } from './Table.context';
 import classes from './Table.module.css';
 
-export type TableStylesNames = 'root';
+export type TableStylesNames =
+  | 'root'
+  | 'thead'
+  | 'tbody'
+  | 'tfoot'
+  | 'tr'
+  | 'th'
+  | 'td'
+  | 'caption';
+
 export type TableVariant = string;
 export type TableCssVariables = '--test';
 
@@ -27,6 +46,15 @@ export interface TableFactory {
   stylesNames: TableStylesNames;
   vars: TableCssVariables;
   stylesParams: TableStylesParams;
+  staticComponents: {
+    Thead: typeof TableThead;
+    Tbody: typeof TableTbody;
+    Tfoot: typeof TableTfoot;
+    Td: typeof TableTd;
+    Th: typeof TableTh;
+    Tr: typeof TableTr;
+    Caption: typeof TableCaption;
+  };
 }
 
 const defaultProps: Partial<TableProps> = {};
@@ -48,7 +76,18 @@ export const Table = factory<TableFactory>((props, ref) => {
     unstyled,
   });
 
-  return <Box component="table" ref={ref} {...getStyles('root')} {...others} />;
+  return (
+    <TableProvider value={{ getStyles }}>
+      <Box component="table" ref={ref} {...getStyles('root')} {...others} />
+    </TableProvider>
+  );
 });
 
 Table.displayName = '@mantine/core/Table';
+Table.Td = TableTd;
+Table.Th = TableTh;
+Table.Tr = TableTr;
+Table.Thead = TableThead;
+Table.Tbody = TableTbody;
+Table.Tfoot = TableTfoot;
+Table.Caption = TableCaption;
