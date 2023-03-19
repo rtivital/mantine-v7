@@ -111,6 +111,8 @@ export interface TableFactory {
 const defaultProps: Partial<TableProps> = {
   captionSide: 'bottom',
   withRowBorders: true,
+  verticalSpacing: 7,
+  horizontalSpacing: 'xs',
 };
 
 export const Table = factory<TableFactory>((props, ref) => {

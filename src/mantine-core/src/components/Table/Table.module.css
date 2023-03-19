@@ -22,13 +22,24 @@
 }
 
 .tr {
-  &[data-with-row-border]:not(:last-of-type) {
+  &[data-with-row-border] {
     border-bottom: rem(1px) solid var(--m__border-color);
   }
 }
 
-.td {
+.td,
+.th {
+  padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
+
   &[data-with-column-border]:not(:last-of-type) {
     border-right: rem(1px) solid var(--m__border-color);
+  }
+}
+
+.tbody {
+  & > .tr:last-of-type {
+    &[data-with-row-border] {
+      border-bottom: 0;
+    }
   }
 }
