@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import cx from 'clsx';
-import { useMantineTheme, useMantineColorScheme } from '../MantineProvider';
+import { useMantineTheme } from '../MantineProvider';
 import { InlineStyles } from '../InlineStyles';
 import { createPolymorphicComponent } from '../factory';
 import type { MantineStyleProp, CssVarsProp } from './Box.types';
@@ -35,13 +35,11 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
   ({ component, style, vars, className, ...others }, ref) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
-    const { colorScheme } = useMantineColorScheme();
     const { styleProps, rest } = extractStyleProps(others);
     const responsiveClassName = useRandomClassName();
     const parsedStyleProps = parseStyleProps({
       styleProps,
       theme,
-      colorScheme,
       data: STYlE_PROPS_DATA,
     });
 

@@ -33,6 +33,7 @@ export function Usage() {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
+        <Table.Caption>Test caption</Table.Caption>
       </Table>
     </div>
   );

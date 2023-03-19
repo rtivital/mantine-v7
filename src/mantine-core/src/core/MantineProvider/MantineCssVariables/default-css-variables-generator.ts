@@ -40,6 +40,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
         darkPrimaryShade === 9 ? theme.colors[color][8] : theme.colors[color][darkPrimaryShade + 1];
 
       acc.light = `${acc.light}
+      --mantine-color-dimmed: var(--mantine-color-gray-6);
       --mantine-color-${color}-filled: ${theme.colors[color][lightPrimaryShade]};
       --mantine-color-${color}-filled-hover: ${lightFilledHover};
       --mantine-color-${color}-light: ${rgba(theme.colors[color][lightPrimaryShade], 0.1)};
@@ -50,6 +51,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
       `;
 
       acc.dark = `${acc.dark}
+      --mantine-color-dimmed: var(--mantine-color-dark-2);
       --mantine-color-${color}-filled: ${theme.colors[color][darkPrimaryShade]};
       --mantine-color-${color}-filled-hover: ${darkFilledHover};
       --mantine-color-${color}-light: ${rgba(theme.colors[color][darkPrimaryShade], 0.1)};

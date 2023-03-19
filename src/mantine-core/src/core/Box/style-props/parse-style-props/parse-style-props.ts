@@ -2,7 +2,7 @@ import { keys } from '../../../utils';
 import type { MantineStyleProps, StyleProp } from '../style-props.types';
 import type { SystemPropData } from '../style-props-data';
 import { resolvers } from '../resolvers';
-import { MantineColorScheme, MantineTheme } from '../../../MantineProvider';
+import { MantineTheme } from '../../../MantineProvider';
 import type { SortMediaQueriesResult } from './sort-media-queries';
 import { sortMediaQueries } from './sort-media-queries';
 
@@ -51,7 +51,6 @@ function getBreakpointValue(value: StyleProp<unknown>, breakpoint: string) {
 interface ParseStylePropsOptions {
   styleProps: MantineStyleProps;
   theme: MantineTheme;
-  colorScheme: MantineColorScheme;
   data: Record<string, SystemPropData>;
 }
 
@@ -66,7 +65,6 @@ export function parseStyleProps({
   styleProps,
   data,
   theme,
-  colorScheme,
 }: ParseStylePropsOptions): SortMediaQueriesResult {
   return sortMediaQueries(
     keys(styleProps).reduce<{
@@ -84,11 +82,7 @@ export function parseStyleProps({
 
         if (!hasResponsiveStyles(styleProps[styleProp])) {
           properties.forEach((property) => {
-            acc.inlineStyles[property] = resolvers[propertyData.type](
-              baseValue,
-              theme,
-              colorScheme
-            );
+            acc.inlineStyles[property] = resolvers[propertyData.type](baseValue, theme);
           });
 
           return acc;
@@ -100,7 +94,7 @@ export function parseStyleProps({
 
         properties.forEach((property) => {
           if (baseValue) {
-            acc.styles[property] = resolvers[propertyData.type](baseValue, theme, colorScheme);
+            acc.styles[property] = resolvers[propertyData.type](baseValue, theme);
           }
 
           breakpoints.forEach((breakpoint) => {
@@ -109,8 +103,7 @@ export function parseStyleProps({
               ...acc.media[bp],
               [property]: resolvers[propertyData.type](
                 getBreakpointValue(styleProps[styleProp], breakpoint),
-                theme,
-                colorScheme
+                theme
               ),
             };
           });

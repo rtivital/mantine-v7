@@ -9,7 +9,6 @@ describe('@mantine/core/Box/parse-style-props', () => {
         data: STYlE_PROPS_DATA,
         styleProps: { p: '1.5rem', mx: 32, c: 'red.5', opacity: 0.65 },
         theme: DEFAULT_THEME,
-        colorScheme: 'dark',
       })
     ).toStrictEqual({
       hasResponsiveStyles: false,
@@ -36,7 +35,6 @@ describe('@mantine/core/Box/parse-style-props', () => {
           opacity: { base: 0.65, xs: 0.85 },
         },
         theme: DEFAULT_THEME,
-        colorScheme: 'dark',
       })
     ).toStrictEqual({
       hasResponsiveStyles: true,
@@ -74,7 +72,6 @@ describe('@mantine/core/Box/parse-style-props', () => {
           opacity: { base: 0.65, xs: 0.85 },
         },
         theme: DEFAULT_THEME,
-        colorScheme: 'dark',
       })
     ).toStrictEqual({
       hasResponsiveStyles: true,
@@ -110,7 +107,6 @@ describe('@mantine/core/Box/parse-style-props', () => {
           opacity: { base: 0.65, xs: 0.85, md: 1 },
         },
         theme: DEFAULT_THEME,
-        colorScheme: 'dark',
       })
     ).toStrictEqual({
       hasResponsiveStyles: true,
