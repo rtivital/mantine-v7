@@ -41,13 +41,31 @@ export function Usage() {
 export function FixedLayout() {
   return (
     <div style={{ padding: 40 }}>
-      <Table layout="fixed">
+      <Table layout="fixed" verticalSpacing={20} horizontalSpacing="xl" fz="xl">
         <Table.Thead>
           <Table.Tr>
             <Table.Th w={200}>Element position</Table.Th>
             <Table.Th w={200}>Element name</Table.Th>
             <Table.Th w={100}>Symbol</Table.Th>
             <Table.Th w={200}>Atomic mass</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </div>
+  );
+}
+
+export function Striped() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Table striped="even">
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Element position</Table.Th>
+            <Table.Th>Element name</Table.Th>
+            <Table.Th>Symbol</Table.Th>
+            <Table.Th>Atomic mass</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

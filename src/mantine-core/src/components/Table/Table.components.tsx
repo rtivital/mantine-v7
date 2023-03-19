@@ -87,7 +87,7 @@ function getDataAttributes(ctx: TableContextValue, options?: TableElementOptions
   }
 
   if (options.striped && ctx.striped) {
-    data['data-striped'] = true;
+    data['data-striped'] = ctx.striped;
   }
 
   if (options.highlightOnHover && ctx.highlightOnHover) {

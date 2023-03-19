@@ -6,10 +6,12 @@
   table-layout: var(--mantine-table-layout, auto);
 
   @mixin light {
+    --m__stipes-color: var(--table-striped-color, var(--mantine-color-gray-0));
     --m__border-color: var(--table-border-color, var(--mantine-color-gray-3));
   }
 
   @mixin dark {
+    --m__stipes-color: var(--table-striped-color, var(--mantine-color-dark-6));
     --m__border-color: var(--table-border-color, var(--mantine-color-dark-4));
   }
 
@@ -38,9 +40,19 @@
 }
 
 .tbody {
-  & > .tr:last-of-type {
-    &[data-with-row-border] {
-      border-bottom: 0;
+  & > .tr {
+    &:last-of-type {
+      &[data-with-row-border] {
+        border-bottom: 0;
+      }
+    }
+
+    &[data-striped='odd']:nth-of-type(odd) {
+      background-color: var(--m__stipes-color);
+    }
+
+    &[data-striped='even']:nth-of-type(even) {
+      background-color: var(--m__stipes-color);
     }
   }
 }
