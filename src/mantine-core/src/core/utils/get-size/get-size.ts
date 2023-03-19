@@ -4,3 +4,7 @@ import { rem } from '../units-converters';
 export function getSize(size: unknown, prefix = 'size') {
   return isNumberLike(size) ? rem(size) : `var(--${prefix}-${size})`;
 }
+
+export function getSpacing(size: unknown) {
+  return getSize(size, 'mantine-spacing');
+}

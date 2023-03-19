@@ -10,6 +10,7 @@ import {
   useComponentVars,
   MantineColor,
   MantineSpacing,
+  getSpacing,
 } from '../../core';
 import {
   TableCaption,
@@ -139,8 +140,8 @@ export const Table = factory<TableFactory>((props, ref) => {
         ref={ref}
         vars={{
           '--table-caption-side': captionSide,
-          '--table-horizontal-spacing': horizontalSpacing,
-          '--table-vertical-spacing': verticalSpacing,
+          '--table-horizontal-spacing': getSpacing(horizontalSpacing),
+          '--table-vertical-spacing': getSpacing(verticalSpacing),
           ..._vars,
         }}
         {...getStyles('root')}
