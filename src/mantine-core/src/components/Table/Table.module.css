@@ -22,6 +22,10 @@
 
 .th {
   text-align: left;
+
+  @mixin rtl {
+    text-align: right;
+  }
 }
 
 .tr {
@@ -36,6 +40,11 @@
 
   &[data-with-column-border]:not(:last-of-type) {
     border-right: rem(1px) solid var(--m__border-color);
+
+    @mixin rtl {
+      border-left: rem(1px) solid var(--m__border-color);
+      border-right: 0;
+    }
   }
 }
 
