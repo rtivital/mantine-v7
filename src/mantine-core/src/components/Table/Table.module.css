@@ -15,6 +15,10 @@
   &[data-with-table-border] {
     border: rem(1px) solid var(--m__border-color);
   }
+
+  &[data-fixed] {
+    table-layout: fixed;
+  }
 }
 
 .th {

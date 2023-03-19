@@ -37,3 +37,21 @@ export function Usage() {
     </div>
   );
 }
+
+export function FixedLayout() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Table fixed>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th w={200}>Element position</Table.Th>
+            <Table.Th w={200}>Element name</Table.Th>
+            <Table.Th w={100}>Symbol</Table.Th>
+            <Table.Th w={200}>Atomic mass</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </div>
+  );
+}

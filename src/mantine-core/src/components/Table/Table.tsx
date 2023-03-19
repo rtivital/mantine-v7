@@ -57,6 +57,9 @@ export interface TableProps
   extends BoxProps,
     StylesApiProps<TableStylesNames, TableVariant, TableCssVariables>,
     ElementProps<'table'> {
+  /** Determines whether the table should have `table-layout: fixed;` styles, `false` by default */
+  fixed?: boolean;
+
   /** Determines on which side `Table.Caption` is displayed, `bottom` by default */
   captionSide?: 'top' | 'bottom';
 
@@ -134,6 +137,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     withRowBorders,
     withTableBorder,
     borderColor,
+    fixed,
     ...others
   } = useComponentDefaultProps('Table', defaultProps, props);
 
@@ -173,6 +177,7 @@ export const Table = factory<TableFactory>((props, ref) => {
         component="table"
         ref={ref}
         data-with-table-border={withTableBorder || undefined}
+        data-fixed={fixed || undefined}
         vars={{
           '--table-caption-side': captionSide,
           '--table-horizontal-spacing': getSpacing(horizontalSpacing),
