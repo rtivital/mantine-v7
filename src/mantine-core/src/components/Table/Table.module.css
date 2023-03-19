@@ -3,7 +3,8 @@
   border-collapse: collapse;
   line-height: var(--mantine-line-height);
   font-size: var(--mantine-font-size-sm);
-  table-layout: var(--mantine-table-layout, auto);
+  table-layout: var(--table-layout, auto);
+  caption-side: var(--table-caption-side);
 
   @mixin light {
     --m__hover-color: var(--table-highlight-on-hover-color, var(--mantine-color-gray-1));
@@ -71,5 +72,17 @@
         background-color: var(--m__hover-color);
       }
     }
+  }
+}
+
+.caption {
+  color: var(--mantine-color-dimmed);
+
+  &[data-side='top'] {
+    margin-bottom: var(--mantine-spacing-xs);
+  }
+
+  &[data-side='bottom'] {
+    margin-top: var(--mantine-spacing-xs);
   }
 }

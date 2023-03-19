@@ -7,6 +7,7 @@ export interface TableContextValue {
   highlightOnHover: boolean | undefined;
   withColumnBorders: boolean | undefined;
   withRowBorders: boolean | undefined;
+  captionSide: 'top' | 'bottom';
 }
 
 export const [TableProvider, useTableContext] = createSafeContext<TableContextValue>(

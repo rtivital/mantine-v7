@@ -69,6 +69,7 @@ interface TableElementOptions {
   rowBorder?: true;
   striped?: true;
   highlightOnHover?: true;
+  captionSide?: true;
 }
 
 function getDataAttributes(ctx: TableContextValue, options?: TableElementOptions) {
@@ -92,6 +93,10 @@ function getDataAttributes(ctx: TableContextValue, options?: TableElementOptions
 
   if (options.highlightOnHover && ctx.highlightOnHover) {
     data['data-hover'] = true;
+  }
+
+  if (options.captionSide && ctx.captionSide) {
+    data['data-side'] = ctx.captionSide;
   }
 
   return data;
@@ -136,4 +141,4 @@ export const TableTr = tableElement<TableTrFactory>('tr', {
 export const TableThead = tableElement<TableTheadFactory>('thead');
 export const TableTbody = tableElement<TableTbodyFactory>('tbody');
 export const TableTfoot = tableElement<TableTfootFactory>('tfoot');
-export const TableCaption = tableElement<TableCaptionFactory>('caption');
+export const TableCaption = tableElement<TableCaptionFactory>('caption', { captionSide: true });

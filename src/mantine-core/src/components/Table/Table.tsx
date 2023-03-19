@@ -174,6 +174,7 @@ export const Table = factory<TableFactory>((props, ref) => {
         highlightOnHover,
         withColumnBorders,
         withRowBorders,
+        captionSide: captionSide || 'bottom',
       }}
     >
       <Box
