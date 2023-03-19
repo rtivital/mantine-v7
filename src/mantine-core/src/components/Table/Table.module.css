@@ -6,11 +6,13 @@
   table-layout: var(--mantine-table-layout, auto);
 
   @mixin light {
+    --m__hover-color: var(--table-highlight-on-hover-color, var(--mantine-color-gray-1));
     --m__stipes-color: var(--table-striped-color, var(--mantine-color-gray-0));
     --m__border-color: var(--table-border-color, var(--mantine-color-gray-3));
   }
 
   @mixin dark {
+    --m__hover-color: var(--table-highlight-on-hover-color, var(--mantine-color-dark-5));
     --m__stipes-color: var(--table-striped-color, var(--mantine-color-dark-6));
     --m__border-color: var(--table-border-color, var(--mantine-color-dark-4));
   }
@@ -62,6 +64,12 @@
 
     &[data-striped='even']:nth-of-type(even) {
       background-color: var(--m__stipes-color);
+    }
+
+    &[data-hover] {
+      @mixin hover {
+        background-color: var(--m__hover-color);
+      }
     }
   }
 }

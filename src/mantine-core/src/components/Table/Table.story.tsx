@@ -23,7 +23,7 @@ const rows = elements.map((element) => (
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Table withColumnBorders withRowBorders withTableBorder>
+      <Table withColumnBorders withRowBorders withTableBorder borderColor="cyan">
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Element position</Table.Th>
@@ -60,6 +60,24 @@ export function Striped() {
   return (
     <div style={{ padding: 40 }}>
       <Table striped="even">
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Element position</Table.Th>
+            <Table.Th>Element name</Table.Th>
+            <Table.Th>Symbol</Table.Th>
+            <Table.Th>Atomic mass</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </div>
+  );
+}
+
+export function HighlightOnHover() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Table highlightOnHover highlightOnHoverColor="cyan.0">
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Element position</Table.Th>
