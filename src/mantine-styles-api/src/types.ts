@@ -13,7 +13,7 @@ export interface Selectors<Factory extends FactoryPayload> {
 }
 
 export interface Params<Factory extends FactoryPayload> {
-  params: Factory['stylesParams'] extends Record<infer Param, any> ? Record<Param, string> : never;
+  params: Factory['stylesParams'] extends Record<infer Param, any> ? Param[] : never;
 }
 
 export interface Vars<Factory extends FactoryPayload> {

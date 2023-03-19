@@ -6,11 +6,7 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
     root: 'Root element',
   },
 
-  params: {
-    size: 'size prop',
-    color: 'color prop',
-    variant: 'variant prop',
-  },
+  params: ['size', 'color', 'variant'],
 
   vars: {
     '--loader-size': 'Loader width, controlled by size prop',

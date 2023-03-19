@@ -12,11 +12,7 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     tabRightSection: 'Right section of Tabs.Tab, controlled by rightSection prop',
   },
 
-  params: {
-    color:
-      'Active Tabs.Tab color (applicable only for pills and default variants only), default value is theme.primaryColor',
-    radius: 'Tabs.Tab border-radius, default value is theme.defaultRadius',
-  },
+  params: ['color', 'radius'],
 
   vars: {
     '--tabs-color':

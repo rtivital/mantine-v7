@@ -7,13 +7,7 @@ export const ActionIconStylesApi: StylesApiData<ActionIconFactory> = {
     loader: 'Loader component, rendered inside root element when loading prop is set',
   },
 
-  params: {
-    size: 'size prop',
-    color: 'color prop',
-    radius: 'radius prop',
-    gradient: 'gradient prop',
-    variant: 'variant prop',
-  },
+  params: ['size', 'color', 'radius', 'gradient', 'variant'],
 
   vars: {
     '--ai-bg': 'Background style, controlled by color and variant props',
@@ -42,10 +36,7 @@ export const ActionIconGroupStylesApi: StylesApiData<ActionIconGroupFactory> = {
       'Controls border width of child ActionIcon components that are placed beside one another',
   },
 
-  params: {
-    borderWidth: 'Inferred from borderWidth prop',
-    orientation: 'Inferred from orientation prop',
-  },
+  params: ['borderWidth', 'orientation'],
 
   modifiers: [
     { modifier: 'data-orientation', selector: 'root', value: 'Value of orientation prop' },
