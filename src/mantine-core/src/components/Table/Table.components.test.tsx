@@ -1,4 +1,6 @@
-import { tests, createContextContainer, patchConsoleError } from '@mantine/tests';
+import React from 'react';
+import { render, tests, createContextContainer, patchConsoleError } from '@mantine/tests';
+import { screen } from '@testing-library/react';
 import {
   TableTh,
   TableThProps,
@@ -35,6 +37,18 @@ describe('@mantine/core/Table', () => {
       selector: 'th',
       stylesApiSelectors: ['th'],
     });
+
+    it('sets data-with-column-border attribute when withColumnBorders prop is set on Table component', () => {
+      const WithColumnBorder = createContextContainer(TableTh, Table, { withColumnBorders: true });
+      const WithoutColumnBorder = createContextContainer(TableTh, Table, {
+        withColumnBorders: false,
+      });
+
+      const { rerender } = render(<WithColumnBorder />);
+      expect(screen.getByRole('columnheader')).toHaveAttribute('data-with-column-border');
+      rerender(<WithoutColumnBorder />);
+      expect(screen.getByRole('columnheader')).not.toHaveAttribute('data-with-column-border');
+    });
   });
 
   describe('TableTd', () => {
@@ -51,6 +65,18 @@ describe('@mantine/core/Table', () => {
       selector: 'td',
       stylesApiSelectors: ['td'],
     });
+
+    it('sets data-with-column-border attribute when withColumnBorders prop is set on Table component', () => {
+      const WithColumnBorder = createContextContainer(TableTd, Table, { withColumnBorders: true });
+      const WithoutColumnBorder = createContextContainer(TableTd, Table, {
+        withColumnBorders: false,
+      });
+
+      const { rerender } = render(<WithColumnBorder />);
+      expect(screen.getByRole('cell')).toHaveAttribute('data-with-column-border');
+      rerender(<WithoutColumnBorder />);
+      expect(screen.getByRole('cell')).not.toHaveAttribute('data-with-column-border');
+    });
   });
 
   describe('TableTr', () => {
@@ -66,6 +92,36 @@ describe('@mantine/core/Table', () => {
       stylesApiName: 'Table',
       selector: 'tr',
       stylesApiSelectors: ['tr'],
+    });
+
+    it('sets data-with-row-border attribute when withRowBorders prop is set on Table component', () => {
+      const WithRowBorder = createContextContainer(TableTr, Table, { withRowBorders: true });
+      const WithoutRowBorder = createContextContainer(TableTr, Table, { withRowBorders: false });
+
+      const { rerender } = render(<WithRowBorder />);
+      expect(screen.getByRole('row')).toHaveAttribute('data-with-row-border');
+      rerender(<WithoutRowBorder />);
+      expect(screen.getByRole('row')).not.toHaveAttribute('data-with-row-border');
+    });
+
+    it('sets data-striped attribute when striped prop is set on Table component', () => {
+      const Striped = createContextContainer(TableTr, Table, { striped: 'even' });
+      const NotStriped = createContextContainer(TableTr, Table, { striped: false });
+
+      const { rerender } = render(<Striped />);
+      expect(screen.getByRole('row')).toHaveAttribute('data-striped', 'even');
+      rerender(<NotStriped />);
+      expect(screen.getByRole('row')).not.toHaveAttribute('data-striped');
+    });
+
+    it('sets data-hover attribute when highlightOnHover prop is set on Table component', () => {
+      const Hover = createContextContainer(TableTr, Table, { highlightOnHover: true });
+      const NotHover = createContextContainer(TableTr, Table, { highlightOnHover: false });
+
+      const { rerender } = render(<Hover />);
+      expect(screen.getByRole('row')).toHaveAttribute('data-hover');
+      rerender(<NotHover />);
+      expect(screen.getByRole('row')).not.toHaveAttribute('data-hover');
     });
   });
 
@@ -130,6 +186,12 @@ describe('@mantine/core/Table', () => {
       stylesApiName: 'Table',
       selector: 'caption',
       stylesApiSelectors: ['caption'],
+    });
+
+    it('sets data-side attribute based on value set on Table component', () => {
+      const Container = createContextContainer(TableCaption, Table, { captionSide: 'top' });
+      const { container } = render(<Container />);
+      expect(container.querySelector('caption')).toHaveAttribute('data-side', 'top');
     });
   });
 });

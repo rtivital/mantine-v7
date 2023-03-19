@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests } from '@mantine/tests';
+import { screen } from '@testing-library/react';
 import { Table, TableProps, TableStylesNames } from './Table';
 
 const defaultProps: TableProps = {
@@ -43,11 +44,16 @@ describe('@mantine/core/Table', () => {
   });
 
   it('renders children', () => {
-    const { container } = render(
+    render(
       <Table>
-        <tbody data-test />
+        <tbody data-test="tbody" />
       </Table>
     );
-    expect(container.querySelector('[data-test]')).toBeInTheDocument();
+    expect(document.querySelector('[data-test="tbody"]')).toBeInTheDocument();
+  });
+
+  it('sets data-with-table-border attribute when withTableBorder prop is set', () => {
+    render(<Table withTableBorder />);
+    expect(screen.getByRole('table')).toHaveAttribute('data-with-table-border');
   });
 });
