@@ -3,8 +3,32 @@
   border-collapse: collapse;
   line-height: var(--mantine-line-height);
   font-size: var(--mantine-font-size-sm);
+
+  @mixin light {
+    --m__border-color: var(--table-border-color, var(--mantine-color-gray-3));
+  }
+
+  @mixin dark {
+    --m__border-color: var(--table-border-color, var(--mantine-color-dark-4));
+  }
+
+  &[data-with-table-border] {
+    border: rem(1px) solid var(--m__border-color);
+  }
 }
 
 .th {
   text-align: left;
+}
+
+.tr {
+  &[data-with-row-border]:not(:last-of-type) {
+    border-bottom: rem(1px) solid var(--m__border-color);
+  }
+}
+
+.td {
+  &[data-with-column-border]:not(:last-of-type) {
+    border-right: rem(1px) solid var(--m__border-color);
+  }
 }
