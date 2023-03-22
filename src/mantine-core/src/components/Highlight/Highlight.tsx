@@ -40,18 +40,8 @@ export interface HighlightFactory {
 const defaultProps: Partial<HighlightProps> = {};
 
 export const Highlight = polymorphicFactory<HighlightFactory>((props, ref) => {
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    children,
-    highlight,
-    highlightStyles,
-    color,
-    ...others
-  } = useComponentDefaultProps('Highlight', defaultProps, props);
+  const { unstyled, children, highlight, highlightStyles, color, ...others } =
+    useComponentDefaultProps('Highlight', defaultProps, props);
 
   const highlightChunks = highlighter(children, highlight);
 
