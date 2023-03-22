@@ -7,6 +7,8 @@ import {
   isElement,
   useComponentDefaultProps,
   useStylesApi,
+  getStyleObject,
+  useMantineTheme,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import {
@@ -72,6 +74,8 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
     rootSelector: 'tooltip',
   });
 
+  const theme = useMantineTheme();
+
   const { handleMouseMove, x, y, opened, boundaryRef, floating, setOpened } = useFloatingTooltip({
     offset: offset!,
     position: position!,
@@ -104,7 +108,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
           {...getStyles('tooltip')}
           ref={floating}
           style={{
-            ...style,
+            ...getStyleObject(style, theme),
             zIndex,
             display: !disabled && opened ? 'block' : 'none',
             top: (y && Math.round(y)) ?? '',
