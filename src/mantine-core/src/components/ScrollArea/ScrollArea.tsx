@@ -11,6 +11,7 @@ import {
   useComponentVars,
   useDirection,
   rem,
+  packStyle,
 } from '../../core';
 import classes from './ScrollArea.module.css';
 
@@ -172,23 +173,46 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
 ScrollArea.displayName = '@mantine/core/ScrollArea';
 
 export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, ...others } = useComponentDefaultProps(
-    'ScrollArea',
-    defaultProps,
-    props
-  );
-
-  const getStyles = useStylesApi({
-    name: 'ScrollArea',
-    className,
-    style,
-    classes,
+  const {
+    children,
     classNames,
     styles,
+    scrollbarSize,
+    scrollHideDelay,
+    type,
+    dir,
+    offsetScrollbars,
+    viewportRef,
+    onScrollPositionChange,
     unstyled,
-  });
+    variant,
+    viewportProps,
+    style,
+    ...others
+  } = useComponentDefaultProps('ScrollAreaAutosize', defaultProps, props);
 
-  return <Box ref={ref} {...getStyles('root')} {...others} />;
+  return (
+    <Box {...others} ref={ref} style={[{ display: 'flex' }, ...packStyle(style)]}>
+      <Box style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <ScrollArea
+          classNames={classNames}
+          styles={styles}
+          scrollHideDelay={scrollHideDelay}
+          scrollbarSize={scrollbarSize}
+          type={type}
+          dir={dir}
+          offsetScrollbars={offsetScrollbars}
+          viewportRef={viewportRef}
+          onScrollPositionChange={onScrollPositionChange}
+          unstyled={unstyled}
+          variant={variant}
+          viewportProps={viewportProps}
+        >
+          {children}
+        </ScrollArea>
+      </Box>
+    </Box>
+  );
 });
 
 ScrollAreaAutoSize.displayName = '@mantine/core/ScrollAreaAutoSize';
