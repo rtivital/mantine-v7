@@ -1,3 +1,5 @@
-export function packStyle<T>(style: T | T[]) {
-  return Array.isArray(style) ? style : [style];
+import { CSSProperties } from 'react';
+
+export function packStyle(style: unknown): CSSProperties[] {
+  return Array.isArray(style) ? style : typeof style === 'undefined' ? [] : [style];
 }

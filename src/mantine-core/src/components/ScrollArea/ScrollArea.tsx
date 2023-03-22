@@ -56,6 +56,8 @@ export interface ScrollAreaProps
   onScrollPositionChange?(position: { x: number; y: number }): void;
 }
 
+export interface ScrollAreaAutoSizeProps extends ScrollAreaProps {}
+
 export interface ScrollAreaFactory {
   props: ScrollAreaProps;
   ref: HTMLDivElement;
