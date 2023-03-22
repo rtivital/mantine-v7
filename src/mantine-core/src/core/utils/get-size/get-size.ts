@@ -8,3 +8,11 @@ export function getSize(size: unknown, prefix = 'size') {
 export function getSpacing(size: unknown) {
   return getSize(size, 'mantine-spacing');
 }
+
+export function getShadow(size: unknown) {
+  if (!size) {
+    return 'none';
+  }
+
+  return getSize(size, 'mantine-shadow');
+}

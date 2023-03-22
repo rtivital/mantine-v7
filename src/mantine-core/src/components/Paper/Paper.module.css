@@ -1,0 +1,32 @@
+.root {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  touch-action: manipulation;
+  display: block;
+  text-decoration: none;
+  border-radius: var(--paper-radius);
+  box-shadow: var(--paper-shadow);
+
+  &[data-with-border] {
+    border: rem(1px) solid transparent;
+  }
+
+  @mixin light {
+    color: var(--mantine-color-black);
+    background-color: var(--mantine-color-white);
+
+    &[data-with-border] {
+      border-color: var(--mantine-color-gray-3);
+    }
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-dark-0);
+    background-color: var(--mantine-color-dark-7);
+
+    &[data-with-border] {
+      border-color: var(--mantine-color-dark-4);
+    }
+  }
+}
