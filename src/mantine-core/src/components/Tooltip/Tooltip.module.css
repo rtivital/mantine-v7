@@ -1,5 +1,14 @@
 .tooltip {
+  position: absolute;
+  padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-xs);
+  pointer-events: none;
+  font-size: var(--mantine-size-sm);
+
+  background-color: red;
 }
 
 .arrow {
+  background-color: inherit;
+  border: 0;
+  z-index: 1;
 }

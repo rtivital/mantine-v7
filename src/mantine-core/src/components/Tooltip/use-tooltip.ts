@@ -20,16 +20,16 @@ import { FloatingPosition, useFloatingAutoUpdate } from '../Floating';
 
 interface UseTooltip {
   position: FloatingPosition;
-  closeDelay: number;
-  openDelay: number;
+  closeDelay?: number;
+  openDelay?: number;
   onPositionChange?(position: FloatingPosition): void;
   opened?: boolean;
   offset: number;
   arrowRef?: React.RefObject<HTMLDivElement>;
-  arrowOffset: number;
-  events: { hover: boolean; focus: boolean; touch: boolean };
+  arrowOffset?: number;
+  events?: { hover: boolean; focus: boolean; touch: boolean };
   positionDependencies: any[];
-  inline: boolean;
+  inline?: boolean;
 }
 
 export function useTooltip(settings: UseTooltip) {
@@ -77,11 +77,11 @@ export function useTooltip(settings: UseTooltip) {
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, {
-      enabled: settings.events.hover,
+      enabled: settings.events?.hover,
       delay: withinGroup ? groupDelay : { open: settings.openDelay, close: settings.closeDelay },
-      mouseOnly: !settings.events.touch,
+      mouseOnly: !settings.events?.touch,
     }),
-    useFocus(context, { enabled: settings.events.focus, keyboardOnly: true }),
+    useFocus(context, { enabled: settings.events?.focus, keyboardOnly: true }),
     useRole(context, { role: 'tooltip' }),
     // cannot be used with controlled tooltip, page jumps
     useDismiss(context, { enabled: typeof settings.opened === undefined }),
