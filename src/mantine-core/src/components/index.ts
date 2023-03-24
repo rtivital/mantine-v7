@@ -10,5 +10,6 @@ export * from './ScrollArea';
 export * from './Table';
 export * from './Tabs';
 export * from './Text';
+export * from './Tooltip';
 export * from './Transition';
 export * from './UnstyledButton';
