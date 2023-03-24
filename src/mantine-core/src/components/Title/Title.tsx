@@ -83,6 +83,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
         ..._vars,
       }}
       inherit={inherit || false}
+      data-order={order}
       {...others}
     />
   );
