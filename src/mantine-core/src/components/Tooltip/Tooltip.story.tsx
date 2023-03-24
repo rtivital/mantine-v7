@@ -6,7 +6,33 @@ export default { title: 'Tooltip' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Tooltip position="right" label="Tooltip label" withArrow transitionProps={{ duration: 0 }}>
+      <Tooltip
+        position="right"
+        label="Tooltip label"
+        withArrow
+        transitionProps={{ duration: 0 }}
+        opened
+        color="cyan"
+        radius="md"
+      >
+        <button type="button">target</button>
+      </Tooltip>
+    </div>
+  );
+}
+
+export function Multiline() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip
+        position="right"
+        label="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, quaerat vero. Tempora reiciendis deserunt tenetur blanditiis velit. Illo, ipsam. Dignissimos fugit tempora iure accusamus, ipsum minima tenetur ex sequi eveniet."
+        w={400}
+        withArrow
+        transitionProps={{ duration: 0 }}
+        radius="md"
+        multiline
+      >
         <button type="button">target</button>
       </Tooltip>
     </div>

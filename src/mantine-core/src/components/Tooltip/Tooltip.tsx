@@ -7,8 +7,12 @@ import {
   getDefaultZIndex,
   isElement,
   useComponentDefaultProps,
+  useComponentVars,
   useDirection,
   useStylesApi,
+  getThemeColor,
+  getRadius,
+  useMantineTheme,
 } from '../../core';
 import { ArrowPosition, FloatingArrow, FloatingPosition, getFloatingPosition } from '../Floating';
 import { Transition, TransitionOverride, getTransitionProps } from '../Transition';
@@ -135,6 +139,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     inline,
     variant,
     keepMounted,
+    vars,
     ...others
   } = useComponentDefaultProps('Tooltip', defaultProps, props);
 
@@ -165,6 +170,13 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     rootSelector: 'tooltip',
   });
 
+  const _vars = useComponentVars<TooltipStylesParams>('Tooltip', vars, {
+    radius,
+    color,
+  });
+
+  const theme = useMantineTheme();
+
   if (!isElement(children)) {
     throw new Error(
       'Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported'
@@ -186,6 +198,12 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
           {(transitionStyles) => (
             <Box
               {...others}
+              data-multiline={multiline || undefined}
+              vars={{
+                '--tooltip-radius': getRadius(theme, radius),
+                '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+                ..._vars,
+              }}
               {...tooltip.getFloatingProps({
                 ref: tooltip.floating,
                 className: getStyles('tooltip').className,

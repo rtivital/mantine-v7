@@ -3,8 +3,11 @@ import { FloatingPosition } from '../Floating';
 
 export type TooltipStylesNames = 'tooltip' | 'arrow';
 export type TooltipVariant = string;
-export type TooltipCssVariables = '--test';
-export interface TooltipStylesParams {}
+export type TooltipCssVariables = '--tooltip-radius' | '--tooltip-bg';
+export interface TooltipStylesParams {
+  radius: MantineRadius | string | number | undefined;
+  color: MantineColor | undefined;
+}
 
 export interface TooltipBaseProps
   extends BoxProps,
