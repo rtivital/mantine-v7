@@ -60,6 +60,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
     zIndex,
     disabled,
     variant,
+    vars,
     ...others
   } = useComponentDefaultProps('TooltipFloating', defaultProps, props);
 

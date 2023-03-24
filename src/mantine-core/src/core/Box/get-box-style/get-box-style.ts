@@ -30,5 +30,5 @@ export function getBoxStyle({
 }: GetBoxStyleOptions): React.CSSProperties {
   const _style = mergeStyles(style, theme);
   const _vars = mergeStyles(vars, theme);
-  return { ...styleProps, ..._style, ..._vars };
+  return { ..._style, ..._vars, ...styleProps };
 }

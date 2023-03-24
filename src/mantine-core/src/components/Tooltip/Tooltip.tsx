@@ -179,7 +179,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
 
   if (!isElement(children)) {
     throw new Error(
-      'Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported'
+      '[@mantine/core] Tooltip component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported'
     );
   }
 
