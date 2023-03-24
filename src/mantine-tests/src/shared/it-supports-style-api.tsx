@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '../render';
 
-const getRandomColor = () => Math.floor(Math.random() * 16777215).toString(16);
+const randomNumber = (min = 10, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
 const getTestClassNames = (selectors: string[]) =>
   selectors.reduce<Record<string, string>>((acc, selector) => {
     acc[selector] = `test-${selector}`;
@@ -32,7 +32,7 @@ export function itSupportsStylesApi<
     const classNames = getTestClassNames(options.selectors);
     const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
       (acc, selector) => {
-        acc[selector] = { color: `#${getRandomColor()}` };
+        acc[selector] = { fontSize: `${randomNumber()}px` };
         return acc;
       },
       {}
@@ -77,7 +77,7 @@ export function itSupportsStylesApi<
     const classNames = getTestClassNames(options.selectors);
     const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
       (acc, selector) => {
-        acc[selector] = { color: `#${getRandomColor()}` };
+        acc[selector] = { fontSize: `${randomNumber()}px` };
         return acc;
       },
       {}
