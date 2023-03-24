@@ -11,7 +11,7 @@ import {
   useStylesApi,
 } from '../../core';
 import { ArrowPosition, FloatingArrow, FloatingPosition, getFloatingPosition } from '../Floating';
-import { Transition, TransitionOverride } from '../Transition';
+import { Transition, TransitionOverride, getTransitionProps } from '../Transition';
 import { OptionalPortal } from '../Portal';
 import {
   TooltipBaseProps,
@@ -172,24 +172,23 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
   }
 
   const targetRef = useMergedRef(tooltip.reference, (children as any).ref, ref);
+  const transition = getTransitionProps(transitionProps, { duration: 100, transition: 'fade' });
 
   return (
     <>
       <OptionalPortal withinPortal={withinPortal}>
         <Transition
+          {...transition}
           keepMounted={keepMounted}
           mounted={!disabled && !!tooltip.opened}
-          {...transitionProps}
-          transition={transitionProps?.transition || 'fade'}
-          duration={tooltip.isGroupPhase ? 10 : transitionProps?.duration ?? 100}
+          duration={tooltip.isGroupPhase ? 10 : transition.duration}
         >
           {(transitionStyles) => (
             <Box
               {...others}
               {...tooltip.getFloatingProps({
                 ref: tooltip.floating,
-                ...getStyles('tooltip'),
-                className: classes.tooltip,
+                className: getStyles('tooltip').className,
                 style: {
                   ...getStyles('tooltip').style,
                   ...transitionStyles,
