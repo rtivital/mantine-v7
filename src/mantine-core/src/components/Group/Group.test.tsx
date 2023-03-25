@@ -1,0 +1,33 @@
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { render, tests } from '@mantine/tests';
+import { Group, GroupProps, GroupStylesNames } from './Group';
+
+const defaultProps: GroupProps = {};
+
+describe('@mantine/core/Group', () => {
+  tests.itSupportsSystemProps<GroupProps, GroupStylesNames>({
+    component: Group,
+    props: defaultProps,
+    styleProps: true,
+    children: true,
+    extend: true,
+    refType: HTMLDivElement,
+    displayName: '@mantine/core/Group',
+    stylesApiSelectors: ['root'],
+  });
+
+  it('sets data-grow attribute based on grow prop', () => {
+    const { rerender } = render(<Group grow>test</Group>);
+    expect(screen.getByText('test')).toHaveAttribute('data-grow');
+
+    rerender(<Group>test</Group>);
+    expect(screen.getByText('test')).not.toHaveAttribute('data-grow');
+  });
+
+  it('does not render falsy children', () => {
+    const children = [undefined, null, <div key="1" />];
+    const { container } = render(<Group>{children}</Group>);
+    expect(container.querySelectorAll('.mantine-Group-root > *')).toHaveLength(1);
+  });
+});

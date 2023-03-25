@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: var(--group-wrap);
+  justify-content: var(--group-justify);
+  align-items: var(--group-align);
+  gap: var(--group-gap);
+
+  &[data-grow] {
+    & > * {
+      flex-grow: 1;
+      max-width: var(--group-child-width);
+    }
+  }
+}

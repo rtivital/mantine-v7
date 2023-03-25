@@ -24,6 +24,7 @@ describe('@mantine/core/get-size', () => {
 describe('@mantine/core/get-spacing', () => {
   it('returns correct values', () => {
     expect(getSpacing(10)).toBe('0.625rem');
+    expect(getSpacing(0)).toBe('0rem');
     expect(getSpacing('10')).toBe('0.625rem');
     expect(getSpacing('10px')).toBe('0.625rem');
     expect(getSpacing('10rem')).toBe('10rem');
