@@ -1,2 +1,2 @@
 export * from './styles-api.types';
-export * from './use-styles-api/use-styles-api';
+export * from './use-styles/use-styles';

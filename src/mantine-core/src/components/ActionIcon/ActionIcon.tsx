@@ -3,7 +3,7 @@ import {
   BoxProps,
   useProps,
   StylesApiProps,
-  useStylesApi,
+  useStyles,
   MantineSize,
   MantineColor,
   MantineGradient,
@@ -128,7 +128,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     variant,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: ['ActionIcon', __staticSelector],
     className,
     style,

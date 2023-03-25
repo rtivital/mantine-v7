@@ -5,7 +5,7 @@ import {
   BoxProps,
   StylesApiProps,
   useProps,
-  useStylesApi,
+  useStyles,
   useVars,
   rem,
 } from '../../../core';
@@ -68,7 +68,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     orientation,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'ActionIconGroup',
     className,
     style,

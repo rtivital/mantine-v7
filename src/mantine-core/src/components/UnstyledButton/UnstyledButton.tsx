@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  BoxProps,
-  useProps,
-  StylesApiProps,
-  useStylesApi,
-  polymorphicFactory,
-} from '../../core';
+import { Box, BoxProps, useProps, StylesApiProps, useStyles, polymorphicFactory } from '../../core';
 import classes from './UnstyledButton.module.css';
 
 export type UnstyledButtonStylesNames = 'root';
@@ -40,7 +33,7 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
       ...others
     } = useProps('UnstyledButton', defaultProps, props);
 
-    const getStyles = useStylesApi({
+    const getStyles = useStyles({
       name: __staticSelector!,
       className,
       style,

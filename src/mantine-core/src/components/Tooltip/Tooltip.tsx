@@ -9,7 +9,7 @@ import {
   useProps,
   useVars,
   useDirection,
-  useStylesApi,
+  useStyles,
   getThemeColor,
   getRadius,
   useMantineTheme,
@@ -159,7 +159,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     inline,
   });
 
-  const getStyles = useStylesApi<TooltipStylesNames>({
+  const getStyles = useStyles<TooltipStylesNames>({
     name: 'Tooltip',
     className,
     style,

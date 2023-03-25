@@ -6,7 +6,7 @@ import {
   factory,
   ElementProps,
   useProps,
-  useStylesApi,
+  useStyles,
   MantineSpacing,
   getSpacing,
   useVars,
@@ -89,7 +89,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
     ...others
   } = useProps('Group', defaultProps, props);
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Group',
     className,
     style,

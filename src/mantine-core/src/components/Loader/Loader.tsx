@@ -8,7 +8,7 @@ import {
   useMantineTheme,
   getThemeColor,
   StylesApiProps,
-  useStylesApi,
+  useStyles,
   factory,
   useVars,
   getSize,
@@ -87,7 +87,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     variant,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Loader',
     className,
     style,

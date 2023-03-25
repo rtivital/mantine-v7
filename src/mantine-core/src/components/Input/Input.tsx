@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   polymorphicFactory,
   useProps,
-  useStylesApi,
+  useStyles,
   MantineRadius,
 } from '../../core';
 import classes from './Input.module.css';
@@ -82,7 +82,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, required, __staticSelector, ...others } =
     useProps('Input', defaultProps, props);
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: ['Input', __staticSelector],
     className,
     style,

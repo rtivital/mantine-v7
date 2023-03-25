@@ -7,7 +7,7 @@ import {
   factory,
   ElementProps,
   useProps,
-  useStylesApi,
+  useStyles,
   useVars,
   useDirection,
   rem,
@@ -105,7 +105,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
     scrollbarSize,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'ScrollArea',
     className,
     style,

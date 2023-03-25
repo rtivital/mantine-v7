@@ -8,7 +8,7 @@ type Styles<StylesNames extends string> =
   | StylesRecord<StylesNames, CSSProperties>
   | ((theme: MantineTheme) => StylesRecord<StylesNames, CSSProperties>);
 
-export interface UseStylesApiInput<StylesNames extends string> {
+export interface useStylesInput<StylesNames extends string> {
   name: string | (string | undefined)[];
   classes: Record<StylesNames, string>;
   className?: string;
@@ -55,7 +55,7 @@ export type GetStylesApi<StylesNames extends string> = (
   style: CSSProperties;
 };
 
-export function useStylesApi<StylesNames extends string>({
+export function useStyles<StylesNames extends string>({
   name,
   className,
   classes,
@@ -64,7 +64,7 @@ export function useStylesApi<StylesNames extends string>({
   unstyled,
   classNames,
   styles,
-}: UseStylesApiInput<StylesNames>): GetStylesApi<StylesNames> {
+}: useStylesInput<StylesNames>): GetStylesApi<StylesNames> {
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];

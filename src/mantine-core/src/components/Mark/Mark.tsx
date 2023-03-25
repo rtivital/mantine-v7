@@ -7,7 +7,7 @@ import {
   ElementProps,
   useProps,
   useVars,
-  useStylesApi,
+  useStyles,
   MantineColor,
   useMantineTheme,
 } from '../../core';
@@ -49,7 +49,7 @@ export const Mark = factory<MarkFactory>((props, ref) => {
     props
   );
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Mark',
     className,
     style,

@@ -6,7 +6,7 @@ import {
   factory,
   ElementProps,
   useProps,
-  useStylesApi,
+  useStyles,
   MantineColor,
   useVars,
   getThemeColor,
@@ -47,7 +47,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, color, block, ...others } =
     useProps('Code', defaultProps, props);
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Code',
     className,
     style,

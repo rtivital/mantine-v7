@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   polymorphicFactory,
   MantineGradient,
-  useStylesApi,
+  useStyles,
   useProps,
   useVars,
   getGradient,
@@ -100,7 +100,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     gradient,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: ['Text', __staticSelector],
     className,
     style,

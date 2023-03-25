@@ -6,7 +6,7 @@ import {
   getDefaultZIndex,
   isElement,
   useProps,
-  useStylesApi,
+  useStyles,
   getStyleObject,
   useMantineTheme,
 } from '../../../core';
@@ -64,7 +64,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
     ...others
   } = useProps('TooltipFloating', defaultProps, props);
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'TooltipFloating',
     className,
     style,

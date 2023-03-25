@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   polymorphicFactory,
   useProps,
-  useStylesApi,
+  useStyles,
   useVars,
   MantineRadius,
   getRadius,
@@ -55,7 +55,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
     props
   );
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'BackgroundImage',
     className,
     style,

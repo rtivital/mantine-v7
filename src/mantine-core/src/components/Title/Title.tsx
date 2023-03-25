@@ -1,5 +1,5 @@
 import React from 'react';
-import { StylesApiProps, factory, ElementProps, useProps, useStylesApi, useVars } from '../../core';
+import { StylesApiProps, factory, ElementProps, useProps, useStyles, useVars } from '../../core';
 import { Text, TextVariant, TextProps, TextCssVariables } from '../Text';
 import { getTitleSize } from './get-title-size';
 import classes from './Title.module.css';
@@ -43,7 +43,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, order, vars, inherit, size, ...others } =
     useProps('Title', defaultProps, props);
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Title',
     className,
     style,

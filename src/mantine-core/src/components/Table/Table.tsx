@@ -6,7 +6,7 @@ import {
   factory,
   ElementProps,
   useProps,
-  useStylesApi,
+  useStyles,
   useVars,
   MantineColor,
   MantineSpacing,
@@ -155,7 +155,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     highlightOnHoverColor,
   });
 
-  const getStyles = useStylesApi<TableStylesNames>({
+  const getStyles = useStyles<TableStylesNames>({
     name: 'Table',
     className,
     style,

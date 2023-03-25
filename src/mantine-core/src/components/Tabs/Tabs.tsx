@@ -10,7 +10,7 @@ import {
   useProps,
   useVars,
   getSafeId,
-  useStylesApi,
+  useStyles,
   ElementProps,
   getRadius,
   getThemeColor,
@@ -146,7 +146,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     onChange,
   });
 
-  const getStyles = useStylesApi({
+  const getStyles = useStyles({
     name: 'Tabs',
     className,
     style,
