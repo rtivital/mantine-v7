@@ -80,8 +80,17 @@ export interface InputFactory {
 const defaultProps: Partial<InputProps> = {};
 
 export const Input = polymorphicFactory<InputFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, required, __staticSelector, ...others } =
-    useProps('Input', defaultProps, props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    required,
+    __staticSelector,
+    size,
+    ...others
+  } = useProps('Input', defaultProps, props);
 
   const getStyles = useStyles({
     name: ['Input', __staticSelector],
