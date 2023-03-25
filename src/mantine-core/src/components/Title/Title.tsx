@@ -25,7 +25,7 @@ export interface TitleStylesParams {
 
 export interface TitleProps
   extends Omit<TextProps, 'vars'>,
-    StylesApiProps<TitleStylesNames, TitleVariant, TitleCssVariables>,
+    StylesApiProps<TitleStylesNames, TitleVariant, TitleCssVariables, TitleStylesParams>,
     ElementProps<'h1'> {
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */
   order?: TitleOrder;

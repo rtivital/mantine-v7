@@ -25,7 +25,7 @@ export interface PaperStylesParams {
 
 export interface PaperProps
   extends BoxProps,
-    StylesApiProps<PaperStylesNames, PaperVariant, PaperCssVariables> {
+    StylesApiProps<PaperStylesNames, PaperVariant, PaperCssVariables, PaperStylesParams> {
   /** Key of `theme.shadows` or any valid CSS value to set box-shadow, `none` by default */
   shadow?: MantineShadow | string;
 

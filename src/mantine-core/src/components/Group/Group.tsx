@@ -35,7 +35,7 @@ export interface GroupStylesParams {
 
 export interface GroupProps
   extends BoxProps,
-    StylesApiProps<GroupStylesNames, GroupVariant, GroupCssVariables>,
+    StylesApiProps<GroupStylesNames, GroupVariant, GroupCssVariables, GroupStylesParams>,
     ElementProps<'div'> {
   /** Controls `justify-content` CSS property, `'flex-start'` by default */
   justify?: React.CSSProperties['justifyContent'];

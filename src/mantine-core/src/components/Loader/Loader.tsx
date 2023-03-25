@@ -23,15 +23,15 @@ export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
 export type LoaderCssVariables = '--loader-size' | '--loader-color';
 
-export const defaultLoaders: MantineLoadersRecord = {
-  bars: Bars,
-  oval: Oval,
-  dots: Dots,
-};
+export interface LoaderStylesParams {
+  color: MantineColor | string | undefined;
+  size: MantineSize | string | number | undefined;
+  variant: LoaderVariant | undefined;
+}
 
 export interface LoaderProps
   extends BoxProps,
-    StylesApiProps<LoaderStylesNames, LoaderVariant, LoaderCssVariables>,
+    StylesApiProps<LoaderStylesNames, LoaderVariant, LoaderCssVariables, LoaderStylesParams>,
     Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
   /** Width of the loader. Loader has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). */
   size?: MantineSize | string | number;
@@ -46,12 +46,6 @@ export interface LoaderProps
   loaders?: MantineLoadersRecord;
 }
 
-export interface LoaderStylesParams {
-  color: MantineColor | string | undefined;
-  size: MantineSize | string | number | undefined;
-  variant: LoaderVariant | undefined;
-}
-
 export interface LoaderFactory {
   props: LoaderProps;
   ref: SVGSVGElement;
@@ -59,6 +53,12 @@ export interface LoaderFactory {
   vars: LoaderCssVariables;
   stylesParams: LoaderStylesParams;
 }
+
+export const defaultLoaders: MantineLoadersRecord = {
+  bars: Bars,
+  oval: Oval,
+  dots: Dots,
+};
 
 const defaultProps: Partial<LoaderProps> = {
   size: 'md',

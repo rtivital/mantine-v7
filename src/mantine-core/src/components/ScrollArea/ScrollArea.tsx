@@ -25,7 +25,12 @@ export interface ScrollAreaStylesParams {
 
 export interface ScrollAreaProps
   extends BoxProps,
-    StylesApiProps<ScrollAreaStylesNames, ScrollAreaVariant, ScrollAreaCssVariables>,
+    StylesApiProps<
+      ScrollAreaStylesNames,
+      ScrollAreaVariant,
+      ScrollAreaCssVariables,
+      ScrollAreaStylesParams
+    >,
     ElementProps<'div'> {
   /** Scrollbar size, any valid CSS value for width/height, numbers are converted to rem (1rem = 16px), default value is 0.75rem (12px) */
   scrollbarSize?: number | string;
@@ -190,6 +195,7 @@ export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
     variant,
     viewportProps,
     style,
+    vars,
     ...others
   } = useComponentDefaultProps('ScrollAreaAutosize', defaultProps, props);
 
@@ -209,6 +215,7 @@ export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
           unstyled={unstyled}
           variant={variant}
           viewportProps={viewportProps}
+          vars={vars}
         >
           {children}
         </ScrollArea>

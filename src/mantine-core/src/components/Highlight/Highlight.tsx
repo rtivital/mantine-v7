@@ -1,22 +1,15 @@
 import React from 'react';
 import {
-  BoxProps,
-  StylesApiProps,
   polymorphicFactory,
   useComponentDefaultProps,
   MantineColor,
   MantineTheme,
 } from '../../core';
-import { Text, TextStylesNames } from '../Text';
+import { Text, TextStylesNames, TextProps } from '../Text';
 import { Mark } from '../Mark';
 import { highlighter } from './highlighter/highlighter';
 
-export type HighlightStylesNames = TextStylesNames;
-export type HighlightVariant = string;
-
-export interface HighlightProps
-  extends BoxProps,
-    StylesApiProps<HighlightStylesNames, HighlightVariant> {
+export interface HighlightProps extends TextProps {
   /** Substring or an array of substrings to highlight in `children` */
   highlight: string | string[];
 
@@ -34,7 +27,7 @@ export interface HighlightFactory {
   props: HighlightProps;
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
-  stylesNames: HighlightStylesNames;
+  stylesNames: TextStylesNames;
 }
 
 const defaultProps: Partial<HighlightProps> = {};
@@ -46,7 +39,7 @@ export const Highlight = polymorphicFactory<HighlightFactory>((props, ref) => {
   const highlightChunks = highlighter(children, highlight);
 
   return (
-    <Text unstyled={unstyled} ref={ref} __staticSelector="Highlight" {...others}>
+    <Text unstyled={unstyled} ref={ref} {...others} __staticSelector="Highlight">
       {highlightChunks.map(({ chunk, highlighted }, i) =>
         highlighted ? (
           <Mark

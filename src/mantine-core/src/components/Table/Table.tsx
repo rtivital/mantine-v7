@@ -57,7 +57,7 @@ export interface TableStylesParams {
 
 export interface TableProps
   extends BoxProps,
-    StylesApiProps<TableStylesNames, TableVariant, TableCssVariables>,
+    StylesApiProps<TableStylesNames, TableVariant, TableCssVariables, TableStylesParams>,
     ElementProps<'table'> {
   /** Value of `table-layout` style, `unset` by default */
   layout?: React.CSSProperties['tableLayout'];

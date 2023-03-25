@@ -24,7 +24,7 @@ export interface CodeStylesParams {
 
 export interface CodeProps
   extends BoxProps,
-    StylesApiProps<CodeStylesNames, CodeVariant, CodeCssVariables>,
+    StylesApiProps<CodeStylesNames, CodeVariant, CodeCssVariables, CodeStylesParams>,
     ElementProps<'code'> {
   /** Key of `theme.colors` or any valid CSS color, controls background color of the code, by default value is calculated based on color scheme */
   color?: MantineColor;
