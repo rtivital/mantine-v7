@@ -8,6 +8,7 @@ export * from './Mark';
 export * from './Paper';
 export * from './Portal';
 export * from './ScrollArea';
+export * from './Stack';
 export * from './Table';
 export * from './Tabs';
 export * from './Text';
