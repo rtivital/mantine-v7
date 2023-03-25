@@ -104,6 +104,7 @@ function getThemeCssVariables(theme: MantineTheme) {
   assignSizeVariables(variables, theme.fontSizes, 'font-size');
   assignSizeVariables(variables, theme.radius, 'radius');
   assignSizeVariables(variables, theme.spacing, 'spacing');
+  assignSizeVariables(variables, theme.breakpoints, 'breakpoint');
 
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {
