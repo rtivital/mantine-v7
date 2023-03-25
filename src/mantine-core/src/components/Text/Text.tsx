@@ -7,7 +7,7 @@ import {
   MantineGradient,
   useStylesApi,
   useProps,
-  useComponentVars,
+  useVars,
   getGradient,
   useMantineTheme,
 } from '../../core';
@@ -95,7 +95,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
 
   const theme = useMantineTheme();
 
-  const _vars = useComponentVars<TextStylesParams>('Text', vars, {
+  const _vars = useVars<TextStylesParams>('Text', vars, {
     lineClamp,
     gradient,
   });

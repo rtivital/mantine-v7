@@ -10,7 +10,7 @@ import {
   getRadius,
   useMantineTheme,
   polymorphicFactory,
-  useComponentVars,
+  useVars,
   getSize,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
@@ -120,7 +120,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
   } = useProps('ActionIcon', defaultProps, props);
 
   const theme = useMantineTheme();
-  const _vars = useComponentVars<ActionIconStylesParams>('ActionIcon', vars, {
+  const _vars = useVars<ActionIconStylesParams>('ActionIcon', vars, {
     color,
     size,
     radius,

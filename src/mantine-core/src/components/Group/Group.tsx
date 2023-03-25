@@ -9,7 +9,7 @@ import {
   useStylesApi,
   MantineSpacing,
   getSpacing,
-  useComponentVars,
+  useVars,
 } from '../../core';
 import { filterFalsyChildren } from './filter-falsy-children/filter-falsy-children';
 import classes from './Group.module.css';
@@ -105,7 +105,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
     gap
   )} / ${childrenCount}))`;
 
-  const _vars = useComponentVars<GroupStylesParams>('Group', vars, {
+  const _vars = useVars<GroupStylesParams>('Group', vars, {
     align,
     gap,
     justify,

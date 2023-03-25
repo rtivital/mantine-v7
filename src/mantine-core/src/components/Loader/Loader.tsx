@@ -10,7 +10,7 @@ import {
   StylesApiProps,
   useStylesApi,
   factory,
-  useComponentVars,
+  useVars,
   getSize,
 } from '../../core';
 import { Bars } from './loaders/Bars';
@@ -81,7 +81,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     ...others
   } = useProps('Loader', defaultProps, props);
 
-  const _vars = useComponentVars<LoaderStylesParams>('Loader', vars, {
+  const _vars = useVars<LoaderStylesParams>('Loader', vars, {
     color,
     size,
     variant,

@@ -16,4 +16,4 @@ export {
 } from './Mantine.context';
 export type { MantineProviderProps } from './MantineProvider';
 export { useProps } from './use-props/use-props';
-export { useComponentVars } from './use-component-vars/use-component-vars';
+export { useVars } from './use-vars/use-vars';

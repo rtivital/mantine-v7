@@ -16,7 +16,7 @@ function resolveVars(
   return vars;
 }
 
-export function useComponentVars<Params extends Record<string, any> = never>(
+export function useVars<Params extends Record<string, any> = never>(
   name: string,
   vars?:
     | Record<string, string | undefined>

@@ -7,7 +7,7 @@ import {
   ElementProps,
   useProps,
   useStylesApi,
-  useComponentVars,
+  useVars,
   MantineSpacing,
   getSpacing,
 } from '../../core';
@@ -65,7 +65,7 @@ export const Stack = factory<StackFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useComponentVars<StackStylesParams>('Stack', vars, {
+  const _vars = useVars<StackStylesParams>('Stack', vars, {
     align,
     justify,
     gap,

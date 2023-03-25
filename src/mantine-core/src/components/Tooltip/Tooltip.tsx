@@ -7,7 +7,7 @@ import {
   getDefaultZIndex,
   isElement,
   useProps,
-  useComponentVars,
+  useVars,
   useDirection,
   useStylesApi,
   getThemeColor,
@@ -170,7 +170,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     rootSelector: 'tooltip',
   });
 
-  const _vars = useComponentVars<TooltipStylesParams>('Tooltip', vars, {
+  const _vars = useVars<TooltipStylesParams>('Tooltip', vars, {
     radius,
     color,
   });

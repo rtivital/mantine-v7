@@ -8,7 +8,7 @@ import {
   useProps,
   useStylesApi,
   MantineColor,
-  useComponentVars,
+  useVars,
   getThemeColor,
   useMantineTheme,
 } from '../../core';
@@ -57,7 +57,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useComponentVars<CodeStylesParams>('Code', vars, { color });
+  const _vars = useVars<CodeStylesParams>('Code', vars, { color });
   const theme = useMantineTheme();
 
   return (

@@ -8,7 +8,7 @@ import {
   ElementProps,
   useProps,
   useStylesApi,
-  useComponentVars,
+  useVars,
   useDirection,
   rem,
   packStyle,
@@ -101,7 +101,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
   const { dir } = useDirection();
   const [scrollbarHovered, setScrollbarHovered] = useState(false);
 
-  const _vars = useComponentVars<ScrollAreaStylesParams>('ScrollArea', vars, {
+  const _vars = useVars<ScrollAreaStylesParams>('ScrollArea', vars, {
     scrollbarSize,
   });
 

@@ -8,7 +8,7 @@ import {
   StylesApiProps,
   factory,
   useProps,
-  useComponentVars,
+  useVars,
   getSafeId,
   useStylesApi,
   ElementProps,
@@ -156,7 +156,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useComponentVars<TabsStylesParams>('Tabs', vars, {
+  const _vars = useVars<TabsStylesParams>('Tabs', vars, {
     color,
     radius,
   });

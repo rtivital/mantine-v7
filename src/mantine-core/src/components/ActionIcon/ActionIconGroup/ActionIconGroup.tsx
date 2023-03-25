@@ -6,7 +6,7 @@ import {
   StylesApiProps,
   useProps,
   useStylesApi,
-  useComponentVars,
+  useVars,
   rem,
 } from '../../../core';
 import classes from './ActionIconGroup.module.css';
@@ -63,7 +63,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     ...others
   } = useProps('ActionIconGroup', defaultProps, props);
 
-  const _vars = useComponentVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
+  const _vars = useVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
     borderWidth,
     orientation,
   });

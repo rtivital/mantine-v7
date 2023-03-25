@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StylesApiProps,
-  factory,
-  ElementProps,
-  useProps,
-  useStylesApi,
-  useComponentVars,
-} from '../../core';
+import { StylesApiProps, factory, ElementProps, useProps, useStylesApi, useVars } from '../../core';
 import { Text, TextVariant, TextProps, TextCssVariables } from '../Text';
 import { getTitleSize } from './get-title-size';
 import classes from './Title.module.css';
@@ -60,7 +53,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useComponentVars<TitleStylesParams>('Title', vars, {
+  const _vars = useVars<TitleStylesParams>('Title', vars, {
     size,
     order,
   });

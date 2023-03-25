@@ -7,7 +7,7 @@ import {
   ElementProps,
   useProps,
   useStylesApi,
-  useComponentVars,
+  useVars,
   MantineColor,
   MantineSpacing,
   getSpacing,
@@ -145,7 +145,7 @@ export const Table = factory<TableFactory>((props, ref) => {
 
   const theme = useMantineTheme();
 
-  const _vars = useComponentVars<TableStylesParams>('Table', vars, {
+  const _vars = useVars<TableStylesParams>('Table', vars, {
     layout,
     borderColor,
     captionSide,

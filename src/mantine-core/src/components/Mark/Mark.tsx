@@ -6,7 +6,7 @@ import {
   factory,
   ElementProps,
   useProps,
-  useComponentVars,
+  useVars,
   useStylesApi,
   MantineColor,
   useMantineTheme,
@@ -60,7 +60,7 @@ export const Mark = factory<MarkFactory>((props, ref) => {
   });
 
   const theme = useMantineTheme();
-  const _vars = useComponentVars<MarkStylesParams>('Mark', vars, { color });
+  const _vars = useVars<MarkStylesParams>('Mark', vars, { color });
 
   return (
     <Box

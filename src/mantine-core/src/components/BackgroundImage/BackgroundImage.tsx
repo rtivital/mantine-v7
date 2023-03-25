@@ -6,7 +6,7 @@ import {
   polymorphicFactory,
   useProps,
   useStylesApi,
-  useComponentVars,
+  useVars,
   MantineRadius,
   getRadius,
 } from '../../core';
@@ -65,7 +65,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
     unstyled,
   });
 
-  const _vars = useComponentVars<BackgroundImageStylesParams>('BackgroundImage', vars, { radius });
+  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', vars, { radius });
 
   return (
     <Box
