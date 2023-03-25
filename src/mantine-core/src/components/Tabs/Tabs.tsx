@@ -69,11 +69,11 @@ export interface TabsProps
   /** Tabs content */
   children: React.ReactNode;
 
-  /** Changes colors of Tabs.Tab components when variant is `pills` and `default`, does nothing for other variants */
+  /** Changes colors of `<Tabs.Tab />` components when variant is `pills` and `default`, does nothing for other variants */
   color?: MantineColor;
 
-  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
-  radius?: MantineRadius;
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
+  radius?: MantineRadius | number | (string & {});
 
   /** Determines whether tabs should have inverted styles */
   inverted?: boolean;

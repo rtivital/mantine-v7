@@ -7,6 +7,7 @@ import {
   useProps,
   useStyles,
   MantineRadius,
+  MantineSize,
 } from '../../core';
 import classes from './Input.module.css';
 
@@ -48,7 +49,7 @@ export interface InputSharedProps {
   disabled?: boolean;
 
   /** Input size */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: MantineSize;
 }
 
 export interface InputProps

@@ -29,7 +29,7 @@ export interface BackgroundImageProps
       BackgroundImageStylesParams
     > {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `0` by default */
-  radius?: MantineRadius | string | number;
+  radius?: MantineRadius | (string & {}) | number;
 
   /** Image url */
   src: string;

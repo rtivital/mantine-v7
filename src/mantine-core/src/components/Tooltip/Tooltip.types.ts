@@ -29,16 +29,13 @@ export interface TooltipBaseProps
   withinPortal?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `theme.defaultRadius` by default */
-  radius?: MantineRadius | string | number;
+  radius?: MantineRadius | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, controls tooltip background, by default set based on current color scheme */
   color?: MantineColor;
 
   /** Determines whether content should be wrapped on to the next line, `false` by default */
   multiline?: boolean;
-
-  // /** Tooltip width */
-  // width?: React.CSSProperties['width'];
 
   /** Tooltip z-index, `300` by default */
   zIndex?: React.CSSProperties['zIndex'];

@@ -62,13 +62,13 @@ export interface ActionIconProps
   loaderProps?: LoaderProps;
 
   /** Width and height of the button. Action has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). `md` by default */
-  size?: MantineSize | string | number;
+  size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
-  color?: MantineColor | string;
+  color?: MantineColor;
 
   /** Key of theme.radius or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-  radius?: MantineSize | string | number;
+  radius?: MantineSize | (string & {}) | number;
 
   /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;

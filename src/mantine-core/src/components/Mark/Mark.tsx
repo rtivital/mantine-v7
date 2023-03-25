@@ -19,7 +19,7 @@ export type MarkVariant = string;
 export type MarkCssVariables = '--mark-bg-dark' | '--mark-bg-light';
 
 export interface MarkStylesParams {
-  color: MantineColor | string | undefined;
+  color: MantineColor | undefined;
 }
 
 export interface MarkProps
@@ -27,7 +27,7 @@ export interface MarkProps
     StylesApiProps<MarkStylesNames, MarkVariant, MarkCssVariables, MarkStylesParams>,
     ElementProps<'mark'> {
   /** Key of `theme.colors` or any valid CSS color, `yellow` by default */
-  color?: MantineColor | string;
+  color?: MantineColor;
 }
 
 export interface MarkFactory {

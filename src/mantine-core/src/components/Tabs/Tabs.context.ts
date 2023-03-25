@@ -13,7 +13,7 @@ export interface TabsContextValue {
   getPanelId(value: string): string;
   variant: string | undefined;
   color: string | undefined;
-  radius: string | undefined;
+  radius: string | number | undefined;
   inverted: boolean | undefined;
   keepMounted: boolean | undefined;
   placement: 'right' | 'left' | undefined;

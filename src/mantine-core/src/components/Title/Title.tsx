@@ -23,7 +23,7 @@ export interface TitleProps
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */
   order?: TitleOrder;
 
-  /** Changes title size, if not set size is controlled by `order`  */
+  /** Changes title size, if not set, then size is controlled by `order` prop */
   size?: TitleSize;
 }
 

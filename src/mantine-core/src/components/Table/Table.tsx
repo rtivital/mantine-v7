@@ -66,7 +66,7 @@ export interface TableProps
   captionSide?: 'top' | 'bottom';
 
   /** Color of border, key of `theme.colors` or any valid CSS color, by default inferred from current color scheme */
-  borderColor?: MantineColor | string;
+  borderColor?: MantineColor;
 
   /** Determines whether the table should have outer border, `false` by default */
   withTableBorder?: boolean;
@@ -78,22 +78,22 @@ export interface TableProps
   withRowBorders?: boolean;
 
   /** Horizontal cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem (1rem = 16px), default value is `xs` */
-  horizontalSpacing?: MantineSpacing | number | string;
+  horizontalSpacing?: MantineSpacing | number | (string & {});
 
   /** Vertical cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem (1rem = 16px), default value is `xs` */
-  verticalSpacing?: MantineSpacing | number | string;
+  verticalSpacing?: MantineSpacing | number | (string & {});
 
   /** Determines whether every odd/even row background should be changed to `strippedColor`, if set to `true`, then `odd` value will be used, `false` by default  */
   striped?: boolean | 'odd' | 'even';
 
   /** Background color of striped rows, key of `theme.colors` or any valid CSS color, by default color is inferred from current color scheme */
-  stripedColor?: MantineColor | string;
+  stripedColor?: MantineColor;
 
   /** Determines whether table rows background should change to `highlightOnHoverColor` when hovered, `false` by default */
   highlightOnHover?: boolean;
 
   /** Background color of table rows when hovered, key of `theme.colors` or any valid CSS color, by default color is inferred from current color scheme */
-  highlightOnHoverColor?: MantineColor | string;
+  highlightOnHoverColor?: MantineColor;
 }
 
 export interface TableFactory {

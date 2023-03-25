@@ -34,10 +34,10 @@ export interface LoaderProps
     StylesApiProps<LoaderStylesNames, LoaderVariant, LoaderCssVariables, LoaderStylesParams>,
     Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
   /** Width of the loader. Loader has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). */
-  size?: MantineSize | string | number;
+  size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
-  color?: MantineColor | string;
+  color?: MantineColor;
 
   /** Loader type, default value is `theme.loader` */
   type?: MantineLoader;

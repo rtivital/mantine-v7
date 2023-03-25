@@ -28,7 +28,7 @@ export interface StackProps
     StylesApiProps<StackStylesNames, StackVariant, StackCssVariables, StackStylesParams>,
     ElementProps<'div'> {
   /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem (1rem = 16px), `'md'` by default */
-  gap?: MantineSpacing | string | number;
+  gap?: MantineSpacing | (string & {}) | number;
 
   /** Controls `align-items` CSS property, `'stretch'` by default */
   align?: React.CSSProperties['alignItems'];

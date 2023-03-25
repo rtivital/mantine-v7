@@ -27,10 +27,10 @@ export interface PaperProps
   extends BoxProps,
     StylesApiProps<PaperStylesNames, PaperVariant, PaperCssVariables, PaperStylesParams> {
   /** Key of `theme.shadows` or any valid CSS value to set box-shadow, `none` by default */
-  shadow?: MantineShadow | string;
+  shadow?: MantineShadow | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `theme.defaultRadius` by default */
-  radius?: MantineRadius | number | string;
+  radius?: MantineRadius | number | (string & {});
 
   /** Determines whether the paper should have border, border color depends on color scheme, `false` by default */
   withBorder?: boolean;
