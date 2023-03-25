@@ -190,7 +190,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         data-orientation={orientation}
         data-placement={orientation === 'vertical' ? placement : undefined}
         vars={{
-          '--tabs-radius': getRadius(theme, radius),
+          '--tabs-radius': getRadius(radius),
           '--tabs-color': getThemeColor(color, theme),
           ..._vars,
         }}

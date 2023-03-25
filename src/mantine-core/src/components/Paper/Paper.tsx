@@ -11,7 +11,6 @@ import {
   MantineRadius,
   getRadius,
   getShadow,
-  useMantineTheme,
 } from '../../core';
 import classes from './Paper.module.css';
 
@@ -62,8 +61,6 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     ...others
   } = useComponentDefaultProps('Paper', defaultProps, props);
 
-  const theme = useMantineTheme();
-
   const getStyles = useStylesApi({
     name: 'Paper',
     className,
@@ -82,7 +79,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
       data-with-border={withBorder || undefined}
       {...getStyles('root')}
       vars={{
-        '--paper-radius': getRadius(theme, radius),
+        '--paper-radius': getRadius(radius),
         '--paper-shadow': getShadow(shadow),
         ..._vars,
       }}

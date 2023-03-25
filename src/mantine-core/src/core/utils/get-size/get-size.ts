@@ -9,6 +9,10 @@ export function getSpacing(size: unknown) {
   return getSize(size, 'mantine-spacing');
 }
 
+export function getRadius(size: unknown) {
+  return getSize(size, 'mantine-radius');
+}
+
 export function getShadow(size: unknown) {
   if (!size) {
     return 'none';

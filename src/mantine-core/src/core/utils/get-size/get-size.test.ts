@@ -1,4 +1,4 @@
-import { getSize, getSpacing, getShadow } from './get-size';
+import { getSize, getSpacing, getShadow, getRadius } from './get-size';
 
 describe('@mantine/core/get-size', () => {
   it('returns correct size for numbers and number like values', () => {
@@ -31,6 +31,19 @@ describe('@mantine/core/get-spacing', () => {
     expect(getSpacing('10%')).toBe('10%');
     expect(getSpacing('xs')).toBe('var(--mantine-spacing-xs)');
     expect(getSpacing('md')).toBe('var(--mantine-spacing-md)');
+  });
+});
+
+describe('@mantine/core/get-radius', () => {
+  it('returns correct values', () => {
+    expect(getRadius(10)).toBe('0.625rem');
+    expect(getRadius(0)).toBe('0rem');
+    expect(getRadius('10')).toBe('0.625rem');
+    expect(getRadius('10px')).toBe('0.625rem');
+    expect(getRadius('10rem')).toBe('10rem');
+    expect(getRadius('10%')).toBe('10%');
+    expect(getRadius('xs')).toBe('var(--mantine-radius-xs)');
+    expect(getRadius('md')).toBe('var(--mantine-radius-md)');
   });
 });
 

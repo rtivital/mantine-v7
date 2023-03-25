@@ -151,7 +151,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       ref={ref}
       vars={{
         '--ai-size': getSize(size, 'ai-size'),
-        '--ai-radius': getRadius(theme, radius),
+        '--ai-radius': getRadius(radius),
         ...theme.variantColorResolver({
           color: color || theme.primaryColor,
           theme,

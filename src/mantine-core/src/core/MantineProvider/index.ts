@@ -17,4 +17,3 @@ export {
 export type { MantineProviderProps } from './MantineProvider';
 export { useComponentDefaultProps } from './use-component-default-props/use-component-default-props';
 export { useComponentVars } from './use-component-vars/use-component-vars';
-export { getRadius } from './get-radius/get-radius';
