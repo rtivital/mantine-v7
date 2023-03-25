@@ -30,6 +30,7 @@ export interface GroupStylesParams {
   wrap: React.CSSProperties['flexWrap'] | undefined;
   childrenCount: number;
   preventGrowOverflow: boolean | undefined;
+  grow: boolean | undefined;
 }
 
 export interface GroupProps
@@ -111,6 +112,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
     wrap,
     childrenCount,
     preventGrowOverflow,
+    grow,
   });
 
   return (
