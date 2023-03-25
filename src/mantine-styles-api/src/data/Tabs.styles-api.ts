@@ -48,11 +48,6 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
       condition: 'grow prop is set on Tabs.List component',
     },
     {
-      modifier: 'data-position',
-      selector: ['list'],
-      value: 'position prop is set on Tabs.List component',
-    },
-    {
       modifier: 'data-hidden',
       selector: ['panel'],
       value: 'Associated tab is not active',

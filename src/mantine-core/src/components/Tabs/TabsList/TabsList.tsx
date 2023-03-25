@@ -14,8 +14,8 @@ export interface TabsListProps
   /** Determines whether tabs should take the whole space, `false` by default */
   grow?: boolean;
 
-  /** Tabs alignment, `left` by default */
-  position?: 'left' | 'center' | 'right' | 'apart';
+  /** Tabs alignment, `flex-start` by default */
+  justify?: React.CSSProperties['justifyContent'];
 }
 
 export interface TabsListFactory {
@@ -27,7 +27,7 @@ export interface TabsListFactory {
 const defaultProps: Partial<TabsListProps> = {};
 
 export const TabsList = factory<TabsListFactory>((props, ref) => {
-  const { children, className, grow, position, classNames, styles, style, ...others } = useProps(
+  const { children, className, grow, justify, classNames, styles, style, ...others } = useProps(
     'TabsList',
     defaultProps,
     props
@@ -44,10 +44,10 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
       aria-orientation={ctx.orientation}
       data-orientation={ctx.orientation}
       data-placement={ctx.orientation === 'vertical' ? ctx.placement : undefined}
-      data-position={position}
       data-inverted={ctx.inverted || undefined}
       data-variant={ctx.variant}
       data-grow={grow || undefined}
+      vars={{ '--tabs-justify': justify }}
     >
       {children}
     </Box>

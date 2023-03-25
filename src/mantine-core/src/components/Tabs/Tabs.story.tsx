@@ -170,7 +170,7 @@ export const Controlled = () => {
 
 export const Grow = () => (
   <Wrapper defaultValue="react">
-    <Tabs.List position="center">
+    <Tabs.List justify="center" grow>
       <Tabs.Tab value="react" color="red">
         React
       </Tabs.Tab>
