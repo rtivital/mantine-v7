@@ -3,7 +3,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
 } from '../../core';
@@ -48,7 +48,7 @@ const defaultProps: Partial<TitleProps> = {
 
 export const Title = factory<TitleFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, order, vars, inherit, size, ...others } =
-    useComponentDefaultProps('Title', defaultProps, props);
+    useProps('Title', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'Title',

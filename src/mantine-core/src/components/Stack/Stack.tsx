@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
   MantineSpacing,
@@ -53,7 +53,7 @@ const defaultProps: Partial<StackProps> = {
 
 export const Stack = factory<StackFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, align, justify, gap, ...others } =
-    useComponentDefaultProps('Stack', defaultProps, props);
+    useProps('Stack', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'Stack',

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  useComponentDefaultProps,
+  useProps,
   StylesApiProps,
   useStylesApi,
   polymorphicFactory,
@@ -38,7 +38,7 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
       styles,
       style,
       ...others
-    } = useComponentDefaultProps('UnstyledButton', defaultProps, props);
+    } = useProps('UnstyledButton', defaultProps, props);
 
     const getStyles = useStylesApi({
       name: __staticSelector!,

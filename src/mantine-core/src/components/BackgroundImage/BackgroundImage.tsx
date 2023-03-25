@@ -4,7 +4,7 @@ import {
   BoxProps,
   StylesApiProps,
   polymorphicFactory,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
   MantineRadius,
@@ -49,8 +49,11 @@ const defaultProps: Partial<BackgroundImageProps> = {
 };
 
 export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, radius, src, ...others } =
-    useComponentDefaultProps('BackgroundImage', defaultProps, props);
+  const { classNames, className, style, styles, unstyled, vars, radius, src, ...others } = useProps(
+    'BackgroundImage',
+    defaultProps,
+    props
+  );
 
   const getStyles = useStylesApi({
     name: 'BackgroundImage',

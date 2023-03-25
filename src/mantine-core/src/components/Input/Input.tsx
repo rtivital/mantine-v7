@@ -4,7 +4,7 @@ import {
   BoxProps,
   StylesApiProps,
   polymorphicFactory,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   MantineRadius,
 } from '../../core';
@@ -80,7 +80,7 @@ const defaultProps: Partial<InputProps> = {};
 
 export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, required, __staticSelector, ...others } =
-    useComponentDefaultProps('Input', defaultProps, props);
+    useProps('Input', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: ['Input', __staticSelector],

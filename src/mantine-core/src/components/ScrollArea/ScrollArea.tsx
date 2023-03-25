@@ -6,7 +6,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
   useDirection,
@@ -96,7 +96,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
     onScrollPositionChange,
     children,
     ...others
-  } = useComponentDefaultProps('ScrollArea', defaultProps, props);
+  } = useProps('ScrollArea', defaultProps, props);
 
   const { dir } = useDirection();
   const [scrollbarHovered, setScrollbarHovered] = useState(false);
@@ -197,7 +197,7 @@ export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
     style,
     vars,
     ...others
-  } = useComponentDefaultProps('ScrollAreaAutosize', defaultProps, props);
+  } = useProps('ScrollAreaAutosize', defaultProps, props);
 
   return (
     <Box {...others} ref={ref} style={[{ display: 'flex' }, ...packStyle(style)]}>

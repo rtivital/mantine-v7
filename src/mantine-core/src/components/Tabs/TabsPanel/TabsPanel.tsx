@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  BoxProps,
-  useComponentDefaultProps,
-  factory,
-  ElementProps,
-  StylesApiProps,
-} from '../../../core';
+import { Box, BoxProps, useProps, factory, ElementProps, StylesApiProps } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsPanelStylesNames = 'panel';
@@ -31,8 +24,11 @@ export interface TabsPanelFactory {
 const defaultProps: Partial<TabsPanelProps> = {};
 
 export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
-  const { children, className, value, classNames, styles, style, ...others } =
-    useComponentDefaultProps('TabsPanel', defaultProps, props);
+  const { children, className, value, classNames, styles, style, ...others } = useProps(
+    'TabsPanel',
+    defaultProps,
+    props
+  );
 
   const ctx = useTabsContext();
 

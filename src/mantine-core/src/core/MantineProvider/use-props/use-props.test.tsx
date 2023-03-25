@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react';
-import { useComponentDefaultProps } from './use-component-default-props';
+import { useProps } from './use-props';
 import { MantineProvider } from '../MantineProvider';
 
 function Wrapper({ children }: { children: React.ReactNode }) {
@@ -23,19 +23,15 @@ function Wrapper({ children }: { children: React.ReactNode }) {
 
 describe('@mantine/core/use-component-default-props', () => {
   it('returns default props from MantineProvider context', () => {
-    const { result } = renderHook(
-      () => useComponentDefaultProps<{ test?: string }>('TestComponent', {}, {}),
-      {
-        wrapper: Wrapper,
-      }
-    );
+    const { result } = renderHook(() => useProps<{ test?: string }>('TestComponent', {}, {}), {
+      wrapper: Wrapper,
+    });
     expect(result.current.test).toBe('theme-default-prop');
   });
 
   it('overrides theme default props with props passed to hook', () => {
     const { result } = renderHook(
-      () =>
-        useComponentDefaultProps<{ test?: string }>('TestComponent', {}, { test: 'direct-prop' }),
+      () => useProps<{ test?: string }>('TestComponent', {}, { test: 'direct-prop' }),
       { wrapper: Wrapper }
     );
     expect(result.current.test).toBe('direct-prop');
@@ -44,7 +40,7 @@ describe('@mantine/core/use-component-default-props', () => {
   it('overrides component default props with props passed to hook', () => {
     const { result } = renderHook(
       () =>
-        useComponentDefaultProps<{ test?: string }>(
+        useProps<{ test?: string }>(
           'TestComponent',
           { test: 'component-prop' },
           { test: 'direct-prop' }

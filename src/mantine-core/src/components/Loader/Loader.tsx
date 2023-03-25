@@ -4,7 +4,7 @@ import {
   MantineSize,
   MantineColor,
   BoxProps,
-  useComponentDefaultProps,
+  useProps,
   useMantineTheme,
   getThemeColor,
   StylesApiProps,
@@ -79,7 +79,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     loaders,
     variant,
     ...others
-  } = useComponentDefaultProps('Loader', defaultProps, props);
+  } = useProps('Loader', defaultProps, props);
 
   const _vars = useComponentVars<LoaderStylesParams>('Loader', vars, {
     color,

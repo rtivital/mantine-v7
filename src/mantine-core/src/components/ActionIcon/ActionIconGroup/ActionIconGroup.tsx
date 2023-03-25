@@ -4,7 +4,7 @@ import {
   Box,
   BoxProps,
   StylesApiProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
   rem,
@@ -61,7 +61,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     vars,
     borderWidth,
     ...others
-  } = useComponentDefaultProps('ActionIconGroup', defaultProps, props);
+  } = useProps('ActionIconGroup', defaultProps, props);
 
   const _vars = useComponentVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
     borderWidth,

@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   MantineColor,
   useComponentVars,
@@ -45,7 +45,7 @@ const defaultProps: Partial<CodeProps> = {};
 
 export const Code = factory<CodeFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, color, block, ...others } =
-    useComponentDefaultProps('Code', defaultProps, props);
+    useProps('Code', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'Code',

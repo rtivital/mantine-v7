@@ -4,7 +4,7 @@ import {
   BoxProps,
   StylesApiProps,
   polymorphicFactory,
-  useComponentDefaultProps,
+  useProps,
   useComponentVars,
   useStylesApi,
   MantineShadow,
@@ -59,7 +59,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     radius,
     shadow,
     ...others
-  } = useComponentDefaultProps('Paper', defaultProps, props);
+  } = useProps('Paper', defaultProps, props);
 
   const getStyles = useStylesApi({
     name: 'Paper',

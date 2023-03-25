@@ -8,7 +8,7 @@ import {
   TextStylesParams,
   TextVariant,
 } from '../Text';
-import { polymorphicFactory, useComponentDefaultProps } from '../../core';
+import { polymorphicFactory, useProps } from '../../core';
 import classes from './Anchor.module.css';
 
 export type AnchorStylesNames = TextStylesNames;
@@ -36,11 +36,7 @@ const defaultProps: Partial<AnchorProps> = {
 };
 
 export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
-  const { underline, className, ...others } = useComponentDefaultProps(
-    'Anchor',
-    defaultProps,
-    props
-  );
+  const { underline, className, ...others } = useProps('Anchor', defaultProps, props);
   return (
     <Text
       component="a"

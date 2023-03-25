@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   ElementProps,
   factory,
-  useComponentDefaultProps,
+  useProps,
   FactoryPayload,
 } from '../../core';
 import { useTableContext, TableContextValue } from './Table.context';
@@ -108,11 +108,7 @@ export function tableElement<Factory extends FactoryPayload>(
 ) {
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = factory<Factory>((props, ref) => {
-    const { classNames, className, style, styles, unstyled, ...others } = useComponentDefaultProps(
-      name,
-      {},
-      props
-    );
+    const { classNames, className, style, styles, unstyled, ...others } = useProps(name, {}, props);
 
     const ctx = useTableContext();
 

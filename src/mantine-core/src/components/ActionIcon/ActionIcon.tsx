@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BoxProps,
-  useComponentDefaultProps,
+  useProps,
   StylesApiProps,
   useStylesApi,
   MantineSize,
@@ -117,7 +117,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     children,
     disabled,
     ...others
-  } = useComponentDefaultProps('ActionIcon', defaultProps, props);
+  } = useProps('ActionIcon', defaultProps, props);
 
   const theme = useMantineTheme();
   const _vars = useComponentVars<ActionIconStylesParams>('ActionIcon', vars, {

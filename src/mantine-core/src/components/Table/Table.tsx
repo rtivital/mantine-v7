@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useStylesApi,
   useComponentVars,
   MantineColor,
@@ -141,7 +141,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     borderColor,
     layout,
     ...others
-  } = useComponentDefaultProps('Table', defaultProps, props);
+  } = useProps('Table', defaultProps, props);
 
   const theme = useMantineTheme();
 

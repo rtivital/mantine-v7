@@ -6,7 +6,7 @@ import {
   factory,
   getDefaultZIndex,
   isElement,
-  useComponentDefaultProps,
+  useProps,
   useComponentVars,
   useDirection,
   useStylesApi,
@@ -141,7 +141,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     keepMounted,
     vars,
     ...others
-  } = useComponentDefaultProps('Tooltip', defaultProps, props);
+  } = useProps('Tooltip', defaultProps, props);
 
   const { dir } = useDirection();
   const arrowRef = useRef<HTMLDivElement>(null);

@@ -7,7 +7,7 @@ import {
   MantineRadius,
   StylesApiProps,
   factory,
-  useComponentDefaultProps,
+  useProps,
   useComponentVars,
   getSafeId,
   useStylesApi,
@@ -134,7 +134,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     style,
     vars,
     ...others
-  } = useComponentDefaultProps('Tabs', defaultProps, props);
+  } = useProps('Tabs', defaultProps, props);
   const theme = useMantineTheme();
 
   const uid = useId(id);

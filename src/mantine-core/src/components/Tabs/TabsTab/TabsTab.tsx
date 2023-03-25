@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  useComponentDefaultProps,
+  useProps,
   factory,
   ElementProps,
   MantineColor,
@@ -58,7 +58,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     classNames,
     styles,
     ...others
-  } = useComponentDefaultProps('TabsTab', defaultProps, props);
+  } = useProps('TabsTab', defaultProps, props);
 
   const theme = useMantineTheme();
   const { dir } = useDirection();

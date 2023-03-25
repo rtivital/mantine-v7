@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  polymorphicFactory,
-  useComponentDefaultProps,
-  MantineColor,
-  MantineTheme,
-} from '../../core';
+import { polymorphicFactory, useProps, MantineColor, MantineTheme } from '../../core';
 import { Text, TextStylesNames, TextProps } from '../Text';
 import { Mark } from '../Mark';
 import { highlighter } from './highlighter/highlighter';
@@ -33,8 +28,11 @@ export interface HighlightFactory {
 const defaultProps: Partial<HighlightProps> = {};
 
 export const Highlight = polymorphicFactory<HighlightFactory>((props, ref) => {
-  const { unstyled, children, highlight, highlightStyles, color, ...others } =
-    useComponentDefaultProps('Highlight', defaultProps, props);
+  const { unstyled, children, highlight, highlightStyles, color, ...others } = useProps(
+    'Highlight',
+    defaultProps,
+    props
+  );
 
   const highlightChunks = highlighter(children, highlight);
 

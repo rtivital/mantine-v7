@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  BoxProps,
-  useComponentDefaultProps,
-  factory,
-  ElementProps,
-  StylesApiProps,
-} from '../../../core';
+import { Box, BoxProps, useProps, factory, ElementProps, StylesApiProps } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsListStylesNames = 'list';
@@ -34,8 +27,11 @@ export interface TabsListFactory {
 const defaultProps: Partial<TabsListProps> = {};
 
 export const TabsList = factory<TabsListFactory>((props, ref) => {
-  const { children, className, grow, position, classNames, styles, style, ...others } =
-    useComponentDefaultProps('TabsList', defaultProps, props);
+  const { children, className, grow, position, classNames, styles, style, ...others } = useProps(
+    'TabsList',
+    defaultProps,
+    props
+  );
 
   const ctx = useTabsContext();
 

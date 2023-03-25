@@ -5,7 +5,7 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useComponentDefaultProps,
+  useProps,
   useComponentVars,
   useStylesApi,
   MantineColor,
@@ -43,8 +43,11 @@ const defaultProps: Partial<MarkProps> = {
 };
 
 export const Mark = factory<MarkFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, color, ...others } =
-    useComponentDefaultProps('Mark', defaultProps, props);
+  const { classNames, className, style, styles, unstyled, vars, color, ...others } = useProps(
+    'Mark',
+    defaultProps,
+    props
+  );
 
   const getStyles = useStylesApi({
     name: 'Mark',

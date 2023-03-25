@@ -1,7 +1,7 @@
 import React, { useRef, useState, forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useIsomorphicEffect } from '@mantine/hooks';
-import { useComponentDefaultProps } from '../../core';
+import { useProps } from '../../core';
 
 export interface PortalProps extends React.ComponentPropsWithoutRef<'div'> {
   /** Portal children, for example, custom modal or popover */
@@ -14,11 +14,7 @@ export interface PortalProps extends React.ComponentPropsWithoutRef<'div'> {
 const defaultProps: Partial<PortalProps> = {};
 
 export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
-  const { children, target, className, ...others } = useComponentDefaultProps(
-    'Portal',
-    defaultProps,
-    props
-  );
+  const { children, target, className, ...others } = useProps('Portal', defaultProps, props);
 
   const [mounted, setMounted] = useState(false);
   const nodeRef = useRef<HTMLElement | null>(null);

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import { FloatingDelayGroup } from '@floating-ui/react';
-import { useComponentDefaultProps } from '../../../core';
+import { useProps } from '../../../core';
 import { TooltipGroupProvider } from './TooltipGroup.context';
 
 export interface TooltipGroupProps {
@@ -21,11 +21,7 @@ const defaultProps: Partial<TooltipGroupProps> = {
 };
 
 export function TooltipGroup(props: TooltipGroupProps) {
-  const { openDelay, closeDelay, children } = useComponentDefaultProps(
-    'TooltipGroup',
-    defaultProps,
-    props
-  );
+  const { openDelay, closeDelay, children } = useProps('TooltipGroup', defaultProps, props);
 
   return (
     <TooltipGroupProvider value>

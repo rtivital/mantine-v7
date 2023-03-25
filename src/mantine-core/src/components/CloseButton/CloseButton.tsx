@@ -1,5 +1,5 @@
 import React from 'react';
-import { polymorphicFactory, useComponentDefaultProps, rem, StylesApiProps } from '../../core';
+import { polymorphicFactory, useProps, rem, StylesApiProps } from '../../core';
 import {
   ActionIcon,
   ActionIconProps,
@@ -44,11 +44,7 @@ const defaultProps: Partial<CloseButtonProps> = {
 };
 
 export const CloseButton = polymorphicFactory<CloseButtonFactory>((props, ref) => {
-  const { iconsSize, children, vars, ...others } = useComponentDefaultProps(
-    'CloseButton',
-    defaultProps,
-    props
-  );
+  const { iconsSize, children, vars, ...others } = useProps('CloseButton', defaultProps, props);
 
   return (
     <ActionIcon

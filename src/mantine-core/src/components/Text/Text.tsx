@@ -6,7 +6,7 @@ import {
   polymorphicFactory,
   MantineGradient,
   useStylesApi,
-  useComponentDefaultProps,
+  useProps,
   useComponentVars,
   getGradient,
   useMantineTheme,
@@ -91,7 +91,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     unstyled,
     variant,
     ...others
-  } = useComponentDefaultProps('Text', defaultProps, props);
+  } = useProps('Text', defaultProps, props);
 
   const theme = useMantineTheme();
 

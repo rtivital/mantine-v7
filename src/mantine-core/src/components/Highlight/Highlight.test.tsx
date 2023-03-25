@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, tests } from '@mantine/tests';
-import { Highlight, HighlightProps, HighlightStylesNames } from './Highlight';
+import { TextStylesNames } from '../Text';
+import { Highlight, HighlightProps } from './Highlight';
 
 const defaultProps: HighlightProps = {
   children: 'test',
@@ -8,7 +9,7 @@ const defaultProps: HighlightProps = {
 };
 
 describe('@mantine/core/Highlight', () => {
-  tests.itSupportsSystemProps<HighlightProps, HighlightStylesNames>({
+  tests.itSupportsSystemProps<HighlightProps, TextStylesNames>({
     component: Highlight,
     props: defaultProps,
     polymorphic: true,
