@@ -4,7 +4,6 @@ import {
   BoxProps,
   StylesApiProps,
   polymorphicFactory,
-  ElementProps,
   useComponentDefaultProps,
   useStylesApi,
   useComponentVars,
@@ -30,6 +29,9 @@ export interface BackgroundImageProps
     > {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `0` by default */
   radius?: MantineRadius | string | number;
+
+  /** Image url */
+  src: string;
 }
 
 export interface BackgroundImageFactory {
@@ -46,7 +48,7 @@ const defaultProps: Partial<BackgroundImageProps> = {
 };
 
 export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, radius, ...others } =
+  const { classNames, className, style, styles, unstyled, vars, radius, src, ...others } =
     useComponentDefaultProps('BackgroundImage', defaultProps, props);
 
   const getStyles = useStylesApi({
@@ -64,7 +66,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
   return (
     <Box
       ref={ref}
-      {...getStyles('root')}
+      {...getStyles('root', { style: { backgroundImage: `url(${src})` } })}
       vars={{
         '--bi-radius': getRadius(radius),
         ..._vars,
