@@ -29,10 +29,13 @@ export type ElementProps<T extends React.ElementType> = Omit<
 export interface BoxComponentProps extends BoxProps {
   /** CSS variables defined on root component element */
   vars?: CssVarsProp;
+
+  /** Variant passed from parent component, sets `data-variant` */
+  variant?: string;
 }
 
 const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; className: string }>(
-  ({ component, style, vars, className, ...others }, ref) => {
+  ({ component, style, vars, className, variant, ...others }, ref) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
     const { styleProps, rest } = extractStyleProps(others);
@@ -56,6 +59,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
           ref={ref}
           style={getBoxStyle({ theme, style, vars, styleProps: parsedStyleProps.inlineStyles })}
           className={cx(className, { [responsiveClassName]: parsedStyleProps.hasResponsiveStyles })}
+          data-variant={variant}
           {...rest}
         />
       </>
