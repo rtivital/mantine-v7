@@ -3,6 +3,7 @@ export * from './types';
 export * from './data/ActionIcon.styles-api';
 export * from './data/Anchor.styles-api';
 export * from './data/CloseButton.styles-api';
+export * from './data/Code.styles-api';
 export * from './data/Loader.styles-api';
 export * from './data/Mark.styles-api';
 export * from './data/Paper.styles-api';
