@@ -188,6 +188,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         id={uid}
         data-variant={variant}
         data-orientation={orientation}
+        data-inverted={(orientation === 'horizontal' && inverted) || undefined}
         data-placement={orientation === 'vertical' ? placement : undefined}
         vars={{
           '--tabs-radius': getRadius(radius),
