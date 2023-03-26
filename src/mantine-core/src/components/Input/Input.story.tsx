@@ -7,6 +7,7 @@ export function Variants() {
   return (
     <div style={{ padding: 40 }}>
       <Input placeholder="default" />
+      <Input placeholder="cursor pointer" pointer mt="md" />
       <Input placeholder="input with error" mt="md" error leftSection="##" />
       <Input placeholder="disabled" mt="md" disabled />
       <Input placeholder="with icon" mt="md" leftSection="$" />

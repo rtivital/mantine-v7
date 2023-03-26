@@ -149,6 +149,8 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
       variant={variant}
       data-with-right-section={!!rightSection || undefined}
       data-with-left-section={!!leftSection || undefined}
+      data-multiline={multiline || undefined}
+      data-pointer={pointer || undefined}
       vars={{
         '--input-height': getSize(size, 'input-height'),
         '--input-fz': getFontSize(size),
@@ -185,8 +187,6 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         disabled={disabled}
         data-disabled={disabled || undefined}
         data-error={error || undefined}
-        data-pointer={pointer || undefined}
-        data-multiline={multiline || undefined}
         {...getStyles('input', { variant })}
       />
 

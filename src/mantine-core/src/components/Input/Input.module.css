@@ -15,6 +15,9 @@
   --input-padding-y-lg: rem(10px);
   --input-padding-y-xl: rem(13px);
 
+  --input-cursor: text;
+  --input-text-align: left;
+  --input-line-height: calc(var(--input-height) - rem(2px));
   --input-padding: calc(var(--input-height) / 3);
   --input-padding-left: var(--input-padding);
   --input-padding-right: var(--input-padding);
@@ -23,9 +26,20 @@
   --input-color: inherit;
   --input-left-section-size: var(--input-left-section-width, var(--input-height));
   --input-right-section-size: var(--input-right-section-width, var(--input-height));
+  --input-size: var(--input-height);
+
+  &[data-pointer] {
+    --input-cursor: pointer;
+  }
+
+  &[data-multiline] {
+    --input-size: auto;
+    --input-line-height: var(--mantine-line-height);
+  }
 
   &[data-variant='unstyled'] {
     --input-padding: 0;
+    --input-padding-y: 0;
   }
 
   &[data-with-left-section] {
@@ -98,6 +112,10 @@
     --input-placeholder-color: var(--mantine-color-error);
     --input-section-color: var(--mantine-color-error);
   }
+
+  @mixin rtl {
+    --input-text-align: right;
+  }
 }
 
 .input {
@@ -105,21 +123,24 @@
   appearance: none;
   resize: none;
   display: block;
-  text-align: left;
   width: 100%;
   transition: border-color 100ms ease;
 
+  text-align: var(--input-text-align);
   color: var(--input-color);
   border: rem(1px) solid var(--input-bd);
   background-color: var(--input-bg);
   font-family: var(--mantine-font-family);
-  height: var(--input-height);
+  height: var(--input-size);
   min-height: var(--input-height);
-  line-height: calc(var(--input-height) - rem(2px));
+  line-height: var(--input-line-height);
   font-size: var(--input-fz);
   border-radius: var(--input-radius);
   padding-left: var(--input-padding-left);
   padding-right: var(--input-padding-right);
+  padding-top: var(--input-padding-y, 0rem);
+  padding-bottom: var(--input-padding-y, 0rem);
+  cursor: var(--input-cursor);
 
   &:focus,
   &:focus-within {
@@ -151,21 +172,6 @@
     opacity: 0.6;
     background-color: var(--input-disabled-bg);
     color: var(--input-disabled-color);
-  }
-
-  &[data-multiline] {
-    height: auto;
-    line-height: var(--mantine-line-height);
-    padding-top: var(--input-padding-y);
-    padding-bottom: var(--input-padding-y);
-  }
-
-  &[data-pointer] {
-    cursor: pointer;
-  }
-
-  @mixin rtl {
-    text-align: right;
   }
 }
 
