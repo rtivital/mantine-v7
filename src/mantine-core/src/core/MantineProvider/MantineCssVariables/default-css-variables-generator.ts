@@ -100,6 +100,7 @@ function getThemeCssVariables(theme: MantineTheme) {
     '--mantine-moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
     '--mantine-color-white': theme.white,
     '--mantine-color-black': theme.black,
+    '--mantine-color-primary': `var(--mantine-color-${theme.primaryColor}-filled)`,
     '--mantine-line-height': theme.lineHeight,
     '--mantine-font-family': theme.fontFamily,
     '--mantine-font-family-monospace': theme.fontFamilyMonospace,
