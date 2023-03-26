@@ -74,7 +74,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...others}
-      {...ctx.getStyles('tab', { className, style, ...stylesApiProps })}
+      {...ctx.getStyles('tab', { className, style, variant: ctx.variant, ...stylesApiProps })}
       disabled={disabled}
       unstyled={ctx.unstyled}
       data-active={isActive || undefined}

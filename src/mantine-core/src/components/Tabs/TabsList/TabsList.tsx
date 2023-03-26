@@ -38,7 +38,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('list', { className, style, classNames, styles })}
+      {...ctx.getStyles('list', { className, style, classNames, styles, variant: ctx.variant })}
       ref={ref}
       role="tablist"
       aria-orientation={ctx.orientation}

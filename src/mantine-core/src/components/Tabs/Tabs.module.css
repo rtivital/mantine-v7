@@ -107,7 +107,7 @@
 }
 
 /*************************************** default variant ***************************************/
-.list[data-variant='default'] {
+.list--default {
   position: relative;
 
   &::before {
@@ -171,7 +171,7 @@
   }
 }
 
-.tab[data-variant='default'] {
+.tab--default {
   &[data-orientation='horizontal'] {
     border-bottom: rem(2px) solid transparent;
     border-top-right-radius: var(--tabs-radius);
@@ -254,7 +254,7 @@
 }
 
 /*************************************** outline variant ***************************************/
-.list[data-variant='outline'] {
+.list--outline {
   position: relative;
 
   &::before {
@@ -322,7 +322,7 @@
   }
 }
 
-.tab[data-variant='outline'] {
+.tab--outline {
   border: rem(1px) solid transparent;
 
   &[data-active] {
@@ -392,11 +392,11 @@
 }
 
 /*************************************** pills variant ***************************************/
-.list[data-variant='pills'] {
+.list--pills {
   gap: calc(var(--mantine-spacing-sm) / 2);
 }
 
-.tab[data-variant='pills'] {
+.tab--pills {
   border-radius: var(--tabs-radius);
 
   &:not([data-disabled]) {
