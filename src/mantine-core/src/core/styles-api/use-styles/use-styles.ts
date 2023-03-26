@@ -26,6 +26,7 @@ export interface GetPropsOptions<StylesNames extends string> {
   active?: boolean;
   classNames?: Partial<Record<StylesNames, string>>;
   styles?: Styles<StylesNames>;
+  variant?: string;
 }
 
 function resolveStyles<StylesNames extends string>(
@@ -81,6 +82,7 @@ export function useStyles<StylesNames extends string>({
       options?.active && !unstyled && theme.activeClassName,
       themeClassNames,
       classNames?.[selector],
+      options?.variant && classes[`${selector}--${options.variant}` as StylesNames],
       options?.classNames?.[selector],
       className && { [className]: rootSelector === selector },
       { [classes[selector]]: !unstyled },

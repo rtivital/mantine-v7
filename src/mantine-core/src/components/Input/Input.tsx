@@ -183,7 +183,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         data-multiline={multiline || undefined}
         data-with-right-section={!!rightSection || undefined}
         data-with-left-section={!!leftSection || undefined}
-        {...getStyles('input')}
+        {...getStyles('input', { variant })}
       />
 
       {rightSection && (

@@ -146,7 +146,7 @@
 }
 
 /* _______________________ default variant _______________________ */
-.input[data-variant='default'] {
+.input--default {
   @mixin light {
     background-color: var(--mantine-color-white);
     border-color: var(--mantine-color-gray-4);
@@ -181,7 +181,7 @@
 }
 
 /* _______________________ filled variant _______________________ */
-.input[data-variant='filled'] {
+.input--filled {
   border-color: transparent;
 
   @mixin light {
@@ -216,7 +216,7 @@
 }
 
 /* _______________________ unstyled variant _______________________ */
-.input[data-variant='unstyled'] {
+.input--unstyled {
   border-color: transparent;
   background-color: transparent;
   padding: 0;
