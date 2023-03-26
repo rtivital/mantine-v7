@@ -1,6 +1,3 @@
-/* top right bottom left */
-/* top-left top-right bottom-right bottom-left */
-
 .root {
   display: var(--tabs-display);
   flex-direction: var(--tabs-flex-direction);
@@ -12,6 +9,7 @@
   --tabs-flex-direction: row;
   --list-border-width: rem(0);
   --list-border-size: 0 0 var(--list-border-width) 0;
+  --list-gap: unset;
 
   --list-line-bottom: 0;
   --list-line-top: unset;
@@ -99,6 +97,18 @@
   &[data-variant='outline'] {
     --list-border-width: rem(1px);
   }
+
+  &[data-variant='pills'] {
+    --list-gap: calc(var(--mantine-spacing-sm) / 2);
+
+    @mixin light {
+      --tab-hover-color: var(--mantine-color-gray-0);
+    }
+
+    @mixin dark {
+      --tab-hover-color: var(--mantine-color-dark-6);
+    }
+  }
 }
 
 .list {
@@ -106,6 +116,7 @@
   flex-wrap: wrap;
   justify-content: var(--tabs-justify, flex-start);
   flex-direction: var(--list-direction);
+  gap: var(--list-gap);
 
   --tab-grow: unset;
 
@@ -209,15 +220,17 @@
   border-width: var(--tab-border-width);
   border-style: solid;
   border-color: var(--_tab-border-color);
+  background-color: var(--_tab-bg);
 
   --_tab-border-color: transparent;
+  --_tab-bg: transparent;
 
   &[data-active] {
     --_tab-border-color: var(--tabs-color);
   }
 
   @mixin hover {
-    background-color: var(--tab-hover-color);
+    --_tab-bg: var(--tab-hover-color);
 
     &:not([data-active]) {
       --_tab-border-color: var(--tab-border-color);
@@ -227,7 +240,7 @@
   &:disabled,
   &[data-disabled] {
     @mixin hover {
-      background-color: transparent;
+      --_tab-bg: transparent;
     }
   }
 }
@@ -300,31 +313,26 @@
 }
 
 /*************************************** pills variant ***************************************/
-.list--pills {
-  gap: calc(var(--mantine-spacing-sm) / 2);
-}
-
 .tab--pills {
   border-radius: var(--tabs-radius);
+  background-color: var(--_tab-bg);
+  color: var(--_tab-color);
+
+  --_tab-bg: transparent;
+  --_tab-color: inherit;
 
   &:not([data-disabled]) {
     @mixin hover {
-      @mixin light {
-        background-color: var(--mantine-color-gray-0);
-      }
-
-      @mixin dark {
-        background-color: var(--mantine-color-dark-6);
-      }
+      --_tab-bg: var(--tab-hover-color);
     }
   }
 
   &[data-active][data-active] {
-    background-color: var(--tabs-color);
-    color: var(--mantine-color-white);
+    --_tab-bg: var(--tabs-color);
+    --_tab-color: var(--mantine-color-white);
 
     @mixin hover {
-      background-color: var(--tabs-color);
+      --_tab-bg: var(--tabs-color);
     }
   }
 }
