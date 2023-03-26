@@ -53,16 +53,19 @@ export function RightSection() {
 }
 
 export function Multiline() {
-  return (
-    <div style={{ padding: 40, display: 'flex' }}>
-      <Input defaultValue="default input" />
+  const sizes = (['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+    <div style={{ padding: 40, display: 'flex' }} key={size}>
+      <Input defaultValue="default input" size={size} />
       <Input
+        size={size}
         component="textarea"
         placeholder="Multiline input"
         defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
         multiline
-        rows={5}
+        rows={3}
       />
     </div>
-  );
+  ));
+
+  return <>{sizes}</>;
 }

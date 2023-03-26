@@ -24,7 +24,8 @@ export type InputCssVariables =
   | '--input-fz'
   | '--input-radius'
   | '--input-left-section-width'
-  | '--input-right-section-width';
+  | '--input-right-section-width'
+  | '--input-padding-y';
 
 export interface InputStylesParams {
   size: MantineSize | undefined;
@@ -156,6 +157,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
           leftSectionWidth !== undefined ? rem(leftSectionWidth) : undefined,
         '--input-right-section-width':
           rightSectionWidth !== undefined ? rem(rightSectionWidth) : undefined,
+        '--input-padding-y': multiline ? getSize(size, 'input-padding-y') : undefined,
         ..._vars,
       }}
     >

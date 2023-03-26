@@ -1,11 +1,19 @@
 .wrapper {
   position: relative;
+  /* marginTop: offsetTop ? `calc(${theme.spacing.xs} / 2)` : undefined,
+  marginBottom: offsetBottom ? `calc(${theme.spacing.xs} / 2)` : undefined, */
 
   --input-height-xs: rem(30px);
   --input-height-sm: rem(36px);
   --input-height-md: rem(42px);
   --input-height-lg: rem(50px);
   --input-height-xl: rem(60px);
+
+  --input-padding-y-xs: rem(5px);
+  --input-padding-y-sm: rem(6px);
+  --input-padding-y-md: rem(8px);
+  --input-padding-y-lg: rem(10px);
+  --input-padding-y-xl: rem(13px);
 
   --input-padding: calc(var(--input-height) / 3);
   --input-padding-left: var(--input-padding);
@@ -90,9 +98,6 @@
     --input-placeholder-color: var(--mantine-color-error);
     --input-section-color: var(--mantine-color-error);
   }
-
-  /* marginTop: offsetTop ? `calc(${theme.spacing.xs} / 2)` : undefined,
-  marginBottom: offsetBottom ? `calc(${theme.spacing.xs} / 2)` : undefined, */
 }
 
 .input {
@@ -151,6 +156,8 @@
   &[data-multiline] {
     height: auto;
     line-height: var(--mantine-line-height);
+    padding-top: var(--input-padding-y);
+    padding-bottom: var(--input-padding-y);
   }
 
   &[data-pointer] {
