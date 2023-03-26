@@ -13,13 +13,6 @@ const base = (
         value="react"
         leftSection={<IconPackage size={16} />}
         rightSection={<IconPackage size={16} />}
-        className="super-class"
-        styles={{
-          tab: { color: 'cyan' },
-          tabLabel: { color: 'red' },
-          tabLeftSection: { color: 'blue' },
-          tabRightSection: { color: 'green' },
-        }}
       >
         React
       </Tabs.Tab>
@@ -53,7 +46,7 @@ const verticalBase = (
       </Tabs.Tab>
     </Tabs.List>
 
-    <Tabs.Panel value="react" pl="sm">
+    <Tabs.Panel value="react" pl="sm" bg="red.0">
       React Panel
     </Tabs.Panel>
     <Tabs.Panel value="sv" pl="sm">
@@ -70,11 +63,9 @@ const Wrapper = (props: TabsProps) => <Tabs maw={500} mx="auto" mt={40} {...prop
 export function DefaultVariant() {
   return (
     <div>
-      <Wrapper color="#FF00FF" defaultValue="react" style={{ color: 'pink' }}>
-        {base}
-      </Wrapper>
+      <Wrapper defaultValue="react">{base}</Wrapper>
 
-      <Wrapper color="#FF00FF" defaultValue="react" inverted>
+      <Wrapper defaultValue="react" inverted>
         {base}
       </Wrapper>
 
@@ -204,7 +195,7 @@ export const Variants = () => (
 );
 
 export const VerticalVariants = () => (
-  <div style={{ maxWidth: 500, padding: 40 }}>
+  <div style={{ maxWidth: 600, padding: 40 }}>
     <Wrapper
       defaultValue="react"
       orientation="vertical"

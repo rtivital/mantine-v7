@@ -187,7 +187,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         disabled={disabled}
         data-disabled={disabled || undefined}
         data-error={error || undefined}
-        {...getStyles('input', { variant })}
+        {...getStyles('input')}
       />
 
       {rightSection && (
