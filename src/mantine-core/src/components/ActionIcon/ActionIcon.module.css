@@ -5,6 +5,10 @@
   --ai-size-lg: rem(34px);
   --ai-size-xl: rem(44px);
 
+  --_bg: var(--ai-bg);
+  --_color: var(--ai-color);
+  --_cursor: pointer;
+
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -17,59 +21,46 @@
   min-width: var(--ai-size);
   min-height: var(--ai-size);
   border-radius: var(--ai-radius);
-  background: var(--ai-bg);
-  color: var(--ai-color);
+  background: var(--_bg);
+  color: var(--_color);
   border: var(--ai-bd);
+  cursor: var(--_cursor);
 
   @mixin hover {
-    background: var(--ai-hover);
-
-    &[data-variant='gradient'] {
-      background-position: center;
-      background-size: 200%;
+    &:not([data-loading]):not(:disabled):not([data-disabled]) {
+      --_bg: var(--ai-hover);
     }
   }
 
-  &[data-loading] {
-    cursor: not-allowed;
+  @mixin light {
+    --_loading-overlay_bg: rgba(255, 255, 255, 0.35);
+    --_disabled-bg: var(--mantine-color-gray-1);
+    --_disabled-color: var(--mantine-color-gray-5);
+  }
 
-    @mixin hover {
-      background: var(--ai-bg);
-      background-size: unset;
-      background-position: unset;
-    }
+  @mixin dark {
+    --_loading-overlay_bg: rgba(0, 0, 0, 0.35);
+    --_disabled-bg: var(--mantine-color-dark-6);
+    --_disabled-color: var(--mantine-color-dark-3);
+  }
+
+  &[data-loading] {
+    --_cursor: not-allowed;
 
     &::before {
       content: '';
       position: absolute;
       inset: rem(-1px);
       border-radius: var(--ai-radius);
-
-      @mixin light {
-        background-color: rgba(255, 255, 255, 0.35);
-      }
-
-      @mixin dark {
-        background-color: rgba(0, 0, 0, 0.35);
-      }
+      background-color: var(--_loading-overlay_bg);
     }
   }
 
   &:disabled:not([data-loading]),
   &[data-disabled]:not([data-loading]) {
-    background-image: none;
-    border-color: transparent;
-    cursor: not-allowed;
-
-    @mixin light {
-      background-color: var(--mantine-color-gray-1);
-      color: var(--mantine-color-gray-5);
-    }
-
-    @mixin dark {
-      background-color: var(--mantine-color-dark-6);
-      color: var(--mantine-color-dark-3);
-    }
+    --_cursor: not-allowed;
+    --_bg: var(--_disabled-bg);
+    --_color: var(--_disabled-color);
   }
 }
 
