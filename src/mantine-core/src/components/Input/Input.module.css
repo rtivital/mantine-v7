@@ -6,13 +6,37 @@
   --input-height-md: rem(42px);
   --input-height-lg: rem(50px);
   --input-height-xl: rem(60px);
+
   --input-padding: calc(var(--input-height) / 3);
+  --input-padding-left: var(--input-padding);
+  --input-padding-right: var(--input-padding);
   --input-section-color: inherit;
   --input-placeholder-color: var(--mantine-color-placeholder);
   --input-color: inherit;
+  --input-left-section-size: var(--input-left-section-width, var(--input-height));
+  --input-right-section-size: var(--input-right-section-width, var(--input-height));
 
-  --m__input-left-section-width: var(--input-left-section-width, var(--input-height));
-  --m__input-right-section-width: var(--input-right-section-width, var(--input-height));
+  &[data-variant='unstyled'] {
+    --input-padding: 0;
+  }
+
+  &[data-with-left-section] {
+    --input-padding-left: var(--input-left-section-size);
+
+    @mixin rtl {
+      --input-padding-left: var(--input-padding);
+      --input-padding-right: var(--input-left-section-size);
+    }
+  }
+
+  &[data-with-right-section] {
+    --input-padding-right: var(--input-right-section-size);
+
+    @mixin rtl {
+      --input-padding-right: var(--input-padding);
+      --input-padding-left: var(--input-right-section-size);
+    }
+  }
 
   @mixin light {
     --input-disabled-bg: var(--mantine-color-gray-1);
@@ -89,13 +113,8 @@
   line-height: calc(var(--input-height) - rem(2px));
   font-size: var(--input-fz);
   border-radius: var(--input-radius);
-  padding-left: var(--input-padding);
-  padding-right: var(--input-padding);
-
-  &--unstyled {
-    padding: 0;
-    border-radius: 0;
-  }
+  padding-left: var(--input-padding-left);
+  padding-right: var(--input-padding-right);
 
   &:focus,
   &:focus-within {
@@ -121,9 +140,12 @@
     -moz-appearance: textfield;
   }
 
+  &:disabled,
   &[data-disabled] {
     cursor: not-allowed;
     opacity: 0.6;
+    background-color: var(--input-disabled-bg);
+    color: var(--input-disabled-color);
   }
 
   &[data-multiline] {
@@ -133,22 +155,6 @@
 
   &[data-pointer] {
     cursor: pointer;
-  }
-
-  &[data-with-left-section] {
-    padding-left: var(--m__input-left-section-width);
-
-    @mixin rtl {
-      padding-right: var(--m__input-left-section-width);
-    }
-  }
-
-  &[data-with-right-section] {
-    padding-right: var(--m__input-right-section-width);
-
-    @mixin rtl {
-      padding-left: var(--m__input-right-section-width);
-    }
   }
 
   @mixin rtl {
@@ -167,7 +173,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--m__input-left-section-width);
+  width: var(--input-left-section-size);
   border-top-left-radius: var(--input-radius);
   border-bottom-left-radius: var(--input-radius);
 
@@ -191,7 +197,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--m__input-right-section-width);
+  width: var(--input-right-section-size);
   border-top-right-radius: var(--input-radius);
   border-bottom-right-radius: var(--input-radius);
 

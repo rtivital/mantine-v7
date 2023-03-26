@@ -43,6 +43,25 @@ export function RightSection() {
         placeholder="Input with right section"
         rightSection="$"
         defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        rightSectionWidth={40}
+        styles={{
+          rightSection: { backgroundColor: 'pink' },
+        }}
+      />
+    </div>
+  );
+}
+
+export function Multiline() {
+  return (
+    <div style={{ padding: 40, display: 'flex' }}>
+      <Input defaultValue="default input" />
+      <Input
+        component="textarea"
+        placeholder="Multiline input"
+        defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        multiline
+        rows={5}
       />
     </div>
   );
