@@ -8,14 +8,28 @@ import {
   useStyles,
   MantineRadius,
   MantineSize,
+  extractStyleProps,
+  getSize,
+  getFontSize,
+  useVars,
+  getRadius,
+  rem,
 } from '../../core';
 import classes from './Input.module.css';
 
-export type InputStylesNames = 'root';
+export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
 export type InputVariant = 'default' | 'filled' | 'unstyled';
-export type InputCssVariables = '--test';
+export type InputCssVariables =
+  | '--input-height'
+  | '--input-fz'
+  | '--input-radius'
+  | '--input-left-section-width'
+  | '--input-right-section-width';
 
-export interface InputStylesParams {}
+export interface InputStylesParams {
+  size: MantineSize | undefined;
+  radius: MantineRadius | (string & {}) | number | undefined;
+}
 
 export interface InputSharedProps {
   /** Content section rendered on the left side of the input */
@@ -77,7 +91,10 @@ export interface InputFactory {
   stylesParams: InputStylesParams;
 }
 
-const defaultProps: Partial<InputProps> = {};
+const defaultProps: Partial<InputProps> = {
+  size: 'sm',
+  variant: 'default',
+};
 
 export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   const {
@@ -89,10 +106,26 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     required,
     __staticSelector,
     size,
+    wrapperProps,
+    error,
+    disabled,
+    leftSection,
+    leftSectionProps,
+    leftSectionWidth,
+    rightSection,
+    rightSectionProps,
+    rightSectionWidth,
+    variant,
+    vars,
+    pointer,
+    multiline,
+    radius,
     ...others
   } = useProps('Input', defaultProps, props);
 
-  const getStyles = useStyles({
+  const { styleProps, rest } = extractStyleProps(others);
+
+  const getStyles = useStyles<InputStylesNames>({
     name: ['Input', __staticSelector],
     className,
     style,
@@ -100,9 +133,72 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'wrapper',
   });
 
-  return <Box component="input" ref={ref} {...getStyles('root')} {...others} />;
+  const _vars = useVars<InputStylesParams>('Input', vars, { size, radius });
+
+  return (
+    <Box
+      ref={ref}
+      {...getStyles('wrapper')}
+      {...styleProps}
+      {...wrapperProps}
+      vars={{
+        '--input-height': getSize(size, 'input-height'),
+        '--input-fz': getFontSize(size),
+        '--input-radius': getRadius(radius),
+        '--input-left-section-width':
+          leftSectionWidth !== undefined ? rem(leftSectionWidth) : undefined,
+        '--input-right-section-width':
+          rightSectionWidth !== undefined ? rem(rightSectionWidth) : undefined,
+        ..._vars,
+      }}
+    >
+      {leftSection && (
+        <div
+          {...leftSectionProps}
+          {...getStyles('leftSection', {
+            className: leftSectionProps?.className,
+            style: leftSectionProps?.style,
+          })}
+        >
+          {leftSection}
+        </div>
+      )}
+
+      <Box
+        component="input"
+        {...rest}
+        ref={ref}
+        required={required}
+        aria-invalid={!!error}
+        variant={variant}
+        // aria-describedby={describedBy}
+        // data-with-icon={!!icon || undefined}
+        disabled={disabled}
+        data-disabled={disabled || undefined}
+        data-error={error || undefined}
+        data-pointer={pointer || undefined}
+        data-multiline={multiline || undefined}
+        data-with-right-section={!!rightSection || undefined}
+        data-with-left-section={!!leftSection || undefined}
+        {...getStyles('input')}
+      />
+
+      {rightSection && (
+        <div
+          {...rightSectionProps}
+          {...getStyles('rightSection', {
+            className: rightSectionProps?.className,
+            style: rightSectionProps?.style,
+          })}
+        >
+          {rightSection}
+        </div>
+      )}
+    </Box>
+  );
 });
 
 Input.displayName = '@mantine/core/Input';

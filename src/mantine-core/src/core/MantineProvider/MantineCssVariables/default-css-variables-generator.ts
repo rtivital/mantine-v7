@@ -1,5 +1,5 @@
 import { MantineTheme } from '../theme.types';
-import { keys } from '../../utils';
+import { keys, rem } from '../../utils';
 import { getPrimaryShade, rgba } from '../color-functions';
 
 function getColorSchemeCssVariables(selector: string) {
@@ -13,7 +13,8 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const darkPrimaryShade = getPrimaryShade(theme, 'dark');
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
 
-  const lightDefaultVariant = `
+  const lightStaticVariables = `
+    --mantine-placeholder-color: ${theme.colors.gray[5]};
     --mantine-anchor-color: ${theme.colors[theme.primaryColor][lightPrimaryShade]};
     --mantine-color-default: ${theme.white};
     --mantine-color-default-hover: ${theme.colors.gray[0]};
@@ -21,7 +22,8 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
     --mantine-color-default-border: ${theme.colors.gray[4]};
   `;
 
-  const darkDefaultVariant = `
+  const darkStaticVariables = `
+    --mantine-placeholder-color: ${theme.colors.dark[3]};
     --mantine-anchor-color: ${theme.colors[theme.primaryColor][4]};
     --mantine-color-default: ${theme.colors.dark[6]};
     --mantine-color-default-hover: ${theme.colors.dark[5]};
@@ -66,7 +68,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
       return acc;
     },
-    { light: lightDefaultVariant, dark: darkDefaultVariant }
+    { light: lightStaticVariables, dark: darkStaticVariables }
   );
 
   return `
@@ -87,6 +89,11 @@ function assignSizeVariables(
 }
 
 function getThemeCssVariables(theme: MantineTheme) {
+  const defaultRadius =
+    theme.defaultRadius in theme.radius
+      ? theme.radius[theme.defaultRadius]
+      : rem(theme.defaultRadius);
+
   const variables: Record<string, string> = {
     '--mantine-webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
     '--mantine-color-scheme': 'light dark',
@@ -98,6 +105,7 @@ function getThemeCssVariables(theme: MantineTheme) {
     '--mantine-font-family-monospace': theme.fontFamilyMonospace,
     '--mantine-font-family-headings': theme.headings.fontFamily,
     '--mantine-heading-font-weight': theme.headings.fontWeight,
+    '--mantine-radius-default': defaultRadius,
   };
 
   assignSizeVariables(variables, theme.shadows, 'shadow');

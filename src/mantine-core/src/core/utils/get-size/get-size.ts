@@ -10,7 +10,15 @@ export function getSpacing(size: unknown) {
 }
 
 export function getRadius(size: unknown) {
+  if (size === undefined) {
+    return 'var(--mantine-radius-default)';
+  }
+
   return getSize(size, 'mantine-radius');
+}
+
+export function getFontSize(size: unknown) {
+  return getSize(size, 'mantine-font-size');
 }
 
 export function getShadow(size: unknown) {

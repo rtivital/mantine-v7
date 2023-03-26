@@ -1,4 +1,4 @@
-import { getSize, getSpacing, getShadow, getRadius } from './get-size';
+import { getSize, getSpacing, getShadow, getRadius, getFontSize } from './get-size';
 
 describe('@mantine/core/get-size', () => {
   it('returns correct size for numbers and number like values', () => {
@@ -44,6 +44,20 @@ describe('@mantine/core/get-radius', () => {
     expect(getRadius('10%')).toBe('10%');
     expect(getRadius('xs')).toBe('var(--mantine-radius-xs)');
     expect(getRadius('md')).toBe('var(--mantine-radius-md)');
+    expect(getRadius(undefined)).toBe('var(--mantine-radius-default)');
+  });
+});
+
+describe('@mantine/core/get-font-size', () => {
+  it('returns correct values', () => {
+    expect(getFontSize(10)).toBe('0.625rem');
+    expect(getFontSize(0)).toBe('0rem');
+    expect(getFontSize('10')).toBe('0.625rem');
+    expect(getFontSize('10px')).toBe('0.625rem');
+    expect(getFontSize('10rem')).toBe('10rem');
+    expect(getFontSize('10%')).toBe('10%');
+    expect(getFontSize('xs')).toBe('var(--mantine-font-size-xs)');
+    expect(getFontSize('md')).toBe('var(--mantine-font-size-md)');
   });
 });
 
