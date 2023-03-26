@@ -240,123 +240,59 @@
     content: '';
     position: absolute;
     border-color: var(--tab-border-color);
-  }
-
-  &[data-orientation='horizontal'] {
-    &::before {
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-bottom-width: var(--list-border-width);
-      border-bottom-style: solid;
-    }
-
-    &[data-inverted]::before {
-      top: 0;
-      bottom: unset;
-      border-bottom-width: unset;
-      border-bottom-style: unset;
-      border-top-width: var(--list-border-width);
-      border-top-style: solid;
-    }
-  }
-
-  &[data-orientation='vertical'] {
-    &[data-placement='left'] {
-      &::before {
-        bottom: 0;
-        top: 0;
-        right: 0;
-        border-right-width: var(--list-border-width);
-        border-right-style: solid;
-
-        @mixin rtl {
-          left: 0;
-          right: unset;
-        }
-      }
-    }
-
-    &[data-placement='right'] {
-      &::before {
-        bottom: 0;
-        top: 0;
-        left: 0;
-        border-left-width: var(--list-border-width);
-        border-left-style: solid;
-
-        @mixin rtl {
-          right: 0;
-          left: unset;
-        }
-      }
-    }
+    border-width: var(--list-border-size);
+    border-style: solid;
+    bottom: var(--list-line-bottom);
+    left: var(--list-line-left);
+    right: var(--list-line-right);
+    top: var(--list-line-top);
   }
 }
 
 .tab--outline {
   border: rem(1px) solid transparent;
+  border-top-color: var(--_tab-border-top-color);
+  border-bottom-color: var(--_tab-border-bottom-color);
+  border-left-color: var(--_tab-border-left-color);
+  border-right-color: var(--_tab-border-right-color);
+  border-radius: var(--tab-radius);
+
+  --_tab-border-bottom-color: transparent;
+  --_tab-border-top-color: transparent;
+  --_tab-border-right-color: transparent;
+  --_tab-border-left-color: transparent;
 
   &[data-active] {
-    @mixin light {
-      border-color: var(--mantine-color-gray-3);
-      background-color: var(--mantine-color-white);
-    }
+    --_tab-border-top-color: var(--tab-border-color);
+    --_tab-border-left-color: var(--tab-border-color);
+    --_tab-border-right-color: var(--tab-border-color);
+    --_tab-border-bottom-color: var(--mantine-color-body);
 
-    @mixin dark {
-      border-color: var(--mantine-color-dark-4);
-      background-color: var(--mantine-color-dark-7);
-    }
-
-    &[data-orientation='horizontal'] {
-      border-top-right-radius: var(--tabs-radius);
-      border-top-left-radius: var(--tabs-radius);
-
-      &:not([data-inverted]) {
-        border-bottom-color: transparent;
-      }
-
-      &[data-inverted] {
-        border-top-color: transparent;
-        border-top-right-radius: unset;
-        border-top-left-radius: unset;
-        border-bottom-right-radius: var(--tabs-radius);
-        border-bottom-left-radius: var(--tabs-radius);
-      }
+    &[data-inverted] {
+      --_tab-border-bottom-color: var(--tab-border-color);
+      --_tab-border-top-color: var(--mantine-color-body);
     }
 
     &[data-orientation='vertical'] {
       &[data-placement='left'] {
-        border-bottom-left-radius: var(--tabs-radius);
-        border-top-left-radius: var(--tabs-radius);
-
-        @mixin not-rtl {
-          border-right-color: transparent;
-        }
+        --_tab-border-right-color: var(--mantine-color-body);
+        --_tab-border-left-color: var(--tab-border-color);
+        --_tab-border-bottom-color: var(--tab-border-color);
 
         @mixin rtl {
-          border-left-color: transparent;
-          border-bottom-left-radius: unset;
-          border-top-left-radius: unset;
-          border-bottom-right-radius: var(--tabs-radius);
-          border-top-right-radius: var(--tabs-radius);
+          --_tab-border-right-color: var(--tab-border-color);
+          --_tab-border-left-color: var(--mantine-color-body);
         }
       }
 
       &[data-placement='right'] {
-        border-bottom-right-radius: var(--tabs-radius);
-        border-top-right-radius: var(--tabs-radius);
-
-        @mixin not-rtl {
-          border-left-color: transparent;
-        }
+        --_tab-border-left-color: var(--mantine-color-body);
+        --_tab-border-right-color: var(--tab-border-color);
+        --_tab-border-bottom-color: var(--tab-border-color);
 
         @mixin rtl {
-          border-right-color: transparent;
-          border-bottom-right-radius: unset;
-          border-top-right-radius: unset;
-          border-bottom-left-radius: var(--tabs-radius);
-          border-top-left-radius: var(--tabs-radius);
+          --_tab-border-left-color: var(--tab-border-color);
+          --_tab-border-right-color: var(--mantine-color-body);
         }
       }
     }
