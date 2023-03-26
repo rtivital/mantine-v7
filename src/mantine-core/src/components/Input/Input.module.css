@@ -7,6 +7,9 @@
   --input-height-lg: rem(50px);
   --input-height-xl: rem(60px);
   --input-padding: calc(var(--input-height) / 3);
+  --input-section-color: inherit;
+  --input-placeholder-color: var(--mantine-color-placeholder);
+  --input-color: inherit;
 
   --m__input-left-section-width: var(--input-left-section-width, var(--input-height));
   --m__input-right-section-width: var(--input-right-section-width, var(--input-height));
@@ -14,11 +17,54 @@
   @mixin light {
     --input-disabled-bg: var(--mantine-color-gray-1);
     --input-disabled-color: var(--mantine-color-gray-6);
+
+    &[data-variant='default'] {
+      --input-bd: var(--mantine-color-gray-4);
+      --input-bg: var(--mantine-color-white);
+      --input-bd-focus: var(--mantine-color-primary);
+    }
+
+    &[data-variant='filled'] {
+      --input-bd: transparent;
+      --input-bg: var(--mantine-color-gray-1);
+      --input-bd-focus: var(--mantine-color-primary);
+    }
+
+    &[data-variant='unstyled'] {
+      --input-bd: transparent;
+      --input-bg: transparent;
+      --input-bd-focus: transparent;
+    }
   }
 
   @mixin dark {
     --input-disabled-bg: var(--mantine-color-dark-6);
     --input-disabled-color: var(--mantine-color-dark-2);
+
+    &[data-variant='default'] {
+      --input-bd: var(--mantine-color-dark-4);
+      --input-bg: var(--mantine-color-dark-6);
+      --input-bd-focus: var(--mantine-color-primary);
+    }
+
+    &[data-variant='filled'] {
+      --input-bd: transparent;
+      --input-bg: var(--mantine-color-dark-5);
+      --input-bd-focus: var(--mantine-color-primary);
+    }
+
+    &[data-variant='unstyled'] {
+      --input-bd: transparent;
+      --input-bg: transparent;
+      --input-bd-focus: transparent;
+    }
+  }
+
+  [data-mantine-color-scheme] &[data-error] {
+    --input-bd: var(--mantine-color-error);
+    --input-color: var(--mantine-color-error);
+    --input-placeholder-color: var(--mantine-color-error);
+    --input-section-color: var(--mantine-color-error);
   }
 
   /* marginTop: offsetTop ? `calc(${theme.spacing.xs} / 2)` : undefined,
@@ -32,9 +78,11 @@
   display: block;
   text-align: left;
   width: 100%;
-  color: inherit;
-  border: rem(1px) solid;
+  transition: border-color 100ms ease;
 
+  color: var(--input-color);
+  border: rem(1px) solid var(--input-bd);
+  background-color: var(--input-bg);
   font-family: var(--mantine-font-family);
   height: var(--input-height);
   min-height: var(--input-height);
@@ -43,10 +91,20 @@
   border-radius: var(--input-radius);
   padding-left: var(--input-padding);
   padding-right: var(--input-padding);
-  transition: border-color 100ms ease;
+
+  &--unstyled {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  &:focus,
+  &:focus-within {
+    outline: none;
+    border-color: var(--input-bd-focus);
+  }
 
   &::placeholder {
-    color: var(--mantine-placeholder-color);
+    color: var(--input-placeholder-color);
     opacity: 1;
   }
 
@@ -101,6 +159,7 @@
 .leftSection {
   pointer-events: none;
   position: absolute;
+  color: var(--input-section-color);
   z-index: 1;
   left: rem(1px);
   bottom: rem(1px);
@@ -124,6 +183,7 @@
 
 .rightSection {
   position: absolute;
+  color: var(--input-section-color);
   z-index: 1;
   right: rem(1px);
   bottom: rem(1px);
@@ -142,90 +202,5 @@
     border-bottom-right-radius: unset;
     border-top-left-radius: var(--input-radius);
     border-bottom-left-radius: var(--input-radius);
-  }
-}
-
-/* _______________________ default variant _______________________ */
-.input--default {
-  @mixin light {
-    background-color: var(--mantine-color-white);
-    border-color: var(--mantine-color-gray-4);
-
-    &[data-disabled] {
-      background-color: var(--input-disabled-bg);
-      color: var(--input-disabled-color);
-    }
-
-    &:focus,
-    &:focus-within {
-      outline: none;
-      border-color: var(--mantine-color-primary);
-    }
-  }
-
-  @mixin dark {
-    background-color: var(--mantine-color-dark-6);
-    border-color: var(--mantine-color-dark-4);
-
-    &[data-disabled] {
-      background-color: var(--input-disabled-bg);
-      color: var(--input-disabled-color);
-    }
-
-    &:focus,
-    &:focus-within {
-      outline: none;
-      border-color: var(--mantine-color-primary);
-    }
-  }
-}
-
-/* _______________________ filled variant _______________________ */
-.input--filled {
-  border-color: transparent;
-
-  @mixin light {
-    background-color: var(--mantine-color-gray-1);
-
-    &[data-disabled] {
-      background-color: var(--input-disabled-bg);
-      color: var(--input-disabled-color);
-    }
-
-    &:focus,
-    &:focus-within {
-      outline: none;
-      border-color: var(--mantine-color-primary);
-    }
-  }
-
-  @mixin dark {
-    background-color: var(--mantine-color-dark-5);
-
-    &[data-disabled] {
-      background-color: var(--input-disabled-bg);
-      color: var(--input-disabled-color);
-    }
-
-    &:focus,
-    &:focus-within {
-      outline: none;
-      border-color: var(--mantine-color-primary);
-    }
-  }
-}
-
-/* _______________________ unstyled variant _______________________ */
-.input--unstyled {
-  border-color: transparent;
-  background-color: transparent;
-  padding: 0;
-  box-shadow: none;
-  border-radius: 0;
-  line-height: var(--mantine-line-height);
-
-  &:focus,
-  &:focus-within {
-    outline: none;
   }
 }

@@ -7,11 +7,12 @@ export function Variants() {
   return (
     <div style={{ padding: 40 }}>
       <Input placeholder="default" />
-      <Input placeholder="invalid" mt="md" error />
+      <Input placeholder="input with error" mt="md" error leftSection="##" />
       <Input placeholder="disabled" mt="md" disabled />
       <Input placeholder="with icon" mt="md" leftSection="$" />
       <Input placeholder="filled" variant="filled" mt="md" />
       <Input placeholder="unstyled" variant="unstyled" mt="md" />
+      <Input placeholder="none" variant="none" mt="md" />
     </div>
   );
 }

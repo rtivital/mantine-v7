@@ -14,9 +14,9 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
 
   const lightStaticVariables = `
-    --mantine-error-color: ${theme.colors.red[6]};
-    --mantine-placeholder-color: ${theme.colors.gray[5]};
-    --mantine-anchor-color: ${theme.colors[theme.primaryColor][lightPrimaryShade]};
+    --mantine-color-error: ${theme.colors.red[6]};
+    --mantine-color-placeholder: ${theme.colors.gray[5]};
+    --mantine-color-anchor: ${theme.colors[theme.primaryColor][lightPrimaryShade]};
     --mantine-color-default: ${theme.white};
     --mantine-color-default-hover: ${theme.colors.gray[0]};
     --mantine-color-default-color: ${theme.black};
@@ -24,9 +24,9 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
   `;
 
   const darkStaticVariables = `
-    --mantine-error-color: ${theme.colors.red[5]};
-    --mantine-placeholder-color: ${theme.colors.dark[3]};
-    --mantine-anchor-color: ${theme.colors[theme.primaryColor][4]};
+    --mantine-color-error: ${theme.colors.red[5]};
+    --mantine-color-placeholder: ${theme.colors.dark[3]};
+    --mantine-color-anchor: ${theme.colors[theme.primaryColor][4]};
     --mantine-color-default: ${theme.colors.dark[6]};
     --mantine-color-default-hover: ${theme.colors.dark[5]};
     --mantine-color-default-color: ${theme.white};

@@ -144,6 +144,8 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
       {...getStyles('wrapper')}
       {...styleProps}
       {...wrapperProps}
+      data-error={error || undefined}
+      variant={variant}
       vars={{
         '--input-height': getSize(size, 'input-height'),
         '--input-fz': getFontSize(size),
