@@ -39,6 +39,7 @@ export type TableStylesNames =
 export type TableVariant = string;
 export type TableCssVariables =
   | '--table-layout'
+  | '--table-border-color'
   | '--table-caption-side'
   | '--table-horizontal-spacing'
   | '--table-vertical-spacing'
