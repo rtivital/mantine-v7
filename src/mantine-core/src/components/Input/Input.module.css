@@ -28,6 +28,15 @@
   --input-right-section-size: var(--input-right-section-width, var(--input-height));
   --input-size: var(--input-height);
 
+  --section-y: rem(1px);
+  --left-section-left: rem(1px);
+  --left-section-right: unset;
+  --left-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+
+  --right-section-left: unset;
+  --right-section-right: rem(1px);
+  --right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+
   &[data-pointer] {
     --input-cursor: pointer;
   }
@@ -46,7 +55,6 @@
     --input-padding-left: var(--input-left-section-size);
 
     @mixin rtl {
-      --input-padding-left: var(--input-padding);
       --input-padding-right: var(--input-left-section-size);
     }
   }
@@ -55,7 +63,6 @@
     --input-padding-right: var(--input-right-section-size);
 
     @mixin rtl {
-      --input-padding-right: var(--input-padding);
       --input-padding-left: var(--input-right-section-size);
     }
   }
@@ -115,6 +122,12 @@
 
   @mixin rtl {
     --input-text-align: right;
+    --left-section-left: unset;
+    --left-section-right: rem(1px);
+    --left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    --right-section-left: rem(1px);
+    --right-section-right: unset;
+    --right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
   }
 }
 
@@ -180,46 +193,28 @@
   position: absolute;
   color: var(--input-section-color);
   z-index: 1;
-  left: rem(1px);
-  bottom: rem(1px);
-  top: rem(1px);
+  left: var(--left-section-left);
+  right: var(--left-section-right);
+  bottom: var(--section-y);
+  top: var(--section-y);
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--input-left-section-size);
-  border-top-left-radius: var(--input-radius);
-  border-bottom-left-radius: var(--input-radius);
-
-  @mixin rtl {
-    left: unset;
-    right: rem(1px);
-    border-top-left-radius: unset;
-    border-bottom-left-radius: unset;
-    border-top-right-radius: var(--input-radius);
-    border-bottom-right-radius: var(--input-radius);
-  }
+  border-radius: var(--left-section-border-radius);
 }
 
 .rightSection {
   position: absolute;
   color: var(--input-section-color);
   z-index: 1;
-  right: rem(1px);
-  bottom: rem(1px);
-  top: rem(1px);
+  left: var(--right-section-left);
+  right: var(--right-section-right);
+  bottom: var(--section-y);
+  top: var(--section-y);
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--input-right-section-size);
-  border-top-right-radius: var(--input-radius);
-  border-bottom-right-radius: var(--input-radius);
-
-  @mixin rtl {
-    right: unset;
-    left: rem(1px);
-    border-top-right-radius: unset;
-    border-bottom-right-radius: unset;
-    border-top-left-radius: var(--input-radius);
-    border-bottom-left-radius: var(--input-radius);
-  }
+  border-radius: var(--right-section-border-radius);
 }
