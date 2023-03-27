@@ -1,16 +1,16 @@
 .root {
   color: var(--mantine-anchor-color);
-  text-decoration: var(--anchor-text-decoration);
+  text-decoration: var(--_text-decoration);
 
-  --anchor-text-decoration: none;
+  --_text-decoration: none;
 
   &[data-underline='hover'] {
     @mixin hover {
-      --anchor-text-decoration: underline;
+      --_text-decoration: underline;
     }
   }
 
   &[data-underline='always'] {
-    --anchor-text-decoration: underline;
+    --_text-decoration: underline;
   }
 }

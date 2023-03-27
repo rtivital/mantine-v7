@@ -1,14 +1,14 @@
 .root {
-  background-color: var(--mark-bg);
-  color: var(--mark-color);
+  background-color: var(--_mark-bg);
+  color: var(--_mark-color);
 
   @mixin light {
-    --mark-bg: var(--mark-bg-light);
-    --mark-color: inherit;
+    --_mark-bg: var(--mark-bg-light);
+    --_mark-color: inherit;
   }
 
   @mixin dark {
-    --mark-bg: var(--mark-bg-dark);
-    --mark-color: var(--mantine-color-dark-9);
+    --_mark-bg: var(--mark-bg-dark);
+    --_mark-color: var(--mantine-color-dark-9);
   }
 }

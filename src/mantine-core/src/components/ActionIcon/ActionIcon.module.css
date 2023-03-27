@@ -33,13 +33,13 @@
   }
 
   @mixin light {
-    --_loading-overlay_bg: rgba(255, 255, 255, 0.35);
+    --_loading-overlay-bg: rgba(255, 255, 255, 0.35);
     --_disabled-bg: var(--mantine-color-gray-1);
     --_disabled-color: var(--mantine-color-gray-5);
   }
 
   @mixin dark {
-    --_loading-overlay_bg: rgba(0, 0, 0, 0.35);
+    --_loading-overlay-bg: rgba(0, 0, 0, 0.35);
     --_disabled-bg: var(--mantine-color-dark-6);
     --_disabled-color: var(--mantine-color-dark-3);
   }

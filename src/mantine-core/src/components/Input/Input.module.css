@@ -15,35 +15,35 @@
   --input-padding-y-lg: rem(10px);
   --input-padding-y-xl: rem(13px);
 
-  --input-cursor: text;
-  --input-text-align: left;
-  --input-line-height: calc(var(--input-height) - rem(2px));
-  --input-padding: calc(var(--input-height) / 3);
-  --input-padding-left: var(--input-padding);
-  --input-padding-right: var(--input-padding);
-  --input-section-color: inherit;
-  --input-placeholder-color: var(--mantine-color-placeholder);
-  --input-color: inherit;
-  --input-left-section-size: var(--input-left-section-width, var(--input-height));
-  --input-right-section-size: var(--input-right-section-width, var(--input-height));
-  --input-size: var(--input-height);
+  --_input-cursor: text;
+  --_input-text-align: left;
+  --_input-line-height: calc(var(--input-height) - rem(2px));
+  --_input-padding: calc(var(--input-height) / 3);
+  --_input-padding-left: var(--_input-padding);
+  --_input-padding-right: var(--_input-padding);
+  --_input-section-color: inherit;
+  --_input-placeholder-color: var(--mantine-color-placeholder);
+  --_input-color: inherit;
+  --_input-left-section-size: var(--input-left-section-width, var(--input-height));
+  --_input-right-section-size: var(--input-right-section-width, var(--input-height));
+  --_input-size: var(--input-height);
 
-  --section-y: rem(1px);
-  --left-section-left: rem(1px);
-  --left-section-right: unset;
-  --left-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+  --_section-y: rem(1px);
+  --_left-section-left: rem(1px);
+  --_left-section-right: unset;
+  --_left-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
 
-  --right-section-left: unset;
-  --right-section-right: rem(1px);
-  --right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+  --_right-section-left: unset;
+  --_right-section-right: rem(1px);
+  --_right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
 
   &[data-pointer] {
-    --input-cursor: pointer;
+    --_input-cursor: pointer;
   }
 
   &[data-multiline] {
-    --input-size: auto;
-    --input-line-height: var(--mantine-line-height);
+    --_input-size: auto;
+    --_input-line-height: var(--mantine-line-height);
   }
 
   &[data-variant='unstyled'] {
@@ -52,82 +52,82 @@
   }
 
   &[data-with-left-section] {
-    --input-padding-left: var(--input-left-section-size);
+    --_input-padding-left: var(--_input-left-section-size);
 
     @mixin rtl {
-      --input-padding-right: var(--input-left-section-size);
+      --_input-padding-right: var(--_input-left-section-size);
     }
   }
 
   &[data-with-right-section] {
-    --input-padding-right: var(--input-right-section-size);
+    --_input-padding-right: var(--_input-right-section-size);
 
     @mixin rtl {
-      --input-padding-left: var(--input-right-section-size);
+      --_input-padding-left: var(--_input-right-section-size);
     }
   }
 
   @mixin light {
-    --input-disabled-bg: var(--mantine-color-gray-1);
-    --input-disabled-color: var(--mantine-color-gray-6);
+    --_input-disabled-bg: var(--mantine-color-gray-1);
+    --_input-disabled-color: var(--mantine-color-gray-6);
 
     &[data-variant='default'] {
-      --input-bd: var(--mantine-color-gray-4);
-      --input-bg: var(--mantine-color-white);
-      --input-bd-focus: var(--mantine-color-primary);
+      --_input-bd: var(--mantine-color-gray-4);
+      --_input-bg: var(--mantine-color-white);
+      --_input-bd-focus: var(--mantine-color-primary);
     }
 
     &[data-variant='filled'] {
-      --input-bd: transparent;
-      --input-bg: var(--mantine-color-gray-1);
-      --input-bd-focus: var(--mantine-color-primary);
+      --_input-bd: transparent;
+      --_input-bg: var(--mantine-color-gray-1);
+      --_input-bd-focus: var(--mantine-color-primary);
     }
 
     &[data-variant='unstyled'] {
-      --input-bd: transparent;
-      --input-bg: transparent;
-      --input-bd-focus: transparent;
+      --_input-bd: transparent;
+      --_input-bg: transparent;
+      --_input-bd-focus: transparent;
     }
   }
 
   @mixin dark {
-    --input-disabled-bg: var(--mantine-color-dark-6);
-    --input-disabled-color: var(--mantine-color-dark-2);
+    --_input-disabled-bg: var(--mantine-color-dark-6);
+    --_input-disabled-color: var(--mantine-color-dark-2);
 
     &[data-variant='default'] {
-      --input-bd: var(--mantine-color-dark-4);
-      --input-bg: var(--mantine-color-dark-6);
-      --input-bd-focus: var(--mantine-color-primary);
+      --_input-bd: var(--mantine-color-dark-4);
+      --_input-bg: var(--mantine-color-dark-6);
+      --_input-bd-focus: var(--mantine-color-primary);
     }
 
     &[data-variant='filled'] {
-      --input-bd: transparent;
-      --input-bg: var(--mantine-color-dark-5);
-      --input-bd-focus: var(--mantine-color-primary);
+      --_input-bd: transparent;
+      --_input-bg: var(--mantine-color-dark-5);
+      --_input-bd-focus: var(--mantine-color-primary);
     }
 
     &[data-variant='unstyled'] {
-      --input-bd: transparent;
-      --input-bg: transparent;
-      --input-bd-focus: transparent;
+      --_input-bd: transparent;
+      --_input-bg: transparent;
+      --_input-bd-focus: transparent;
     }
   }
 
   [data-mantine-color-scheme] &[data-error] {
-    --input-bd: var(--mantine-color-error);
-    --input-color: var(--mantine-color-error);
-    --input-placeholder-color: var(--mantine-color-error);
-    --input-section-color: var(--mantine-color-error);
+    --_input-bd: var(--mantine-color-error);
+    --_input-color: var(--mantine-color-error);
+    --_input-placeholder-color: var(--mantine-color-error);
+    --_input-section-color: var(--mantine-color-error);
   }
 
   @mixin rtl {
-    --input-text-align: right;
-    --left-section-left: unset;
-    --left-section-right: rem(1px);
-    --left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
-    --right-section-left: rem(1px);
-    --right-section-right: unset;
-    --right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+    --_input-text-align: right;
+    --_left-section-left: unset;
+    --_left-section-right: rem(1px);
+    --_left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    --_right-section-left: rem(1px);
+    --_right-section-right: unset;
+    --_right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
   }
 }
 
@@ -139,30 +139,30 @@
   width: 100%;
   transition: border-color 100ms ease;
 
-  text-align: var(--input-text-align);
-  color: var(--input-color);
-  border: rem(1px) solid var(--input-bd);
-  background-color: var(--input-bg);
+  text-align: var(--_input-text-align);
+  color: var(--_input-color);
+  border: rem(1px) solid var(--_input-bd);
+  background-color: var(--_input-bg);
   font-family: var(--mantine-font-family);
-  height: var(--input-size);
+  height: var(--_input-size);
   min-height: var(--input-height);
-  line-height: var(--input-line-height);
+  line-height: var(--_input-line-height);
   font-size: var(--input-fz);
   border-radius: var(--input-radius);
-  padding-left: var(--input-padding-left);
-  padding-right: var(--input-padding-right);
+  padding-left: var(--_input-padding-left);
+  padding-right: var(--_input-padding-right);
   padding-top: var(--input-padding-y, 0rem);
   padding-bottom: var(--input-padding-y, 0rem);
-  cursor: var(--input-cursor);
+  cursor: var(--_input-cursor);
 
   &:focus,
   &:focus-within {
     outline: none;
-    border-color: var(--input-bd-focus);
+    border-color: var(--_input-bd-focus);
   }
 
   &::placeholder {
-    color: var(--input-placeholder-color);
+    color: var(--_input-placeholder-color);
     opacity: 1;
   }
 
@@ -183,38 +183,38 @@
   &[data-disabled] {
     cursor: not-allowed;
     opacity: 0.6;
-    background-color: var(--input-disabled-bg);
-    color: var(--input-disabled-color);
+    background-color: var(--_input-disabled-bg);
+    color: var(--_input-disabled-color);
   }
 }
 
 .leftSection {
   pointer-events: none;
   position: absolute;
-  color: var(--input-section-color);
+  color: var(--_input-section-color);
   z-index: 1;
-  left: var(--left-section-left);
-  right: var(--left-section-right);
-  bottom: var(--section-y);
-  top: var(--section-y);
+  left: var(--_left-section-left);
+  right: var(--_left-section-right);
+  bottom: var(--_section-y);
+  top: var(--_section-y);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--input-left-section-size);
-  border-radius: var(--left-section-border-radius);
+  width: var(--_input-left-section-size);
+  border-radius: var(--_left-section-border-radius);
 }
 
 .rightSection {
   position: absolute;
-  color: var(--input-section-color);
+  color: var(--_input-section-color);
   z-index: 1;
-  left: var(--right-section-left);
-  right: var(--right-section-right);
-  bottom: var(--section-y);
-  top: var(--section-y);
+  left: var(--_right-section-left);
+  right: var(--_right-section-right);
+  bottom: var(--_section-y);
+  top: var(--_section-y);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--input-right-section-size);
-  border-radius: var(--right-section-border-radius);
+  width: var(--_input-right-section-size);
+  border-radius: var(--_right-section-border-radius);
 }
