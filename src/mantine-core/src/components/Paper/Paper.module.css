@@ -7,26 +7,20 @@
   text-decoration: none;
   border-radius: var(--paper-radius);
   box-shadow: var(--paper-shadow);
+  border: var(--paper-border-width) solid var(--paper-border-color);
+
+  --paper-border-width: 0;
+  --paper-border-color: transparent;
 
   &[data-with-border] {
-    border: rem(1px) solid transparent;
-  }
+    --paper-border-width: 1px;
 
-  @mixin light {
-    color: var(--mantine-color-black);
-    background-color: var(--mantine-color-white);
-
-    &[data-with-border] {
-      border-color: var(--mantine-color-gray-3);
+    @mixin light {
+      --paper-border-color: var(--mantine-color-gray-3);
     }
-  }
 
-  @mixin dark {
-    color: var(--mantine-color-dark-0);
-    background-color: var(--mantine-color-dark-7);
-
-    &[data-with-border] {
-      border-color: var(--mantine-color-dark-4);
+    @mixin dark {
+      --paper-border-color: var(--mantine-color-dark-4);
     }
   }
 }
