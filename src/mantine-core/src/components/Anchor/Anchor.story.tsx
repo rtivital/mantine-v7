@@ -6,6 +6,10 @@ export default { title: 'Anchor' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
+      <Anchor href="https://mantine.dev" target="blank" underline="never">
+        Mantine website link: never
+      </Anchor>
+      <br />
       <Anchor href="https://mantine.dev" target="blank">
         Mantine website link: hover
       </Anchor>
