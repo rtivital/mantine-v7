@@ -16,7 +16,7 @@ const content = Array(10)
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>
-      <ScrollArea style={{ height: 200 }} type="always">
+      <ScrollArea h={200} type="always" offsetScrollbars>
         <div style={{ width: 600 }}>{content}</div>
       </ScrollArea>
     </div>
@@ -27,7 +27,7 @@ export function OnScrollChange() {
   const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>
-      <ScrollArea style={{ height: 200 }} onScrollPositionChange={onScrollPositionChange}>
+      <ScrollArea h={200} onScrollPositionChange={onScrollPositionChange}>
         <div style={{ width: 600 }}>{content}</div>
       </ScrollArea>
       <div>
@@ -39,7 +39,7 @@ export function OnScrollChange() {
 
 export function NeverType() {
   return (
-    <ScrollArea style={{ height: 200 }} type="never">
+    <ScrollArea h={200} type="never">
       <div style={{ width: 600 }}>{content}</div>
     </ScrollArea>
   );
