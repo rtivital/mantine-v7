@@ -15,6 +15,7 @@ import {
   getRadius,
   rem,
 } from '../../core';
+import { InputLabel } from './InputLabel/InputLabel';
 import classes from './Input.module.css';
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
@@ -90,6 +91,9 @@ export interface InputFactory {
   stylesNames: InputStylesNames;
   vars: InputCssVariables;
   stylesParams: InputStylesParams;
+  staticComponents: {
+    Label: typeof InputLabel;
+  };
 }
 
 const defaultProps: Partial<InputProps> = {
@@ -205,4 +209,5 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   );
 });
 
+Input.Label = InputLabel;
 Input.displayName = '@mantine/core/Input';

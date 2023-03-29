@@ -70,3 +70,11 @@ export function Multiline() {
 
   return <>{sizes}</>;
 }
+
+export function CompoundComponents() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Input.Label required>Input label</Input.Label>
+    </div>
+  );
+}
