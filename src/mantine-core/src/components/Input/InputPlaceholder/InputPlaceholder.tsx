@@ -50,6 +50,7 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) =>
     classNames,
     styles,
     unstyled,
+    rootSelector: 'placeholder',
   });
 
   const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', vars, {});

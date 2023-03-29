@@ -34,7 +34,7 @@ export interface InputErrorProps
 
 export interface InputErrorFactory {
   props: InputErrorProps;
-  ref: HTMLDivElement;
+  ref: HTMLParagraphElement;
   stylesNames: InputErrorStylesNames;
   vars: InputErrorCssVariables;
   stylesParams: InputErrorStylesParams;
@@ -74,6 +74,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
 
   return (
     <Box
+      component="p"
       ref={ref}
       {...getStyles('error')}
       vars={{

@@ -38,7 +38,7 @@ export interface InputDescriptionProps
 
 export interface InputDescriptionFactory {
   props: InputDescriptionProps;
-  ref: HTMLDivElement;
+  ref: HTMLParagraphElement;
   stylesNames: InputDescriptionStylesNames;
   vars: InputDescriptionCssVariables;
   stylesParams: InputDescriptionStylesParams;
@@ -78,6 +78,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
 
   return (
     <Box
+      component="p"
       ref={ref}
       {...getStyles('description')}
       vars={{
