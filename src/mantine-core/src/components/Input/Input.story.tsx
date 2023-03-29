@@ -77,6 +77,7 @@ export function CompoundComponents() {
       <Input.Label required>Input label</Input.Label>
       <Input.Error>Input error</Input.Error>
       <Input.Description>Input description</Input.Description>
+      <Input.Placeholder>Input placeholder</Input.Placeholder>
     </div>
   );
 }

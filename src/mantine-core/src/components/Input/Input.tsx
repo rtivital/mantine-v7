@@ -18,6 +18,7 @@ import {
 import { InputLabel } from './InputLabel/InputLabel';
 import { InputError } from './InputError/InputError';
 import { InputDescription } from './InputDescription/InputDescription';
+import { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
 import classes from './Input.module.css';
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
@@ -97,6 +98,7 @@ export interface InputFactory {
     Label: typeof InputLabel;
     Error: typeof InputError;
     Description: typeof InputDescription;
+    Placeholder: typeof InputPlaceholder;
   };
 }
 
@@ -216,4 +218,5 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
 Input.Label = InputLabel;
 Input.Error = InputError;
 Input.Description = InputDescription;
+Input.Placeholder = InputPlaceholder;
 Input.displayName = '@mantine/core/Input';
