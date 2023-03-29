@@ -76,6 +76,7 @@ export function CompoundComponents() {
     <div style={{ padding: 40 }}>
       <Input.Label required>Input label</Input.Label>
       <Input.Error>Input error</Input.Error>
+      <Input.Description>Input description</Input.Description>
     </div>
   );
 }
