@@ -15,10 +15,12 @@ import {
   getRadius,
   rem,
 } from '../../core';
+import { useInputWrapperContext } from './InputWrapper.context';
 import { InputLabel } from './InputLabel/InputLabel';
 import { InputError } from './InputError/InputError';
 import { InputDescription } from './InputDescription/InputDescription';
 import { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
+import { InputWrapper } from './InputWrapper/InputWrapper';
 import classes from './Input.module.css';
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
@@ -99,6 +101,7 @@ export interface InputFactory {
     Error: typeof InputError;
     Description: typeof InputDescription;
     Placeholder: typeof InputPlaceholder;
+    Wrapper: typeof InputWrapper;
   };
 }
 
@@ -135,6 +138,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   } = useProps('Input', defaultProps, props);
 
   const { styleProps, rest } = extractStyleProps(others);
+  const ctx = useInputWrapperContext();
 
   const getStyles = useStyles<InputStylesNames>({
     name: ['Input', __staticSelector],
@@ -192,8 +196,8 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         required={required}
         aria-invalid={!!error}
         variant={variant}
-        // aria-describedby={describedBy}
-        // data-with-icon={!!icon || undefined}
+        aria-describedby={ctx.descriptionId}
+        aria-errormessage={ctx.errorId}
         disabled={disabled}
         data-disabled={disabled || undefined}
         data-error={error || undefined}
@@ -215,6 +219,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   );
 });
 
+Input.Wrapper = InputWrapper;
 Input.Label = InputLabel;
 Input.Error = InputError;
 Input.Description = InputDescription;

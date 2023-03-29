@@ -78,6 +78,16 @@ export function CompoundComponents() {
       <Input.Error>Input error</Input.Error>
       <Input.Description>Input description</Input.Description>
       <Input.Placeholder>Input placeholder</Input.Placeholder>
+
+      <Input.Wrapper
+        label="Your name"
+        withAsterisk
+        mt="xl"
+        description="Input description"
+        error="Input error"
+      >
+        <Input placeholder="Inside wrapper" />
+      </Input.Wrapper>
     </div>
   );
 }
