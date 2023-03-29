@@ -31,7 +31,9 @@ export type InputCssVariables =
   | '--input-radius'
   | '--input-left-section-width'
   | '--input-right-section-width'
-  | '--input-padding-y';
+  | '--input-padding-y'
+  | '--input-margin-top'
+  | '--input-margin-bottom';
 
 export interface InputStylesParams {
   size: MantineSize | undefined;
@@ -166,6 +168,10 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
       data-multiline={multiline || undefined}
       data-pointer={pointer || undefined}
       vars={{
+        '--input-margin-top': ctx?.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+        '--input-margin-bottom': ctx?.offsetBottom
+          ? 'calc(var(--mantine-spacing-xs) / 2)'
+          : undefined,
         '--input-height': getSize(size, 'input-height'),
         '--input-fz': getFontSize(size),
         '--input-radius': getRadius(radius),

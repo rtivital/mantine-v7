@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
-  /* marginTop: offsetTop ? `calc(${theme.spacing.xs} / 2)` : undefined,
-  marginBottom: offsetBottom ? `calc(${theme.spacing.xs} / 2)` : undefined, */
+  margin-top: var(--input-margin-top, 0rem);
+  margin-bottom: var(--input-margin-bottom, 0rem);
 
   --input-height-xs: rem(30px);
   --input-height-sm: rem(36px);
