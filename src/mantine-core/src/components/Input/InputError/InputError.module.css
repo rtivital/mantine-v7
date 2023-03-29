@@ -1,0 +1,7 @@
+.error {
+  word-wrap: break-word;
+  color: var(--mantine-color-error);
+  font-size: var(--input-error-size);
+  line-height: 1.2;
+  display: block;
+}

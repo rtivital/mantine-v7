@@ -16,6 +16,7 @@ import {
   rem,
 } from '../../core';
 import { InputLabel } from './InputLabel/InputLabel';
+import { InputError } from './InputError/InputError';
 import classes from './Input.module.css';
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
@@ -93,6 +94,7 @@ export interface InputFactory {
   stylesParams: InputStylesParams;
   staticComponents: {
     Label: typeof InputLabel;
+    Error: typeof InputError;
   };
 }
 
@@ -210,4 +212,5 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
 });
 
 Input.Label = InputLabel;
+Input.Error = InputError;
 Input.displayName = '@mantine/core/Input';

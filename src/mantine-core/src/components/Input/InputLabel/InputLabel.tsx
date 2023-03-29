@@ -18,8 +18,8 @@ export type InputLabelVariant = string;
 export type InputLabelCssVariables = '--input-asterisk-color' | '--input-label-size';
 
 export interface InputLabelStylesParams {
-  required?: boolean | undefined;
-  size?: MantineSize | (string & {}) | undefined;
+  required: boolean | undefined;
+  size: MantineSize | (string & {}) | undefined;
 }
 
 export interface InputLabelProps
@@ -31,7 +31,7 @@ export interface InputLabelProps
   /** Determines whether required asterisk should be displayed  */
   required?: boolean;
 
-  /** Control label `font-size`, `'sm'` by default */
+  /** Controls label `font-size`, `'sm'` by default */
   size?: MantineSize | (string & {});
 
   /** Root element of the label, `'label'` by default */
@@ -65,11 +65,12 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
     htmlFor,
     onMouseDown,
     children,
+    __staticSelector,
     ...others
   } = useProps('InputLabel', defaultProps, props);
 
   const getStyles = useStyles<InputLabelStylesNames>({
-    name: 'Input',
+    name: ['InputLabel', __staticSelector],
     className,
     style,
     classes,
