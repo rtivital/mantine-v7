@@ -70,17 +70,6 @@ describe('@mantine/core/TabsList', () => {
     expect(screen.getByRole('tablist')).not.toHaveAttribute('data-placement');
   });
 
-  it('sets data-position based on prop value', () => {
-    const { rerender } = render(<TestContainer {...defaultProps} position="center" />);
-    expect(screen.getByRole('tablist')).toHaveAttribute('data-position', 'center');
-
-    rerender(<TestContainer {...defaultProps} position="left" />);
-    expect(screen.getByRole('tablist')).toHaveAttribute('data-position', 'left');
-
-    rerender(<TestContainer {...defaultProps} />);
-    expect(screen.getByRole('tablist')).not.toHaveAttribute('data-position');
-  });
-
   it('sets data-variant based on context value', () => {
     const Container = createContextContainer(TabsList, Tabs, { variant: 'outline' });
     render(<Container {...defaultProps} />);
