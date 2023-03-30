@@ -58,7 +58,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
   } = useProps('InputError', defaultProps, props);
 
   const getStyles = useStyles<InputErrorStylesNames>({
-    name: ['InputError', __staticSelector],
+    name: ['InputWrapper', __staticSelector],
     className,
     style,
     classes,

@@ -12,6 +12,7 @@ describe('@mantine/core/InputError', () => {
     extend: true,
     refType: HTMLParagraphElement,
     displayName: '@mantine/core/InputError',
+    stylesApiName: 'InputWrapper',
     stylesApiSelectors: ['error'],
   });
 });

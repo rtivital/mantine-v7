@@ -62,7 +62,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
   } = useProps('InputDescription', defaultProps, props);
 
   const getStyles = useStyles<InputDescriptionStylesNames>({
-    name: ['InputDescription', __staticSelector],
+    name: ['InputWrapper', __staticSelector],
     className,
     style,
     classes,

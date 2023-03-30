@@ -9,13 +9,12 @@ import {
   useStyles,
   MantineSize,
 } from '../../../core';
-import { InputLabelProps, InputLabel, InputLabelStylesNames } from '../InputLabel/InputLabel';
+import { InputLabel, InputLabelStylesNames } from '../InputLabel/InputLabel';
 import {
-  InputDescriptionProps,
   InputDescription,
   InputDescriptionStylesNames,
 } from '../InputDescription/InputDescription';
-import { InputErrorProps, InputError, InputErrorStylesNames } from '../InputError/InputError';
+import { InputError, InputErrorStylesNames } from '../InputError/InputError';
 import { InputWrapperProvider } from '../InputWrapper.context';
 import classes from './InputWrapper.module.css';
 import { getInputOffsets } from './get-input-offsets/get-input-offsets';
@@ -47,13 +46,13 @@ export interface InputWrapperBaseProps {
   withAsterisk?: boolean;
 
   /** Props spread to the `Input.Label` component */
-  labelProps?: InputLabelProps;
+  labelProps?: Record<string, any>;
 
   /** Props spread to the `Input.Description` component */
-  descriptionProps?: InputDescriptionProps;
+  descriptionProps?: Record<string, any>;
 
   /** Props spread to the `InputError` component */
-  errorProps?: InputErrorProps;
+  errorProps?: Record<string, any>;
 
   /** Input container component, defaults to `React.Fragment` */
   inputContainer?(children: React.ReactNode): React.ReactNode;

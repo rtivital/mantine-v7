@@ -15,16 +15,17 @@ describe('@mantine/core/InputLabel', () => {
     children: true,
     extend: true,
     refType: HTMLLabelElement,
+    stylesApiName: 'InputWrapper',
     displayName: '@mantine/core/InputLabel',
     stylesApiSelectors: ['label', 'required'],
   });
 
   it('renders required asterisk if required prop is set', () => {
     const { container, rerender } = render(<InputLabel required>Label</InputLabel>);
-    expect(container.querySelector('.mantine-InputLabel-required')).toHaveTextContent('*');
+    expect(container.querySelector('.mantine-InputWrapper-required')).toHaveTextContent('*');
 
     rerender(<InputLabel required={false}>Label</InputLabel>);
-    expect(container.querySelector('.mantine-InputLabel-required')).toBeNull();
+    expect(container.querySelector('.mantine-InputWrapper-required')).toBeNull();
   });
 
   it('changes root element based on labelElement prop', () => {

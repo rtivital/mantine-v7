@@ -16,6 +16,7 @@ describe('@mantine/core/InputDescription', () => {
     extend: true,
     refType: HTMLParagraphElement,
     displayName: '@mantine/core/InputDescription',
+    stylesApiName: 'InputWrapper',
     stylesApiSelectors: ['description'],
   });
 });
