@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, tests } from '@mantine/tests';
+import { render, tests, inputWrapperQueries } from '@mantine/tests';
+import { Input } from '../Input';
 import { InputWrapper, InputWrapperProps, InputWrapperStylesNames } from './InputWrapper';
 
 const defaultProps: InputWrapperProps = {
@@ -9,15 +10,6 @@ const defaultProps: InputWrapperProps = {
   error: 'test-error',
   description: 'test-description',
   required: true,
-};
-
-const queries = {
-  getLabel: (container: HTMLElement) => container.querySelector('.mantine-InputWrapper-label')!,
-  getError: (container: HTMLElement) => container.querySelector('.mantine-InputWrapper-error')!,
-  getRequired: (container: HTMLElement) =>
-    container.querySelector('.mantine-InputWrapper-required')!,
-  getDescription: (container: HTMLElement) =>
-    container.querySelector('.mantine-InputWrapper-description')!,
 };
 
 describe('@mantine/core/InputWrapper', () => {
@@ -32,76 +24,23 @@ describe('@mantine/core/InputWrapper', () => {
     stylesApiSelectors: ['root', 'description', 'error', 'label', 'required'],
   });
 
-  it('renders correct error, description and label', () => {
-    const { container } = render(
-      <InputWrapper
-        {...defaultProps}
-        required={false}
-        label="test-label"
-        error="test-error"
-        description="test-description"
-      />
-    );
-
-    expect(queries.getLabel(container).textContent).toBe('test-label');
-    expect(queries.getDescription(container).textContent).toBe('test-description');
-    expect(queries.getError(container).textContent).toBe('test-error');
+  tests.itSupportsInputWrapperProps({
+    component: InputWrapper,
+    props: { ...defaultProps, children: <Input /> },
   });
 
   it('does not render error if error prop is boolean', () => {
     const { container } = render(<InputWrapper {...defaultProps} error />);
-    expect(queries.getError(container)).toBe(null);
-  });
-
-  it('renders required asterisk with required prop is true', () => {
-    const { container, rerender } = render(<InputWrapper {...defaultProps} required />);
-    expect(queries.getRequired(container)).toBeInTheDocument();
-
-    rerender(<InputWrapper {...defaultProps} required={false} />);
-    expect(queries.getRequired(container)).not.toBeInTheDocument();
-  });
-
-  it('does not render required asterisk if withAsterisk is false', () => {
-    const { container } = render(<InputWrapper {...defaultProps} required withAsterisk={false} />);
-    expect(queries.getRequired(container)).not.toBeInTheDocument();
-  });
-
-  it('spreads props to label, description and error', () => {
-    const { container } = render(
-      <InputWrapper
-        {...defaultProps}
-        labelProps={{ 'data-test-label': true }}
-        descriptionProps={{ 'data-test-description': true }}
-        errorProps={{ 'data-test-error': true }}
-      />
-    );
-
-    expect(queries.getLabel(container)).toHaveAttribute('data-test-label');
-    expect(queries.getDescription(container)).toHaveAttribute('data-test-description');
-    expect(queries.getError(container)).toHaveAttribute('data-test-error');
-  });
-
-  it('sets label element based on labelElement prop', () => {
-    const { container: label } = render(<InputWrapper {...defaultProps} labelElement="label" />);
-    const { container: div } = render(<InputWrapper {...defaultProps} labelElement="div" />);
-    expect(queries.getLabel(label)).toHaveAttribute('for', 'test-id');
-    expect(queries.getLabel(div)).not.toHaveAttribute('for');
+    expect(inputWrapperQueries.getError(container)).toBe(null);
   });
 
   it('generates correct ids for description and error', () => {
     const { container } = render(<InputWrapper {...defaultProps} id="test45" />);
-    expect(queries.getDescription(container)).toHaveAttribute('id', 'test45-description');
-    expect(queries.getError(container)).toHaveAttribute('id', 'test45-error');
-  });
-
-  it('supports inputWrapperOrder', () => {
-    const { container, rerender } = render(
-      <InputWrapper {...defaultProps} inputWrapperOrder={['error', 'label']} />
+    expect(inputWrapperQueries.getDescription(container)).toHaveAttribute(
+      'id',
+      'test45-description'
     );
-    expect(queries.getError(container).nextElementSibling).toBe(queries.getLabel(container));
-
-    rerender(<InputWrapper {...defaultProps} inputWrapperOrder={['label', 'error']} />);
-    expect(queries.getLabel(container).nextElementSibling).toBe(queries.getError(container));
+    expect(inputWrapperQueries.getError(container)).toHaveAttribute('id', 'test45-error');
   });
 
   it('sets data-variant attribute based on variant prop', () => {
@@ -111,13 +50,13 @@ describe('@mantine/core/InputWrapper', () => {
       'filled'
     );
 
-    expect(queries.getDescription(container)).toHaveAttribute('data-variant', 'filled');
-    expect(queries.getError(container)).toHaveAttribute('data-variant', 'filled');
-    expect(queries.getLabel(container)).toHaveAttribute('data-variant', 'filled');
+    expect(inputWrapperQueries.getDescription(container)).toHaveAttribute('data-variant', 'filled');
+    expect(inputWrapperQueries.getError(container)).toHaveAttribute('data-variant', 'filled');
+    expect(inputWrapperQueries.getLabel(container)).toHaveAttribute('data-variant', 'filled');
   });
 
   it('changes label root element with labelElement prop', () => {
     const { container } = render(<InputWrapper {...defaultProps} labelElement="div" />);
-    expect(queries.getLabel(container).tagName).toBe('DIV');
+    expect(inputWrapperQueries.getLabel(container).tagName).toBe('DIV');
   });
 });

@@ -10,6 +10,6 @@ interface Options<Props = any> {
 export function itRendersChildren<Props>(options: Options<Props>, name = 'renders children') {
   it(name, () => {
     render(<options.component {...options.props}>test-children</options.component>);
-    screen.getByText('test-children');
+    expect(screen.getByText('test-children')).toBeInTheDocument();
   });
 }

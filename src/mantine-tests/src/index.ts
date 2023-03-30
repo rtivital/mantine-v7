@@ -19,6 +19,14 @@ import { itSupportsSizeProps } from './style-props/it-supports-size-props';
 import { itSupportsBackgroundProps } from './style-props/it-supports-background-props';
 import { itSupportsPositionProps } from './style-props/it-supports-position-props';
 
+// Inputs tests
+import { itSupportsInputSections } from './inputs/it-supports-input-sections';
+import { itSupportsInputContainer } from './inputs/it-supports-input-container';
+import { itSupportsInputAsterisk } from './inputs/it-supports-input-asterisk';
+import { itSupportsInputWrapperOrder } from './inputs/it-supports-input-wrapper-order';
+import { itSupportsInputWrapperElements } from './inputs/it-supports-input-wrapper-elements';
+import { itSupportsInputWrapperProps } from './inputs/it-supports-input-wrapper-props';
+
 // High level tests
 import { itSupportsSystemProps } from './it-supports-system-props';
 import { axe } from './axe';
@@ -43,6 +51,13 @@ export const tests = {
   itSupportsBackgroundProps,
   itSupportsPositionProps,
 
+  itSupportsInputSections,
+  itSupportsInputContainer,
+  itSupportsInputAsterisk,
+  itSupportsInputWrapperOrder,
+  itSupportsInputWrapperElements,
+  itSupportsInputWrapperProps,
+
   axe,
   itSupportsSystemProps,
 };
@@ -51,3 +66,4 @@ export { render, renderWithAct } from './render';
 export { wait } from './wait';
 export { patchConsoleError } from './patch-console-error';
 export { createContextContainer } from './create-context-container';
+export * from './queries';

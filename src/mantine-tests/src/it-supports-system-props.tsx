@@ -29,56 +29,60 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   providerName?: string | null;
   stylesApiName?: string;
   stylesApiSelectors?: StylesApiSelectors[];
+  polymorphicSelector?: string;
 }
 
 export function itSupportsSystemProps<
   Props extends Record<string, any>,
   StylesApiSelectors extends string = string
 >(options: Options<Props, StylesApiSelectors>) {
-  const splittedDisplayName = options.displayName ? options.displayName.split('/') : [];
-  const predictedProviderName = options.displayName
-    ? splittedDisplayName[splittedDisplayName.length - 1]
-    : undefined;
-  const providerName = options.providerName || predictedProviderName;
-  const stylesApiName = options.stylesApiName || providerName;
+  describe('supports system properties', () => {
+    const splittedDisplayName = options.displayName ? options.displayName.split('/') : [];
+    const predictedProviderName = options.displayName
+      ? splittedDisplayName[splittedDisplayName.length - 1]
+      : undefined;
+    const providerName = options.providerName || predictedProviderName;
+    const stylesApiName = options.stylesApiName || providerName;
 
-  itSupportsClassName(options);
-  itSupportsStyle(options);
-  itSupportsOthers(options);
-  options.refType && itSupportsRef({ ...options, refType: options.refType });
-  options.polymorphic && itIsPolymorphic(options);
-  options.children && itRendersChildren(options);
-  typeof providerName === 'string' &&
-    options.providerName !== null &&
-    itSupportsProviderDefaultProps({ ...options, providerName });
+    itSupportsClassName(options);
+    itSupportsStyle(options);
+    itSupportsOthers(options);
+    options.refType && itSupportsRef({ ...options, refType: options.refType });
+    options.polymorphic &&
+      itIsPolymorphic({ ...options, selector: options.polymorphicSelector || options.selector });
+    options.children && itRendersChildren(options);
+    typeof providerName === 'string' &&
+      options.providerName !== null &&
+      itSupportsProviderDefaultProps({ ...options, providerName });
 
-  if (options.styleProps) {
-    itSupportsMarginsProps(options);
-    itSupportsPaddingsProps(options);
-    itSupportsColorsProps(options);
-    itSupportsFontsProps(options);
-    itSupportsSizeProps(options);
-    itSupportsBackgroundProps(options);
-    itSupportsPositionProps(options);
-  }
+    if (options.styleProps) {
+      itSupportsMarginsProps(options);
+      itSupportsPaddingsProps(options);
+      itSupportsColorsProps(options);
+      itSupportsFontsProps(options);
+      itSupportsSizeProps(options);
+      itSupportsBackgroundProps(options);
+      itSupportsPositionProps(options);
+    }
 
-  if (Array.isArray(options.stylesApiSelectors) && stylesApiName) {
-    itSupportsStylesApi<Props, StylesApiSelectors>({
-      ...options,
-      selectors: options.stylesApiSelectors,
-      providerName: stylesApiName,
-    });
-  }
+    if (Array.isArray(options.stylesApiSelectors) && stylesApiName) {
+      itSupportsStylesApi<Props, StylesApiSelectors>({
+        ...options,
+        selectors: options.stylesApiSelectors,
+        providerName: stylesApiName,
+      });
+    }
 
-  if (options.extend) {
-    it('has static extend function', () => {
-      expect(typeof (options.component as any).extend).toBe('function');
-    });
-  }
+    if (options.extend) {
+      it('has static extend function', () => {
+        expect(typeof (options.component as any).extend).toBe('function');
+      });
+    }
 
-  if (options.displayName) {
-    it('has correct displayName', () => {
-      expect(options.component.displayName).toBe(options.displayName);
-    });
-  }
+    if (options.displayName) {
+      it('has correct displayName', () => {
+        expect(options.component.displayName).toBe(options.displayName);
+      });
+    }
+  });
 }
