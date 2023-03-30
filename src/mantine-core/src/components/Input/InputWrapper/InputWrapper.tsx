@@ -24,10 +24,6 @@ export type InputWrapperStylesNames =
   | InputLabelStylesNames
   | InputDescriptionStylesNames
   | InputErrorStylesNames;
-export type InputWrapperVariant = string;
-export type InputWrapperCssVariables = '--test';
-
-export interface InputWrapperStylesParams {}
 
 export interface InputWrapperBaseProps {
   /** Contents of `Input.Label` component, if not set, label is not rendered. */
@@ -64,7 +60,7 @@ export interface InputWrapperBaseProps {
 export interface InputWrapperProps
   extends InputWrapperBaseProps,
     BoxProps,
-    StylesApiProps<InputWrapperStylesNames, InputWrapperVariant, InputWrapperCssVariables>,
+    StylesApiProps<InputWrapperStylesNames>,
     ElementProps<'div'> {
   __staticSelector?: string;
 
@@ -82,8 +78,6 @@ export interface InputWrapperFactory {
   props: InputWrapperProps;
   ref: HTMLDivElement;
   stylesNames: InputWrapperStylesNames;
-  vars: InputWrapperCssVariables;
-  stylesParams: InputWrapperStylesParams;
 }
 
 const defaultProps: Partial<InputWrapperProps> = {
