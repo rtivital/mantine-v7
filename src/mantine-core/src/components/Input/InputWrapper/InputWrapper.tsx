@@ -25,7 +25,7 @@ export type InputWrapperStylesNames =
   | InputDescriptionStylesNames
   | InputErrorStylesNames;
 
-export interface InputWrapperBaseProps {
+export interface __InputWrapperProps {
   /** Contents of `Input.Label` component, if not set, label is not rendered. */
   label?: React.ReactNode;
 
@@ -58,7 +58,7 @@ export interface InputWrapperBaseProps {
 }
 
 export interface InputWrapperProps
-  extends InputWrapperBaseProps,
+  extends __InputWrapperProps,
     BoxProps,
     StylesApiProps<InputWrapperStylesNames>,
     ElementProps<'div'> {

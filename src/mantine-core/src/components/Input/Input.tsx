@@ -20,8 +20,10 @@ import { InputLabel } from './InputLabel/InputLabel';
 import { InputError } from './InputError/InputError';
 import { InputDescription } from './InputDescription/InputDescription';
 import { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
-import { InputWrapper } from './InputWrapper/InputWrapper';
+import { InputWrapper, __InputWrapperProps } from './InputWrapper/InputWrapper';
 import classes from './Input.module.css';
+
+export interface __BaseInputProps extends __InputWrapperProps, __InputProps {}
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
 export type InputVariant = 'default' | 'filled' | 'unstyled';
@@ -40,7 +42,7 @@ export interface InputStylesParams {
   radius: MantineRadius | (string & {}) | number | undefined;
 }
 
-export interface InputSharedProps {
+export interface __InputProps {
   /** Content section rendered on the left side of the input */
   leftSection?: React.ReactNode;
 
@@ -77,7 +79,7 @@ export interface InputSharedProps {
 
 export interface InputProps
   extends BoxProps,
-    InputSharedProps,
+    __InputProps,
     StylesApiProps<InputStylesNames, InputVariant, InputCssVariables, InputStylesParams> {
   __staticSelector?: string;
 

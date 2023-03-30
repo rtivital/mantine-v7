@@ -1,15 +1,16 @@
 export { Input } from './Input';
 export type {
+  __InputProps,
+  __BaseInputProps,
   InputCssVariables,
   InputFactory,
   InputProps,
-  InputSharedProps,
   InputStylesNames,
   InputStylesParams,
   InputVariant,
 } from './Input';
 export type {
-  InputWrapperBaseProps,
+  __InputWrapperProps,
   InputWrapperFactory,
   InputWrapperProps,
   InputWrapperStylesNames,
