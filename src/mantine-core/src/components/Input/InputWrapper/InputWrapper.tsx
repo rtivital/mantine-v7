@@ -138,6 +138,8 @@ export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
   const descriptionId = id ? `${id}-description` : descriptionProps?.id;
   const hasError = !!error && typeof error !== 'boolean';
   const hasDescription = !!description;
+  const _describedBy = `${hasError ? errorId : ''} ${hasDescription ? descriptionId : ''}`;
+  const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : undefined;
 
   const _label = label && (
     <InputLabel
@@ -197,8 +199,7 @@ export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
   return (
     <InputWrapperProvider
       value={{
-        descriptionId: hasDescription ? descriptionId : undefined,
-        errorId: hasError ? errorId : undefined,
+        describedBy,
         ...getInputOffsets(inputWrapperOrder!, { hasDescription, hasError }),
       }}
     >

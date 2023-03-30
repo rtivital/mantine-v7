@@ -9,6 +9,7 @@ export * from './FocusTrap';
 export * from './Group';
 export * from './Highlight';
 export * from './Input';
+export * from './InputBase';
 export * from './Loader';
 export * from './Mark';
 export * from './Paper';

@@ -3,6 +3,7 @@ export { useInputProps } from './use-input-props';
 export type {
   __InputProps,
   __BaseInputProps,
+  __InputStylesNames,
   InputCssVariables,
   InputFactory,
   InputProps,

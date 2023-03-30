@@ -20,10 +20,15 @@ import { InputLabel } from './InputLabel/InputLabel';
 import { InputError } from './InputError/InputError';
 import { InputDescription } from './InputDescription/InputDescription';
 import { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
-import { InputWrapper, __InputWrapperProps } from './InputWrapper/InputWrapper';
+import {
+  InputWrapper,
+  __InputWrapperProps,
+  InputWrapperStylesNames,
+} from './InputWrapper/InputWrapper';
 import classes from './Input.module.css';
 
 export interface __BaseInputProps extends __InputWrapperProps, __InputProps {}
+export type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
 export type InputVariant = 'default' | 'filled' | 'unstyled';
@@ -84,7 +89,7 @@ export interface InputProps
   __staticSelector?: string;
 
   /** Determines whether the input should have error styles and `aria-invalid` attribute */
-  error?: boolean;
+  error?: React.ReactNode;
 
   /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
   multiline?: boolean;
@@ -159,11 +164,10 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
 
   return (
     <Box
-      ref={ref}
       {...getStyles('wrapper')}
       {...styleProps}
       {...wrapperProps}
-      data-error={error || undefined}
+      data-error={!!error || undefined}
       variant={variant}
       data-with-right-section={!!rightSection || undefined}
       data-with-left-section={!!leftSection || undefined}
@@ -204,11 +208,10 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         required={required}
         aria-invalid={!!error}
         variant={variant}
-        aria-describedby={ctx.descriptionId}
-        aria-errormessage={ctx.errorId}
+        aria-describedby={ctx.describedBy}
         disabled={disabled}
         data-disabled={disabled || undefined}
-        data-error={error || undefined}
+        data-error={!!error || undefined}
         {...getStyles('input')}
       />
 

@@ -25,10 +25,11 @@ import { itSupportsInputContainer } from './inputs/it-supports-input-container';
 import { itSupportsInputAsterisk } from './inputs/it-supports-input-asterisk';
 import { itSupportsInputWrapperOrder } from './inputs/it-supports-input-wrapper-order';
 import { itSupportsInputWrapperElements } from './inputs/it-supports-input-wrapper-elements';
-import { itSupportsInputWrapperProps } from './inputs/it-supports-input-wrapper-props';
 
 // High level tests
 import { itSupportsSystemProps } from './it-supports-system-props';
+import { itSupportsInputWrapperProps } from './inputs/it-supports-input-wrapper-props';
+import { itSupportsInputProps } from './inputs/it-supports-input-props';
 import { axe } from './axe';
 
 export const tests = {
@@ -56,14 +57,17 @@ export const tests = {
   itSupportsInputAsterisk,
   itSupportsInputWrapperOrder,
   itSupportsInputWrapperElements,
+
+  itSupportsSystemProps,
   itSupportsInputWrapperProps,
+  itSupportsInputProps,
 
   axe,
-  itSupportsSystemProps,
 };
 
 export { render, renderWithAct } from './render';
 export { wait } from './wait';
 export { patchConsoleError } from './patch-console-error';
 export { createContextContainer } from './create-context-container';
+export { inputDefaultProps, inputStylesApiSelectors } from './inputs/inputs-test-props';
 export * from './queries';

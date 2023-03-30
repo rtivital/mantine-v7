@@ -36,7 +36,7 @@ describe('@mantine/core/Input', () => {
     polymorphic: true,
     styleProps: true,
     extend: true,
-    refType: HTMLDivElement,
+    refType: HTMLInputElement,
     polymorphicSelector: '.mantine-Input-input',
     displayName: '@mantine/core/Input',
     stylesApiSelectors: ['input', 'leftSection', 'rightSection', 'wrapper'],
@@ -134,7 +134,7 @@ describe('@mantine/core/Input', () => {
     );
   });
 
-  it('has aria-errormessage attribute with id of error element', () => {
+  it('has aria-describedby attribute with id of error element', () => {
     render(
       <Input.Wrapper label="test" error="test-error" id="test-id">
         <Input id="test-id" />
@@ -142,7 +142,7 @@ describe('@mantine/core/Input', () => {
     );
 
     expect(screen.getByRole('textbox')).toHaveAttribute(
-      'aria-errormessage',
+      'aria-describedby',
       screen.getByText('test-error').id
     );
   });
