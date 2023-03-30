@@ -85,8 +85,9 @@ export function CompoundComponents() {
         mt="xl"
         description="Input description"
         error="Input error"
+        id="test-id"
       >
-        <Input placeholder="Inside wrapper" />
+        <Input placeholder="Inside wrapper" id="test-id" />
       </Input.Wrapper>
     </div>
   );
