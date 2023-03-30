@@ -1,4 +1,5 @@
 export { Input } from './Input';
+export { useInputProps } from './use-input-props';
 export type {
   __InputProps,
   __BaseInputProps,
