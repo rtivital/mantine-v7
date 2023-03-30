@@ -61,6 +61,11 @@ describe('@mantine/core/InputWrapper', () => {
     expect(queries.getRequired(container)).not.toBeInTheDocument();
   });
 
+  it('does not render required asterisk if withAsterisk is false', () => {
+    const { container } = render(<InputWrapper {...defaultProps} required withAsterisk={false} />);
+    expect(queries.getRequired(container)).not.toBeInTheDocument();
+  });
+
   it('spreads props to label, description and error', () => {
     const { container } = render(
       <InputWrapper
@@ -87,5 +92,32 @@ describe('@mantine/core/InputWrapper', () => {
     const { container } = render(<InputWrapper {...defaultProps} id="test45" />);
     expect(queries.getDescription(container)).toHaveAttribute('id', 'test45-description');
     expect(queries.getError(container)).toHaveAttribute('id', 'test45-error');
+  });
+
+  it('supports inputWrapperOrder', () => {
+    const { container, rerender } = render(
+      <InputWrapper {...defaultProps} inputWrapperOrder={['error', 'label']} />
+    );
+    expect(queries.getError(container).nextElementSibling).toBe(queries.getLabel(container));
+
+    rerender(<InputWrapper {...defaultProps} inputWrapperOrder={['label', 'error']} />);
+    expect(queries.getLabel(container).nextElementSibling).toBe(queries.getError(container));
+  });
+
+  it('sets data-variant attribute based on variant prop', () => {
+    const { container } = render(<InputWrapper {...defaultProps} variant="filled" />);
+    expect(container.querySelector('.mantine-InputWrapper-root')).toHaveAttribute(
+      'data-variant',
+      'filled'
+    );
+
+    expect(queries.getDescription(container)).toHaveAttribute('data-variant', 'filled');
+    expect(queries.getError(container)).toHaveAttribute('data-variant', 'filled');
+    expect(queries.getLabel(container)).toHaveAttribute('data-variant', 'filled');
+  });
+
+  it('changes label root element with labelElement prop', () => {
+    const { container } = render(<InputWrapper {...defaultProps} labelElement="div" />);
+    expect(queries.getLabel(container).tagName).toBe('DIV');
   });
 });
