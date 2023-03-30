@@ -91,6 +91,7 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
       component={labelElement as 'label'}
       ref={ref}
       htmlFor={labelElement === 'label' ? htmlFor : undefined}
+      data-required={required || undefined}
       onMouseDown={(event) => {
         onMouseDown?.(event);
         if (!event.defaultPrevented && event.detail > 1) {

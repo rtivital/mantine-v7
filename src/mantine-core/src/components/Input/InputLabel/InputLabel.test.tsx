@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests } from '@mantine/tests';
+import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import { InputLabel, InputLabelProps, InputLabelStylesNames } from './InputLabel';
 
@@ -34,5 +35,28 @@ describe('@mantine/core/InputLabel', () => {
 
     rerender(<InputLabel labelElement="div">Label</InputLabel>);
     expect(screen.getByText('Label').tagName).toBe('DIV');
+  });
+
+  it('sets data-required attribute if required prop is set', () => {
+    const { container, rerender } = render(<InputLabel required>Label</InputLabel>);
+    expect(container.querySelector('[data-required]')).toBeVisible();
+
+    rerender(<InputLabel required={false}>Label</InputLabel>);
+    expect(container.querySelector('[data-required]')).toBeNull();
+  });
+
+  it('sets htmlFor attribute if labelElement is label', () => {
+    const { container, rerender } = render(<InputLabel labelElement="label" htmlFor="test" />);
+    expect(container.querySelector('[for="test"]')).toBeVisible();
+
+    rerender(<InputLabel labelElement="div" htmlFor="test" />);
+    expect(container.querySelector('[for="test"]')).toBeNull();
+  });
+
+  it('passes onMouseDown event to root element', async () => {
+    const onMouseDown = jest.fn();
+    render(<InputLabel onMouseDown={onMouseDown}>Label</InputLabel>);
+    await userEvent.click(screen.getByText('Label'));
+    expect(onMouseDown).toHaveBeenCalled();
   });
 });

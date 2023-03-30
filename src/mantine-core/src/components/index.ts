@@ -7,6 +7,8 @@ export * from './Collapse';
 export * from './Floating';
 export * from './FocusTrap';
 export * from './Group';
+export * from './Highlight';
+export * from './Input';
 export * from './Loader';
 export * from './Mark';
 export * from './Paper';
