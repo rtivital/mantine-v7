@@ -15,7 +15,9 @@ export type InputPlaceholderStylesNames = 'placeholder';
 export type InputPlaceholderVariant = string;
 export type InputPlaceholderCssVariables = '--input-placeholder-color';
 
-export interface InputPlaceholderStylesParams {}
+export interface InputPlaceholderStylesParams {
+  variant: InputPlaceholderVariant | undefined;
+}
 
 export interface InputPlaceholderProps
   extends BoxProps,
@@ -39,8 +41,17 @@ export interface InputPlaceholderFactory {
 const defaultProps: Partial<InputPlaceholderProps> = {};
 
 export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, __staticSelector, ...others } =
-    useProps('InputPlaceholder', defaultProps, props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    __staticSelector,
+    variant,
+    ...others
+  } = useProps('InputPlaceholder', defaultProps, props);
 
   const getStyles = useStyles({
     name: ['InputPlaceholder', __staticSelector],
@@ -53,12 +64,13 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) =>
     rootSelector: 'placeholder',
   });
 
-  const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', vars, {});
+  const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', vars, { variant });
 
   return (
     <Box
       {...getStyles('placeholder')}
       component="span"
+      variant={variant}
       ref={ref}
       vars={{
         '--input-placeholder-color': 'var(--mantine-color-placeholder)',

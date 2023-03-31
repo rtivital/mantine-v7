@@ -31,6 +31,7 @@ export interface GroupStylesParams {
   childrenCount: number;
   preventGrowOverflow: boolean | undefined;
   grow: boolean | undefined;
+  variant: GroupVariant | undefined;
 }
 
 export interface GroupProps
@@ -86,6 +87,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
     grow,
     preventGrowOverflow,
     vars,
+    variant,
     ...others
   } = useProps('Group', defaultProps, props);
 
@@ -113,12 +115,14 @@ export const Group = factory<GroupFactory>((props, ref) => {
     childrenCount,
     preventGrowOverflow,
     grow,
+    variant,
   });
 
   return (
     <Box
       {...getStyles('root')}
       ref={ref}
+      variant={variant}
       vars={{
         '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
         '--group-gap': getSpacing(gap),

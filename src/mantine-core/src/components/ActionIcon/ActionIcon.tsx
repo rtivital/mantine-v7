@@ -42,7 +42,7 @@ export interface ActionIconStylesParams {
   size: MantineSize | string | number | undefined;
   radius: MantineSize | string | number | undefined;
   gradient: MantineGradient | undefined;
-  variant: string | undefined;
+  variant: ActionIconVariant | (string & {}) | undefined;
 }
 
 export interface ActionIconProps

@@ -21,6 +21,7 @@ export interface StackStylesParams {
   gap: MantineSpacing | string | number | undefined;
   align: React.CSSProperties['alignItems'] | undefined;
   justify: React.CSSProperties['justifyContent'] | undefined;
+  variant: StackVariant | undefined;
 }
 
 export interface StackProps
@@ -52,8 +53,19 @@ const defaultProps: Partial<StackProps> = {
 };
 
 export const Stack = factory<StackFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, align, justify, gap, ...others } =
-    useProps('Stack', defaultProps, props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    align,
+    justify,
+    gap,
+    variant,
+    ...others
+  } = useProps('Stack', defaultProps, props);
 
   const getStyles = useStyles({
     name: 'Stack',
@@ -69,12 +81,14 @@ export const Stack = factory<StackFactory>((props, ref) => {
     align,
     justify,
     gap,
+    variant,
   });
 
   return (
     <Box
       ref={ref}
       {...getStyles('root')}
+      variant={variant}
       vars={{
         '--stack-gap': getSpacing(gap),
         '--stack-align': align,

@@ -20,6 +20,7 @@ export type InputLabelCssVariables = '--input-asterisk-color' | '--input-label-s
 export interface InputLabelStylesParams {
   required: boolean | undefined;
   size: MantineSize | (string & {}) | undefined;
+  variant: InputLabelVariant | undefined;
 }
 
 export interface InputLabelProps
@@ -66,6 +67,7 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
     onMouseDown,
     children,
     __staticSelector,
+    variant,
     ...others
   } = useProps('InputLabel', defaultProps, props);
 
@@ -83,12 +85,14 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
   const _vars = useVars<InputLabelStylesParams>('InputLabel', vars, {
     size,
     required,
+    variant,
   });
 
   return (
     <Box
       {...getStyles('label')}
       component={labelElement as 'label'}
+      variant={variant}
       ref={ref}
       htmlFor={labelElement === 'label' ? htmlFor : undefined}
       data-required={required || undefined}

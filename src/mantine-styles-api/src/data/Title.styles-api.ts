@@ -12,7 +12,7 @@ export const TitleStylesApi: StylesApiData<TitleFactory> = {
     ...TextStylesApi.vars,
   },
 
-  params: ['order', 'size'],
+  params: ['order', 'size', 'variant'],
 
   modifiers: [
     ...TextStylesApi.modifiers!,

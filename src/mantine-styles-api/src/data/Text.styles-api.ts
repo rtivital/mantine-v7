@@ -6,7 +6,7 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
     root: 'Root element',
   },
 
-  params: ['gradient', 'lineClamp'],
+  params: ['gradient', 'lineClamp', 'variant'],
 
   vars: {
     '--text-gradient': 'Text fill gradient, controlled by gradient prop',

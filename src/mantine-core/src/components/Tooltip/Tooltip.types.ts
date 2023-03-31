@@ -7,6 +7,7 @@ export type TooltipCssVariables = '--tooltip-radius' | '--tooltip-bg';
 export interface TooltipStylesParams {
   radius: MantineRadius | string | number | undefined;
   color: MantineColor | undefined;
+  variant: TooltipVariant | undefined;
 }
 
 export interface TooltipBaseProps

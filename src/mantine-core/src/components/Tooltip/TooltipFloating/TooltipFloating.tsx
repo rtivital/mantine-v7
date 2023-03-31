@@ -107,6 +107,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
         <Box
           {...others}
           {...getStyles('tooltip')}
+          variant={variant}
           ref={floating}
           style={{
             ...getStyleObject(style, theme),

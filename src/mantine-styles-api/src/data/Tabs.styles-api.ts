@@ -12,7 +12,7 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     tabRightSection: 'Right section of Tabs.Tab, controlled by rightSection prop',
   },
 
-  params: ['color', 'radius'],
+  params: ['color', 'radius', 'variant'],
 
   vars: {
     '--tabs-color':

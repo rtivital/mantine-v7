@@ -20,6 +20,7 @@ export type InputDescriptionCssVariables = '--input-description-size';
 
 export interface InputDescriptionStylesParams {
   size: MantineSize | (string & {}) | undefined;
+  variant: InputDescriptionVariant | undefined;
 }
 
 export interface InputDescriptionProps
@@ -58,6 +59,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
     vars,
     size,
     __staticSelector,
+    variant,
     ...others
   } = useProps('InputDescription', defaultProps, props);
 
@@ -74,12 +76,14 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
 
   const _vars = useVars<InputDescriptionStylesParams>('InputDescription', vars, {
     size,
+    variant,
   });
 
   return (
     <Box
       component="p"
       ref={ref}
+      variant={variant}
       {...getStyles('description')}
       vars={{
         '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,

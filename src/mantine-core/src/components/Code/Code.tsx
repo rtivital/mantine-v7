@@ -20,6 +20,7 @@ export type CodeCssVariables = '--code-bg';
 
 export interface CodeStylesParams {
   color: MantineColor | undefined;
+  variant: CodeVariant | undefined;
 }
 
 export interface CodeProps
@@ -44,7 +45,7 @@ export interface CodeFactory {
 const defaultProps: Partial<CodeProps> = {};
 
 export const Code = factory<CodeFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, color, block, ...others } =
+  const { classNames, className, style, styles, unstyled, vars, color, block, variant, ...others } =
     useProps('Code', defaultProps, props);
 
   const getStyles = useStyles({
@@ -57,7 +58,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<CodeStylesParams>('Code', vars, { color });
+  const _vars = useVars<CodeStylesParams>('Code', vars, { color, variant });
   const theme = useMantineTheme();
 
   return (

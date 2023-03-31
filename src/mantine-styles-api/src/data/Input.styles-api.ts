@@ -9,7 +9,7 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
     rightSection: 'Right section',
   },
 
-  params: ['radius', 'size'],
+  params: ['radius', 'size', 'variant'],
 
   vars: {
     '--input-fz': 'font-size of the input element',

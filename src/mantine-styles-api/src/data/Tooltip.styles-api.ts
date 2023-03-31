@@ -7,7 +7,7 @@ export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
     arrow: 'Tooltip arrow, rendered inside tooltip',
   },
 
-  params: ['color', 'radius'],
+  params: ['color', 'radius', 'variant'],
 
   vars: {
     '--tooltip-bg': 'Tooltip background-color',

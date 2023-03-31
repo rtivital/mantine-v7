@@ -20,6 +20,7 @@ export type MarkCssVariables = '--mark-bg-dark' | '--mark-bg-light';
 
 export interface MarkStylesParams {
   color: MantineColor | undefined;
+  variant: MarkVariant | undefined;
 }
 
 export interface MarkProps
@@ -43,11 +44,8 @@ const defaultProps: Partial<MarkProps> = {
 };
 
 export const Mark = factory<MarkFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, color, ...others } = useProps(
-    'Mark',
-    defaultProps,
-    props
-  );
+  const { classNames, className, style, styles, unstyled, vars, color, variant, ...others } =
+    useProps('Mark', defaultProps, props);
 
   const getStyles = useStyles({
     name: 'Mark',
@@ -60,12 +58,13 @@ export const Mark = factory<MarkFactory>((props, ref) => {
   });
 
   const theme = useMantineTheme();
-  const _vars = useVars<MarkStylesParams>('Mark', vars, { color });
+  const _vars = useVars<MarkStylesParams>('Mark', vars, { color, variant });
 
   return (
     <Box
       component="mark"
       ref={ref}
+      variant={variant}
       {...getStyles('root')}
       vars={{
         '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),

@@ -21,6 +21,7 @@ export type PaperCssVariables = '--paper-radius' | '--paper-shadow';
 export interface PaperStylesParams {
   radius: MantineRadius | number | string | undefined;
   shadow: MantineShadow | string | undefined;
+  variant: PaperVariant | undefined;
 }
 
 export interface PaperProps
@@ -58,6 +59,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     vars,
     radius,
     shadow,
+    variant,
     ...others
   } = useProps('Paper', defaultProps, props);
 
@@ -71,7 +73,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<PaperStylesParams>('Paper', vars, { radius, shadow });
+  const _vars = useVars<PaperStylesParams>('Paper', vars, { radius, shadow, variant });
 
   return (
     <Box

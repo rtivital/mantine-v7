@@ -45,6 +45,7 @@ export type InputCssVariables =
 export interface InputStylesParams {
   size: MantineSize | undefined;
   radius: MantineRadius | (string & {}) | number | undefined;
+  variant: InputVariant | (string & {}) | undefined;
 }
 
 export interface __InputProps {
@@ -160,7 +161,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     rootSelector: 'wrapper',
   });
 
-  const _vars = useVars<InputStylesParams>('Input', vars, { size, radius });
+  const _vars = useVars<InputStylesParams>('Input', vars, { size, radius, variant });
 
   return (
     <Box

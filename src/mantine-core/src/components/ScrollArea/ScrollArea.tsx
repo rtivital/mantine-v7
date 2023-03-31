@@ -21,6 +21,7 @@ export type ScrollAreaCssVariables = '--scrollarea-scrollbar-size';
 
 export interface ScrollAreaStylesParams {
   scrollbarSize: number | string | undefined;
+  variant: ScrollAreaVariant | undefined;
 }
 
 export interface ScrollAreaProps
@@ -95,6 +96,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
+    variant,
     ...others
   } = useProps('ScrollArea', defaultProps, props);
 
@@ -103,6 +105,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
 
   const _vars = useVars<ScrollAreaStylesParams>('ScrollArea', vars, {
     scrollbarSize,
+    variant,
   });
 
   const getStyles = useStyles({
@@ -125,6 +128,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
     >
       <Box
         {...getStyles('root')}
+        variant={variant}
         vars={{
           '--scrollarea-scrollbar-size': rem(scrollbarSize),
           ..._vars,

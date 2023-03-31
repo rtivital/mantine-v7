@@ -54,6 +54,7 @@ export interface TableStylesParams {
   stripedColor: MantineColor | string | undefined;
   highlightOnHoverColor: MantineColor | string | undefined;
   layout: React.CSSProperties['tableLayout'] | undefined;
+  variant: TableVariant | undefined;
 }
 
 export interface TableProps
@@ -141,6 +142,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     withTableBorder,
     borderColor,
     layout,
+    variant,
     ...others
   } = useProps('Table', defaultProps, props);
 
@@ -154,6 +156,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     verticalSpacing,
     stripedColor,
     highlightOnHoverColor,
+    variant,
   });
 
   const getStyles = useStyles<TableStylesNames>({
@@ -180,6 +183,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     >
       <Box
         component="table"
+        variant={variant}
         ref={ref}
         data-with-table-border={withTableBorder || undefined}
         vars={{

@@ -173,6 +173,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
   const _vars = useVars<TooltipStylesParams>('Tooltip', vars, {
     radius,
     color,
+    variant,
   });
 
   const theme = useMantineTheme();
@@ -198,6 +199,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
           {(transitionStyles) => (
             <Box
               {...others}
+              variant={variant}
               data-multiline={multiline || undefined}
               vars={{
                 '--tooltip-radius': getRadius(radius),

@@ -33,6 +33,7 @@ export type TabsCssVariables = '--tabs-color' | '--tabs-radius';
 export interface TabsStylesParams {
   color: MantineColor | undefined;
   radius: MantineRadius | number | string | undefined;
+  variant: TabsVariant | (string & {}) | undefined;
 }
 
 export interface TabsProps
@@ -85,6 +86,7 @@ export interface TabsProps
 export interface TabsFactory {
   props: TabsProps;
   ref: HTMLDivElement;
+  variant: TabsVariant;
   stylesNames: TabsStylesNames;
   vars: TabsCssVariables;
   stylesParams: TabsStylesParams;
@@ -159,6 +161,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
   const _vars = useVars<TabsStylesParams>('Tabs', vars, {
     color,
     radius,
+    variant,
   });
 
   return (

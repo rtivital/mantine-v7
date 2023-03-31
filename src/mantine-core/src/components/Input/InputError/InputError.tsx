@@ -20,6 +20,7 @@ export type InputErrorCssVariables = '--input-error-size';
 
 export interface InputErrorStylesParams {
   size: MantineSize | (string & {}) | undefined;
+  variant: InputErrorVariant | undefined;
 }
 
 export interface InputErrorProps
@@ -54,6 +55,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
     vars,
     size,
     __staticSelector,
+    variant,
     ...others
   } = useProps('InputError', defaultProps, props);
 
@@ -70,12 +72,14 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
 
   const _vars = useVars<InputErrorStylesParams>('InputError', vars, {
     size,
+    variant,
   });
 
   return (
     <Box
       component="p"
       ref={ref}
+      variant={variant}
       {...getStyles('error')}
       vars={{
         '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,

@@ -105,7 +105,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       {...getStyles('root')}
       ref={ref}
       component={loaders![loader]}
-      data-variant={variant}
+      variant={variant}
       vars={{
         '--loader-size': getSize(size, 'loader-size'),
         '--loader-color': getThemeColor(color, theme),

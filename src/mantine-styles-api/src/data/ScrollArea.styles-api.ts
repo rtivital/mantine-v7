@@ -10,7 +10,7 @@ export const ScrollAreaStylesApi: StylesApiData<ScrollAreaFactory> = {
     corner: '',
   },
 
-  params: ['scrollbarSize'],
+  params: ['scrollbarSize', 'variant'],
 
   vars: {
     '--scrollarea-scrollbar-size': 'Scrollbar size',

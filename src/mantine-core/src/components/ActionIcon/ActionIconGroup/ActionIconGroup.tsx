@@ -17,6 +17,7 @@ export type ActionIconGroupCssVariables = '--ai-border-width';
 export interface ActionIconGroupStylesParams {
   borderWidth: number | string | undefined;
   orientation: 'horizontal' | 'vertical' | undefined;
+  variant: ActionIconGroupVariant | undefined;
 }
 
 export interface ActionIconGroupProps
@@ -60,12 +61,14 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     orientation,
     vars,
     borderWidth,
+    variant,
     ...others
   } = useProps('ActionIconGroup', defaultProps, props);
 
   const _vars = useVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
     borderWidth,
     orientation,
+    variant,
   });
 
   const getStyles = useStyles({
@@ -82,6 +85,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     <Box
       {...getStyles('root')}
       ref={ref}
+      variant={variant}
       data-orientation={orientation}
       vars={{ '--ai-border-width': rem(borderWidth), ..._vars }}
       role="group"

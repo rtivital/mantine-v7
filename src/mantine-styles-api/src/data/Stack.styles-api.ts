@@ -6,7 +6,7 @@ export const StackStylesApi: StylesApiData<StackFactory> = {
     root: 'Root element',
   },
 
-  params: ['align', 'gap', 'justify'],
+  params: ['align', 'gap', 'justify', 'variant'],
 
   vars: {
     '--stack-align': 'Controls align-items property',

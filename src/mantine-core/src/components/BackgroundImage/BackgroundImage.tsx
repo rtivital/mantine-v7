@@ -18,6 +18,7 @@ export type BackgroundImageCssVariables = '--bi-radius';
 
 export interface BackgroundImageStylesParams {
   radius: MantineRadius | string | number | undefined;
+  variant: BackgroundImageVariant | undefined;
 }
 
 export interface BackgroundImageProps
@@ -49,11 +50,8 @@ const defaultProps: Partial<BackgroundImageProps> = {
 };
 
 export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, radius, src, ...others } = useProps(
-    'BackgroundImage',
-    defaultProps,
-    props
-  );
+  const { classNames, className, style, styles, unstyled, vars, radius, src, variant, ...others } =
+    useProps('BackgroundImage', defaultProps, props);
 
   const getStyles = useStyles({
     name: 'BackgroundImage',
@@ -65,7 +63,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
     unstyled,
   });
 
-  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', vars, { radius });
+  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', vars, { radius, variant });
 
   return (
     <Box

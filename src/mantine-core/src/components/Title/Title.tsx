@@ -14,6 +14,7 @@ export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz' | Tex
 export interface TitleStylesParams {
   size: TitleSize | undefined;
   order: TitleOrder | undefined;
+  variant: TitleVariant | (string & {}) | undefined;
 }
 
 export interface TitleProps
@@ -40,8 +41,19 @@ const defaultProps: Partial<TitleProps> = {
 };
 
 export const Title = factory<TitleFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, order, vars, inherit, size, ...others } =
-    useProps('Title', defaultProps, props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    order,
+    vars,
+    inherit,
+    size,
+    variant,
+    ...others
+  } = useProps('Title', defaultProps, props);
 
   const getStyles = useStyles({
     name: 'Title',
@@ -56,6 +68,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
   const _vars = useVars<TitleStylesParams>('Title', vars, {
     size,
     order,
+    variant,
   });
 
   const sizeVariables = getTitleSize(order!, size);
@@ -68,6 +81,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
     <Text
       {...getStyles('root')}
       component={`h${order!}`}
+      variant={variant}
       ref={ref}
       vars={{
         '--title-fw': sizeVariables.fontWeight,

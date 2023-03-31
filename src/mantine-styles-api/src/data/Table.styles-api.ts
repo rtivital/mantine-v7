@@ -31,6 +31,7 @@ export const TableStylesApi: StylesApiData<TableFactory> = {
     'stripedColor',
     'highlightOnHoverColor',
     'layout',
+    'variant',
   ],
 
   modifiers: [
