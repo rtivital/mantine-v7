@@ -12,6 +12,10 @@ import {
   parseStyleProps,
   STYlE_PROPS_DATA,
 } from './style-props';
+import { getBoxMod } from './get-box-mod/get-box-mod';
+
+export type Mod = Record<`data-${string}`, any>;
+export type BoxMod = Mod | Mod[];
 
 export interface BoxProps extends MantineStyleProps {
   /** Class added to root element, if applicable */
@@ -32,10 +36,13 @@ export interface BoxComponentProps extends BoxProps {
 
   /** Variant passed from parent component, sets `data-variant` */
   variant?: string;
+
+  /** Element modifiers transformed into `data-` attributes, for example, `{ 'data-size': 'xl' }`, falsy values are removed */
+  mod?: BoxMod;
 }
 
 const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; className: string }>(
-  ({ component, style, vars, className, variant, ...others }, ref) => {
+  ({ component, style, vars, className, variant, mod, ...others }, ref) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
     const { styleProps, rest } = extractStyleProps(others);
@@ -60,6 +67,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
           style={getBoxStyle({ theme, style, vars, styleProps: parsedStyleProps.inlineStyles })}
           className={cx(className, { [responsiveClassName]: parsedStyleProps.hasResponsiveStyles })}
           data-variant={variant}
+          {...getBoxMod(mod)}
           {...rest}
         />
       </>
