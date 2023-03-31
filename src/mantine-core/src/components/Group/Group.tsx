@@ -123,6 +123,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
       {...getStyles('root')}
       ref={ref}
       variant={variant}
+      mod={{ grow }}
       vars={{
         '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
         '--group-gap': getSpacing(gap),
@@ -131,7 +132,6 @@ export const Group = factory<GroupFactory>((props, ref) => {
         '--group-wrap': wrap,
         ..._vars,
       }}
-      data-grow={grow || undefined}
       {...others}
     >
       {filteredChildren}

@@ -41,12 +41,14 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
       {...ctx.getStyles('list', { className, style, classNames, styles, variant: ctx.variant })}
       ref={ref}
       role="tablist"
+      variant={ctx.variant}
+      mod={{
+        grow,
+        orientation: ctx.orientation,
+        placement: ctx.orientation === 'vertical' && ctx.placement,
+        inverted: ctx.inverted,
+      }}
       aria-orientation={ctx.orientation}
-      data-orientation={ctx.orientation}
-      data-placement={ctx.orientation === 'vertical' ? ctx.placement : undefined}
-      data-inverted={ctx.inverted || undefined}
-      data-variant={ctx.variant}
-      data-grow={grow || undefined}
       vars={{ '--tabs-justify': justify }}
     >
       {children}

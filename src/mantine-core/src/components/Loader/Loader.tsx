@@ -12,6 +12,7 @@ import {
   factory,
   useVars,
   getSize,
+  isNumberLike,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -106,6 +107,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       ref={ref}
       component={loaders![loader]}
       variant={variant}
+      mod={{ size: !isNumberLike(size) ? size : null }}
       vars={{
         '--loader-size': getSize(size, 'loader-size'),
         '--loader-color': getThemeColor(color, theme),

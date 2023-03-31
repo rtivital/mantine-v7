@@ -44,4 +44,12 @@ describe('@mantine/core/Loader', () => {
 
     expect(container.querySelector('[data-custom-loader]')).toBeInTheDocument();
   });
+
+  it('sets data-size attribute', () => {
+    const { container, rerender } = render(<Loader size="xl" />);
+    expect(container.querySelector('[data-size="xl"]')).toBeInTheDocument();
+
+    rerender(<Loader size={100} />);
+    expect(container.querySelector('[data-size]')).not.toBeInTheDocument();
+  });
 });

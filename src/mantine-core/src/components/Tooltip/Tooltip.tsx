@@ -200,7 +200,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
             <Box
               {...others}
               variant={variant}
-              data-multiline={multiline || undefined}
+              mod={{ multiline }}
               vars={{
                 '--tooltip-radius': getRadius(radius),
                 '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,

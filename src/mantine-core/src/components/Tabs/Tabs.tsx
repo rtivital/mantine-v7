@@ -189,10 +189,12 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
       <Box
         ref={ref}
         id={uid}
-        data-variant={variant}
-        data-orientation={orientation}
-        data-inverted={(orientation === 'horizontal' && inverted) || undefined}
-        data-placement={orientation === 'vertical' ? placement : undefined}
+        variant={variant}
+        mod={{
+          orientation,
+          inverted: orientation === 'horizontal' && inverted,
+          placement: orientation === 'vertical' && placement,
+        }}
         vars={{
           '--tabs-radius': getRadius(radius),
           '--tabs-color': getThemeColor(color, theme),

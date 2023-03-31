@@ -63,7 +63,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
   const theme = useMantineTheme();
   const { dir } = useDirection();
   const ctx = useTabsContext();
-  const isActive = value === ctx.value;
+  const active = value === ctx.value;
   const activateTab = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     ctx.onChange(ctx.allowTabDeactivation ? (value === ctx.value ? null : value) : value);
     onClick?.(event);
@@ -77,17 +77,19 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
       {...ctx.getStyles('tab', { className, style, variant: ctx.variant, ...stylesApiProps })}
       disabled={disabled}
       unstyled={ctx.unstyled}
-      data-active={isActive || undefined}
-      data-variant={ctx.variant}
-      data-orientation={ctx.orientation}
-      data-inverted={ctx.inverted || undefined}
-      data-placement={ctx.orientation === 'vertical' ? ctx.placement : undefined}
-      data-disabled={disabled || undefined}
+      variant={ctx.variant}
+      mod={{
+        active,
+        disabled,
+        orientation: ctx.orientation,
+        inverted: ctx.inverted,
+        placement: ctx.orientation === 'vertical' && ctx.placement,
+      }}
       ref={ref}
       role="tab"
       id={ctx.getTabId(value)}
-      aria-selected={isActive}
-      tabIndex={isActive || ctx.value === null ? 0 : -1}
+      aria-selected={active}
+      tabIndex={active || ctx.value === null ? 0 : -1}
       aria-controls={ctx.getPanelId(value)}
       onClick={activateTab}
       vars={{ '--tabs-color': color ? getThemeColor(color, theme) : undefined }}

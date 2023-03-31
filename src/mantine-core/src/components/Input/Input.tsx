@@ -168,12 +168,15 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
       {...getStyles('wrapper')}
       {...styleProps}
       {...wrapperProps}
-      data-error={!!error || undefined}
+      mod={{
+        error: !!error,
+        pointer,
+        disabled,
+        multiline,
+        'data-with-right-section': !!rightSection,
+        'data-with-left-section': !!leftSection,
+      }}
       variant={variant}
-      data-with-right-section={!!rightSection || undefined}
-      data-with-left-section={!!leftSection || undefined}
-      data-multiline={multiline || undefined}
-      data-pointer={pointer || undefined}
       vars={{
         '--input-margin-top': ctx?.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
         '--input-margin-bottom': ctx?.offsetBottom
@@ -207,12 +210,11 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         {...rest}
         ref={ref}
         required={required}
+        mod={{ disabled, error: !!error }}
         aria-invalid={!!error}
         variant={variant}
         aria-describedby={ctx.describedBy}
         disabled={disabled}
-        data-disabled={disabled || undefined}
-        data-error={!!error || undefined}
         {...getStyles('input')}
       />
 

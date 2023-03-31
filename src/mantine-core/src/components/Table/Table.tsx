@@ -185,7 +185,7 @@ export const Table = factory<TableFactory>((props, ref) => {
         component="table"
         variant={variant}
         ref={ref}
-        data-with-table-border={withTableBorder || undefined}
+        mod={{ 'data-with-table-border': withTableBorder }}
         vars={{
           '--table-layout': layout,
           '--table-caption-side': captionSide,

@@ -78,7 +78,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
   return (
     <Box
       ref={ref}
-      data-with-border={withBorder || undefined}
+      mod={{ 'data-with-border': withBorder }}
       {...getStyles('root')}
       vars={{
         '--paper-radius': getRadius(radius),
