@@ -86,7 +86,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
       {...getStyles('root')}
       ref={ref}
       variant={variant}
-      data-orientation={orientation}
+      mod={{ 'data-orientation': orientation }}
       vars={{ '--ai-border-width': rem(borderWidth), ..._vars }}
       role="group"
       {...others}

@@ -41,9 +41,9 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
     <Text
       component="a"
       ref={ref}
-      data-underline={underline}
       className={cx(classes.root, className)}
       {...others}
+      mod={{ underline }}
       __staticSelector="Anchor"
     />
   );

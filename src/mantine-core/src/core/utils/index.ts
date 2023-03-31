@@ -11,4 +11,5 @@ export { getSafeId } from './get-safe-id/get-safe-id';
 export { createScopedKeydownHandler } from './create-scoped-keydown-handler/create-scoped-keydown-handler';
 export { findElementAncestor } from './find-element-ancestor/find-element-ancestor';
 export { packStyle } from './pack-style/pack-style';
+export { packMod } from './pack-mod/pack-mod';
 export { getDefaultZIndex } from './get-default-z-index/get-default-z-index';

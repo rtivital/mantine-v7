@@ -143,12 +143,14 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       {...getStyles('root', { active: !disabled && !loading })}
       {...others}
       unstyled={unstyled}
-      data-action-icon
-      data-variant={variant}
-      data-loading={loading || undefined}
-      data-disabled={(disabled && !loading) || undefined}
+      variant={variant}
       disabled={disabled || loading}
       ref={ref}
+      mod={{
+        loading,
+        disabled: disabled && !loading,
+        'data-action-icon': true,
+      }}
       vars={{
         '--ai-size': getSize(size, 'ai-size'),
         '--ai-radius': getRadius(radius),

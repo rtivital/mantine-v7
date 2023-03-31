@@ -5,6 +5,13 @@ describe('@mantine/core/Box/get-box-mod', () => {
     expect(getBoxMod()).toBe(null);
   });
 
+  it('transforms adds data- prefix to keys that do not have it', () => {
+    expect(getBoxMod({ test: true, 'data-test-2': true })).toEqual({
+      'data-test': true,
+      'data-test-2': true,
+    });
+  });
+
   it('returns object with truthy data attributes', () => {
     expect(
       getBoxMod({

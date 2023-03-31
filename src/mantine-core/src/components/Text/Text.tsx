@@ -10,6 +10,8 @@ import {
   useVars,
   getGradient,
   useMantineTheme,
+  BoxMod,
+  packMod,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -40,6 +42,7 @@ export interface TextProps
   extends BoxProps,
     StylesApiProps<TextStylesNames, TextVariant, TextCssVariables, TextStylesParams> {
   __staticSelector?: string;
+  mod?: BoxMod;
 
   /** CSS -webkit-line-clamp property */
   lineClamp?: number;
@@ -91,6 +94,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     styles,
     unstyled,
     variant,
+    mod,
     ...others
   } = useProps('Text', defaultProps, props);
 
@@ -118,10 +122,15 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
       ref={ref}
       component={span ? 'span' : 'div'}
       variant={variant}
-      data-truncate={getTextTruncate(truncate)}
-      data-line-clamp={typeof lineClamp === 'number' || undefined}
-      data-inline={inline || undefined}
-      data-inherit={inherit || undefined}
+      mod={[
+        {
+          'data-truncate': getTextTruncate(truncate),
+          'data-line-clamp': typeof lineClamp === 'number',
+          'data-inline': inline,
+          'data-inherit': inherit,
+        },
+        ...packMod(mod),
+      ]}
       vars={{
         ..._vars,
         '--text-gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,

@@ -66,7 +66,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
       component={block ? 'pre' : 'code'}
       ref={ref}
       {...getStyles('root')}
-      data-block={block || undefined}
+      mod={{ block }}
       vars={{
         '--code-bg': color ? getThemeColor(color, theme) : undefined,
         ..._vars,

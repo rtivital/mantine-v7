@@ -14,7 +14,7 @@ import {
 } from './style-props';
 import { getBoxMod } from './get-box-mod/get-box-mod';
 
-export type Mod = Record<`data-${string}`, any>;
+export type Mod = Record<string, any>;
 export type BoxMod = Mod | Mod[];
 
 export interface BoxProps extends MantineStyleProps {

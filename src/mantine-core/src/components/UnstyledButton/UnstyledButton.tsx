@@ -1,11 +1,20 @@
 import React from 'react';
-import { Box, BoxProps, useProps, StylesApiProps, useStyles, polymorphicFactory } from '../../core';
+import {
+  Box,
+  BoxProps,
+  useProps,
+  StylesApiProps,
+  useStyles,
+  polymorphicFactory,
+  BoxMod,
+} from '../../core';
 import classes from './UnstyledButton.module.css';
 
 export type UnstyledButtonStylesNames = 'root';
 
 export interface UnstyledButtonProps extends BoxProps, StylesApiProps<UnstyledButtonStylesNames> {
   __staticSelector?: string;
+  mod?: BoxMod;
 }
 
 const defaultProps: Partial<UnstyledButtonProps> = {
@@ -26,7 +35,6 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
       component = 'button',
       __staticSelector,
       unstyled,
-      variant,
       classNames,
       styles,
       style,
