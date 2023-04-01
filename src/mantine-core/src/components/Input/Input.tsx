@@ -81,6 +81,9 @@ export interface __InputProps {
 
   /** Input size */
   size?: MantineSize;
+
+  /** Determines whether the input should have `cursor: pointer` style, `false` by default */
+  pointer?: boolean;
 }
 
 export interface InputProps
@@ -94,9 +97,6 @@ export interface InputProps
 
   /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
   multiline?: boolean;
-
-  /** Determines whether the input should has `cursor: pointer` style, `false` by default */
-  pointer?: boolean;
 }
 
 export interface InputFactory {
