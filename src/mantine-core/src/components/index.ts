@@ -5,6 +5,7 @@ export * from './CloseButton';
 export * from './Code';
 export * from './Collapse';
 export * from './ColorSwatch';
+export * from './CopyButton';
 export * from './Floating';
 export * from './FocusTrap';
 export * from './Group';
