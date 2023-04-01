@@ -38,6 +38,8 @@ export type InputCssVariables =
   | '--input-radius'
   | '--input-left-section-width'
   | '--input-right-section-width'
+  | '--input-left-section-pointer-events'
+  | '--input-right-section-pointer-events'
   | '--input-padding-y'
   | '--input-margin-top'
   | '--input-margin-bottom';
@@ -58,6 +60,9 @@ export interface __InputProps {
   /** Props added to `leftSection` element */
   leftSectionProps?: React.ComponentPropsWithoutRef<'div'>;
 
+  /** Sets `pointer-events` styles of `leftSection` node, `'none'` by default */
+  leftSectionPointerEvents?: React.CSSProperties['pointerEvents'];
+
   /** Content section rendered on the right side of the input */
   rightSection?: React.ReactNode;
 
@@ -66,6 +71,9 @@ export interface __InputProps {
 
   /** Props added to `rightSection` element */
   rightSectionProps?: React.ComponentPropsWithoutRef<'div'>;
+
+  /** Sets `pointer-events` styles of `rightSection` node, `'none'` by default */
+  rightSectionPointerEvents?: React.CSSProperties['pointerEvents'];
 
   /** Props added to root element of `Input` component */
   wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
@@ -118,6 +126,8 @@ export interface InputFactory {
 const defaultProps: Partial<InputProps> = {
   size: 'sm',
   variant: 'default',
+  leftSectionPointerEvents: 'none',
+  rightSectionPointerEvents: 'none',
 };
 
 export const Input = polymorphicFactory<InputFactory>((props, ref) => {
@@ -139,6 +149,8 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     rightSection,
     rightSectionProps,
     rightSectionWidth,
+    rightSectionPointerEvents,
+    leftSectionPointerEvents,
     variant,
     vars,
     pointer,
@@ -190,6 +202,8 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         '--input-right-section-width':
           rightSectionWidth !== undefined ? rem(rightSectionWidth) : undefined,
         '--input-padding-y': multiline ? getSize(size, 'input-padding-y') : undefined,
+        '--input-left-section-pointer-events': leftSectionPointerEvents,
+        '--input-right-section-pointer-events': rightSectionPointerEvents,
         ..._vars,
       }}
     >

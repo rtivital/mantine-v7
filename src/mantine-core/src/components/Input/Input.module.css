@@ -189,7 +189,7 @@
 }
 
 .leftSection {
-  pointer-events: none;
+  pointer-events: var(--input-left-section-pointer-events);
   position: absolute;
   color: var(--_input-section-color);
   z-index: 1;
@@ -205,6 +205,7 @@
 }
 
 .rightSection {
+  pointer-events: var(--input-right-section-pointer-events);
   position: absolute;
   color: var(--_input-section-color);
   z-index: 1;
