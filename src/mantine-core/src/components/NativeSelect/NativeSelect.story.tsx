@@ -33,7 +33,7 @@ export function Groups() {
 export function OptionsAsChildren() {
   return (
     <div style={{ padding: 40 }}>
-      <NativeSelect>
+      <NativeSelect error="test-error" size="xl">
         <optgroup label="Front">
           <option>React</option>
           <option>Angular</option>

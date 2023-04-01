@@ -7,5 +7,17 @@
 
   width: var(--combobox-chevron-size);
   height: var(--combobox-chevron-size);
-  color: inherit;
+  color: var(--_color);
+
+  @mixin light {
+    --_color: var(--mantine-color-gray-6);
+  }
+
+  @mixin dark {
+    --_color: var(--mantine-color-dark-3);
+  }
+
+  &[data-error] {
+    --_color: var(--mantine-color-error);
+  }
 }

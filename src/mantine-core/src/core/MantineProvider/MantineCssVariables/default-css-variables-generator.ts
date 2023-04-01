@@ -26,7 +26,7 @@ function getVariantsCssVariables(theme: MantineTheme, selector: string) {
 
   const darkStaticVariables = `
     --mantine-color-body: ${theme.colors.dark[7]};
-    --mantine-color-error: ${theme.colors.red[5]};
+    --mantine-color-error: ${theme.colors.red[9]};
     --mantine-color-placeholder: ${theme.colors.dark[3]};
     --mantine-color-anchor: ${theme.colors[theme.primaryColor][4]};
     --mantine-color-default: ${theme.colors.dark[6]};
