@@ -14,6 +14,7 @@ export * from './Input';
 export * from './InputBase';
 export * from './Loader';
 export * from './Mark';
+export * from './NativeSelect';
 export * from './Paper';
 export * from './Portal';
 export * from './ScrollArea';
