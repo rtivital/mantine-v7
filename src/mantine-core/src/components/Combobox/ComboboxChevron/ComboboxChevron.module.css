@@ -1,0 +1,11 @@
+.root {
+  --combobox-chevron-size-xs: rem(14px);
+  --combobox-chevron-size-sm: rem(18px);
+  --combobox-chevron-size-md: rem(20px);
+  --combobox-chevron-size-lg: rem(24px);
+  --combobox-chevron-size-xl: rem(28px);
+
+  width: var(--combobox-chevron-size);
+  height: var(--combobox-chevron-size);
+  color: inherit;
+}
