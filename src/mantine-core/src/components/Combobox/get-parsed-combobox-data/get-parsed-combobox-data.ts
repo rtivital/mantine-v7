@@ -1,13 +1,14 @@
 import {
   ComboboxData,
-  ComboboxParsedData,
+  ComboboxParsedItem,
   ComboboxItem,
   ComboboxItemGroup,
+  ComboboxParsedItemGroup,
 } from '../Combobox.types';
 
 function parseItem(
   item: string | ComboboxItem | ComboboxItemGroup
-): ComboboxItem | ComboboxItemGroup {
+): ComboboxItem | ComboboxParsedItemGroup {
   if (typeof item === 'string') {
     return { value: item, label: item };
   }
@@ -22,7 +23,7 @@ function parseItem(
   return item;
 }
 
-export function getParsedComboboxData(data: ComboboxData | undefined): ComboboxParsedData {
+export function getParsedComboboxData(data: ComboboxData | undefined): ComboboxParsedItem[] {
   if (!data) {
     return [];
   }

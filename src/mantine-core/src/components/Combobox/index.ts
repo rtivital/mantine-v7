@@ -3,6 +3,7 @@ export { getParsedComboboxData } from './get-parsed-combobox-data/get-parsed-com
 export type {
   ComboboxItem,
   ComboboxData,
-  ComboboxParsedData,
+  ComboboxParsedItem,
   ComboboxItemGroup,
+  ComboboxParsedItemGroup,
 } from './Combobox.types';

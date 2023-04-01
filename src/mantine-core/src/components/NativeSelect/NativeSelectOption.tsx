@@ -1,11 +1,11 @@
 import React from 'react';
-import { ComboboxItemGroup, ComboboxItem } from '../Combobox';
+import { ComboboxParsedItem, ComboboxParsedItemGroup } from '../Combobox';
 
 export interface NativeSelectOptionProps {
-  data: ComboboxItemGroup | ComboboxItem;
+  data: ComboboxParsedItem;
 }
 
-function isGroup(input: ComboboxItemGroup | ComboboxItem): input is ComboboxItemGroup {
+function isGroup(input: ComboboxParsedItem): input is ComboboxParsedItemGroup {
   return 'group' in input;
 }
 
