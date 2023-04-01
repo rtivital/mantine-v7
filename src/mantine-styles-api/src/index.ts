@@ -11,6 +11,7 @@ export * from './data/Input.styles-api';
 export * from './data/InputBase.styles-api';
 export * from './data/Loader.styles-api';
 export * from './data/Mark.styles-api';
+export * from './data/NativeSelect.styles-api';
 export * from './data/Paper.styles-api';
 export * from './data/ScrollArea.styles-api';
 export * from './data/Tabs.styles-api';
