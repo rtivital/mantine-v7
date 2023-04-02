@@ -18,6 +18,7 @@ export * from './NativeSelect';
 export * from './Paper';
 export * from './Portal';
 export * from './ScrollArea';
+export * from './SegmentedControl';
 export * from './Stack';
 export * from './Table';
 export * from './Tabs';
