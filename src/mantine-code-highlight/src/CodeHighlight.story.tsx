@@ -162,7 +162,7 @@ export function Usage() {
 export function CssCode() {
   return (
     <div style={{ padding: 40 }}>
-      <CodeHighlight language="scss">{cssCode}</CodeHighlight>
+      <CodeHighlight language="css">{cssCode}</CodeHighlight>
     </div>
   );
 }

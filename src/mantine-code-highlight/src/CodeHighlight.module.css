@@ -7,16 +7,36 @@
   font-family: var(--mantine-font-family-monospace);
 }
 
-.root {
+.pre {
   display: block;
   overflow-x: auto;
   padding: var(--mantine-spacing-md);
+  padding-top: rem(5px);
   line-height: 1.7;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: rem(7px) var(--mantine-spacing-md);
+  padding-right: rem(7px);
+}
+
+.copy {
+  background-color: transparent;
+  opacity: 0.6;
+
+  @mixin hover {
+    opacity: 1;
+  }
 }
 
 .root {
   color: var(--_color);
   background: var(--_background);
+  margin-top: 0;
 
   @mixin dark {
     --_color: var(--mantine-color-dark-1);
@@ -27,10 +47,6 @@
     --_color: var(--mantine-color-gray-7);
     --_background: var(--mantine-color-gray-0);
   }
-}
-
-.root {
-  margin-top: 0;
 
   @mixin light {
     --code-comment-color: var(--mantine-color-gray-6);

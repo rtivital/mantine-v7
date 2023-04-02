@@ -9,10 +9,14 @@ import {
   useProps,
   useStyles,
   useVars,
+  CopyButton,
+  Tooltip,
+  ActionIcon,
 } from '@mantine/core';
 import classes from './CodeHighlight.module.css';
+import { CopyIcon } from './CopyIcon';
 
-export type CodeHighlightStylesNames = 'root' | 'code';
+export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy' | 'header';
 export type CodeHighlightVariant = string;
 export type CodeHighlightCssVariables = '--test';
 
@@ -21,7 +25,7 @@ export interface CodeHighlightStylesParams {}
 export interface CodeHighlightProps
   extends BoxProps,
     StylesApiProps<CodeHighlightStylesNames, CodeHighlightVariant, CodeHighlightCssVariables>,
-    ElementProps<'pre'> {
+    ElementProps<'div'> {
   /** Code that should be highlighted */
   children: string;
 
@@ -31,7 +35,7 @@ export interface CodeHighlightProps
 
 export interface CodeHighlightFactory {
   props: CodeHighlightProps;
-  ref: HTMLPreElement;
+  ref: HTMLDivElement;
   stylesNames: CodeHighlightStylesNames;
   vars: CodeHighlightCssVariables;
   stylesParams: CodeHighlightStylesParams;
@@ -61,14 +65,27 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   return (
     <Box
       {...getStyles('root')}
-      component="pre"
       ref={ref}
       vars={{
         ..._vars,
       }}
       {...others}
     >
-      <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
+      <div {...getStyles('header')}>
+        <div>files list</div>
+        <CopyButton value={children.trim()}>
+          {({ copied, copy }) => (
+            <Tooltip label={copied ? 'Copied' : 'Copy'} fz="sm" position="left" withArrow>
+              <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
+                <CopyIcon copied={copied} />
+              </ActionIcon>
+            </Tooltip>
+          )}
+        </CopyButton>
+      </div>
+      <pre {...getStyles('pre')}>
+        <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
+      </pre>
     </Box>
   );
 });
