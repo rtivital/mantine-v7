@@ -7,22 +7,25 @@
   font-family: var(--mantine-font-family-monospace);
 }
 
-.root .code {
+.root {
   display: block;
   overflow-x: auto;
   padding: var(--mantine-spacing-md);
   line-height: 1.7;
 }
 
-.code {
+.root {
+  color: var(--_color);
+  background: var(--_background);
+
   @mixin dark {
-    color: var(--mantine-color-dark-1);
-    background: var(--mantine-color-dark-8);
+    --_color: var(--mantine-color-dark-1);
+    --_background: var(--mantine-color-dark-8);
   }
 
   @mixin light {
-    color: var(--mantine-color-gray-7);
-    background: var(--mantine-color-gray-0);
+    --_color: var(--mantine-color-gray-7);
+    --_background: var(--mantine-color-gray-0);
   }
 }
 

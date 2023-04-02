@@ -153,7 +153,7 @@ const cssCode = `.root {
 
 export function Usage() {
   return (
-    <div style={{ padding: 0 }}>
+    <div style={{ padding: 40 }}>
       <CodeHighlight>{tsxCode}</CodeHighlight>
     </div>
   );
@@ -161,7 +161,7 @@ export function Usage() {
 
 export function CssCode() {
   return (
-    <div style={{ padding: 0 }}>
+    <div style={{ padding: 40 }}>
       <CodeHighlight language="scss">{cssCode}</CodeHighlight>
     </div>
   );
