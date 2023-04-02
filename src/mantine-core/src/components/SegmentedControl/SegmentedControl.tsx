@@ -225,7 +225,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
         ],
       });
     }
-  }, [_value, containerRect]);
+  }, [_value, containerRect, dir]);
 
   const controls = _data.map((item) => (
     <Box
@@ -235,7 +235,6 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
     >
       <input
         {...getStyles('input')}
-        className={classes.input}
         disabled={disabled || item.disabled}
         type="radio"
         name={uuid}
@@ -287,6 +286,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
         ..._vars,
       }}
       {...others}
+      role="radiogroup"
     >
       {typeof _value === 'string' && shouldAnimate && (
         <Box
