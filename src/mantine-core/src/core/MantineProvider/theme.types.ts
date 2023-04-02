@@ -3,9 +3,6 @@ import type { MantineLoader } from '../../components/Loader/Loader.types';
 import type { VariantCarolsResolver } from './color-functions';
 
 export interface MantineTheme {
-  /** Text direction, rtl – right to left, ltr – left to right, ltr by default */
-  dir: 'ltr' | 'rtl';
-
   /** Controls focus ring styles. Supports the following options:
    * - `auto` – display focus ring only when user navigates with keyboard (default value)
    * - `always` – display focus ring when user navigates with keyboard and mouse

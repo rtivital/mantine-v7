@@ -1,0 +1,185 @@
+.root {
+  --sc-padding-xs: rem(3px) rem(6px);
+  --sc-padding-sm: rem(5px) rem(10px);
+  --sc-padding-md: rem(7px) rem(14px);
+  --sc-padding-lg: rem(9px) rem(16px);
+  --sc-padding-xl: rem(12px) rem(20px);
+
+  position: relative;
+  display: var(--_display, inline-flex);
+  flex-direction: var(--_flex-direction, row);
+  width: var(--_width, auto);
+  background-color: var(--_bg);
+  border-radius: var(--sc-radius);
+  overflow: hidden;
+  /* px required for correct indicator calculations */
+  padding: 4px;
+
+  &[data-full-width] {
+    --_display: flex;
+  }
+
+  &[data-orientation='vertical'] {
+    --_display: flex;
+    --_flex-direction: column;
+    --_width: max-content;
+
+    &[data-full-width] {
+      --_width: auto;
+    }
+  }
+
+  @mixin light {
+    --_bg: var(--mantine-color-gray-1);
+  }
+
+  @mixin dark {
+    --_bg: var(--mantine-color-dark-8);
+  }
+}
+
+.indicator {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  border-radius: var(--sc-radius);
+  box-shadow: var(--_box-shadow);
+  width: var(--sc-indicator-width);
+  height: var(--sc-indicator-height);
+  transform: var(--sc-indicator-transform);
+  transition: transform var(--sc-transition-duration) var(--sc-transition-timing-function),
+    width var(--sc-transition-duration) var(--sc-transition-timing-function);
+  background-color: var(--_bg);
+
+  @mixin light {
+    --_box-shadow: var(--sc-shadow, none);
+    --_bg: var(--sc-color, var(--mantine-color-white));
+  }
+
+  @mixin dark {
+    --_box-shadow: none;
+    --_bg: var(--sc-color, var(--mantine-color-dark-5));
+  }
+}
+
+.label {
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  border-radius: var(--sc-radius);
+  font-size: var(--sc-font-size);
+  padding: var(--sc-padding);
+  transition: color var(--sc-transition-duration) var(--sc-transition-timing-function);
+  cursor: var(--_cursor, pointer);
+  color: var(--_color);
+
+  /* outline is controlled by .input */
+  outline: var(--_outline, none);
+
+  &[data-disabled] {
+    --_cursor: not-allowed;
+
+    @mixin light {
+      --_color: var(--mantine-color-gray-5);
+    }
+
+    @mixin dark {
+      --_color: var(--mantine-color-dark-3);
+    }
+  }
+
+  &[data-active] {
+    @mixin light {
+      --_color: var(--sc-label-color, var(--mantine-color-black));
+    }
+
+    @mixin dark {
+      --_color: var(--sc-label-color, var(--mantine-color-white));
+    }
+  }
+
+  &:not([data-disabled]):not([data-active]) {
+    @mixin hover {
+      @mixin light {
+        --_color: var(--mantine-color-black);
+      }
+
+      @mixin dark {
+        --_color: var(--mantine-color-white);
+      }
+    }
+  }
+
+  @mixin light {
+    --_color: var(--mantine-color-gray-7);
+  }
+
+  @mixin dark {
+    --_color: var(--mantine-color-dark-1);
+  }
+}
+
+.input {
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+
+  &[data-focus-ring='auto'] {
+    &:focus:focus-visible {
+      & + .label {
+        --_outline: rem(2px) solid var(--mantine-color-blue-filled);
+      }
+    }
+  }
+
+  &[data-focus-ring='always'] {
+    &:focus {
+      & + .label {
+        --_outline: rem(2px) solid var(--mantine-color-blue-filled);
+      }
+    }
+  }
+}
+
+.control {
+  position: relative;
+  flex: 1;
+  z-index: 2;
+  transition: border-color var(--sc-transition-duration) var(--sc-transition-timing-function);
+  border-style: solid;
+  border-width: var(--_border-width, 0rem);
+  border-color: var(--_border-color);
+
+  @mixin light {
+    --_border-color: var(--mantine-color-gray-3);
+  }
+
+  @mixin dark {
+    --_border-color: var(--mantine-color-dark-4);
+  }
+
+  &:not(:first-of-type) {
+    --_border-width: 0 0 0 rem(1px);
+
+    &[data-orientation='vertical'] {
+      --_border-width: rem(1px) 0 0 0;
+    }
+  }
+
+  &[data-active] {
+    [data-mantine-color-scheme] & {
+      &,
+      & + .control {
+        --_border-color: transparent;
+      }
+    }
+  }
+}
