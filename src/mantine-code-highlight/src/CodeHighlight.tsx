@@ -16,7 +16,7 @@ import {
 import classes from './CodeHighlight.module.css';
 import { CopyIcon } from './CopyIcon';
 
-export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy' | 'header';
+export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy' | 'header' | 'file';
 export type CodeHighlightVariant = string;
 export type CodeHighlightCssVariables = '--test';
 
@@ -31,6 +31,12 @@ export interface CodeHighlightProps
 
   /** Language of the highlighted code, `'tsx'` by default */
   language?: string;
+
+  /** File name displayed in the header */
+  fileName?: string;
+
+  /** File icon displayed in the header next to the file name */
+  icon?: React.ReactNode;
 }
 
 export interface CodeHighlightFactory {
@@ -46,8 +52,19 @@ const defaultProps: Partial<CodeHighlightProps> = {
 };
 
 export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, children, language, ...others } =
-    useProps('CodeHighlight', defaultProps, props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    children,
+    language,
+    fileName,
+    icon,
+    ...others
+  } = useProps('CodeHighlight', defaultProps, props);
 
   const getStyles = useStyles({
     name: 'CodeHighlight',
@@ -72,7 +89,10 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
       {...others}
     >
       <div {...getStyles('header')}>
-        <div>files list</div>
+        <div {...getStyles('file')}>
+          {icon}
+          <span>{fileName}</span>
+        </div>
         <CopyButton value={children.trim()}>
           {({ copied, copy }) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'} fz="sm" position="left" withArrow>
