@@ -248,8 +248,10 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
       <Box
         component="label"
         {...getStyles('label')}
-        data-active={(_value === item.value && !(disabled || item.disabled)) || undefined}
-        data-disabled={disabled || item.disabled || undefined}
+        mod={{
+          active: _value === item.value && !(disabled || item.disabled),
+          disabled: disabled || item.disabled,
+        }}
         htmlFor={`${uuid}-${item.value}`}
         ref={(node) => {
           refs.current[item.value] = node!;
@@ -272,6 +274,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
   return (
     <Box
       {...getStyles('root')}
+      variant={variant}
       ref={mergedRef}
       mod={{ 'full-width': fullWidth, orientation }}
       vars={{

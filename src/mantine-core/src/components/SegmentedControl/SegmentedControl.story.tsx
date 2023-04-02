@@ -7,7 +7,7 @@ export default { title: 'SegmentedControl' };
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>
-      <SegmentedControl data={['First', 'Second', 'Third', 'Forth']} />
+      <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} />
     </div>
   );
 }
