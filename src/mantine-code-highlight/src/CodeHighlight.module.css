@@ -30,28 +30,47 @@
   @mixin hover {
     opacity: 1;
   }
+
+  @media (max-width: 40em) {
+    display: none;
+  }
 }
 
 .file {
-  background-color: var(--mantine-color-white);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--mantine-font-size-xs);
   gap: rem(7px);
-  border-radius: var(--mantine-radius-sm);
-  padding: rem(5px) rem(7px);
+  padding: rem(7px) rem(12px);
   font-family: var(--mantine-font-family-monospace);
   font-weight: 700;
   line-height: 1;
   user-select: none;
   cursor: pointer;
   border: 1px solid var(--mantine-color-gray-2);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
   border-top: 0;
   border-left: 0;
+  color: var(--mantine-color-gray-8);
+  opacity: 0.8;
+
+  @mixin hover {
+    opacity: 1;
+  }
+
+  &:last-of-type {
+    border-bottom-right-radius: var(--mantine-radius-sm);
+  }
+
+  &[data-active] {
+    opacity: 1;
+    color: var(--mantine-color-black);
+    background-color: var(--mantine-color-white);
+  }
+}
+
+.files {
+  display: flex;
 }
 
 .root {

@@ -1,5 +1,6 @@
 import React from 'react';
 import hljs from 'highlight.js';
+import { useUncontrolled } from '@mantine/hooks';
 import {
   Box,
   BoxProps,
@@ -12,31 +13,40 @@ import {
   CopyButton,
   Tooltip,
   ActionIcon,
+  UnstyledButton,
+  ScrollArea,
 } from '@mantine/core';
 import classes from './CodeHighlight.module.css';
 import { CopyIcon } from './CopyIcon';
 
-export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy' | 'header' | 'file';
+export type CodeHighlightStylesNames =
+  | 'root'
+  | 'code'
+  | 'pre'
+  | 'copy'
+  | 'header'
+  | 'file'
+  | 'files';
 export type CodeHighlightVariant = string;
 export type CodeHighlightCssVariables = '--test';
 
 export interface CodeHighlightStylesParams {}
 
+interface CodeHighlightCode {
+  language?: string;
+  code: string;
+  fileName?: string;
+  icon?: React.ReactNode;
+}
+
 export interface CodeHighlightProps
   extends BoxProps,
     StylesApiProps<CodeHighlightStylesNames, CodeHighlightVariant, CodeHighlightCssVariables>,
     ElementProps<'div'> {
-  /** Code that should be highlighted */
-  children: string;
-
-  /** Language of the highlighted code, `'tsx'` by default */
-  language?: string;
-
-  /** File name displayed in the header */
-  fileName?: string;
-
-  /** File icon displayed in the header next to the file name */
-  icon?: React.ReactNode;
+  code: CodeHighlightCode | CodeHighlightCode[];
+  defaultActiveTab?: number;
+  activeTab?: number;
+  onTabChange?(tab: number): void;
 }
 
 export interface CodeHighlightFactory {
@@ -47,9 +57,7 @@ export interface CodeHighlightFactory {
   stylesParams: CodeHighlightStylesParams;
 }
 
-const defaultProps: Partial<CodeHighlightProps> = {
-  language: 'tsx',
-};
+const defaultProps: Partial<CodeHighlightProps> = {};
 
 export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   const {
@@ -60,9 +68,10 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     unstyled,
     vars,
     children,
-    language,
-    fileName,
-    icon,
+    code,
+    defaultActiveTab,
+    activeTab,
+    onTabChange,
     ...others
   } = useProps('CodeHighlight', defaultProps, props);
 
@@ -76,8 +85,32 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     unstyled,
   });
 
+  const [value, setValue] = useUncontrolled({
+    defaultValue: defaultActiveTab,
+    value: activeTab,
+    finalValue: 0,
+    onChange: onTabChange,
+  });
+
+  const nodes = Array.isArray(code) ? code : [code];
+  const currentCode = nodes[value];
+
   const _vars = useVars<CodeHighlightStylesParams>('CodeHighlight', vars, {});
-  const highlighted = hljs.highlight(children.trim(), { language: language! }).value;
+  const highlighted = hljs.highlight(currentCode.code.trim(), {
+    language: currentCode.language!,
+  }).value;
+
+  const files = nodes.map((node, index) => (
+    <UnstyledButton
+      {...getStyles('file')}
+      key={node.fileName}
+      mod={{ active: index === value }}
+      onClick={() => setValue(index)}
+    >
+      {node.icon}
+      <span>{node.fileName}</span>
+    </UnstyledButton>
+  ));
 
   return (
     <Box
@@ -89,11 +122,10 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
       {...others}
     >
       <div {...getStyles('header')}>
-        <div {...getStyles('file')}>
-          {icon}
-          <span>{fileName}</span>
-        </div>
-        <CopyButton value={children.trim()}>
+        <ScrollArea type="never">
+          <div {...getStyles('files')}>{files}</div>
+        </ScrollArea>
+        <CopyButton value={currentCode.code.trim()}>
           {({ copied, copy }) => (
             <Tooltip label={copied ? 'Copied' : 'Copy'} fz="sm" position="left" withArrow>
               <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
