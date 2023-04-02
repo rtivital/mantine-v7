@@ -10,6 +10,8 @@ import {
   useDirection,
 } from '@mantine/core';
 
+export const parameters = { layout: 'fullscreen' };
+
 const channel = addons.getChannel();
 
 function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {

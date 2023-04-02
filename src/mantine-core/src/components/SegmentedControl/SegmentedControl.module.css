@@ -169,6 +169,10 @@
   &:not(:first-of-type) {
     --_border-width: 0 0 0 rem(1px);
 
+    @mixin rtl {
+      --_border-width: 0 rem(1px) 0 0;
+    }
+
     &[data-orientation='vertical'] {
       --_border-width: rem(1px) 0 0 0;
     }

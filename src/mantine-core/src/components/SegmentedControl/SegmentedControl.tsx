@@ -220,7 +220,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
         width,
         height,
         translate: [
-          dir === 'rtl' ? offsetRight : offsetLeft,
+          dir === 'rtl' ? offsetRight * -1 : offsetLeft,
           element.parentElement!.offsetTop - WRAPPER_PADDING,
         ],
       });

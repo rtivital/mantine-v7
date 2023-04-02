@@ -6,8 +6,8 @@ export default { title: 'SegmentedControl' };
 
 export function Usage() {
   return (
-    <div style={{ padding: 40 }}>
-      <SegmentedControl data={['Very long label', 'S', 'Medium', 'Extra large label: XXXXl']} />
+    <div style={{ padding: 0 }}>
+      <SegmentedControl data={['First', 'Second', 'Third', 'Forth']} />
     </div>
   );
 }
