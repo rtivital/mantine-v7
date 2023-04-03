@@ -29,8 +29,8 @@ export interface __ColorSliderProps
     StylesApiProps<ColorSliderStylesNames>,
     Omit<ElementProps<'div'>, 'onChange'> {
   value: number;
-  onChange(value: number): void;
-  onChangeEnd(value: number): void;
+  onChange?(value: number): void;
+  onChangeEnd?(value: number): void;
   size?: MantineSize | (string & {});
   focusable?: boolean;
   __staticSelector?: string;
@@ -77,7 +77,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
     ...others
   } = useProps('ColorSlider', defaultProps, props);
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ColorSliderStylesNames>({
     name: __staticSelector!,
     className,
     style,
@@ -85,6 +85,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'slider',
   });
 
   const theme = useMantineTheme();
@@ -94,12 +95,12 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
   const { ref: sliderRef } = useMove(
     ({ x, y }) => {
       positionRef.current = { x, y };
-      onChange(getChangeValue(x));
+      onChange?.(getChangeValue(x));
     },
     {
       onScrubEnd: () => {
         const { x } = positionRef.current;
-        onChangeEnd(getChangeValue(x));
+        onChangeEnd?.(getChangeValue(x));
       },
     }
   );
@@ -111,8 +112,8 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
   const handleArrow = (event: React.KeyboardEvent<HTMLDivElement>, pos: UseMovePosition) => {
     event.preventDefault();
     const _position = clampUseMovePosition(pos);
-    onChange(getChangeValue(_position.x));
-    onChangeEnd(getChangeValue(_position.x));
+    onChange?.(getChangeValue(_position.x));
+    onChangeEnd?.(getChangeValue(_position.x));
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {

@@ -17,20 +17,11 @@ export interface HueSliderFactory {
 const defaultProps: Partial<HueSliderProps> = {};
 
 export const HueSlider = factory<HueSliderFactory>((props, ref) => {
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    value,
-    onChange,
-    onChangeEnd,
-    color,
-    __staticSelector,
-    ...others
-  } = useProps('HueSlider', defaultProps, props);
+  const { vars, value, onChange, onChangeEnd, color, __staticSelector, ...others } = useProps(
+    'HueSlider',
+    defaultProps,
+    props
+  );
 
   return (
     <ColorSlider

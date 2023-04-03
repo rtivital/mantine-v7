@@ -20,28 +20,19 @@ export interface AlphaSliderFactory {
 const defaultProps: Partial<AlphaSliderProps> = {};
 
 export const AlphaSlider = factory<AlphaSliderFactory>((props, ref) => {
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    value,
-    onChange,
-    onChangeEnd,
-    color,
-    __staticSelector,
-    ...others
-  } = useProps('AlphaSlider', defaultProps, props);
+  const { vars, value, onChange, onChangeEnd, color, __staticSelector, ...others } = useProps(
+    'AlphaSlider',
+    defaultProps,
+    props
+  );
 
   return (
     <ColorSlider
       {...others}
       ref={ref}
       value={value}
-      onChange={(val) => onChange(round(val, 2))}
-      onChangeEnd={(val) => onChangeEnd(round(val, 2))}
+      onChange={(val) => onChange?.(round(val, 2))}
+      onChangeEnd={(val) => onChangeEnd?.(round(val, 2))}
       maxValue={1}
       round={false}
       __staticSelector={__staticSelector || 'AlphaSlider'}
