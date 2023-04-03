@@ -10,7 +10,8 @@ import {
   useStyles,
   useVars,
   MantineSize,
-  rem,
+  getSize,
+  getSpacing,
 } from '../../core';
 import { ColorSliderStylesNames } from './ColorSlider/ColorSlider';
 import { AlphaSlider } from './AlphaSlider/AlphaSlider';
@@ -33,9 +34,11 @@ export type ColorPickerStylesNames =
   | ThumbStylesNames
   | SwatchesStylesNames;
 export type ColorPickerVariant = string;
-export type ColorPickerCssVariables = '--test';
+export type ColorPickerCssVariables = '--cp-swatch-size' | '--cp-width' | '--cp-body-spacing';
 
-export interface ColorPickerStylesParams {}
+export interface ColorPickerStylesParams {
+  size: MantineSize | (string & {}) | undefined;
+}
 
 export interface __ColorPickerProps {
   /** Controlled component value */
@@ -129,6 +132,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     focusable,
     swatches,
     swatchesPerRow,
+    fullWidth,
     onColorSwatchClick,
     __staticSelector,
     ...others
@@ -144,7 +148,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<ColorPickerStylesParams>('ColorPicker', vars, {});
+  const _vars = useVars<ColorPickerStylesParams>('ColorPicker', vars, { size });
 
   const formatRef = useRef(format);
   const valueRef = useRef<string>();
@@ -188,11 +192,21 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     setValue(convertHsvaTo(format, parsed));
   }, [format]);
 
+  const stylesApi = {
+    classNames,
+    styles,
+    unstyled,
+    __staticSelector: __staticSelector!,
+  };
+
   return (
     <Box
       ref={ref}
       {...getStyles('wrapper')}
       vars={{
+        '--cp-swatch-size': getSize(size, 'cp-swatch-size'),
+        '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
+        '--cp-body-spacing': getSpacing(size),
         ..._vars,
       }}
       {...others}
@@ -206,16 +220,14 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
               onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, s, v }))
             }
             color={_value}
-            styles={styles}
-            classNames={classNames}
             size={size!}
             focusable={focusable}
             saturationLabel={saturationLabel}
-            __staticSelector={__staticSelector}
+            {...stylesApi}
           />
 
-          <div className={classes.body}>
-            <div className={classes.sliders}>
+          <div {...getStyles('body')}>
+            <div {...getStyles('sliders')}>
               <HueSlider
                 value={parsed.h}
                 onChange={(h) => handleChange({ h })}
@@ -223,11 +235,9 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
                   onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, h }))
                 }
                 size={size}
-                styles={styles}
-                classNames={classNames}
                 focusable={focusable}
                 aria-label={hueLabel}
-                __staticSelector={__staticSelector}
+                {...stylesApi}
               />
 
               {withAlpha && (
@@ -239,24 +249,15 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
                   }}
                   size={size}
                   color={convertHsvaTo('hex', parsed)}
-                  style={{ marginTop: rem(6) }}
-                  styles={styles}
-                  classNames={classNames}
+                  mt={6}
                   focusable={focusable}
                   aria-label={alphaLabel}
-                  __staticSelector={__staticSelector}
+                  {...stylesApi}
                 />
               )}
             </div>
 
-            {withAlpha && (
-              <ColorSwatch
-                color={_value}
-                radius="sm"
-                size={getSize({ size, sizes: SWATCH_SIZES })}
-                className={classes.preview}
-              />
-            )}
+            {withAlpha && <ColorSwatch color={_value} radius="sm" {...getStyles('preview')} />}
           </div>
         </>
       )}
@@ -264,12 +265,9 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
       {Array.isArray(swatches) && (
         <Swatches
           data={swatches}
-          style={{ marginTop: rem(5) }}
+          mt={5}
           swatchesPerRow={swatchesPerRow}
           focusable={focusable}
-          classNames={classNames}
-          styles={styles}
-          __staticSelector={__staticSelector}
           setValue={setValue}
           onChangeEnd={(color) => {
             const convertedColor = convertHsvaTo(format, parseColor(color));
@@ -279,6 +277,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
               setParsed(parseColor(color));
             }
           }}
+          {...stylesApi}
         />
       )}
     </Box>

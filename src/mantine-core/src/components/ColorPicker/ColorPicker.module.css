@@ -1,0 +1,34 @@
+.wrapper {
+  --cp-width-xs: rem(180px);
+  --cp-width-sm: rem(200px);
+  --cp-width-md: rem(240px);
+  --cp-width-lg: rem(280px);
+  --cp-width-xl: rem(320px);
+
+  --cp-swatch-size-xs: rem(26px);
+  --cp-swatch-size-sm: rem(34px);
+  --cp-swatch-size-md: rem(42px);
+  --cp-swatch-size-lg: rem(50px);
+  --cp-swatch-size-xl: rem(54px);
+
+  width: var(--cp-width);
+  padding: rem(1px);
+}
+
+.preview {
+  width: var(--cp-swatch-size);
+  height: var(--cp-swatch-size);
+}
+
+.body {
+  display: flex;
+  padding-top: calc(var(--cp-body-spacing) / 2);
+}
+
+.sliders {
+  flex: 1;
+
+  &:not(:only-child) {
+    margin-right: var(--mantine-spacing-xs);
+  }
+}

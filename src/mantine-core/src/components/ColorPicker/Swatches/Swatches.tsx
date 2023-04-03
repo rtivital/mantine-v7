@@ -22,7 +22,7 @@ export interface SwatchesProps
   swatchesPerRow?: number;
   focusable?: boolean;
   onChangeEnd?: (color: string) => void;
-  __staticSelector?: string;
+  __staticSelector: string;
   setValue(value: string): void;
 }
 
@@ -49,11 +49,12 @@ export const Swatches = factory<SwatchesFactory>((props, ref) => {
     focusable,
     data,
     swatchesPerRow,
+    __staticSelector,
     ...others
   } = useProps('Swatches', defaultProps, props);
 
   const getStyles = useStyles<SwatchesStylesNames>({
-    name: 'Swatches',
+    name: __staticSelector,
     className,
     style,
     classes,
@@ -76,6 +77,7 @@ export const Swatches = factory<SwatchesFactory>((props, ref) => {
       }}
       aria-label={color}
       tabIndex={focusable ? 0 : -1}
+      data-swatch
     />
   ));
 

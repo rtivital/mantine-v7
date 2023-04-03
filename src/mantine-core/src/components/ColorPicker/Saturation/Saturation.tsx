@@ -26,7 +26,7 @@ export interface SaturationProps
   extends BoxProps,
     StylesApiProps<SaturationStylesNames, SaturationVariant, SaturationCssVariables>,
     Omit<ElementProps<'div'>, 'onChange'> {
-  __staticSelector?: string;
+  __staticSelector: string;
   value: HsvaColor;
   onChange(color: Partial<HsvaColor>): void;
   onChangeEnd(color: Partial<HsvaColor>): void;
@@ -70,7 +70,7 @@ export const Saturation = factory<SaturationFactory>((props, _ref) => {
   } = useProps('Saturation', defaultProps, props);
 
   const getStyles = useStyles({
-    name: __staticSelector!,
+    name: __staticSelector,
     className,
     style,
     classes,

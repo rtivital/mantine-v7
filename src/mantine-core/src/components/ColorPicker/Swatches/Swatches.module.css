@@ -1,10 +1,11 @@
 .swatch {
-  width: calc(var(--swatch-size) - rem(4px));
   height: 0;
-  padding-bottom: calc(var(--swatch-size) - rem(4px));
   margin: rem(2px);
-  box-sizing: content-box;
   cursor: pointer;
+  width: calc(var(--swatch-size) - rem(4px));
+  padding-bottom: calc(var(--swatch-size) - rem(4px));
+  min-width: 0;
+  min-height: 0;
 }
 
 .swatches {

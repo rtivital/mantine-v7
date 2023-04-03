@@ -39,6 +39,7 @@
 }
 
 .saturationOverlay {
+  position: absolute;
   border-radius: var(--mantine-radius-sm);
   inset: calc(var(--thumb-size) * -1 / 2 - rem(1px));
 }
