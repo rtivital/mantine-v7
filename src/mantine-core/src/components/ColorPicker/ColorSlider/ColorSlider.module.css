@@ -1,0 +1,44 @@
+.thumb {
+  top: rem(1px);
+  background-color: var(--thumb-bg);
+  outline: var(--_outline);
+}
+
+.slider {
+  --thumb-size-xs: rem(8px);
+  --thumb-size-sm: rem(12px);
+  --thumb-size-md: rem(16px);
+  --thumb-size-lg: rem(20px);
+  --thumb-size-xl: rem(22px);
+
+  position: relative;
+  height: calc(var(--thumb-size) + rem(2px));
+  margin-left: calc(var(--thumb-size) / 2);
+  margin-right: calc(var(--thumb-size) / 2);
+  outline: none;
+
+  &[data-focus-ring='auto'] {
+    &:focus:focus-visible {
+      & .thumb {
+        --_outline: rem(2px) solid var(--mantine-color-blue-filled);
+      }
+    }
+  }
+
+  &[data-focus-ring='always'] {
+    &:focus {
+      & .thumb {
+        --_outline: rem(2px) solid var(--mantine-color-blue-filled);
+      }
+    }
+  }
+}
+
+.sliderOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--thumb-size) * -1 / 2 - rem(1px));
+  right: calc(var(--thumb-size) * -1 / 2 - rem(1px));
+  border-radius: 10000rem;
+}
