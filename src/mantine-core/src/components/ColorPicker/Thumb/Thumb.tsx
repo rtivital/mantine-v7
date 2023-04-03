@@ -51,6 +51,7 @@ export const Thumb = factory<ThumbFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'thumb',
   });
 
   return (

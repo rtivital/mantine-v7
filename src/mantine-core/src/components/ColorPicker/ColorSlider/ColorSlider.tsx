@@ -17,6 +17,7 @@ import {
   MantineSize,
   getSize,
   useMantineTheme,
+  rem,
 } from '../../../core';
 import classes from './ColorSlider.module.css';
 import { Thumb } from '../Thumb/Thumb';
@@ -155,6 +156,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
         position={position}
         size={size!}
         {...getStyles('thumb')}
+        style={{ top: rem(1) }}
       />
     </Box>
   );

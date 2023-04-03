@@ -32,6 +32,14 @@
       }
     }
   }
+
+  @mixin light {
+    --slider-checkers: var(--mantine-color-gray-3);
+  }
+
+  @mixin dark {
+    --slider-checkers: var(--mantine-color-dark-4);
+  }
 }
 
 .sliderOverlay {
