@@ -29,7 +29,7 @@ export type CodeHighlightStylesNames =
 
 export type CodeHighlightVariant = string;
 
-interface CodeHighlightCode {
+export interface CodeHighlightCode {
   language?: string;
   code: string;
   fileName?: string;

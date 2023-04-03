@@ -7,7 +7,6 @@ const DEFAULT_FONT_FAMILY =
 
 export const DEFAULT_THEME: MantineTheme = {
   fontSmoothing: true,
-  dir: 'ltr',
   focusRing: 'auto',
   loader: 'oval',
   white: '#fff',

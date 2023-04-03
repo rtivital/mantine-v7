@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { useMantineTheme } from '../../../core';
+import { useDirection } from '../../../core';
 import { getArrowPositionStyles } from './get-arrow-position-styles';
 import { ArrowPosition, FloatingPosition } from '../types';
 
@@ -29,7 +29,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
     },
     ref
   ) => {
-    const theme = useMantineTheme();
+    const { dir } = useDirection();
     if (!visible) {
       return null;
     }
@@ -44,7 +44,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
           arrowOffset,
           arrowRadius,
           arrowPosition,
-          dir: theme.dir,
+          dir,
           arrowX,
           arrowY,
         })}

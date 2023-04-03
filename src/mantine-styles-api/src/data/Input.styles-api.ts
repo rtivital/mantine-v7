@@ -21,6 +21,8 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
     '--input-margin-top': 'margin-top of the input element, usually controlled by Input.Wrapper',
     '--input-padding-y': 'padding-top and padding-bottom of the input element',
     '--input-radius': 'border-radius of the input element',
+    '--input-left-section-pointer-events': 'Controls pointer-events of the left section',
+    '--input-right-section-pointer-events': 'Controls pointer-events of the right section',
   },
 
   modifiers: [

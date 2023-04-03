@@ -1,9 +1,8 @@
 export { CodeHighlight } from './CodeHighlight';
 export type {
-  CodeHighlightCssVariables,
   CodeHighlightFactory,
   CodeHighlightStylesNames,
   CodeHighlightProps,
-  CodeHighlightStylesParams,
+  CodeHighlightCode,
   CodeHighlightVariant,
 } from './CodeHighlight';
