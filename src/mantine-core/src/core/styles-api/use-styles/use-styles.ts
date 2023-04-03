@@ -4,9 +4,11 @@ import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../..
 import type { MantineStyleProp } from '../../Box';
 import { StylesRecord } from '../styles-api.types';
 
-type Styles<StylesNames extends string> =
+export type Styles<StylesNames extends string> =
   | StylesRecord<StylesNames, CSSProperties>
   | ((theme: MantineTheme) => StylesRecord<StylesNames, CSSProperties>);
+
+export type ClassNames<StylesNames extends string> = Partial<Record<StylesNames, string>>;
 
 export interface useStylesInput<StylesNames extends string> {
   name: string | (string | undefined)[];
@@ -15,7 +17,7 @@ export interface useStylesInput<StylesNames extends string> {
   style?: MantineStyleProp;
   rootSelector?: StylesNames;
   unstyled?: boolean;
-  classNames?: Partial<Record<StylesNames, string>>;
+  classNames?: ClassNames<StylesNames>;
   styles?: Styles<StylesNames>;
 }
 
