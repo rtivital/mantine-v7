@@ -13,3 +13,10 @@ export interface RgbaColor {
   b: number;
   a: number;
 }
+
+export interface HslaColor {
+  h: number;
+  s: number;
+  l: number;
+  a: number;
+}

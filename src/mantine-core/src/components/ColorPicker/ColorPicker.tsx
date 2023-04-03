@@ -169,7 +169,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     updateRef.current = false;
     setParsed((current) => {
       const next = { ...current, ...color };
-      valueRef.current = convertHsvaTo(formatRef.current, next);
+      valueRef.current = convertHsvaTo(formatRef.current!, next);
       return next;
     });
 
@@ -190,7 +190,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
 
   useDidUpdate(() => {
     formatRef.current = format;
-    setValue(convertHsvaTo(format, parsed));
+    setValue(convertHsvaTo(format!, parsed));
   }, [format]);
 
   const stylesApi = {
@@ -218,7 +218,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
             value={parsed}
             onChange={handleChange}
             onChangeEnd={({ s, v }) =>
-              onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, s, v }))
+              onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, s: s!, v: v! }))
             }
             color={_value}
             size={size!}
@@ -233,7 +233,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
                 value={parsed.h}
                 onChange={(h) => handleChange({ h })}
                 onChangeEnd={(h) =>
-                  onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, h }))
+                  onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, h }))
                 }
                 size={size}
                 focusable={focusable}
@@ -246,7 +246,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
                   value={parsed.a}
                   onChange={(a) => handleChange({ a })}
                   onChangeEnd={(a) => {
-                    onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, a }));
+                    onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, a }));
                   }}
                   size={size}
                   color={convertHsvaTo('hex', parsed)}
@@ -271,7 +271,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
           focusable={focusable}
           setValue={setValue}
           onChangeEnd={(color) => {
-            const convertedColor = convertHsvaTo(format, parseColor(color));
+            const convertedColor = convertHsvaTo(format!, parseColor(color));
             onColorSwatchClick?.(convertedColor);
             onChangeEnd?.(convertedColor);
             if (!controlled) {

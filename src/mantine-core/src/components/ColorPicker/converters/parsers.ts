@@ -1,10 +1,10 @@
-import { HsvaColor, RgbaColor, ColorFormat } from '../types';
+import { HsvaColor, RgbaColor, ColorFormat, HslaColor } from '../ColorPicker.types';
 
 export function round(number: number, digits = 0, base = 10 ** digits) {
   return Math.round(base * number) / base;
 }
 
-function hslaToHsva({ h, s, l, a }): HsvaColor {
+function hslaToHsva({ h, s, l, a }: HslaColor): HsvaColor {
   const ss = s * ((l < 50 ? l : 100 - l) / 100);
 
   return {
@@ -162,7 +162,7 @@ export function parseColor(color: string): HsvaColor {
   // eslint-disable-next-line no-restricted-syntax
   for (const [rule, regexp] of Object.entries(VALIDATION_REGEXP)) {
     if (regexp.test(trimmed)) {
-      return CONVERTERS[rule](trimmed);
+      return CONVERTERS[rule as keyof typeof CONVERTERS](trimmed);
     }
   }
 
