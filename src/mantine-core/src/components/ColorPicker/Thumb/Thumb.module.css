@@ -1,0 +1,19 @@
+.thumb {
+  --thumb-size-xs: rem(8px);
+  --thumb-size-sm: rem(12px);
+  --thumb-size-md: rem(16px);
+  --thumb-size-lg: rem(20px);
+  --thumb-size-xl: rem(22px);
+
+  overflow: hidden;
+  position: absolute;
+  box-shadow: 0 0 rem(1px) rgba(0, 0, 0, 0.6);
+  border: rem(2px) solid var(--mantine-color-white);
+  background-color: transparent;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: var(--thumb-size);
+
+  left: calc(var(--thumb-x-offset) - var(--thumb-size) / 2);
+  top: calc(var(--thumb-y-offset) - var(--thumb-size) / 2);
+}
