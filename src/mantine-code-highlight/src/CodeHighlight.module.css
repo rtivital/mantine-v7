@@ -9,7 +9,6 @@
 
 .pre {
   display: block;
-  /* overflow-x: auto; */
   padding: var(--mantine-spacing-md);
   padding-top: rem(5px);
   line-height: 1.7;
@@ -18,14 +17,16 @@
 
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: rem(5px);
 }
 
 .copy {
   background-color: transparent;
-  opacity: 0.6;
+  opacity: 0.8;
+  margin: 0;
+  margin-top: rem(7px);
+  margin-right: rem(7px);
 
   @mixin hover {
     opacity: 1;
