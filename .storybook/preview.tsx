@@ -38,6 +38,7 @@ function DirectionWrapper({ children }: { children: React.ReactNode }) {
         bottom={20}
         right={20}
         onClick={toggleDirection}
+        style={{ zIndex: 1000 }}
       >
         {dir === 'ltr' ? <IconTextDirectionLtr /> : <IconTextDirectionRtl />}
       </ActionIcon>

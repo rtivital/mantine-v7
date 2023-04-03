@@ -120,9 +120,10 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
         ..._vars,
       }}
       {...others}
+      dir="ltr"
     >
       <div {...getStyles('header')}>
-        <ScrollArea type="never">
+        <ScrollArea type="never" dir="ltr" offsetScrollbars={false}>
           <div {...getStyles('files')}>{files}</div>
         </ScrollArea>
         <CopyButton value={currentCode.code.trim()}>
@@ -135,7 +136,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
           )}
         </CopyButton>
       </div>
-      <ScrollArea type="auto">
+      <ScrollArea type="auto" dir="ltr" offsetScrollbars={false}>
         <pre {...getStyles('pre')}>
           <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
         </pre>

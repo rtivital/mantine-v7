@@ -97,6 +97,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
     onScrollPositionChange,
     children,
     variant,
+    offsetScrollbars,
     ...others
   } = useProps('ScrollArea', defaultProps, props);
 
@@ -139,6 +140,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((props, ref) => {
           {...viewportProps}
           {...getStyles('viewport')}
           ref={viewportRef}
+          data-offset-scrollbars={offsetScrollbars || undefined}
           onScroll={
             typeof onScrollPositionChange === 'function'
               ? ({ currentTarget }) =>

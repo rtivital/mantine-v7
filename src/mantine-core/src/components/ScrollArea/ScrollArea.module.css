@@ -5,16 +5,19 @@
 .viewport {
   width: 100%;
   height: 100%;
-  padding-right: var(--_viewport-padding-right);
-  padding-left: var(--_viewport-padding-left);
-  padding-bottom: var(--scrollarea-scrollbar-size);
+  padding-right: var(--_viewport-padding-right, 0rem);
+  padding-left: var(--_viewport-padding-left, 0rem);
+  padding-bottom: var(--_viewport-padding-bottom, 0rem);
 
-  --_viewport-padding-right: var(--scrollarea-scrollbar-size);
-  --_viewport-padding-left: unset;
+  &[data-offset-scrollbars] {
+    --_viewport-padding-right: var(--scrollarea-scrollbar-size);
+    --_viewport-padding-bottom: var(--scrollarea-scrollbar-size);
+    --_viewport-padding-left: unset;
 
-  @mixin rtl {
-    --_viewport-padding-right: unset;
-    --_viewport-padding-left: var(--scrollarea-scrollbar-size);
+    @mixin rtl {
+      --_viewport-padding-right: unset;
+      --_viewport-padding-left: var(--scrollarea-scrollbar-size);
+    }
   }
 }
 
