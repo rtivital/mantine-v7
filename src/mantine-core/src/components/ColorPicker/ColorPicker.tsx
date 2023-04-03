@@ -138,7 +138,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     ...others
   } = useProps('ColorPicker', defaultProps, props);
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ColorPickerStylesNames>({
     name: __staticSelector!,
     className,
     style,
@@ -146,6 +146,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'wrapper',
   });
 
   const _vars = useVars<ColorPickerStylesParams>('ColorPicker', vars, { size });

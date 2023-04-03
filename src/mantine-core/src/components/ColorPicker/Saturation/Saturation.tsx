@@ -147,18 +147,21 @@ export const Saturation = factory<SaturationFactory>((props, _ref) => {
       }}
     >
       <div
-        {...getStyles('saturationOverlay')}
-        style={{ backgroundColor: `hsl(${value.h}, 100%, 50%)` }}
+        {...getStyles('saturationOverlay', {
+          style: { backgroundColor: `hsl(${value.h}, 100%, 50%)` },
+        })}
       />
 
       <div
-        {...getStyles('saturationOverlay')}
-        style={{ backgroundImage: 'linear-gradient(90deg, #fff, transparent)' }}
+        {...getStyles('saturationOverlay', {
+          style: { backgroundImage: 'linear-gradient(90deg, #fff, transparent)' },
+        })}
       />
 
       <div
-        {...getStyles('saturationOverlay')}
-        style={{ backgroundImage: 'linear-gradient(0deg, #000, transparent)' }}
+        {...getStyles('saturationOverlay', {
+          style: { backgroundImage: 'linear-gradient(0deg, #000, transparent)' },
+        })}
       />
 
       <Thumb
