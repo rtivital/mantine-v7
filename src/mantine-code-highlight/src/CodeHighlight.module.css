@@ -9,7 +9,7 @@
 
 .pre {
   display: block;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   padding: var(--mantine-spacing-md);
   padding-top: rem(5px);
   line-height: 1.7;

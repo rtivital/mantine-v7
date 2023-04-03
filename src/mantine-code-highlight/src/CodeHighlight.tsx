@@ -135,9 +135,11 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
           )}
         </CopyButton>
       </div>
-      <pre {...getStyles('pre')}>
-        <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
-      </pre>
+      <ScrollArea type="auto">
+        <pre {...getStyles('pre')}>
+          <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
+        </pre>
+      </ScrollArea>
     </Box>
   );
 });
