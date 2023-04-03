@@ -47,7 +47,7 @@
   font-weight: 700;
   line-height: 1;
   user-select: none;
-  cursor: pointer;
+  cursor: var(--_file-cursor);
   border: rem(1px) solid var(--_file-bd);
   border-top: 0;
   border-left: 0;
@@ -63,6 +63,10 @@
     border-bottom-right-radius: var(--mantine-radius-sm);
   }
 
+  &:only-child {
+    --_file-cursor: default;
+  }
+
   &[data-active] {
     --_file-opacity: 1;
     --_file-color: var(--_file-active-color) !important;
@@ -70,6 +74,7 @@
   }
 
   --_file-opacity: 0.8;
+  --_file-cursor: pointer;
 
   @mixin light {
     --_file-color: var(--mantine-color-gray-8);
