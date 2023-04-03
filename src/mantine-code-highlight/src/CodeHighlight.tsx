@@ -9,7 +9,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   CopyButton,
   Tooltip,
   ActionIcon,
@@ -27,10 +26,8 @@ export type CodeHighlightStylesNames =
   | 'header'
   | 'file'
   | 'files';
-export type CodeHighlightVariant = string;
-export type CodeHighlightCssVariables = '--test';
 
-export interface CodeHighlightStylesParams {}
+export type CodeHighlightVariant = string;
 
 interface CodeHighlightCode {
   language?: string;
@@ -41,23 +38,41 @@ interface CodeHighlightCode {
 
 export interface CodeHighlightProps
   extends BoxProps,
-    StylesApiProps<CodeHighlightStylesNames, CodeHighlightVariant, CodeHighlightCssVariables>,
+    StylesApiProps<CodeHighlightStylesNames, CodeHighlightVariant>,
     ElementProps<'div'> {
+  /** Code to highlight with meta data (file name and icon) */
   code: CodeHighlightCode | CodeHighlightCode[];
+
+  /** Default active tab index */
   defaultActiveTab?: number;
+
+  /** Index of controlled active tab state */
   activeTab?: number;
+
+  /** Called when tab changes */
   onTabChange?(tab: number): void;
+
+  /** Determines whether header with file names and copy button should be rendered, `true` by default */
+  withHeader?: boolean;
+
+  /** Copy tooltip label, `'Copy code'` by default */
+  copyLabel?: string;
+
+  /** Copied tooltip label, `'Copied'` by default */
+  copiedLabel?: string;
 }
 
 export interface CodeHighlightFactory {
   props: CodeHighlightProps;
   ref: HTMLDivElement;
   stylesNames: CodeHighlightStylesNames;
-  vars: CodeHighlightCssVariables;
-  stylesParams: CodeHighlightStylesParams;
 }
 
-const defaultProps: Partial<CodeHighlightProps> = {};
+const defaultProps: Partial<CodeHighlightProps> = {
+  withHeader: true,
+  copyLabel: 'Copy code',
+  copiedLabel: 'Copied',
+};
 
 export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   const {
@@ -72,6 +87,9 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     defaultActiveTab,
     activeTab,
     onTabChange,
+    withHeader,
+    copiedLabel,
+    copyLabel,
     ...others
   } = useProps('CodeHighlight', defaultProps, props);
 
@@ -95,7 +113,6 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   const nodes = Array.isArray(code) ? code : [code];
   const currentCode = nodes[value];
 
-  const _vars = useVars<CodeHighlightStylesParams>('CodeHighlight', vars, {});
   const highlighted = hljs.highlight(currentCode.code.trim(), {
     language: currentCode.language!,
   }).value;
@@ -113,29 +130,24 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   ));
 
   return (
-    <Box
-      {...getStyles('root')}
-      ref={ref}
-      vars={{
-        ..._vars,
-      }}
-      {...others}
-      dir="ltr"
-    >
-      <div {...getStyles('header')}>
-        <ScrollArea type="never" dir="ltr" offsetScrollbars={false}>
-          <div {...getStyles('files')}>{files}</div>
-        </ScrollArea>
-        <CopyButton value={currentCode.code.trim()}>
-          {({ copied, copy }) => (
-            <Tooltip label={copied ? 'Copied' : 'Copy'} fz="sm" position="left" withArrow>
-              <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
-                <CopyIcon copied={copied} />
-              </ActionIcon>
-            </Tooltip>
-          )}
-        </CopyButton>
-      </div>
+    <Box {...getStyles('root')} ref={ref} {...others} dir="ltr">
+      {withHeader && (
+        <div {...getStyles('header')}>
+          <ScrollArea type="never" dir="ltr" offsetScrollbars={false}>
+            <div {...getStyles('files')}>{files}</div>
+          </ScrollArea>
+          <CopyButton value={currentCode.code.trim()}>
+            {({ copied, copy }) => (
+              <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left" withArrow>
+                <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
+                  <CopyIcon copied={copied} />
+                </ActionIcon>
+              </Tooltip>
+            )}
+          </CopyButton>
+        </div>
+      )}
+
       <ScrollArea type="auto" dir="ltr" offsetScrollbars={false}>
         <pre {...getStyles('pre')}>
           <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
