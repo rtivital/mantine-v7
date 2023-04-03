@@ -7,8 +7,6 @@ import {
 } from '../ColorSlider/ColorSlider';
 import { round } from '../converters/parsers';
 
-export interface AlphaSliderStylesParams {}
-
 export interface AlphaSliderProps extends __ColorSliderProps {
   color: string;
 }
@@ -17,7 +15,6 @@ export interface AlphaSliderFactory {
   props: AlphaSliderProps;
   ref: HTMLDivElement;
   stylesNames: ColorSliderStylesNames;
-  stylesParams: AlphaSliderStylesParams;
 }
 
 const defaultProps: Partial<AlphaSliderProps> = {};
