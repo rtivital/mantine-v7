@@ -36,6 +36,7 @@ export const AlphaSlider = factory<AlphaSliderFactory>((props, ref) => {
       maxValue={1}
       round={false}
       __staticSelector={__staticSelector || 'AlphaSlider'}
+      data-alpha
       overlays={[
         {
           backgroundImage:

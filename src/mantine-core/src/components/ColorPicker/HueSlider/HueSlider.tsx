@@ -34,6 +34,7 @@ export const HueSlider = factory<HueSliderFactory>((props, ref) => {
       thumbColor={`hsl(${value}, 100%, 50%)`}
       round
       __staticSelector={__staticSelector || 'HueSlider'}
+      data-hue
       overlays={[
         {
           backgroundImage:

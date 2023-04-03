@@ -9,6 +9,16 @@ const defaultProps: ColorPickerProps = {
 };
 
 describe('@mantine/core/ColorPicker', () => {
+  tests.axe([
+    <ColorPicker
+      {...defaultProps}
+      format="rgba"
+      saturationLabel="Saturation"
+      alphaLabel="Alpha"
+      hueLabel="Hue"
+    />,
+  ]);
+
   tests.itSupportsSystemProps<ColorPickerProps, ColorPickerStylesNames>({
     component: ColorPicker,
     props: defaultProps,
@@ -40,18 +50,18 @@ describe('@mantine/core/ColorPicker', () => {
 
   it('renders AlphaSlider based on format prop', () => {
     const { rerender, container } = render(<ColorPicker format="rgba" />);
-    expect(container.querySelector('.mantine-ColorPicker-alpha')).toBeInTheDocument();
+    expect(container.querySelector('[data-alpha]')).toBeInTheDocument();
 
     rerender(<ColorPicker format="hex" />);
-    expect(container.querySelector('.mantine-ColorPicker-alpha')).not.toBeInTheDocument();
+    expect(container.querySelector('[data-alpha]')).not.toBeInTheDocument();
   });
 
   it('renders picker based on withPicker prop', () => {
     const { rerender, container } = render(<ColorPicker withPicker />);
-    expect(container.querySelector('.mantine-ColorPicker-picker')).toBeInTheDocument();
+    expect(container.querySelector('.mantine-ColorPicker-saturation')).toBeInTheDocument();
 
-    rerender(<ColorPicker />);
-    expect(container.querySelector('.mantine-ColorPicker-picker')).not.toBeInTheDocument();
+    rerender(<ColorPicker withPicker={false} />);
+    expect(container.querySelector('.mantine-ColorPicker-saturation')).not.toBeInTheDocument();
   });
 
   it('calls onChangeEnd when swatch is clicked', async () => {
