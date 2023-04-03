@@ -1,5 +1,4 @@
 .thumb {
-  top: rem(1px);
   background-color: var(--thumb-bg);
   outline: var(--_outline);
 }
