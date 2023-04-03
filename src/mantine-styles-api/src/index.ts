@@ -6,6 +6,7 @@ export * from './data/BackgroundImage.styles-api';
 export * from './data/CloseButton.styles-api';
 export * from './data/Code.styles-api';
 export * from './data/CodeHighlight.styles-api';
+export * from './data/ColorPicker.styles-api';
 export * from './data/ColorSwatch.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Input.styles-api';

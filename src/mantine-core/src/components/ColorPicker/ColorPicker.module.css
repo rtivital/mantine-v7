@@ -5,19 +5,19 @@
   --cp-width-lg: rem(280px);
   --cp-width-xl: rem(320px);
 
-  --cp-swatch-size-xs: rem(26px);
-  --cp-swatch-size-sm: rem(34px);
-  --cp-swatch-size-md: rem(42px);
-  --cp-swatch-size-lg: rem(50px);
-  --cp-swatch-size-xl: rem(54px);
+  --cp-preview-size-xs: rem(26px);
+  --cp-preview-size-sm: rem(34px);
+  --cp-preview-size-md: rem(42px);
+  --cp-preview-size-lg: rem(50px);
+  --cp-preview-size-xl: rem(54px);
 
   width: var(--cp-width);
   padding: rem(1px);
 }
 
 .preview {
-  width: var(--cp-swatch-size);
-  height: var(--cp-swatch-size);
+  width: var(--cp-preview-size);
+  height: var(--cp-preview-size);
 }
 
 .body {

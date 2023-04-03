@@ -34,7 +34,7 @@ export type ColorPickerStylesNames =
   | ThumbStylesNames
   | SwatchesStylesNames;
 export type ColorPickerVariant = string;
-export type ColorPickerCssVariables = '--cp-swatch-size' | '--cp-width' | '--cp-body-spacing';
+export type ColorPickerCssVariables = '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
 
 export interface ColorPickerStylesParams {
   size: MantineSize | (string & {}) | undefined;
@@ -205,7 +205,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
       ref={ref}
       {...getStyles('wrapper')}
       vars={{
-        '--cp-swatch-size': getSize(size, 'cp-swatch-size'),
+        '--cp-preview-size': getSize(size, 'cp-preview-size'),
         '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
         '--cp-body-spacing': getSpacing(size),
         ..._vars,
