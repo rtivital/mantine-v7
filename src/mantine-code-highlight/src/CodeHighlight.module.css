@@ -48,14 +48,15 @@
   line-height: 1;
   user-select: none;
   cursor: pointer;
-  border: 1px solid var(--mantine-color-gray-2);
+  border: rem(1px) solid var(--_file-bd);
   border-top: 0;
   border-left: 0;
-  color: var(--mantine-color-gray-8);
-  opacity: 0.8;
+  color: var(--_file-color);
+  opacity: var(--_file-opacity);
+  background-color: var(--_file-bg);
 
   @mixin hover {
-    opacity: 1;
+    --_file-opacity: 1;
   }
 
   &:last-of-type {
@@ -63,9 +64,25 @@
   }
 
   &[data-active] {
-    opacity: 1;
-    color: var(--mantine-color-black);
-    background-color: var(--mantine-color-white);
+    --_file-opacity: 1;
+    --_file-color: var(--_file-active-color) !important;
+    --_file-bg: var(--_file-active-bg);
+  }
+
+  --_file-opacity: 0.8;
+
+  @mixin light {
+    --_file-color: var(--mantine-color-gray-8);
+    --_file-bd: var(--mantine-color-gray-3);
+    --_file-active-bg: var(--mantine-color-white);
+    --_file-active-color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    --_file-color: var(--mantine-color-dark-0);
+    --_file-bd: var(--mantine-color-dark-4);
+    --_file-active-bg: var(--mantine-color-dark-6);
+    --_file-active-color: var(--mantine-color-white);
   }
 }
 
