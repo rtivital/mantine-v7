@@ -30,12 +30,10 @@
 
 .body {
   display: flex;
+  align-items: center;
 }
 
 .labelWrapper {
-  /*
-    order: labelPosition === 'left' ? 1 : 2, */
-
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
   flex-direction: column;

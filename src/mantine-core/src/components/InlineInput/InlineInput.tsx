@@ -28,10 +28,10 @@ export interface InlineInputProps
   label: React.ReactNode;
   description: React.ReactNode;
   id: string;
-  disabled: boolean;
+  disabled: boolean | undefined;
   error: React.ReactNode;
-  size: MantineSize | number | undefined;
-  labelPosition: 'left' | 'right';
+  size: MantineSize | (string & {}) | number | undefined;
+  labelPosition?: 'left' | 'right';
 }
 
 export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
@@ -48,8 +48,8 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       id,
       disabled,
       error,
-      size,
-      labelPosition,
+      size = 'sm',
+      labelPosition = 'left',
       variant,
       style,
       ...others
