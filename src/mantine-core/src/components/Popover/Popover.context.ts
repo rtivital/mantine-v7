@@ -1,4 +1,3 @@
-import { ReferenceType } from '@floating-ui/react';
 import { createSafeContext, MantineShadow, Styles, ClassNames, MantineRadius } from '../../core';
 import { FloatingPosition, ArrowPosition } from '../Floating';
 import { TransitionOverride } from '../Transition';
@@ -13,37 +12,37 @@ interface PopoverContext {
   arrowRef: React.RefObject<HTMLDivElement>;
   opened: boolean;
   transitionProps?: TransitionOverride;
-  reference: (node: ReferenceType) => void;
-  floating: (node: HTMLElement) => void;
+  reference(node: HTMLElement): void;
+  floating(node: HTMLElement): void;
   width?: PopoverWidth;
-  withArrow: boolean;
+  withArrow: boolean | undefined;
   arrowSize: number;
   arrowOffset: number;
   arrowRadius: number;
   arrowPosition: ArrowPosition;
-  trapFocus: boolean;
+  trapFocus: boolean | undefined;
   placement: FloatingPosition;
-  withinPortal: boolean;
+  withinPortal: boolean | undefined;
   portalProps?: PortalProps;
-  closeOnEscape: boolean;
+  closeOnEscape: boolean | undefined;
   zIndex: React.CSSProperties['zIndex'];
-  radius?: MantineRadius | (string & {}) | number;
-  shadow?: MantineShadow | (string & {});
+  radius?: MantineRadius | (string & {}) | number | undefined;
+  shadow?: MantineShadow | (string & {}) | undefined;
   onClose?(): void;
   getDropdownId(): string;
   getTargetId(): string;
   controlled: boolean;
   onToggle(): void;
-  withRoles: boolean;
+  withRoles: boolean | undefined;
   targetProps: Record<string, any>;
-  disabled: boolean;
-  returnFocus: boolean;
-  classNames: ClassNames<PopoverStylesNames>;
-  styles: Styles<PopoverStylesNames>;
-  unstyled: boolean;
+  disabled: boolean | undefined;
+  returnFocus: boolean | undefined;
+  classNames: ClassNames<PopoverStylesNames> | undefined;
+  styles: Styles<PopoverStylesNames> | undefined;
+  unstyled: boolean | undefined;
   __staticSelector: string;
-  variant: string;
-  keepMounted: boolean;
+  variant: string | undefined;
+  keepMounted: boolean | undefined;
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContext>(

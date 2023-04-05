@@ -13,3 +13,5 @@ export { findElementAncestor } from './find-element-ancestor/find-element-ancest
 export { packStyle } from './pack-style/pack-style';
 export { packMod } from './pack-mod/pack-mod';
 export { getDefaultZIndex } from './get-default-z-index/get-default-z-index';
+export { closeOnEscape } from './close-on-escape/close-on-escape';
+export { noop } from './noop/noop';

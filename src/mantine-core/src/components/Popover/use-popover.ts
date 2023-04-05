@@ -16,15 +16,15 @@ import { PopoverWidth, PopoverMiddlewares } from './Popover.types';
 interface UsePopoverOptions {
   offset: number | FloatingAxesOffsets;
   position: FloatingPosition;
-  positionDependencies: any[];
+  positionDependencies: any[] | undefined;
   onPositionChange?(position: FloatingPosition): void;
-  opened: boolean;
-  defaultOpened: boolean;
-  onChange(opened: boolean): void;
+  opened: boolean | undefined;
+  defaultOpened: boolean | undefined;
+  onChange?(opened: boolean): void;
   onClose?(): void;
   onOpen?(): void;
   width: PopoverWidth;
-  middlewares: PopoverMiddlewares;
+  middlewares: PopoverMiddlewares | undefined;
   arrowRef: React.RefObject<HTMLDivElement>;
   arrowOffset: number;
 }
@@ -32,15 +32,15 @@ interface UsePopoverOptions {
 function getPopoverMiddlewares(options: UsePopoverOptions) {
   const middlewares: Middleware[] = [offset(options.offset)];
 
-  if (options.middlewares.shift) {
+  if (options.middlewares?.shift) {
     middlewares.push(shift({ limiter: limitShift() }));
   }
 
-  if (options.middlewares.flip) {
+  if (options.middlewares?.flip) {
     middlewares.push(flip());
   }
 
-  if (options.middlewares.inline) {
+  if (options.middlewares?.inline) {
     middlewares.push(inline());
   }
 
@@ -93,7 +93,7 @@ export function usePopover(options: UsePopoverOptions) {
   useFloatingAutoUpdate({
     opened: options.opened,
     position: options.position,
-    positionDependencies: options.positionDependencies,
+    positionDependencies: options.positionDependencies || [],
     floating,
   });
 

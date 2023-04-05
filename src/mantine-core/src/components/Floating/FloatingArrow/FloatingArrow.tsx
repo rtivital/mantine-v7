@@ -11,7 +11,7 @@ interface FloatingArrowProps extends React.ComponentPropsWithoutRef<'div'> {
   arrowPosition: ArrowPosition;
   arrowX: number;
   arrowY: number;
-  visible: boolean;
+  visible: boolean | undefined;
 }
 
 export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
