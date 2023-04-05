@@ -130,6 +130,11 @@ export interface PopoverProps extends __PopoverProps {
   __staticSelector?: string;
 }
 
+export interface PopoverFactory {
+  props: PopoverProps;
+  stylesNames: PopoverStylesNames;
+}
+
 const defaultProps: Partial<PopoverProps> = {
   position: 'bottom',
   offset: 8,

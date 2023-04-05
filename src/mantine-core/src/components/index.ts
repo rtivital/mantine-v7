@@ -17,6 +17,7 @@ export * from './Loader';
 export * from './Mark';
 export * from './NativeSelect';
 export * from './Paper';
+export * from './Popover';
 export * from './Portal';
 export * from './ScrollArea';
 export * from './SegmentedControl';
