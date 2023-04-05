@@ -30,6 +30,7 @@ export type PopoverDropdownCssVariables = '--popover-radius' | '--popover-shadow
 export interface PopoverDropdownStylesParams {
   radius: MantineRadius | (string & {}) | number | undefined;
   shadow: MantineShadow | (string & {}) | number | undefined;
+  variant: PopoverDropdownVariant | undefined;
 }
 
 export interface PopoverDropdownProps
@@ -57,6 +58,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
     vars,
     children,
     onKeyDownCapture,
+    variant,
     ...others
   } = useProps('PopoverDropdown', defaultProps, props);
 
@@ -76,6 +78,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
   const _vars = useVars<PopoverDropdownStylesParams>('PopoverDropdown', vars, {
     shadow: ctx.shadow,
     radius: ctx.radius,
+    variant,
   });
 
   const returnFocus = useFocusReturn({
@@ -116,6 +119,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
             <Box
               {...accessibleProps}
               {...others}
+              variant={variant}
               tabIndex={-1}
               ref={mergedRef}
               onKeyDownCapture={closeOnEscape(ctx.onClose, {
