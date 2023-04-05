@@ -99,6 +99,7 @@ function getThemeCssVariables(theme: MantineTheme) {
       : rem(theme.defaultRadius);
 
   const variables: Record<string, string> = {
+    '--mantine-cursor-type': theme.cursorType,
     '--mantine-webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
     '--mantine-color-scheme': 'light dark',
     '--mantine-moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
