@@ -25,6 +25,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
       visible,
       arrowX,
       arrowY,
+      style,
       ...others
     },
     ref
@@ -38,16 +39,19 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(
       <div
         {...others}
         ref={ref}
-        style={getArrowPositionStyles({
-          position,
-          arrowSize,
-          arrowOffset,
-          arrowRadius,
-          arrowPosition,
-          dir,
-          arrowX,
-          arrowY,
-        })}
+        style={{
+          ...style,
+          ...getArrowPositionStyles({
+            position,
+            arrowSize,
+            arrowOffset,
+            arrowRadius,
+            arrowPosition,
+            dir,
+            arrowX,
+            arrowY,
+          }),
+        }}
       />
     );
   }

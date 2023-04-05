@@ -62,7 +62,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
 
   const ctx = usePopoverContext();
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<PopoverDropdownStylesNames>({
     name: ctx.__staticSelector,
     className,
     style,
@@ -70,6 +70,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
     classNames,
     styles,
     unstyled,
+    rootSelector: 'dropdown',
   });
 
   const _vars = useVars<PopoverDropdownStylesParams>('PopoverDropdown', vars, {

@@ -9,12 +9,12 @@ export default { title: 'Popover' };
 export function Uncontrolled() {
   return (
     <div style={{ padding: 40 }}>
-      <Popover>
+      <Popover opened>
         <Popover.Target>
           <button type="button">Toggle popover</button>
         </Popover.Target>
 
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
+        <Popover.Dropdown className="test-class">Dropdown</Popover.Dropdown>
       </Popover>
     </div>
   );
