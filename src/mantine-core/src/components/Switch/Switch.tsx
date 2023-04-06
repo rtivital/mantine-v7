@@ -18,12 +18,18 @@ import {
   getThemeColor,
   useMantineTheme,
 } from '../../core';
-import { InlineInput } from '../InlineInput';
+import { InlineInput, InlineInputStylesNames } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
 import { SwitchGroup } from './SwitchGroup/SwitchGroup';
 import classes from './Switch.module.css';
 
-export type SwitchStylesNames = 'root' | 'track' | 'trackLabel' | 'thumb' | 'input';
+export type SwitchStylesNames =
+  | 'root'
+  | 'track'
+  | 'trackLabel'
+  | 'thumb'
+  | 'input'
+  | InlineInputStylesNames;
 export type SwitchVariant = string;
 export type SwitchCssVariables =
   | '--switch-radius'

@@ -1,3 +1,5 @@
+import userEvent from '@testing-library/user-event';
+
 // Shared tests
 import { itIsPolymorphic } from './shared/it-is-polymorphic';
 import { itRendersChildren } from './shared/it-renders-children';
@@ -25,6 +27,8 @@ import { itSupportsInputContainer } from './inputs/it-supports-input-container';
 import { itSupportsInputAsterisk } from './inputs/it-supports-input-asterisk';
 import { itSupportsInputWrapperOrder } from './inputs/it-supports-input-wrapper-order';
 import { itSupportsInputWrapperElements } from './inputs/it-supports-input-wrapper-elements';
+import { itHandlesCheckboxState } from './inputs/it-handles-checkbox-state';
+import { itConnectsLabelAndInput } from './inputs/it-connects-label-and-input';
 
 // High level tests
 import { itSupportsSystemProps } from './it-supports-system-props';
@@ -57,6 +61,8 @@ export const tests = {
   itSupportsInputAsterisk,
   itSupportsInputWrapperOrder,
   itSupportsInputWrapperElements,
+  itHandlesCheckboxState,
+  itConnectsLabelAndInput,
 
   itSupportsSystemProps,
   itSupportsInputWrapperProps,
@@ -71,3 +77,5 @@ export { patchConsoleError } from './patch-console-error';
 export { createContextContainer } from './create-context-container';
 export { inputDefaultProps, inputStylesApiSelectors } from './inputs/inputs-test-props';
 export * from './queries';
+export { screen } from '@testing-library/react';
+export { userEvent };
