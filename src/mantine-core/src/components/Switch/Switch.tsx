@@ -35,7 +35,7 @@ export type SwitchCssVariables =
   | '--switch-radius'
   | '--switch-height'
   | '--switch-width'
-  | '--switch-handle-size'
+  | '--switch-thumb-size'
   | '--switch-label-font-size'
   | '--switch-label-padding'
   | '--switch-color';
@@ -43,6 +43,7 @@ export type SwitchCssVariables =
 export interface SwitchStylesParams {
   size: MantineSize | (string & {}) | undefined;
   radius: MantineRadius | (string & {}) | number | undefined;
+  variant: SwitchVariant | undefined;
 }
 
 export interface SwitchProps
@@ -149,6 +150,7 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
   const _vars = useVars<SwitchStylesParams>('Switch', vars, {
     size: _size,
     radius,
+    variant,
   });
 
   const { styleProps, rest } = extractStyleProps(others);
@@ -188,7 +190,7 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
         '--switch-radius': getRadius(radius),
         '--switch-height': getSize(_size, 'switch-height'),
         '--switch-width': getSize(_size, 'switch-width'),
-        '--switch-handle-size': getSize(_size, 'switch-handle-size'),
+        '--switch-thumb-size': getSize(_size, 'switch-thumb-size'),
         '--switch-label-font-size': getSize(_size, 'switch-label-font-size'),
         '--switch-track-label-padding': getSize(_size, 'switch-track-label-padding'),
         '--switch-color': getThemeColor(color, theme),

@@ -11,11 +11,11 @@
   --switch-width-lg: rem(56px);
   --switch-width-xl: rem(72px);
 
-  --switch-handle-size-xs: rem(12px);
-  --switch-handle-size-sm: rem(14px);
-  --switch-handle-size-md: rem(18px);
-  --switch-handle-size-lg: rem(22px);
-  --switch-handle-size-xl: rem(28px);
+  --switch-thumb-size-xs: rem(12px);
+  --switch-thumb-size-sm: rem(14px);
+  --switch-thumb-size-md: rem(18px);
+  --switch-thumb-size-lg: rem(22px);
+  --switch-thumb-size-xl: rem(28px);
 
   --switch-label-font-size-xs: rem(5px);
   --switch-label-font-size-sm: rem(6px);
@@ -108,8 +108,8 @@
   border-radius: var(--switch-radius);
   display: flex;
   background-color: var(--_switch-thumb-bg, var(--mantine-color-white));
-  height: var(--switch-handle-size);
-  width: var(--switch-handle-size);
+  height: var(--switch-thumb-size);
+  width: var(--switch-thumb-size);
   border: rem(1px) solid var(--_switch-thumb-bd);
   left: var(--_switch-thumb-left, var(--switch-track-label-padding));
   transition: left 150ms ease;
@@ -125,9 +125,7 @@
   }
 
   .input:checked + * > & {
-    --_switch-thumb-left: calc(
-      100% - var(--switch-handle-size) - var(--switch-track-label-padding)
-    );
+    --_switch-thumb-left: calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding));
     --_switch-thumb-bd: var(--mantine-color-white);
   }
 
@@ -152,12 +150,12 @@
   height: 100%;
   display: grid;
   place-content: center;
-  min-width: calc(var(--switch-width) - var(--switch-handle-size));
+  min-width: calc(var(--switch-width) - var(--switch-thumb-size));
   padding-inline: var(--switch-track-label-padding);
-  margin: 0 0 0 calc(var(--switch-handle-size) + var(--switch-track-label-padding));
+  margin: 0 0 0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding));
   transition: margin 150ms ease;
 
   .input:checked + * > & {
-    margin: 0 calc(var(--switch-handle-size) + var(--switch-track-label-padding)) 0 0;
+    margin: 0 calc(var(--switch-thumb-size) + var(--switch-track-label-padding)) 0 0;
   }
 }

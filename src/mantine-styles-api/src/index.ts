@@ -18,6 +18,8 @@ export * from './data/Paper.styles-api';
 export * from './data/Popover.styles-api';
 export * from './data/ScrollArea.styles-api';
 export * from './data/SegmentedControl.styles-api';
+export * from './data/Stack.styles-api';
+export * from './data/Switch.styles-api';
 export * from './data/Tabs.styles-api';
 export * from './data/Table.styles-api';
 export * from './data/Text.styles-api';
