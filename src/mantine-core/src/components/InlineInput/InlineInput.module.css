@@ -30,7 +30,6 @@
 
 .body {
   display: flex;
-  align-items: center;
 }
 
 .labelWrapper {
@@ -46,6 +45,8 @@
 .label {
   cursor: var(--mantine-cursor-type);
   color: var(--_label-color, inherit);
+  padding-left: var(--_offset-left);
+  padding-right: var(--_offset-right);
 
   &[data-disabled] {
     @mixin light {

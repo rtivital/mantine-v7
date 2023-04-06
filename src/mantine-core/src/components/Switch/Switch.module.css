@@ -60,7 +60,7 @@
   align-items: center;
   font-size: var(--switch-label-font-size);
   font-weight: 600;
-  order: var(--_switch-order, 2);
+  order: var(--_switch-order, 1);
   user-select: none;
   z-index: 0;
   line-height: 0;
@@ -98,7 +98,7 @@
   }
 
   &[data-label-position='left'] {
-    --_switch-order: 1;
+    --_switch-order: 2;
   }
 }
 

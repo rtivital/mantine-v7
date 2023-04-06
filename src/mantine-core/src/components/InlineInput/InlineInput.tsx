@@ -52,6 +52,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       labelPosition = 'left',
       variant,
       style,
+      vars,
       ...others
     },
     ref
@@ -73,6 +74,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
         vars={{
           '--label-fz': getFontSize(size),
           '--label-lh': getSize(size, 'label-lh'),
+          ...vars,
         }}
         mod={{ 'label-position': labelPosition }}
         {...others}
