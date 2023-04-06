@@ -15,21 +15,23 @@ const result = [
 describe('@mantine/core/convert-css-variables', () => {
   it('converts object to css variables string', () => {
     expect(
-      convertCssVariables({
-        selector: '.mantine-test',
-        variables: {
-          '--mantine-color-white': '#fff',
-          '--mantine-color-black': '#000',
-        },
+      convertCssVariables(
+        {
+          variables: {
+            '--mantine-color-white': '#fff',
+            '--mantine-color-black': '#000',
+          },
 
-        dark: {
-          '--mantine-color-filled': 'red',
-        },
+          dark: {
+            '--mantine-color-filled': 'red',
+          },
 
-        light: {
-          '--mantine-color-filled': 'blue',
+          light: {
+            '--mantine-color-filled': 'blue',
+          },
         },
-      })
+        '.mantine-test'
+      )
     ).toBe(result.join(''));
   });
 });

@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 import { DEFAULT_THEME } from './default-theme';
 import type { MantineTheme, MantineColorScheme } from './theme.types';
 import type { MantineColorSchemeManager } from './color-scheme-managers';
+import { ConvertCSSVariablesInput } from './convert-css-variables';
 
 interface MantineContextValue {
   theme: MantineTheme;
@@ -12,7 +13,7 @@ interface MantineContextValue {
   getRootElement(): HTMLElement | undefined;
   classNamesPrefix: string;
   styleNonce: string | undefined;
-  generateCssVariables(theme: MantineTheme, selector: string): string;
+  cssVariablesResolver(theme: MantineTheme): ConvertCSSVariablesInput;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
@@ -31,8 +32,8 @@ export function useMantineTheme() {
   return useMantineContext().theme;
 }
 
-export function useMantineCssVariablesGenerator() {
-  return useMantineContext().generateCssVariables;
+export function useMantineCssVariablesResolver() {
+  return useMantineContext().cssVariablesResolver;
 }
 
 export function useMantineClassNamesPrefix() {

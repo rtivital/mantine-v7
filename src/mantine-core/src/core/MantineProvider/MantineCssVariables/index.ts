@@ -1,2 +1,2 @@
 export { MantineCssVariables } from './MantineCssVariables';
-export { defaultCssVariablesGenerator } from './default-css-variables-generator';
+export { defaultCssVariablesResolver } from './default-css-variables-resolver';

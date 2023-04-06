@@ -10,27 +10,18 @@ export interface ConvertCSSVariablesInput {
 
   /** CSS variables available only in light color scheme */
   light: CSSVariables;
-
-  /** CSS selector that will be used to set variables */
-  selector: string;
 }
 
-export function convertCssVariables(input: ConvertCSSVariablesInput) {
-  const shared = wrapWithSelector(input.selector, cssVariablesObjectToString(input.variables));
+export function convertCssVariables(input: ConvertCSSVariablesInput, selector: string) {
+  const shared = wrapWithSelector(selector, cssVariablesObjectToString(input.variables));
 
   const dark = cssVariablesObjectToString(input.dark);
-  const darkMedia = wrapWithSelector([input.selector, '@media (prefers-color-scheme: dark)'], dark);
-  const darkForced = wrapWithSelector(`${input.selector}[data-mantine-color-scheme="dark"]`, dark);
+  const darkMedia = wrapWithSelector([selector, '@media (prefers-color-scheme: dark)'], dark);
+  const darkForced = wrapWithSelector(`${selector}[data-mantine-color-scheme="dark"]`, dark);
 
   const light = cssVariablesObjectToString(input.light);
-  const lightMedia = wrapWithSelector(
-    [input.selector, '@media (prefers-color-scheme: light)'],
-    light
-  );
-  const lightForced = wrapWithSelector(
-    `${input.selector}[data-mantine-color-scheme="light"]`,
-    light
-  );
+  const lightMedia = wrapWithSelector([selector, '@media (prefers-color-scheme: light)'], light);
+  const lightForced = wrapWithSelector(`${selector}[data-mantine-color-scheme="light"]`, light);
 
   return `${shared}${darkMedia}${darkForced}${lightMedia}${lightForced}`;
 }
