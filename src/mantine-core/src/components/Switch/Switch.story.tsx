@@ -34,18 +34,22 @@ export function IconInsideThumb() {
   return <Switch size="lg" thumbIcon={<IconBadge color="black" size={12} />} label="Hello" />;
 }
 
-// export function SwitchGroup() {
-//   return (
-//     <>
-//       <Switch.Group defaultValue={['one', 'three']} m={4} label="Switch Group">
-//         <Switch value="one" size="md" />
-//         <Switch value="two" size="md" />
-//         <Switch value="three" size="md" />
-//         <Switch value="four" size="md" />
-//       </Switch.Group>
-//     </>
-//   );
-// }
+export function SwitchGroup() {
+  return (
+    <>
+      <Switch.Group
+        defaultValue={['one', 'three']}
+        m={4}
+        label="Switch Group"
+        labelProps={{ id: 'test-id' }}
+      >
+        <Switch value="one" label="one" />
+        <Switch value="two" label="two" />
+        <Switch value="three" label="three" />
+      </Switch.Group>
+    </>
+  );
+}
 
 export function labelPosition() {
   return (

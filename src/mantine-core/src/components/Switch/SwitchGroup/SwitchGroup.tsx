@@ -1,61 +1,77 @@
-// import React from 'react';
-// import {
-//   Box,
-//   BoxProps,
-//   StylesApiProps,
-//   factory,
-//   ElementProps,
-//   useProps,
-//   useStyles,
-//   useVars,
-// } from '../../../core';
-// import { InputWrapperStylesNames } from '../../Input';
-// import classes from './SwitchGroup.module.css';
+import React from 'react';
+import { useUncontrolled } from '@mantine/hooks';
+import { factory, useProps, MantineSize } from '../../../core';
+import { InputWrapperStylesNames, Input, InputWrapperProps } from '../../Input';
+import { SwitchGroupProvider } from '../SwitchGroup.context';
 
-// export type SwitchGroupStylesNames = InputWrapperStylesNames;
-// export type SwitchGroupVariant = string;
+export type SwitchGroupStylesNames = InputWrapperStylesNames;
+export type SwitchGroupVariant = string;
 
-// export interface SwitchGroupProps
-//   extends BoxProps,
-//     StylesApiProps<SwitchGroupStylesNames, SwitchGroupVariant>,
-//     Omit<ElementProps<'div'>, 'onChange'> {
-//   /** <Switch /> components */
-//   children: React.ReactNode;
+export interface SwitchGroupProps extends Omit<InputWrapperProps, 'onChange'> {
+  /** <Switch /> components */
+  children: React.ReactNode;
 
-//   /** Controlled component value */
-//   value?: string[];
+  /** Controlled component value */
+  value?: string[];
 
-//   /** Default value for uncontrolled component */
-//   defaultValue?: string[];
+  /** Default value for uncontrolled component */
+  defaultValue?: string[];
 
-//   /** Called when value changes */
-//   onChange?(value: string[]): void;
+  /** Called when value changes */
+  onChange?(value: string[]): void;
 
-//   /** Props spread to InputWrapper */
-//   wrapperProps?: Record<string, any>;
-// }
+  /** Props spread to `Input.Wrapper` */
+  wrapperProps?: Record<string, any>;
 
-// export interface SwitchGroupFactory {
-//   props: SwitchGroupProps;
-//   ref: HTMLDivElement;
-//   stylesNames: SwitchGroupStylesNames;
-// }
+  /** Controls size of `Input.Wrapper`, `'sm'` by default */
+  size?: MantineSize | (string & {});
+}
 
-// const defaultProps: Partial<SwitchGroupProps> = {};
+export interface SwitchGroupFactory {
+  props: SwitchGroupProps;
+  ref: HTMLDivElement;
+  stylesNames: SwitchGroupStylesNames;
+}
 
-// export const SwitchGroup = factory<SwitchGroupFactory>((props, ref) => {
-//   const { ...others } = useProps('SwitchGroup', defaultProps, props);
+const defaultProps: Partial<SwitchGroupProps> = {};
 
-//   return (
-//     <Box
-//       ref={ref}
-//       {...getStyles('root')}
-//       vars={{
-//         ..._vars,
-//       }}
-//       {...others}
-//     />
-//   );
-// });
+export const SwitchGroup = factory<SwitchGroupFactory>((props, ref) => {
+  const { value, defaultValue, onChange, size, wrapperProps, children, ...others } = useProps(
+    'SwitchGroup',
+    defaultProps,
+    props
+  );
 
-// SwitchGroup.displayName = '@mantine/core/SwitchGroup';
+  const [_value, setValue] = useUncontrolled({
+    value,
+    defaultValue,
+    finalValue: [],
+    onChange,
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const itemValue = event.currentTarget.value;
+    setValue(
+      _value.includes(itemValue)
+        ? _value.filter((item) => item !== itemValue)
+        : [..._value, itemValue]
+    );
+  };
+
+  return (
+    <SwitchGroupProvider value={{ value: _value, onChange: handleChange, size }}>
+      <Input.Wrapper
+        size={size}
+        ref={ref}
+        {...wrapperProps}
+        {...others}
+        labelElement="div"
+        __staticSelector="SwitchGroup"
+      >
+        {children}
+      </Input.Wrapper>
+    </SwitchGroupProvider>
+  );
+});
+
+SwitchGroup.displayName = '@mantine/core/SwitchGroup';

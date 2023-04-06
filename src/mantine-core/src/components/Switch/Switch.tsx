@@ -18,9 +18,10 @@ import {
   getThemeColor,
   useMantineTheme,
 } from '../../core';
-import classes from './Switch.module.css';
 import { InlineInput } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
+import { SwitchGroup } from './SwitchGroup/SwitchGroup';
+import classes from './Switch.module.css';
 
 export type SwitchStylesNames = 'root' | 'track' | 'trackLabel' | 'thumb' | 'input';
 export type SwitchVariant = string;
@@ -85,6 +86,9 @@ export interface SwitchFactory {
   stylesNames: SwitchStylesNames;
   vars: SwitchCssVariables;
   stylesParams: SwitchStylesParams;
+  staticComponents: {
+    Group: typeof SwitchGroup;
+  };
 }
 
 const defaultProps: Partial<SwitchProps> = {
@@ -123,6 +127,9 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
   } = useProps('Switch', defaultProps, props);
 
   const theme = useMantineTheme();
+  const ctx = useSwitchGroupContext();
+  const _size = size || ctx?.size;
+
   const getStyles = useStyles({
     name: 'Switch',
     className,
@@ -134,11 +141,10 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
   });
 
   const _vars = useVars<SwitchStylesParams>('Switch', vars, {
-    size,
+    size: _size,
     radius,
   });
 
-  const ctx = useSwitchGroupContext();
   const { styleProps, rest } = extractStyleProps(others);
   const uuid = useId(id);
 
@@ -160,7 +166,7 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
       {...getStyles('root')}
       style={style}
       id={uuid}
-      size={size}
+      size={_size}
       labelPosition={labelPosition}
       label={label}
       description={description}
@@ -174,11 +180,11 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
       variant={variant}
       vars={{
         '--switch-radius': getRadius(radius),
-        '--switch-height': getSize(size, 'switch-height'),
-        '--switch-width': getSize(size, 'switch-width'),
-        '--switch-handle-size': getSize(size, 'switch-handle-size'),
-        '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
-        '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
+        '--switch-height': getSize(_size, 'switch-height'),
+        '--switch-width': getSize(_size, 'switch-width'),
+        '--switch-handle-size': getSize(_size, 'switch-handle-size'),
+        '--switch-label-font-size': getSize(_size, 'switch-label-font-size'),
+        '--switch-track-label-padding': getSize(_size, 'switch-track-label-padding'),
         '--switch-color': getThemeColor(color, theme),
         ..._vars,
       }}
@@ -219,3 +225,4 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
 });
 
 Switch.displayName = '@mantine/core/Switch';
+Switch.Group = SwitchGroup;
