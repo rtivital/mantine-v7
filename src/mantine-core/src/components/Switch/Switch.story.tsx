@@ -41,7 +41,7 @@ export function SwitchGroup() {
         defaultValue={['one', 'three']}
         m={4}
         label="Switch Group"
-        labelProps={{ id: 'test-id' }}
+        classNames={{ label: 'test-label' }}
       >
         <Switch value="one" label="one" />
         <Switch value="two" label="two" />
