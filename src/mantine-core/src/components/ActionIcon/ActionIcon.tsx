@@ -8,10 +8,10 @@ import {
   MantineColor,
   MantineGradient,
   getRadius,
-  useMantineTheme,
   polymorphicFactory,
   useVars,
   getSize,
+  createVarsResolver,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps, Loader } from '../Loader';
@@ -98,6 +98,20 @@ const defaultProps: Partial<ActionIconProps> = {
   size: 'md',
 };
 
+const varsResolver = createVarsResolver<ActionIconCssVariables, ActionIconStylesParams>(
+  ({ size, radius, variant, gradient, color }, theme) => ({
+    '--ai-size': getSize(size, 'ai-size'),
+    '--ai-radius': getRadius(radius),
+    ...theme.variantColorResolver({
+      color: color || theme.primaryColor,
+      theme,
+      gradient,
+      variant: variant!,
+      prefix: 'ai' as const,
+    }),
+  })
+);
+
 export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => {
   const {
     className,
@@ -119,8 +133,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     ...others
   } = useProps('ActionIcon', defaultProps, props);
 
-  const theme = useMantineTheme();
-  const _vars = useVars<ActionIconStylesParams>('ActionIcon', vars, {
+  const _vars = useVars<ActionIconStylesParams>('ActionIcon', varsResolver, vars, {
     color,
     size,
     radius,
@@ -152,18 +165,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
         disabled: disabled && !loading,
         'data-action-icon': true,
       }}
-      vars={{
-        '--ai-size': getSize(size, 'ai-size'),
-        '--ai-radius': getRadius(radius),
-        ...theme.variantColorResolver({
-          color: color || theme.primaryColor,
-          theme,
-          gradient,
-          variant: variant!,
-          prefix: 'ai',
-        }),
-        ..._vars,
-      }}
+      vars={_vars}
     >
       {loading ? (
         <Loader {...getStyles('loader')} color="var(--ai-color)" size="70%" {...loaderProps} />

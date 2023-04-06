@@ -12,5 +12,5 @@ export type { RGBA } from './to-rgba/to-rgba';
 export type {
   VariantColorsResolverInput,
   VariantColorResolverResult,
-  VariantCarolsResolver,
+  VariantColorsResolver,
 } from './default-variant-colors-resolver/default-variant-colors-resolver';

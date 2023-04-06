@@ -1,6 +1,6 @@
 import type { PartialDeep } from 'type-fest';
 import type { MantineLoader } from '../../components/Loader/Loader.types';
-import type { VariantCarolsResolver } from './color-functions';
+import type { VariantColorsResolver } from './color-functions';
 
 export interface MantineTheme {
   /** Controls focus ring styles. Supports the following options:
@@ -46,7 +46,7 @@ export interface MantineTheme {
    * Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
    * and other components that use colors from theme.
    * */
-  variantColorResolver: VariantCarolsResolver;
+  variantColorResolver: VariantColorsResolver;
 
   /** font-family used in all components, system fonts by default */
   fontFamily: string;

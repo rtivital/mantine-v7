@@ -15,11 +15,17 @@ export interface VariantColorsResolverInput {
 
 export type VariantColorResolverResult = Record<`--${string}`, string>;
 
-export type VariantCarolsResolver = (
-  input: VariantColorsResolverInput
-) => VariantColorResolverResult;
+export type VariantColorsResolver = <Input extends VariantColorsResolverInput>(
+  input: Input
+) => Record<
+  | `--${Input['prefix']}-bg`
+  | `--${Input['prefix']}-hover`
+  | `--${Input['prefix']}-color`
+  | `--${Input['prefix']}-bd`,
+  string
+>;
 
-export const defaultVariantColorsResolver: VariantCarolsResolver = ({
+export const defaultVariantColorsResolver: VariantColorsResolver = ({
   color,
   theme,
   variant,
