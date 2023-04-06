@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
 import { Switch, SwitchProps, SwitchStylesNames } from './Switch';
+import { SwitchGroup } from './SwitchGroup/SwitchGroup';
 
 const defaultProps: SwitchProps = {
   label: 'test-label',
@@ -54,5 +55,9 @@ describe('@mantine/core/Switch', () => {
   it('sets disabled attribute on input based on disabled prop', () => {
     render(<Switch disabled />);
     expect(screen.getByRole('checkbox')).toBeDisabled();
+  });
+
+  it('exposes SwitchGroup component', () => {
+    expect(Switch.Group).toBe(SwitchGroup);
   });
 });

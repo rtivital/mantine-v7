@@ -22,6 +22,7 @@ export * from './Portal';
 export * from './ScrollArea';
 export * from './SegmentedControl';
 export * from './Stack';
+export * from './Switch';
 export * from './Table';
 export * from './Tabs';
 export * from './Text';
