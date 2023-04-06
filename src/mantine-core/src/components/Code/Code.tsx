@@ -10,7 +10,7 @@ import {
   MantineColor,
   useVars,
   getThemeColor,
-  useMantineTheme,
+  createVarsResolver,
 } from '../../core';
 import classes from './Code.module.css';
 
@@ -44,6 +44,10 @@ export interface CodeFactory {
 
 const defaultProps: Partial<CodeProps> = {};
 
+const varsResolver = createVarsResolver<CodeCssVariables, CodeStylesParams>(({ color }, theme) => ({
+  '--code-bg': color ? getThemeColor(color, theme) : undefined,
+}));
+
 export const Code = factory<CodeFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, color, block, variant, ...others } =
     useProps('Code', defaultProps, props);
@@ -58,8 +62,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<CodeStylesParams>('Code', vars, { color, variant });
-  const theme = useMantineTheme();
+  const _vars = useVars<CodeStylesParams>('Code', varsResolver, vars, { color, variant });
 
   return (
     <Box<any>
@@ -67,10 +70,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
       ref={ref}
       {...getStyles('root')}
       mod={{ block }}
-      vars={{
-        '--code-bg': color ? getThemeColor(color, theme) : undefined,
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
       dir="ltr"
     />

@@ -10,6 +10,7 @@ import {
   useProps,
   useStyles,
   useVars,
+  createVarsResolver,
 } from '../../core';
 import classes from './ColorSwatch.module.css';
 
@@ -62,6 +63,13 @@ const defaultProps: Partial<ColorSwatchProps> = {
   withShadow: true,
 };
 
+const varsResolver = createVarsResolver<ColorSwatchCssVariables, ColorSwatchStylesParams>(
+  ({ radius, size }) => ({
+    '--cs-radius': getRadius(radius),
+    '--cs-size': rem(size),
+  })
+);
+
 export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) => {
   const {
     classNames,
@@ -89,7 +97,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) =
     unstyled,
   });
 
-  const _vars = useVars<ColorSwatchStylesParams>('ColorSwatch', vars, {
+  const _vars = useVars<ColorSwatchStylesParams>('ColorSwatch', varsResolver, vars, {
     size,
     radius,
     variant,
@@ -100,11 +108,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) =
       ref={ref}
       variant={variant}
       {...getStyles('root', { focusable: true })}
-      vars={{
-        '--cs-radius': getRadius(radius),
-        '--cs-size': rem(size),
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     >
       <span {...getStyles('alphaOverlay')} />

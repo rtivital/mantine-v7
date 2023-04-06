@@ -160,12 +160,12 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       size={size}
       disabled={disabled || loading}
       ref={ref}
+      vars={_vars}
       mod={{
         loading,
         disabled: disabled && !loading,
         'data-action-icon': true,
       }}
-      vars={_vars}
     >
       {loading ? (
         <Loader {...getStyles('loader')} color="var(--ai-color)" size="70%" {...loaderProps} />

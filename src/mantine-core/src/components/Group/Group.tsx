@@ -10,6 +10,7 @@ import {
   MantineSpacing,
   getSpacing,
   useVars,
+  createVarsResolver,
 } from '../../core';
 import { filterFalsyChildren } from './filter-falsy-children/filter-falsy-children';
 import classes from './Group.module.css';
@@ -32,6 +33,7 @@ export interface GroupStylesParams {
   preventGrowOverflow: boolean | undefined;
   grow: boolean | undefined;
   variant: GroupVariant | undefined;
+  childWidth: string;
 }
 
 export interface GroupProps
@@ -72,6 +74,16 @@ const defaultProps: Partial<GroupProps> = {
   preventGrowOverflow: true,
 };
 
+const varsResolver = createVarsResolver<GroupCssVariables, GroupStylesParams>(
+  ({ grow, preventGrowOverflow, childWidth, gap, align, justify, wrap }) => ({
+    '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
+    '--group-gap': getSpacing(gap),
+    '--group-align': align,
+    '--group-justify': justify,
+    '--group-wrap': wrap,
+  })
+);
+
 export const Group = factory<GroupFactory>((props, ref) => {
   const {
     classNames,
@@ -107,7 +119,7 @@ export const Group = factory<GroupFactory>((props, ref) => {
     gap
   )} / ${childrenCount}))`;
 
-  const _vars = useVars<GroupStylesParams>('Group', vars, {
+  const _vars = useVars<GroupStylesParams>('Group', varsResolver, vars, {
     align,
     gap,
     justify,
@@ -116,24 +128,11 @@ export const Group = factory<GroupFactory>((props, ref) => {
     preventGrowOverflow,
     grow,
     variant,
+    childWidth,
   });
 
   return (
-    <Box
-      {...getStyles('root')}
-      ref={ref}
-      variant={variant}
-      mod={{ grow }}
-      vars={{
-        '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
-        '--group-gap': getSpacing(gap),
-        '--group-align': align,
-        '--group-justify': justify,
-        '--group-wrap': wrap,
-        ..._vars,
-      }}
-      {...others}
-    >
+    <Box {...getStyles('root')} ref={ref} variant={variant} mod={{ grow }} vars={_vars} {...others}>
       {filteredChildren}
     </Box>
   );

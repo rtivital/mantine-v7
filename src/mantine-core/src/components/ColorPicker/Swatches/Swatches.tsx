@@ -85,9 +85,7 @@ export const Swatches = factory<SwatchesFactory>((props, ref) => {
     <Box
       {...getStyles('swatches')}
       ref={ref}
-      vars={{
-        '--swatch-size': `${100 / swatchesPerRow!}%`,
-      }}
+      vars={{ '--swatch-size': `${100 / swatchesPerRow!}%` }}
       {...others}
     >
       {colors}

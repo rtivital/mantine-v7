@@ -8,6 +8,7 @@ import {
   useStyles,
   useVars,
   rem,
+  createVarsResolver,
 } from '../../../core';
 import classes from './ActionIconGroup.module.css';
 
@@ -51,6 +52,10 @@ const defaultProps: Partial<ActionIconGroupProps> = {
   borderWidth: 1,
 };
 
+const varsResolver = createVarsResolver<ActionIconGroupCssVariables, ActionIconGroupStylesParams>(
+  ({ borderWidth }) => ({ '--ai-border-width': rem(borderWidth) })
+);
+
 export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
   const {
     className,
@@ -65,7 +70,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     ...others
   } = useProps('ActionIconGroup', defaultProps, props);
 
-  const _vars = useVars<ActionIconGroupStylesParams>('ActionIconGroup', vars, {
+  const _vars = useVars<ActionIconGroupStylesParams>('ActionIconGroup', varsResolver, vars, {
     borderWidth,
     orientation,
     variant,
@@ -87,7 +92,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
       ref={ref}
       variant={variant}
       mod={{ 'data-orientation': orientation }}
-      vars={{ '--ai-border-width': rem(borderWidth), ..._vars }}
+      vars={_vars}
       role="group"
       {...others}
     />

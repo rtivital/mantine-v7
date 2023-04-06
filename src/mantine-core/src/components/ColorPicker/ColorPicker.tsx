@@ -12,6 +12,7 @@ import {
   MantineSize,
   getSize,
   getSpacing,
+  createVarsResolver,
 } from '../../core';
 import { ColorSliderStylesNames } from './ColorSlider/ColorSlider';
 import { AlphaSlider } from './AlphaSlider/AlphaSlider';
@@ -38,6 +39,7 @@ export type ColorPickerCssVariables = '--cp-preview-size' | '--cp-width' | '--cp
 
 export interface ColorPickerStylesParams {
   size: MantineSize | (string & {}) | undefined;
+  fullWidth: boolean | undefined;
 }
 
 export interface __ColorPickerProps {
@@ -111,6 +113,14 @@ const defaultProps: Partial<ColorPickerProps> = {
   __staticSelector: 'ColorPicker',
 };
 
+const varsResolver = createVarsResolver<ColorPickerCssVariables, ColorPickerStylesParams>(
+  ({ size, fullWidth }) => ({
+    '--cp-preview-size': getSize(size, 'cp-preview-size'),
+    '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
+    '--cp-body-spacing': getSpacing(size),
+  })
+);
+
 export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
   const {
     classNames,
@@ -149,7 +159,10 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     rootSelector: 'wrapper',
   });
 
-  const _vars = useVars<ColorPickerStylesParams>('ColorPicker', vars, { size });
+  const _vars = useVars<ColorPickerStylesParams>('ColorPicker', varsResolver, vars, {
+    size,
+    fullWidth,
+  });
 
   const formatRef = useRef(format);
   const valueRef = useRef<string>();
@@ -201,17 +214,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
   };
 
   return (
-    <Box
-      ref={ref}
-      {...getStyles('wrapper')}
-      vars={{
-        '--cp-preview-size': getSize(size, 'cp-preview-size'),
-        '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
-        '--cp-body-spacing': getSpacing(size),
-        ..._vars,
-      }}
-      {...others}
-    >
+    <Box ref={ref} {...getStyles('wrapper')} vars={_vars} {...others}>
       {withPicker && (
         <>
           <Saturation

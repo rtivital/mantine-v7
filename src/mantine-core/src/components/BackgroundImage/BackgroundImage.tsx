@@ -9,6 +9,7 @@ import {
   useVars,
   MantineRadius,
   getRadius,
+  createVarsResolver,
 } from '../../core';
 import classes from './BackgroundImage.module.css';
 
@@ -49,6 +50,10 @@ const defaultProps: Partial<BackgroundImageProps> = {
   radius: 0,
 };
 
+const varsResolver = createVarsResolver<BackgroundImageCssVariables, BackgroundImageStylesParams>(
+  ({ radius }) => ({ '--bi-radius': getRadius(radius) })
+);
+
 export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, radius, src, variant, ...others } =
     useProps('BackgroundImage', defaultProps, props);
@@ -63,16 +68,16 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
     unstyled,
   });
 
-  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', vars, { radius, variant });
+  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', varsResolver, vars, {
+    radius,
+    variant,
+  });
 
   return (
     <Box
       ref={ref}
       {...getStyles('root', { style: { backgroundImage: `url(${src})` } })}
-      vars={{
-        '--bi-radius': getRadius(radius),
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );
