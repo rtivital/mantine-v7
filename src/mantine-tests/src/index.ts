@@ -11,6 +11,7 @@ import { itSupportsFocusEvents } from './shared/it-supports-focus-events';
 import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-default-props';
 import { itSupportsStylesApi } from './shared/it-supports-style-api';
 import { itThrowsContextError } from './shared/it-throws-context-error';
+import { itSupportsVariant } from './shared/it-supports-variant';
 
 // Style props tests
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
@@ -47,6 +48,7 @@ export const tests = {
   itSupportsProviderDefaultProps,
   itSupportsStylesApi,
   itThrowsContextError,
+  itSupportsVariant,
 
   itSupportsMarginsProps,
   itSupportsPaddingsProps,
