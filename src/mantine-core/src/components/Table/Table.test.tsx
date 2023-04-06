@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, tests } from '@mantine/tests';
-import { screen } from '@testing-library/react';
+import { render, tests, screen } from '@mantine/tests';
 import { Table, TableProps, TableStylesNames } from './Table';
 import {
   TableCaption,

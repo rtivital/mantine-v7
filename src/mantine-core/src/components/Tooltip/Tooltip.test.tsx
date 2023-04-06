@@ -1,7 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { patchConsoleError, render, tests } from '@mantine/tests';
+import { patchConsoleError, render, tests, userEvent, screen } from '@mantine/tests';
 import { Tooltip, TooltipProps } from './Tooltip';
 import { TooltipStylesNames } from './Tooltip.types';
 import { TooltipFloating } from './TooltipFloating/TooltipFloating';

@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, tests } from '@mantine/tests';
-import userEvent from '@testing-library/user-event';
+import { render, tests, userEvent } from '@mantine/tests';
 import { ColorPicker, ColorPickerProps, ColorPickerStylesNames } from './ColorPicker';
 
 const defaultProps: ColorPickerProps = {

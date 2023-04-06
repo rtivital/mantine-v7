@@ -1,7 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { render, tests } from '@mantine/tests';
+import { render, tests, userEvent, screen } from '@mantine/tests';
 import {
   SegmentedControl,
   SegmentedControlProps,

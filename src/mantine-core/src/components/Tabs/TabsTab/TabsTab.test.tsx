@@ -1,7 +1,5 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
-import { tests, createContextContainer, render } from '@mantine/tests';
+import { tests, createContextContainer, render, userEvent, screen } from '@mantine/tests';
 import { TabsTab, TabsTabProps, TabsTabStylesNames } from './TabsTab';
 import { Tabs } from '../Tabs';
 

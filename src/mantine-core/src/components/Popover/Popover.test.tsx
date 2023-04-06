@@ -1,7 +1,5 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
-import { render, tests, wait, renderWithAct } from '@mantine/tests';
+import { render, tests, wait, renderWithAct, userEvent, screen } from '@mantine/tests';
 import { Popover, PopoverProps } from './Popover';
 import { PopoverDropdown } from './PopoverDropdown/PopoverDropdown';
 import { PopoverTarget } from './PopoverTarget/PopoverTarget';

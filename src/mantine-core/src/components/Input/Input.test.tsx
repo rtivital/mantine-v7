@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { render, tests } from '@mantine/tests';
+import { render, tests, screen } from '@mantine/tests';
 import { Input, InputProps, InputStylesNames } from './Input';
 import { InputWrapper } from './InputWrapper/InputWrapper';
 import { InputLabel } from './InputLabel/InputLabel';

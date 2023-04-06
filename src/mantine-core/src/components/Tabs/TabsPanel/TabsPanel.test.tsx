@@ -1,6 +1,5 @@
 import React from 'react';
-import { tests, render, createContextContainer } from '@mantine/tests';
-import { screen } from '@testing-library/react';
+import { tests, render, createContextContainer, screen } from '@mantine/tests';
 import { Tabs } from '../Tabs';
 import { TabsPanel, TabsPanelProps, TabsPanelStylesNames } from './TabsPanel';
 

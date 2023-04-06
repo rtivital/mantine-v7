@@ -1,7 +1,5 @@
 import React from 'react';
-import { render, tests } from '@mantine/tests';
-import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
+import { render, tests, userEvent, screen } from '@mantine/tests';
 import { InputLabel, InputLabelProps, InputLabelStylesNames } from './InputLabel';
 
 const defaultProps: InputLabelProps = {
