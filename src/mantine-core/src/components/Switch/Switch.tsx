@@ -219,11 +219,7 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
         mod={{ error, 'label-position': labelPosition }}
         {...getStyles('track')}
       >
-        <Box
-          component="span"
-          mod={{ 'respect-reduce-motion': theme.respectReducedMotion }}
-          {...getStyles('thumb')}
-        >
+        <Box component="span" mod={{ 'reduce-motion': true }} {...getStyles('thumb')}>
           {thumbIcon}
         </Box>
         <span {...getStyles('trackLabel')}>{_checked ? onLabel : offLabel}</span>

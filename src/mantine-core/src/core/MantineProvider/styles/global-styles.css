@@ -13,6 +13,15 @@ body {
   -moz-osx-font-smoothing: var(--mantine-moz-font-smoothing);
 }
 
+[data-respect-reduced-motion] {
+  @media (prefers-reduced-motion: reduce) {
+    [data-reduce-motion] {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
 .mantine-focus-auto {
   &:focus:focus-visible {
     outline: rem(2px) solid var(--mantine-color-blue-filled);

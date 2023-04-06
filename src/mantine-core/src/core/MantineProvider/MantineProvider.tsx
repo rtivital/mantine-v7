@@ -9,6 +9,7 @@ import { localStorageColorSchemeManager, MantineColorSchemeManager } from './col
 import { MantineContext, useSafeMantineTheme } from './Mantine.context';
 import { DEFAULT_THEME } from './default-theme';
 import { useProviderColorScheme } from './use-mantine-color-scheme';
+import { useRespectReduceMotion } from './use-respect-reduce-motion';
 import { ConvertCSSVariablesInput } from './convert-css-variables';
 
 export interface MantineProviderProps {
@@ -70,6 +71,8 @@ export function MantineProvider({
     manager: colorSchemeManager,
     getRootElement,
   });
+
+  useRespectReduceMotion({ theme: mergedTheme, getRootElement });
 
   return (
     <MantineContext.Provider

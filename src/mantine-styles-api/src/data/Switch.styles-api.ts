@@ -36,11 +36,6 @@ export const SwitchStylesApi: StylesApiData<SwitchFactory> = {
       value: 'value of labelPosition prop',
     },
     { modifier: 'data-disabled', selector: 'label', condition: 'disabled prop is set' },
-    {
-      modifier: 'data-respect-reduce-motion',
-      selector: 'thumb',
-      condition: 'theme.respectReduceMotion is true',
-    },
   ],
 };
 

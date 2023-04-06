@@ -118,12 +118,6 @@
     margin: auto;
   }
 
-  &[data-respect-reduce-motion] {
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
-  }
-
   .input:checked + * > & {
     --_switch-thumb-left: calc(100% - var(--switch-thumb-size) - var(--switch-track-label-padding));
     --_switch-thumb-bd: var(--mantine-color-white);
