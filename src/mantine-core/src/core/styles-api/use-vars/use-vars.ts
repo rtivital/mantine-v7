@@ -1,4 +1,4 @@
-import { useMantineTheme } from '../Mantine.context';
+import { useMantineTheme } from '../../MantineProvider';
 
 const EMPTY_PARAMS = {};
 

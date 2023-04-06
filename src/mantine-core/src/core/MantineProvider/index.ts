@@ -16,6 +16,5 @@ export {
 } from './Mantine.context';
 export type { MantineProviderProps } from './MantineProvider';
 export { useProps } from './use-props/use-props';
-export { useVars } from './use-vars/use-vars';
 export { convertCssVariables } from './convert-css-variables';
 export type { ConvertCSSVariablesInput } from './convert-css-variables';
