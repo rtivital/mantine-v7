@@ -144,6 +144,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
       {...others}
       unstyled={unstyled}
       variant={variant}
+      size={size}
       disabled={disabled || loading}
       ref={ref}
       mod={{

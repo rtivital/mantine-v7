@@ -7,6 +7,7 @@ import { itRendersChildren } from './shared/it-renders-children';
 import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-default-props';
 import { itSupportsStylesApi } from './shared/it-supports-style-api';
 import { itSupportsVariant } from './shared/it-supports-variant';
+import { itSupportsSize } from './shared/it-supports-size';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -24,6 +25,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   children?: boolean;
   extend?: boolean;
   variant?: boolean;
+  size?: boolean;
   displayName?: string;
   selector?: string;
   refType?: any;
@@ -33,6 +35,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   stylesApiSelectors?: StylesApiSelectors[];
   polymorphicSelector?: string;
   variantSelector?: string;
+  sizeSelector?: string;
 }
 
 export function itSupportsSystemProps<
@@ -70,6 +73,10 @@ export function itSupportsSystemProps<
 
     if (options.variant) {
       itSupportsVariant({ ...options, selector: options.variantSelector });
+    }
+
+    if (options.size) {
+      itSupportsSize({ ...options, selector: options.sizeSelector });
     }
 
     if (Array.isArray(options.stylesApiSelectors) && stylesApiName) {

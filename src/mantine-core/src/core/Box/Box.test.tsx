@@ -21,6 +21,17 @@ describe('@mantine/core/Box', () => {
     expect(screen.getByText('test')).toHaveAttribute('data-variant', 'test');
   });
 
+  it('sets data-size based on size prop', () => {
+    const { rerender } = render(<Box size="xs">test</Box>);
+    expect(screen.getByText('test')).toHaveAttribute('data-size', 'xs');
+
+    rerender(<Box size="5rem">test</Box>);
+    expect(screen.getByText('test')).not.toHaveAttribute('data-size');
+
+    rerender(<Box size={5}>test</Box>);
+    expect(screen.getByText('test')).not.toHaveAttribute('data-size');
+  });
+
   it('supports mod prop', () => {
     const { rerender } = render(<Box mod={{ 'data-test': 'test' }}>test</Box>);
     expect(screen.getByText('test')).toHaveAttribute('data-test', 'test');

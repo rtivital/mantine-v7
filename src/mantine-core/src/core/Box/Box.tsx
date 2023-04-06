@@ -13,6 +13,7 @@ import {
   STYlE_PROPS_DATA,
 } from './style-props';
 import { getBoxMod } from './get-box-mod/get-box-mod';
+import { isNumberLike } from '../utils';
 
 export type Mod = Record<string, any>;
 export type BoxMod = Mod | Mod[];
@@ -37,12 +38,15 @@ export interface BoxComponentProps extends BoxProps {
   /** Variant passed from parent component, sets `data-variant` */
   variant?: string;
 
+  /** Size passed from parent component, sets `data-size` if value is not number like */
+  size?: string | number;
+
   /** Element modifiers transformed into `data-` attributes, for example, `{ 'data-size': 'xl' }`, falsy values are removed */
   mod?: BoxMod;
 }
 
 const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; className: string }>(
-  ({ component, style, vars, className, variant, mod, ...others }, ref) => {
+  ({ component, style, vars, className, variant, mod, size, ...others }, ref) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
     const { styleProps, rest } = extractStyleProps(others);
@@ -67,6 +71,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
           style={getBoxStyle({ theme, style, vars, styleProps: parsedStyleProps.inlineStyles })}
           className={cx(className, { [responsiveClassName]: parsedStyleProps.hasResponsiveStyles })}
           data-variant={variant}
+          data-size={isNumberLike(size) ? undefined : size || undefined}
           {...getBoxMod(mod)}
           {...rest}
         />

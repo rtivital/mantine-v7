@@ -27,6 +27,7 @@ describe('@mantine/core/ActionIcon', () => {
     children: true,
     extend: true,
     variant: true,
+    size: true,
     refType: HTMLButtonElement,
     displayName: '@mantine/core/ActionIcon',
     stylesApiSelectors: ['root'],

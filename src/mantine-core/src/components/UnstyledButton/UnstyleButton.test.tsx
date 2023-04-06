@@ -16,6 +16,8 @@ describe('@mantine/core/UnstyledButton', () => {
     component: UnstyledButton,
     props: defaultProps,
     polymorphic: true,
+    size: true,
+    variant: true,
     styleProps: true,
     children: true,
     extend: true,
