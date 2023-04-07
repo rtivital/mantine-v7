@@ -21,7 +21,7 @@
   pointer-events: none;
 
   &[data-filled] {
-    --_mark-bd: var(--mark-color);
+    --_mark-bd: var(--slider-color);
 
     &[data-disabled] {
       @mixin light {

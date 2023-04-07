@@ -14,18 +14,17 @@ export interface ThumbProps extends StylesApiProps<ThumbStylesNames> {
   label: React.ReactNode;
   onKeyDownCapture?(event: React.KeyboardEvent<HTMLDivElement>): void;
   onMouseDown?(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void;
-  labelTransition?: MantineTransition;
-  labelTransitionDuration?: number;
-  labelTransitionTimingFunction?: string;
-  labelAlwaysOn: boolean;
-  thumbLabel: string;
+  labelTransition: MantineTransition | undefined;
+  labelTransitionDuration: number | undefined;
+  labelTransitionTimingFunction: string | undefined;
+  labelAlwaysOn: boolean | undefined;
+  thumbLabel: string | undefined;
   onFocus?(): void;
   onBlur?(): void;
-  showLabelOnHover?: boolean;
+  showLabelOnHover: boolean | undefined;
   isHovered?: boolean;
   children?: React.ReactNode;
-  disabled: boolean;
-  variant: string;
+  disabled: boolean | undefined;
   className?: string;
   style?: React.CSSProperties;
 }

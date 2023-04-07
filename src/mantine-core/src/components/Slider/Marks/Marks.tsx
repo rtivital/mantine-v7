@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  StylesApiProps,
-  useStyles,
-  MantineColor,
-  getThemeColor,
-  useMantineTheme,
-} from '../../../core';
+import { Box, StylesApiProps, useStyles } from '../../../core';
 import { getPosition } from '../utils/get-position/get-position';
 import { isMarkFilled } from './is-mark-filled';
 import classes from './Marks.module.css';
@@ -14,15 +7,14 @@ import classes from './Marks.module.css';
 export type MarksStylesNames = 'markWrapper' | 'mark' | 'markLabel';
 
 export interface MarksProps extends StylesApiProps<MarksStylesNames> {
-  marks: { value: number; label?: React.ReactNode }[];
-  color: MantineColor;
+  marks: { value: number; label?: React.ReactNode }[] | undefined;
   min: number;
   max: number;
   value: number;
   onChange(value: number): void;
-  offset?: number;
-  disabled: boolean;
-  inverted?: boolean;
+  offset: number | undefined;
+  disabled: boolean | undefined;
+  inverted: boolean | undefined;
 }
 
 export function Marks({
@@ -37,7 +29,6 @@ export function Marks({
   value,
   offset,
   inverted,
-  color,
 }: MarksProps) {
   const getStyles = useStyles({
     name: 'Slider',
@@ -47,7 +38,9 @@ export function Marks({
     unstyled,
   });
 
-  const theme = useMantineTheme();
+  if (!marks) {
+    return null;
+  }
 
   const items = marks.map((mark, index) => (
     <Box
@@ -78,7 +71,7 @@ export function Marks({
     </Box>
   ));
 
-  return <Box vars={{ '--mark-color': getThemeColor(color, theme) }}>{items}</Box>;
+  return <div>{items}</div>;
 }
 
 Marks.displayName = '@mantine/core/Marks';

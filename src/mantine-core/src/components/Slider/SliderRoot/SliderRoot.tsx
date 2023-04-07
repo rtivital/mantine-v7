@@ -12,6 +12,8 @@ import {
   MantineColor,
   getThemeColor,
   rem,
+  MantineRadius,
+  getRadius,
 } from '../../../core';
 import classes from './SliderRoot.module.css';
 
@@ -23,24 +25,28 @@ export interface SliderStylesParams {
   size: MantineSize | (string & {}) | number | undefined;
   color: MantineColor | undefined;
   thumbSize: string | number | undefined;
+  radius: MantineRadius | (string & {}) | number | undefined;
+  variant: SliderVariant | undefined;
 }
 
 export interface SliderRootProps
   extends BoxProps,
     StylesApiProps<SliderRootStylesNames, SliderVariant, SliderCssVariables, SliderStylesParams>,
     ElementProps<'div'> {
-  size: MantineSize | (string & {});
+  size: MantineSize | (string & {}) | number;
   children: React.ReactNode;
   color: MantineColor | undefined;
-  disabled: boolean;
-  variant: string;
+  disabled: boolean | undefined;
+  variant?: string;
   thumbSize: string | number | undefined;
+  radius: MantineRadius | (string & {}) | number | undefined;
 }
 
 const varsResolver = createVarsResolver<SliderCssVariables, SliderStylesParams>(
-  ({ size, color, thumbSize }, theme) => ({
+  ({ size, color, thumbSize, radius }, theme) => ({
     '--slider-size': getSize(size, 'slider-size'),
     '--slider-color': getThemeColor(color, theme),
+    '--slider-radius': getRadius(radius),
     '--slider-thumb-size':
       typeof thumbSize !== undefined ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
   })
@@ -60,6 +66,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
       vars,
       color,
       thumbSize,
+      radius,
       ...others
     }: SliderRootProps,
     ref
@@ -74,9 +81,24 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
       unstyled,
     });
 
-    const _vars = useVars('Slider', varsResolver, vars, { size, color, thumbSize });
+    const _vars = useVars('Slider', varsResolver, vars, {
+      size,
+      color,
+      thumbSize,
+      variant,
+      radius,
+    });
 
-    return <Box {...others} tabIndex={-1} {...getStyles('root')} vars={_vars} ref={ref} />;
+    return (
+      <Box
+        {...others}
+        tabIndex={-1}
+        variant={variant}
+        {...getStyles('root')}
+        vars={_vars}
+        ref={ref}
+      />
+    );
   }
 );
 

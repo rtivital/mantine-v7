@@ -1,5 +1,5 @@
 import React from 'react';
-import { MantineColor, Box, StylesApiProps, useStyles } from '../../../core';
+import { Box, StylesApiProps, useStyles } from '../../../core';
 import { Marks, MarksStylesNames } from '../Marks/Marks';
 import classes from './Track.module.css';
 
@@ -9,25 +9,22 @@ export interface TrackProps extends StylesApiProps<TrackStylesNames> {
   filled: number;
   offset?: number;
   marksOffset?: number;
-  marks: { value: number; label?: React.ReactNode }[];
+  marks: { value: number; label?: React.ReactNode }[] | undefined;
   // size: MantineNumberSize;
   // radius: MantineNumberSize;
-  color: MantineColor;
   min: number;
   max: number;
   value: number;
   children: React.ReactNode;
   onChange(value: number): void;
-  disabled: boolean;
-  inverted?: boolean;
-  variant: string;
+  disabled: boolean | undefined;
+  inverted: boolean | undefined;
   containerProps?: React.PropsWithRef<React.ComponentProps<'div'>>;
 }
 
 export function Track({
   filled,
   // size,
-  color,
   classNames,
   styles,
   // radius,
@@ -68,7 +65,6 @@ export function Track({
 
       <Marks
         {...others}
-        color={color}
         offset={marksOffset}
         classNames={classNames}
         styles={styles}
