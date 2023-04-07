@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  useId,
-  useIsomorphicEffect,
-  useMergedRef,
-  useReducedMotion,
-  useResizeObserver,
-  useUncontrolled,
-} from '@mantine/hooks';
+import { useId, useMergedRef, useResizeObserver, useUncontrolled } from '@mantine/hooks';
 import {
   Box,
   BoxProps,
@@ -25,6 +18,7 @@ import {
   getSize,
   getFontSize,
   useDirection,
+  createVarsResolver,
 } from '../../core';
 import classes from './SegmentedControl.module.css';
 
@@ -121,6 +115,18 @@ const defaultProps: Partial<SegmentedControlProps> = {
   transitionTimingFunction: 'ease',
 };
 
+const varsResolver = createVarsResolver<SegmentedControlCssVariables, SegmentedControlStylesParams>(
+  ({ radius, color, transitionDuration, size, transitionTimingFunction }, theme) => ({
+    '--sc-radius': getRadius(radius),
+    '--sc-color': color ? getThemeColor(color, theme) : undefined,
+    '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
+    '--sc-transition-duration': `${transitionDuration}ms`,
+    '--sc-transition-timing-function': transitionTimingFunction,
+    '--sc-padding': getSize(size, 'sc-padding'),
+    '--sc-font-size': getFontSize(size),
+  })
+);
+
 export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) => {
   const {
     classNames,
@@ -157,7 +163,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
     unstyled,
   });
 
-  const _vars = useVars<SegmentedControlStylesParams>('SegmentedControl', vars, {
+  const _vars = useVars<SegmentedControlStylesParams>('SegmentedControl', varsResolver, vars, {
     radius,
     color,
     transitionDuration,
@@ -168,15 +174,11 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
 
   const { dir } = useDirection();
   const theme = useMantineTheme();
-  const shouldReduceMotion = useReducedMotion();
-  const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const mounted = useRef<Boolean>();
 
   const _data = data.map((item) =>
     typeof item === 'string' ? { label: item, value: item } : item
   );
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
   const [_value, handleValueChange] = useUncontrolled({
     value,
     defaultValue,
@@ -194,15 +196,6 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
   const uuid = useId(name);
   const refs = useRef<Record<string, HTMLLabelElement>>({});
   const [observerRef, containerRect] = useResizeObserver();
-
-  useIsomorphicEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      setShouldAnimate(false);
-    } else {
-      setShouldAnimate(true);
-    }
-  });
 
   useEffect(() => {
     if (_value in refs.current && observerRef.current) {
@@ -277,21 +270,11 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
       variant={variant}
       ref={mergedRef}
       mod={{ 'full-width': fullWidth, orientation }}
-      vars={{
-        '--sc-radius': getRadius(radius),
-        '--sc-color': color ? getThemeColor(color, theme) : undefined,
-        '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
-        '--sc-transition-duration':
-          reduceMotion || !shouldAnimate ? '0ms' : `${transitionDuration}ms`,
-        '--sc-transition-timing-function': transitionTimingFunction,
-        '--sc-padding': getSize(size, 'sc-padding'),
-        '--sc-font-size': getFontSize(size),
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
       role="radiogroup"
     >
-      {typeof _value === 'string' && shouldAnimate && (
+      {typeof _value === 'string' && (
         <Box
           component="span"
           {...getStyles('indicator')}

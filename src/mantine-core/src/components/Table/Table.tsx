@@ -11,8 +11,8 @@ import {
   MantineColor,
   MantineSpacing,
   getSpacing,
-  useMantineTheme,
   getThemeColor,
+  createVarsResolver,
 } from '../../core';
 import {
   TableCaption,
@@ -54,6 +54,8 @@ export interface TableStylesParams {
   stripedColor: MantineColor | string | undefined;
   highlightOnHoverColor: MantineColor | string | undefined;
   layout: React.CSSProperties['tableLayout'] | undefined;
+  striped: boolean | 'odd' | 'even' | undefined;
+  highlightOnHover: boolean | undefined;
   variant: TableVariant | undefined;
 }
 
@@ -122,6 +124,35 @@ const defaultProps: Partial<TableProps> = {
   horizontalSpacing: 'xs',
 };
 
+const varsResolver = createVarsResolver<TableCssVariables, TableStylesParams>(
+  (
+    {
+      layout,
+      captionSide,
+      horizontalSpacing,
+      verticalSpacing,
+      borderColor,
+      stripedColor,
+      highlightOnHoverColor,
+      striped,
+      highlightOnHover,
+    },
+    theme
+  ) => ({
+    '--table-layout': layout,
+    '--table-caption-side': captionSide,
+    '--table-horizontal-spacing': getSpacing(horizontalSpacing),
+    '--table-vertical-spacing': getSpacing(verticalSpacing),
+    '--table-border-color': borderColor ? getThemeColor(borderColor, theme) : undefined,
+    '--table-striped-color':
+      striped && stripedColor ? getThemeColor(stripedColor, theme) : undefined,
+    '--table-highlight-on-hover-color':
+      highlightOnHover && highlightOnHoverColor
+        ? getThemeColor(highlightOnHoverColor, theme)
+        : undefined,
+  })
+);
+
 export const Table = factory<TableFactory>((props, ref) => {
   const {
     classNames,
@@ -146,9 +177,7 @@ export const Table = factory<TableFactory>((props, ref) => {
     ...others
   } = useProps('Table', defaultProps, props);
 
-  const theme = useMantineTheme();
-
-  const _vars = useVars<TableStylesParams>('Table', vars, {
+  const _vars = useVars<TableStylesParams>('Table', varsResolver, vars, {
     layout,
     borderColor,
     captionSide,
@@ -157,6 +186,8 @@ export const Table = factory<TableFactory>((props, ref) => {
     stripedColor,
     highlightOnHoverColor,
     variant,
+    striped,
+    highlightOnHover,
   });
 
   const getStyles = useStyles<TableStylesNames>({
@@ -186,20 +217,7 @@ export const Table = factory<TableFactory>((props, ref) => {
         variant={variant}
         ref={ref}
         mod={{ 'data-with-table-border': withTableBorder }}
-        vars={{
-          '--table-layout': layout,
-          '--table-caption-side': captionSide,
-          '--table-horizontal-spacing': getSpacing(horizontalSpacing),
-          '--table-vertical-spacing': getSpacing(verticalSpacing),
-          '--table-border-color': borderColor ? getThemeColor(borderColor, theme) : undefined,
-          '--table-striped-color':
-            striped && stripedColor ? getThemeColor(stripedColor, theme) : undefined,
-          '--table-highlight-on-hover-color':
-            highlightOnHover && highlightOnHoverColor
-              ? getThemeColor(highlightOnHoverColor, theme)
-              : undefined,
-          ..._vars,
-        }}
+        vars={_vars}
         {...getStyles('table')}
         {...others}
       />

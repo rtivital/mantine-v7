@@ -16,7 +16,7 @@ import {
   Box,
   getSize,
   getThemeColor,
-  useMantineTheme,
+  createVarsResolver,
 } from '../../core';
 import { InlineInput, InlineInputStylesNames } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
@@ -37,12 +37,13 @@ export type SwitchCssVariables =
   | '--switch-width'
   | '--switch-thumb-size'
   | '--switch-label-font-size'
-  | '--switch-label-padding'
+  | '--switch-track-label-padding'
   | '--switch-color';
 
 export interface SwitchStylesParams {
   size: MantineSize | (string & {}) | undefined;
   radius: MantineRadius | (string & {}) | number | undefined;
+  color: MantineColor | undefined;
   variant: SwitchVariant | undefined;
 }
 
@@ -104,6 +105,18 @@ const defaultProps: Partial<SwitchProps> = {
   labelPosition: 'right',
 };
 
+const varsResolver = createVarsResolver<SwitchCssVariables, SwitchStylesParams>(
+  ({ radius, color, size }, theme) => ({
+    '--switch-radius': getRadius(radius),
+    '--switch-height': getSize(size, 'switch-height'),
+    '--switch-width': getSize(size, 'switch-width'),
+    '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
+    '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
+    '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
+    '--switch-color': getThemeColor(color, theme),
+  })
+);
+
 export const Switch = factory<SwitchFactory>((props, ref) => {
   const {
     classNames,
@@ -133,7 +146,6 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
     ...others
   } = useProps('Switch', defaultProps, props);
 
-  const theme = useMantineTheme();
   const ctx = useSwitchGroupContext();
   const _size = size || ctx?.size;
 
@@ -147,7 +159,8 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<SwitchStylesParams>('Switch', vars, {
+  const _vars = useVars<SwitchStylesParams>('Switch', varsResolver, vars, {
+    color,
     size: _size,
     radius,
     variant,
@@ -186,16 +199,7 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
-      vars={{
-        '--switch-radius': getRadius(radius),
-        '--switch-height': getSize(_size, 'switch-height'),
-        '--switch-width': getSize(_size, 'switch-width'),
-        '--switch-thumb-size': getSize(_size, 'switch-thumb-size'),
-        '--switch-label-font-size': getSize(_size, 'switch-label-font-size'),
-        '--switch-track-label-padding': getSize(_size, 'switch-track-label-padding'),
-        '--switch-color': getThemeColor(color, theme),
-        ..._vars,
-      }}
+      vars={_vars}
       {...styleProps}
       {...wrapperProps}
     >

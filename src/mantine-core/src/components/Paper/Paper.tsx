@@ -11,6 +11,7 @@ import {
   MantineRadius,
   getRadius,
   getShadow,
+  createVarsResolver,
 } from '../../core';
 import classes from './Paper.module.css';
 
@@ -48,6 +49,13 @@ export interface PaperFactory {
 
 const defaultProps: Partial<PaperProps> = {};
 
+const varsResolver = createVarsResolver<PaperCssVariables, PaperStylesParams>(
+  ({ radius, shadow }) => ({
+    '--paper-radius': getRadius(radius),
+    '--paper-shadow': getShadow(shadow),
+  })
+);
+
 export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
   const {
     classNames,
@@ -73,18 +81,18 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<PaperStylesParams>('Paper', vars, { radius, shadow, variant });
+  const _vars = useVars<PaperStylesParams>('Paper', varsResolver, vars, {
+    radius,
+    shadow,
+    variant,
+  });
 
   return (
     <Box
       ref={ref}
       mod={{ 'data-with-border': withBorder }}
       {...getStyles('root')}
-      vars={{
-        '--paper-radius': getRadius(radius),
-        '--paper-shadow': getShadow(shadow),
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );

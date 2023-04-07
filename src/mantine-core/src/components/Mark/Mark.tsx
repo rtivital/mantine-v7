@@ -9,7 +9,7 @@ import {
   useVars,
   useStyles,
   MantineColor,
-  useMantineTheme,
+  createVarsResolver,
 } from '../../core';
 import { getMarkColor } from './get-mark-color';
 import classes from './Mark.module.css';
@@ -43,6 +43,11 @@ const defaultProps: Partial<MarkProps> = {
   color: 'yellow',
 };
 
+const varsResolver = createVarsResolver<MarkCssVariables, MarkStylesParams>(({ color }, theme) => ({
+  '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),
+  '--mark-bg-light': getMarkColor({ color, theme, defaultShade: 2 }),
+}));
+
 export const Mark = factory<MarkFactory>((props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, color, variant, ...others } =
     useProps('Mark', defaultProps, props);
@@ -57,8 +62,7 @@ export const Mark = factory<MarkFactory>((props, ref) => {
     unstyled,
   });
 
-  const theme = useMantineTheme();
-  const _vars = useVars<MarkStylesParams>('Mark', vars, { color, variant });
+  const _vars = useVars<MarkStylesParams>('Mark', varsResolver, vars, { color, variant });
 
   return (
     <Box
@@ -66,11 +70,7 @@ export const Mark = factory<MarkFactory>((props, ref) => {
       ref={ref}
       variant={variant}
       {...getStyles('root')}
-      vars={{
-        '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),
-        '--mark-bg-light': getMarkColor({ color, theme, defaultShade: 2 }),
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );

@@ -10,6 +10,7 @@ import {
   useVars,
   MantineSpacing,
   getSpacing,
+  createVarsResolver,
 } from '../../core';
 import classes from './Stack.module.css';
 
@@ -52,6 +53,14 @@ const defaultProps: Partial<StackProps> = {
   justify: 'flex-start',
 };
 
+const varsResolver = createVarsResolver<StackCssVariables, StackStylesParams>(
+  ({ gap, align, justify }) => ({
+    '--stack-gap': getSpacing(gap),
+    '--stack-align': align,
+    '--stack-justify': justify,
+  })
+);
+
 export const Stack = factory<StackFactory>((props, ref) => {
   const {
     classNames,
@@ -77,27 +86,14 @@ export const Stack = factory<StackFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<StackStylesParams>('Stack', vars, {
+  const _vars = useVars<StackStylesParams>('Stack', varsResolver, vars, {
     align,
     justify,
     gap,
     variant,
   });
 
-  return (
-    <Box
-      ref={ref}
-      {...getStyles('root')}
-      variant={variant}
-      vars={{
-        '--stack-gap': getSpacing(gap),
-        '--stack-align': align,
-        '--stack-justify': justify,
-        ..._vars,
-      }}
-      {...others}
-    />
-  );
+  return <Box ref={ref} {...getStyles('root')} variant={variant} vars={_vars} {...others} />;
 });
 
 Stack.displayName = '@mantine/core/Stack';

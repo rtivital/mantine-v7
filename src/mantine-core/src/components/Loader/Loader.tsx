@@ -12,7 +12,7 @@ import {
   factory,
   useVars,
   getSize,
-  isNumberLike,
+  createVarsResolver,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -66,6 +66,13 @@ const defaultProps: Partial<LoaderProps> = {
   loaders: defaultLoaders,
 };
 
+const varsResolver = createVarsResolver<LoaderCssVariables, LoaderStylesParams>(
+  ({ size, color }, theme) => ({
+    '--loader-size': getSize(size, 'loader-size'),
+    '--loader-color': getThemeColor(color, theme),
+  })
+);
+
 export const Loader = factory<LoaderFactory>((props, ref) => {
   const {
     size,
@@ -82,7 +89,7 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     ...others
   } = useProps('Loader', defaultProps, props);
 
-  const _vars = useVars<LoaderStylesParams>('Loader', vars, {
+  const _vars = useVars<LoaderStylesParams>('Loader', varsResolver, vars, {
     color,
     size,
     variant,
@@ -107,12 +114,8 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
       ref={ref}
       component={loaders![loader]}
       variant={variant}
-      mod={{ size: !isNumberLike(size) ? size : null }}
-      vars={{
-        '--loader-size': getSize(size, 'loader-size'),
-        '--loader-color': getThemeColor(color, theme),
-        ..._vars,
-      }}
+      size={size}
+      vars={_vars}
       {...others}
     />
   );

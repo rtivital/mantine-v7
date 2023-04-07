@@ -12,7 +12,7 @@ import {
   useStyles,
   getThemeColor,
   getRadius,
-  useMantineTheme,
+  createVarsResolver,
 } from '../../core';
 import { ArrowPosition, FloatingArrow, FloatingPosition, getFloatingPosition } from '../Floating';
 import { Transition, TransitionOverride, getTransitionProps } from '../Transition';
@@ -103,6 +103,13 @@ const defaultProps: Partial<TooltipProps> = {
   positionDependencies: [],
 };
 
+const varsResolver = createVarsResolver<TooltipCssVariables, TooltipStylesParams>(
+  ({ radius, color }, theme) => ({
+    '--tooltip-radius': getRadius(radius),
+    '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+  })
+);
+
 export const Tooltip = factory<TooltipFactory>((props, ref) => {
   const {
     children,
@@ -170,13 +177,11 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     rootSelector: 'tooltip',
   });
 
-  const _vars = useVars<TooltipStylesParams>('Tooltip', vars, {
+  const _vars = useVars<TooltipStylesParams>('Tooltip', varsResolver, vars, {
     radius,
     color,
     variant,
   });
-
-  const theme = useMantineTheme();
 
   if (!isElement(children)) {
     throw new Error(
@@ -201,11 +206,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
               {...others}
               variant={variant}
               mod={{ multiline }}
-              vars={{
-                '--tooltip-radius': getRadius(radius),
-                '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
-                ..._vars,
-              }}
+              vars={_vars}
               {...tooltip.getFloatingProps({
                 ref: tooltip.floating,
                 className: getStyles('tooltip').className,

@@ -9,7 +9,18 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
     rightSection: 'Right section',
   },
 
-  params: ['radius', 'size', 'variant'],
+  params: [
+    'radius',
+    'size',
+    'variant',
+    'leftSectionPointerEvents',
+    'leftSectionWidth',
+    'multiline',
+    'offsetBottom',
+    'offsetTop',
+    'rightSectionPointerEvents',
+    'rightSectionWidth',
+  ],
 
   vars: {
     '--input-fz': 'font-size of the input element',

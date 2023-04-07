@@ -15,6 +15,7 @@ import {
   closeOnEscape,
   getRadius,
   getShadow,
+  createVarsResolver,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import { Transition } from '../../Transition';
@@ -48,6 +49,13 @@ export interface PopoverDropdownFactory {
 
 const defaultProps: Partial<PopoverDropdownProps> = {};
 
+const varsResolver = createVarsResolver<PopoverDropdownCssVariables, PopoverDropdownStylesParams>(
+  ({ radius, shadow }) => ({
+    '--popover-radius': getRadius(radius),
+    '--popover-shadow': getShadow(shadow),
+  })
+);
+
 export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
   const {
     classNames,
@@ -75,7 +83,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
     rootSelector: 'dropdown',
   });
 
-  const _vars = useVars<PopoverDropdownStylesParams>('PopoverDropdown', vars, {
+  const _vars = useVars<PopoverDropdownStylesParams>('PopoverDropdown', varsResolver, vars, {
     shadow: ctx.shadow,
     radius: ctx.radius,
     variant,
@@ -137,11 +145,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
                   width: ctx.width === 'target' ? undefined : rem(ctx.width),
                 },
               })}
-              vars={{
-                '--popover-radius': getRadius(ctx.radius),
-                '--popover-shadow': getShadow(ctx.shadow),
-                ..._vars,
-              }}
+              vars={_vars}
             >
               {children}
 

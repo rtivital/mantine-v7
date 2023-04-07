@@ -11,6 +11,7 @@ import {
   MantineSize,
   getFontSize,
   rem,
+  createVarsResolver,
 } from '../../../core';
 import classes from './InputError.module.css';
 
@@ -45,6 +46,10 @@ const defaultProps: Partial<InputErrorProps> = {
   size: 'sm',
 };
 
+const varsResolver = createVarsResolver<InputErrorCssVariables, InputErrorStylesParams>(
+  ({ size }) => ({ '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})` })
+);
+
 export const InputError = factory<InputErrorFactory>((props, ref) => {
   const {
     classNames,
@@ -70,7 +75,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
     rootSelector: 'error',
   });
 
-  const _vars = useVars<InputErrorStylesParams>('InputError', vars, {
+  const _vars = useVars<InputErrorStylesParams>('InputError', varsResolver, vars, {
     size,
     variant,
   });
@@ -81,10 +86,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
       ref={ref}
       variant={variant}
       {...getStyles('error')}
-      vars={{
-        '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );

@@ -8,6 +8,7 @@ import {
   useProps,
   useStyles,
   useVars,
+  createVarsResolver,
 } from '../../../core';
 import classes from './InputPlaceholder.module.css';
 
@@ -40,6 +41,10 @@ export interface InputPlaceholderFactory {
 
 const defaultProps: Partial<InputPlaceholderProps> = {};
 
+const varsResolver = createVarsResolver<InputPlaceholderCssVariables, InputPlaceholderStylesParams>(
+  () => ({ '--input-placeholder-color': 'var(--mantine-color-placeholder)' })
+);
+
 export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) => {
   const {
     classNames,
@@ -64,7 +69,9 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) =>
     rootSelector: 'placeholder',
   });
 
-  const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', vars, { variant });
+  const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', varsResolver, vars, {
+    variant,
+  });
 
   return (
     <Box
@@ -72,10 +79,7 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) =>
       component="span"
       variant={variant}
       ref={ref}
-      vars={{
-        '--input-placeholder-color': 'var(--mantine-color-placeholder)',
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );

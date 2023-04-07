@@ -10,6 +10,7 @@ import {
   useVars,
   MantineSize,
   getFontSize,
+  createVarsResolver,
 } from '../../../core';
 import classes from './InputLabel.module.css';
 
@@ -52,6 +53,13 @@ const defaultProps: Partial<InputLabelProps> = {
   labelElement: 'label',
 };
 
+const varsResolver = createVarsResolver<InputLabelCssVariables, InputLabelStylesParams>(
+  ({ size }) => ({
+    '--input-label-size': getFontSize(size),
+    '--input-asterisk-color': 'var(--mantine-color-red-filled)',
+  })
+);
+
 export const InputLabel = factory<InputLabelFactory>((props, ref) => {
   const {
     classNames,
@@ -82,7 +90,7 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
     rootSelector: 'label',
   });
 
-  const _vars = useVars<InputLabelStylesParams>('InputLabel', vars, {
+  const _vars = useVars<InputLabelStylesParams>('InputLabel', varsResolver, vars, {
     size,
     required,
     variant,
@@ -102,11 +110,7 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
           event.preventDefault();
         }
       }}
-      vars={{
-        '--input-label-size': getFontSize(size),
-        '--input-asterisk-color': 'var(--mantine-color-red-filled)',
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     >
       {children}

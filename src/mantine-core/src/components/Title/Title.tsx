@@ -1,6 +1,14 @@
 import React from 'react';
-import { StylesApiProps, factory, ElementProps, useProps, useStyles, useVars } from '../../core';
-import { Text, TextVariant, TextProps, TextCssVariables } from '../Text';
+import {
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  useStyles,
+  useVars,
+  createVarsResolver,
+} from '../../core';
+import { Text, TextVariant, TextProps } from '../Text';
 import { getTitleSize } from './get-title-size';
 import classes from './Title.module.css';
 
@@ -9,7 +17,7 @@ export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'];
 
 export type TitleStylesNames = 'root';
 export type TitleVariant = TextVariant;
-export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz' | TextCssVariables;
+export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz';
 
 export interface TitleStylesParams {
   size: TitleSize | undefined;
@@ -40,6 +48,15 @@ const defaultProps: Partial<TitleProps> = {
   order: 1,
 };
 
+const varsResolver = createVarsResolver<TitleCssVariables, TitleStylesParams>(({ order, size }) => {
+  const sizeVariables = getTitleSize(order!, size);
+  return {
+    '--title-fw': sizeVariables.fontWeight,
+    '--title-lh': sizeVariables.lineHeight,
+    '--title-fz': sizeVariables.fontSize,
+  };
+});
+
 export const Title = factory<TitleFactory>((props, ref) => {
   const {
     classNames,
@@ -65,13 +82,11 @@ export const Title = factory<TitleFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<TitleStylesParams>('Title', vars, {
+  const _vars = useVars<TitleStylesParams>('Title', varsResolver, vars, {
     size,
     order,
     variant,
   });
-
-  const sizeVariables = getTitleSize(order!, size);
 
   if (![1, 2, 3, 4, 5, 6].includes(order!)) {
     return null;
@@ -83,12 +98,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
       component={`h${order!}`}
       variant={variant}
       ref={ref}
-      vars={{
-        '--title-fw': sizeVariables.fontWeight,
-        '--title-lh': sizeVariables.lineHeight,
-        '--title-fz': sizeVariables.fontSize,
-        ..._vars,
-      }}
+      vars={_vars}
       inherit={inherit || false}
       {...others}
       mod={{ order }}

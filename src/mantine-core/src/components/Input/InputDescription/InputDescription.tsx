@@ -11,6 +11,7 @@ import {
   MantineSize,
   getFontSize,
   rem,
+  createVarsResolver,
 } from '../../../core';
 import classes from './InputDescription.module.css';
 
@@ -49,6 +50,10 @@ const defaultProps: Partial<InputDescriptionProps> = {
   size: 'sm',
 };
 
+const varsResolver = createVarsResolver<InputDescriptionCssVariables, InputDescriptionStylesParams>(
+  ({ size }) => ({ '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})` })
+);
+
 export const InputDescription = factory<InputDescriptionFactory>((props, ref) => {
   const {
     classNames,
@@ -74,7 +79,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
     rootSelector: 'description',
   });
 
-  const _vars = useVars<InputDescriptionStylesParams>('InputDescription', vars, {
+  const _vars = useVars<InputDescriptionStylesParams>('InputDescription', varsResolver, vars, {
     size,
     variant,
   });
@@ -85,10 +90,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
       ref={ref}
       variant={variant}
       {...getStyles('description')}
-      vars={{
-        '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,
-        ..._vars,
-      }}
+      vars={_vars}
       {...others}
     />
   );

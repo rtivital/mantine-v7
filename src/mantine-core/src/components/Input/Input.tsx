@@ -14,6 +14,7 @@ import {
   useVars,
   getRadius,
   rem,
+  createVarsResolver,
 } from '../../core';
 import { useInputWrapperContext } from './InputWrapper.context';
 import { InputLabel } from './InputLabel/InputLabel';
@@ -48,6 +49,13 @@ export interface InputStylesParams {
   size: MantineSize | undefined;
   radius: MantineRadius | (string & {}) | number | undefined;
   variant: InputVariant | (string & {}) | undefined;
+  offsetTop: boolean | undefined;
+  offsetBottom: boolean | undefined;
+  multiline: boolean | undefined;
+  leftSectionWidth: React.CSSProperties['width'] | undefined;
+  rightSectionWidth: React.CSSProperties['width'] | undefined;
+  leftSectionPointerEvents: React.CSSProperties['pointerEvents'];
+  rightSectionPointerEvents: React.CSSProperties['pointerEvents'];
 }
 
 export interface __InputProps {
@@ -130,6 +138,21 @@ const defaultProps: Partial<InputProps> = {
   rightSectionPointerEvents: 'none',
 };
 
+const varsResolver = createVarsResolver<InputCssVariables, InputStylesParams>((params) => ({
+  '--input-margin-top': params.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+  '--input-margin-bottom': params.offsetBottom ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+  '--input-height': getSize(params.size, 'input-height'),
+  '--input-fz': getFontSize(params.size),
+  '--input-radius': getRadius(params.radius),
+  '--input-left-section-width':
+    params.leftSectionWidth !== undefined ? rem(params.leftSectionWidth) : undefined,
+  '--input-right-section-width':
+    params.rightSectionWidth !== undefined ? rem(params.rightSectionWidth) : undefined,
+  '--input-padding-y': params.multiline ? getSize(params.size, 'input-padding-y') : undefined,
+  '--input-left-section-pointer-events': params.leftSectionPointerEvents,
+  '--input-right-section-pointer-events': params.rightSectionPointerEvents,
+}));
+
 export const Input = polymorphicFactory<InputFactory>((props, ref) => {
   const {
     classNames,
@@ -173,7 +196,18 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     rootSelector: 'wrapper',
   });
 
-  const _vars = useVars<InputStylesParams>('Input', vars, { size, radius, variant });
+  const _vars = useVars<InputStylesParams>('Input', varsResolver, vars, {
+    size,
+    radius,
+    variant,
+    offsetBottom: ctx?.offsetBottom,
+    offsetTop: ctx?.offsetTop,
+    leftSectionWidth,
+    rightSectionWidth,
+    leftSectionPointerEvents,
+    rightSectionPointerEvents,
+    multiline,
+  });
 
   return (
     <Box
@@ -189,23 +223,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         'data-with-left-section': !!leftSection,
       }}
       variant={variant}
-      vars={{
-        '--input-margin-top': ctx?.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
-        '--input-margin-bottom': ctx?.offsetBottom
-          ? 'calc(var(--mantine-spacing-xs) / 2)'
-          : undefined,
-        '--input-height': getSize(size, 'input-height'),
-        '--input-fz': getFontSize(size),
-        '--input-radius': getRadius(radius),
-        '--input-left-section-width':
-          leftSectionWidth !== undefined ? rem(leftSectionWidth) : undefined,
-        '--input-right-section-width':
-          rightSectionWidth !== undefined ? rem(rightSectionWidth) : undefined,
-        '--input-padding-y': multiline ? getSize(size, 'input-padding-y') : undefined,
-        '--input-left-section-pointer-events': leftSectionPointerEvents,
-        '--input-right-section-pointer-events': rightSectionPointerEvents,
-        ..._vars,
-      }}
+      vars={_vars}
     >
       {leftSection && (
         <div

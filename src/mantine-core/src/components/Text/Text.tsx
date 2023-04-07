@@ -9,9 +9,9 @@ import {
   useProps,
   useVars,
   getGradient,
-  useMantineTheme,
   BoxMod,
   packMod,
+  createVarsResolver,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -78,6 +78,13 @@ const defaultProps: Partial<TextProps> = {
   inherit: true,
 };
 
+const varsResolver = createVarsResolver<TextCssVariables, TextStylesParams>(
+  ({ variant, lineClamp, gradient }, theme) => ({
+    '--text-gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
+    '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+  })
+);
+
 export const Text = polymorphicFactory<TextFactory>((props, ref) => {
   const {
     lineClamp,
@@ -98,9 +105,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     ...others
   } = useProps('Text', defaultProps, props);
 
-  const theme = useMantineTheme();
-
-  const _vars = useVars<TextStylesParams>('Text', vars, {
+  const _vars = useVars<TextStylesParams>('Text', varsResolver, vars, {
     lineClamp,
     gradient,
     variant,
@@ -131,11 +136,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
         },
         ...packMod(mod),
       ]}
-      vars={{
-        ..._vars,
-        '--text-gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
-        '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
-      }}
+      vars={_vars}
       {...others}
     />
   );

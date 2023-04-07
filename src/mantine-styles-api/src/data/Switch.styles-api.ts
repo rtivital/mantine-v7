@@ -24,7 +24,7 @@ export const SwitchStylesApi: StylesApiData<SwitchFactory> = {
     '--switch-width': 'Controls min-width of track',
     '--switch-thumb-size': 'Controls width and height of thumb',
     '--switch-label-font-size': 'Controls font-size of trackLabel',
-    '--switch-label-padding': 'Controls trackLabel offset',
+    '--switch-track-label-padding': 'Controls trackLabel offset',
     '--switch-color': 'Controls track background color when input is checked',
   },
 

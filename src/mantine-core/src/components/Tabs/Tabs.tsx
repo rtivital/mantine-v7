@@ -14,7 +14,7 @@ import {
   ElementProps,
   getRadius,
   getThemeColor,
-  useMantineTheme,
+  createVarsResolver,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
 import { TabsList, TabsListStylesNames } from './TabsList/TabsList';
@@ -112,6 +112,13 @@ const defaultProps: Partial<TabsProps> = {
   placement: 'left',
 };
 
+const varsResolver = createVarsResolver<TabsCssVariables, TabsStylesParams>(
+  ({ radius, color }, theme) => ({
+    '--tabs-radius': getRadius(radius),
+    '--tabs-color': getThemeColor(color, theme),
+  })
+);
+
 export const Tabs = factory<TabsFactory>((props, ref) => {
   const {
     defaultValue,
@@ -137,7 +144,6 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     vars,
     ...others
   } = useProps('Tabs', defaultProps, props);
-  const theme = useMantineTheme();
 
   const uid = useId(id);
 
@@ -158,7 +164,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<TabsStylesParams>('Tabs', vars, {
+  const _vars = useVars<TabsStylesParams>('Tabs', varsResolver, vars, {
     color,
     radius,
     variant,
@@ -190,15 +196,11 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
         ref={ref}
         id={uid}
         variant={variant}
+        vars={_vars}
         mod={{
           orientation,
           inverted: orientation === 'horizontal' && inverted,
           placement: orientation === 'vertical' && placement,
-        }}
-        vars={{
-          '--tabs-radius': getRadius(radius),
-          '--tabs-color': getThemeColor(color, theme),
-          ..._vars,
         }}
         {...getStyles('root')}
         {...others}
