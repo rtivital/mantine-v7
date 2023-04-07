@@ -1,0 +1,65 @@
+.trackContainer {
+  display: flex;
+  align-items: center;
+  width: calc(100% + 1rem);
+  height: 100%;
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: var(--slider-size);
+  margin-right: var(--slider-size);
+  margin-left: var(--slider-size);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: var(--mantine-radius-sm); // check this
+    right: calc(var(--slider-size) * -1);
+    left: calc(var(--slider-size) * -1);
+    background-color: var(--_track-bg);
+    z-index: 0;
+
+    /* backgroundColor: inverted
+          ? disabled
+            ? theme.colorScheme === 'dark'
+              ? theme.colors.dark[3]
+              : theme.colors.gray[4]
+            : theme.fn.variant({ variant: 'filled', color }).background
+          : theme.colorScheme === 'dark'
+          ? theme.colors.dark[4]
+          : theme.colors.gray[2], */
+
+    @mixin light {
+      --_track-bg: var(--mantine-color-gray-2);
+    }
+
+    @mixin dark {
+      --_track-bg: var(--mantine-color-dark-4);
+    }
+  }
+}
+
+.bar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+
+  background-color: red;
+  border-radius: var(--mantine-radius-sm); // check this
+
+  /* backgroundColor: inverted
+        ? theme.colorScheme === 'dark'
+          ? theme.colors.dark[4]
+          : theme.colors.gray[2]
+        : disabled
+        ? theme.colorScheme === 'dark'
+          ? theme.colors.dark[3]
+          : theme.colors.gray[4]
+        : theme.fn.variant({ variant: 'filled', color }).background, */
+}

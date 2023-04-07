@@ -3,7 +3,6 @@ import {
   Box,
   StylesApiProps,
   useStyles,
-  MantineSize,
   MantineColor,
   getThemeColor,
   useMantineTheme,
@@ -16,7 +15,6 @@ export type MarksStylesNames = 'markWrapper' | 'mark' | 'markLabel';
 
 export interface MarksProps extends StylesApiProps<MarksStylesNames> {
   marks: { value: number; label?: React.ReactNode }[];
-  size: MantineSize | number | (string & {});
   color: MantineColor;
   min: number;
   max: number;
