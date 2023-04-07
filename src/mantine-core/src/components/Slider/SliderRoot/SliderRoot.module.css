@@ -4,4 +4,13 @@
   --slider-size-md: rem(8px);
   --slider-size-lg: rem(10px);
   --slider-size-xl: rem(12px);
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  height: calc(var(--slider-size) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  touch-action: none;
+  position: relative;
 }
