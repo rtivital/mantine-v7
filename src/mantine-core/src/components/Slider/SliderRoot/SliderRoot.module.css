@@ -1,0 +1,7 @@
+.root {
+  --slider-size-xs: rem(4px);
+  --slider-size-sm: rem(6px);
+  --slider-size-md: rem(8px);
+  --slider-size-lg: rem(10px);
+  --slider-size-xl: rem(12px);
+}

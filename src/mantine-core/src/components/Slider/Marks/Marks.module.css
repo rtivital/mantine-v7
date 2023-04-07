@@ -1,0 +1,61 @@
+.markWrapper {
+  position: absolute;
+  left: var(--mark-offset);
+  top: calc(var(--slider-size) / 2);
+  z-index: 2;
+  height: 0;
+
+  @mixin rtl {
+    left: unset;
+    right: var(--mark-offset);
+  }
+}
+
+.mark {
+  border: rem(2px) solid var(--_mark-bd);
+  height: var(--slider-size);
+  width: var(--slider-size);
+  border-radius: rem(1000px);
+  transform: translateX((calc(var(--slider-size) / -2)));
+  background-color: var(--_mark-bg, var(--mantine-color-white));
+  pointer-events: none;
+
+  &[data-filled] {
+    --_mark-bd: var(--mark-color);
+
+    &[data-disabled] {
+      @mixin light {
+        --_mark-bd: var(--mantine-color-gray-4);
+      }
+
+      @mixin dark {
+        --_mark-bd: var(--mantine-color-dark-3);
+      }
+    }
+  }
+
+  @mixin light {
+    --_mark-bd: var(--mantine-color-gray-2);
+  }
+
+  @mixin dark {
+    --_mark-bd: var(--mantine-color-dark-4);
+  }
+}
+
+.markLabel {
+  transform: translate(-50%, calc(var(--mantine-spacing-xs) / 2));
+  font-size: var(--mantine-font-size-sm);
+  color: var(--_mark-label-color);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  @mixin light {
+    --_mark-label-color: var(--mantine-color-gray-6);
+  }
+
+  @mixin dark {
+    --_mark-label-color: var(--mantine-color-dark-2);
+  }
+}
