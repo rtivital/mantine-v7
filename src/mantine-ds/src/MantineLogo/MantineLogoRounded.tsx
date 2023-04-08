@@ -1,17 +1,6 @@
 import React from 'react';
-import { rem, useMantineTheme, parseThemeColor } from '@mantine/core';
-import { LogoProps } from './use-mantine-logo-colors';
-
-function useMantineLogoColors({ color, inverted }: LogoProps) {
-  const theme = useMantineTheme();
-  const parsedColor = parseThemeColor({ color: color || 'blue', theme });
-  const mainColor = parsedColor.isThemeColor ? theme.colors[parsedColor.color][5] : color;
-
-  return {
-    background: inverted ? theme.white : mainColor,
-    color: inverted ? mainColor : theme.white,
-  };
-}
+import { rem } from '@mantine/core';
+import { LogoProps, useMantineLogoColors } from './use-mantine-logo-colors';
 
 export function MantineLogoRounded({
   size,
@@ -21,9 +10,6 @@ export function MantineLogoRounded({
   style,
   ...others
 }: LogoProps) {
-  const theme = useMantineTheme();
-  const parsedColor = parseThemeColor({ color: color || 'blue', theme });
-  const resultColor = parsedColor.isThemeColor ? theme.colors[parsedColor.color][5] : color;
   const colors = useMantineLogoColors({ color, inverted });
 
   return (
