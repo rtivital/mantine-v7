@@ -21,6 +21,7 @@ export * from './Popover';
 export * from './Portal';
 export * from './ScrollArea';
 export * from './SegmentedControl';
+export * from './Slider';
 export * from './Stack';
 export * from './Switch';
 export * from './Table';
