@@ -10,6 +10,7 @@ export interface CodeDemoProps {
   withPadding?: boolean;
   centered?: boolean;
   maxWidth?: number;
+  defaultExpanded?: boolean;
 }
 
 export function CodeDemo({
@@ -17,6 +18,7 @@ export function CodeDemo({
   children,
   withPadding = true,
   centered = false,
+  defaultExpanded = true,
   maxWidth,
 }: CodeDemoProps) {
   return (
@@ -31,7 +33,15 @@ export function CodeDemo({
       >
         <div className={classes.demoInner}>{children}</div>
       </Box>
-      {code && <CodeHighlight code={code} className={classes.code} getFileIcon={getFileIcon} />}
+      {code && (
+        <CodeHighlight
+          code={code}
+          className={classes.code}
+          getFileIcon={getFileIcon}
+          withExpandButton
+          defaultExpanded={defaultExpanded}
+        />
+      )}
     </div>
   );
 }

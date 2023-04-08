@@ -21,14 +21,14 @@
 
 .controls {
   display: flex;
+  margin-top: rem(7px);
+  margin-right: rem(7px);
 }
 
 .control {
   background-color: transparent;
   opacity: 0.8;
   margin: 0;
-  margin-top: rem(7px);
-  margin-right: rem(7px);
 
   @mixin hover {
     opacity: 1;

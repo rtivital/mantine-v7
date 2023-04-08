@@ -72,7 +72,7 @@ function DemoComponent() {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <CodeDemo code={code} centered maxWidth={400}>
+      <CodeDemo code={code} centered maxWidth={400} defaultExpanded={false}>
         <DemoComponent />
       </CodeDemo>
     </div>
