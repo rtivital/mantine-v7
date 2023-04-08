@@ -3,14 +3,13 @@
   padding: rem(2px) rem(4px);
   font-size: rem(13px);
   border-radius: var(--mantine-radius-xs);
-  line-height: var(--mantine-line-height);
+  line-height: 1.7;
   font-family: var(--mantine-font-family-monospace);
 }
 
 .pre {
   display: block;
-  padding: var(--mantine-spacing-md);
-  line-height: 1.7;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   margin: 0;
 }
 
