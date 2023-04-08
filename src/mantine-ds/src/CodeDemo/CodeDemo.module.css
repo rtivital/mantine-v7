@@ -13,6 +13,23 @@
 
 .demo {
   border-bottom: rem(1px) solid var(--_demo-border);
+  padding: var(--_demo-spacing, 0rem);
+
+  &[data-with-padding] {
+    --_demo-spacing: var(--mantine-spacing-md);
+  }
+
+  &[data-centered] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.demoInner {
+  max-width: var(--demo-max-width, 100%);
+  margin-left: var(--demo-margin-y, unset);
+  margin-right: var(--demo-margin-y, unset);
 }
 
 .code {

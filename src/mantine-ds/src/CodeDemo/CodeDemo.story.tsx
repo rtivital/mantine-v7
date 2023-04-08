@@ -66,13 +66,13 @@ const code: CodeHighlightCode[] = [
 ];
 
 function DemoComponent() {
-  return <div style={{ padding: 40, textAlign: 'center' }}>Hello</div>;
+  return <div style={{ background: 'pink' }}>Hello</div>;
 }
 
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <CodeDemo code={code}>
+      <CodeDemo code={code} centered maxWidth={400}>
         <DemoComponent />
       </CodeDemo>
     </div>
