@@ -5,4 +5,6 @@ export type {
   CodeHighlightProps,
   CodeHighlightCode,
   CodeHighlightVariant,
+  CodeHighlightCssVariables,
+  CodeHighlightStylesParams,
 } from './CodeHighlight';

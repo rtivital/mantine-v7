@@ -14,27 +14,39 @@ import {
   ActionIcon,
   UnstyledButton,
   ScrollArea,
+  createVarsResolver,
+  rem,
+  useVars,
 } from '@mantine/core';
 import { CopyIcon } from './CopyIcon';
 import { FileIcon } from './FileIcon';
+import { ExpandIcon } from './ExpandIcon';
 import classes from './CodeHighlight.module.css';
 
 export type CodeHighlightStylesNames =
   | 'root'
   | 'code'
+  | 'codeWrapper'
+  | 'showCodeButton'
   | 'pre'
-  | 'copy'
+  | 'controls'
+  | 'control'
   | 'header'
   | 'file'
   | 'files';
 
 export type CodeHighlightVariant = string;
+export type CodeHighlightCssVariables = '--ch-max-collapsed-height';
 
 export interface CodeHighlightCode {
   language?: string;
   code: string;
   fileName?: string;
   icon?: React.ReactNode;
+}
+
+export interface CodeHighlightStylesParams {
+  maxCollapsedHeight: React.CSSProperties['maxHeight'] | undefined;
 }
 
 export interface CodeHighlightProps
@@ -64,6 +76,27 @@ export interface CodeHighlightProps
 
   /** Function that returns icon based on file name */
   getFileIcon?(fileName: string): React.ReactNode;
+
+  /** `max-height` of code in collapsed state, `'6rem'` by default */
+  maxCollapsedHeight?: React.CSSProperties['maxHeight'];
+
+  /** Controlled expanded state */
+  expanded?: boolean;
+
+  /** Uncontrolled expanded state initial value */
+  defaultExpanded?: boolean;
+
+  /** Called when expanded state changes */
+  onExpandedChange?(expanded: boolean): void;
+
+  /** Expand button label and tooltip, `'Expand code'` by default */
+  expandCodeLabel?: string;
+
+  /** Collapse button label and tooltip, `'Collapse code'` by default */
+  collapseCodeLabel?: string;
+
+  /** Determines whether to show the expand button, `false` by default */
+  withExpandButton?: boolean;
 }
 
 export interface CodeHighlightFactory {
@@ -76,7 +109,16 @@ const defaultProps: Partial<CodeHighlightProps> = {
   withHeader: true,
   copyLabel: 'Copy code',
   copiedLabel: 'Copied',
+  maxCollapsedHeight: '8rem',
+  expandCodeLabel: 'Expand code',
+  collapseCodeLabel: 'Collapse code',
 };
+
+const varsResolver = createVarsResolver<CodeHighlightCssVariables, CodeHighlightStylesParams>(
+  ({ maxCollapsedHeight }) => ({
+    '--ch-max-collapsed-height': rem(maxCollapsedHeight),
+  })
+);
 
 export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   const {
@@ -95,6 +137,13 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     copiedLabel,
     copyLabel,
     getFileIcon,
+    maxCollapsedHeight,
+    expanded,
+    defaultExpanded,
+    onExpandedChange,
+    expandCodeLabel,
+    collapseCodeLabel,
+    withExpandButton,
     ...others
   } = useProps('CodeHighlight', defaultProps, props);
 
@@ -108,11 +157,20 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     unstyled,
   });
 
+  const _vars = useVars('CodeHighlight', varsResolver, vars, { maxCollapsedHeight });
+
   const [value, setValue] = useUncontrolled({
     defaultValue: defaultActiveTab,
     value: activeTab,
     finalValue: 0,
     onChange: onTabChange,
+  });
+
+  const [_expanded, setExpanded] = useUncontrolled({
+    defaultValue: defaultExpanded,
+    value: expanded,
+    finalValue: true,
+    onChange: onExpandedChange,
   });
 
   const nodes = Array.isArray(code) ? code : [code];
@@ -135,28 +193,56 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
   ));
 
   return (
-    <Box {...getStyles('root')} ref={ref} {...others} dir="ltr">
+    <Box {...getStyles('root')} ref={ref} vars={_vars} {...others} dir="ltr">
       {withHeader && (
         <div {...getStyles('header')}>
           <ScrollArea type="never" dir="ltr" offsetScrollbars={false}>
             <div {...getStyles('files')}>{files}</div>
           </ScrollArea>
-          <CopyButton value={currentCode.code.trim()}>
-            {({ copied, copy }) => (
-              <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left" withArrow>
-                <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
-                  <CopyIcon copied={copied} />
+          <div {...getStyles('controls')}>
+            {withExpandButton && (
+              <Tooltip
+                label={_expanded ? collapseCodeLabel : expandCodeLabel}
+                fz="sm"
+                position="left"
+              >
+                <ActionIcon
+                  onClick={() => setExpanded(!_expanded)}
+                  variant="none"
+                  {...getStyles('control')}
+                >
+                  <ExpandIcon expanded={_expanded} />
                 </ActionIcon>
               </Tooltip>
             )}
-          </CopyButton>
+
+            <CopyButton value={currentCode.code.trim()}>
+              {({ copied, copy }) => (
+                <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left">
+                  <ActionIcon onClick={copy} variant="none" {...getStyles('control')}>
+                    <CopyIcon copied={copied} />
+                  </ActionIcon>
+                </Tooltip>
+              )}
+            </CopyButton>
+          </div>
         </div>
       )}
 
       <ScrollArea type="auto" dir="ltr" offsetScrollbars={false}>
-        <pre {...getStyles('pre')}>
-          <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
-        </pre>
+        <Box {...getStyles('codeWrapper')} mod={{ expanded: _expanded }}>
+          <pre {...getStyles('pre')}>
+            <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
+          </pre>
+
+          <UnstyledButton
+            {...getStyles('showCodeButton')}
+            mod={{ hidden: _expanded }}
+            onClick={() => setExpanded(true)}
+          >
+            Expand code
+          </UnstyledButton>
+        </Box>
       </ScrollArea>
     </Box>
   );

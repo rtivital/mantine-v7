@@ -185,6 +185,7 @@ export function Usage() {
           { code: tsxCode, language: 'tsx', icon: <TsIcon />, fileName: 'Component.tsx' },
           { code: cssCode, language: 'css', icon: <CSSIcon />, fileName: 'Component.module.css' },
         ]}
+        defaultExpanded={false}
       >
         {tsxCode}
       </CodeHighlight>
