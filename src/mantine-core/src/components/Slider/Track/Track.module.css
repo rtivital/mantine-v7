@@ -45,6 +45,13 @@
   bottom: 0;
   background-color: var(--_bar-bg, var(--slider-color));
   border-radius: var(--slider-radius);
+  width: var(--slider-bar-width);
+  left: var(--slider-bar-offset);
+
+  @mixin rtl {
+    left: auto;
+    right: var(--slider-bar-offset);
+  }
 
   &[data-inverted] {
     --_bar-bg: var(--slider-track-bg);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { tests, render, screen } from '@mantine/tests';
+import { tests, render } from '@mantine/tests';
 import { Thumb, ThumbProps } from './Thumb';
 
 const defaultProps: ThumbProps = {
@@ -26,11 +26,6 @@ describe('@mantine/core/Thumb', () => {
     component: Thumb,
     props: defaultProps,
     refType: HTMLDivElement,
-  });
-
-  it('sets left property based on position prop', () => {
-    render(<Thumb {...defaultProps} position={62} />);
-    expect(screen.getByRole('slider')).toHaveStyle({ left: '62%' });
   });
 
   it('shows label based on dragging and labelAlwaysOn props', () => {

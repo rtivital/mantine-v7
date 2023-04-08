@@ -40,6 +40,12 @@
   touch-action: none;
   box-shadow: var(--_thumb-box-shadow, none);
   outline-offset: rem(2px);
+  left: var(--slider-thumb-offset);
+
+  @mixin rtl {
+    left: auto;
+    right: calc(var(--slider-thumb-offset) - var(--slider-thumb-size));
+  }
 
   &[data-disabled] {
     --_thumb-display: none;

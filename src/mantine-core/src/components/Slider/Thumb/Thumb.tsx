@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from 'react';
-import { Box, StylesApiProps, useStyles, useDirection } from '../../../core';
+import { Box, StylesApiProps, useStyles } from '../../../core';
 import { Transition, MantineTransition } from '../../Transition';
 import classes from './Thumb.module.css';
 
@@ -70,7 +70,6 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
     });
 
     const [focused, setFocused] = useState(false);
-    const { dir } = useDirection();
 
     const isVisible = labelAlwaysOn || dragging || focused || (showLabelOnHover && isHovered);
 
@@ -83,10 +82,8 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         aria-valuemin={min}
         aria-valuenow={value}
         ref={ref}
-        {...getStyles('thumb', {
-          focusable: true,
-          style: { [dir === 'rtl' ? 'right' : 'left']: `${position}%` },
-        })}
+        vars={{ '--slider-thumb-offset': `${position}%` }}
+        {...getStyles('thumb', { focusable: true })}
         mod={{ dragging, disabled }}
         onFocus={() => {
           setFocused(true);
