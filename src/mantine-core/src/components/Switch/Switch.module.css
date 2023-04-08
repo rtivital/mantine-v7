@@ -125,7 +125,7 @@
 
   .input:disabled + * > &,
   .input[data-disabled] + * > & {
-    --_switch-thumb-bd: var(--mantine-color-gray-2);
+    --_switch-thumb-bd: var(--_switch-thumb-bg-disabled);
     --_switch-thumb-bg: var(--_switch-thumb-bg-disabled);
   }
 
