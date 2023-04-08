@@ -18,7 +18,11 @@ import {
 import classes from './SliderRoot.module.css';
 
 export type SliderRootStylesNames = 'root';
-export type SliderCssVariables = '--slider-size' | '--slider-color' | '--slider-thumb-size';
+export type SliderCssVariables =
+  | '--slider-size'
+  | '--slider-color'
+  | '--slider-thumb-size'
+  | '--slider-radius';
 export type SliderVariant = string;
 
 export interface SliderStylesParams {

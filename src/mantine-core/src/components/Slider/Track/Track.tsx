@@ -10,8 +10,6 @@ export interface TrackProps extends StylesApiProps<TrackStylesNames> {
   offset?: number;
   marksOffset?: number;
   marks: { value: number; label?: React.ReactNode }[] | undefined;
-  // size: MantineNumberSize;
-  // radius: MantineNumberSize;
   min: number;
   max: number;
   value: number;
@@ -24,10 +22,8 @@ export interface TrackProps extends StylesApiProps<TrackStylesNames> {
 
 export function Track({
   filled,
-  // size,
   classNames,
   styles,
-  // radius,
   children,
   offset,
   disabled,
