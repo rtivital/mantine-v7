@@ -30,7 +30,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    border-radius: var(--mantine-radius-sm); /* check this */
+    border-radius: var(--slider-radius);
     right: calc(var(--slider-size) * -1);
     left: calc(var(--slider-size) * -1);
     background-color: var(--_track-bg, var(--slider-track-bg));
@@ -44,7 +44,7 @@
   top: 0;
   bottom: 0;
   background-color: var(--_bar-bg, var(--slider-color));
-  border-radius: var(--mantine-radius-sm); /* check this */
+  border-radius: var(--slider-radius);
 
   &[data-inverted] {
     --_bar-bg: var(--slider-track-bg);

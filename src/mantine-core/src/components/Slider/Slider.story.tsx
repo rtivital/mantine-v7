@@ -10,6 +10,7 @@ export function Usage() {
       <Slider defaultValue={45} disabled mt="xl" />
       <Slider defaultValue={45} inverted mt="xl" />
       <Slider defaultValue={45} inverted disabled mt="xl" />
+      <Slider defaultValue={45} radius={0} mt="xl" />
     </div>
   );
 }

@@ -31,7 +31,7 @@
   transform: var(--_thumb-transform, translate(-50%, -50%));
   top: 50%;
   cursor: pointer;
-  border-radius: rem(1000px);
+  border-radius: var(--slider-radius);
   align-items: center;
   justify-content: center;
   transition: box-shadow 100ms ease, transform 100ms ease;
