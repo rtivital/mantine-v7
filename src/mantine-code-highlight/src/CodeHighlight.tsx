@@ -234,16 +234,15 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
           <pre {...getStyles('pre')}>
             <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
           </pre>
-
-          <UnstyledButton
-            {...getStyles('showCodeButton')}
-            mod={{ hidden: _expanded }}
-            onClick={() => setExpanded(true)}
-          >
-            Expand code
-          </UnstyledButton>
         </Box>
       </ScrollArea>
+      <UnstyledButton
+        {...getStyles('showCodeButton')}
+        mod={{ hidden: _expanded }}
+        onClick={() => setExpanded(true)}
+      >
+        Expand code
+      </UnstyledButton>
     </Box>
   );
 });

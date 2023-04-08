@@ -35,4 +35,5 @@
 .code {
   border-bottom-right-radius: var(--mantine-radius-md);
   border-bottom-left-radius: var(--mantine-radius-md);
+  overflow: hidden;
 }
