@@ -18,7 +18,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    border-radius: var(--mantine-radius-sm); // check this
+    border-radius: var(--mantine-radius-sm); /* check this */
     right: calc(var(--slider-size) * -1);
     left: calc(var(--slider-size) * -1);
     background-color: var(--_track-bg);
@@ -50,8 +50,8 @@
   top: 0;
   bottom: 0;
 
-  background-color: red;
-  border-radius: var(--mantine-radius-sm); // check this
+  background-color: var(--slider-color);
+  border-radius: var(--mantine-radius-sm); /* check this */
 
   /* backgroundColor: inverted
         ? theme.colorScheme === 'dark'

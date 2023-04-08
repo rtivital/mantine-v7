@@ -83,7 +83,10 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         aria-valuemin={min}
         aria-valuenow={value}
         ref={ref}
-        {...getStyles('thumb', { style: { [dir === 'rtl' ? 'right' : 'left']: `${position}%` } })}
+        {...getStyles('thumb', {
+          focusable: true,
+          style: { [dir === 'rtl' ? 'right' : 'left']: `${position}%` },
+        })}
         mod={{ dragging, disabled }}
         onFocus={() => {
           setFocused(true);

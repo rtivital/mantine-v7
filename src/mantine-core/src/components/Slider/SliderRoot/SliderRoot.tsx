@@ -48,7 +48,7 @@ const varsResolver = createVarsResolver<SliderCssVariables, SliderStylesParams>(
     '--slider-color': getThemeColor(color, theme),
     '--slider-radius': getRadius(radius),
     '--slider-thumb-size':
-      typeof thumbSize !== undefined ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+      typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
   })
 );
 

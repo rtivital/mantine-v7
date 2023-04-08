@@ -39,6 +39,7 @@
   user-select: none;
   touch-action: none;
   box-shadow: var(--_thumb-box-shadow, none);
+  outline-offset: rem(2px);
 
   &[data-disabled] {
     --_thumb-display: none;
@@ -50,12 +51,12 @@
   }
 
   @mixin light {
-    --_thumb-bg: var(--slider-color);
-    --_thumb-bd: var(--mantine-color-white);
+    --_thumb-bd: var(--slider-color);
+    --_thumb-bg: var(--mantine-color-white);
   }
 
   @mixin dark {
-    --_thumb-bg: var(--mantine-color-white);
-    --_thumb-bd: var(--slider-color);
+    --_thumb-bd: var(--mantine-color-white);
+    --_thumb-bg: var(--slider-color);
   }
 }
