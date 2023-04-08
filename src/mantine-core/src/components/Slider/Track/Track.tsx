@@ -48,9 +48,10 @@ export function Track({
 
   return (
     <>
-      <div {...getStyle('trackContainer')} {...containerProps}>
-        <div {...getStyle('track')}>
+      <Box {...getStyle('trackContainer')} mod={{ disabled }} {...containerProps}>
+        <Box {...getStyle('track')} mod={{ inverted, disabled }}>
           <Box
+            mod={{ inverted, disabled }}
             {...getStyle('bar', {
               style: {
                 left: `calc(${offset}% - var(--slider-size))`,
@@ -60,8 +61,8 @@ export function Track({
           />
 
           {children}
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       <Marks
         {...others}
