@@ -15,8 +15,9 @@ import {
   UnstyledButton,
   ScrollArea,
 } from '@mantine/core';
-import classes from './CodeHighlight.module.css';
 import { CopyIcon } from './CopyIcon';
+import { FileIcon } from './FileIcon';
+import classes from './CodeHighlight.module.css';
 
 export type CodeHighlightStylesNames =
   | 'root'
@@ -60,6 +61,9 @@ export interface CodeHighlightProps
 
   /** Copied tooltip label, `'Copied'` by default */
   copiedLabel?: string;
+
+  /** Function that returns icon based on file name */
+  getFileIcon?(fileName: string): React.ReactNode;
 }
 
 export interface CodeHighlightFactory {
@@ -90,6 +94,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     withHeader,
     copiedLabel,
     copyLabel,
+    getFileIcon,
     ...others
   } = useProps('CodeHighlight', defaultProps, props);
 
@@ -124,7 +129,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
       mod={{ active: index === value }}
       onClick={() => setValue(index)}
     >
-      {node.icon}
+      <FileIcon fileIcon={node.icon} getFileIcon={getFileIcon} fileName={node.fileName} />
       <span>{node.fileName}</span>
     </UnstyledButton>
   ));

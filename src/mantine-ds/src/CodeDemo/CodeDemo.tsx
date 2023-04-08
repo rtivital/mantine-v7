@@ -1,5 +1,6 @@
 import React from 'react';
 import { CodeHighlightCode, CodeHighlight } from '@mantine/code-highlight';
+import { getFileIcon } from '../get-file-icon/get-file-icon';
 import classes from './CodeDemo.module.css';
 
 export interface CodeDemoProps {
@@ -11,7 +12,7 @@ export function CodeDemo({ code, children }: CodeDemoProps) {
   return (
     <div className={classes.root}>
       <div className={classes.demo}>{children}</div>
-      {code && <CodeHighlight code={code} className={classes.code} />}
+      {code && <CodeHighlight code={code} className={classes.code} getFileIcon={getFileIcon} />}
     </div>
   );
 }
