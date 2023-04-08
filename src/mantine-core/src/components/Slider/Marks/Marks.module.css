@@ -21,7 +21,9 @@
   pointer-events: none;
 
   &[data-filled] {
-    --_mark-bd: var(--slider-color);
+    [data-mantine-color-scheme] & {
+      --_mark-bd: var(--slider-color);
+    }
 
     &[data-disabled] {
       @mixin light {
@@ -44,7 +46,7 @@
 }
 
 .markLabel {
-  transform: translate(-50%, calc(var(--mantine-spacing-xs) / 2));
+  transform: translate(calc(-50% + var(--slider-size) / 2), calc(var(--mantine-spacing-xs) / 2));
   font-size: var(--mantine-font-size-sm);
   color: var(--_mark-label-color);
   white-space: nowrap;
