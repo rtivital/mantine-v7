@@ -140,12 +140,10 @@ export const Slider = factory<SliderFactory>((props, ref) => {
   const {
     classNames,
     styles,
-    color,
     value,
     onChange,
     onChangeEnd,
     size,
-    radius,
     min,
     max,
     step,
@@ -163,10 +161,8 @@ export const Slider = factory<SliderFactory>((props, ref) => {
     thumbChildren,
     disabled,
     unstyled,
-    thumbSize,
     scale,
     inverted,
-    variant,
     ...others
   } = useProps('Slider', defaultProps, props);
 
@@ -288,9 +284,6 @@ export const Slider = factory<SliderFactory>((props, ref) => {
       styles={styles}
       disabled={disabled}
       unstyled={unstyled}
-      radius={radius}
-      color={color}
-      thumbSize={thumbSize}
     >
       <Track
         inverted={inverted}

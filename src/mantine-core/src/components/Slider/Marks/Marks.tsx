@@ -74,4 +74,4 @@ export function Marks({
   return <div>{items}</div>;
 }
 
-Marks.displayName = '@mantine/core/Marks';
+Marks.displayName = '@mantine/core/SliderMarks';

@@ -29,7 +29,16 @@ export function Range() {
       <RangeSlider defaultValue={[25, 65]} disabled mt={60} />
       <RangeSlider defaultValue={[25, 65]} inverted mt="xl" />
       <RangeSlider defaultValue={[25, 65]} inverted disabled mt="xl" />
-      <RangeSlider defaultValue={[25, 65]} radius={0} mt="xl" labelAlwaysOn color="#fe0d45" />
+      <RangeSlider
+        defaultValue={[25, 65]}
+        radius={0}
+        mt="xl"
+        labelAlwaysOn
+        color="#fe0d45"
+        styles={{
+          label: { background: 'pink' },
+        }}
+      />
     </div>
   );
 }

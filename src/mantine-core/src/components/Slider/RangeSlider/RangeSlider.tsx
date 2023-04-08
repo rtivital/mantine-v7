@@ -85,9 +85,6 @@ export interface RangeSliderProps
   /** Determines whether label should be visible when slider is not being dragged or hovered, `false` by default */
   labelAlwaysOn?: boolean;
 
-  /** Thumb `aria-label` */
-  thumbLabel?: string;
-
   /** Determines whether thumb label should be displayed when slider is hovered, `true` by default */
   showLabelOnHover?: boolean;
 
@@ -148,12 +145,10 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
   const {
     classNames,
     styles,
-    color,
     value,
     onChange,
     onChangeEnd,
     size,
-    radius,
     min,
     max,
     minRange,
@@ -174,10 +169,8 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
     thumbChildren,
     disabled,
     unstyled,
-    thumbSize,
     scale,
     inverted,
-    variant,
     ...others
   } = useProps('RangeSlider', defaultProps, props);
 
@@ -379,7 +372,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
   const sharedThumbProps = {
     max: max!,
     min: min!,
-    color,
     size,
     labelTransition,
     labelTransitionDuration,
@@ -401,10 +393,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
       classNames={classNames}
       disabled={disabled}
       unstyled={unstyled}
-      variant={variant}
-      color={color}
-      thumbSize={thumbSize}
-      radius={radius}
     >
       <Track
         offset={positions[0]}
@@ -425,7 +413,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
         }}
         disabled={disabled}
         unstyled={unstyled}
-        variant={variant}
         containerProps={{
           ref: container as any,
           onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
@@ -457,7 +444,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
           isHovered={hovered}
           disabled={disabled}
           unstyled={unstyled}
-          variant={variant}
         >
           {hasArrayThumbChildren ? thumbChildren[0] : thumbChildren}
         </Thumb>
@@ -478,7 +464,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
           isHovered={hovered}
           disabled={disabled}
           unstyled={unstyled}
-          variant={variant}
         >
           {hasArrayThumbChildren ? thumbChildren[1] : thumbChildren}
         </Thumb>

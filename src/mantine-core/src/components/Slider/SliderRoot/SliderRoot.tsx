@@ -91,12 +91,13 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
 
     return (
       <Box
-        {...others}
         tabIndex={-1}
         variant={variant}
-        {...getStyles('root')}
+        size={size}
         vars={_vars}
         ref={ref}
+        {...getStyles('root')}
+        {...others}
       />
     );
   }

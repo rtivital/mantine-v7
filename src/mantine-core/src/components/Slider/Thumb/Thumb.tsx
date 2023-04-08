@@ -109,9 +109,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
           timingFunction={labelTransitionTimingFunction}
         >
           {(transitionStyles) => (
-            <div style={transitionStyles} className={classes.label}>
-              {label}
-            </div>
+            <div {...getStyles('label', { style: transitionStyles })}>{label}</div>
           )}
         </Transition>
       </Box>
