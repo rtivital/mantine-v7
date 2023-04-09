@@ -1,5 +1,4 @@
 .demo {
-  border-bottom: rem(1px) solid var(--_demo-border);
   padding: var(--_demo-spacing, 0rem);
 
   &[data-with-padding] {

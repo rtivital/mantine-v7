@@ -1,17 +1,9 @@
 import React from 'react';
-import { CodeHighlightCode, CodeHighlight } from '@mantine/code-highlight';
-import { DemoArea } from '../DemoArea';
-import { getFileIcon } from '../get-file-icon/get-file-icon';
-import classes from './CodeDemo.module.css';
+import { DemoArea, DemoAreaProps } from '../DemoArea';
+import { DemoCode, DemoCodeProps } from '../DemoCode';
+import { DemoRoot } from '../DemoRoot';
 
-export interface CodeDemoProps {
-  code?: CodeHighlightCode | CodeHighlightCode[];
-  children?: React.ReactNode;
-  withPadding?: boolean;
-  centered?: boolean;
-  maxWidth?: number;
-  defaultExpanded?: boolean;
-}
+export interface CodeDemoProps extends DemoCodeProps, DemoAreaProps {}
 
 export function CodeDemo({
   code,
@@ -22,19 +14,11 @@ export function CodeDemo({
   maxWidth,
 }: CodeDemoProps) {
   return (
-    <div className={classes.root}>
+    <DemoRoot>
       <DemoArea withPadding={withPadding} centered={centered} maxWidth={maxWidth}>
         {children}
       </DemoArea>
-      {code && (
-        <CodeHighlight
-          code={code}
-          className={classes.code}
-          getFileIcon={getFileIcon}
-          withExpandButton
-          defaultExpanded={defaultExpanded}
-        />
-      )}
-    </div>
+      <DemoCode code={code} defaultExpanded={defaultExpanded} />
+    </DemoRoot>
   );
 }
