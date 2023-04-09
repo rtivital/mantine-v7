@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Stack } from '@mantine/core';
 import { DemoAreaProps } from '../DemoArea';
 import { DemoCode } from '../DemoCode';
 import { DemoColumns } from '../DemoColumns';
@@ -7,9 +8,11 @@ import {
   ConfiguratorBooleanControl,
   ConfiguratorSegmentedControl,
   ConfiguratorColorControl,
+  ConfiguratorStringControl,
   ConfiguratorBooleanControlOptions,
   ConfiguratorSegmentedControlOptions,
   ConfiguratorColorControlOptions,
+  ConfiguratorStringControlOptions,
 } from './controls';
 import { injectProps } from './inject-props';
 import { clearProps } from './clear-props';
@@ -19,12 +22,14 @@ const ControlComponents = {
   boolean: ConfiguratorBooleanControl,
   segmented: ConfiguratorSegmentedControl,
   color: ConfiguratorColorControl,
+  string: ConfiguratorStringControl,
 };
 
 export type ConfiguratorControlOptions =
   | ConfiguratorBooleanControlOptions
   | ConfiguratorSegmentedControlOptions
-  | ConfiguratorColorControlOptions;
+  | ConfiguratorColorControlOptions
+  | ConfiguratorStringControlOptions;
 
 export interface ConfiguratorDemoProps extends DemoAreaProps {
   code: string;
@@ -64,7 +69,11 @@ export function ConfiguratorDemo({
   return (
     <DemoRoot>
       <DemoColumns
-        controls={<div className={classes.controls}>{items}</div>}
+        controls={
+          <Stack className={classes.controls} gap="sm">
+            {items}
+          </Stack>
+        }
         centered={centered}
         withPadding={withPadding}
         maxWidth={maxWidth}
