@@ -1,5 +1,6 @@
 .demo {
   padding: var(--_demo-spacing, 0rem);
+  flex: 1;
 
   &[data-with-padding] {
     --_demo-spacing: var(--mantine-spacing-md);

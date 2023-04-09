@@ -6,6 +6,7 @@ export default { title: 'Anchor' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
+      <Anchor component="button">as button</Anchor>
       <Anchor href="https://mantine.dev" target="blank" underline="never">
         Mantine website link: never
       </Anchor>

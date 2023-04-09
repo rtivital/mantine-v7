@@ -1,6 +1,13 @@
 .root {
-  color: var(--mantine-anchor-color);
+  color: var(--mantine-color-anchor);
   text-decoration: var(--_text-decoration);
+  appearance: none;
+  border: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
 
   --_text-decoration: none;
 
