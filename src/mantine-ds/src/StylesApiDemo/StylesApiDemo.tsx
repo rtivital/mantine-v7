@@ -1,8 +1,9 @@
 import React from 'react';
 import { UnstyledButton, Text, Anchor } from '@mantine/core';
-import { DemoArea, DemoAreaProps } from '../DemoArea';
+import { DemoAreaProps } from '../DemoArea';
 import { DemoCode } from '../DemoCode';
 import { DemoRoot } from '../DemoRoot';
+import { DemoColumns } from '../DemoColumns';
 import classes from './StylesApiDemo.module.css';
 
 const hoveredColor = '#fe0d45';
@@ -58,32 +59,29 @@ export function StylesApiDemo({
     <>
       <style dangerouslySetInnerHTML={{ __html: getCss(hovered) }} />
       <DemoRoot>
-        <div className={classes.columns}>
-          <DemoArea withPadding={withPadding} maxWidth={maxWidth} centered={centered}>
-            {React.cloneElement(children as JSX.Element, {
-              classNames: selectors.reduce<Record<string, string>>((acc, item) => {
-                acc[item] = item;
-                return acc;
-              }, {}),
-            })}
-          </DemoArea>
-
-          <div className={classes.controls}>
-            <div className={classes.header}>
-              <Text fw={500} fz="sm" mb={5}>
-                Component Styles API
-              </Text>
-              <Text c="dimmed" fz={11} lh={1.45}>
-                Hover over selectors to highlight corresponding elements. Follow{' '}
-                <Anchor component="button" onClick={onStylesApiLink}>
-                  Styles API
-                </Anchor>{' '}
-                documentation to learn more.
-              </Text>
-            </div>
-            {controls}
-          </div>
-        </div>
+        <DemoColumns
+          withPadding={withPadding}
+          maxWidth={maxWidth}
+          centered={centered}
+          controls={controls}
+          title="Component Styles API"
+          description={
+            <>
+              Hover over selectors to highlight corresponding elements. Follow{' '}
+              <Anchor component="button" onClick={onStylesApiLink}>
+                Styles API
+              </Anchor>{' '}
+              documentation to learn more.
+            </>
+          }
+        >
+          {React.cloneElement(children as JSX.Element, {
+            classNames: selectors.reduce<Record<string, string>>((acc, item) => {
+              acc[item] = item;
+              return acc;
+            }, {}),
+          })}
+        </DemoColumns>
 
         <DemoCode
           code={[
