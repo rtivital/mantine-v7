@@ -1,50 +1,38 @@
 import React from 'react';
 import { DemoAreaProps } from '../DemoArea';
+import { DemoCode } from '../DemoCode';
+import { DemoColumns } from '../DemoColumns';
+import { DemoRoot } from '../DemoRoot';
+import {
+  ConfiguratorBooleanControl,
+  ConfiguratorSegmentedControl,
+  ConfiguratorBooleanControlOptions,
+  ConfiguratorSegmentedControlOptions,
+} from './controls';
+import { injectProps } from './inject-props';
+
+type ConfiguratorControlOptions =
+  | ConfiguratorBooleanControlOptions
+  | ConfiguratorSegmentedControlOptions;
 
 export interface ConfiguratorDemoProps extends DemoAreaProps {
-  data: { selectors: Record<string, string> };
   code: string;
-  onStylesApiLink(): void;
+  controls: ConfiguratorControlOptions[];
 }
 
-function injectProps(props: Record<string, any>, code: string) {}
-
-injectProps({ mt: 2, variant: 'pills', grow: true }, '<Tabs %%props%% />');
-// -> <Tabs mt={2} variant="pills" grow />
-
-injectProps({ mt: 2, variant: 'pills', grow: false }, '<Tabs %%props%% />');
-// -> <Tabs mt={2} variant="pills" grow={false} />
-
-const multiline = `
-<Tabs
-  %%props%%
-/>
-`;
-
-injectProps({ mt: 2, variant: 'pills', grow: true }, multiline);
-// <Tabs
-//   mt={2}
-//   variant="pills"
-//   grow
-// />
-
-const multilineWithChildren = `
-<div>
-  <div>
-    <Tabs
-      %%props%%
-    />
-  </div>
-</div>
-`;
-
-injectProps({ mt: 2, variant: 'pills', grow: false }, multilineWithChildren);
-// <div>
-//   <div>
-//     <Tabs
-//       mt={2}
-//       variant="pills"
-//       grow={false}
-//     />
-//   </div>
-// </div>
+export function ConfiguratorDemo({ code, controls, children }: ConfiguratorDemoProps) {
+  return (
+    <DemoRoot>
+      <DemoColumns controls={null}>{children}</DemoColumns>
+      <DemoCode
+        code={[
+          {
+            fileName: 'Demo.tsx',
+            language: 'tsx',
+            code: injectProps({ hello: 'there', children: 'lala' }, code),
+          },
+        ]}
+      />
+    </DemoRoot>
+  );
+}

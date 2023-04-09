@@ -7,28 +7,34 @@ function isMultiLine(code: string) {
 export function injectProps(props: any, code: string) {
   const propStrings: string[] = [];
   const multiline = isMultiLine(code);
+  const replacedChildrenCode = code.replace('%%children%%', props.children || '');
 
   for (const [key, value] of Object.entries(props)) {
-    if (typeof value === 'string') {
-      propStrings.push(`${key}="${value}"`);
-    } else if (typeof value === 'number') {
-      propStrings.push(`${key}={${value}}`);
-    } else if (typeof value === 'boolean') {
-      if (value) {
-        propStrings.push(key);
-      } else {
-        propStrings.push(`${key}={false}`);
+    if (key !== 'children') {
+      if (typeof value === 'string') {
+        propStrings.push(`${key}="${value}"`);
+      } else if (typeof value === 'number') {
+        propStrings.push(`${key}={${value}}`);
+      } else if (typeof value === 'boolean') {
+        if (value) {
+          propStrings.push(key);
+        } else {
+          propStrings.push(`${key}={false}`);
+        }
       }
     }
   }
 
   if (!multiline) {
-    return code.replace('%%props%%', propStrings.join(' '));
+    const joined = propStrings.join(' ');
+    return joined.length > 0
+      ? replacedChildrenCode.replace('%%props%%', ` ${joined}`)
+      : replacedChildrenCode.replace('%%props%%', '');
   }
 
   const placeholderRegex = /^(\s*)%%props%%(\s*)$/gm;
 
-  const result = code.replace(placeholderRegex, (_, before, after) => {
+  const result = replacedChildrenCode.replace(placeholderRegex, (_, before, after) => {
     const propsWithWhitespace = propStrings
       .map((propString) => `${before}${propString}\n`)
       .join('');
