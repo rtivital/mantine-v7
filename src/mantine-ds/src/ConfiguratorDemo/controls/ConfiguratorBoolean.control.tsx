@@ -1,32 +1,32 @@
 import React from 'react';
 import { Switch, BoxProps, ElementProps } from '@mantine/core';
 import { getControlLabel } from './get-control-label';
+import { ConfiguratorControl } from './types';
 
-export interface ConfiguratorBooleanControlOptions {
-  type: 'boolean';
-  label: string;
-  initialValue: boolean;
-}
+export type ConfiguratorBooleanControlOptions = ConfiguratorControl<
+  'boolean',
+  { initialValue: boolean }
+>;
 
 export interface ConfiguratorBooleanControlProps
   extends BoxProps,
     Omit<ElementProps<'input'>, 'onChange' | 'value' | 'size'> {
   value: boolean;
   onChange(value: boolean): void;
-  label: string;
+  prop: string;
 }
 
 export function ConfiguratorBooleanControl({
   value,
   onChange,
-  label,
+  prop,
   ...others
 }: ConfiguratorBooleanControlProps) {
   return (
     <Switch
       checked={value}
       onChange={(event) => onChange(event.currentTarget.checked)}
-      label={getControlLabel(label)}
+      label={getControlLabel(prop)}
       {...others}
     />
   );

@@ -26,7 +26,18 @@ function Demo(props: Partial<HighlightProps>) {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <ConfiguratorDemo code={code} controls={[]}>
+      <ConfiguratorDemo
+        code={code}
+        controls={[
+          {
+            type: 'segmented',
+            data: ['yellow', 'blue'],
+            prop: 'color',
+            initialValue: 'yellow',
+            libraryValue: 'yellow',
+          },
+        ]}
+      >
         <Demo />
       </ConfiguratorDemo>
     </div>

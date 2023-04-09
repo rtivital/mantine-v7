@@ -24,8 +24,8 @@ export function DemoColumns({
         {children}
       </DemoArea>
 
-      {title && (
-        <div className={classes.controls}>
+      <div className={classes.controls}>
+        {title && (
           <div className={classes.header}>
             <Text fw={500} fz="sm" mb={5}>
               {title}
@@ -36,10 +36,10 @@ export function DemoColumns({
               </Text>
             )}
           </div>
+        )}
 
-          {controls}
-        </div>
-      )}
+        {controls}
+      </div>
     </div>
   );
 }
