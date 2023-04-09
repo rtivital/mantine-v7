@@ -1,0 +1,13 @@
+.swatch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mantine-color-white);
+  flex: 1 0 calc(15% - rem(4px));
+}
+
+.check {
+  width: rem(12px);
+  height: rem(12px);
+}

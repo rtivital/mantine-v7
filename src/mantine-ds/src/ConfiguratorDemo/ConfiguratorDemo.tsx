@@ -6,20 +6,25 @@ import { DemoRoot } from '../DemoRoot';
 import {
   ConfiguratorBooleanControl,
   ConfiguratorSegmentedControl,
+  ConfiguratorColorControl,
   ConfiguratorBooleanControlOptions,
   ConfiguratorSegmentedControlOptions,
+  ConfiguratorColorControlOptions,
 } from './controls';
 import { injectProps } from './inject-props';
 import { clearProps } from './clear-props';
+import classes from './ConfiguratorDemo.module.css';
 
 const ControlComponents = {
   boolean: ConfiguratorBooleanControl,
   segmented: ConfiguratorSegmentedControl,
+  color: ConfiguratorColorControl,
 };
 
 export type ConfiguratorControlOptions =
   | ConfiguratorBooleanControlOptions
-  | ConfiguratorSegmentedControlOptions;
+  | ConfiguratorSegmentedControlOptions
+  | ConfiguratorColorControlOptions;
 
 export interface ConfiguratorDemoProps extends DemoAreaProps {
   code: string;
@@ -51,7 +56,7 @@ export function ConfiguratorDemo({ code, controls, children }: ConfiguratorDemoP
 
   return (
     <DemoRoot>
-      <DemoColumns controls={<div>{items}</div>}>
+      <DemoColumns controls={<div className={classes.controls}>{items}</div>}>
         {React.cloneElement(children as JSX.Element, state)}
       </DemoColumns>
       <DemoCode

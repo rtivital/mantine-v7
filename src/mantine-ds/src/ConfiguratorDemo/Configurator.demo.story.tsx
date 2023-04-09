@@ -29,9 +29,15 @@ export function Usage() {
       <ConfiguratorDemo
         code={code}
         controls={[
+          // {
+          //   type: 'segmented',
+          //   data: ['yellow', 'blue'],
+          //   prop: 'color',
+          //   initialValue: 'yellow',
+          //   libraryValue: 'yellow',
+          // },
           {
-            type: 'segmented',
-            data: ['yellow', 'blue'],
+            type: 'color',
             prop: 'color',
             initialValue: 'yellow',
             libraryValue: 'yellow',
