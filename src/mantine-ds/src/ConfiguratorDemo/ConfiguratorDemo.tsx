@@ -31,7 +31,14 @@ export interface ConfiguratorDemoProps extends DemoAreaProps {
   controls: ConfiguratorControlOptions[];
 }
 
-export function ConfiguratorDemo({ code, controls, children }: ConfiguratorDemoProps) {
+export function ConfiguratorDemo({
+  code,
+  controls,
+  children,
+  centered,
+  maxWidth,
+  withPadding,
+}: ConfiguratorDemoProps) {
   const initialState = controls.reduce<Record<string, any>>((acc, control) => {
     acc[control.prop] = control.initialValue;
     return acc;
@@ -56,7 +63,12 @@ export function ConfiguratorDemo({ code, controls, children }: ConfiguratorDemoP
 
   return (
     <DemoRoot>
-      <DemoColumns controls={<div className={classes.controls}>{items}</div>}>
+      <DemoColumns
+        controls={<div className={classes.controls}>{items}</div>}
+        centered={centered}
+        withPadding={withPadding}
+        maxWidth={maxWidth}
+      >
         {React.cloneElement(children as JSX.Element, state)}
       </DemoColumns>
       <DemoCode

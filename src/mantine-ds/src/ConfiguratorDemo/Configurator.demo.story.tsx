@@ -8,8 +8,8 @@ const code = `import { Highlight } from '@mantine/core';
 
 function Demo() {
   return (
-    <Highlight%%props%%>
-      %%children%%
+    <Highlight highlight="this"%%props%%>
+      Highlight this
     </Highlight>
   );
 }`;
@@ -28,6 +28,7 @@ export function Usage() {
     <div style={{ padding: 40 }}>
       <ConfiguratorDemo
         code={code}
+        centered
         controls={[
           // {
           //   type: 'segmented',

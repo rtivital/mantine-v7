@@ -11,3 +11,22 @@
   width: rem(12px);
   height: rem(12px);
 }
+
+.colorControl {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 calc(15% - rem(4px));
+  height: 1.75rem;
+  border-radius: var(--mantine-radius-sm);
+  border: rem(1px) solid var(--_control-border-color);
+
+  @mixin light {
+    --_control-border-color: var(--mantine-color-gray-5);
+  }
+
+  @mixin dark {
+    --_control-border-color: var(--mantine-color-dark-3);
+  }
+}

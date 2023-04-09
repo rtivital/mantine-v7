@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ColorSwatch,
   Input,
@@ -7,9 +7,13 @@ import {
   useMantineTheme,
   CheckIcon,
   Group,
+  Popover,
+  UnstyledButton,
+  ColorPicker,
 } from '@mantine/core';
 import { getControlLabel } from './get-control-label';
 import { ConfiguratorControl } from './types';
+import { ColorWheelIcon } from './ColorWheelIcon';
 import classes from './ConfiguratorColor.control.module.css';
 
 export type ConfiguratorColorControlOptions = ConfiguratorControl<
@@ -32,6 +36,13 @@ export function ConfiguratorColorControl({
   ...others
 }: ConfiguratorColorControlProps) {
   const theme = useMantineTheme();
+  const [colorPickerColor, setColorPickerColor] = useState('#fff');
+
+  const handleColorPickerChange = (color: string) => {
+    setColorPickerColor(color);
+    onChange(color);
+  };
+
   const colors = Object.keys(theme.colors)
     .filter((color) => color !== 'dark')
     .map((color) => (
@@ -49,8 +60,23 @@ export function ConfiguratorColorControl({
 
   return (
     <Input.Wrapper labelElement="div" label={getControlLabel(prop)} {...others}>
-      <Group gap={2} mt={5} wrap="wrap">
+      <Group gap={2} mt={2} wrap="wrap">
         {colors}
+        <Popover radius="md" position="bottom-end" shadow="md">
+          <Popover.Target>
+            <UnstyledButton className={classes.colorControl}>
+              <ColorWheelIcon />
+            </UnstyledButton>
+          </Popover.Target>
+
+          <Popover.Dropdown p={8}>
+            <ColorPicker
+              value={colorPickerColor}
+              onChange={handleColorPickerChange}
+              format="rgba"
+            />
+          </Popover.Dropdown>
+        </Popover>
       </Group>
     </Input.Wrapper>
   );
