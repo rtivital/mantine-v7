@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, rem } from '@mantine/core';
 import { CodeHighlightCode, CodeHighlight } from '@mantine/code-highlight';
+import { DemoArea } from '../DemoArea';
 import { getFileIcon } from '../get-file-icon/get-file-icon';
 import classes from './CodeDemo.module.css';
 
@@ -16,23 +16,16 @@ export interface CodeDemoProps {
 export function CodeDemo({
   code,
   children,
-  withPadding = true,
-  centered = false,
+  withPadding,
+  centered,
   defaultExpanded = true,
   maxWidth,
 }: CodeDemoProps) {
   return (
     <div className={classes.root}>
-      <Box
-        className={classes.demo}
-        mod={{ 'with-padding': withPadding, centered: centered && !maxWidth }}
-        vars={{
-          '--demo-max-width': maxWidth ? rem(maxWidth) : undefined,
-          '--demo-margin-y': maxWidth && centered ? 'auto' : undefined,
-        }}
-      >
-        <div className={classes.demoInner}>{children}</div>
-      </Box>
+      <DemoArea withPadding={withPadding} centered={centered} maxWidth={maxWidth}>
+        {children}
+      </DemoArea>
       {code && (
         <CodeHighlight
           code={code}
