@@ -6,8 +6,6 @@ import { DemoRoot } from '../DemoRoot';
 import { DemoColumns } from '../DemoColumns';
 import classes from './StylesApiDemo.module.css';
 
-const hoveredColor = '#fe0d45';
-
 export interface StylesApiProps extends DemoAreaProps {
   data: { selectors: Record<string, string> };
   code: string;
@@ -16,7 +14,7 @@ export interface StylesApiProps extends DemoAreaProps {
 
 function getCss(hovered: string | null) {
   return hovered
-    ? `.${hovered} {\n  outline: 2px solid ${hoveredColor};\n}\n`
+    ? `.${hovered} {\n  outline: 2px solid #fe0d45;\n}\n`
     : '/*\n * Hover over selectors to apply outline styles\n */';
 }
 
