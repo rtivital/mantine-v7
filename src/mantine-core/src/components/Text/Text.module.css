@@ -1,11 +1,10 @@
 .root {
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
-  line-height: var(--mantine-line-height);
-  font-weight: var(--_text-font-weight);
-
-  --_text-line-height: var(--mantine-line-height);
-  --_text-font-weight: normal;
+  line-height: var(--_text-line-height, var(--mantine-line-height));
+  font-weight: var(--_text-font-weight, normal);
+  margin: 0;
+  padding: 0;
 
   &[data-truncate] {
     overflow: hidden;
@@ -25,6 +24,7 @@
 
   &[data-variant='gradient'] {
     background-image: var(--text-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

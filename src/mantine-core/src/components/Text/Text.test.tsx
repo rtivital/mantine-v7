@@ -12,7 +12,7 @@ describe('@mantine/core/Text', () => {
     styleProps: true,
     children: true,
     extend: true,
-    refType: HTMLDivElement,
+    refType: HTMLParagraphElement,
     displayName: '@mantine/core/Text',
     stylesApiSelectors: ['root'],
   });

@@ -66,7 +66,7 @@ export interface TextProps
 export interface TextFactory {
   props: TextProps;
   defaultComponent: 'div';
-  defaultRef: HTMLDivElement;
+  defaultRef: HTMLParagraphElement;
   stylesNames: TextStylesNames;
   vars: TextCssVariables;
   variant: TextVariant;
@@ -125,7 +125,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     <Box
       {...getStyles('root', { focusable: true })}
       ref={ref}
-      component={span ? 'span' : 'div'}
+      component={span ? 'span' : 'p'}
       variant={variant}
       mod={[
         {
