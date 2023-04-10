@@ -10,7 +10,6 @@ const defaultProps: SliderProps = {
 };
 
 const getInput = (container: HTMLElement) => container.querySelector('input[type="hidden"]');
-const clickMark = (markLabel: string) => userEvent.click(screen.getByText(markLabel));
 
 const expectInputValue = (value: string, container: HTMLElement) =>
   expect(getInput(container)).toHaveValue(value);
@@ -88,24 +87,6 @@ describe('@mantine/core/Slider', () => {
     expectInputValue('50', container);
     await pressArrow('left');
     expectInputValue('45', container);
-  });
-
-  it('sets slider value to clicked mark value', async () => {
-    const { container } = render(
-      <Slider
-        defaultValue={50}
-        marks={[
-          { value: 15, label: 'test-mark-15' },
-          { value: 85, label: 'test-mark-85' },
-        ]}
-      />
-    );
-
-    expectInputValue('50', container);
-    await clickMark('test-mark-15');
-    expectInputValue('15', container);
-    await clickMark('test-mark-85');
-    expectInputValue('85', container);
   });
 
   it('shows label on hover', async () => {

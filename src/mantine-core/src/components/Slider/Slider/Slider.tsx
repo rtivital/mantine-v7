@@ -293,7 +293,6 @@ export const Slider = factory<SliderFactory>((props, ref) => {
         min={min!}
         max={max!}
         value={scaledValue}
-        onChange={setValue}
         classNames={classNames}
         styles={styles}
         disabled={disabled}

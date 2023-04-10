@@ -11,7 +11,6 @@ export interface MarksProps extends StylesApiProps<MarksStylesNames> {
   min: number;
   max: number;
   value: number;
-  onChange(value: number): void;
   offset: number | undefined;
   disabled: boolean | undefined;
   inverted: boolean | undefined;
@@ -25,7 +24,6 @@ export function Marks({
   min,
   max,
   disabled,
-  onChange,
   value,
   offset,
   inverted,
@@ -54,19 +52,7 @@ export function Marks({
       />
       {mark.label && (
         // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        <div
-          {...getStyles('markLabel')}
-          onMouseDown={(event) => {
-            event.stopPropagation();
-            !disabled && onChange(mark.value);
-          }}
-          onTouchStart={(event) => {
-            event.stopPropagation();
-            !disabled && onChange(mark.value);
-          }}
-        >
-          {mark.label}
-        </div>
+        <div {...getStyles('markLabel')}>{mark.label}</div>
       )}
     </Box>
   ));

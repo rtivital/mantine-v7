@@ -4,10 +4,11 @@
   top: 0;
   z-index: 2;
   height: 0;
+  pointer-events: none;
 
   @mixin rtl {
     left: unset;
-    right: var(--mark-offset);
+    right: calc(var(--mark-offset) - var(--slider-size) / 2);
   }
 }
 

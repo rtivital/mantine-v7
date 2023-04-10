@@ -14,7 +14,6 @@ export interface TrackProps extends StylesApiProps<TrackStylesNames> {
   max: number;
   value: number;
   children: React.ReactNode;
-  onChange(value: number): void;
   disabled: boolean | undefined;
   inverted: boolean | undefined;
   containerProps?: React.PropsWithRef<React.ComponentProps<'div'>>;

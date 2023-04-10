@@ -10,7 +10,6 @@ const defaultProps: MarksProps = {
   min: 0,
   max: 100,
   value: 80,
-  onChange: () => {},
   disabled: false,
   variant: '',
   offset: 0,
@@ -24,15 +23,6 @@ describe('@mantine/core/Slider/Marks', () => {
     expect(container.querySelectorAll('.mantine-Slider-markWrapper')).toHaveLength(2);
     expect(labels[0].textContent).toBe('test-1');
     expect(labels[1].textContent).toBe('test-2');
-  });
-
-  it('calls onChange with mark value when mark label is pressed', async () => {
-    const spy = jest.fn();
-    const { container } = render(<Marks {...defaultProps} onChange={spy} />);
-    await userEvent.click(container.querySelectorAll('.mantine-Slider-markLabel')[0]);
-    expect(spy).toHaveBeenLastCalledWith(50);
-    await userEvent.click(container.querySelectorAll('.mantine-Slider-markLabel')[1]);
-    expect(spy).toHaveBeenLastCalledWith(80);
   });
 
   it('has correct displayName', () => {

@@ -405,12 +405,6 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
         value={_value[1]}
         styles={styles}
         classNames={classNames}
-        onChange={(val) => {
-          const nearestValue = Math.abs(_value[0] - val) > Math.abs(_value[1] - val) ? 1 : 0;
-          const clone: RangeSliderValue = [...(_value as RangeSliderValue)];
-          clone[nearestValue] = val;
-          _setValue(clone);
-        }}
         disabled={disabled}
         unstyled={unstyled}
         containerProps={{
