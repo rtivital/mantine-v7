@@ -14,16 +14,18 @@ export function getFileIcon(fileName: string) {
 }
 
 export interface DemoCodeProps {
-  code?: CodeHighlightTabsCode | CodeHighlightTabsCode[];
+  code?: string | CodeHighlightTabsCode | CodeHighlightTabsCode[];
   defaultExpanded?: boolean;
 }
 
 export function DemoCode({ code, defaultExpanded = true }: DemoCodeProps) {
+  const _code: CodeHighlightTabsCode | CodeHighlightTabsCode[] | undefined =
+    typeof code === 'string' ? { code, fileName: 'Demo.tsx', language: 'tsx' } : code;
   return (
     <>
-      {code && (
+      {_code && (
         <CodeHighlightTabs
-          code={code}
+          code={_code}
           className={classes.code}
           getFileIcon={getFileIcon}
           withExpandButton

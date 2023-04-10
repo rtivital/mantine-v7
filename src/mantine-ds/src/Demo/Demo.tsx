@@ -3,23 +3,40 @@ import { CodeDemo, CodeDemoProps } from '../CodeDemo/CodeDemo';
 import { ConfiguratorDemo, ConfiguratorDemoProps } from '../ConfiguratorDemo/ConfiguratorDemo';
 import { StylesApiDemo, StylesApiDemoProps } from '../StylesApiDemo/StylesApiDemo';
 
-export type MantineDemo =
-  | ({ type: 'code' } & CodeDemoProps)
-  | ({ type: 'configurator' } & ConfiguratorDemoProps)
-  | ({ type: 'styles-api' } & StylesApiDemoProps);
-
-interface DemoProps {
-  demo: MantineDemo;
+interface DemoComponent {
+  component: React.FC<any>;
 }
 
-export function Demo({ demo }: DemoProps) {
-  switch (demo.type) {
+export type MantineDemo =
+  | ({ type: 'code' } & DemoComponent & CodeDemoProps)
+  | ({ type: 'configurator' } & DemoComponent & ConfiguratorDemoProps)
+  | ({ type: 'styles-api' } & DemoComponent & StylesApiDemoProps);
+
+interface DemoProps {
+  data: MantineDemo;
+}
+
+export function Demo({ data }: DemoProps) {
+  const { component: Component } = data;
+  switch (data.type) {
     case 'code':
-      return <CodeDemo {...demo} />;
+      return (
+        <CodeDemo {...data}>
+          <Component />
+        </CodeDemo>
+      );
     case 'configurator':
-      return <ConfiguratorDemo {...demo} />;
+      return (
+        <ConfiguratorDemo {...data}>
+          <Component />
+        </ConfiguratorDemo>
+      );
     case 'styles-api':
-      return <StylesApiDemo {...demo} />;
+      return (
+        <StylesApiDemo {...data}>
+          <Component />
+        </StylesApiDemo>
+      );
     default:
       return null;
   }
