@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, userEvent } from '@mantine/tests';
+import { render } from '@mantine/tests';
 import { Marks, MarksProps } from './Marks';
 
 const defaultProps: MarksProps = {
