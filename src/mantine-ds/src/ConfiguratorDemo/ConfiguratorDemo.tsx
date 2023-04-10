@@ -10,11 +10,13 @@ import {
   ConfiguratorColorControl,
   ConfiguratorStringControl,
   ConfiguratorSelectControl,
+  ConfiguratorSizeControl,
   ConfiguratorBooleanControlOptions,
   ConfiguratorSegmentedControlOptions,
   ConfiguratorColorControlOptions,
   ConfiguratorStringControlOptions,
   ConfiguratorSelectControlOptions,
+  ConfiguratorSizeControlOptions,
 } from './controls';
 import { injectProps } from './inject-props';
 import { clearProps } from './clear-props';
@@ -26,6 +28,7 @@ const ControlComponents = {
   color: ConfiguratorColorControl,
   string: ConfiguratorStringControl,
   select: ConfiguratorSelectControl,
+  size: ConfiguratorSizeControl,
 };
 
 export type ConfiguratorControlOptions =
@@ -33,7 +36,8 @@ export type ConfiguratorControlOptions =
   | ConfiguratorSegmentedControlOptions
   | ConfiguratorColorControlOptions
   | ConfiguratorStringControlOptions
-  | ConfiguratorSelectControlOptions;
+  | ConfiguratorSelectControlOptions
+  | ConfiguratorSizeControlOptions;
 
 export interface ConfiguratorDemoProps extends DemoAreaProps {
   code: string;

@@ -44,6 +44,12 @@ export function Usage() {
             libraryValue: 'yellow',
           },
           {
+            type: 'size',
+            prop: 'fz',
+            initialValue: 'sm',
+            libraryValue: null,
+          },
+          {
             type: 'string',
             prop: 'highlight',
             initialValue: 'this',
