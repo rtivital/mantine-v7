@@ -12,6 +12,7 @@ import {
   useVars,
   getSize,
   createVarsResolver,
+  MantineRadius,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps, Loader } from '../Loader';
@@ -40,7 +41,7 @@ export type ActionIconCssVariables =
 export interface ActionIconStylesParams {
   color: MantineColor | string | undefined;
   size: MantineSize | string | number | undefined;
-  radius: MantineSize | string | number | undefined;
+  radius: MantineRadius | (string & {}) | number | undefined;
   gradient: MantineGradient | undefined;
   variant: ActionIconVariant | (string & {}) | undefined;
 }
@@ -55,7 +56,7 @@ export interface ActionIconProps
     > {
   __staticSelector?: string;
 
-  /** Determines whether Loader component should be displayed instead of the icon */
+  /** Determines whether `Loader` component should be displayed instead of the icon */
   loading?: boolean;
 
   /** Props added to Loader component (only visible when `loading` prop is set) */
@@ -67,8 +68,8 @@ export interface ActionIconProps
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor;
 
-  /** Key of theme.radius or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-  radius?: MantineSize | (string & {}) | number;
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
+  radius?: MantineRadius | (string & {}) | number;
 
   /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
