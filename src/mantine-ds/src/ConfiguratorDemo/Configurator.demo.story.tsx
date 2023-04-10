@@ -44,9 +44,11 @@ export function Usage() {
             libraryValue: 'yellow',
           },
           {
-            type: 'size',
+            type: 'number',
             prop: 'fz',
-            initialValue: 'sm',
+            min: 10,
+            max: 50,
+            initialValue: 14,
             libraryValue: null,
           },
           {
