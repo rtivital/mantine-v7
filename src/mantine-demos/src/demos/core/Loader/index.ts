@@ -1,1 +1,1 @@
-export { usage } from './Loader.demo.usage';
+export { configurator } from './Loader.demo.configurator';
