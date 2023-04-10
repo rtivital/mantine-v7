@@ -8,6 +8,8 @@ module.exports = {
     'react/jsx-pascal-case': 'off',
     'newline-per-chained-call': 'off',
     'import/extensions': 'off',
+    'react/self-closing-comp': 'off',
+    'react/jsx-closing-bracket-location': 'off',
   },
   parserOptions: {
     project: './tsconfig.eslint.json',
