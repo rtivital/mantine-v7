@@ -57,7 +57,7 @@ export interface SegmentedControlProps
       SegmentedControlVariant,
       SegmentedControlCssVariables
     >,
-    Omit<ElementProps<'div'>, 'onChange'> {
+    ElementProps<'div', 'onChange'> {
   /** Data based on which controls are rendered */
   data: (string | SegmentedControlItem)[];
 

@@ -50,7 +50,7 @@ export interface SwitchStylesParams {
 export interface SwitchProps
   extends BoxProps,
     StylesApiProps<SwitchStylesNames, SwitchVariant, SwitchCssVariables>,
-    Omit<ElementProps<'input'>, 'size'> {
+    ElementProps<'input', 'size'> {
   /** Id is used to bind input and label, if not passed unique id will be generated for each input */
   id?: string;
 

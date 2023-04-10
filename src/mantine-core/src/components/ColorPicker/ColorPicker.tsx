@@ -75,7 +75,7 @@ export interface ColorPickerProps
   extends BoxProps,
     __ColorPickerProps,
     StylesApiProps<ColorPickerStylesNames, ColorPickerVariant, ColorPickerCssVariables>,
-    Omit<ElementProps<'div'>, 'onChange' | 'value' | 'defaultValue'> {
+    ElementProps<'div', 'onChange' | 'value' | 'defaultValue'> {
   __staticSelector?: string;
 
   /** Determines whether component should take 100% width of its container, `false` by default */

@@ -8,9 +8,7 @@ export type ConfiguratorNumberControlOptions = ConfiguratorControl<
   { initialValue: number; min?: number; max?: number; step?: number }
 >;
 
-export interface ConfiguratorNumberControlProps
-  extends BoxProps,
-    Omit<ElementProps<'div'>, 'onChange'> {
+export interface ConfiguratorNumberControlProps extends BoxProps, ElementProps<'div', 'onChange'> {
   value: number;
   onChange(value: number): void;
   prop: string;

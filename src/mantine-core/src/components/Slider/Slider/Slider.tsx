@@ -34,7 +34,7 @@ export type SliderStylesNames =
 export interface SliderProps
   extends BoxProps,
     StylesApiProps<SliderStylesNames, SliderVariant, SliderCssVariables, SliderStylesParams>,
-    Omit<ElementProps<'div'>, 'onChange'> {
+    ElementProps<'div', 'onChange'> {
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
   color?: MantineColor;
 

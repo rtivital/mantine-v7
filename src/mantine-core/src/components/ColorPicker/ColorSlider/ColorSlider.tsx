@@ -27,7 +27,7 @@ export type ColorSliderStylesNames = 'slider' | 'sliderOverlay' | 'thumb';
 export interface __ColorSliderProps
   extends BoxProps,
     StylesApiProps<ColorSliderStylesNames>,
-    Omit<ElementProps<'div'>, 'onChange'> {
+    ElementProps<'div', 'onChange'> {
   value: number;
   onChange?(value: number): void;
   onChangeEnd?(value: number): void;

@@ -10,7 +10,7 @@ export type ConfiguratorStringControlOptions = ConfiguratorControl<
 
 export interface ConfiguratorStringControlProps
   extends BoxProps,
-    Omit<ElementProps<'input'>, 'onChange' | 'value' | 'size'> {
+    ElementProps<'input', 'onChange' | 'value' | 'size'> {
   value: string;
   onChange(value: string): void;
   prop: string;

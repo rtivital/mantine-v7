@@ -5,7 +5,7 @@ import { __InputStylesNames } from '../Input';
 import { ComboboxData, getParsedComboboxData, ComboboxChevron } from '../Combobox';
 import { NativeSelectOption } from './NativeSelectOption';
 
-export interface NativeSelectProps extends InputBaseProps, Omit<ElementProps<'select'>, 'size'> {
+export interface NativeSelectProps extends InputBaseProps, ElementProps<'select', 'size'> {
   /** Data used to render options, can be replaced with `children` */
   data?: ComboboxData;
 }

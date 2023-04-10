@@ -25,7 +25,7 @@ export interface SaturationStylesParams {}
 export interface SaturationProps
   extends BoxProps,
     StylesApiProps<SaturationStylesNames, SaturationVariant, SaturationCssVariables>,
-    Omit<ElementProps<'div'>, 'onChange'> {
+    ElementProps<'div', 'onChange'> {
   __staticSelector: string;
   value: HsvaColor;
   onChange(color: Partial<HsvaColor>): void;

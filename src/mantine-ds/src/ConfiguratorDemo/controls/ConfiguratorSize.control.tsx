@@ -13,9 +13,7 @@ const MARKS = [
 
 export type ConfiguratorSizeControlOptions = ConfiguratorControl<'size', { initialValue: string }>;
 
-export interface ConfiguratorSizeControlProps
-  extends BoxProps,
-    Omit<ElementProps<'div'>, 'onChange'> {
+export interface ConfiguratorSizeControlProps extends BoxProps, ElementProps<'div', 'onChange'> {
   value: string;
   onChange(value: string): void;
   prop: string;

@@ -11,7 +11,7 @@ export type ConfiguratorSegmentedControlOptions = ConfiguratorControl<
 
 export interface ConfiguratorSegmentedControlProps
   extends BoxProps,
-    Omit<ElementProps<'div'>, 'onChange'> {
+    ElementProps<'div', 'onChange'> {
   data: SelectData;
   value: string;
   onChange(value: string): void;

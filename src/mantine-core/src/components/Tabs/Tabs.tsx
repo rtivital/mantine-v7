@@ -39,7 +39,7 @@ export interface TabsStylesParams {
 export interface TabsProps
   extends BoxProps,
     StylesApiProps<TabsStylesNames, TabsVariant, TabsCssVariables, TabsStylesParams>,
-    Omit<ElementProps<'div'>, 'defaultValue' | 'value' | 'onChange'> {
+    ElementProps<'div', 'defaultValue' | 'value' | 'onChange'> {
   /** Default value for uncontrolled component */
   defaultValue?: string | null;
 

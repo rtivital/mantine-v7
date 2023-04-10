@@ -30,7 +30,7 @@ export type RangeSliderValue = [number, number];
 export interface RangeSliderProps
   extends BoxProps,
     StylesApiProps<SliderStylesNames, SliderVariant, SliderCssVariables, SliderStylesParams>,
-    Omit<ElementProps<'div'>, 'onChange' | 'value' | 'defaultValue'> {
+    ElementProps<'div', 'onChange' | 'value' | 'defaultValue'> {
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
   color?: MantineColor;
 

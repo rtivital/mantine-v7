@@ -10,7 +10,7 @@ export type ConfiguratorBooleanControlOptions = ConfiguratorControl<
 
 export interface ConfiguratorBooleanControlProps
   extends BoxProps,
-    Omit<ElementProps<'input'>, 'onChange' | 'value' | 'size'> {
+    ElementProps<'input', 'onChange' | 'value' | 'size'> {
   value: boolean;
   onChange(value: boolean): void;
   prop: string;

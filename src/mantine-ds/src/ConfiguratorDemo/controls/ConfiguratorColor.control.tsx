@@ -23,7 +23,7 @@ export type ConfiguratorColorControlOptions = ConfiguratorControl<
 
 export interface ConfiguratorColorControlProps
   extends BoxProps,
-    Omit<ElementProps<'div'>, 'onChange' | 'value' | 'size'> {
+    ElementProps<'div', 'onChange' | 'value' | 'size'> {
   value: string;
   onChange(value: string): void;
   prop: string;

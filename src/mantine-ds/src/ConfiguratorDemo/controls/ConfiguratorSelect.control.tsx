@@ -11,7 +11,7 @@ export type ConfiguratorSelectControlOptions = ConfiguratorControl<
 
 export interface ConfiguratorSelectControlProps
   extends BoxProps,
-    Omit<ElementProps<'select'>, 'onChange' | 'value' | 'size'> {
+    ElementProps<'select', 'onChange' | 'value' | 'size'> {
   value: string;
   data: SelectData;
   onChange(value: string): void;

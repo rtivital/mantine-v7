@@ -3,7 +3,7 @@ import { factory, ElementProps, useProps } from '../../core';
 import { InputBase, InputBaseProps } from '../InputBase';
 import { __InputStylesNames } from '../Input';
 
-export interface TextInputProps extends InputBaseProps, Omit<ElementProps<'input'>, 'size'> {}
+export interface TextInputProps extends InputBaseProps, ElementProps<'input', 'size'> {}
 
 export interface TextInputFactory {
   props: TextInputProps;
