@@ -28,9 +28,9 @@ const RingLoader: MantineLoaderComponent = forwardRef(({ style, ...others }, ref
     {...others}
     ref={ref}
     style={{
-      width: 'var(--size)',
-      height: 'var(--size)',
-      stroke: 'var(--color)',
+      width: 'var(--loader-size)',
+      height: 'var(--loader-size)',
+      stroke: 'var(--loader-color)',
       ...style,
     }}
     viewBox="0 0 45 45"
