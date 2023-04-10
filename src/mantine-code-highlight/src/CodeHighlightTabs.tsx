@@ -51,7 +51,12 @@ export interface CodeHighlightTabsStylesParams {
 
 export interface CodeHighlightTabsProps
   extends BoxProps,
-    StylesApiProps<CodeHighlightTabsStylesNames, CodeHighlightTabsVariant>,
+    StylesApiProps<
+      CodeHighlightTabsStylesNames,
+      CodeHighlightTabsVariant,
+      CodeHighlightTabsCssVariables,
+      CodeHighlightTabsStylesParams
+    >,
     ElementProps<'div'> {
   /** Code to highlight with meta data (file name and icon) */
   code: CodeHighlightTabsCode | CodeHighlightTabsCode[];

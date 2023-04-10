@@ -1,4 +1,5 @@
 import React from 'react';
+import { CodeHighlightTabs } from './CodeHighlightTabs';
 import { CodeHighlight } from './CodeHighlight';
 
 export default { title: 'CodeHighlight' };
@@ -180,7 +181,15 @@ function CSSIcon(props: React.ComponentProps<'svg'>) {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <CodeHighlight
+      <CodeHighlight code={tsxCode} />
+    </div>
+  );
+}
+
+export function Tabs() {
+  return (
+    <div style={{ padding: 40 }}>
+      <CodeHighlightTabs
         code={[
           { code: tsxCode, language: 'tsx', icon: <TsIcon />, fileName: 'Component.tsx' },
           { code: cssCode, language: 'css', icon: <CSSIcon />, fileName: 'Component.module.css' },
@@ -188,7 +197,7 @@ export function Usage() {
         defaultExpanded={false}
       >
         {tsxCode}
-      </CodeHighlight>
+      </CodeHighlightTabs>
     </div>
   );
 }
