@@ -102,7 +102,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
       }
     : {};
 
-  const mergedRef = useMergedRef<any>(ref, ctx.floating);
+  const mergedRef = useMergedRef(ref, ctx.floating);
 
   if (ctx.disabled) {
     return null;

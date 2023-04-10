@@ -36,7 +36,7 @@ export const PopoverTarget = forwardRef<HTMLElement, PopoverTargetProps>((props,
 
   const forwardedProps: any = others;
   const ctx = usePopoverContext();
-  const targetRef = useMergedRef<any>(ctx.reference, (children as any).ref, ref);
+  const targetRef = useMergedRef(ctx.reference, (children as any).ref, ref);
 
   const accessibleProps = ctx.withRoles
     ? {

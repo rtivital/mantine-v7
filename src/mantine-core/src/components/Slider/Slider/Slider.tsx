@@ -276,7 +276,7 @@ export const Slider = factory<SliderFactory>((props, ref) => {
   return (
     <SliderRoot
       {...others}
-      ref={useMergedRef<any>(ref, root)}
+      ref={useMergedRef(ref, root)}
       onKeyDownCapture={handleTrackKeydownCapture}
       onMouseDownCapture={() => root.current?.focus()}
       size={size!}

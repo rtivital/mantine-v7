@@ -137,7 +137,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      ref={useMergedRef<any>(sliderRef, ref)}
+      ref={useMergedRef(sliderRef, ref)}
       {...getStyles('slider')}
       role="slider"
       aria-valuenow={value}
