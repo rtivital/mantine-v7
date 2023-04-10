@@ -1,6 +1,6 @@
 import React from 'react';
 import { SegmentedControl } from './SegmentedControl';
-import { MantineProvider } from '../../core';
+import { MantineThemeProvider } from '../../core';
 
 export default { title: 'SegmentedControl' };
 
@@ -47,9 +47,9 @@ export function Disabled() {
 export function FocusRingAlways() {
   return (
     <div style={{ padding: 40 }}>
-      <MantineProvider theme={{ focusRing: 'always' }} inherit>
+      <MantineThemeProvider theme={{ focusRing: 'always' }} inherit>
         <SegmentedControl data={['React', 'Angular', 'Svelte', 'Vue']} />
-      </MantineProvider>
+      </MantineThemeProvider>
     </div>
   );
 }

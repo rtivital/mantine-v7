@@ -1,10 +1,9 @@
 import React from 'react';
 import { useMantineStyleNonce, useMantineCssVariablesResolver } from '../Mantine.context';
-import type { MantineTheme } from '../theme.types';
+import { useMantineTheme } from '../MantineThemeProvider';
 import { convertCssVariables } from '../convert-css-variables/convert-css-variables';
 
 interface MantineCssVariablesProps {
-  theme: MantineTheme;
   cssVariablesSelector: string;
 }
 
@@ -15,7 +14,8 @@ function getColorSchemeCssVariables(selector: string) {
 `;
 }
 
-export function MantineCssVariables({ theme, cssVariablesSelector }: MantineCssVariablesProps) {
+export function MantineCssVariables({ cssVariablesSelector }: MantineCssVariablesProps) {
+  const theme = useMantineTheme();
   const nonce = useMantineStyleNonce();
   const generator = useMantineCssVariablesResolver();
   const css = convertCssVariables(generator(theme), cssVariablesSelector);

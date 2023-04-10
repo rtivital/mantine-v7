@@ -1,15 +1,17 @@
 import { useIsomorphicEffect } from '@mantine/hooks';
-import { MantineTheme } from '../theme.types';
 
 interface UseRespectReduceMotionOptions {
-  theme: MantineTheme;
+  respectReducedMotion: boolean;
   getRootElement: () => HTMLElement | undefined;
 }
 
-export function useRespectReduceMotion({ theme, getRootElement }: UseRespectReduceMotionOptions) {
+export function useRespectReduceMotion({
+  respectReducedMotion,
+  getRootElement,
+}: UseRespectReduceMotionOptions) {
   useIsomorphicEffect(() => {
-    if (theme.respectReducedMotion) {
+    if (respectReducedMotion) {
       getRootElement()?.setAttribute('data-respect-reduced-motion', 'true');
     }
-  }, [theme.respectReducedMotion]);
+  }, [respectReducedMotion]);
 }

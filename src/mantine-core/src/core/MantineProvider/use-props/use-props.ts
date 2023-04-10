@@ -1,5 +1,5 @@
 import { filterProps } from '../../utils';
-import { useMantineTheme } from '../Mantine.context';
+import { useMantineTheme } from '../MantineThemeProvider';
 
 export function useProps<T extends Record<string, any>, U extends Partial<T> = {}>(
   component: string,

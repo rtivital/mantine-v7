@@ -1,14 +1,13 @@
 import React from 'react';
 import { UnstyledButton } from './UnstyledButton';
-import { MantineProvider } from '../../core';
+import { MantineThemeProvider } from '../../core';
 
 export default { title: 'UnstyledButton' };
 
 export function Usage() {
   return (
-    <MantineProvider
+    <MantineThemeProvider
       inherit
-      withCssVariables={false}
       theme={{
         components: {
           UnstyledButton: UnstyledButton.extend({
@@ -24,6 +23,6 @@ export function Usage() {
       <div style={{ padding: 40 }}>
         <UnstyledButton>Button</UnstyledButton>
       </div>
-    </MantineProvider>
+    </MantineThemeProvider>
   );
 }

@@ -8,12 +8,18 @@ export { validateMantineTheme, mergeMantineTheme } from './merge-mantine-theme';
 export { MantineProvider } from './MantineProvider';
 export {
   MantineContext,
-  useMantineTheme,
   useMantineContext,
   useMantineClassNamesPrefix,
   useMantineStyleNonce,
   useMantineCssVariablesResolver,
 } from './Mantine.context';
+export {
+  useMantineTheme,
+  useSafeMantineTheme,
+  MantineThemeContext,
+  MantineThemeProvider,
+} from './MantineThemeProvider';
+export type { MantineThemeProviderProps } from './MantineThemeProvider';
 export type { MantineProviderProps } from './MantineProvider';
 export { useProps } from './use-props/use-props';
 export { convertCssVariables } from './convert-css-variables';
