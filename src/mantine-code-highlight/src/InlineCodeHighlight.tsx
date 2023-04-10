@@ -13,7 +13,7 @@ import hljs from 'highlight.js';
 import _classes from './CodeHighlight.module.css';
 import themeClasses from './CodeHighlight.theme.module.css';
 
-const classes = { ..._classes, code: cx(_classes.root, themeClasses.theme) };
+const classes = { ..._classes, code: cx(_classes.code, themeClasses.theme) };
 
 export type InlineCodeHighlightStylesNames = 'code';
 export type InlineCodeHighlightVariant = string;

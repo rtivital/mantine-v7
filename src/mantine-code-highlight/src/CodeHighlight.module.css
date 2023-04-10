@@ -1,9 +1,9 @@
 .code {
   display: inline-block;
-  padding: rem(2px) rem(4px);
+  padding: rem(1px) rem(3px);
   font-size: rem(13px);
   border-radius: var(--mantine-radius-xs);
-  line-height: 1.7;
+  line-height: var(--_code-line-height, var(--mantine-line-height));
   font-family: var(--mantine-font-family-monospace);
 }
 
@@ -11,6 +11,7 @@
   display: block;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   margin: 0;
+  --_code-line-height: 1.7;
 }
 
 .header {

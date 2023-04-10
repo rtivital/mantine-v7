@@ -2,17 +2,9 @@
   color: var(--_color);
   background: var(--_background);
 
-  @mixin dark {
-    --_color: var(--mantine-color-dark-1);
-    --_background: var(--mantine-color-dark-8);
-  }
-
   @mixin light {
     --_color: var(--mantine-color-gray-7);
     --_background: var(--mantine-color-gray-0);
-  }
-
-  @mixin light {
     --code-comment-color: var(--mantine-color-gray-6);
     --code-keyword-color: var(--mantine-color-violet-8);
     --code-tag-color: var(--mantine-color-red-9);
@@ -23,6 +15,8 @@
   }
 
   @mixin dark {
+    --_color: var(--mantine-color-dark-1);
+    --_background: var(--mantine-color-dark-8);
     --code-comment-color: var(--mantine-color-dark-3);
     --code-keyword-color: var(--mantine-color-violet-3);
     --code-tag-color: var(--mantine-color-yellow-4);
