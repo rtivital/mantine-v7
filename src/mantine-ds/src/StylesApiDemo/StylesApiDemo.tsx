@@ -6,7 +6,7 @@ import { DemoRoot } from '../DemoRoot';
 import { DemoColumns } from '../DemoColumns';
 import classes from './StylesApiDemo.module.css';
 
-export interface StylesApiProps extends DemoAreaProps {
+export interface StylesApiDemoProps extends DemoAreaProps {
   data: { selectors: Record<string, string> };
   code: string;
   onStylesApiLink(): void;
@@ -26,7 +26,7 @@ export function StylesApiDemo({
   centered,
   children,
   onStylesApiLink,
-}: StylesApiProps) {
+}: StylesApiDemoProps) {
   const [hovered, setHovered] = React.useState<string | null>(null);
   const [selected, setSelected] = React.useState<string[]>([]);
 
