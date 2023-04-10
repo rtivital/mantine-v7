@@ -8,6 +8,8 @@
   -webkit-tap-highlight-color: transparent;
   outline: none;
   height: calc(var(--slider-size) * 2);
+  padding-left: var(--slider-size);
+  padding-right: var(--slider-size);
   display: flex;
   flex-direction: column;
   align-items: center;

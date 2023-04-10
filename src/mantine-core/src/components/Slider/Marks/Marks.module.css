@@ -1,7 +1,7 @@
 .markWrapper {
   position: absolute;
-  left: var(--mark-offset);
-  top: calc(var(--slider-size) / 2);
+  left: calc(var(--mark-offset) - var(--slider-size) / 2);
+  top: 0;
   z-index: 2;
   height: 0;
 

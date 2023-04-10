@@ -56,19 +56,19 @@ export function Track({
           />
 
           {children}
+
+          <Marks
+            {...others}
+            offset={marksOffset}
+            classNames={classNames}
+            styles={styles}
+            disabled={disabled}
+            unstyled={unstyled}
+            inverted={inverted}
+            variant={variant}
+          />
         </Box>
       </Box>
-
-      <Marks
-        {...others}
-        offset={marksOffset}
-        classNames={classNames}
-        styles={styles}
-        disabled={disabled}
-        unstyled={unstyled}
-        inverted={inverted}
-        variant={variant}
-      />
     </>
   );
 }

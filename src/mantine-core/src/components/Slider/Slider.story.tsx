@@ -10,6 +10,14 @@ const marks = [
   { value: 80, label: '80%' },
 ];
 
+const sizeMarks = [
+  { value: 0, label: '000' },
+  { value: 25, label: '000' },
+  { value: 50, label: '000' },
+  { value: 75, label: '000' },
+  { value: 100, label: '000' },
+];
+
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
@@ -18,6 +26,16 @@ export function Usage() {
       <Slider defaultValue={45} inverted mt="xl" />
       <Slider defaultValue={45} inverted disabled mt="xl" />
       <Slider defaultValue={45} radius={0} mt="xl" labelAlwaysOn />
+    </div>
+  );
+}
+
+export function SizeSlider() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300 }}>
+      <div style={{ background: 'pink' }}>
+        <Slider step={25} defaultValue={50} marks={sizeMarks} size="md" />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .trackContainer {
   display: flex;
   align-items: center;
-  width: calc(100% + 1rem);
+  width: 100%;
   height: 100%;
   cursor: var(--_track-cursor, pointer);
 
@@ -14,8 +14,6 @@
   position: relative;
   width: 100%;
   height: var(--slider-size);
-  margin-right: var(--slider-size);
-  margin-left: var(--slider-size);
 
   &[data-inverted]:not([data-disabled]) {
     --_track-bg: var(--slider-color);
