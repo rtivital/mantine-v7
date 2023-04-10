@@ -12,8 +12,7 @@
   background-color: var(--_bg);
   border-radius: var(--sc-radius);
   overflow: hidden;
-  /* px required for correct indicator calculations */
-  padding: 4px;
+  padding: 4px; /* px required for correct indicator calculations */
 
   &[data-full-width] {
     --_display: flex;

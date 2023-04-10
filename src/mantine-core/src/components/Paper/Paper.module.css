@@ -3,7 +3,6 @@
   -webkit-tap-highlight-color: transparent;
   display: block;
   touch-action: manipulation;
-  display: block;
   text-decoration: none;
   border-radius: var(--paper-radius);
   box-shadow: var(--paper-shadow);

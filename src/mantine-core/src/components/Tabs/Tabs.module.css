@@ -34,6 +34,9 @@
     --_list-border-size: 0 var(--_list-border-width) 0 0;
     --_tab-border-width: 0 var(--_list-border-width) 0 0;
     --_tab-radius: var(--tabs-radius) 0 0 var(--tabs-radius);
+    --_list-direction: column;
+    --_panel-grow: 1;
+    --_tabs-display: flex;
 
     @mixin rtl {
       --_list-line-left: 0;
@@ -44,6 +47,7 @@
     }
 
     &[data-placement='right'] {
+      --_tabs-flex-direction: row-reverse;
       --_list-line-left: 0;
       --_list-line-right: unset;
       --_list-border-size: 0 0 0 var(--_list-border-width);
@@ -70,16 +74,6 @@
 
   &[data-orientation='horizontal'] {
     --_tab-justify: center;
-  }
-
-  &[data-orientation='vertical'] {
-    --_list-direction: column;
-    --_panel-grow: 1;
-    --_tabs-display: flex;
-
-    &[data-placement='right'] {
-      --_tabs-flex-direction: row-reverse;
-    }
   }
 
   &[data-variant='default'] {

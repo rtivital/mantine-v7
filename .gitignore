@@ -41,3 +41,4 @@ docs/src/components/Test.tsx
 ____*.internal.ts
 ____*.internal.tsx
 src/*/styles.css
+.stylelintcache
