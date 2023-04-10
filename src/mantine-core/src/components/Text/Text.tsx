@@ -80,7 +80,7 @@ const defaultProps: Partial<TextProps> = {
 
 const varsResolver = createVarsResolver<TextCssVariables, TextStylesParams>(
   ({ variant, lineClamp, gradient }, theme) => ({
-    '--text-gradient': variant === 'gradient' ? getGradient(theme, gradient) : undefined,
+    '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
     '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
   })
 );

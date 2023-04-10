@@ -34,7 +34,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 }) => {
   const parsed = parseThemeColor({ color, theme });
   const bgVar = `--${prefix}-bg`;
-  const hoverVqr = `--${prefix}-hover`;
+  const hoverVar = `--${prefix}-hover`;
   const colorVar = `--${prefix}-color`;
   const bdVar = `--${prefix}-bd`;
 
@@ -43,7 +43,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: `var(--mantine-color-${color}-filled)`,
-          [hoverVqr]: `var(--mantine-color-${color}-filled-hover)`,
+          [hoverVar]: `var(--mantine-color-${color}-filled-hover)`,
           [colorVar]: 'var(--mantine-color-white)',
           [bdVar]: `${rem(1)} solid transparent`,
         };
@@ -51,7 +51,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-        [hoverVqr]: `var(--mantine-color-${parsed.color}-${
+        [hoverVar]: `var(--mantine-color-${parsed.color}-${
           parsed.shade === 9 ? 8 : parsed.shade + 1
         })`,
         [colorVar]: 'var(--mantine-color-white)',
@@ -61,7 +61,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: color!,
-      [hoverVqr]: darken(color!, 0.1),
+      [hoverVar]: darken(color!, 0.1),
       [colorVar]: 'var(--mantine-color-white)',
       [bdVar]: `${rem(1)} solid transparent`,
     };
@@ -72,7 +72,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: `var(--mantine-color-${color}-light)`,
-          [hoverVqr]: `var(--mantine-color-${color}-light-hover)`,
+          [hoverVar]: `var(--mantine-color-${color}-light-hover)`,
           [colorVar]: `var(--mantine-color-${color}-light-color)`,
           [bdVar]: `${rem(1)} solid transparent`,
         };
@@ -82,7 +82,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: rgba(parsedColor, 0.1),
-        [hoverVqr]: rgba(parsedColor, 0.12),
+        [hoverVar]: rgba(parsedColor, 0.12),
         [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
         [bdVar]: `${rem(1)} solid transparent`,
       };
@@ -90,7 +90,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: rgba(color!, 0.1),
-      [hoverVqr]: rgba(color!, 0.12),
+      [hoverVar]: rgba(color!, 0.12),
       [colorVar]: color!,
       [bdVar]: `${rem(1)} solid transparent`,
     };
@@ -101,7 +101,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: 'transparent',
-          [hoverVqr]: `var(--mantine-color-${color}-outline-hover)`,
+          [hoverVar]: `var(--mantine-color-${color}-outline-hover)`,
           [colorVar]: `var(--mantine-color-${color}-outline)`,
           [bdVar]: `${rem(1)} solid var(--mantine-color-${color}-outline)`,
         };
@@ -109,7 +109,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: 'transparent',
-        [hoverVqr]: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
+        [hoverVar]: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
         [colorVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
         [bdVar]: `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`,
       };
@@ -117,7 +117,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: 'transparent',
-      [hoverVqr]: rgba(color!, 0.05),
+      [hoverVar]: rgba(color!, 0.05),
       [colorVar]: color!,
       [bdVar]: `${rem(1)} solid ${color}`,
     };
@@ -128,7 +128,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: 'transparent',
-          [hoverVqr]: `var(--mantine-color-${color}-light-hover)`,
+          [hoverVar]: `var(--mantine-color-${color}-light-hover)`,
           [colorVar]: `var(--mantine-color-${color}-light-color)`,
           [bdVar]: `${rem(1)} solid transparent`,
         };
@@ -138,7 +138,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: 'transparent',
-        [hoverVqr]: rgba(parsedColor, 0.12),
+        [hoverVar]: rgba(parsedColor, 0.12),
         [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
         [bdVar]: `${rem(1)} solid transparent`,
       };
@@ -146,7 +146,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: 'transparent',
-      [hoverVqr]: rgba(color!, 0.12),
+      [hoverVar]: rgba(color!, 0.12),
       [colorVar]: color!,
       [bdVar]: `${rem(1)} solid transparent`,
     };
@@ -157,7 +157,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: 'transparent',
-          [hoverVqr]: 'transparent',
+          [hoverVar]: 'transparent',
           [colorVar]: `var(--mantine-color-${color}-light-color)`,
           [bdVar]: `${rem(1)} solid transparent`,
         };
@@ -165,7 +165,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: 'transparent',
-        [hoverVqr]: 'transparent',
+        [hoverVar]: 'transparent',
         [colorVar]: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
         [bdVar]: `${rem(1)} solid transparent`,
       };
@@ -173,7 +173,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: 'transparent',
-      [hoverVqr]: 'transparent',
+      [hoverVar]: 'transparent',
       [colorVar]: color!,
       [bdVar]: `${rem(1)} solid transparent`,
     };
@@ -184,7 +184,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
       if (parsed.shade === undefined) {
         return {
           [bgVar]: 'var(--mantine-color-white)',
-          [hoverVqr]: darken(theme.white, 0.01),
+          [hoverVar]: darken(theme.white, 0.01),
           [colorVar]: `var(--mantine-color-${color}-filled)`,
           [bdVar]: `${rem(1)} solid transparent`,
         };
@@ -192,7 +192,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
       return {
         [bgVar]: 'var(--mantine-color-white)',
-        [hoverVqr]: darken(theme.white, 0.01),
+        [hoverVar]: darken(theme.white, 0.01),
         [colorVar]: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
         [bdVar]: `${rem(1)} solid transparent`,
       };
@@ -200,7 +200,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
     return {
       [bgVar]: 'var(--mantine-color-white)',
-      [hoverVqr]: darken(theme.white, 0.01),
+      [hoverVar]: darken(theme.white, 0.01),
       [colorVar]: color!,
       [bdVar]: `${rem(1)} solid transparent`,
     };
@@ -208,8 +208,8 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
 
   if (variant === 'gradient') {
     return {
-      [bgVar]: getGradient(theme, gradient),
-      [hoverVqr]: getGradient(theme, gradient),
+      [bgVar]: getGradient(gradient, theme),
+      [hoverVar]: getGradient(gradient, theme),
       [colorVar]: 'var(--mantine-color-white)',
       [bdVar]: 'none',
     };
@@ -218,7 +218,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
   if (variant === 'default') {
     return {
       [bgVar]: 'var(--mantine-color-default)',
-      [hoverVqr]: 'var(--mantine-color-default-hover)',
+      [hoverVar]: 'var(--mantine-color-default-hover)',
       [colorVar]: 'var(--mantine-color-default-color)',
       [bdVar]: `${rem(1)} solid var(--mantine-color-default-border)`,
     };
