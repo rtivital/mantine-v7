@@ -1,5 +1,6 @@
 import React from 'react';
 import hljs from 'highlight.js';
+import cx from 'clsx';
 import { useUncontrolled } from '@mantine/hooks';
 import {
   Box,
@@ -21,7 +22,10 @@ import {
 import { CopyIcon } from './CopyIcon';
 import { FileIcon } from './FileIcon';
 import { ExpandIcon } from './ExpandIcon';
-import classes from './CodeHighlight.module.css';
+import _classes from './CodeHighlight.module.css';
+import themeClasses from './CodeHighlight.theme.module.css';
+
+const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
 
 export type CodeHighlightTabsStylesNames =
   | 'root'

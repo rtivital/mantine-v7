@@ -1,5 +1,6 @@
 import React from 'react';
 import hljs from 'highlight.js';
+import cx from 'clsx';
 import {
   Box,
   BoxProps,
@@ -14,7 +15,10 @@ import {
   ScrollArea,
 } from '@mantine/core';
 import { CopyIcon } from './CopyIcon';
-import classes from './CodeHighlight.module.css';
+import _classes from './CodeHighlight.module.css';
+import themeClasses from './CodeHighlight.theme.module.css';
+
+const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
 
 export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy';
 export type CodeHighlightVariant = string;
