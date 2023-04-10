@@ -1,6 +1,7 @@
 import React from 'react';
 import { CodeHighlightTabs } from './CodeHighlightTabs';
 import { CodeHighlight } from './CodeHighlight';
+import { InlineCodeHighlight } from './InlineCodeHighlight';
 
 export default { title: 'CodeHighlight' };
 
@@ -198,6 +199,19 @@ export function Tabs() {
       >
         {tsxCode}
       </CodeHighlightTabs>
+    </div>
+  );
+}
+
+export function Inline() {
+  return (
+    <div style={{ padding: 40 }}>
+      <div style={{ background: 'pink' }}>
+        <p>
+          Hello there! this is{' '}
+          <InlineCodeHighlight code="import React from 'react';" language="tsx" /> some code
+        </p>
+      </div>
     </div>
   );
 }
