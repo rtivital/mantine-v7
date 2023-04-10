@@ -30,9 +30,16 @@ export function Usage() {
         code={code}
         centered
         controls={[
+          // {
+          //   type: 'color',
+          //   prop: 'color',
+          //   initialValue: 'yellow',
+          //   libraryValue: 'yellow',
+          // },
           {
-            type: 'color',
+            type: 'select',
             prop: 'color',
+            data: ['yellow', 'red', 'blue', 'green', 'gray', 'cyan', 'violet', 'pink'],
             initialValue: 'yellow',
             libraryValue: 'yellow',
           },
