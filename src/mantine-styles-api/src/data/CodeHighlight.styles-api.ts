@@ -1,7 +1,7 @@
-import type { CodeHighlightFactory } from '@mantine/code-highlight';
+import type { CodeHighlightTabsFactory } from '@mantine/code-highlight';
 import type { StylesApiData } from '../types';
 
-export const CodeHighlightStylesApi: StylesApiData<CodeHighlightFactory> = {
+export const CodeHighlightTabsStylesApi: StylesApiData<CodeHighlightTabsFactory> = {
   selectors: {
     root: 'Root element',
     pre: 'Pre element, contains code element',

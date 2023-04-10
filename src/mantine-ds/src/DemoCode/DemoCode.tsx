@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeHighlight, CodeHighlightCode } from '@mantine/code-highlight';
+import { CodeHighlightTabs, CodeHighlightTabsCode } from '@mantine/code-highlight';
 import { TypeScriptIcon, CssIcon } from '../Icons';
 import classes from './DemoCode.module.css';
 
@@ -14,7 +14,7 @@ export function getFileIcon(fileName: string) {
 }
 
 export interface DemoCodeProps {
-  code?: CodeHighlightCode | CodeHighlightCode[];
+  code?: CodeHighlightTabsCode | CodeHighlightTabsCode[];
   defaultExpanded?: boolean;
 }
 
@@ -22,7 +22,7 @@ export function DemoCode({ code, defaultExpanded = true }: DemoCodeProps) {
   return (
     <>
       {code && (
-        <CodeHighlight
+        <CodeHighlightTabs
           code={code}
           className={classes.code}
           getFileIcon={getFileIcon}

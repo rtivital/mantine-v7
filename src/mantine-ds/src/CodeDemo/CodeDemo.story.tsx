@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeHighlightCode } from '@mantine/code-highlight';
+import { CodeHighlightTabsCode } from '@mantine/code-highlight';
 import { CodeDemo } from './CodeDemo';
 
 export default { title: 'DS/CodeDemo' };
@@ -60,7 +60,7 @@ const cssCode = `.code {
   }
 }`;
 
-const code: CodeHighlightCode[] = [
+const code: CodeHighlightTabsCode[] = [
   { language: 'tsx', code: reactCode, fileName: 'Demo.tsx' },
   { language: 'css', code: cssCode, fileName: 'Demo.module.css' },
 ];
