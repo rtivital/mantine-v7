@@ -12091,13 +12091,6 @@ postcss-convert-values@^5.1.3:
     browserslist "^4.21.4"
     postcss-value-parser "^4.2.0"
 
-postcss-dir-pseudo-class@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-7.0.2.tgz#71618b7eb4abe067845d11b3c8f322760c9b3e88"
-  integrity sha512-cMnslilYxBf9k3qejnovrUONZx1rXeUZJw06fgIUBzABJe3D2LiLL5WAER7Imt3nrkaIgG05XZBztueLEf5P8w==
-  dependencies:
-    postcss-selector-parser "^6.0.10"
-
 postcss-discard-comments@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/postcss-discard-comments/-/postcss-discard-comments-5.1.2.tgz#8df5e81d2925af2780075840c1526f0660e53696"
@@ -12369,12 +12362,11 @@ postcss-ordered-values@^5.1.3:
     cssnano-utils "^3.1.0"
     postcss-value-parser "^4.2.0"
 
-postcss-preset-mantine@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.1.tgz#cc2e327db9e91bc45fe4062153d417d6305515e7"
-  integrity sha512-6cJTMYIp7BEWWt0qz4M1kAoq4WGUPARjll+7F0K4Twg3zbket+Q0axivnKP3JAQkQmELjZq2royekNQwG+7IyA==
+postcss-preset-mantine@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.2.tgz#2135daeb1a05690a47b7c318efb1c3515f5915ec"
+  integrity sha512-stdSKS2/9q46cnK5cwYDGhSTG8TfwWH9I/mAXAbSP2NqU8Le4i0iMqRbCaAGq8x3IHMtf5ZwxWA8+krxpiysPQ==
   dependencies:
-    postcss-dir-pseudo-class "^7.0.2"
     postcss-mixins "^9.0.4"
     postcss-nested "^6.0.1"
     postcss-rem "^2.0.2"
@@ -12417,7 +12409,7 @@ postcss-scss@^4.0.2:
   resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.6.tgz#5d62a574b950a6ae12f2aa89b60d63d9e4432bfd"
   integrity sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==
 
-postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.11, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.9:
+postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.11, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.9:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.11.tgz#2e41dc39b7ad74046e1615185185cd0b17d0c8dc"
   integrity sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g==
