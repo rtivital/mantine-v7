@@ -1,4 +1,8 @@
-import type { CodeHighlightTabsFactory } from '@mantine/code-highlight';
+import type {
+  CodeHighlightTabsFactory,
+  CodeHighlightFactory,
+  InlineCodeHighlightFactory,
+} from '@mantine/code-highlight';
 import type { StylesApiData } from '../types';
 
 export const CodeHighlightTabsStylesApi: StylesApiData<CodeHighlightTabsFactory> = {
@@ -13,5 +17,20 @@ export const CodeHighlightTabsStylesApi: StylesApiData<CodeHighlightTabsFactory>
     files: 'Files names list',
     file: 'File name',
     showCodeButton: 'Button that reveals full code when it is collapsed',
+  },
+};
+
+export const InlineCodeHighlightStylesApi: StylesApiData<InlineCodeHighlightFactory> = {
+  selectors: {
+    code: 'Root element',
+  },
+};
+
+export const CodeHighlightStylesApi: StylesApiData<CodeHighlightFactory> = {
+  selectors: {
+    root: 'Root element',
+    pre: 'Pre element, contains code element',
+    code: 'Code element',
+    copy: 'Copy button',
   },
 };
