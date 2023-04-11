@@ -1,5 +1,6 @@
 import { BoxProps, ElementProps, MantineColor, StylesApiProps, MantineRadius } from '../../core';
 import { FloatingPosition } from '../Floating';
+import { PortalProps } from '../Portal';
 
 export type TooltipStylesNames = 'tooltip' | 'arrow';
 export type TooltipVariant = string;
@@ -43,4 +44,7 @@ export interface TooltipBaseProps
 
   /** If set, tooltip element will not be rendered */
   disabled?: boolean;
+
+  /** Props to pass down to the portal when withinPortal is true */
+  portalProps?: Omit<PortalProps, 'children' | 'withinPortal'>;
 }

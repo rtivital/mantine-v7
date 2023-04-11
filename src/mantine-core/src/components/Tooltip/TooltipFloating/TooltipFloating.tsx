@@ -61,6 +61,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
     disabled,
     variant,
     vars,
+    portalProps,
     ...others
   } = useProps('TooltipFloating', defaultProps, props);
 
@@ -103,7 +104,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
 
   return (
     <>
-      <OptionalPortal withinPortal={withinPortal}>
+      <OptionalPortal {...portalProps} withinPortal={withinPortal}>
         <Box
           {...others}
           {...getStyles('tooltip')}

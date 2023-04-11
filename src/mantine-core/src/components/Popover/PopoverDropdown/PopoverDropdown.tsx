@@ -109,7 +109,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
   }
 
   return (
-    <OptionalPortal withinPortal={ctx.withinPortal} {...ctx.portalProps}>
+    <OptionalPortal {...ctx.portalProps} withinPortal={ctx.withinPortal}>
       <Transition
         mounted={ctx.opened}
         {...ctx.transitionProps}

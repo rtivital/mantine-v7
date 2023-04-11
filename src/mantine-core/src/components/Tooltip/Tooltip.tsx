@@ -147,6 +147,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     variant,
     keepMounted,
     vars,
+    portalProps,
     ...others
   } = useProps('Tooltip', defaultProps, props);
 
@@ -194,7 +195,7 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
 
   return (
     <>
-      <OptionalPortal withinPortal={withinPortal}>
+      <OptionalPortal {...portalProps} withinPortal={withinPortal}>
         <Transition
           {...transition}
           keepMounted={keepMounted}
