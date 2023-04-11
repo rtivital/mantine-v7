@@ -93,6 +93,7 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
       mod={{ 'data-with-border': withBorder }}
       {...getStyles('root')}
       vars={_vars}
+      variant={variant}
       {...others}
     />
   );

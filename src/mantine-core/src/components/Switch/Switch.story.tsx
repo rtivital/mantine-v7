@@ -9,7 +9,7 @@ export default { title: 'Switch' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Switch size="xs" label="xs" />
+      <Switch size="xs" label="xs" variant="test" />
       <Switch size="sm" label="sm" />
       <Switch disabled label="disabled" />
       <Switch size="md" label="md" />

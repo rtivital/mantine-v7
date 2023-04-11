@@ -77,6 +77,8 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
           ...vars,
         }}
         mod={{ 'label-position': labelPosition }}
+        variant={variant}
+        size={size}
         {...others}
       >
         <div {...getStyles('body')}>

@@ -214,7 +214,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
   };
 
   return (
-    <Box ref={ref} {...getStyles('wrapper')} vars={_vars} {...others}>
+    <Box ref={ref} {...getStyles('wrapper')} vars={_vars} size={size} {...others}>
       {withPicker && (
         <>
           <Saturation

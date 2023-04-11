@@ -268,6 +268,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
     <Box
       {...getStyles('root')}
       variant={variant}
+      size={size}
       ref={mergedRef}
       mod={{ 'full-width': fullWidth, orientation }}
       vars={_vars}

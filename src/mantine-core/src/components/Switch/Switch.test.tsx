@@ -19,6 +19,8 @@ describe('@mantine/core/Switch', () => {
     props: defaultProps,
     styleProps: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLInputElement,
     displayName: '@mantine/core/Switch',
     stylesApiSelectors: [

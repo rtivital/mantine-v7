@@ -16,11 +16,14 @@ describe('@mantine/core/SegmentedControl', () => {
     <SegmentedControl {...defaultProps} />,
     <SegmentedControl {...defaultProps} aria-label="group label" />,
   ]);
+
   tests.itSupportsSystemProps<SegmentedControlProps, SegmentedControlStylesNames>({
     component: SegmentedControl,
     props: defaultProps,
     styleProps: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/SegmentedControl',
     stylesApiSelectors: ['root', 'label', 'input', 'control', 'indicator'],

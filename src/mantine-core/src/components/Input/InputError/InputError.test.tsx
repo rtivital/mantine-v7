@@ -10,6 +10,8 @@ describe('@mantine/core/InputError', () => {
     styleProps: true,
     children: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLParagraphElement,
     displayName: '@mantine/core/InputError',
     stylesApiName: 'InputWrapper',

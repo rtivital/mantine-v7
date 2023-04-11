@@ -101,6 +101,7 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
       {...getStyles('label')}
       component={labelElement as 'label'}
       variant={variant}
+      size={size}
       ref={ref}
       htmlFor={labelElement === 'label' ? htmlFor : undefined}
       mod={{ required }}

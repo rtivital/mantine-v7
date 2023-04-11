@@ -19,6 +19,8 @@ describe('@mantine/core/Tooltip', () => {
     props: defaultProps,
     styleProps: true,
     extend: true,
+    size: true,
+    variant: true,
     selector: '[role="tooltip"]',
     // gets ref from children instead of tooltip to allow nested tooltips/popovers to work
     refType: HTMLButtonElement,

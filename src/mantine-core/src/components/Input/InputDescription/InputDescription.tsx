@@ -89,6 +89,7 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
       component="p"
       ref={ref}
       variant={variant}
+      size={size}
       {...getStyles('description')}
       vars={_vars}
       {...others}

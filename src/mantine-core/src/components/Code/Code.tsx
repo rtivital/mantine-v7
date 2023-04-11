@@ -67,6 +67,7 @@ export const Code = factory<CodeFactory>((props, ref) => {
   return (
     <Box<any>
       component={block ? 'pre' : 'code'}
+      variant={variant}
       ref={ref}
       {...getStyles('root')}
       mod={{ block }}

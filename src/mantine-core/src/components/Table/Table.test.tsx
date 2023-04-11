@@ -46,6 +46,8 @@ describe('@mantine/core/Table', () => {
     props: defaultProps,
     styleProps: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLTableElement,
     displayName: '@mantine/core/Table',
     stylesApiSelectors: ['table', 'caption', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td'],

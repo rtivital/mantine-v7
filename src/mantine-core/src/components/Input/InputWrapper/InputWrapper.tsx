@@ -203,7 +203,7 @@ export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
         ...getInputOffsets(inputWrapperOrder!, { hasDescription, hasError }),
       }}
     >
-      <Box ref={ref} variant={variant} {...getStyles('root')} {...others}>
+      <Box ref={ref} variant={variant} size={size} {...getStyles('root')} {...others}>
         {content}
       </Box>
     </InputWrapperProvider>

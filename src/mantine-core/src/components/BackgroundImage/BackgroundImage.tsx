@@ -76,6 +76,7 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props
   return (
     <Box
       ref={ref}
+      variant={variant}
       {...getStyles('root', { style: { backgroundImage: `url(${src})` } })}
       vars={_vars}
       {...others}

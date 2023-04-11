@@ -23,6 +23,8 @@ describe('@mantine/core/ColorPicker', () => {
     props: defaultProps,
     styleProps: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/ColorPicker',
     stylesApiSelectors: [

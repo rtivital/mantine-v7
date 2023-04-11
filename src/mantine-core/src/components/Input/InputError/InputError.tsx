@@ -85,6 +85,7 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
       component="p"
       ref={ref}
       variant={variant}
+      size={size}
       {...getStyles('error')}
       vars={_vars}
       {...others}

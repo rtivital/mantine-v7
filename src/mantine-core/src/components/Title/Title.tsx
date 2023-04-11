@@ -102,6 +102,7 @@ export const Title = factory<TitleFactory>((props, ref) => {
       inherit={inherit || false}
       {...others}
       mod={{ order }}
+      __size={size}
     />
   );
 });

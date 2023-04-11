@@ -21,6 +21,8 @@ describe('@mantine/core/PopoverDropdown', () => {
     styleProps: true,
     children: true,
     extend: true,
+    size: true,
+    variant: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/PopoverDropdown',
     stylesApiName: 'Popover',

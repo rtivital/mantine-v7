@@ -107,6 +107,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) =
     <Box
       ref={ref}
       variant={variant}
+      size={size}
       {...getStyles('root', { focusable: true })}
       vars={_vars}
       {...others}

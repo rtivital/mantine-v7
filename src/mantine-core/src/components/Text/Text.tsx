@@ -42,6 +42,7 @@ export interface TextProps
   extends BoxProps,
     StylesApiProps<TextStylesNames, TextVariant, TextCssVariables, TextStylesParams> {
   __staticSelector?: string;
+  __size?: any;
   mod?: BoxMod;
 
   /** CSS -webkit-line-clamp property */
@@ -102,6 +103,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     unstyled,
     variant,
     mod,
+    __size,
     ...others
   } = useProps('Text', defaultProps, props);
 
@@ -137,6 +139,7 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
         ...packMod(mod),
       ]}
       vars={_vars}
+      size={__size}
       {...others}
     />
   );

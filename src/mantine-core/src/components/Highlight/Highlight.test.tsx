@@ -15,7 +15,9 @@ describe('@mantine/core/Highlight', () => {
     polymorphic: true,
     styleProps: true,
     extend: true,
-    refType: HTMLDivElement,
+    size: true,
+    variant: true,
+    refType: HTMLParagraphElement,
     displayName: '@mantine/core/Highlight',
     stylesApiSelectors: ['root'],
   });

@@ -223,6 +223,7 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
         'data-with-left-section': !!leftSection,
       }}
       variant={variant}
+      size={size}
       vars={_vars}
     >
       {leftSection && (
