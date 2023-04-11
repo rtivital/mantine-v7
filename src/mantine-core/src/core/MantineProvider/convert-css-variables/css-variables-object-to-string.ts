@@ -1,4 +1,6 @@
-export type CSSVariables = Record<`--${string}`, string>;
+import type { CssVariable } from '../../Box';
+
+export type CSSVariables = Record<CssVariable, string>;
 
 export function cssVariablesObjectToString(variables: CSSVariables) {
   return Object.entries(variables)

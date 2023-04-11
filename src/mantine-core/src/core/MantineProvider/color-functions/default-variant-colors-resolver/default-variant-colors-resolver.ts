@@ -1,4 +1,5 @@
 import { MantineColor, MantineTheme, MantineGradient } from '../../theme.types';
+import type { CssVariable } from '../../../Box';
 import { parseThemeColor } from '../parse-theme-color/parse-theme-color';
 import { getGradient } from '../get-gradient/get-gradient';
 import { darken } from '../darken/darken';
@@ -13,7 +14,7 @@ export interface VariantColorsResolverInput {
   gradient?: MantineGradient;
 }
 
-export type VariantColorResolverResult = Record<`--${string}`, string>;
+export type VariantColorResolverResult = Record<CssVariable, string>;
 
 export type VariantColorsResolver = <Input extends VariantColorsResolverInput>(
   input: Input

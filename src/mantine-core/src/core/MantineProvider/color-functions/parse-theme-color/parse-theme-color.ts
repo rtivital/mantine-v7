@@ -1,4 +1,5 @@
 import type { MantineTheme, MantineColorShade } from '../../theme.types';
+import type { CssVariable } from '../../../Box';
 
 interface ParseThemeColorOptions {
   color: unknown;
@@ -8,7 +9,7 @@ interface ParseThemeColorOptions {
 interface ParseThemeColorResult {
   color: string;
   shade: MantineColorShade | undefined;
-  variable: `--${string}` | undefined;
+  variable: CssVariable | undefined;
   isThemeColor: boolean;
 }
 

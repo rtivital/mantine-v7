@@ -1,4 +1,5 @@
 import { useMantineTheme } from '../../MantineProvider';
+import type { CssVariable } from '../../Box';
 import { VarsResolver } from '../create-vars-resolver/create-vars-resolver';
 
 const EMPTY_PARAMS = {};
@@ -19,7 +20,7 @@ function resolveVars(
 
 export function useVars<Params extends Record<string, any> = never>(
   name: string,
-  resolver: VarsResolver<`--${string}`, Params>,
+  resolver: VarsResolver<CssVariable, Params>,
   vars?:
     | Record<string, string | undefined>
     | ((params: Params) => Record<string, string | undefined>),
