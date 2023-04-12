@@ -15,20 +15,8 @@ import classes from './ActionIconGroup.module.css';
 export type ActionIconGroupStylesNames = 'root';
 export type ActionIconGroupVariant = string;
 export type ActionIconGroupCssVariables = '--ai-border-width';
-export interface ActionIconGroupStylesParams {
-  borderWidth: number | string | undefined;
-  orientation: 'horizontal' | 'vertical' | undefined;
-  variant: ActionIconGroupVariant | undefined;
-}
 
-export interface ActionIconGroupProps
-  extends BoxProps,
-    StylesApiProps<
-      ActionIconGroupStylesNames,
-      ActionIconGroupVariant,
-      ActionIconGroupCssVariables,
-      ActionIconGroupStylesParams
-    > {
+export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupFactory> {
   /** `<ActionIcon />` components */
   children?: React.ReactNode;
 
@@ -43,7 +31,6 @@ export interface ActionIconGroupFactory {
   props: ActionIconGroupProps;
   ref: HTMLDivElement;
   stylesNames: ActionIconGroupStylesNames;
-  stylesParams: ActionIconGroupStylesParams;
   vars: ActionIconGroupCssVariables;
 }
 
@@ -52,11 +39,12 @@ const defaultProps: Partial<ActionIconGroupProps> = {
   borderWidth: 1,
 };
 
-const varsResolver = createVarsResolver<ActionIconGroupCssVariables, ActionIconGroupStylesParams>(
-  ({ borderWidth }) => ({ '--ai-border-width': rem(borderWidth) })
-);
+const varsResolver = createVarsResolver<ActionIconGroupFactory>((_, { borderWidth }) => ({
+  '--ai-border-width': rem(borderWidth),
+}));
 
-export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
+export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => {
+  const props = useProps('ActionIconGroup', defaultProps, _props);
   const {
     className,
     style,
@@ -68,19 +56,21 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((props, ref) => {
     borderWidth,
     variant,
     ...others
-  } = useProps('ActionIconGroup', defaultProps, props);
+  } = useProps('ActionIconGroup', defaultProps, _props);
 
-  const _vars = useVars<ActionIconGroupStylesParams>('ActionIconGroup', varsResolver, vars, {
-    borderWidth,
-    orientation,
-    variant,
+  const _vars = useVars<ActionIconGroupFactory>({
+    name: 'ActionIconGroup',
+    props,
+    resolver: varsResolver,
+    vars,
   });
 
   const getStyles = useStyles({
     name: 'ActionIconGroup',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

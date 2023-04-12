@@ -38,14 +38,6 @@ export type ActionIconCssVariables =
   | '--ai-color'
   | '--ai-bd';
 
-export interface ActionIconStylesParams {
-  color: MantineColor | string | undefined;
-  size: MantineSize | string | number | undefined;
-  radius: MantineRadius | (string & {}) | number | undefined;
-  gradient: MantineGradient | undefined;
-  variant: ActionIconVariant | (string & {}) | undefined;
-}
-
 export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
   __staticSelector?: string;
 
@@ -81,7 +73,6 @@ export interface ActionIconFactory {
   stylesNames: ActionIconStylesNames;
   variant: ActionIconVariant;
   vars: ActionIconCssVariables;
-  stylesParams: ActionIconStylesParams;
   staticComponents: {
     Group: typeof ActionIconGroup;
   };

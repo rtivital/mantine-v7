@@ -127,9 +127,9 @@ export function Variables() {
     <div style={{ padding: 40 }}>
       <ActionIcon
         size="xl"
-        vars={(params) => {
+        vars={(theme, props) => {
           const result: Partial<Record<ActionIconCssVariables, string>> = {};
-          if (params.size === 'xl') {
+          if (props.size === 'xl') {
             result['--ai-size'] = '12rem';
             result['--ai-bg'] = 'pink';
             result['--ai-hover'] = 'orange';
