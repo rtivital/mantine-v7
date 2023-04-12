@@ -26,3 +26,36 @@ export function Usage() {
     </MantineThemeProvider>
   );
 }
+
+export function PropsInStyles() {
+  return (
+    <UnstyledButton
+      variant="xl"
+      // styles={(theme, props, ctx) => {
+      //   console.log(theme, props, ctx);
+      //   return {
+      //     root: {},
+      //   };
+      // }}
+      vars={(theme, props, ctx) => {
+        console.log(theme, props, ctx);
+        return {
+          '--test': 'red',
+        };
+      }}
+    >
+      Hello
+    </UnstyledButton>
+  );
+}
+
+UnstyledButton.extend({
+  styles: (_theme, _props, ctx) => ({
+    root: {
+      backgroundClip: ctx as string,
+    },
+  }),
+  vars: (_theme, _props, ctx) => ({
+    '--test': ctx as string,
+  }),
+});

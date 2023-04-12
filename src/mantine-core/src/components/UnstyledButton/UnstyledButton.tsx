@@ -13,7 +13,7 @@ export type UnstyledButtonStylesNames = 'root';
 
 export interface UnstyledButtonProps
   extends Omit<BoxComponentProps, 'vars' | 'variant'>,
-    StylesApiProps<UnstyledButtonStylesNames> {
+    StylesApiProps<UnstyledButtonFactory> {
   __staticSelector?: string;
 }
 
@@ -26,10 +26,12 @@ export interface UnstyledButtonFactory {
   stylesNames: UnstyledButtonStylesNames;
   defaultComponent: 'button';
   defaultRef: HTMLButtonElement;
+  vars: '--test' | '--test2';
 }
 
 export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
-  (props: UnstyledButtonProps & { component?: any }, ref) => {
+  (_props: UnstyledButtonProps & { component?: any }, ref) => {
+    const props = useProps('UnstyledButton', defaultProps, _props);
     const {
       className,
       component = 'button',
@@ -39,13 +41,14 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
       styles,
       style,
       ...others
-    } = useProps('UnstyledButton', defaultProps, props);
+    } = props;
 
     const getStyles = useStyles({
       name: __staticSelector!,
+      props,
+      classes,
       className,
       style,
-      classes,
       classNames,
       styles,
       unstyled,

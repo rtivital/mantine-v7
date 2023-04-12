@@ -15,7 +15,7 @@ function mergeStyles(
   const flat = Array.isArray(styles) ? styles : styles ? [styles] : [];
   return flat.reduce<React.CSSProperties>((acc, item) => {
     if (typeof item === 'function') {
-      return { ...acc, ...item(theme) };
+      return { ...acc, ...item(theme, {}) };
     }
 
     return { ...acc, ...item };

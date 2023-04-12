@@ -5,30 +5,40 @@ export type DataAttributes = Record<`data-${string}`, any>;
 
 export interface FactoryPayload {
   props: Record<string, any>;
+  ctx?: any;
   ref?: any;
   stylesNames?: string;
   vars?: string;
   variant?: string;
-  stylesParams?: Record<string, any>;
   staticComponents?: Record<string, any>;
 }
 
-export type ExtendStyles<StylesNames extends string> =
+export type ExtendStyles<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+> =
   | Partial<Record<StylesNames, React.CSSProperties>>
-  | ((theme: MantineTheme) => Partial<Record<StylesNames, React.CSSProperties>>);
+  | ((
+      theme: MantineTheme,
+      props: Props,
+      ctx: Context
+    ) => Partial<Record<StylesNames, React.CSSProperties>>);
 
-export type ExtendVars<Vars extends string, StyleParams = {}> =
+export type ExtendVars<Vars extends string, Props extends Record<string, any>, Context = unknown> =
   | Partial<Record<Vars, string>>
-  | ((payload: StyleParams) => Partial<Record<Vars, string>>);
+  | ((theme: MantineTheme, props: Props, ctx: Context) => Partial<Record<Vars, string>>);
 
 export interface ExtendComponent<Payload extends FactoryPayload> {
   defaultProps?: Partial<Payload['props']> & DataAttributes;
   classNames?: Payload['stylesNames'] extends string
     ? Partial<Record<Payload['stylesNames'], string>>
     : never;
-  styles?: Payload['stylesNames'] extends string ? ExtendStyles<Payload['stylesNames']> : never;
+  styles?: Payload['stylesNames'] extends string
+    ? ExtendStyles<Payload['stylesNames'], Payload['props'], Payload['ctx']>
+    : never;
   vars?: Payload['vars'] extends string
-    ? ExtendVars<Payload['vars'], Payload['stylesParams']>
+    ? ExtendVars<Payload['vars'], Payload['props'], Payload['ctx']>
     : never;
 }
 

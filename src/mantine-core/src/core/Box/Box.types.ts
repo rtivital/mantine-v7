@@ -9,7 +9,7 @@ export type CssVariables<Variable extends string = CssVariable> = Partial<Record
 
 export type CssVars<Variable extends string = CssVariable> =
   | CssVariables<Variable>
-  | ((theme: MantineTheme) => CssVariables<Variable>);
+  | ((theme: MantineTheme, props: Record<string, any>) => CssVariables<Variable>);
 
 export type CssVarsProp<Variable extends string = CssVariable> =
   | CssVars<Variable>

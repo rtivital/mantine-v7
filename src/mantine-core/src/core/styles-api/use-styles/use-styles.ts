@@ -4,38 +4,58 @@ import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../..
 import type { MantineStyleProp } from '../../Box';
 import { StylesRecord } from '../styles-api.types';
 
-export type Styles<StylesNames extends string> =
+export type Styles<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+> =
   | StylesRecord<StylesNames, CSSProperties>
-  | ((theme: MantineTheme) => StylesRecord<StylesNames, CSSProperties>);
+  | ((theme: MantineTheme, props: Props, ctx: Context) => StylesRecord<StylesNames, CSSProperties>);
 
 export type ClassNames<StylesNames extends string> = Partial<Record<StylesNames, string>>;
 
-export interface useStylesInput<StylesNames extends string> {
+export interface UseStylesInput<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+> {
   name: string | (string | undefined)[];
   classes: Record<StylesNames, string>;
+  props: Props;
+  ctx?: Context;
   className?: string;
   style?: MantineStyleProp;
   rootSelector?: StylesNames;
   unstyled?: boolean;
   classNames?: ClassNames<StylesNames>;
-  styles?: Styles<StylesNames>;
+  styles?: Styles<StylesNames, Props, Context>;
 }
 
-export interface GetPropsOptions<StylesNames extends string> {
+export interface GetPropsOptions<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+> {
   className?: string;
   style?: MantineStyleProp;
   focusable?: boolean;
   active?: boolean;
   classNames?: Partial<Record<StylesNames, string>>;
-  styles?: Styles<StylesNames>;
+  styles?: Styles<StylesNames, Props, Context>;
   variant?: string;
 }
 
-function resolveStyles<StylesNames extends string>(
-  styles: Styles<StylesNames> | undefined,
-  theme: MantineTheme
+function resolveStyles<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+>(
+  styles: Styles<StylesNames, Props, Context> | undefined,
+  theme: MantineTheme,
+  props: Props,
+  ctx: Context
 ) {
-  return typeof styles === 'function' ? styles(theme) : styles;
+  return typeof styles === 'function' ? styles(theme, props, ctx) : styles;
 }
 
 function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) {
@@ -50,31 +70,41 @@ function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) 
   );
 }
 
-export type GetStylesApi<StylesNames extends string> = (
+export type GetStylesApi<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+> = (
   selector: StylesNames,
-  options?: GetPropsOptions<StylesNames>
+  options?: GetPropsOptions<StylesNames, Props, Context>
 ) => {
   className: string;
   style: CSSProperties;
 };
 
-export function useStyles<StylesNames extends string>({
+export function useStyles<
+  StylesNames extends string,
+  Props extends Record<string, any>,
+  Context = unknown
+>({
   name,
-  className,
   classes,
+  props,
+  ctx,
+  className,
   style,
   rootSelector = 'root' as StylesNames,
   unstyled,
   classNames,
   styles,
-}: useStylesInput<StylesNames>): GetStylesApi<StylesNames> {
+}: UseStylesInput<StylesNames, Props, Context>): GetStylesApi<StylesNames, Props, Context> {
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];
-  const resolvedStyles = resolveStyles(styles, theme);
+  const resolvedStyles = resolveStyles(styles, theme, props, ctx!);
   const resolvedStyle = resolveStyle(style, theme);
 
-  return (selector: StylesNames, options?: GetPropsOptions<StylesNames>) => {
+  return (selector: StylesNames, options?: GetPropsOptions<StylesNames, Props, Context>) => {
     const themeClassNames = themeName
       .filter((n) => n)
       .map((n) => theme.components?.[n]?.classNames?.[selector]);
@@ -93,10 +123,10 @@ export function useStyles<StylesNames extends string>({
     );
 
     const themeStyles = themeName
-      .map((n) => resolveStyles(theme.components?.[n]?.styles, theme)?.[selector])
+      .map((n) => resolveStyles(theme.components?.[n]?.styles, theme, props, ctx!)?.[selector])
       .reduce((acc, val) => ({ ...acc, ...val }), {});
 
-    const componentStyles = resolveStyles(options?.styles, theme);
+    const componentStyles = resolveStyles(options?.styles, theme, props, ctx!);
 
     const _style = {
       ...themeStyles,

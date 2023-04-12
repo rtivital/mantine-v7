@@ -1,25 +1,33 @@
 import type { MantineTheme } from '../MantineProvider';
-import type { CssVariables, CssVariable } from '../Box';
+import type { CssVariables } from '../Box';
+import type { FactoryPayload } from '../factory';
 
 export type StylesRecord<StylesNames extends string, Payload> = Partial<
   Record<StylesNames, Payload>
 >;
 
-export interface StylesApiProps<
-  StylesNames extends string,
-  Variant extends string = string,
-  Variables extends CssVariable = CssVariable,
-  StylesParams extends Record<string, any> = Record<string, any>
-> {
+export interface StylesApiProps<Payload extends FactoryPayload> {
   unstyled?: boolean;
-  variant?: Variant | (string & {});
-  classNames?: Partial<Record<StylesNames, string>>;
-  styles?:
-    | StylesRecord<StylesNames, React.CSSProperties>
-    | ((theme: MantineTheme) => StylesRecord<StylesNames, React.CSSProperties>);
-  vars?: StylesParams extends Record<string, any>
+  variant?: Payload['variant'] extends string ? Payload['variant'] | (string & {}) : string;
+  classNames?: Payload['stylesNames'] extends string
+    ? Partial<Record<Payload['stylesNames'], string>>
+    : never;
+  styles?: Payload['stylesNames'] extends string
     ?
-        | ((params: StylesParams) => CssVariables<Variables | (string & {})>)
-        | CssVariables<Variables | (string & {})>
-    : CssVariables<Variables | (string & {})>;
+        | StylesRecord<Payload['stylesNames'], React.CSSProperties>
+        | ((
+            theme: MantineTheme,
+            props: Payload['props'],
+            ctx: Payload['ctx']
+          ) => StylesRecord<Payload['stylesNames'], React.CSSProperties>)
+    : never;
+  vars?: Payload['vars'] extends string
+    ?
+        | CssVariables<Payload['vars'] | (string & {})>
+        | ((
+            theme: MantineTheme,
+            props: Payload['props'],
+            ctx: Payload['ctx']
+          ) => CssVariables<Payload['vars'] | (string & {})>)
+    : never;
 }
