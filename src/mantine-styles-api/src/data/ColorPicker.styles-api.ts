@@ -16,8 +16,6 @@ export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
     swatches: 'Color swatches list',
   },
 
-  params: ['size'],
-
   vars: {
     '--cp-body-spacing': '',
     '--cp-preview-size': 'Controls size of the swatch',

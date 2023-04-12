@@ -6,8 +6,6 @@ export const MarkStylesApi: StylesApiData<MarkFactory> = {
     root: 'Root element',
   },
 
-  params: ['color', 'variant'],
-
   vars: {
     '--mark-bg-dark': 'Background color for dark color scheme',
     '--mark-bg-light': 'Background color for light color scheme',

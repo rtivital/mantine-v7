@@ -23,17 +23,6 @@ export const TableStylesApi: StylesApiData<TableFactory> = {
     '--table-highlight-on-hover-color': 'Background color of tr elements when hovered',
   },
 
-  params: [
-    'borderColor',
-    'captionSide',
-    'horizontalSpacing',
-    'verticalSpacing',
-    'stripedColor',
-    'highlightOnHoverColor',
-    'layout',
-    'variant',
-  ],
-
   modifiers: [
     {
       modifier: 'data-with-table-border',

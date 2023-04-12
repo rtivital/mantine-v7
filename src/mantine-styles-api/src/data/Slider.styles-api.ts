@@ -14,8 +14,6 @@ export const SliderStylesApi: StylesApiData<SliderFactory> = {
     markLabel: 'Label of the associated mark, displayed below track',
   },
 
-  params: ['color', 'radius', 'size', 'thumbSize', 'variant'],
-
   vars: {
     '--slider-size': 'Controls track height',
     '--slider-color': 'Controls filled track, thumb and marks color',

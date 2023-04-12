@@ -16,8 +16,6 @@ export const SwitchStylesApi: StylesApiData<SwitchFactory> = {
     error: 'Error message displayed below label',
   },
 
-  params: ['radius', 'size', 'variant'],
-
   vars: {
     '--switch-radius': 'Controls border-radius of track and thumb',
     '--switch-height': 'Controls height of track',

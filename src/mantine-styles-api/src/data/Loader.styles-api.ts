@@ -6,8 +6,6 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
     root: 'Root element',
   },
 
-  params: ['size', 'color', 'variant', 'variant'],
-
   vars: {
     '--loader-size': 'Loader width, controlled by size prop',
     '--loader-color': 'Svg stroke/fille color, controlled by color prop',

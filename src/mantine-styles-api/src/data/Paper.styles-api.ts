@@ -11,8 +11,6 @@ export const PaperStylesApi: StylesApiData<PaperFactory> = {
     '--paper-shadow': 'Box shadow',
   },
 
-  params: ['radius', 'shadow', 'variant'],
-
   modifiers: [
     { modifier: 'data-with-border', selector: 'root', condition: 'withBorderProp is set' },
   ],

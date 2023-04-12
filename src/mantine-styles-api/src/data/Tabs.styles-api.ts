@@ -12,8 +12,6 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     tabRightSection: 'Right section of Tabs.Tab, controlled by rightSection prop',
   },
 
-  params: ['color', 'radius', 'variant'],
-
   vars: {
     '--tabs-color':
       'Value of color prop, used by Tabs.Tab, can be overridden by Tabs.Tab color prop',

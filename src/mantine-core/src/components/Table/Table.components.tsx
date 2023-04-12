@@ -9,10 +9,11 @@ import {
   FactoryPayload,
 } from '../../core';
 import { useTableContext, TableContextValue } from './Table.context';
+import type { TableFactory } from './Table';
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
-    StylesApiProps<Selector> {}
+    StylesApiProps<Omit<TableFactory, 'stylesNames'> & { stylesNames: Selector }> {}
 
 export interface TableThProps extends TableElementProps<'th'>, ElementProps<'th'> {}
 export interface TableTdProps extends TableElementProps<'td'>, ElementProps<'td'> {}

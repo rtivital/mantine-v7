@@ -6,8 +6,6 @@ export const GroupStylesApi: StylesApiData<GroupFactory> = {
     root: 'Root element',
   },
 
-  params: ['align', 'gap', 'justify', 'childrenCount', 'preventGrowOverflow', 'grow', 'variant'],
-
   vars: {
     '--group-align': 'Controls align-items property',
     '--group-justify': 'Controls justify-content property',

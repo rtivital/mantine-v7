@@ -10,8 +10,6 @@ export const ColorSwatchStylesApi: StylesApiData<ColorSwatchFactory> = {
     childrenOverlay: 'Overlay with children inside',
   },
 
-  params: ['radius', 'size', 'variant'],
-
   vars: {
     '--cs-radius': 'Controls border radius of all overlays and root element',
     '--cs-size': 'Controls width, height, min-width and min-height of the root element',

@@ -9,19 +9,6 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
     rightSection: 'Right section',
   },
 
-  params: [
-    'radius',
-    'size',
-    'variant',
-    'leftSectionPointerEvents',
-    'leftSectionWidth',
-    'multiline',
-    'offsetBottom',
-    'offsetTop',
-    'rightSectionPointerEvents',
-    'rightSectionWidth',
-  ],
-
   vars: {
     '--input-fz': 'font-size of the input element',
     '--input-height': 'height or min-height of the input element (depends on multiline prop)',

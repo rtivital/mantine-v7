@@ -8,7 +8,6 @@ export type {
   InputFactory,
   InputProps,
   InputStylesNames,
-  InputStylesParams,
   InputVariant,
 } from './Input';
 export type {
@@ -22,7 +21,6 @@ export type {
   InputDescriptionFactory,
   InputDescriptionProps,
   InputDescriptionStylesNames,
-  InputDescriptionStylesParams,
   InputDescriptionVariant,
 } from './InputDescription/InputDescription';
 export type {
@@ -30,7 +28,6 @@ export type {
   InputErrorFactory,
   InputErrorProps,
   InputErrorStylesNames,
-  InputErrorStylesParams,
   InputErrorVariant,
 } from './InputError/InputError';
 export type {
@@ -38,7 +35,6 @@ export type {
   InputLabelFactory,
   InputLabelProps,
   InputLabelStylesNames,
-  InputLabelStylesParams,
   InputLabelVariant,
 } from './InputLabel/InputLabel';
 export type {
@@ -46,6 +42,5 @@ export type {
   InputPlaceholderFactory,
   InputPlaceholderProps,
   InputPlaceholderStylesNames,
-  InputPlaceholderStylesParams,
   InputPlaceholderVariant,
 } from './InputPlaceholder/InputPlaceholder';

@@ -6,8 +6,6 @@ export const CodeStylesApi: StylesApiData<CodeFactory> = {
     root: 'Root element',
   },
 
-  params: ['color', 'variant'],
-
   vars: {
     '--code-bg': 'Controls background-color',
   },

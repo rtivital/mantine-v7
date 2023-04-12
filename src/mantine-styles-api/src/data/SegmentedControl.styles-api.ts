@@ -22,8 +22,6 @@ export const SegmentedControlStylesApi: StylesApiData<SegmentedControlFactory> =
       'Controls transition-timing-function of various elements that have animations',
   },
 
-  params: ['color', 'radius', 'size', 'transitionDuration', 'transitionTimingFunction', 'variant'],
-
   modifiers: [
     { modifier: 'data-full-width', selector: 'root', condition: 'fullWidth prop is set' },
     { modifier: 'data-orientation', selector: 'control', value: 'Value of orientation prop' },
