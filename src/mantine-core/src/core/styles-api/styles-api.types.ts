@@ -29,5 +29,5 @@ export interface StylesApiProps<Payload extends FactoryPayload> {
             props: Payload['props'],
             ctx: Payload['ctx']
           ) => CssVariables<Payload['vars'] | (string & {})>)
-    : never;
+    : CssVariables;
 }

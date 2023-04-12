@@ -46,14 +46,7 @@ export interface ActionIconStylesParams {
   variant: ActionIconVariant | (string & {}) | undefined;
 }
 
-export interface ActionIconProps
-  extends BoxProps,
-    StylesApiProps<
-      ActionIconStylesNames,
-      ActionIconVariant,
-      ActionIconCssVariables,
-      ActionIconStylesParams
-    > {
+export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
   __staticSelector?: string;
 
   /** Determines whether `Loader` component should be displayed instead of the icon */
@@ -99,8 +92,8 @@ const defaultProps: Partial<ActionIconProps> = {
   size: 'md',
 };
 
-const varsResolver = createVarsResolver<ActionIconCssVariables, ActionIconStylesParams>(
-  ({ size, radius, variant, gradient, color }, theme) => ({
+const varsResolver = createVarsResolver<ActionIconFactory>(
+  (theme, { size, radius, variant, gradient, color }) => ({
     '--ai-size': getSize(size, 'ai-size'),
     '--ai-radius': getRadius(radius),
     ...theme.variantColorResolver({
@@ -113,7 +106,8 @@ const varsResolver = createVarsResolver<ActionIconCssVariables, ActionIconStyles
   })
 );
 
-export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => {
+export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) => {
+  const props = useProps('ActionIcon', defaultProps, _props);
   const {
     className,
     unstyled,
@@ -132,18 +126,18 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((props, ref) => 
     children,
     disabled,
     ...others
-  } = useProps('ActionIcon', defaultProps, props);
+  } = props;
 
-  const _vars = useVars<ActionIconStylesParams>('ActionIcon', varsResolver, vars, {
-    color,
-    size,
-    radius,
-    gradient,
-    variant,
+  const _vars = useVars<ActionIconFactory>({
+    name: 'ActionIcon',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   const getStyles = useStyles({
     name: ['ActionIcon', __staticSelector],
+    props,
     className,
     style,
     classes,

@@ -37,12 +37,6 @@ export function PropsInStyles() {
       //     root: {},
       //   };
       // }}
-      vars={(theme, props, ctx) => {
-        console.log(theme, props, ctx);
-        return {
-          '--test': 'red',
-        };
-      }}
     >
       Hello
     </UnstyledButton>
@@ -54,8 +48,5 @@ UnstyledButton.extend({
     root: {
       backgroundClip: ctx as string,
     },
-  }),
-  vars: (_theme, _props, ctx) => ({
-    '--test': ctx as string,
   }),
 });

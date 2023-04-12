@@ -26,7 +26,6 @@ export interface UnstyledButtonFactory {
   stylesNames: UnstyledButtonStylesNames;
   defaultComponent: 'button';
   defaultRef: HTMLButtonElement;
-  vars: '--test' | '--test2';
 }
 
 export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
