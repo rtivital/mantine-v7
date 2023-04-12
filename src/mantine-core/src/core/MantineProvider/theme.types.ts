@@ -126,11 +126,17 @@ export type MantineStylesRecord = Record<string, React.CSSProperties>;
 
 export interface MantineThemeComponent {
   classNames?: Record<string, string>;
-  styles?: MantineStylesRecord | ((theme: MantineTheme) => MantineStylesRecord);
+  styles?:
+    | MantineStylesRecord
+    | ((theme: MantineTheme, props: Record<string, any>, ctx: unknown) => MantineStylesRecord);
   defaultProps?: Record<string, any> | ((theme: MantineTheme) => Record<string, any>);
   vars?:
     | Record<string, string | undefined>
-    | ((params: Record<string, any>) => Record<string, string | undefined>);
+    | ((
+        theme: MantineTheme,
+        props: Record<string, any>,
+        ctx: unknown
+      ) => Record<string, string | undefined>);
 }
 
 export type MantineThemeComponents = Record<string, MantineThemeComponent>;

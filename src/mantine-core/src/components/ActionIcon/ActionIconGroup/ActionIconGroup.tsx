@@ -9,6 +9,7 @@ import {
   useVars,
   rem,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import classes from './ActionIconGroup.module.css';
 
@@ -27,12 +28,13 @@ export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIco
   borderWidth?: number | string;
 }
 
-export interface ActionIconGroupFactory {
+export type ActionIconGroupFactory = Factory<{
   props: ActionIconGroupProps;
   ref: HTMLDivElement;
+  variant: ActionIconGroupVariant;
   stylesNames: ActionIconGroupStylesNames;
   vars: ActionIconGroupCssVariables;
-}
+}>;
 
 const defaultProps: Partial<ActionIconGroupProps> = {
   orientation: 'horizontal',
@@ -65,7 +67,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
     vars,
   });
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ActionIconGroupFactory>({
     name: 'ActionIconGroup',
     props,
     classes,

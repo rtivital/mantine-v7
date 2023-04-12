@@ -8,6 +8,7 @@ import {
   useProps,
   useStyles,
   MantineSize,
+  Factory,
 } from '../../../core';
 import { InputLabel, InputLabelStylesNames } from '../InputLabel/InputLabel';
 import {
@@ -16,8 +17,8 @@ import {
 } from '../InputDescription/InputDescription';
 import { InputError, InputErrorStylesNames } from '../InputError/InputError';
 import { InputWrapperProvider } from '../InputWrapper.context';
-import classes from './InputWrapper.module.css';
 import { getInputOffsets } from './get-input-offsets/get-input-offsets';
+import classes from './InputWrapper.module.css';
 
 export type InputWrapperStylesNames =
   | 'root'
@@ -60,7 +61,7 @@ export interface __InputWrapperProps {
 export interface InputWrapperProps
   extends __InputWrapperProps,
     BoxProps,
-    StylesApiProps<InputWrapperStylesNames>,
+    StylesApiProps<InputWrapperFactory>,
     ElementProps<'div'> {
   __staticSelector?: string;
 
@@ -74,11 +75,11 @@ export interface InputWrapperProps
   labelElement?: 'label' | 'div';
 }
 
-export interface InputWrapperFactory {
+export type InputWrapperFactory = Factory<{
   props: InputWrapperProps;
   ref: HTMLDivElement;
   stylesNames: InputWrapperStylesNames;
-}
+}>;
 
 const defaultProps: Partial<InputWrapperProps> = {
   labelElement: 'label',
@@ -87,7 +88,8 @@ const defaultProps: Partial<InputWrapperProps> = {
   inputWrapperOrder: ['label', 'description', 'input', 'error'],
 };
 
-export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
+export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
+  const props = useProps('InputWrapper', defaultProps, _props);
   const {
     classNames,
     className,
@@ -112,13 +114,14 @@ export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
     id,
     required,
     ...others
-  } = useProps('InputWrapper', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<InputWrapperFactory>({
     name: ['InputWrapper', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
@@ -126,7 +129,7 @@ export const InputWrapper = factory<InputWrapperFactory>((props, ref) => {
 
   const sharedProps = {
     classNames,
-    styles,
+    styles: styles as any,
     unstyled,
     size,
     variant,

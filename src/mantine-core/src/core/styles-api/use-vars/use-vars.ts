@@ -34,7 +34,7 @@ interface UseVarsInput<Payload extends FactoryPayload> {
         ctx: Payload['ctx']
       ) => Record<string, string | undefined>);
   props: Payload['props'];
-  ctx?: Payload['ctx'];
+  stylesCtx?: Payload['ctx'];
 }
 
 export function useVars<Payload extends FactoryPayload>({
@@ -42,11 +42,11 @@ export function useVars<Payload extends FactoryPayload>({
   resolver,
   vars,
   props,
-  ctx,
+  stylesCtx,
 }: UseVarsInput<Payload>) {
   const theme = useMantineTheme();
-  const themeVars = resolveVars(theme.components[name]?.vars, theme, props, ctx!);
-  const componentVars = resolveVars(vars as any, theme, props, ctx!);
-  const resolvedVars = resolver(theme, props, ctx!);
+  const themeVars = resolveVars(theme.components[name]?.vars, theme, props, stylesCtx!);
+  const componentVars = resolveVars(vars as any, theme, props, stylesCtx!);
+  const resolvedVars = resolver(theme, props, stylesCtx!);
   return { ...resolvedVars, ...themeVars, ...componentVars };
 }

@@ -13,16 +13,12 @@ import {
   getThemeColor,
   getRadius,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { ArrowPosition, FloatingArrow, FloatingPosition, getFloatingPosition } from '../Floating';
 import { Transition, TransitionOverride, getTransitionProps } from '../Transition';
 import { OptionalPortal } from '../Portal';
-import {
-  TooltipBaseProps,
-  TooltipCssVariables,
-  TooltipStylesNames,
-  TooltipStylesParams,
-} from './Tooltip.types';
+import { TooltipBaseProps, TooltipCssVariables, TooltipStylesNames } from './Tooltip.types';
 import { TooltipFloating } from './TooltipFloating/TooltipFloating';
 import { TooltipGroup } from './TooltipGroup/TooltipGroup';
 import { useTooltip } from './use-tooltip';
@@ -75,17 +71,16 @@ export interface TooltipProps extends TooltipBaseProps {
   keepMounted?: boolean;
 }
 
-export interface TooltipFactory {
+export type TooltipFactory = Factory<{
   props: TooltipProps;
   ref: HTMLDivElement;
   stylesNames: TooltipStylesNames;
   vars: TooltipCssVariables;
-  stylesParams: TooltipStylesParams;
   staticComponents: {
     Floating: typeof TooltipFloating;
     Group: typeof TooltipGroup;
   };
-}
+}>;
 
 const defaultProps: Partial<TooltipProps> = {
   position: 'top',
@@ -103,14 +98,13 @@ const defaultProps: Partial<TooltipProps> = {
   positionDependencies: [],
 };
 
-const varsResolver = createVarsResolver<TooltipCssVariables, TooltipStylesParams>(
-  ({ radius, color }, theme) => ({
-    '--tooltip-radius': getRadius(radius),
-    '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
-  })
-);
+const varsResolver = createVarsResolver<TooltipFactory>((theme, { radius, color }) => ({
+  '--tooltip-radius': getRadius(radius),
+  '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+}));
 
-export const Tooltip = factory<TooltipFactory>((props, ref) => {
+export const Tooltip = factory<TooltipFactory>((_props, ref) => {
+  const props = useProps('Tooltip', defaultProps, _props);
   const {
     children,
     position,
@@ -167,21 +161,23 @@ export const Tooltip = factory<TooltipFactory>((props, ref) => {
     inline,
   });
 
-  const getStyles = useStyles<TooltipStylesNames>({
+  const getStyles = useStyles<TooltipFactory>({
     name: 'Tooltip',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'tooltip',
   });
 
-  const _vars = useVars<TooltipStylesParams>('Tooltip', varsResolver, vars, {
-    radius,
-    color,
-    variant,
+  const _vars = useVars<TooltipFactory>({
+    name: 'Tooltip',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   if (!isElement(children)) {

@@ -13,6 +13,7 @@ import {
   getSize,
   getSpacing,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { ColorSliderStylesNames } from './ColorSlider/ColorSlider';
 import { AlphaSlider } from './AlphaSlider/AlphaSlider';
@@ -36,11 +37,6 @@ export type ColorPickerStylesNames =
   | SwatchesStylesNames;
 export type ColorPickerVariant = string;
 export type ColorPickerCssVariables = '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
-
-export interface ColorPickerStylesParams {
-  size: MantineSize | (string & {}) | undefined;
-  fullWidth: boolean | undefined;
-}
 
 export interface __ColorPickerProps {
   /** Controlled component value */
@@ -74,7 +70,7 @@ export interface __ColorPickerProps {
 export interface ColorPickerProps
   extends BoxProps,
     __ColorPickerProps,
-    StylesApiProps<ColorPickerStylesNames, ColorPickerVariant, ColorPickerCssVariables>,
+    StylesApiProps<ColorPickerFactory>,
     ElementProps<'div', 'onChange' | 'value' | 'defaultValue'> {
   __staticSelector?: string;
 
@@ -97,13 +93,13 @@ export interface ColorPickerProps
   onColorSwatchClick?(color: string): void;
 }
 
-export interface ColorPickerFactory {
+export type ColorPickerFactory = Factory<{
   props: ColorPickerProps;
   ref: HTMLDivElement;
   stylesNames: ColorPickerStylesNames;
   vars: ColorPickerCssVariables;
-  stylesParams: ColorPickerStylesParams;
-}
+  variant: ColorPickerVariant;
+}>;
 
 const defaultProps: Partial<ColorPickerProps> = {
   swatchesPerRow: 10,
@@ -113,15 +109,14 @@ const defaultProps: Partial<ColorPickerProps> = {
   __staticSelector: 'ColorPicker',
 };
 
-const varsResolver = createVarsResolver<ColorPickerCssVariables, ColorPickerStylesParams>(
-  ({ size, fullWidth }) => ({
-    '--cp-preview-size': getSize(size, 'cp-preview-size'),
-    '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
-    '--cp-body-spacing': getSpacing(size),
-  })
-);
+const varsResolver = createVarsResolver<ColorPickerFactory>((_, { size, fullWidth }) => ({
+  '--cp-preview-size': getSize(size, 'cp-preview-size'),
+  '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
+  '--cp-body-spacing': getSpacing(size),
+}));
 
-export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
+export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
+  const props = useProps('ColorPicker', defaultProps, _props);
   const {
     classNames,
     className,
@@ -146,22 +141,25 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
     onColorSwatchClick,
     __staticSelector,
     ...others
-  } = useProps('ColorPicker', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles<ColorPickerStylesNames>({
+  const getStyles = useStyles<ColorPickerFactory>({
     name: __staticSelector!,
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'wrapper',
   });
 
-  const _vars = useVars<ColorPickerStylesParams>('ColorPicker', varsResolver, vars, {
-    size,
-    fullWidth,
+  const _vars = useVars<ColorPickerFactory>({
+    name: 'ColorPicker',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   const formatRef = useRef(format);
@@ -208,7 +206,7 @@ export const ColorPicker = factory<ColorPickerFactory>((props, ref) => {
 
   const stylesApi = {
     classNames,
-    styles,
+    styles: styles as any,
     unstyled,
     __staticSelector: __staticSelector!,
   };

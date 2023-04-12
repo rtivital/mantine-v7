@@ -2,12 +2,12 @@ import { forwardRef } from 'react';
 import { FactoryPayload, StaticComponents, ThemeExtend, identity } from './factory';
 import { PolymorphicComponentProps } from './create-polymorphic-component';
 
-export interface ExtendPolymorphicPayload extends FactoryPayload {
+export interface PolymorphicFactoryPayload extends FactoryPayload {
   defaultComponent: any;
   defaultRef: any;
 }
 
-export function polymorphicFactory<Payload extends ExtendPolymorphicPayload>(
+export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
   ui: React.ForwardRefRenderFunction<Payload['defaultRef'], Payload['props']>
 ) {
   type ComponentProps<C> = PolymorphicComponentProps<C, Payload['props']>;

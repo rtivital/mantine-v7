@@ -15,6 +15,7 @@ import {
   getRadius,
   getThemeColor,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { TabsProvider } from './Tabs.context';
 import { TabsList, TabsListStylesNames } from './TabsList/TabsList';
@@ -30,15 +31,10 @@ export type TabsStylesNames =
 
 export type TabsVariant = 'default' | 'outline' | 'pills';
 export type TabsCssVariables = '--tabs-color' | '--tabs-radius';
-export interface TabsStylesParams {
-  color: MantineColor | undefined;
-  radius: MantineRadius | number | string | undefined;
-  variant: TabsVariant | (string & {}) | undefined;
-}
 
 export interface TabsProps
   extends BoxProps,
-    StylesApiProps<TabsStylesNames, TabsVariant, TabsCssVariables, TabsStylesParams>,
+    StylesApiProps<TabsFactory>,
     ElementProps<'div', 'defaultValue' | 'value' | 'onChange'> {
   /** Default value for uncontrolled component */
   defaultValue?: string | null;
@@ -83,19 +79,18 @@ export interface TabsProps
   keepMounted?: boolean;
 }
 
-export interface TabsFactory {
+export type TabsFactory = Factory<{
   props: TabsProps;
   ref: HTMLDivElement;
   variant: TabsVariant;
   stylesNames: TabsStylesNames;
   vars: TabsCssVariables;
-  stylesParams: TabsStylesParams;
   staticComponents: {
     Tab: typeof TabsTab;
     Panel: typeof TabsPanel;
     List: typeof TabsList;
   };
-}
+}>;
 
 const VALUE_ERROR =
   'Tabs.Tab or Tabs.Panel component was rendered with invalid value or without value';
@@ -112,14 +107,13 @@ const defaultProps: Partial<TabsProps> = {
   placement: 'left',
 };
 
-const varsResolver = createVarsResolver<TabsCssVariables, TabsStylesParams>(
-  ({ radius, color }, theme) => ({
-    '--tabs-radius': getRadius(radius),
-    '--tabs-color': getThemeColor(color, theme),
-  })
-);
+const varsResolver = createVarsResolver<TabsFactory>((theme, { radius, color }) => ({
+  '--tabs-radius': getRadius(radius),
+  '--tabs-color': getThemeColor(color, theme),
+}));
 
-export const Tabs = factory<TabsFactory>((props, ref) => {
+export const Tabs = factory<TabsFactory>((_props, ref) => {
+  const props = useProps('Tabs', defaultProps, _props);
   const {
     defaultValue,
     value,
@@ -143,7 +137,7 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     style,
     vars,
     ...others
-  } = useProps('Tabs', defaultProps, props);
+  } = props;
 
   const uid = useId(id);
 
@@ -154,20 +148,22 @@ export const Tabs = factory<TabsFactory>((props, ref) => {
     onChange,
   });
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<TabsFactory>({
     name: 'Tabs',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<TabsStylesParams>('Tabs', varsResolver, vars, {
-    color,
-    radius,
-    variant,
+  const _vars = useVars<TabsFactory>({
+    name: 'Tabs',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

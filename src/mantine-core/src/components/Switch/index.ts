@@ -4,7 +4,6 @@ export type {
   SwitchFactory,
   SwitchProps,
   SwitchStylesNames,
-  SwitchStylesParams,
   SwitchVariant,
 } from './Switch';
 export type {

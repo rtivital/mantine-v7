@@ -4,6 +4,5 @@ export type {
   BackgroundImageCssVariables,
   BackgroundImageFactory,
   BackgroundImageStylesNames,
-  BackgroundImageStylesParams,
   BackgroundImageVariant,
 } from './BackgroundImage';

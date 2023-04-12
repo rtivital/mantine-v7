@@ -12,6 +12,7 @@ import {
   getRadius,
   getShadow,
   createVarsResolver,
+  PolymorphicFactory,
 } from '../../core';
 import classes from './Paper.module.css';
 
@@ -19,15 +20,7 @@ export type PaperStylesNames = 'root';
 export type PaperVariant = string;
 export type PaperCssVariables = '--paper-radius' | '--paper-shadow';
 
-export interface PaperStylesParams {
-  radius: MantineRadius | number | string | undefined;
-  shadow: MantineShadow | string | undefined;
-  variant: PaperVariant | undefined;
-}
-
-export interface PaperProps
-  extends BoxProps,
-    StylesApiProps<PaperStylesNames, PaperVariant, PaperCssVariables, PaperStylesParams> {
+export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
   /** Key of `theme.shadows` or any valid CSS value to set box-shadow, `none` by default */
   shadow?: MantineShadow | (string & {});
 
@@ -38,25 +31,23 @@ export interface PaperProps
   withBorder?: boolean;
 }
 
-export interface PaperFactory {
+export type PaperFactory = PolymorphicFactory<{
   props: PaperProps;
   defaultComponent: 'div';
   defaultRef: HTMLDivElement;
   stylesNames: PaperStylesNames;
   vars: PaperCssVariables;
-  stylesParams: PaperStylesParams;
-}
+}>;
 
 const defaultProps: Partial<PaperProps> = {};
 
-const varsResolver = createVarsResolver<PaperCssVariables, PaperStylesParams>(
-  ({ radius, shadow }) => ({
-    '--paper-radius': getRadius(radius),
-    '--paper-shadow': getShadow(shadow),
-  })
-);
+const varsResolver = createVarsResolver<PaperFactory>((_, { radius, shadow }) => ({
+  '--paper-radius': getRadius(radius),
+  '--paper-shadow': getShadow(shadow),
+}));
 
-export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
+export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
+  const props = useProps('Paper', defaultProps, _props);
   const {
     classNames,
     className,
@@ -69,22 +60,24 @@ export const Paper = polymorphicFactory<PaperFactory>((props, ref) => {
     shadow,
     variant,
     ...others
-  } = useProps('Paper', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<PaperFactory>({
     name: 'Paper',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<PaperStylesParams>('Paper', varsResolver, vars, {
-    radius,
-    shadow,
-    variant,
+  const _vars = useVars<PaperFactory>({
+    name: 'Paper',
+    resolver: varsResolver,
+    vars,
+    props,
   });
 
   return (

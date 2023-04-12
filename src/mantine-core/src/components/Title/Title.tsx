@@ -7,6 +7,7 @@ import {
   useStyles,
   useVars,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { Text, TextVariant, TextProps } from '../Text';
 import { getTitleSize } from './get-title-size';
@@ -19,15 +20,9 @@ export type TitleStylesNames = 'root';
 export type TitleVariant = TextVariant;
 export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz';
 
-export interface TitleStylesParams {
-  size: TitleSize | undefined;
-  order: TitleOrder | undefined;
-  variant: TitleVariant | (string & {}) | undefined;
-}
-
 export interface TitleProps
-  extends Omit<TextProps, 'vars'>,
-    StylesApiProps<TitleStylesNames, TitleVariant, TitleCssVariables, TitleStylesParams>,
+  extends Omit<TextProps, 'vars' | 'styles'>,
+    StylesApiProps<TitleFactory>,
     ElementProps<'h1'> {
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */
   order?: TitleOrder;
@@ -36,19 +31,19 @@ export interface TitleProps
   size?: TitleSize;
 }
 
-export interface TitleFactory {
+export type TitleFactory = Factory<{
   props: TitleProps;
   ref: HTMLHeadingElement;
   stylesNames: TitleStylesNames;
   vars: TitleCssVariables;
-  stylesParams: TitleStylesParams;
-}
+  variant: TitleVariant;
+}>;
 
 const defaultProps: Partial<TitleProps> = {
   order: 1,
 };
 
-const varsResolver = createVarsResolver<TitleCssVariables, TitleStylesParams>(({ order, size }) => {
+const varsResolver = createVarsResolver<TitleFactory>((_, { order, size }) => {
   const sizeVariables = getTitleSize(order!, size);
   return {
     '--title-fw': sizeVariables.fontWeight,
@@ -57,7 +52,8 @@ const varsResolver = createVarsResolver<TitleCssVariables, TitleStylesParams>(({
   };
 });
 
-export const Title = factory<TitleFactory>((props, ref) => {
+export const Title = factory<TitleFactory>((_props, ref) => {
+  const props = useProps('Title', defaultProps, _props);
   const {
     classNames,
     className,
@@ -70,22 +66,24 @@ export const Title = factory<TitleFactory>((props, ref) => {
     size,
     variant,
     ...others
-  } = useProps('Title', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<TitleFactory>({
     name: 'Title',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<TitleStylesParams>('Title', varsResolver, vars, {
-    size,
-    order,
-    variant,
+  const _vars = useVars<TitleFactory>({
+    name: 'Title',
+    resolver: varsResolver,
+    vars,
+    props,
   });
 
   if (![1, 2, 3, 4, 5, 6].includes(order!)) {

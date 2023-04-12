@@ -7,7 +7,6 @@ export type {
   ColorPickerFactory,
   ColorPickerProps,
   ColorPickerStylesNames,
-  ColorPickerStylesParams,
   ColorPickerVariant,
 } from './ColorPicker';
 export type { AlphaSliderFactory, AlphaSliderProps } from './AlphaSlider/AlphaSlider';

@@ -13,6 +13,7 @@ import {
   getSpacing,
   getThemeColor,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import {
   TableCaption,
@@ -46,23 +47,7 @@ export type TableCssVariables =
   | '--table-striped-color'
   | '--table-highlight-on-hover-color';
 
-export interface TableStylesParams {
-  borderColor: MantineColor | string | undefined;
-  captionSide: 'top' | 'bottom' | undefined;
-  horizontalSpacing: MantineSpacing | number | string | undefined;
-  verticalSpacing: MantineSpacing | number | string | undefined;
-  stripedColor: MantineColor | string | undefined;
-  highlightOnHoverColor: MantineColor | string | undefined;
-  layout: React.CSSProperties['tableLayout'] | undefined;
-  striped: boolean | 'odd' | 'even' | undefined;
-  highlightOnHover: boolean | undefined;
-  variant: TableVariant | undefined;
-}
-
-export interface TableProps
-  extends BoxProps,
-    StylesApiProps<TableStylesNames, TableVariant, TableCssVariables, TableStylesParams>,
-    ElementProps<'table'> {
+export interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProps<'table'> {
   /** Value of `table-layout` style, `unset` by default */
   layout?: React.CSSProperties['tableLayout'];
 
@@ -100,12 +85,11 @@ export interface TableProps
   highlightOnHoverColor?: MantineColor;
 }
 
-export interface TableFactory {
+export type TableFactory = Factory<{
   props: TableProps;
   ref: HTMLTableElement;
   stylesNames: TableStylesNames;
   vars: TableCssVariables;
-  stylesParams: TableStylesParams;
   staticComponents: {
     Thead: typeof TableThead;
     Tbody: typeof TableTbody;
@@ -115,7 +99,7 @@ export interface TableFactory {
     Tr: typeof TableTr;
     Caption: typeof TableCaption;
   };
-}
+}>;
 
 const defaultProps: Partial<TableProps> = {
   captionSide: 'bottom',
@@ -124,8 +108,9 @@ const defaultProps: Partial<TableProps> = {
   horizontalSpacing: 'xs',
 };
 
-const varsResolver = createVarsResolver<TableCssVariables, TableStylesParams>(
+const varsResolver = createVarsResolver<TableFactory>(
   (
+    theme,
     {
       layout,
       captionSide,
@@ -136,8 +121,7 @@ const varsResolver = createVarsResolver<TableCssVariables, TableStylesParams>(
       highlightOnHoverColor,
       striped,
       highlightOnHover,
-    },
-    theme
+    }
   ) => ({
     '--table-layout': layout,
     '--table-caption-side': captionSide,
@@ -153,7 +137,8 @@ const varsResolver = createVarsResolver<TableCssVariables, TableStylesParams>(
   })
 );
 
-export const Table = factory<TableFactory>((props, ref) => {
+export const Table = factory<TableFactory>((_props, ref) => {
+  const props = useProps('Table', defaultProps, _props);
   const {
     classNames,
     className,
@@ -175,23 +160,18 @@ export const Table = factory<TableFactory>((props, ref) => {
     layout,
     variant,
     ...others
-  } = useProps('Table', defaultProps, props);
+  } = props;
 
-  const _vars = useVars<TableStylesParams>('Table', varsResolver, vars, {
-    layout,
-    borderColor,
-    captionSide,
-    horizontalSpacing,
-    verticalSpacing,
-    stripedColor,
-    highlightOnHoverColor,
-    variant,
-    striped,
-    highlightOnHover,
+  const _vars = useVars<TableFactory>({
+    name: 'Table',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
-  const getStyles = useStyles<TableStylesNames>({
+  const getStyles = useStyles<TableFactory>({
     name: 'Table',
+    props,
     className,
     style,
     classes,

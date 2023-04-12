@@ -6,6 +6,5 @@ export type {
   TitleStylesNames,
   TitleCssVariables,
   TitleFactory,
-  TitleStylesParams,
   TitleVariant,
 } from './Title';

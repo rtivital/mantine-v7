@@ -16,6 +16,7 @@ import {
   getRadius,
   getShadow,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import { Transition } from '../../Transition';
@@ -28,35 +29,33 @@ export type PopoverDropdownStylesNames = 'dropdown' | 'arrow';
 export type PopoverDropdownVariant = string;
 export type PopoverDropdownCssVariables = '--popover-radius' | '--popover-shadow';
 
-export interface PopoverDropdownStylesParams {
+export interface PopoverDropdownStylesCtx {
   radius: MantineRadius | (string & {}) | number | undefined;
   shadow: MantineShadow | (string & {}) | number | undefined;
-  variant: PopoverDropdownVariant | undefined;
 }
 
 export interface PopoverDropdownProps
   extends BoxProps,
-    StylesApiProps<PopoverDropdownStylesNames, PopoverDropdownVariant, PopoverDropdownCssVariables>,
+    StylesApiProps<PopoverDropdownFactory>,
     ElementProps<'div'> {}
 
-export interface PopoverDropdownFactory {
+export type PopoverDropdownFactory = Factory<{
   props: PopoverDropdownProps;
   ref: HTMLDivElement;
   stylesNames: PopoverDropdownStylesNames;
   vars: PopoverDropdownCssVariables;
-  stylesParams: PopoverDropdownStylesParams;
-}
+  ctx: PopoverDropdownStylesCtx;
+}>;
 
 const defaultProps: Partial<PopoverDropdownProps> = {};
 
-const varsResolver = createVarsResolver<PopoverDropdownCssVariables, PopoverDropdownStylesParams>(
-  ({ radius, shadow }) => ({
-    '--popover-radius': getRadius(radius),
-    '--popover-shadow': getShadow(shadow),
-  })
-);
+const varsResolver = createVarsResolver<PopoverDropdownFactory>((_, __, { radius, shadow }) => ({
+  '--popover-radius': getRadius(radius),
+  '--popover-shadow': getShadow(shadow),
+}));
 
-export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
+export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => {
+  const props = useProps('PopoverDropdown', defaultProps, _props);
   const {
     classNames,
     className,
@@ -68,25 +67,33 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
     onKeyDownCapture,
     variant,
     ...others
-  } = useProps('PopoverDropdown', defaultProps, props);
+  } = props;
 
   const ctx = usePopoverContext();
+  const stylesCtx: PopoverDropdownStylesCtx = {
+    shadow: ctx.shadow,
+    radius: ctx.radius,
+  };
 
-  const getStyles = useStyles<PopoverDropdownStylesNames>({
+  const getStyles = useStyles<PopoverDropdownFactory>({
     name: ctx.__staticSelector,
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'dropdown',
+    stylesCtx,
   });
 
-  const _vars = useVars<PopoverDropdownStylesParams>('PopoverDropdown', varsResolver, vars, {
-    shadow: ctx.shadow,
-    radius: ctx.radius,
-    variant,
+  const _vars = useVars<PopoverDropdownFactory>({
+    name: 'PopoverDropdown',
+    resolver: varsResolver,
+    props,
+    vars,
+    stylesCtx,
   });
 
   const returnFocus = useFocusReturn({

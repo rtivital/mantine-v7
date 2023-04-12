@@ -11,6 +11,7 @@ import {
   useVars,
   getThemeColor,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import classes from './Code.module.css';
 
@@ -18,15 +19,7 @@ export type CodeStylesNames = 'root';
 export type CodeVariant = string;
 export type CodeCssVariables = '--code-bg';
 
-export interface CodeStylesParams {
-  color: MantineColor | undefined;
-  variant: CodeVariant | undefined;
-}
-
-export interface CodeProps
-  extends BoxProps,
-    StylesApiProps<CodeStylesNames, CodeVariant, CodeCssVariables, CodeStylesParams>,
-    ElementProps<'code'> {
+export interface CodeProps extends BoxProps, StylesApiProps<CodeFactory>, ElementProps<'code'> {
   /** Key of `theme.colors` or any valid CSS color, controls background color of the code, by default value is calculated based on color scheme */
   color?: MantineColor;
 
@@ -34,35 +27,42 @@ export interface CodeProps
   block?: boolean;
 }
 
-export interface CodeFactory {
+export type CodeFactory = Factory<{
   props: CodeProps;
   ref: HTMLElement;
   stylesNames: CodeStylesNames;
   vars: CodeCssVariables;
-  stylesParams: CodeStylesParams;
-}
+  variant: CodeVariant;
+}>;
 
 const defaultProps: Partial<CodeProps> = {};
 
-const varsResolver = createVarsResolver<CodeCssVariables, CodeStylesParams>(({ color }, theme) => ({
+const varsResolver = createVarsResolver<CodeFactory>((theme, { color }) => ({
   '--code-bg': color ? getThemeColor(color, theme) : undefined,
 }));
 
-export const Code = factory<CodeFactory>((props, ref) => {
+export const Code = factory<CodeFactory>((_props, ref) => {
+  const props = useProps('Code', defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, color, block, variant, ...others } =
-    useProps('Code', defaultProps, props);
+    props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<CodeFactory>({
     name: 'Code',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<CodeStylesParams>('Code', varsResolver, vars, { color, variant });
+  const _vars = useVars<CodeFactory>({
+    name: 'Code',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
 
   return (
     <Box<any>

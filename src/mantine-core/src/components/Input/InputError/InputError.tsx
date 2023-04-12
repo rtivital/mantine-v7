@@ -12,6 +12,7 @@ import {
   getFontSize,
   rem,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import classes from './InputError.module.css';
 
@@ -19,14 +20,9 @@ export type InputErrorStylesNames = 'error';
 export type InputErrorVariant = string;
 export type InputErrorCssVariables = '--input-error-size';
 
-export interface InputErrorStylesParams {
-  size: MantineSize | (string & {}) | undefined;
-  variant: InputErrorVariant | undefined;
-}
-
 export interface InputErrorProps
   extends BoxProps,
-    StylesApiProps<InputErrorStylesNames, InputErrorVariant, InputErrorCssVariables>,
+    StylesApiProps<InputErrorFactory>,
     ElementProps<'div'> {
   __staticSelector?: string;
 
@@ -34,23 +30,24 @@ export interface InputErrorProps
   size?: MantineSize | (string & {});
 }
 
-export interface InputErrorFactory {
+export type InputErrorFactory = Factory<{
   props: InputErrorProps;
   ref: HTMLParagraphElement;
   stylesNames: InputErrorStylesNames;
   vars: InputErrorCssVariables;
-  stylesParams: InputErrorStylesParams;
-}
+  variant: InputErrorVariant;
+}>;
 
 const defaultProps: Partial<InputErrorProps> = {
   size: 'sm',
 };
 
-const varsResolver = createVarsResolver<InputErrorCssVariables, InputErrorStylesParams>(
-  ({ size }) => ({ '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})` })
-);
+const varsResolver = createVarsResolver<InputErrorFactory>((_, { size }) => ({
+  '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+}));
 
-export const InputError = factory<InputErrorFactory>((props, ref) => {
+export const InputError = factory<InputErrorFactory>((_props, ref) => {
+  const props = useProps('InputError', defaultProps, _props);
   const {
     classNames,
     className,
@@ -64,20 +61,23 @@ export const InputError = factory<InputErrorFactory>((props, ref) => {
     ...others
   } = useProps('InputError', defaultProps, props);
 
-  const getStyles = useStyles<InputErrorStylesNames>({
+  const getStyles = useStyles<InputErrorFactory>({
     name: ['InputWrapper', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'error',
   });
 
-  const _vars = useVars<InputErrorStylesParams>('InputError', varsResolver, vars, {
-    size,
-    variant,
+  const _vars = useVars<InputErrorFactory>({
+    name: 'InputError',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

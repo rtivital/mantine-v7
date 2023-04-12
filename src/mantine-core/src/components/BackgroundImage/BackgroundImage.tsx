@@ -10,6 +10,7 @@ import {
   MantineRadius,
   getRadius,
   createVarsResolver,
+  PolymorphicFactory,
 } from '../../core';
 import classes from './BackgroundImage.module.css';
 
@@ -17,19 +18,7 @@ export type BackgroundImageStylesNames = 'root';
 export type BackgroundImageVariant = string;
 export type BackgroundImageCssVariables = '--bi-radius';
 
-export interface BackgroundImageStylesParams {
-  radius: MantineRadius | string | number | undefined;
-  variant: BackgroundImageVariant | undefined;
-}
-
-export interface BackgroundImageProps
-  extends BoxProps,
-    StylesApiProps<
-      BackgroundImageStylesNames,
-      BackgroundImageVariant,
-      BackgroundImageCssVariables,
-      BackgroundImageStylesParams
-    > {
+export interface BackgroundImageProps extends BoxProps, StylesApiProps<BackgroundImageFactory> {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `0` by default */
   radius?: MantineRadius | (string & {}) | number;
 
@@ -37,40 +26,44 @@ export interface BackgroundImageProps
   src: string;
 }
 
-export interface BackgroundImageFactory {
+export type BackgroundImageFactory = PolymorphicFactory<{
   props: BackgroundImageProps;
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
+  variant: BackgroundImageVariant;
   stylesNames: BackgroundImageStylesNames;
   vars: BackgroundImageCssVariables;
-  stylesParams: BackgroundImageStylesParams;
-}
+}>;
 
 const defaultProps: Partial<BackgroundImageProps> = {
   radius: 0,
 };
 
-const varsResolver = createVarsResolver<BackgroundImageCssVariables, BackgroundImageStylesParams>(
-  ({ radius }) => ({ '--bi-radius': getRadius(radius) })
-);
+const varsResolver = createVarsResolver<BackgroundImageFactory>((_, { radius }) => ({
+  '--bi-radius': getRadius(radius),
+}));
 
-export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((props, ref) => {
+export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((_props, ref) => {
+  const props = useProps('BackgroundImage', defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, radius, src, variant, ...others } =
-    useProps('BackgroundImage', defaultProps, props);
+    props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<BackgroundImageFactory>({
     name: 'BackgroundImage',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<BackgroundImageStylesParams>('BackgroundImage', varsResolver, vars, {
-    radius,
-    variant,
+  const _vars = useVars<BackgroundImageFactory>({
+    name: 'BackgroundImage',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

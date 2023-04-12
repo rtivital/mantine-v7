@@ -10,6 +10,7 @@ import {
   useStyles,
   MantineColor,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { getMarkColor } from './get-mark-color';
 import classes from './Mark.module.css';
@@ -18,42 +19,34 @@ export type MarkStylesNames = 'root';
 export type MarkVariant = string;
 export type MarkCssVariables = '--mark-bg-dark' | '--mark-bg-light';
 
-export interface MarkStylesParams {
-  color: MantineColor | undefined;
-  variant: MarkVariant | undefined;
-}
-
-export interface MarkProps
-  extends BoxProps,
-    StylesApiProps<MarkStylesNames, MarkVariant, MarkCssVariables, MarkStylesParams>,
-    ElementProps<'mark'> {
+export interface MarkProps extends BoxProps, StylesApiProps<MarkFactory>, ElementProps<'mark'> {
   /** Key of `theme.colors` or any valid CSS color, `yellow` by default */
   color?: MantineColor;
 }
 
-export interface MarkFactory {
+export type MarkFactory = Factory<{
   props: MarkProps;
   ref: HTMLElement;
   stylesNames: MarkStylesNames;
   vars: MarkCssVariables;
-  stylesParams: MarkStylesParams;
-}
+}>;
 
 const defaultProps: Partial<MarkProps> = {
   color: 'yellow',
 };
 
-const varsResolver = createVarsResolver<MarkCssVariables, MarkStylesParams>(({ color }, theme) => ({
+const varsResolver = createVarsResolver<MarkFactory>((theme, { color }) => ({
   '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),
   '--mark-bg-light': getMarkColor({ color, theme, defaultShade: 2 }),
 }));
 
-export const Mark = factory<MarkFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, color, variant, ...others } =
-    useProps('Mark', defaultProps, props);
+export const Mark = factory<MarkFactory>((_props, ref) => {
+  const props = useProps('Mark', defaultProps, _props);
+  const { classNames, className, style, styles, unstyled, vars, color, variant, ...others } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<MarkFactory>({
     name: 'Mark',
+    props,
     className,
     style,
     classes,
@@ -62,7 +55,12 @@ export const Mark = factory<MarkFactory>((props, ref) => {
     unstyled,
   });
 
-  const _vars = useVars<MarkStylesParams>('Mark', varsResolver, vars, { color, variant });
+  const _vars = useVars<MarkFactory>({
+    name: 'Mark',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
 
   return (
     <Box

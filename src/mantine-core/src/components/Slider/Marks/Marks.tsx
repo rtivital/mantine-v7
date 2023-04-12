@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, StylesApiProps, useStyles } from '../../../core';
+import { Box, Factory, StylesApiProps, useStyles } from '../../../core';
 import { getPosition } from '../utils/get-position/get-position';
 import { isMarkFilled } from './is-mark-filled';
 import classes from './Marks.module.css';
 
 export type MarksStylesNames = 'markWrapper' | 'mark' | 'markLabel';
 
-export interface MarksProps extends StylesApiProps<MarksStylesNames> {
+export interface MarksProps extends StylesApiProps<MarksFactory> {
   marks: { value: number; label?: React.ReactNode }[] | undefined;
   min: number;
   max: number;
@@ -15,6 +15,11 @@ export interface MarksProps extends StylesApiProps<MarksStylesNames> {
   disabled: boolean | undefined;
   inverted: boolean | undefined;
 }
+
+type MarksFactory = Factory<{
+  props: any;
+  stylesNames: MarksStylesNames;
+}>;
 
 export function Marks({
   classNames,
@@ -28,8 +33,9 @@ export function Marks({
   offset,
   inverted,
 }: MarksProps) {
-  const getStyles = useStyles({
+  const getStyles = useStyles<MarksFactory>({
     name: 'Slider',
+    props: {},
     classes,
     classNames,
     styles,

@@ -1,6 +1,12 @@
 import React from 'react';
-import { polymorphicFactory, useProps, MantineColor, MantineTheme } from '../../core';
-import { Text, TextStylesNames, TextProps } from '../Text';
+import {
+  polymorphicFactory,
+  useProps,
+  MantineColor,
+  MantineTheme,
+  PolymorphicFactory,
+} from '../../core';
+import { Text, TextStylesNames, TextProps, TextVariant } from '../Text';
 import { Mark } from '../Mark';
 import { highlighter } from './highlighter/highlighter';
 
@@ -18,12 +24,13 @@ export interface HighlightProps extends TextProps {
   children: string;
 }
 
-export interface HighlightFactory {
+export type HighlightFactory = PolymorphicFactory<{
   props: HighlightProps;
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
   stylesNames: TextStylesNames;
-}
+  variant: TextVariant;
+}>;
 
 const defaultProps: Partial<HighlightProps> = {};
 

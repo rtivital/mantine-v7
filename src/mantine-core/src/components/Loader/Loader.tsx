@@ -13,6 +13,7 @@ import {
   useVars,
   getSize,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { Bars } from './loaders/Bars';
 import { Oval } from './loaders/Oval';
@@ -24,15 +25,9 @@ export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
 export type LoaderCssVariables = '--loader-size' | '--loader-color';
 
-export interface LoaderStylesParams {
-  color: MantineColor | string | undefined;
-  size: MantineSize | string | number | undefined;
-  variant: LoaderVariant | undefined;
-}
-
 export interface LoaderProps
   extends BoxProps,
-    StylesApiProps<LoaderStylesNames, LoaderVariant, LoaderCssVariables, LoaderStylesParams>,
+    StylesApiProps<LoaderFactory>,
     Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
   /** Width of the loader. Loader has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). */
   size?: MantineSize | (string & {}) | number;
@@ -47,13 +42,12 @@ export interface LoaderProps
   loaders?: MantineLoadersRecord;
 }
 
-export interface LoaderFactory {
+export type LoaderFactory = Factory<{
   props: LoaderProps;
   ref: SVGSVGElement;
   stylesNames: LoaderStylesNames;
   vars: LoaderCssVariables;
-  stylesParams: LoaderStylesParams;
-}
+}>;
 
 export const defaultLoaders: MantineLoadersRecord = {
   bars: Bars,
@@ -66,14 +60,13 @@ const defaultProps: Partial<LoaderProps> = {
   loaders: defaultLoaders,
 };
 
-const varsResolver = createVarsResolver<LoaderCssVariables, LoaderStylesParams>(
-  ({ size, color }, theme) => ({
-    '--loader-size': getSize(size, 'loader-size'),
-    '--loader-color': getThemeColor(color, theme),
-  })
-);
+const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) => ({
+  '--loader-size': getSize(size, 'loader-size'),
+  '--loader-color': getThemeColor(color, theme),
+}));
 
-export const Loader = factory<LoaderFactory>((props, ref) => {
+export const Loader = factory<LoaderFactory>((_props, ref) => {
+  const props = useProps('Loader', defaultProps, _props);
   const {
     size,
     color,
@@ -87,19 +80,21 @@ export const Loader = factory<LoaderFactory>((props, ref) => {
     loaders,
     variant,
     ...others
-  } = useProps('Loader', defaultProps, props);
+  } = props;
 
-  const _vars = useVars<LoaderStylesParams>('Loader', varsResolver, vars, {
-    color,
-    size,
-    variant,
+  const _vars = useVars<LoaderFactory>({
+    name: 'Loader',
+    resolver: varsResolver,
+    vars,
+    props,
   });
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<LoaderFactory>({
     name: 'Loader',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

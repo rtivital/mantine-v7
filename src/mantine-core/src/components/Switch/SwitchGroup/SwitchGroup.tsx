@@ -1,6 +1,6 @@
 import React from 'react';
 import { useUncontrolled } from '@mantine/hooks';
-import { factory, useProps, MantineSize } from '../../../core';
+import { factory, useProps, MantineSize, Factory } from '../../../core';
 import { InputWrapperStylesNames, Input, InputWrapperProps } from '../../Input';
 import { SwitchGroupProvider } from '../SwitchGroup.context';
 
@@ -27,11 +27,11 @@ export interface SwitchGroupProps extends Omit<InputWrapperProps, 'onChange'> {
   size?: MantineSize | (string & {});
 }
 
-export interface SwitchGroupFactory {
+export type SwitchGroupFactory = Factory<{
   props: SwitchGroupProps;
   ref: HTMLDivElement;
   stylesNames: SwitchGroupStylesNames;
-}
+}>;
 
 const defaultProps: Partial<SwitchGroupProps> = {};
 

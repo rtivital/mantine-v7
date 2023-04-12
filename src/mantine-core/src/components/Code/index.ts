@@ -4,6 +4,5 @@ export type {
   CodeCssVariables,
   CodeFactory,
   CodeStylesNames,
-  CodeStylesParams,
   CodeVariant,
 } from './Code';

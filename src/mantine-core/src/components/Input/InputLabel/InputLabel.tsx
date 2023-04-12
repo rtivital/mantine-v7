@@ -11,6 +11,7 @@ import {
   MantineSize,
   getFontSize,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import classes from './InputLabel.module.css';
 
@@ -18,15 +19,9 @@ export type InputLabelStylesNames = 'label' | 'required';
 export type InputLabelVariant = string;
 export type InputLabelCssVariables = '--input-asterisk-color' | '--input-label-size';
 
-export interface InputLabelStylesParams {
-  required: boolean | undefined;
-  size: MantineSize | (string & {}) | undefined;
-  variant: InputLabelVariant | undefined;
-}
-
 export interface InputLabelProps
   extends BoxProps,
-    StylesApiProps<InputLabelStylesNames, InputLabelVariant, InputLabelCssVariables>,
+    StylesApiProps<InputLabelFactory>,
     ElementProps<'label'> {
   __staticSelector?: string;
 
@@ -40,27 +35,26 @@ export interface InputLabelProps
   labelElement?: 'label' | 'div';
 }
 
-export interface InputLabelFactory {
+export type InputLabelFactory = Factory<{
   props: InputLabelProps;
   ref: HTMLLabelElement;
   stylesNames: InputLabelStylesNames;
   vars: InputLabelCssVariables;
-  stylesParams: InputLabelStylesParams;
-}
+  variant: InputLabelVariant;
+}>;
 
 const defaultProps: Partial<InputLabelProps> = {
   size: 'sm',
   labelElement: 'label',
 };
 
-const varsResolver = createVarsResolver<InputLabelCssVariables, InputLabelStylesParams>(
-  ({ size }) => ({
-    '--input-label-size': getFontSize(size),
-    '--input-asterisk-color': 'var(--mantine-color-red-filled)',
-  })
-);
+const varsResolver = createVarsResolver<InputLabelFactory>((_, { size }) => ({
+  '--input-label-size': getFontSize(size),
+  '--input-asterisk-color': 'var(--mantine-color-red-filled)',
+}));
 
-export const InputLabel = factory<InputLabelFactory>((props, ref) => {
+export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
+  const props = useProps('InputLabel', defaultProps, _props);
   const {
     classNames,
     className,
@@ -79,21 +73,23 @@ export const InputLabel = factory<InputLabelFactory>((props, ref) => {
     ...others
   } = useProps('InputLabel', defaultProps, props);
 
-  const getStyles = useStyles<InputLabelStylesNames>({
+  const getStyles = useStyles<InputLabelFactory>({
     name: ['InputWrapper', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'label',
   });
 
-  const _vars = useVars<InputLabelStylesParams>('InputLabel', varsResolver, vars, {
-    size,
-    required,
-    variant,
+  const _vars = useVars<InputLabelFactory>({
+    name: 'InputLabel',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

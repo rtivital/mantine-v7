@@ -1,5 +1,5 @@
 import React from 'react';
-import { factory, useProps, rem } from '../../../core';
+import { factory, useProps, rem, Factory } from '../../../core';
 import {
   ColorSlider,
   __ColorSliderProps,
@@ -8,11 +8,11 @@ import {
 
 export interface HueSliderProps extends __ColorSliderProps {}
 
-export interface HueSliderFactory {
+export type HueSliderFactory = Factory<{
   props: HueSliderProps;
   ref: HTMLDivElement;
   stylesNames: ColorSliderStylesNames;
-}
+}>;
 
 const defaultProps: Partial<HueSliderProps> = {};
 

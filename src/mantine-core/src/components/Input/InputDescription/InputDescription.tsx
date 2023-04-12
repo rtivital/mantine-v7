@@ -12,6 +12,7 @@ import {
   getFontSize,
   rem,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import classes from './InputDescription.module.css';
 
@@ -19,18 +20,9 @@ export type InputDescriptionStylesNames = 'description';
 export type InputDescriptionVariant = string;
 export type InputDescriptionCssVariables = '--input-description-size';
 
-export interface InputDescriptionStylesParams {
-  size: MantineSize | (string & {}) | undefined;
-  variant: InputDescriptionVariant | undefined;
-}
-
 export interface InputDescriptionProps
   extends BoxProps,
-    StylesApiProps<
-      InputDescriptionStylesNames,
-      InputDescriptionVariant,
-      InputDescriptionCssVariables
-    >,
+    StylesApiProps<InputDescriptionFactory>,
     ElementProps<'div'> {
   __staticSelector?: string;
 
@@ -38,23 +30,24 @@ export interface InputDescriptionProps
   size?: MantineSize | (string & {});
 }
 
-export interface InputDescriptionFactory {
+export type InputDescriptionFactory = Factory<{
   props: InputDescriptionProps;
   ref: HTMLParagraphElement;
   stylesNames: InputDescriptionStylesNames;
   vars: InputDescriptionCssVariables;
-  stylesParams: InputDescriptionStylesParams;
-}
+  variant: InputDescriptionVariant;
+}>;
 
 const defaultProps: Partial<InputDescriptionProps> = {
   size: 'sm',
 };
 
-const varsResolver = createVarsResolver<InputDescriptionCssVariables, InputDescriptionStylesParams>(
-  ({ size }) => ({ '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})` })
-);
+const varsResolver = createVarsResolver<InputDescriptionFactory>((_, { size }) => ({
+  '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+}));
 
-export const InputDescription = factory<InputDescriptionFactory>((props, ref) => {
+export const InputDescription = factory<InputDescriptionFactory>((_props, ref) => {
+  const props = useProps('InputDescription', defaultProps, _props);
   const {
     classNames,
     className,
@@ -68,20 +61,23 @@ export const InputDescription = factory<InputDescriptionFactory>((props, ref) =>
     ...others
   } = useProps('InputDescription', defaultProps, props);
 
-  const getStyles = useStyles<InputDescriptionStylesNames>({
+  const getStyles = useStyles<InputDescriptionFactory>({
     name: ['InputWrapper', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'description',
   });
 
-  const _vars = useVars<InputDescriptionStylesParams>('InputDescription', varsResolver, vars, {
-    size,
-    variant,
+  const _vars = useVars<InputDescriptionFactory>({
+    name: 'InputDescription',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

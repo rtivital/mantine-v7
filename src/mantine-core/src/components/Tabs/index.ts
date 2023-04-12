@@ -4,7 +4,6 @@ export type {
   TabsCssVariables,
   TabsFactory,
   TabsStylesNames,
-  TabsStylesParams,
   TabsVariant,
 } from './Tabs';
 

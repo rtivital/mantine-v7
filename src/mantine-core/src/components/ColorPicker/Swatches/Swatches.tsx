@@ -5,8 +5,8 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useProps,
   useStyles,
+  Factory,
 } from '../../../core';
 import { ColorSwatch } from '../../ColorSwatch';
 import classes from './Swatches.module.css';
@@ -15,7 +15,7 @@ export type SwatchesStylesNames = 'swatches' | 'swatch';
 
 export interface SwatchesProps
   extends BoxProps,
-    StylesApiProps<SwatchesStylesNames>,
+    StylesApiProps<SwatchesFactory>,
     ElementProps<'div'> {
   size?: string | number;
   data: string[];
@@ -26,13 +26,11 @@ export interface SwatchesProps
   setValue(value: string): void;
 }
 
-export interface SwatchesFactory {
+export type SwatchesFactory = Factory<{
   props: SwatchesProps;
   ref: HTMLDivElement;
   stylesNames: SwatchesStylesNames;
-}
-
-const defaultProps: Partial<SwatchesProps> = {};
+}>;
 
 export const Swatches = factory<SwatchesFactory>((props, ref) => {
   const {
@@ -51,10 +49,11 @@ export const Swatches = factory<SwatchesFactory>((props, ref) => {
     swatchesPerRow,
     __staticSelector,
     ...others
-  } = useProps('Swatches', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles<SwatchesStylesNames>({
+  const getStyles = useStyles<SwatchesFactory>({
     name: __staticSelector,
+    props,
     className,
     style,
     classes,

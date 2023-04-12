@@ -22,7 +22,7 @@ import { usePopover } from './use-popover';
 import { PopoverContextProvider } from './Popover.context';
 import { PopoverWidth, PopoverMiddlewares, PopoverStylesNames } from './Popover.types';
 import { PopoverTarget } from './PopoverTarget/PopoverTarget';
-import { PopoverDropdown } from './PopoverDropdown/PopoverDropdown';
+import { PopoverDropdown, PopoverDropdownFactory } from './PopoverDropdown/PopoverDropdown';
 
 export interface __PopoverProps {
   /** Dropdown position relative to the target element, `'bottom'` by default */
@@ -126,7 +126,7 @@ export interface PopoverProps extends __PopoverProps {
   variant?: string;
   unstyled?: boolean;
   classNames?: ClassNames<PopoverStylesNames>;
-  styles?: Styles<PopoverStylesNames>;
+  styles?: Styles<PopoverDropdownFactory>;
   __staticSelector?: string;
 }
 

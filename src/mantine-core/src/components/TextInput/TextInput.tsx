@@ -1,15 +1,15 @@
 import React from 'react';
-import { factory, ElementProps, useProps } from '../../core';
+import { factory, ElementProps, useProps, Factory } from '../../core';
 import { InputBase, InputBaseProps } from '../InputBase';
 import { __InputStylesNames } from '../Input';
 
 export interface TextInputProps extends InputBaseProps, ElementProps<'input', 'size'> {}
 
-export interface TextInputFactory {
+export type TextInputFactory = Factory<{
   props: TextInputProps;
   ref: HTMLInputElement;
   stylesNames: __InputStylesNames;
-}
+}>;
 
 const defaultProps: Partial<TextInputProps> = {};
 

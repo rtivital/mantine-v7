@@ -4,6 +4,5 @@ export type {
   AnchorFactory,
   AnchorProps,
   AnchorStylesNames,
-  AnchorStylesParams,
   AnchorVariant,
 } from './Anchor';

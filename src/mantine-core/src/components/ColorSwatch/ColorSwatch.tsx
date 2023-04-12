@@ -11,6 +11,7 @@ import {
   useStyles,
   useVars,
   createVarsResolver,
+  PolymorphicFactory,
 } from '../../core';
 import classes from './ColorSwatch.module.css';
 
@@ -23,15 +24,7 @@ export type ColorSwatchStylesNames =
 export type ColorSwatchVariant = string;
 export type ColorSwatchCssVariables = '--cs-radius' | '--cs-size';
 
-export interface ColorSwatchStylesParams {
-  radius: MantineRadius | (string & {}) | number | undefined;
-  size: React.CSSProperties['width'] | undefined;
-  variant: ColorSwatchVariant | undefined;
-}
-
-export interface ColorSwatchProps
-  extends BoxProps,
-    StylesApiProps<ColorSwatchStylesNames, ColorSwatchVariant, ColorSwatchCssVariables> {
+export interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFactory> {
   /** Color to display */
   color: string;
 
@@ -48,14 +41,14 @@ export interface ColorSwatchProps
   children?: React.ReactNode;
 }
 
-export interface ColorSwatchFactory {
+export type ColorSwatchFactory = PolymorphicFactory<{
   props: ColorSwatchProps;
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
   stylesNames: ColorSwatchStylesNames;
   vars: ColorSwatchCssVariables;
-  stylesParams: ColorSwatchStylesParams;
-}
+  variant: ColorSwatchVariant;
+}>;
 
 const defaultProps: Partial<ColorSwatchProps> = {
   size: '1.75rem',
@@ -63,14 +56,13 @@ const defaultProps: Partial<ColorSwatchProps> = {
   withShadow: true,
 };
 
-const varsResolver = createVarsResolver<ColorSwatchCssVariables, ColorSwatchStylesParams>(
-  ({ radius, size }) => ({
-    '--cs-radius': getRadius(radius),
-    '--cs-size': rem(size),
-  })
-);
+const varsResolver = createVarsResolver<ColorSwatchFactory>((_, { radius, size }) => ({
+  '--cs-radius': getRadius(radius),
+  '--cs-size': rem(size),
+}));
 
-export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) => {
+export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((_props, ref) => {
+  const props = useProps('ColorSwatch', defaultProps, _props);
   const {
     classNames,
     className,
@@ -87,20 +79,22 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((props, ref) =
     ...others
   } = useProps('ColorSwatch', defaultProps, props);
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ColorSwatchFactory>({
     name: 'ColorSwatch',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<ColorSwatchStylesParams>('ColorSwatch', varsResolver, vars, {
-    size,
-    radius,
-    variant,
+  const _vars = useVars<ColorSwatchFactory>({
+    name: 'ColorSwatch',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

@@ -1,8 +1,8 @@
 import { createSafeContext, GetStylesApi } from '../../core';
-import type { TableStylesNames } from './Table';
+import type { TableFactory } from './Table';
 
 export interface TableContextValue {
-  getStyles: GetStylesApi<TableStylesNames>;
+  getStyles: GetStylesApi<TableFactory>;
   striped: 'odd' | 'even' | undefined;
   highlightOnHover: boolean | undefined;
   withColumnBorders: boolean | undefined;

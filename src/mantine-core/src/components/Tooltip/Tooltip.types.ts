@@ -1,19 +1,15 @@
 import { BoxProps, ElementProps, MantineColor, StylesApiProps, MantineRadius } from '../../core';
 import { FloatingPosition } from '../Floating';
 import { PortalProps } from '../Portal';
+import type { TooltipFactory } from './Tooltip';
 
 export type TooltipStylesNames = 'tooltip' | 'arrow';
 export type TooltipVariant = string;
 export type TooltipCssVariables = '--tooltip-radius' | '--tooltip-bg';
-export interface TooltipStylesParams {
-  radius: MantineRadius | string | number | undefined;
-  color: MantineColor | undefined;
-  variant: TooltipVariant | undefined;
-}
 
 export interface TooltipBaseProps
   extends BoxProps,
-    StylesApiProps<TooltipStylesNames, TooltipVariant, TooltipCssVariables, TooltipStylesParams>,
+    StylesApiProps<TooltipFactory>,
     ElementProps<'div'> {
   /** Target element, must support `ref` prop and spread `...others` */
   children: React.ReactNode;

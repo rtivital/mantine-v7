@@ -1,5 +1,5 @@
 import React from 'react';
-import { factory, useProps, rem } from '../../../core';
+import { factory, useProps, rem, Factory } from '../../../core';
 import {
   ColorSlider,
   __ColorSliderProps,
@@ -11,11 +11,11 @@ export interface AlphaSliderProps extends __ColorSliderProps {
   color: string;
 }
 
-export interface AlphaSliderFactory {
+export type AlphaSliderFactory = Factory<{
   props: AlphaSliderProps;
   ref: HTMLDivElement;
   stylesNames: ColorSliderStylesNames;
-}
+}>;
 
 const defaultProps: Partial<AlphaSliderProps> = {};
 

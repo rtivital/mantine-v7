@@ -15,6 +15,7 @@ import {
   getRadius,
   rem,
   createVarsResolver,
+  PolymorphicFactory,
 } from '../../core';
 import { useInputWrapperContext } from './InputWrapper.context';
 import { InputLabel } from './InputLabel/InputLabel';
@@ -45,17 +46,9 @@ export type InputCssVariables =
   | '--input-margin-top'
   | '--input-margin-bottom';
 
-export interface InputStylesParams {
-  size: MantineSize | undefined;
-  radius: MantineRadius | (string & {}) | number | undefined;
-  variant: InputVariant | (string & {}) | undefined;
-  offsetTop: boolean | undefined;
-  offsetBottom: boolean | undefined;
-  multiline: boolean | undefined;
-  leftSectionWidth: React.CSSProperties['width'] | undefined;
-  rightSectionWidth: React.CSSProperties['width'] | undefined;
-  leftSectionPointerEvents: React.CSSProperties['pointerEvents'];
-  rightSectionPointerEvents: React.CSSProperties['pointerEvents'];
+export interface InputStylesCtx {
+  offsetTop: boolean;
+  offsetBottom: boolean;
 }
 
 export interface __InputProps {
@@ -102,10 +95,7 @@ export interface __InputProps {
   pointer?: boolean;
 }
 
-export interface InputProps
-  extends BoxProps,
-    __InputProps,
-    StylesApiProps<InputStylesNames, InputVariant, InputCssVariables, InputStylesParams> {
+export interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
   __staticSelector?: string;
 
   /** Determines whether the input should have error styles and `aria-invalid` attribute */
@@ -115,13 +105,14 @@ export interface InputProps
   multiline?: boolean;
 }
 
-export interface InputFactory {
+export type InputFactory = PolymorphicFactory<{
   props: InputProps;
   defaultRef: HTMLInputElement;
   defaultComponent: 'input';
   stylesNames: InputStylesNames;
+  variant: InputVariant;
   vars: InputCssVariables;
-  stylesParams: InputStylesParams;
+  ctx: InputStylesCtx;
   staticComponents: {
     Label: typeof InputLabel;
     Error: typeof InputError;
@@ -129,7 +120,7 @@ export interface InputFactory {
     Placeholder: typeof InputPlaceholder;
     Wrapper: typeof InputWrapper;
   };
-}
+}>;
 
 const defaultProps: Partial<InputProps> = {
   size: 'sm',
@@ -138,22 +129,23 @@ const defaultProps: Partial<InputProps> = {
   rightSectionPointerEvents: 'none',
 };
 
-const varsResolver = createVarsResolver<InputCssVariables, InputStylesParams>((params) => ({
-  '--input-margin-top': params.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
-  '--input-margin-bottom': params.offsetBottom ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
-  '--input-height': getSize(params.size, 'input-height'),
-  '--input-fz': getFontSize(params.size),
-  '--input-radius': getRadius(params.radius),
+const varsResolver = createVarsResolver<InputFactory>((_, props, ctx) => ({
+  '--input-margin-top': ctx.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+  '--input-margin-bottom': ctx.offsetBottom ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+  '--input-height': getSize(props.size, 'input-height'),
+  '--input-fz': getFontSize(props.size),
+  '--input-radius': getRadius(props.radius),
   '--input-left-section-width':
-    params.leftSectionWidth !== undefined ? rem(params.leftSectionWidth) : undefined,
+    props.leftSectionWidth !== undefined ? rem(props.leftSectionWidth) : undefined,
   '--input-right-section-width':
-    params.rightSectionWidth !== undefined ? rem(params.rightSectionWidth) : undefined,
-  '--input-padding-y': params.multiline ? getSize(params.size, 'input-padding-y') : undefined,
-  '--input-left-section-pointer-events': params.leftSectionPointerEvents,
-  '--input-right-section-pointer-events': params.rightSectionPointerEvents,
+    props.rightSectionWidth !== undefined ? rem(props.rightSectionWidth) : undefined,
+  '--input-padding-y': props.multiline ? getSize(props.size, 'input-padding-y') : undefined,
+  '--input-left-section-pointer-events': props.leftSectionPointerEvents,
+  '--input-right-section-pointer-events': props.rightSectionPointerEvents,
 }));
 
-export const Input = polymorphicFactory<InputFactory>((props, ref) => {
+export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
+  const props = useProps('Input', defaultProps, _props);
   const {
     classNames,
     className,
@@ -180,33 +172,28 @@ export const Input = polymorphicFactory<InputFactory>((props, ref) => {
     multiline,
     radius,
     ...others
-  } = useProps('Input', defaultProps, props);
+  } = props;
 
   const { styleProps, rest } = extractStyleProps(others);
   const ctx = useInputWrapperContext();
 
-  const getStyles = useStyles<InputStylesNames>({
+  const getStyles = useStyles<InputFactory>({
     name: ['Input', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'wrapper',
   });
 
-  const _vars = useVars<InputStylesParams>('Input', varsResolver, vars, {
-    size,
-    radius,
-    variant,
-    offsetBottom: ctx?.offsetBottom,
-    offsetTop: ctx?.offsetTop,
-    leftSectionWidth,
-    rightSectionWidth,
-    leftSectionPointerEvents,
-    rightSectionPointerEvents,
-    multiline,
+  const _vars = useVars<InputFactory>({
+    name: 'Input',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

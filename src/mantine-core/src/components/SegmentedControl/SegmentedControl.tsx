@@ -19,6 +19,7 @@ import {
   getFontSize,
   useDirection,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import classes from './SegmentedControl.module.css';
 
@@ -35,15 +36,6 @@ export type SegmentedControlCssVariables =
   | '--sc-transition-duration'
   | '--sc-transition-timing-function';
 
-export interface SegmentedControlStylesParams {
-  radius: MantineRadius | (string & {}) | number | undefined;
-  color: MantineColor | undefined;
-  transitionDuration: number | undefined;
-  transitionTimingFunction: string | undefined;
-  size: MantineSize | (string & {}) | undefined;
-  variant: SegmentedControlVariant | undefined;
-}
-
 export interface SegmentedControlItem {
   value: string;
   label: React.ReactNode;
@@ -52,11 +44,7 @@ export interface SegmentedControlItem {
 
 export interface SegmentedControlProps
   extends BoxProps,
-    StylesApiProps<
-      SegmentedControlStylesNames,
-      SegmentedControlVariant,
-      SegmentedControlCssVariables
-    >,
+    StylesApiProps<SegmentedControlFactory>,
     ElementProps<'div', 'onChange'> {
   /** Data based on which controls are rendered */
   data: (string | SegmentedControlItem)[];
@@ -101,13 +89,12 @@ export interface SegmentedControlProps
   readOnly?: boolean;
 }
 
-export interface SegmentedControlFactory {
+export type SegmentedControlFactory = Factory<{
   props: SegmentedControlProps;
   ref: HTMLDivElement;
   stylesNames: SegmentedControlStylesNames;
   vars: SegmentedControlCssVariables;
-  stylesParams: SegmentedControlStylesParams;
-}
+}>;
 
 const defaultProps: Partial<SegmentedControlProps> = {
   size: 'sm',
@@ -115,8 +102,8 @@ const defaultProps: Partial<SegmentedControlProps> = {
   transitionTimingFunction: 'ease',
 };
 
-const varsResolver = createVarsResolver<SegmentedControlCssVariables, SegmentedControlStylesParams>(
-  ({ radius, color, transitionDuration, size, transitionTimingFunction }, theme) => ({
+const varsResolver = createVarsResolver<SegmentedControlFactory>(
+  (theme, { radius, color, transitionDuration, size, transitionTimingFunction }) => ({
     '--sc-radius': getRadius(radius),
     '--sc-color': color ? getThemeColor(color, theme) : undefined,
     '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
@@ -127,7 +114,8 @@ const varsResolver = createVarsResolver<SegmentedControlCssVariables, SegmentedC
   })
 );
 
-export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) => {
+export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) => {
+  const props = useProps('SegmentedControl', defaultProps, _props);
   const {
     classNames,
     className,
@@ -151,25 +139,24 @@ export const SegmentedControl = factory<SegmentedControlFactory>((props, ref) =>
     transitionTimingFunction,
     variant,
     ...others
-  } = useProps('SegmentedControl', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<SegmentedControlFactory>({
     name: 'SegmentedControl',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<SegmentedControlStylesParams>('SegmentedControl', varsResolver, vars, {
-    radius,
-    color,
-    transitionDuration,
-    transitionTimingFunction,
-    size,
-    variant,
+  const _vars = useVars<SegmentedControlFactory>({
+    name: 'SegmentedControl',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   const { dir } = useDirection();

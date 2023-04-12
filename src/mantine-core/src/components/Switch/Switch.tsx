@@ -17,6 +17,7 @@ import {
   getSize,
   getThemeColor,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { InlineInput, InlineInputStylesNames } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
@@ -40,16 +41,9 @@ export type SwitchCssVariables =
   | '--switch-track-label-padding'
   | '--switch-color';
 
-export interface SwitchStylesParams {
-  size: MantineSize | (string & {}) | undefined;
-  radius: MantineRadius | (string & {}) | number | undefined;
-  color: MantineColor | undefined;
-  variant: SwitchVariant | undefined;
-}
-
 export interface SwitchProps
   extends BoxProps,
-    StylesApiProps<SwitchStylesNames, SwitchVariant, SwitchCssVariables>,
+    StylesApiProps<SwitchFactory>,
     ElementProps<'input', 'size'> {
   /** Id is used to bind input and label, if not passed unique id will be generated for each input */
   id?: string;
@@ -88,16 +82,16 @@ export interface SwitchProps
   error?: React.ReactNode;
 }
 
-export interface SwitchFactory {
+export type SwitchFactory = Factory<{
   props: SwitchProps;
   ref: HTMLInputElement;
   stylesNames: SwitchStylesNames;
   vars: SwitchCssVariables;
-  stylesParams: SwitchStylesParams;
+  variant: SwitchVariant;
   staticComponents: {
     Group: typeof SwitchGroup;
   };
-}
+}>;
 
 const defaultProps: Partial<SwitchProps> = {
   size: 'sm',
@@ -105,19 +99,18 @@ const defaultProps: Partial<SwitchProps> = {
   labelPosition: 'right',
 };
 
-const varsResolver = createVarsResolver<SwitchCssVariables, SwitchStylesParams>(
-  ({ radius, color, size }, theme) => ({
-    '--switch-radius': getRadius(radius),
-    '--switch-height': getSize(size, 'switch-height'),
-    '--switch-width': getSize(size, 'switch-width'),
-    '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
-    '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
-    '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
-    '--switch-color': getThemeColor(color, theme),
-  })
-);
+const varsResolver = createVarsResolver<SwitchFactory>((theme, { radius, color, size }) => ({
+  '--switch-radius': getRadius(radius),
+  '--switch-height': getSize(size, 'switch-height'),
+  '--switch-width': getSize(size, 'switch-width'),
+  '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
+  '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
+  '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
+  '--switch-color': getThemeColor(color, theme),
+}));
 
-export const Switch = factory<SwitchFactory>((props, ref) => {
+export const Switch = factory<SwitchFactory>((_props, ref) => {
+  const props = useProps('Switch', defaultProps, _props);
   const {
     classNames,
     className,
@@ -144,26 +137,27 @@ export const Switch = factory<SwitchFactory>((props, ref) => {
     disabled,
     variant,
     ...others
-  } = useProps('Switch', defaultProps, props);
+  } = props;
 
   const ctx = useSwitchGroupContext();
   const _size = size || ctx?.size;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<SwitchFactory>({
     name: 'Switch',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars<SwitchStylesParams>('Switch', varsResolver, vars, {
-    color,
-    size: _size,
-    radius,
-    variant,
+  const _vars = useVars<SwitchFactory>({
+    name: 'Switch',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   const { styleProps, rest } = extractStyleProps(others);

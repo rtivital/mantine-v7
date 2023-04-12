@@ -1,5 +1,5 @@
 import { createSafeContext, GetStylesApi } from '../../core';
-import type { TabsStylesNames } from './Tabs';
+import type { TabsFactory } from './Tabs';
 
 export interface TabsContextValue {
   id: string;
@@ -18,7 +18,7 @@ export interface TabsContextValue {
   keepMounted: boolean | undefined;
   placement: 'right' | 'left' | undefined;
   unstyled: boolean | undefined;
-  getStyles: GetStylesApi<TabsStylesNames>;
+  getStyles: GetStylesApi<TabsFactory>;
 }
 
 export const [TabsProvider, useTabsContext] = createSafeContext<TabsContextValue>(

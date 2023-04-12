@@ -13,6 +13,7 @@ import {
   getSize,
   createVarsResolver,
   MantineRadius,
+  PolymorphicFactory,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { LoaderProps, Loader } from '../Loader';
@@ -66,7 +67,7 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFact
   children?: React.ReactNode;
 }
 
-export interface ActionIconFactory {
+export type ActionIconFactory = PolymorphicFactory<{
   props: ActionIconProps;
   defaultComponent: 'button';
   defaultRef: HTMLButtonElement;
@@ -76,7 +77,7 @@ export interface ActionIconFactory {
   staticComponents: {
     Group: typeof ActionIconGroup;
   };
-}
+}>;
 
 const defaultProps: Partial<ActionIconProps> = {
   variant: 'filled',
@@ -126,7 +127,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
     vars,
   });
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ActionIconFactory>({
     name: ['ActionIcon', __staticSelector],
     props,
     className,

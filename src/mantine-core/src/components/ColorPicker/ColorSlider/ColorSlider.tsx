@@ -12,12 +12,12 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useProps,
   useStyles,
   MantineSize,
   getSize,
   useMantineTheme,
   rem,
+  Factory,
 } from '../../../core';
 import classes from './ColorSlider.module.css';
 import { Thumb } from '../Thumb/Thumb';
@@ -26,7 +26,7 @@ export type ColorSliderStylesNames = 'slider' | 'sliderOverlay' | 'thumb';
 
 export interface __ColorSliderProps
   extends BoxProps,
-    StylesApiProps<ColorSliderStylesNames>,
+    StylesApiProps<ColorSliderFactory>,
     ElementProps<'div', 'onChange'> {
   value: number;
   onChange?(value: number): void;
@@ -43,18 +43,11 @@ export interface ColorSliderProps extends __ColorSliderProps {
   thumbColor?: string;
 }
 
-export interface ColorSliderFactory {
+export type ColorSliderFactory = Factory<{
   props: ColorSliderProps;
   ref: HTMLDivElement;
   stylesNames: ColorSliderStylesNames;
-}
-
-const defaultProps: Partial<ColorSliderProps> = {
-  size: 'md',
-  thumbColor: 'transparent',
-  __staticSelector: 'ColorSlider',
-  focusable: true,
-};
+}>;
 
 export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
   const {
@@ -68,20 +61,21 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
     onChangeEnd,
     maxValue,
     round,
-    __staticSelector,
-    size,
-    focusable,
+    __staticSelector = 'ColorSlider',
+    size = 'md',
+    focusable = true,
     value,
     overlays,
-    thumbColor,
+    thumbColor = 'transparent',
     ...others
-  } = useProps('ColorSlider', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles<ColorSliderStylesNames>({
+  const getStyles = useStyles<ColorSliderFactory>({
     name: __staticSelector!,
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
@@ -153,7 +147,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
       <Thumb
         __staticSelector={__staticSelector!}
         classNames={classNames}
-        styles={styles}
+        styles={styles as any}
         position={position}
         size={size!}
         {...getStyles('thumb')}

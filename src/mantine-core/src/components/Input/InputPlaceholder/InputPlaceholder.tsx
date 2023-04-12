@@ -9,6 +9,7 @@ import {
   useStyles,
   useVars,
   createVarsResolver,
+  Factory,
 } from '../../../core';
 import classes from './InputPlaceholder.module.css';
 
@@ -16,36 +17,29 @@ export type InputPlaceholderStylesNames = 'placeholder';
 export type InputPlaceholderVariant = string;
 export type InputPlaceholderCssVariables = '--input-placeholder-color';
 
-export interface InputPlaceholderStylesParams {
-  variant: InputPlaceholderVariant | undefined;
-}
-
 export interface InputPlaceholderProps
   extends BoxProps,
-    StylesApiProps<
-      InputPlaceholderStylesNames,
-      InputPlaceholderVariant,
-      InputPlaceholderCssVariables
-    >,
+    StylesApiProps<InputPlaceholderFactory>,
     ElementProps<'span'> {
   __staticSelector?: string;
 }
 
-export interface InputPlaceholderFactory {
+export type InputPlaceholderFactory = Factory<{
   props: InputPlaceholderProps;
   ref: HTMLSpanElement;
   stylesNames: InputPlaceholderStylesNames;
   vars: InputPlaceholderCssVariables;
-  stylesParams: InputPlaceholderStylesParams;
-}
+  variant: InputPlaceholderVariant;
+}>;
 
 const defaultProps: Partial<InputPlaceholderProps> = {};
 
-const varsResolver = createVarsResolver<InputPlaceholderCssVariables, InputPlaceholderStylesParams>(
-  () => ({ '--input-placeholder-color': 'var(--mantine-color-placeholder)' })
-);
+const varsResolver = createVarsResolver<InputPlaceholderFactory>(() => ({
+  '--input-placeholder-color': 'var(--mantine-color-placeholder)',
+}));
 
-export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) => {
+export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) => {
+  const props = useProps('InputPlaceholder', defaultProps, _props);
   const {
     classNames,
     className,
@@ -58,19 +52,23 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((props, ref) =>
     ...others
   } = useProps('InputPlaceholder', defaultProps, props);
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<InputPlaceholderFactory>({
     name: ['InputPlaceholder', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'placeholder',
   });
 
-  const _vars = useVars<InputPlaceholderStylesParams>('InputPlaceholder', varsResolver, vars, {
-    variant,
+  const _vars = useVars<InputPlaceholderFactory>({
+    name: 'InputPlaceholder',
+    resolver: varsResolver,
+    props,
+    vars,
   });
 
   return (

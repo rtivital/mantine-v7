@@ -10,6 +10,7 @@ import {
   MantineRadius,
   MantineSize,
   useDirection,
+  Factory,
 } from '../../../core';
 import { MantineTransition } from '../../Transition';
 import { SliderStylesNames } from '../Slider/Slider';
@@ -29,7 +30,7 @@ export type RangeSliderValue = [number, number];
 
 export interface RangeSliderProps
   extends BoxProps,
-    StylesApiProps<SliderStylesNames, SliderVariant, SliderCssVariables, SliderStylesParams>,
+    StylesApiProps<RangeSliderFactory>,
     ElementProps<'div', 'onChange' | 'value' | 'defaultValue'> {
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
   color?: MantineColor;
@@ -116,13 +117,14 @@ export interface RangeSliderProps
   thumbToLabel?: string;
 }
 
-export interface RangeSliderFactory {
+export type RangeSliderFactory = Factory<{
   props: RangeSliderProps;
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
   stylesParams: SliderStylesParams;
-}
+  variant: SliderVariant;
+}>;
 
 const defaultProps: Partial<RangeSliderProps> = {
   size: 'md',

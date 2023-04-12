@@ -12,6 +12,7 @@ import {
   BoxMod,
   packMod,
   createVarsResolver,
+  PolymorphicFactory,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -32,15 +33,8 @@ function getTextTruncate(truncate: TextTruncate | undefined) {
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
 export type TextCssVariables = '--text-gradient' | '--text-line-clamp';
-export interface TextStylesParams {
-  gradient: MantineGradient | undefined;
-  lineClamp: number | undefined;
-  variant: TextVariant | (string & {}) | undefined;
-}
 
-export interface TextProps
-  extends BoxProps,
-    StylesApiProps<TextStylesNames, TextVariant, TextCssVariables, TextStylesParams> {
+export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   __staticSelector?: string;
   __size?: any;
   mod?: BoxMod;
@@ -64,29 +58,27 @@ export interface TextProps
   span?: boolean;
 }
 
-export interface TextFactory {
+export type TextFactory = PolymorphicFactory<{
   props: TextProps;
   defaultComponent: 'div';
   defaultRef: HTMLParagraphElement;
   stylesNames: TextStylesNames;
   vars: TextCssVariables;
   variant: TextVariant;
-  stylesParams: TextStylesParams;
-}
+}>;
 
 const defaultProps: Partial<TextProps> = {
   variant: 'text',
   inherit: true,
 };
 
-const varsResolver = createVarsResolver<TextCssVariables, TextStylesParams>(
-  ({ variant, lineClamp, gradient }, theme) => ({
-    '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
-    '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
-  })
-);
+const varsResolver = createVarsResolver<TextFactory>((theme, { variant, lineClamp, gradient }) => ({
+  '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
+  '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+}));
 
-export const Text = polymorphicFactory<TextFactory>((props, ref) => {
+export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
+  const props = useProps('Text', defaultProps, _props);
   const {
     lineClamp,
     truncate,
@@ -107,17 +99,19 @@ export const Text = polymorphicFactory<TextFactory>((props, ref) => {
     ...others
   } = useProps('Text', defaultProps, props);
 
-  const _vars = useVars<TextStylesParams>('Text', varsResolver, vars, {
-    lineClamp,
-    gradient,
-    variant,
+  const _vars = useVars<TextFactory>({
+    name: 'Text',
+    resolver: varsResolver,
+    vars,
+    props,
   });
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<TextFactory>({
     name: ['Text', __staticSelector],
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

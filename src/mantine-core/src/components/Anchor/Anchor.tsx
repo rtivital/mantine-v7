@@ -1,35 +1,26 @@
 import React from 'react';
 import cx from 'clsx';
-import {
-  Text,
-  TextProps,
-  TextCssVariables,
-  TextStylesNames,
-  TextStylesParams,
-  TextVariant,
-} from '../Text';
-import { polymorphicFactory, useProps } from '../../core';
+import { polymorphicFactory, useProps, PolymorphicFactory } from '../../core';
+import { Text, TextProps, TextCssVariables, TextStylesNames, TextVariant } from '../Text';
 import classes from './Anchor.module.css';
 
 export type AnchorStylesNames = TextStylesNames;
 export type AnchorVariant = TextVariant;
 export type AnchorCssVariables = TextCssVariables;
-export type AnchorStylesParams = TextStylesParams;
 
 export interface AnchorProps extends TextProps {
   /** Determines in which cases link should have `text-decoration: underline` styles, `hover` by default */
   underline?: 'always' | 'hover' | 'never';
 }
 
-export interface AnchorFactory {
+export type AnchorFactory = PolymorphicFactory<{
   props: AnchorProps;
   defaultComponent: 'a';
   defaultRef: HTMLAnchorElement;
   stylesNames: AnchorStylesNames;
   vars: AnchorCssVariables;
   variant: AnchorVariant;
-  stylesParams: AnchorStylesParams;
-}
+}>;
 
 const defaultProps: Partial<AnchorProps> = {
   underline: 'hover',

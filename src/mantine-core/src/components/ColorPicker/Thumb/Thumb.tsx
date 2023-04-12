@@ -5,15 +5,15 @@ import {
   StylesApiProps,
   factory,
   getSize,
-  useProps,
   useStyles,
+  Factory,
 } from '../../../core';
 import classes from './Thumb.module.css';
 
 export type ThumbStylesNames = 'thumb';
 
 export interface ThumbProps
-  extends StylesApiProps<ThumbStylesNames>,
+  extends StylesApiProps<ThumbFactory>,
     React.ComponentPropsWithoutRef<'div'> {
   variant?: string;
   position: { x: number; y: number };
@@ -21,13 +21,11 @@ export interface ThumbProps
   __staticSelector: string;
 }
 
-export interface ThumbFactory {
+export type ThumbFactory = Factory<{
   props: ThumbProps;
   ref: HTMLDivElement;
   stylesNames: ThumbStylesNames;
-}
-
-const defaultProps: Partial<ThumbProps> = {};
+}>;
 
 export const Thumb = factory<ThumbFactory>((props, ref) => {
   const {
@@ -41,13 +39,14 @@ export const Thumb = factory<ThumbFactory>((props, ref) => {
     size,
     position,
     ...others
-  } = useProps('ColorPickerThumb', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<ThumbFactory>({
     name: __staticSelector,
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

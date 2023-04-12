@@ -4,6 +4,5 @@ export type {
   TextFactory,
   TextProps,
   TextStylesNames,
-  TextStylesParams,
   TextVariant,
 } from './Text';

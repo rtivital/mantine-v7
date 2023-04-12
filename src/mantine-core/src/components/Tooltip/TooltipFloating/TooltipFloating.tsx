@@ -9,14 +9,10 @@ import {
   useStyles,
   getStyleObject,
   useMantineTheme,
+  Factory,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
-import {
-  TooltipBaseProps,
-  TooltipCssVariables,
-  TooltipStylesNames,
-  TooltipStylesParams,
-} from '../Tooltip.types';
+import { TooltipBaseProps, TooltipCssVariables, TooltipStylesNames } from '../Tooltip.types';
 import classes from '../Tooltip.module.css';
 import { useFloatingTooltip } from './use-floating-tooltip';
 
@@ -25,13 +21,12 @@ export interface TooltipFloatingProps extends TooltipBaseProps {
   offset?: number;
 }
 
-export interface TooltipFloatingFactory {
+export type TooltipFloatingFactory = Factory<{
   props: TooltipFloatingProps;
   ref: HTMLDivElement;
   stylesNames: TooltipStylesNames;
   vars: TooltipCssVariables;
-  stylesParams: TooltipStylesParams;
-}
+}>;
 
 const defaultProps: Partial<TooltipFloatingProps> = {
   refProp: 'ref',
@@ -41,7 +36,8 @@ const defaultProps: Partial<TooltipFloatingProps> = {
   zIndex: getDefaultZIndex('popover'),
 };
 
-export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
+export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => {
+  const props = useProps('TooltipFloating', defaultProps, _props);
   const {
     children,
     refProp,
@@ -63,20 +59,20 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((props, ref) => {
     vars,
     portalProps,
     ...others
-  } = useProps('TooltipFloating', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const theme = useMantineTheme();
+  const getStyles = useStyles<TooltipFloatingFactory>({
     name: 'TooltipFloating',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
     rootSelector: 'tooltip',
   });
-
-  const theme = useMantineTheme();
 
   const { handleMouseMove, x, y, opened, boundaryRef, floating, setOpened } = useFloatingTooltip({
     offset: offset!,

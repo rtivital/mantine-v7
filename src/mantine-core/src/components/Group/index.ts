@@ -3,7 +3,7 @@ export type {
   GroupCssVariables,
   GroupFactory,
   GroupStylesNames,
-  GroupStylesParams,
+  GroupStylesCtx,
   GroupVariant,
   GroupProps,
 } from './Group';

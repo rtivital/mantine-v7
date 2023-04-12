@@ -8,6 +8,7 @@ import {
   MantineSize,
   getFontSize,
   getSize,
+  Factory,
 } from '../../core';
 import { Input } from '../Input';
 import classes from './InlineInput.module.css';
@@ -22,7 +23,7 @@ export type InlineInputStylesNames =
 
 export interface InlineInputProps
   extends BoxProps,
-    StylesApiProps<InlineInputStylesNames>,
+    StylesApiProps<InlineInputFactory>,
     ElementProps<'div'> {
   __staticSelector: string;
   label: React.ReactNode;
@@ -33,6 +34,11 @@ export interface InlineInputProps
   size: MantineSize | (string & {}) | number | undefined;
   labelPosition?: 'left' | 'right';
 }
+
+export type InlineInputFactory = Factory<{
+  props: any;
+  stylesNames: InlineInputStylesNames;
+}>;
 
 export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
   (
@@ -57,8 +63,9 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
     },
     ref
   ) => {
-    const getStyles = useStyles({
+    const getStyles = useStyles<InlineInputFactory>({
       name: __staticSelector,
+      props: {},
       className,
       style,
       classes,

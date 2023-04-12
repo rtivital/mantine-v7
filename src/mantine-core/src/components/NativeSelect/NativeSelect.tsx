@@ -1,5 +1,5 @@
 import React from 'react';
-import { factory, ElementProps, useProps } from '../../core';
+import { factory, ElementProps, useProps, Factory } from '../../core';
 import { InputBase, InputBaseProps } from '../InputBase';
 import { __InputStylesNames } from '../Input';
 import { ComboboxData, getParsedComboboxData, ComboboxChevron } from '../Combobox';
@@ -10,11 +10,11 @@ export interface NativeSelectProps extends InputBaseProps, ElementProps<'select'
   data?: ComboboxData;
 }
 
-export interface NativeSelectFactory {
+export type NativeSelectFactory = Factory<{
   props: NativeSelectProps;
   ref: HTMLSelectElement;
   stylesNames: __InputStylesNames;
-}
+}>;
 
 const defaultProps: Partial<NativeSelectProps> = {
   size: 'sm',

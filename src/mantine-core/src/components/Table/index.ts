@@ -5,7 +5,6 @@ export type {
   TableCssVariables,
   TableFactory,
   TableVariant,
-  TableStylesParams,
 } from './Table';
 
 export type {

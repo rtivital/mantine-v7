@@ -6,6 +6,7 @@ import {
   useStyles,
   polymorphicFactory,
   BoxComponentProps,
+  PolymorphicFactory,
 } from '../../core';
 import classes from './UnstyledButton.module.css';
 
@@ -21,12 +22,12 @@ const defaultProps: Partial<UnstyledButtonProps> = {
   __staticSelector: 'UnstyledButton',
 };
 
-export interface UnstyledButtonFactory {
+export type UnstyledButtonFactory = PolymorphicFactory<{
   props: UnstyledButtonProps;
   stylesNames: UnstyledButtonStylesNames;
   defaultComponent: 'button';
   defaultRef: HTMLButtonElement;
-}
+}>;
 
 export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
   (_props: UnstyledButtonProps & { component?: any }, ref) => {
@@ -42,7 +43,7 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
       ...others
     } = props;
 
-    const getStyles = useStyles({
+    const getStyles = useStyles<UnstyledButtonFactory>({
       name: __staticSelector!,
       props,
       classes,

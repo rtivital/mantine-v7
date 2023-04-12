@@ -3,6 +3,7 @@ import { FloatingPosition, ArrowPosition } from '../Floating';
 import { TransitionOverride } from '../Transition';
 import { PortalProps } from '../Portal';
 import { PopoverWidth, PopoverStylesNames } from './Popover.types';
+import type { PopoverDropdownFactory } from './PopoverDropdown/PopoverDropdown';
 
 interface PopoverContext {
   x: number;
@@ -38,7 +39,7 @@ interface PopoverContext {
   disabled: boolean | undefined;
   returnFocus: boolean | undefined;
   classNames: ClassNames<PopoverStylesNames> | undefined;
-  styles: Styles<PopoverStylesNames> | undefined;
+  styles: Styles<PopoverDropdownFactory> | undefined;
   unstyled: boolean | undefined;
   __staticSelector: string;
   variant: string | undefined;

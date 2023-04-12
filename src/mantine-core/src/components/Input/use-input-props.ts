@@ -2,7 +2,10 @@ import { useId } from '@mantine/hooks';
 import { extractStyleProps, useProps, BoxProps, StylesApiProps } from '../../core';
 import { __BaseInputProps } from './Input';
 
-interface BaseProps extends __BaseInputProps, BoxProps, StylesApiProps<string> {
+interface BaseProps
+  extends __BaseInputProps,
+    BoxProps,
+    StylesApiProps<{ props: any; stylesNames: string }> {
   __staticSelector?: string;
   id?: string;
 }

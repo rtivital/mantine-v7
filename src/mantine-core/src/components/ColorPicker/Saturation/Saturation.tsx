@@ -6,10 +6,10 @@ import {
   StylesApiProps,
   factory,
   ElementProps,
-  useProps,
   useStyles,
   MantineSize,
   getSize,
+  Factory,
 } from '../../../core';
 import { HsvaColor } from '../ColorPicker.types';
 import { convertHsvaTo } from '../converters';
@@ -20,11 +20,9 @@ export type SaturationStylesNames = 'saturation' | 'thumb' | 'saturationOverlay'
 export type SaturationVariant = string;
 export type SaturationCssVariables = '--test';
 
-export interface SaturationStylesParams {}
-
 export interface SaturationProps
   extends BoxProps,
-    StylesApiProps<SaturationStylesNames, SaturationVariant, SaturationCssVariables>,
+    StylesApiProps<SaturationFactory>,
     ElementProps<'div', 'onChange'> {
   __staticSelector: string;
   value: HsvaColor;
@@ -36,18 +34,12 @@ export interface SaturationProps
   focusable?: boolean;
 }
 
-export interface SaturationFactory {
+export type SaturationFactory = Factory<{
   props: SaturationProps;
   ref: HTMLDivElement;
   stylesNames: SaturationStylesNames;
   vars: SaturationCssVariables;
-  stylesParams: SaturationStylesParams;
-}
-
-const defaultProps: Partial<SaturationProps> = {
-  __staticSelector: 'Saturation',
-  focusable: true,
-};
+}>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Saturation = factory<SaturationFactory>((props, _ref) => {
@@ -62,18 +54,19 @@ export const Saturation = factory<SaturationFactory>((props, _ref) => {
     onChangeEnd,
     value,
     saturationLabel,
-    focusable,
+    focusable = true,
     __staticSelector,
     size,
     color,
     ...others
-  } = useProps('Saturation', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<SaturationFactory>({
     name: __staticSelector,
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
@@ -167,7 +160,7 @@ export const Saturation = factory<SaturationFactory>((props, _ref) => {
       <Thumb
         __staticSelector={__staticSelector!}
         classNames={classNames}
-        styles={styles}
+        styles={styles as any}
         position={position}
         size={size}
         {...getStyles('thumb')}

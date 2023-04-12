@@ -11,6 +11,7 @@ import {
   getSpacing,
   useVars,
   createVarsResolver,
+  Factory,
 } from '../../core';
 import { filterFalsyChildren } from './filter-falsy-children/filter-falsy-children';
 import classes from './Group.module.css';
@@ -24,22 +25,11 @@ export type GroupCssVariables =
   | '--group-wrap'
   | '--group-child-width';
 
-export interface GroupStylesParams {
-  gap: MantineSpacing | string | number | undefined;
-  align: React.CSSProperties['alignItems'] | undefined;
-  justify: React.CSSProperties['justifyContent'] | undefined;
-  wrap: React.CSSProperties['flexWrap'] | undefined;
-  childrenCount: number;
-  preventGrowOverflow: boolean | undefined;
-  grow: boolean | undefined;
-  variant: GroupVariant | undefined;
+export interface GroupStylesCtx {
   childWidth: string;
 }
 
-export interface GroupProps
-  extends BoxProps,
-    StylesApiProps<GroupStylesNames, GroupVariant, GroupCssVariables, GroupStylesParams>,
-    ElementProps<'div'> {
+export interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, ElementProps<'div'> {
   /** Controls `justify-content` CSS property, `'flex-start'` by default */
   justify?: React.CSSProperties['justifyContent'];
 
@@ -59,13 +49,14 @@ export interface GroupProps
   preventGrowOverflow?: boolean;
 }
 
-export interface GroupFactory {
+export type GroupFactory = Factory<{
   props: GroupProps;
   ref: HTMLDivElement;
   stylesNames: GroupStylesNames;
   vars: GroupCssVariables;
-  stylesParams: GroupStylesParams;
-}
+  ctx: GroupStylesCtx;
+  variant: GroupVariant;
+}>;
 
 const defaultProps: Partial<GroupProps> = {
   justify: 'flex-start',
@@ -74,8 +65,8 @@ const defaultProps: Partial<GroupProps> = {
   preventGrowOverflow: true,
 };
 
-const varsResolver = createVarsResolver<GroupCssVariables, GroupStylesParams>(
-  ({ grow, preventGrowOverflow, childWidth, gap, align, justify, wrap }) => ({
+const varsResolver = createVarsResolver<GroupFactory>(
+  (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
     '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
     '--group-gap': getSpacing(gap),
     '--group-align': align,
@@ -84,7 +75,8 @@ const varsResolver = createVarsResolver<GroupCssVariables, GroupStylesParams>(
   })
 );
 
-export const Group = factory<GroupFactory>((props, ref) => {
+export const Group = factory<GroupFactory>((_props, ref) => {
+  const props = useProps('Group', defaultProps, _props);
   const {
     classNames,
     className,
@@ -101,10 +93,20 @@ export const Group = factory<GroupFactory>((props, ref) => {
     vars,
     variant,
     ...others
-  } = useProps('Group', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const filteredChildren = filterFalsyChildren(children);
+  const childrenCount = filteredChildren.length;
+  const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(gap)} - ${getSpacing(
+    gap
+  )} / ${childrenCount}))`;
+
+  const stylesCtx: GroupStylesCtx = { childWidth };
+
+  const getStyles = useStyles<GroupFactory>({
     name: 'Group',
+    props,
+    stylesCtx,
     className,
     style,
     classes,
@@ -113,22 +115,12 @@ export const Group = factory<GroupFactory>((props, ref) => {
     unstyled,
   });
 
-  const filteredChildren = filterFalsyChildren(children);
-  const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(gap)} - ${getSpacing(
-    gap
-  )} / ${childrenCount}))`;
-
-  const _vars = useVars<GroupStylesParams>('Group', varsResolver, vars, {
-    align,
-    gap,
-    justify,
-    wrap,
-    childrenCount,
-    preventGrowOverflow,
-    grow,
-    variant,
-    childWidth,
+  const _vars = useVars<GroupFactory>({
+    name: 'Group',
+    resolver: varsResolver,
+    props,
+    stylesCtx,
+    vars,
   });
 
   return (
