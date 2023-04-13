@@ -31,8 +31,6 @@ describe('@mantine/core/ScrollAreaAutosize', () => {
     children: true,
     extend: true,
     refType: HTMLDivElement,
-    stylesApiName: 'ScrollArea',
     displayName: '@mantine/core/ScrollAreaAutosize',
-    stylesApiSelectors: ['root', 'viewport'],
   });
 });

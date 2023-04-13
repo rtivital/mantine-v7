@@ -22,8 +22,6 @@ describe('@mantine/core/TabsTab', () => {
     styleProps: true,
     children: true,
     selector: '[role="tab"]',
-    stylesApiName: 'Tabs',
-    stylesApiSelectors: ['tab', 'tabLeftSection', 'tabRightSection', 'tabLabel'],
   });
 
   tests.itSupportsFocusEvents({

@@ -65,6 +65,9 @@ export interface InputWrapperProps
     ElementProps<'div'> {
   __staticSelector?: string;
 
+  /** Props passed to Styles API context, replaces Input.Wrapper props */
+  __stylesApiProps?: Record<string, any>;
+
   /** Static id used as base to generate `aria-` attributes, by default generates random id */
   id?: string;
 
@@ -113,12 +116,13 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     withAsterisk,
     id,
     required,
+    __stylesApiProps,
     ...others
   } = props;
 
   const getStyles = useStyles<InputWrapperFactory>({
     name: ['InputWrapper', __staticSelector],
-    props,
+    props: __stylesApiProps || props,
     classes,
     className,
     style,

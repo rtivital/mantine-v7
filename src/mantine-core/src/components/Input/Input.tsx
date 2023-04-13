@@ -98,6 +98,9 @@ export interface __InputProps {
 export interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
   __staticSelector?: string;
 
+  /** Props passed to Styles API context, replaces Input.Wrapper props */
+  __stylesApiProps?: Record<string, any>;
+
   /** Determines whether the input should have error styles and `aria-invalid` attribute */
   error?: React.ReactNode;
 
@@ -154,6 +157,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     unstyled,
     required,
     __staticSelector,
+    __stylesApiProps,
     size,
     wrapperProps,
     error,
@@ -180,7 +184,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
 
   const getStyles = useStyles<InputFactory>({
     name: ['Input', __staticSelector],
-    props,
+    props: __stylesApiProps || props,
     classes,
     className,
     style,

@@ -26,6 +26,7 @@ export interface InlineInputProps
     StylesApiProps<InlineInputFactory>,
     ElementProps<'div'> {
   __staticSelector: string;
+  __stylesApiProps: Record<string, any>;
   label: React.ReactNode;
   description: React.ReactNode;
   id: string;
@@ -44,6 +45,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
   (
     {
       __staticSelector,
+      __stylesApiProps,
       className,
       classNames,
       styles,
@@ -65,7 +67,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
   ) => {
     const getStyles = useStyles<InlineInputFactory>({
       name: __staticSelector,
-      props: {},
+      props: __stylesApiProps,
       className,
       style,
       classes,

@@ -7,14 +7,16 @@ interface BaseProps
     BoxProps,
     StylesApiProps<{ props: any; stylesNames: string }> {
   __staticSelector?: string;
+  __stylesApiProps?: Record<string, any>;
   id?: string;
 }
 
 export function useInputProps<T extends BaseProps, U extends Partial<T>>(
   component: string,
   defaultProps: U,
-  props: T
+  _props: T
 ) {
+  const props = useProps<T>(component, defaultProps, _props);
   const {
     label,
     description,
@@ -25,6 +27,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     className,
     unstyled,
     __staticSelector,
+    __stylesApiProps,
     errorProps,
     labelProps,
     descriptionProps,
@@ -37,7 +40,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     withAsterisk,
     variant,
     ...others
-  } = useProps<T>(component, defaultProps, props);
+  } = props;
 
   const uid = useId(id);
 
@@ -51,6 +54,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     classNames,
     className,
     __staticSelector,
+    __stylesApiProps: __stylesApiProps || props,
     errorProps,
     labelProps,
     descriptionProps,
@@ -80,6 +84,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
       id: uid,
       size,
       __staticSelector,
+      __stylesApiProps: __stylesApiProps || props,
       error,
       variant,
     },

@@ -19,7 +19,7 @@ export function Usage() {
       }}
     >
       <div style={{ padding: 40 }}>
-        <UnstyledButton>Button</UnstyledButton>
+        <UnstyledButton styles={() => ({ root: { color: 'red' } })}>Button</UnstyledButton>
       </div>
     </MantineThemeProvider>
   );
@@ -29,12 +29,9 @@ export function PropsInStyles() {
   return (
     <UnstyledButton
       variant="xl"
-      // classNames={(theme, props, ctx) => {
-      //   console.log(theme, props, ctx);
-      //   return {
-      //     root: '----test',
-      //   };
-      // }}
+      classNames={(_theme, props) => ({
+        root: `${props.__staticSelector}----test`,
+      })}
     >
       Hello
     </UnstyledButton>

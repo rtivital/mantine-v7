@@ -179,6 +179,8 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
   return (
     <InlineInput
       {...getStyles('root')}
+      __staticSelector="Switch"
+      __stylesApiProps={props}
       style={style}
       id={uuid}
       size={_size}
@@ -187,7 +189,6 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       description={description}
       error={error}
       disabled={disabled}
-      __staticSelector="Switch"
       classNames={classNames}
       styles={styles}
       unstyled={unstyled}
