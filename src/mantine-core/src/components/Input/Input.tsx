@@ -176,6 +176,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
 
   const { styleProps, rest } = extractStyleProps(others);
   const ctx = useInputWrapperContext();
+  const stylesCtx: InputStylesCtx = { offsetBottom: ctx.offsetBottom, offsetTop: ctx.offsetTop };
 
   const getStyles = useStyles<InputFactory>({
     name: ['Input', __staticSelector],
@@ -186,6 +187,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    stylesCtx,
     rootSelector: 'wrapper',
   });
 
@@ -194,6 +196,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     resolver: varsResolver,
     props,
     vars,
+    stylesCtx,
   });
 
   return (
