@@ -13,7 +13,8 @@ import {
   createVarsResolver,
   Factory,
 } from '../../../core';
-import classes from './InputLabel.module.css';
+import { useInputWrapperContext } from '../InputWrapper.context';
+import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputLabelStylesNames = 'label' | 'required';
 export type InputLabelVariant = string;
@@ -73,7 +74,7 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
     ...others
   } = useProps('InputLabel', defaultProps, props);
 
-  const getStyles = useStyles<InputLabelFactory>({
+  const _getStyles = useStyles<InputLabelFactory>({
     name: ['InputWrapper', __staticSelector],
     props,
     classes,
@@ -84,6 +85,9 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
     unstyled,
     rootSelector: 'label',
   });
+
+  const ctx = useInputWrapperContext();
+  const getStyles = ctx.getStyles || _getStyles;
 
   const _vars = useVars<InputLabelFactory>({
     name: 'InputLabel',

@@ -81,13 +81,24 @@ export function CompoundComponents() {
 
       <Input.Wrapper
         label="Your name"
-        withAsterisk
+        required
         mt="xl"
         description="Input description"
         error="Input error"
         id="test-id"
+        styles={(theme, props) => ({
+          description: {
+            background: props.required ? 'orange' : 'pink',
+          },
+          error: {
+            background: props.required ? 'orange' : 'pink',
+          },
+          label: {
+            background: props.error ? 'orange' : 'pink',
+          },
+        })}
       >
-        <Input placeholder="Inside wrapper" id="test-id" />
+        {/* <Input placeholder="Inside wrapper" id="test-id" /> */}
       </Input.Wrapper>
     </div>
   );

@@ -128,9 +128,6 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   });
 
   const sharedProps = {
-    classNames,
-    styles: styles as any,
-    unstyled,
     size,
     variant,
     __staticSelector,
@@ -202,6 +199,7 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   return (
     <InputWrapperProvider
       value={{
+        getStyles,
         describedBy,
         ...getInputOffsets(inputWrapperOrder!, { hasDescription, hasError }),
       }}

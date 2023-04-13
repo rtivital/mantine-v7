@@ -14,7 +14,8 @@ import {
   createVarsResolver,
   Factory,
 } from '../../../core';
-import classes from './InputError.module.css';
+import { useInputWrapperContext } from '../InputWrapper.context';
+import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputErrorStylesNames = 'error';
 export type InputErrorVariant = string;
@@ -61,7 +62,7 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     ...others
   } = useProps('InputError', defaultProps, props);
 
-  const getStyles = useStyles<InputErrorFactory>({
+  const _getStyles = useStyles<InputErrorFactory>({
     name: ['InputWrapper', __staticSelector],
     props,
     classes,
@@ -72,6 +73,9 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     unstyled,
     rootSelector: 'error',
   });
+
+  const ctx = useInputWrapperContext();
+  const getStyles = ctx.getStyles || _getStyles;
 
   const _vars = useVars<InputErrorFactory>({
     name: 'InputError',

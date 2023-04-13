@@ -1,7 +1,7 @@
 export { ScrollArea } from './ScrollArea';
 export type {
   ScrollAreaProps,
-  ScrollAreaAutoSizeProps,
+  ScrollAreaAutosizeProps,
   ScrollAreaStylesNames,
   ScrollAreaCssVariables,
   ScrollAreaFactory,

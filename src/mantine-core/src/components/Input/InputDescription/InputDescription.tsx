@@ -14,7 +14,8 @@ import {
   createVarsResolver,
   Factory,
 } from '../../../core';
-import classes from './InputDescription.module.css';
+import { useInputWrapperContext } from '../InputWrapper.context';
+import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputDescriptionStylesNames = 'description';
 export type InputDescriptionVariant = string;
@@ -60,8 +61,9 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
     variant,
     ...others
   } = useProps('InputDescription', defaultProps, props);
+  const ctx = useInputWrapperContext();
 
-  const getStyles = useStyles<InputDescriptionFactory>({
+  const _getStyles = useStyles<InputDescriptionFactory>({
     name: ['InputWrapper', __staticSelector],
     props,
     classes,
@@ -72,6 +74,8 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
     unstyled,
     rootSelector: 'description',
   });
+
+  const getStyles = ctx.getStyles || _getStyles;
 
   const _vars = useVars<InputDescriptionFactory>({
     name: 'InputDescription',

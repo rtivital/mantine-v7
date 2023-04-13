@@ -1,9 +1,0 @@
-.description {
-  word-wrap: break-word;
-  color: var(--mantine-color-dimmed);
-  font-size: var(--input-description-size);
-  line-height: 1.2;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
