@@ -55,6 +55,7 @@ const defaultProps: Partial<CodeHighlightProps> = {
   copyLabel: 'Copy code',
   copiedLabel: 'Copied',
   language: 'tsx',
+  withCopyButton: true,
 };
 
 export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
@@ -71,6 +72,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
     copiedLabel,
     copyLabel,
     language,
+    withCopyButton,
     ...others
   } = props;
 
@@ -89,15 +91,17 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
 
   return (
     <Box {...getStyles('root')} ref={ref} {...others} dir="ltr">
-      <CopyButton value={code.trim()}>
-        {({ copied, copy }) => (
-          <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left">
-            <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
-              <CopyIcon copied={copied} />
-            </ActionIcon>
-          </Tooltip>
-        )}
-      </CopyButton>
+      {withCopyButton && (
+        <CopyButton value={code.trim()}>
+          {({ copied, copy }) => (
+            <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left">
+              <ActionIcon onClick={copy} variant="none" {...getStyles('copy')}>
+                <CopyIcon copied={copied} />
+              </ActionIcon>
+            </Tooltip>
+          )}
+        </CopyButton>
+      )}
 
       <ScrollArea type="auto" dir="ltr" offsetScrollbars={false}>
         <pre {...getStyles('pre')}>

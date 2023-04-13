@@ -32,11 +32,13 @@ export interface InlineCodeHighlightProps
 
 export type InlineCodeHighlightFactory = Factory<{
   props: InlineCodeHighlightProps;
-  ref: HTMLDivElement;
+  ref: HTMLElement;
   stylesNames: InlineCodeHighlightStylesNames;
 }>;
 
-const defaultProps: Partial<InlineCodeHighlightProps> = {};
+const defaultProps: Partial<InlineCodeHighlightProps> = {
+  language: 'tsx',
+};
 
 export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((_props, ref) => {
   const props = useProps('InlineCodeHighlight', defaultProps, _props);
@@ -51,6 +53,7 @@ export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((_props, 
     classNames,
     styles,
     unstyled,
+    rootSelector: 'code',
   });
 
   const highlighted = hljs.highlight(code.trim(), { language: language! }).value;
