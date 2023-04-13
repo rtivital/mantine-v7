@@ -1,14 +1,10 @@
 export { Slider } from './Slider/Slider';
 export { RangeSlider } from './RangeSlider/RangeSlider';
 
-export type {
-  SliderCssVariables,
-  SliderStylesParams,
-  SliderVariant,
-} from './SliderRoot/SliderRoot';
-export type { SliderFactory, SliderProps, SliderStylesNames } from './Slider/Slider';
+export type { SliderFactory, SliderProps } from './Slider/Slider';
 export type {
   RangeSliderFactory,
   RangeSliderProps,
   RangeSliderValue,
 } from './RangeSlider/RangeSlider';
+export type { SliderStylesNames, SliderCssVariables, SliderVariant } from './Slider.context';

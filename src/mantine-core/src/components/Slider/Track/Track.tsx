@@ -1,11 +1,9 @@
 import React from 'react';
-import { Box, StylesApiProps, useStyles } from '../../../core';
-import { Marks, MarksStylesNames } from '../Marks/Marks';
-import classes from './Track.module.css';
+import { Box } from '../../../core';
+import { Marks } from '../Marks/Marks';
+import { useSliderContext } from '../Slider.context';
 
-export type TrackStylesNames = 'trackContainer' | 'track' | 'bar' | MarksStylesNames;
-
-export interface TrackProps extends StylesApiProps<TrackStylesNames> {
+export interface TrackProps {
   filled: number;
   offset?: number;
   marksOffset?: number;
@@ -21,51 +19,32 @@ export interface TrackProps extends StylesApiProps<TrackStylesNames> {
 
 export function Track({
   filled,
-  classNames,
-  styles,
   children,
   offset,
   disabled,
   marksOffset,
-  unstyled,
   inverted,
-  variant,
   containerProps,
   ...others
 }: TrackProps) {
-  const getStyle = useStyles({
-    name: 'Slider',
-    classes,
-    classNames,
-    styles,
-    unstyled,
-  });
+  const { getStyles } = useSliderContext();
 
   return (
     <>
-      <Box {...getStyle('trackContainer')} mod={{ disabled }} {...containerProps}>
-        <Box {...getStyle('track')} mod={{ inverted, disabled }}>
+      <Box {...getStyles('trackContainer')} mod={{ disabled }} {...containerProps}>
+        <Box {...getStyles('track')} mod={{ inverted, disabled }}>
           <Box
             mod={{ inverted, disabled }}
             vars={{
               '--slider-bar-width': `calc(${filled}% + var(--slider-size))`,
               '--slider-bar-offset': `calc(${offset}% - var(--slider-size))`,
             }}
-            {...getStyle('bar')}
+            {...getStyles('bar')}
           />
 
           {children}
 
-          <Marks
-            {...others}
-            offset={marksOffset}
-            classNames={classNames}
-            styles={styles}
-            disabled={disabled}
-            unstyled={unstyled}
-            inverted={inverted}
-            variant={variant}
-          />
+          <Marks {...others} offset={marksOffset} disabled={disabled} inverted={inverted} />
         </Box>
       </Box>
     </>

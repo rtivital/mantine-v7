@@ -1,11 +1,9 @@
 import React, { useState, forwardRef } from 'react';
-import { Box, StylesApiProps, useStyles } from '../../../core';
+import { Box } from '../../../core';
 import { Transition, MantineTransition } from '../../Transition';
-import classes from './Thumb.module.css';
+import { useSliderContext } from '../Slider.context';
 
-export type ThumbStylesNames = 'label' | 'thumb';
-
-export interface ThumbProps extends StylesApiProps<ThumbStylesNames> {
+export interface ThumbProps {
   max: number;
   min: number;
   value: number;
@@ -40,10 +38,6 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
       dragging,
       onMouseDown,
       onKeyDownCapture,
-      classNames,
-      styles,
-      className,
-      style,
       labelTransition,
       labelTransitionDuration,
       labelTransitionTimingFunction,
@@ -55,19 +49,10 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
       isHovered,
       children = null,
       disabled,
-      unstyled,
     }: ThumbProps,
     ref
   ) => {
-    const getStyles = useStyles({
-      name: 'Slider',
-      classes,
-      className,
-      style,
-      classNames,
-      styles,
-      unstyled,
-    });
+    const { getStyles } = useSliderContext();
 
     const [focused, setFocused] = useState(false);
 

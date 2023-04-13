@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, tests, userEvent, screen } from '@mantine/tests';
-import { Slider, SliderProps, SliderStylesNames } from './Slider';
+import { Slider, SliderProps } from './Slider';
+import { SliderStylesNames } from '../Slider.context';
 
 const defaultProps: SliderProps = {
   marks: [{ value: 0, label: 'test-mark' }],

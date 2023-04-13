@@ -11,20 +11,28 @@ import {
   MantineSize,
   useDirection,
   Factory,
+  createVarsResolver,
+  getSize,
+  getThemeColor,
+  getRadius,
+  rem,
+  useStyles,
+  useVars,
 } from '../../../core';
 import { MantineTransition } from '../../Transition';
-import { SliderStylesNames } from '../Slider/Slider';
 import {
+  SliderStylesNames,
+  SliderProvider,
   SliderCssVariables,
-  SliderRoot,
-  SliderStylesParams,
   SliderVariant,
-} from '../SliderRoot/SliderRoot';
+} from '../Slider.context';
+import { SliderRoot } from '../SliderRoot/SliderRoot';
 import { Track } from '../Track/Track';
 import { Thumb } from '../Thumb/Thumb';
 import { getPosition } from '../utils/get-position/get-position';
 import { getChangeValue } from '../utils/get-change-value/get-change-value';
 import { getClientPosition } from '../utils/get-client-position/get-client-position';
+import classes from '../Slider.module.css';
 
 export type RangeSliderValue = [number, number];
 
@@ -122,9 +130,18 @@ export type RangeSliderFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
-  stylesParams: SliderStylesParams;
   variant: SliderVariant;
 }>;
+
+const varsResolver = createVarsResolver<RangeSliderFactory>(
+  (theme, { size, color, thumbSize, radius }) => ({
+    '--slider-size': getSize(size, 'slider-size'),
+    '--slider-color': getThemeColor(color, theme),
+    '--slider-radius': getRadius(radius),
+    '--slider-thumb-size':
+      typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+  })
+);
 
 const defaultProps: Partial<RangeSliderProps> = {
   size: 'md',
@@ -143,7 +160,8 @@ const defaultProps: Partial<RangeSliderProps> = {
   scale: (v) => v,
 };
 
-export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
+export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
+  const props = useProps('RangeSlider', defaultProps, _props);
   const {
     classNames,
     styles,
@@ -173,8 +191,28 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
     unstyled,
     scale,
     inverted,
+    className,
+    style,
+    vars,
     ...others
-  } = useProps('RangeSlider', defaultProps, props);
+  } = props;
+
+  const getStyles = useStyles<RangeSliderFactory>({
+    name: 'Slider',
+    props,
+    classes,
+    classNames,
+    className,
+    styles,
+    style,
+  });
+
+  const _vars = useVars<RangeSliderFactory>({
+    name: 'Slider',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
 
   const { dir } = useDirection();
   const [focused, setFocused] = useState(-1);
@@ -380,94 +418,81 @@ export const RangeSlider = factory<RangeSliderFactory>((props, ref) => {
     labelTransitionTimingFunction,
     labelAlwaysOn,
     onBlur: () => setFocused(-1),
-    classNames,
-    styles,
   };
 
   const hasArrayThumbChildren = Array.isArray(thumbChildren);
 
   return (
-    <SliderRoot
-      {...others}
-      size={size!}
-      ref={ref}
-      styles={styles}
-      classNames={classNames}
-      disabled={disabled}
-      unstyled={unstyled}
-    >
-      <Track
-        offset={positions[0]}
-        marksOffset={_value[0]}
-        filled={positions[1] - positions[0]}
-        marks={marks}
-        inverted={inverted}
-        min={min!}
-        max={max!}
-        value={_value[1]}
-        styles={styles}
-        classNames={classNames}
-        disabled={disabled}
-        unstyled={unstyled}
-        containerProps={{
-          ref: container as any,
-          onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
-          onMouseLeave: showLabelOnHover ? () => setHovered(false) : undefined,
-          onTouchStartCapture: handleTrackMouseDownCapture,
-          onTouchEndCapture: () => {
-            thumbIndex.current = -1;
-          },
-          onMouseDownCapture: handleTrackMouseDownCapture,
-          onMouseUpCapture: () => {
-            thumbIndex.current = -1;
-          },
-          onKeyDownCapture: handleTrackKeydownCapture,
-        }}
-      >
-        <Thumb
-          {...sharedThumbProps}
-          value={scale!(_value[0])}
-          position={positions[0]}
-          dragging={active}
-          label={typeof label === 'function' ? label(scale!(_value[0])) : label}
-          ref={(node) => {
-            thumbs.current[0] = node!;
-          }}
-          thumbLabel={thumbFromLabel}
-          onMouseDown={() => handleThumbMouseDown(0)}
-          onFocus={() => setFocused(0)}
-          showLabelOnHover={showLabelOnHover}
-          isHovered={hovered}
+    <SliderProvider value={{ getStyles }}>
+      <SliderRoot {...others} size={size!} ref={ref} disabled={disabled} vars={_vars}>
+        <Track
+          offset={positions[0]}
+          marksOffset={_value[0]}
+          filled={positions[1] - positions[0]}
+          marks={marks}
+          inverted={inverted}
+          min={min!}
+          max={max!}
+          value={_value[1]}
           disabled={disabled}
-          unstyled={unstyled}
-        >
-          {hasArrayThumbChildren ? thumbChildren[0] : thumbChildren}
-        </Thumb>
-
-        <Thumb
-          {...sharedThumbProps}
-          thumbLabel={thumbToLabel}
-          value={scale!(_value[1])}
-          position={positions[1]}
-          dragging={active}
-          label={typeof label === 'function' ? label(scale!(_value[1])) : label}
-          ref={(node) => {
-            thumbs.current[1] = node!;
+          containerProps={{
+            ref: container as any,
+            onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
+            onMouseLeave: showLabelOnHover ? () => setHovered(false) : undefined,
+            onTouchStartCapture: handleTrackMouseDownCapture,
+            onTouchEndCapture: () => {
+              thumbIndex.current = -1;
+            },
+            onMouseDownCapture: handleTrackMouseDownCapture,
+            onMouseUpCapture: () => {
+              thumbIndex.current = -1;
+            },
+            onKeyDownCapture: handleTrackKeydownCapture,
           }}
-          onMouseDown={() => handleThumbMouseDown(1)}
-          onFocus={() => setFocused(1)}
-          showLabelOnHover={showLabelOnHover}
-          isHovered={hovered}
-          disabled={disabled}
-          unstyled={unstyled}
         >
-          {hasArrayThumbChildren ? thumbChildren[1] : thumbChildren}
-        </Thumb>
-      </Track>
+          <Thumb
+            {...sharedThumbProps}
+            value={scale!(_value[0])}
+            position={positions[0]}
+            dragging={active}
+            label={typeof label === 'function' ? label(scale!(_value[0])) : label}
+            ref={(node) => {
+              thumbs.current[0] = node!;
+            }}
+            thumbLabel={thumbFromLabel}
+            onMouseDown={() => handleThumbMouseDown(0)}
+            onFocus={() => setFocused(0)}
+            showLabelOnHover={showLabelOnHover}
+            isHovered={hovered}
+            disabled={disabled}
+          >
+            {hasArrayThumbChildren ? thumbChildren[0] : thumbChildren}
+          </Thumb>
 
-      <input type="hidden" name={`${name}_from`} value={_value[0]} />
-      <input type="hidden" name={`${name}_to`} value={_value[1]} />
-    </SliderRoot>
+          <Thumb
+            {...sharedThumbProps}
+            thumbLabel={thumbToLabel}
+            value={scale!(_value[1])}
+            position={positions[1]}
+            dragging={active}
+            label={typeof label === 'function' ? label(scale!(_value[1])) : label}
+            ref={(node) => {
+              thumbs.current[1] = node!;
+            }}
+            onMouseDown={() => handleThumbMouseDown(1)}
+            onFocus={() => setFocused(1)}
+            showLabelOnHover={showLabelOnHover}
+            isHovered={hovered}
+            disabled={disabled}
+          >
+            {hasArrayThumbChildren ? thumbChildren[1] : thumbChildren}
+          </Thumb>
+        </Track>
+
+        <input type="hidden" name={`${name}_from`} value={_value[0]} />
+        <input type="hidden" name={`${name}_to`} value={_value[1]} />
+      </SliderRoot>
+    </SliderProvider>
   );
 });
 

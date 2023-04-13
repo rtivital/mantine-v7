@@ -10,30 +10,32 @@ import {
   MantineRadius,
   MantineSize,
   useDirection,
+  Factory,
+  useStyles,
+  createVarsResolver,
+  getSize,
+  getThemeColor,
+  getRadius,
+  rem,
+  useVars,
 } from '../../../core';
 import { MantineTransition } from '../../Transition';
-import {
-  SliderRoot,
-  SliderCssVariables,
-  SliderRootStylesNames,
-  SliderStylesParams,
-  SliderVariant,
-} from '../SliderRoot/SliderRoot';
-import { Track, TrackStylesNames } from '../Track/Track';
-import { Thumb, ThumbStylesNames } from '../Thumb/Thumb';
-import { MarksStylesNames } from '../Marks/Marks';
+import { SliderRoot } from '../SliderRoot/SliderRoot';
+import { Track } from '../Track/Track';
+import { Thumb } from '../Thumb/Thumb';
 import { getPosition } from '../utils/get-position/get-position';
 import { getChangeValue } from '../utils/get-change-value/get-change-value';
-
-export type SliderStylesNames =
-  | SliderRootStylesNames
-  | ThumbStylesNames
-  | TrackStylesNames
-  | MarksStylesNames;
+import {
+  SliderCssVariables,
+  SliderProvider,
+  SliderStylesNames,
+  SliderVariant,
+} from '../Slider.context';
+import classes from '../Slider.module.css';
 
 export interface SliderProps
   extends BoxProps,
-    StylesApiProps<SliderStylesNames, SliderVariant, SliderCssVariables, SliderStylesParams>,
+    StylesApiProps<SliderFactory>,
     ElementProps<'div', 'onChange'> {
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
   color?: MantineColor;
@@ -111,13 +113,13 @@ export interface SliderProps
   inverted?: boolean;
 }
 
-export interface SliderFactory {
+export type SliderFactory = Factory<{
   props: SliderProps;
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
-  stylesParams: SliderStylesParams;
-}
+  variant: SliderVariant;
+}>;
 
 const defaultProps: Partial<SliderProps> = {
   size: 'md',
@@ -136,7 +138,18 @@ const defaultProps: Partial<SliderProps> = {
   scale: (v) => v,
 };
 
-export const Slider = factory<SliderFactory>((props, ref) => {
+const varsResolver = createVarsResolver<SliderFactory>(
+  (theme, { size, color, thumbSize, radius }) => ({
+    '--slider-size': getSize(size, 'slider-size'),
+    '--slider-color': getThemeColor(color, theme),
+    '--slider-radius': getRadius(radius),
+    '--slider-thumb-size':
+      typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+  })
+);
+
+export const Slider = factory<SliderFactory>((_props, ref) => {
+  const props = useProps('Slider', defaultProps, _props);
   const {
     classNames,
     styles,
@@ -163,8 +176,28 @@ export const Slider = factory<SliderFactory>((props, ref) => {
     unstyled,
     scale,
     inverted,
+    className,
+    style,
+    vars,
     ...others
-  } = useProps('Slider', defaultProps, props);
+  } = props;
+
+  const getStyles = useStyles<SliderFactory>({
+    name: 'Slider',
+    props,
+    classes,
+    classNames,
+    className,
+    styles,
+    style,
+  });
+
+  const _vars = useVars<SliderFactory>({
+    name: 'Slider',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
 
   const { dir } = useDirection();
   const [hovered, setHovered] = useState(false);
@@ -274,61 +307,55 @@ export const Slider = factory<SliderFactory>((props, ref) => {
   };
 
   return (
-    <SliderRoot
-      {...others}
-      ref={useMergedRef(ref, root)}
-      onKeyDownCapture={handleTrackKeydownCapture}
-      onMouseDownCapture={() => root.current?.focus()}
-      size={size!}
-      classNames={classNames}
-      styles={styles}
-      disabled={disabled}
-      unstyled={unstyled}
-    >
-      <Track
-        inverted={inverted}
-        offset={0}
-        filled={position}
-        marks={marks}
-        min={min!}
-        max={max!}
-        value={scaledValue}
-        classNames={classNames}
-        styles={styles}
+    <SliderProvider value={{ getStyles }}>
+      <SliderRoot
+        {...others}
+        ref={useMergedRef(ref, root)}
+        onKeyDownCapture={handleTrackKeydownCapture}
+        onMouseDownCapture={() => root.current?.focus()}
+        size={size!}
         disabled={disabled}
-        unstyled={unstyled}
-        containerProps={{
-          ref: container as any,
-          onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
-          onMouseLeave: showLabelOnHover ? () => setHovered(false) : undefined,
-        }}
+        vars={_vars}
       >
-        <Thumb
-          max={max!}
+        <Track
+          inverted={inverted}
+          offset={0}
+          filled={position}
+          marks={marks}
           min={min!}
+          max={max!}
           value={scaledValue}
-          position={position}
-          dragging={active}
-          label={_label}
-          ref={thumb as any}
-          labelTransition={labelTransition}
-          labelTransitionDuration={labelTransitionDuration}
-          labelTransitionTimingFunction={labelTransitionTimingFunction}
-          labelAlwaysOn={labelAlwaysOn}
-          classNames={classNames}
-          styles={styles}
-          thumbLabel={thumbLabel}
-          showLabelOnHover={showLabelOnHover}
-          isHovered={hovered}
           disabled={disabled}
-          unstyled={unstyled}
+          containerProps={{
+            ref: container as any,
+            onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
+            onMouseLeave: showLabelOnHover ? () => setHovered(false) : undefined,
+          }}
         >
-          {thumbChildren}
-        </Thumb>
-      </Track>
+          <Thumb
+            max={max!}
+            min={min!}
+            value={scaledValue}
+            position={position}
+            dragging={active}
+            label={_label}
+            ref={thumb as any}
+            labelTransition={labelTransition}
+            labelTransitionDuration={labelTransitionDuration}
+            labelTransitionTimingFunction={labelTransitionTimingFunction}
+            labelAlwaysOn={labelAlwaysOn}
+            thumbLabel={thumbLabel}
+            showLabelOnHover={showLabelOnHover}
+            isHovered={hovered}
+            disabled={disabled}
+          >
+            {thumbChildren}
+          </Thumb>
+        </Track>
 
-      <input type="hidden" name={name} value={scaledValue} />
-    </SliderRoot>
+        <input type="hidden" name={name} value={scaledValue} />
+      </SliderRoot>
+    </SliderProvider>
   );
 });
 

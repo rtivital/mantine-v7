@@ -1,12 +1,10 @@
 import React from 'react';
-import { Box, Factory, StylesApiProps, useStyles } from '../../../core';
+import { Box } from '../../../core';
 import { getPosition } from '../utils/get-position/get-position';
 import { isMarkFilled } from './is-mark-filled';
-import classes from './Marks.module.css';
+import { useSliderContext } from '../Slider.context';
 
-export type MarksStylesNames = 'markWrapper' | 'mark' | 'markLabel';
-
-export interface MarksProps extends StylesApiProps<MarksFactory> {
+export interface MarksProps {
   marks: { value: number; label?: React.ReactNode }[] | undefined;
   min: number;
   max: number;
@@ -16,31 +14,8 @@ export interface MarksProps extends StylesApiProps<MarksFactory> {
   inverted: boolean | undefined;
 }
 
-type MarksFactory = Factory<{
-  props: any;
-  stylesNames: MarksStylesNames;
-}>;
-
-export function Marks({
-  classNames,
-  styles,
-  unstyled,
-  marks,
-  min,
-  max,
-  disabled,
-  value,
-  offset,
-  inverted,
-}: MarksProps) {
-  const getStyles = useStyles<MarksFactory>({
-    name: 'Slider',
-    props: {},
-    classes,
-    classNames,
-    styles,
-    unstyled,
-  });
+export function Marks({ marks, min, max, disabled, value, offset, inverted }: MarksProps) {
+  const { getStyles } = useSliderContext();
 
   if (!marks) {
     return null;
@@ -56,10 +31,7 @@ export function Marks({
         {...getStyles('mark')}
         mod={{ filled: isMarkFilled({ mark, value, offset, inverted }), disabled }}
       />
-      {mark.label && (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        <div {...getStyles('markLabel')}>{mark.label}</div>
-      )}
+      {mark.label && <div {...getStyles('markLabel')}>{mark.label}</div>}
     </Box>
   ));
 
