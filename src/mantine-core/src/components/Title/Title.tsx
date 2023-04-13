@@ -21,7 +21,7 @@ export type TitleVariant = TextVariant;
 export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz';
 
 export interface TitleProps
-  extends Omit<TextProps, 'vars' | 'styles'>,
+  extends Omit<TextProps, 'vars' | 'styles' | 'classNames'>,
     StylesApiProps<TitleFactory>,
     ElementProps<'h1'> {
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */

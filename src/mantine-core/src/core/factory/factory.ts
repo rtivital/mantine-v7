@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import type { MantineTheme, MantineThemeComponent } from '../MantineProvider';
+import type { Styles, ClassNames } from '../styles-api';
 
 export type DataAttributes = Record<`data-${string}`, any>;
 
@@ -13,30 +14,14 @@ export interface FactoryPayload {
   staticComponents?: Record<string, any>;
 }
 
-export type ExtendStyles<
-  StylesNames extends string,
-  Props extends Record<string, any>,
-  Context = unknown
-> =
-  | Partial<Record<StylesNames, React.CSSProperties>>
-  | ((
-      theme: MantineTheme,
-      props: Props,
-      ctx: Context
-    ) => Partial<Record<StylesNames, React.CSSProperties>>);
-
 export type ExtendVars<Vars extends string, Props extends Record<string, any>, Context = unknown> =
   | Partial<Record<Vars, string>>
   | ((theme: MantineTheme, props: Props, ctx: Context) => Partial<Record<Vars, string>>);
 
 export interface ExtendComponent<Payload extends FactoryPayload> {
   defaultProps?: Partial<Payload['props']> & DataAttributes;
-  classNames?: Payload['stylesNames'] extends string
-    ? Partial<Record<Payload['stylesNames'], string>>
-    : never;
-  styles?: Payload['stylesNames'] extends string
-    ? ExtendStyles<Payload['stylesNames'], Payload['props'], Payload['ctx']>
-    : never;
+  classNames?: ClassNames<Payload>;
+  styles?: Styles<Payload>;
   vars?: Payload['vars'] extends string
     ? ExtendVars<Payload['vars'], Payload['props'], Payload['ctx']>
     : never;

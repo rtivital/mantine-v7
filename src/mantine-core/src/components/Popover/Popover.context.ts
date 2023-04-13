@@ -2,8 +2,8 @@ import { createSafeContext, MantineShadow, Styles, ClassNames, MantineRadius } f
 import { FloatingPosition, ArrowPosition } from '../Floating';
 import { TransitionOverride } from '../Transition';
 import { PortalProps } from '../Portal';
-import { PopoverWidth, PopoverStylesNames } from './Popover.types';
-import type { PopoverDropdownFactory } from './PopoverDropdown/PopoverDropdown';
+import { PopoverWidth } from './Popover.types';
+import type { PopoverFactory } from './Popover';
 
 interface PopoverContext {
   x: number;
@@ -38,8 +38,8 @@ interface PopoverContext {
   targetProps: Record<string, any>;
   disabled: boolean | undefined;
   returnFocus: boolean | undefined;
-  classNames: ClassNames<PopoverStylesNames> | undefined;
-  styles: Styles<PopoverDropdownFactory> | undefined;
+  classNames: ClassNames<PopoverFactory> | undefined;
+  styles: Styles<PopoverFactory> | undefined;
   unstyled: boolean | undefined;
   __staticSelector: string;
   variant: string | undefined;

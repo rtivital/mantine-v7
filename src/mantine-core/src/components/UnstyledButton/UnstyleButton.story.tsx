@@ -11,11 +11,9 @@ export function Usage() {
       theme={{
         components: {
           UnstyledButton: UnstyledButton.extend({
-            styles: {
-              root: {
-                color: 'orange',
-              },
-            },
+            classNames: (_theme, props) => ({
+              root: `provider-classname-${props.__staticSelector}`,
+            }),
           }),
         },
       }}
@@ -31,10 +29,10 @@ export function PropsInStyles() {
   return (
     <UnstyledButton
       variant="xl"
-      // styles={(theme, props, ctx) => {
+      // classNames={(theme, props, ctx) => {
       //   console.log(theme, props, ctx);
       //   return {
-      //     root: {},
+      //     root: '----test',
       //   };
       // }}
     >
@@ -42,11 +40,3 @@ export function PropsInStyles() {
     </UnstyledButton>
   );
 }
-
-UnstyledButton.extend({
-  styles: (_theme, _props, ctx) => ({
-    root: {
-      backgroundClip: ctx as string,
-    },
-  }),
-});

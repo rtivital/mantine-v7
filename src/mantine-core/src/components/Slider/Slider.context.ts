@@ -20,7 +20,13 @@ export type SliderCssVariables =
 export type SliderVariant = string;
 
 interface SliderContextValue {
-  getStyles: GetStylesApi<{ props: any; stylesNames: SliderStylesNames }>;
+  getStyles: GetStylesApi<{
+    stylesNames: SliderStylesNames;
+    props: any;
+    ref: any;
+    vars: any;
+    variant: any;
+  }>;
 }
 
 export const [SliderProvider, useSliderContext] = createSafeContext<SliderContextValue>(

@@ -2,20 +2,8 @@ import { CSSProperties } from 'react';
 import cx from 'clsx';
 import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
-import { StylesRecord } from '../styles-api.types';
+import { Styles, ClassNames } from '../styles-api.types';
 import { FactoryPayload } from '../../factory';
-
-export type Styles<Payload extends FactoryPayload> = Payload['stylesNames'] extends string
-  ?
-      | StylesRecord<Payload['stylesNames'], CSSProperties>
-      | ((
-          theme: MantineTheme,
-          props: Payload['props'],
-          ctx: Payload['ctx']
-        ) => StylesRecord<Payload['stylesNames'], CSSProperties>)
-  : never;
-
-export type ClassNames<StylesNames extends string> = Partial<Record<StylesNames, string>>;
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
@@ -26,24 +14,22 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
   style?: MantineStyleProp;
   rootSelector?: Payload['stylesNames'];
   unstyled?: boolean;
-  classNames?: Payload['stylesNames'] extends string ? ClassNames<Payload['stylesNames']> : never;
+  classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
 }
 
-export interface GetStylesApiOptions<Payload extends FactoryPayload> {
+export interface GetStylesApiOptions {
   className?: string;
   style?: MantineStyleProp;
   focusable?: boolean;
   active?: boolean;
-  classNames?: Payload['stylesNames'] extends string
-    ? Partial<Record<Payload['stylesNames'], string>>
-    : never;
+  classNames?: ClassNames<{ props: any; stylesNames: string }>;
   styles?: Styles<{ props: any; stylesNames: string }>;
   variant?: string;
 }
 
 function resolveStyles<Payload extends FactoryPayload>(
-  styles: Styles<Payload> | undefined,
+  styles: Styles<Payload> | ClassNames<Payload> | undefined,
   theme: MantineTheme,
   props: Payload['props'],
   ctx: Payload['ctx']
@@ -65,7 +51,7 @@ function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) 
 
 export type GetStylesApi<Payload extends FactoryPayload> = (
   selector: Payload['stylesNames'],
-  options?: GetStylesApiOptions<Payload>
+  options?: GetStylesApiOptions
 ) => {
   className: string;
   style: CSSProperties;
@@ -89,19 +75,24 @@ export function useStyles<Payload extends FactoryPayload>({
   const resolvedStyles = resolveStyles(styles, theme, props, stylesCtx!);
   const resolvedStyle = resolveStyle(style, theme);
 
-  return (selector: Payload['stylesNames'], options?: GetStylesApiOptions<Payload>) => {
+  return (selector: Payload['stylesNames'], options?: GetStylesApiOptions) => {
     const _selector = selector as string;
     const themeClassNames = themeName
       .filter((n) => n)
-      .map((n) => theme.components?.[n]?.classNames?.[_selector]);
+      .map(
+        (n) =>
+          (
+            resolveStyles(theme.components?.[n]?.classNames as any, theme, props, stylesCtx!) as any
+          )?.[_selector]
+      );
     const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
     const _className = cx(
       options?.focusable && !unstyled && theme.focusClassNames[theme.focusRing],
       options?.active && !unstyled && theme.activeClassName,
       themeClassNames,
-      classNames?.[selector],
+      (resolveStyles(classNames, theme, props, stylesCtx!) as any)?.[selector],
       options?.variant && classes[`${selector}--${options.variant}` as Payload['stylesNames']],
-      options?.classNames?.[selector],
+      (resolveStyles(options?.classNames as any, theme, props, stylesCtx!) as any)?.[selector],
       className && { [className]: rootSelector === selector },
       { [classes[selector]]: !unstyled },
       options?.className,
