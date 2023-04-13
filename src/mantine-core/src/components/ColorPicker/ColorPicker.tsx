@@ -15,26 +15,30 @@ import {
   createVarsResolver,
   Factory,
 } from '../../core';
-import { ColorSliderStylesNames } from './ColorSlider/ColorSlider';
 import { AlphaSlider } from './AlphaSlider/AlphaSlider';
 import { HueSlider } from './HueSlider/HueSlider';
-import { Saturation, SaturationStylesNames } from './Saturation/Saturation';
-import { ThumbStylesNames } from './Thumb/Thumb';
-import { Swatches, SwatchesStylesNames } from './Swatches/Swatches';
-import classes from './ColorPicker.module.css';
+import { Saturation } from './Saturation/Saturation';
+import { Swatches } from './Swatches/Swatches';
 import { ColorFormat, HsvaColor } from './ColorPicker.types';
 import { convertHsvaTo, isColorValid, parseColor } from './converters';
 import { ColorSwatch } from '../ColorSwatch';
+import { ColorPickerProvider } from './ColorPicker.context';
+import classes from './ColorPicker.module.css';
 
 export type ColorPickerStylesNames =
   | 'wrapper'
   | 'preview'
   | 'body'
   | 'sliders'
-  | ColorSliderStylesNames
-  | SaturationStylesNames
-  | ThumbStylesNames
-  | SwatchesStylesNames;
+  | 'slider'
+  | 'sliderOverlay'
+  | 'thumb'
+  | 'saturation'
+  | 'thumb'
+  | 'saturationOverlay'
+  | 'thumb'
+  | 'swatches'
+  | 'swatch';
 export type ColorPickerVariant = string;
 export type ColorPickerCssVariables = '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
 
@@ -204,85 +208,75 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
     setValue(convertHsvaTo(format!, parsed));
   }, [format]);
 
-  const stylesApi = {
-    classNames,
-    styles: styles as any,
-    unstyled,
-    __staticSelector: __staticSelector!,
-  };
-
   return (
-    <Box ref={ref} {...getStyles('wrapper')} vars={_vars} size={size} {...others}>
-      {withPicker && (
-        <>
-          <Saturation
-            value={parsed}
-            onChange={handleChange}
-            onChangeEnd={({ s, v }) =>
-              onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, s: s!, v: v! }))
-            }
-            color={_value}
-            size={size!}
-            focusable={focusable}
-            saturationLabel={saturationLabel}
-            {...stylesApi}
-          />
+    <ColorPickerProvider value={{ getStyles }}>
+      <Box ref={ref} {...getStyles('wrapper')} vars={_vars} size={size} {...others}>
+        {withPicker && (
+          <>
+            <Saturation
+              value={parsed}
+              onChange={handleChange}
+              onChangeEnd={({ s, v }) =>
+                onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, s: s!, v: v! }))
+              }
+              color={_value}
+              size={size!}
+              focusable={focusable}
+              saturationLabel={saturationLabel}
+            />
 
-          <div {...getStyles('body')}>
-            <div {...getStyles('sliders')}>
-              <HueSlider
-                value={parsed.h}
-                onChange={(h) => handleChange({ h })}
-                onChangeEnd={(h) =>
-                  onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, h }))
-                }
-                size={size}
-                focusable={focusable}
-                aria-label={hueLabel}
-                {...stylesApi}
-              />
-
-              {withAlpha && (
-                <AlphaSlider
-                  value={parsed.a}
-                  onChange={(a) => handleChange({ a })}
-                  onChangeEnd={(a) => {
-                    onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, a }));
-                  }}
+            <div {...getStyles('body')}>
+              <div {...getStyles('sliders')}>
+                <HueSlider
+                  value={parsed.h}
+                  onChange={(h) => handleChange({ h })}
+                  onChangeEnd={(h) =>
+                    onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, h }))
+                  }
                   size={size}
-                  color={convertHsvaTo('hex', parsed)}
-                  mt={6}
                   focusable={focusable}
-                  aria-label={alphaLabel}
-                  {...stylesApi}
+                  aria-label={hueLabel}
                 />
-              )}
+
+                {withAlpha && (
+                  <AlphaSlider
+                    value={parsed.a}
+                    onChange={(a) => handleChange({ a })}
+                    onChangeEnd={(a) => {
+                      onChangeEnd?.(convertHsvaTo(formatRef.current!, { ...parsed, a }));
+                    }}
+                    size={size}
+                    color={convertHsvaTo('hex', parsed)}
+                    // mt={6}
+                    focusable={focusable}
+                    aria-label={alphaLabel}
+                  />
+                )}
+              </div>
+
+              {withAlpha && <ColorSwatch color={_value} radius="sm" {...getStyles('preview')} />}
             </div>
+          </>
+        )}
 
-            {withAlpha && <ColorSwatch color={_value} radius="sm" {...getStyles('preview')} />}
-          </div>
-        </>
-      )}
-
-      {Array.isArray(swatches) && (
-        <Swatches
-          data={swatches}
-          mt={5}
-          swatchesPerRow={swatchesPerRow}
-          focusable={focusable}
-          setValue={setValue}
-          onChangeEnd={(color) => {
-            const convertedColor = convertHsvaTo(format!, parseColor(color));
-            onColorSwatchClick?.(convertedColor);
-            onChangeEnd?.(convertedColor);
-            if (!controlled) {
-              setParsed(parseColor(color));
-            }
-          }}
-          {...stylesApi}
-        />
-      )}
-    </Box>
+        {Array.isArray(swatches) && (
+          <Swatches
+            data={swatches}
+            swatchesPerRow={swatchesPerRow}
+            focusable={focusable}
+            setValue={setValue}
+            onChangeEnd={(color) => {
+              const convertedColor = convertHsvaTo(format!, parseColor(color));
+              onColorSwatchClick?.(convertedColor);
+              onChangeEnd?.(convertedColor);
+              if (!controlled) {
+                setParsed(parseColor(color));
+              }
+            }}
+          />
+        )}
+      </Box>
+    </ColorPickerProvider>
   );
 });
 

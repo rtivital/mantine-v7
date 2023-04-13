@@ -1,26 +1,16 @@
-import React from 'react';
-import { factory, useProps, rem, Factory } from '../../../core';
-import {
-  ColorSlider,
-  __ColorSliderProps,
-  ColorSliderStylesNames,
-} from '../ColorSlider/ColorSlider';
+import React, { forwardRef } from 'react';
+import { useProps, rem } from '../../../core';
+import { ColorSlider, __ColorSliderProps } from '../ColorSlider/ColorSlider';
 import { round } from '../converters/parsers';
 
 export interface AlphaSliderProps extends __ColorSliderProps {
   color: string;
 }
 
-export type AlphaSliderFactory = Factory<{
-  props: AlphaSliderProps;
-  ref: HTMLDivElement;
-  stylesNames: ColorSliderStylesNames;
-}>;
-
 const defaultProps: Partial<AlphaSliderProps> = {};
 
-export const AlphaSlider = factory<AlphaSliderFactory>((props, ref) => {
-  const { vars, value, onChange, onChangeEnd, color, __staticSelector, ...others } = useProps(
+export const AlphaSlider = forwardRef<HTMLDivElement, AlphaSliderProps>((props, ref) => {
+  const { value, onChange, onChangeEnd, color, ...others } = useProps(
     'AlphaSlider',
     defaultProps,
     props
@@ -35,7 +25,6 @@ export const AlphaSlider = factory<AlphaSliderFactory>((props, ref) => {
       onChangeEnd={(val) => onChangeEnd?.(round(val, 2))}
       maxValue={1}
       round={false}
-      __staticSelector={__staticSelector || 'AlphaSlider'}
       data-alpha
       overlays={[
         {

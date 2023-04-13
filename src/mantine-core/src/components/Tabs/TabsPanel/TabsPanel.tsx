@@ -46,7 +46,7 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('panel', { className, classNames, styles: styles as any, style })}
+      {...ctx.getStyles('panel', { className, classNames, styles, style })}
       ref={ref}
       mod={{ hidden: !active, orientation: ctx.orientation }}
       role="tabpanel"

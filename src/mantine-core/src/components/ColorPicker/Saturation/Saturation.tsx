@@ -1,30 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { UseMovePosition, clampUseMovePosition, useMove } from '@mantine/hooks';
-import {
-  Box,
-  BoxProps,
-  StylesApiProps,
-  factory,
-  ElementProps,
-  useStyles,
-  MantineSize,
-  getSize,
-  Factory,
-} from '../../../core';
+import { Box, ElementProps, MantineSize, getSize } from '../../../core';
 import { HsvaColor } from '../ColorPicker.types';
 import { convertHsvaTo } from '../converters';
-import classes from './Saturation.module.css';
 import { Thumb } from '../Thumb/Thumb';
+import { useColorPickerContext } from '../ColorPicker.context';
 
-export type SaturationStylesNames = 'saturation' | 'thumb' | 'saturationOverlay';
-export type SaturationVariant = string;
-export type SaturationCssVariables = '--test';
-
-export interface SaturationProps
-  extends BoxProps,
-    StylesApiProps<SaturationFactory>,
-    ElementProps<'div', 'onChange'> {
-  __staticSelector: string;
+export interface SaturationProps extends ElementProps<'div', 'onChange'> {
   value: HsvaColor;
   onChange(color: Partial<HsvaColor>): void;
   onChangeEnd(color: Partial<HsvaColor>): void;
@@ -34,43 +16,18 @@ export interface SaturationProps
   focusable?: boolean;
 }
 
-export type SaturationFactory = Factory<{
-  props: SaturationProps;
-  ref: HTMLDivElement;
-  stylesNames: SaturationStylesNames;
-  vars: SaturationCssVariables;
-}>;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Saturation = factory<SaturationFactory>((props, _ref) => {
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    onChange,
-    onChangeEnd,
-    value,
-    saturationLabel,
-    focusable = true,
-    __staticSelector,
-    size,
-    color,
-    ...others
-  } = props;
-
-  const getStyles = useStyles<SaturationFactory>({
-    name: __staticSelector,
-    props,
-    classes,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-  });
+export function Saturation({
+  className,
+  onChange,
+  onChangeEnd,
+  value,
+  saturationLabel,
+  focusable = true,
+  size,
+  color,
+  ...others
+}: SaturationProps) {
+  const { getStyles } = useColorPickerContext();
 
   const [position, setPosition] = useState({ x: value.s / 100, y: 1 - value.v / 100 });
   const positionRef = useRef(position);
@@ -158,16 +115,12 @@ export const Saturation = factory<SaturationFactory>((props, _ref) => {
       />
 
       <Thumb
-        __staticSelector={__staticSelector!}
-        classNames={classNames}
-        styles={styles as any}
         position={position}
         size={size}
-        {...getStyles('thumb')}
-        style={{ backgroundColor: color }}
+        {...getStyles('thumb', { style: { backgroundColor: color } })}
       />
     </Box>
   );
-});
+}
 
 Saturation.displayName = '@mantine/core/Saturation';

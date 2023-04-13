@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, forwardRef } from 'react';
 import {
   UseMovePosition,
   clampUseMovePosition,
@@ -6,34 +6,16 @@ import {
   useMergedRef,
   useMove,
 } from '@mantine/hooks';
-import {
-  Box,
-  BoxProps,
-  StylesApiProps,
-  factory,
-  ElementProps,
-  useStyles,
-  MantineSize,
-  getSize,
-  useMantineTheme,
-  rem,
-  Factory,
-} from '../../../core';
-import classes from './ColorSlider.module.css';
+import { Box, ElementProps, MantineSize, getSize, useMantineTheme, rem } from '../../../core';
 import { Thumb } from '../Thumb/Thumb';
+import { useColorPickerContext } from '../ColorPicker.context';
 
-export type ColorSliderStylesNames = 'slider' | 'sliderOverlay' | 'thumb';
-
-export interface __ColorSliderProps
-  extends BoxProps,
-    StylesApiProps<ColorSliderFactory>,
-    ElementProps<'div', 'onChange'> {
+export interface __ColorSliderProps extends ElementProps<'div', 'onChange'> {
   value: number;
   onChange?(value: number): void;
   onChangeEnd?(value: number): void;
   size?: MantineSize | (string & {});
   focusable?: boolean;
-  __staticSelector?: string;
 }
 
 export interface ColorSliderProps extends __ColorSliderProps {
@@ -43,25 +25,13 @@ export interface ColorSliderProps extends __ColorSliderProps {
   thumbColor?: string;
 }
 
-export type ColorSliderFactory = Factory<{
-  props: ColorSliderProps;
-  ref: HTMLDivElement;
-  stylesNames: ColorSliderStylesNames;
-}>;
-
-export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
+export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>((props, ref) => {
   const {
-    classNames,
     className,
-    style,
-    styles,
-    unstyled,
-    vars,
     onChange,
     onChangeEnd,
     maxValue,
     round,
-    __staticSelector = 'ColorSlider',
     size = 'md',
     focusable = true,
     value,
@@ -70,17 +40,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
     ...others
   } = props;
 
-  const getStyles = useStyles<ColorSliderFactory>({
-    name: __staticSelector!,
-    props,
-    classes,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    rootSelector: 'slider',
-  });
+  const { getStyles } = useColorPickerContext();
 
   const theme = useMantineTheme();
   const [position, setPosition] = useState({ y: 0, x: value / maxValue });
@@ -144,15 +104,7 @@ export const ColorSlider = factory<ColorSliderFactory>((props, ref) => {
     >
       {layers}
 
-      <Thumb
-        __staticSelector={__staticSelector!}
-        classNames={classNames}
-        styles={styles as any}
-        position={position}
-        size={size!}
-        {...getStyles('thumb')}
-        style={{ top: rem(1) }}
-      />
+      <Thumb position={position} size={size!} {...getStyles('thumb', { style: { top: rem(1) } })} />
     </Box>
   );
 });

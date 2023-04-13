@@ -1,23 +1,11 @@
-import React from 'react';
-import { factory, useProps, rem, Factory } from '../../../core';
-import {
-  ColorSlider,
-  __ColorSliderProps,
-  ColorSliderStylesNames,
-} from '../ColorSlider/ColorSlider';
+import React, { forwardRef } from 'react';
+import { useProps, rem } from '../../../core';
+import { ColorSlider, __ColorSliderProps } from '../ColorSlider/ColorSlider';
 
-export interface HueSliderProps extends __ColorSliderProps {}
+const defaultProps: Partial<__ColorSliderProps> = {};
 
-export type HueSliderFactory = Factory<{
-  props: HueSliderProps;
-  ref: HTMLDivElement;
-  stylesNames: ColorSliderStylesNames;
-}>;
-
-const defaultProps: Partial<HueSliderProps> = {};
-
-export const HueSlider = factory<HueSliderFactory>((props, ref) => {
-  const { vars, value, onChange, onChangeEnd, color, __staticSelector, ...others } = useProps(
+export const HueSlider = forwardRef<HTMLDivElement, __ColorSliderProps>((props, ref) => {
+  const { value, onChange, onChangeEnd, color, ...others } = useProps(
     'HueSlider',
     defaultProps,
     props
@@ -33,7 +21,6 @@ export const HueSlider = factory<HueSliderFactory>((props, ref) => {
       maxValue={360}
       thumbColor={`hsl(${value}, 100%, 50%)`}
       round
-      __staticSelector={__staticSelector || 'HueSlider'}
       data-hue
       overlays={[
         {
