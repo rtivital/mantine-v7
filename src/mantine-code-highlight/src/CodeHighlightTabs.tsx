@@ -18,6 +18,7 @@ import {
   createVarsResolver,
   rem,
   useVars,
+  Factory,
 } from '@mantine/core';
 import { CopyIcon } from './CopyIcon';
 import { FileIcon } from './FileIcon';
@@ -49,18 +50,9 @@ export interface CodeHighlightTabsCode {
   icon?: React.ReactNode;
 }
 
-export interface CodeHighlightTabsStylesParams {
-  maxCollapsedHeight: React.CSSProperties['maxHeight'] | undefined;
-}
-
 export interface CodeHighlightTabsProps
   extends BoxProps,
-    StylesApiProps<
-      CodeHighlightTabsStylesNames,
-      CodeHighlightTabsVariant,
-      CodeHighlightTabsCssVariables,
-      CodeHighlightTabsStylesParams
-    >,
+    StylesApiProps<CodeHighlightTabsFactory>,
     ElementProps<'div'> {
   /** Code to highlight with meta data (file name and icon) */
   code: CodeHighlightTabsCode | CodeHighlightTabsCode[];
@@ -108,11 +100,11 @@ export interface CodeHighlightTabsProps
   withExpandButton?: boolean;
 }
 
-export interface CodeHighlightTabsFactory {
+export type CodeHighlightTabsFactory = Factory<{
   props: CodeHighlightTabsProps;
   ref: HTMLDivElement;
   stylesNames: CodeHighlightTabsStylesNames;
-}
+}>;
 
 const defaultProps: Partial<CodeHighlightTabsProps> = {
   withHeader: true,
@@ -123,14 +115,12 @@ const defaultProps: Partial<CodeHighlightTabsProps> = {
   collapseCodeLabel: 'Collapse code',
 };
 
-const varsResolver = createVarsResolver<
-  CodeHighlightTabsCssVariables,
-  CodeHighlightTabsStylesParams
->(({ maxCollapsedHeight }) => ({
+const varsResolver = createVarsResolver<CodeHighlightTabsFactory>((_, { maxCollapsedHeight }) => ({
   '--ch-max-collapsed-height': rem(maxCollapsedHeight),
 }));
 
-export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((props, ref) => {
+export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref) => {
+  const props = useProps('CodeHighlightTabs', defaultProps, _props);
   const {
     classNames,
     className,
@@ -155,19 +145,25 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((props, ref) 
     collapseCodeLabel,
     withExpandButton,
     ...others
-  } = useProps('CodeHighlightTabs', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<CodeHighlightTabsFactory>({
     name: 'CodeHighlightTabs',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,
   });
 
-  const _vars = useVars('CodeHighlightTabs', varsResolver, vars, { maxCollapsedHeight });
+  const _vars = useVars({
+    name: 'CodeHighlightTabs',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
 
   const [value, setValue] = useUncontrolled({
     defaultValue: defaultActiveTab,

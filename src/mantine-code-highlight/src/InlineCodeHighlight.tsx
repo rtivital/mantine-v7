@@ -8,6 +8,7 @@ import {
   ElementProps,
   useProps,
   useStyles,
+  Factory,
 } from '@mantine/core';
 import hljs from 'highlight.js';
 import _classes from './CodeHighlight.module.css';
@@ -20,7 +21,7 @@ export type InlineCodeHighlightVariant = string;
 
 export interface InlineCodeHighlightProps
   extends BoxProps,
-    StylesApiProps<InlineCodeHighlightStylesNames, InlineCodeHighlightVariant>,
+    StylesApiProps<InlineCodeHighlightFactory>,
     ElementProps<'div'> {
   /** Code to highlight */
   code: string;
@@ -29,23 +30,24 @@ export interface InlineCodeHighlightProps
   language?: string;
 }
 
-export interface InlineCodeHighlightFactory {
+export type InlineCodeHighlightFactory = Factory<{
   props: InlineCodeHighlightProps;
   ref: HTMLDivElement;
   stylesNames: InlineCodeHighlightStylesNames;
-}
+}>;
 
 const defaultProps: Partial<InlineCodeHighlightProps> = {};
 
-export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, code, language, ...others } =
-    useProps('InlineCodeHighlight', defaultProps, props);
+export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((_props, ref) => {
+  const props = useProps('InlineCodeHighlight', defaultProps, _props);
+  const { classNames, className, style, styles, unstyled, vars, code, language, ...others } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<InlineCodeHighlightFactory>({
     name: 'InlineCodeHighlight',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

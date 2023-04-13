@@ -13,6 +13,7 @@ import {
   Tooltip,
   ActionIcon,
   ScrollArea,
+  Factory,
 } from '@mantine/core';
 import { CopyIcon } from './CopyIcon';
 import _classes from './CodeHighlight.module.css';
@@ -25,7 +26,7 @@ export type CodeHighlightVariant = string;
 
 export interface CodeHighlightProps
   extends BoxProps,
-    StylesApiProps<CodeHighlightStylesNames, CodeHighlightVariant>,
+    StylesApiProps<CodeHighlightFactory>,
     ElementProps<'div'> {
   /** Code to highlight */
   code: string;
@@ -43,11 +44,12 @@ export interface CodeHighlightProps
   copiedLabel?: string;
 }
 
-export interface CodeHighlightFactory {
+export type CodeHighlightFactory = Factory<{
   props: CodeHighlightProps;
   ref: HTMLDivElement;
   stylesNames: CodeHighlightStylesNames;
-}
+  variant: CodeHighlightVariant;
+}>;
 
 const defaultProps: Partial<CodeHighlightProps> = {
   copyLabel: 'Copy code',
@@ -55,7 +57,8 @@ const defaultProps: Partial<CodeHighlightProps> = {
   language: 'tsx',
 };
 
-export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
+export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
+  const props = useProps('CodeHighlight', defaultProps, _props);
   const {
     classNames,
     className,
@@ -69,13 +72,14 @@ export const CodeHighlight = factory<CodeHighlightFactory>((props, ref) => {
     copyLabel,
     language,
     ...others
-  } = useProps('CodeHighlight', defaultProps, props);
+  } = props;
 
-  const getStyles = useStyles({
+  const getStyles = useStyles<CodeHighlightFactory>({
     name: 'CodeHighlight',
+    props,
+    classes,
     className,
     style,
-    classes,
     classNames,
     styles,
     unstyled,

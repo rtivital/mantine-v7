@@ -8,7 +8,6 @@ export type {
   CodeHighlightTabsCode,
   CodeHighlightTabsVariant,
   CodeHighlightTabsCssVariables,
-  CodeHighlightTabsStylesParams,
 } from './CodeHighlightTabs';
 export type {
   CodeHighlightFactory,
