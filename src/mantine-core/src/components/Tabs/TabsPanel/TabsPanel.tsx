@@ -1,12 +1,20 @@
 import React from 'react';
-import { Box, BoxProps, useProps, factory, ElementProps, StylesApiProps } from '../../../core';
+import {
+  Box,
+  BoxProps,
+  useProps,
+  factory,
+  ElementProps,
+  StylesApiProps,
+  Factory,
+} from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsPanelStylesNames = 'panel';
 
 export interface TabsPanelProps
   extends BoxProps,
-    StylesApiProps<TabsPanelStylesNames>,
+    StylesApiProps<TabsPanelFactory>,
     ElementProps<'div'> {
   /** Panel content */
   children: React.ReactNode;
@@ -15,11 +23,11 @@ export interface TabsPanelProps
   value: string;
 }
 
-export interface TabsPanelFactory {
+export type TabsPanelFactory = Factory<{
   props: TabsPanelProps;
   ref: HTMLDivElement;
   stylesNames: TabsPanelStylesNames;
-}
+}>;
 
 const defaultProps: Partial<TabsPanelProps> = {};
 
@@ -38,7 +46,7 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('panel', { className, classNames, styles, style })}
+      {...ctx.getStyles('panel', { className, classNames, styles: styles as any, style })}
       ref={ref}
       mod={{ hidden: !active, orientation: ctx.orientation }}
       role="tabpanel"

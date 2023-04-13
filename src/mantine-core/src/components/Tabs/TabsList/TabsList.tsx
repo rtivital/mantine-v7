@@ -1,12 +1,20 @@
 import React from 'react';
-import { Box, BoxProps, useProps, factory, ElementProps, StylesApiProps } from '../../../core';
+import {
+  Box,
+  BoxProps,
+  useProps,
+  factory,
+  ElementProps,
+  StylesApiProps,
+  Factory,
+} from '../../../core';
 import { useTabsContext } from '../Tabs.context';
 
 export type TabsListStylesNames = 'list';
 
 export interface TabsListProps
   extends BoxProps,
-    StylesApiProps<TabsListStylesNames>,
+    StylesApiProps<TabsListFactory>,
     ElementProps<'div'> {
   /** <Tabs.Tab /> components */
   children: React.ReactNode;
@@ -18,11 +26,11 @@ export interface TabsListProps
   justify?: React.CSSProperties['justifyContent'];
 }
 
-export interface TabsListFactory {
+export type TabsListFactory = Factory<{
   props: TabsListProps;
   ref: HTMLDivElement;
   stylesNames: TabsListStylesNames;
-}
+}>;
 
 const defaultProps: Partial<TabsListProps> = {};
 
@@ -38,7 +46,13 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('list', { className, style, classNames, styles, variant: ctx.variant })}
+      {...ctx.getStyles('list', {
+        className,
+        style,
+        classNames,
+        styles,
+        variant: ctx.variant,
+      })}
       ref={ref}
       role="tablist"
       variant={ctx.variant}

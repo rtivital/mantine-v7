@@ -38,7 +38,7 @@ export interface GetPropsOptions<Payload extends FactoryPayload> {
   classNames?: Payload['stylesNames'] extends string
     ? Partial<Record<Payload['stylesNames'], string>>
     : never;
-  styles?: Styles<Payload>;
+  styles?: Styles<{ props: any; stylesNames: string }>;
   variant?: string;
 }
 
@@ -117,7 +117,7 @@ export function useStyles<Payload extends FactoryPayload>({
       )
       .reduce((acc, val) => ({ ...acc, ...val }), {});
 
-    const componentStyles = resolveStyles(options?.styles, theme, props, stylesCtx!);
+    const componentStyles = resolveStyles(options?.styles as any, theme, props, stylesCtx!);
 
     const _style = {
       ...themeStyles,

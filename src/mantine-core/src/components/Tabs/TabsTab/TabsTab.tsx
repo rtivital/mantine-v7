@@ -9,6 +9,7 @@ import {
   useMantineTheme,
   getThemeColor,
   StylesApiProps,
+  Factory,
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
@@ -17,7 +18,7 @@ export type TabsTabStylesNames = 'tab' | 'tabRightSection' | 'tabLeftSection' | 
 
 export interface TabsTabProps
   extends Omit<UnstyledButtonProps, 'classNames' | 'styles'>,
-    StylesApiProps<TabsTabStylesNames>,
+    StylesApiProps<TabsTabFactory>,
     ElementProps<'button'> {
   /** Value that is used to connect Tab with associated panel */
   value: string;
@@ -35,11 +36,11 @@ export interface TabsTabProps
   color?: MantineColor;
 }
 
-export interface TabsTabFactory {
+export type TabsTabFactory = Factory<{
   props: TabsTabProps;
   ref: HTMLButtonElement;
   stylesNames: TabsTabStylesNames;
-}
+}>;
 
 const defaultProps: Partial<TabsTabProps> = {};
 
