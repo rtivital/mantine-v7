@@ -54,7 +54,7 @@ export interface ScrollAreaProps
   onScrollPositionChange?(position: { x: number; y: number }): void;
 }
 
-export interface ScrollAreaAutoSizeProps extends ScrollAreaProps {}
+export interface ScrollAreaAutosizeProps extends ScrollAreaProps {}
 
 export type ScrollAreaFactory = Factory<{
   props: ScrollAreaProps;
@@ -62,7 +62,7 @@ export type ScrollAreaFactory = Factory<{
   stylesNames: ScrollAreaStylesNames;
   vars: ScrollAreaCssVariables;
   staticComponents: {
-    AutoSize: typeof ScrollAreaAutoSize;
+    Autosize: typeof ScrollAreaAutosize;
   };
 }>;
 
@@ -176,7 +176,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
 
 ScrollArea.displayName = '@mantine/core/ScrollArea';
 
-export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
+export const ScrollAreaAutosize = factory<ScrollAreaFactory>((props, ref) => {
   const {
     children,
     classNames,
@@ -221,5 +221,5 @@ export const ScrollAreaAutoSize = factory<ScrollAreaFactory>((props, ref) => {
   );
 });
 
-ScrollAreaAutoSize.displayName = '@mantine/core/ScrollAreaAutoSize';
-ScrollArea.AutoSize = ScrollAreaAutoSize;
+ScrollAreaAutosize.displayName = '@mantine/core/ScrollAreaAutosize';
+ScrollArea.Autosize = ScrollAreaAutosize;
