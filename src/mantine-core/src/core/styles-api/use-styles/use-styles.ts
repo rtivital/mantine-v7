@@ -30,7 +30,7 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
   styles?: Styles<Payload>;
 }
 
-export interface GetPropsOptions<Payload extends FactoryPayload> {
+export interface GetStylesApiOptions<Payload extends FactoryPayload> {
   className?: string;
   style?: MantineStyleProp;
   focusable?: boolean;
@@ -65,7 +65,7 @@ function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) 
 
 export type GetStylesApi<Payload extends FactoryPayload> = (
   selector: Payload['stylesNames'],
-  options?: GetPropsOptions<Payload>
+  options?: GetStylesApiOptions<Payload>
 ) => {
   className: string;
   style: CSSProperties;
@@ -89,7 +89,7 @@ export function useStyles<Payload extends FactoryPayload>({
   const resolvedStyles = resolveStyles(styles, theme, props, stylesCtx!);
   const resolvedStyle = resolveStyle(style, theme);
 
-  return (selector: Payload['stylesNames'], options?: GetPropsOptions<Payload>) => {
+  return (selector: Payload['stylesNames'], options?: GetStylesApiOptions<Payload>) => {
     const _selector = selector as string;
     const themeClassNames = themeName
       .filter((n) => n)
