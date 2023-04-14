@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react';
-import cx from 'clsx';
 import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
 import { FactoryPayload } from '../../factory';
+import { getClassName } from './get-class-name/get-class-name';
 import { Styles, ClassNames, GetStylesApiOptions } from '../styles-api.types';
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
@@ -66,29 +66,7 @@ export function useStyles<Payload extends FactoryPayload>({
   const resolvedStyle = resolveStyle(style, theme);
 
   return (selector: Payload['stylesNames'], options?: GetStylesApiOptions) => {
-    const _selector = selector as string;
-    const themeClassNames = themeName
-      .filter((n) => n)
-      .map(
-        (n) =>
-          (
-            resolveStyles(theme.components?.[n]?.classNames as any, theme, props, stylesCtx!) as any
-          )?.[_selector]
-      );
-    const staticClassNames = themeName.map((n) => `${classNamesPrefix}-${n}-${selector}`);
-    const _className = cx(
-      options?.focusable && !unstyled && theme.focusClassNames[theme.focusRing],
-      options?.active && !unstyled && theme.activeClassName,
-      themeClassNames,
-      (resolveStyles(classNames, theme, props, stylesCtx!) as any)?.[selector],
-      options?.variant && classes[`${selector}--${options.variant}` as Payload['stylesNames']],
-      (resolveStyles(options?.classNames as any, theme, props, stylesCtx!) as any)?.[selector],
-      className && { [className]: rootSelector === selector },
-      { [classes[selector]]: !unstyled },
-      options?.className,
-      staticClassNames
-    );
-
+    const _selector = selector!;
     const themeStyles = themeName
       .map(
         (n) =>
@@ -108,6 +86,22 @@ export function useStyles<Payload extends FactoryPayload>({
       ...resolveStyle(options?.style, theme),
     } as CSSProperties;
 
-    return { className: _className, style: _style };
+    return {
+      className: getClassName({
+        theme,
+        options,
+        themeName,
+        selector: selector!,
+        classNamesPrefix,
+        classNames,
+        classes,
+        unstyled,
+        className,
+        rootSelector: rootSelector!,
+        props,
+        stylesCtx,
+      }),
+      style: _style,
+    };
   };
 }

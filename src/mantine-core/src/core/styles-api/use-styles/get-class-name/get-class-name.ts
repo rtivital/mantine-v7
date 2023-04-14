@@ -42,7 +42,7 @@ export interface GetClassNameOptions {
   classes: Record<string, string>;
 
   /** Determines whether classes from `classes` should be added to the list */
-  unstyled: boolean;
+  unstyled: boolean | undefined;
 
   /** `className` specified in the hook, added to the list if `selector` is `rootSelector` */
   className: string | undefined;
