@@ -2,8 +2,8 @@ import { CSSProperties } from 'react';
 import cx from 'clsx';
 import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
-import { Styles, ClassNames } from '../styles-api.types';
 import { FactoryPayload } from '../../factory';
+import { Styles, ClassNames, GetStylesApiOptions } from '../styles-api.types';
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
@@ -16,16 +16,6 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
   unstyled?: boolean;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
-}
-
-export interface GetStylesApiOptions {
-  className?: string;
-  style?: MantineStyleProp;
-  focusable?: boolean;
-  active?: boolean;
-  classNames?: ClassNames<{ props: any; stylesNames: string }>;
-  styles?: Styles<{ props: any; stylesNames: string }>;
-  variant?: string;
 }
 
 function resolveStyles<Payload extends FactoryPayload>(
@@ -71,7 +61,7 @@ export function useStyles<Payload extends FactoryPayload>({
 }: UseStylesInput<Payload>): GetStylesApi<Payload> {
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
-  const themeName = Array.isArray(name) ? (name.filter((n) => n) as string[]) : [name];
+  const themeName = (Array.isArray(name) ? name : [name]).filter((n) => n) as string[];
   const resolvedStyles = resolveStyles(styles, theme, props, stylesCtx!);
   const resolvedStyle = resolveStyle(style, theme);
 

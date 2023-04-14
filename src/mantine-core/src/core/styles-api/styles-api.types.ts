@@ -1,7 +1,17 @@
 import { CSSProperties } from 'react';
 import type { MantineTheme } from '../MantineProvider';
-import type { CssVariables } from '../Box';
+import type { CssVariables, MantineStyleProp } from '../Box';
 import type { FactoryPayload } from '../factory';
+
+export interface GetStylesApiOptions {
+  className?: string;
+  style?: MantineStyleProp;
+  focusable?: boolean;
+  active?: boolean;
+  classNames?: ClassNames<{ props: any; stylesNames: string }>;
+  styles?: Styles<{ props: any; stylesNames: string }>;
+  variant?: string;
+}
 
 export type StylesApiRecord<
   Payload extends FactoryPayload,
