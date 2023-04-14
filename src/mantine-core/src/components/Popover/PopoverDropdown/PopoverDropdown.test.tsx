@@ -1,9 +1,5 @@
 import { tests, createContextContainer } from '@mantine/tests';
-import {
-  PopoverDropdown,
-  PopoverDropdownProps,
-  PopoverDropdownStylesNames,
-} from './PopoverDropdown';
+import { PopoverDropdown, PopoverDropdownProps } from './PopoverDropdown';
 import { Popover } from '../Popover';
 
 const defaultProps: PopoverDropdownProps = {};
@@ -15,7 +11,7 @@ const TestContainer = createContextContainer(PopoverDropdown, Popover, {
 });
 
 describe('@mantine/core/PopoverDropdown', () => {
-  tests.itSupportsSystemProps<PopoverDropdownProps, PopoverDropdownStylesNames>({
+  tests.itSupportsSystemProps<PopoverDropdownProps>({
     component: TestContainer,
     props: defaultProps,
     styleProps: true,
@@ -25,8 +21,6 @@ describe('@mantine/core/PopoverDropdown', () => {
     variant: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/PopoverDropdown',
-    stylesApiName: 'Popover',
-    stylesApiSelectors: ['dropdown', 'arrow'],
   });
 
   tests.itThrowsContextError({

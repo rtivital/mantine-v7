@@ -6,7 +6,7 @@ import { PopoverTarget } from './PopoverTarget/PopoverTarget';
 
 const defaultProps: PopoverProps = {
   opened: true,
-  children: null,
+  children: 'test-children',
 };
 
 function TestContainer(props: Partial<PopoverProps>) {

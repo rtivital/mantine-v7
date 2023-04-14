@@ -7,32 +7,16 @@ import {
   factory,
   ElementProps,
   useProps,
-  useStyles,
-  useVars,
-  MantineRadius,
-  MantineShadow,
   rem,
   closeOnEscape,
-  getRadius,
-  getShadow,
-  createVarsResolver,
   Factory,
+  packStyle,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import { Transition } from '../../Transition';
 import { FocusTrap } from '../../FocusTrap';
 import { FloatingArrow } from '../../Floating';
 import { usePopoverContext } from '../Popover.context';
-import classes from './PopoverDropdown.module.css';
-
-export type PopoverDropdownStylesNames = 'dropdown' | 'arrow';
-export type PopoverDropdownVariant = string;
-export type PopoverDropdownCssVariables = '--popover-radius' | '--popover-shadow';
-
-export interface PopoverDropdownStylesCtx {
-  radius: MantineRadius | (string & {}) | number | undefined;
-  shadow: MantineShadow | (string & {}) | number | undefined;
-}
 
 export interface PopoverDropdownProps
   extends BoxProps,
@@ -42,59 +26,15 @@ export interface PopoverDropdownProps
 export type PopoverDropdownFactory = Factory<{
   props: PopoverDropdownProps;
   ref: HTMLDivElement;
-  stylesNames: PopoverDropdownStylesNames;
-  vars: PopoverDropdownCssVariables;
-  ctx: PopoverDropdownStylesCtx;
 }>;
 
 const defaultProps: Partial<PopoverDropdownProps> = {};
 
-const varsResolver = createVarsResolver<PopoverDropdownFactory>((_, __, { radius, shadow }) => ({
-  '--popover-radius': getRadius(radius),
-  '--popover-shadow': getShadow(shadow),
-}));
-
-export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => {
-  const props = useProps('PopoverDropdown', defaultProps, _props);
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    children,
-    onKeyDownCapture,
-    variant,
-    ...others
-  } = props;
+export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
+  const { className, style, unstyled, vars, children, onKeyDownCapture, variant, ...others } =
+    useProps('PopoverDropdown', defaultProps, props);
 
   const ctx = usePopoverContext();
-  const stylesCtx: PopoverDropdownStylesCtx = {
-    shadow: ctx.shadow,
-    radius: ctx.radius,
-  };
-
-  const getStyles = useStyles<PopoverDropdownFactory>({
-    name: ctx.__staticSelector,
-    props,
-    classes,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    rootSelector: 'dropdown',
-    stylesCtx,
-  });
-
-  const _vars = useVars<PopoverDropdownFactory>({
-    name: 'PopoverDropdown',
-    resolver: varsResolver,
-    props,
-    vars,
-    stylesCtx,
-  });
 
   const returnFocus = useFocusReturn({
     opened: ctx.opened,
@@ -143,16 +83,20 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                 onKeyDown: onKeyDownCapture,
               })}
               data-position={ctx.placement}
-              {...getStyles('dropdown', {
-                style: {
-                  ...transitionStyles,
-                  zIndex: ctx.zIndex,
-                  top: ctx.y ?? 0,
-                  left: ctx.x ?? 0,
-                  width: ctx.width === 'target' ? undefined : rem(ctx.width),
-                },
+              {...ctx.getStyles('dropdown', {
+                className,
+                style: [
+                  {
+                    ...transitionStyles,
+                    zIndex: ctx.zIndex,
+                    top: ctx.y ?? 0,
+                    left: ctx.x ?? 0,
+                    width: ctx.width === 'target' ? undefined : rem(ctx.width),
+                  },
+                  ...packStyle(style),
+                ],
               })}
-              vars={_vars}
+              vars={ctx.vars}
             >
               {children}
 
@@ -166,7 +110,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                 arrowRadius={ctx.arrowRadius}
                 arrowOffset={ctx.arrowOffset}
                 arrowPosition={ctx.arrowPosition}
-                {...getStyles('arrow')}
+                {...ctx.getStyles('arrow')}
               />
             </Box>
           </FocusTrap>

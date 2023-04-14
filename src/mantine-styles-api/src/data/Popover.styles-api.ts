@@ -7,6 +7,11 @@ export const PopoverStylesApi: StylesApiData<PopoverFactory> = {
     arrow: 'Dropdown arrow',
   },
 
+  vars: {
+    '--popover-radius': 'Controls dropdown border-radius',
+    '--popover-shadow': 'Controls dropdown box-shadow',
+  },
+
   modifiers: [
     {
       modifier: 'data-position',

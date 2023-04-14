@@ -9,7 +9,7 @@ export default { title: 'Popover' };
 export function Uncontrolled() {
   return (
     <div style={{ padding: 40 }}>
-      <Popover opened>
+      <Popover opened styles={{ dropdown: { background: 'red' } }}>
         <Popover.Target>
           <button type="button">Toggle popover</button>
         </Popover.Target>

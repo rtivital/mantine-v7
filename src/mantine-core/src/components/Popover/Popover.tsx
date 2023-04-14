@@ -2,13 +2,18 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { useId, useClickOutside } from '@mantine/hooks';
 import {
-  ClassNames,
-  Styles,
   MantineShadow,
   getDefaultZIndex,
   useProps,
   MantineRadius,
   useDirection,
+  useStyles,
+  Factory,
+  createVarsResolver,
+  getRadius,
+  getShadow,
+  useVars,
+  StylesApiProps,
 } from '../../core';
 import { TransitionOverride } from '../Transition';
 import {
@@ -20,9 +25,13 @@ import {
 import { PortalProps } from '../Portal';
 import { usePopover } from './use-popover';
 import { PopoverContextProvider } from './Popover.context';
-import { PopoverWidth, PopoverMiddlewares, PopoverStylesNames } from './Popover.types';
+import { PopoverWidth, PopoverMiddlewares } from './Popover.types';
 import { PopoverTarget } from './PopoverTarget/PopoverTarget';
 import { PopoverDropdown } from './PopoverDropdown/PopoverDropdown';
+import classes from './Popover.module.css';
+
+export type PopoverStylesNames = 'dropdown' | 'arrow';
+export type PopoverCssVariables = '--popover-radius' | '--popover-shadow';
 
 export interface __PopoverProps {
   /** Dropdown position relative to the target element, `'bottom'` by default */
@@ -92,7 +101,9 @@ export interface __PopoverProps {
   returnFocus?: boolean;
 }
 
-export interface PopoverProps extends __PopoverProps {
+export interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
+  __staticSelector?: string;
+
   /** Popover.Target and Popover.Dropdown components */
   children: React.ReactNode;
 
@@ -122,18 +133,13 @@ export interface PopoverProps extends __PopoverProps {
 
   /** Determines whether dropdown and target element should have accessible roles, defaults to true */
   withRoles?: boolean;
-
-  variant?: string;
-  unstyled?: boolean;
-  classNames?: ClassNames<PopoverFactory>;
-  styles?: Styles<PopoverFactory>;
-  __staticSelector?: string;
 }
 
-export interface PopoverFactory {
+export type PopoverFactory = Factory<{
   props: PopoverProps;
   stylesNames: PopoverStylesNames;
-}
+  vars: PopoverCssVariables;
+}>;
 
 const defaultProps: Partial<PopoverProps> = {
   position: 'bottom',
@@ -157,8 +163,13 @@ const defaultProps: Partial<PopoverProps> = {
   width: 'max-content',
 };
 
-export function Popover(props: PopoverProps) {
-  const arrowRef = useRef<HTMLDivElement | null>(null);
+const varsResolver = createVarsResolver<PopoverFactory>((_, { radius, shadow }) => ({
+  '--popover-radius': getRadius(radius),
+  '--popover-shadow': getShadow(shadow),
+}));
+
+export function Popover(_props: PopoverProps) {
+  const props = useProps('Popover', defaultProps, _props);
   const {
     children,
     position,
@@ -197,9 +208,28 @@ export function Popover(props: PopoverProps) {
     returnFocus,
     variant,
     keepMounted,
+    vars,
     ...others
-  } = useProps('Popover', defaultProps, props);
+  } = props;
 
+  const getStyles = useStyles<PopoverFactory>({
+    name: __staticSelector!,
+    props,
+    classes,
+    classNames,
+    styles,
+    unstyled,
+    rootSelector: 'dropdown',
+  });
+
+  const _vars = useVars<PopoverFactory>({
+    name: 'PopoverDropdown',
+    resolver: varsResolver,
+    props,
+    vars,
+  });
+
+  const arrowRef = useRef<HTMLDivElement | null>(null);
   const [targetNode, setTargetNode] = useState<HTMLElement | null>(null);
   const [dropdownNode, setDropdownNode] = useState<HTMLElement | null>(null);
   const { dir } = useDirection();
@@ -283,6 +313,8 @@ export function Popover(props: PopoverProps) {
         unstyled,
         variant,
         keepMounted,
+        getStyles,
+        vars: _vars,
       }}
     >
       {children}

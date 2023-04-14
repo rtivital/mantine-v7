@@ -1,4 +1,12 @@
-import { createSafeContext, MantineShadow, Styles, ClassNames, MantineRadius } from '../../core';
+import {
+  createSafeContext,
+  MantineShadow,
+  Styles,
+  ClassNames,
+  MantineRadius,
+  GetStylesApi,
+  CssVariable,
+} from '../../core';
 import { FloatingPosition, ArrowPosition } from '../Floating';
 import { TransitionOverride } from '../Transition';
 import { PortalProps } from '../Portal';
@@ -44,6 +52,8 @@ interface PopoverContext {
   __staticSelector: string;
   variant: string | undefined;
   keepMounted: boolean | undefined;
+  getStyles: GetStylesApi<PopoverFactory>;
+  vars: Record<CssVariable, string | undefined>;
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContext>(
