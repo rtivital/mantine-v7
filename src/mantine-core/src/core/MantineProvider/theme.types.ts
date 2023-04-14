@@ -126,8 +126,8 @@ export type MantineThemeOverride = PartialDeep<MantineTheme>;
 export type MantineStylesRecord = Record<string, React.CSSProperties>;
 
 export interface MantineThemeComponent {
-  classNames?: ClassNames<{ props: any; stylesNames: string }>;
-  styles?: Styles<{ props: any; stylesNames: string }>;
+  classNames?: ClassNames<{ props: Record<string, any>; stylesNames: string }>;
+  styles?: Styles<{ props: Record<string, any>; stylesNames: string }>;
   defaultProps?: Record<string, any> | ((theme: MantineTheme) => Record<string, any>);
   vars?:
     | Record<string, string | undefined>
