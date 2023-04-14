@@ -11,6 +11,7 @@ export interface GetStylesApiOptions {
   classNames?: ClassNames<{ props: any; stylesNames: string }>;
   styles?: Styles<{ props: any; stylesNames: string }>;
   variant?: string;
+  props?: Record<string, any>;
 }
 
 export type StylesApiRecord<

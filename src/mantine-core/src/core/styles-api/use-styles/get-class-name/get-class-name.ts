@@ -8,6 +8,7 @@ import { getVariantClassName } from './get-variant-class-name/get-variant-class-
 import { getRootClassName } from './get-root-class-name/get-root-class-name';
 import { getSelectorClassName } from './get-selector-class-name/get-selector-class-name';
 import { getResolvedClassNames } from './get-resolved-class-names/get-resolved-class-names';
+import { getOptionsClassNames } from './get-options-class-names/get-options-class-names';
 
 export type _ClassNames =
   | undefined
@@ -18,7 +19,7 @@ export type _ClassNames =
       ctx: Record<string, any> | undefined
     ) => Partial<Record<string, string>>);
 
-interface GetClassNameOptions {
+export interface GetClassNameOptions {
   /** Theme object, resolved by hook */
   theme: MantineTheme;
 
@@ -44,7 +45,7 @@ interface GetClassNameOptions {
   unstyled: boolean;
 
   /** `className` specified in the hook, added to the list if `selector` is `rootSelector` */
-  className: string;
+  className: string | undefined;
 
   /** `rootSelector` specified in the hook, determines whether `className` should be added to the list */
   rootSelector: string;
@@ -75,7 +76,7 @@ export function getClassName({
     getThemeClassNames({ theme, themeName, selector, props, stylesCtx }),
     getVariantClassName({ options, classes, selector, unstyled }),
     getResolvedClassNames({ selector, stylesCtx, theme, classNames, props }),
-    (resolveStyles(options?.classNames, theme, props, stylesCtx!) as any)?.[selector],
+    getOptionsClassNames({ selector, stylesCtx, options, props, theme }),
     getRootClassName({ rootSelector, selector, className }),
     getSelectorClassName({ selector, classes, unstyled }),
     getStaticClassNames({ themeName, classNamesPrefix, selector }),
