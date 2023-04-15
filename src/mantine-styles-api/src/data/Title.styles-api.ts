@@ -6,10 +6,11 @@ export const TitleStylesApi: StylesApiData<TitleFactory> = {
   ...TextStylesApi,
 
   vars: {
-    '--title-fw': 'Title font-weight, by default value from theme.headings',
-    '--title-fz': 'Title font-size, by default value from theme.headings',
-    '--title-lh': 'Title line-height, by default value from theme.headings',
-    ...TextStylesApi.vars,
+    root: {
+      '--title-fw': 'Title font-weight, by default value from theme.headings',
+      '--title-fz': 'Title font-size, by default value from theme.headings',
+      '--title-lh': 'Title line-height, by default value from theme.headings',
+    },
   },
 
   modifiers: [

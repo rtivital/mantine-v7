@@ -17,13 +17,15 @@ export const SwitchStylesApi: StylesApiData<SwitchFactory> = {
   },
 
   vars: {
-    '--switch-radius': 'Controls border-radius of track and thumb',
-    '--switch-height': 'Controls height of track',
-    '--switch-width': 'Controls min-width of track',
-    '--switch-thumb-size': 'Controls width and height of thumb',
-    '--switch-label-font-size': 'Controls font-size of trackLabel',
-    '--switch-track-label-padding': 'Controls trackLabel offset',
-    '--switch-color': 'Controls track background color when input is checked',
+    root: {
+      '--switch-radius': 'Controls border-radius of track and thumb',
+      '--switch-height': 'Controls height of track',
+      '--switch-width': 'Controls min-width of track',
+      '--switch-thumb-size': 'Controls width and height of thumb',
+      '--switch-label-font-size': 'Controls font-size of trackLabel',
+      '--switch-track-label-padding': 'Controls trackLabel offset',
+      '--switch-color': 'Controls track background color when input is checked',
+    },
   },
 
   modifiers: [
@@ -41,4 +43,6 @@ export const SwitchGroupStylesApi: StylesApiData<SwitchGroupFactory> = {
   selectors: {
     ...InputWrapperStylesApi.selectors,
   },
+
+  vars: {},
 };

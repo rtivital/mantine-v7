@@ -1,5 +1,5 @@
 import type { EmptyObject } from 'type-fest';
-import type { FactoryPayload } from '@mantine/core';
+import type { FactoryPayload, TransformVars } from '@mantine/core';
 
 export interface Modifier<StylesNames extends string> {
   modifier: string;
@@ -13,7 +13,7 @@ export interface Selectors<Factory extends FactoryPayload> {
 }
 
 export interface Vars<Factory extends FactoryPayload> {
-  vars: Factory['vars'] extends string ? Record<Factory['vars'], string> : never;
+  vars: TransformVars<Factory>;
 }
 
 export interface Modifiers<Factory extends FactoryPayload> {
@@ -23,5 +23,5 @@ export interface Modifiers<Factory extends FactoryPayload> {
 export type StylesApiData<Factory extends FactoryPayload> = (Factory['stylesNames'] extends string
   ? Selectors<Factory>
   : EmptyObject) &
-  (Factory['vars'] extends string ? Vars<Factory> : EmptyObject) &
+  Vars<Factory['vars']> &
   (Factory['stylesNames'] extends string ? Modifiers<Factory> : EmptyObject);

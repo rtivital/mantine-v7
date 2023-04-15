@@ -13,9 +13,11 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
   },
 
   vars: {
-    '--tabs-color':
-      'Value of color prop, used by Tabs.Tab, can be overridden by Tabs.Tab color prop',
-    '--tabs-radius': 'Value of radius prop, used by Tabs.Tab',
+    root: {
+      '--tabs-color':
+        'Value of color prop, used by Tabs.Tab, can be overridden by Tabs.Tab color prop',
+      '--tabs-radius': 'Value of radius prop, used by Tabs.Tab',
+    },
   },
 
   modifiers: [

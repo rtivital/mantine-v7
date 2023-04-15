@@ -7,8 +7,10 @@ export const StackStylesApi: StylesApiData<StackFactory> = {
   },
 
   vars: {
-    '--stack-align': 'Controls align-items property',
-    '--stack-justify': 'Controls justify-content property',
-    '--stack-gap': 'Controls gap property',
+    root: {
+      '--stack-align': 'Controls align-items property',
+      '--stack-justify': 'Controls justify-content property',
+      '--stack-gap': 'Controls gap property',
+    },
   },
 };

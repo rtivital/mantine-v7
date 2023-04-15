@@ -8,12 +8,14 @@ export const ActionIconStylesApi: StylesApiData<ActionIconFactory> = {
   },
 
   vars: {
-    '--ai-bg': 'Background style, controlled by color and variant props',
-    '--ai-bd': 'Border styles, controlled by color and variant props',
-    '--ai-hover': 'Background style while hovered, controlled by color and variant props',
-    '--ai-color': 'Color style, controlled by color and variant props',
-    '--ai-radius': 'Border radius style, controlled by radius prop',
-    '--ai-size': 'Width, height, min-width and min-height styles, controlled by size prop',
+    root: {
+      '--ai-bg': 'Controls background',
+      '--ai-bd': 'Control border',
+      '--ai-hover': 'Controls background when hovered',
+      '--ai-color': 'Control color',
+      '--ai-radius': 'Controls border-radius',
+      '--ai-size': 'Controls width, height, min-width and min-height styles',
+    },
   },
 
   modifiers: [
@@ -30,8 +32,10 @@ export const ActionIconGroupStylesApi: StylesApiData<ActionIconGroupFactory> = {
   },
 
   vars: {
-    '--ai-border-width':
-      'Controls border width of child ActionIcon components that are placed beside one another',
+    root: {
+      '--ai-border-width':
+        'Controls border width of child ActionIcon components that are placed beside one another',
+    },
   },
 
   modifiers: [

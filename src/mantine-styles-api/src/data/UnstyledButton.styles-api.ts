@@ -5,4 +5,6 @@ export const UnstyledButtonStylesApi: StylesApiData<UnstyledButtonFactory> = {
   selectors: {
     root: 'Root element',
   },
+
+  vars: {},
 };

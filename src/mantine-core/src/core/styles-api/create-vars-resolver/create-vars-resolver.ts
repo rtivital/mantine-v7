@@ -1,13 +1,12 @@
-// import { PartialDeep } from 'type-fest';
 import { CssVariable } from '../../Box';
 import { MantineTheme } from '../../MantineProvider';
 import { FactoryPayload } from '../../factory';
 
-type TransformVars<V> = {
+export type TransformVars<V> = {
   [Key in keyof V]: V[Key] extends CssVariable ? Record<V[Key], string | undefined> : never;
 };
 
-type PartialTransformVars<V> = {
+export type PartialTransformVars<V> = {
   [Key in keyof V]: V[Key] extends CssVariable
     ? Partial<Record<V[Key], string | undefined>>
     : never;

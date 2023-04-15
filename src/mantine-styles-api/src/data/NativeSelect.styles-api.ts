@@ -7,4 +7,6 @@ export const NativeSelectStylesApi: StylesApiData<NativeSelectFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
   },
+
+  vars: {},
 };

@@ -8,8 +8,10 @@ export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
   },
 
   vars: {
-    '--tooltip-bg': 'Tooltip background-color',
-    '--tooltip-radius': 'Tooltip border-radius',
+    tooltip: {
+      '--tooltip-bg': 'Tooltip background-color',
+      '--tooltip-radius': 'Tooltip border-radius',
+    },
   },
 
   modifiers: [

@@ -10,17 +10,19 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
   },
 
   vars: {
-    '--input-fz': 'font-size of the input element',
-    '--input-height': 'height or min-height of the input element (depends on multiline prop)',
-    '--input-left-section-width': 'width of the left section',
-    '--input-right-section-width': 'width of the right section',
-    '--input-margin-bottom':
-      'margin-bottom of the input element, usually controlled by Input.Wrapper',
-    '--input-margin-top': 'margin-top of the input element, usually controlled by Input.Wrapper',
-    '--input-padding-y': 'padding-top and padding-bottom of the input element',
-    '--input-radius': 'border-radius of the input element',
-    '--input-left-section-pointer-events': 'Controls pointer-events of the left section',
-    '--input-right-section-pointer-events': 'Controls pointer-events of the right section',
+    wrapper: {
+      '--input-fz': 'font-size of the input element',
+      '--input-height': 'height or min-height of the input element (depends on multiline prop)',
+      '--input-left-section-width': 'width of the left section',
+      '--input-right-section-width': 'width of the right section',
+      '--input-margin-bottom':
+        'margin-bottom of the input element, usually controlled by Input.Wrapper',
+      '--input-margin-top': 'margin-top of the input element, usually controlled by Input.Wrapper',
+      '--input-padding-y': 'padding-top and padding-bottom of the input element',
+      '--input-radius': 'border-radius of the input element',
+      '--input-left-section-pointer-events': 'Controls pointer-events of the left section',
+      '--input-right-section-pointer-events': 'Controls pointer-events of the right section',
+    },
   },
 
   modifiers: [
@@ -48,5 +50,20 @@ export const InputWrapperStylesApi: StylesApiData<InputWrapperFactory> = {
     required: 'Required asterisk element, rendered inside label',
     description: 'Description element',
     error: 'Error element',
+  },
+
+  vars: {
+    label: {
+      '--input-label-size': 'Controls label font-size',
+      '--input-asterisk-color': 'Controls label asterisk color',
+    },
+
+    error: {
+      '--input-error-size': 'Controls error font-size',
+    },
+
+    description: {
+      '--input-description-size': 'Controls description font-size',
+    },
   },
 };

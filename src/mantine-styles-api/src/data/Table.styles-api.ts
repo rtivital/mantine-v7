@@ -14,13 +14,15 @@ export const TableStylesApi: StylesApiData<TableFactory> = {
   },
 
   vars: {
-    '--table-border-color': 'Controls border-color of all elements inside table',
-    '--table-layout': 'Controls table-layout of table element, auto by default',
-    '--table-caption-side': 'Controls caption-side of table element, bottom by default',
-    '--table-horizontal-spacing': 'Controls padding-left and padding-right of td and th elements',
-    '--table-vertical-spacing': 'Controls padding-top and padding-bottom of td and th elements',
-    '--table-striped-color': 'Background color of even/odd tr elements',
-    '--table-highlight-on-hover-color': 'Background color of tr elements when hovered',
+    table: {
+      '--table-border-color': 'Controls border-color of all elements inside table',
+      '--table-layout': 'Controls table-layout of table element, auto by default',
+      '--table-caption-side': 'Controls caption-side of table element, bottom by default',
+      '--table-horizontal-spacing': 'Controls padding-left and padding-right of td and th elements',
+      '--table-vertical-spacing': 'Controls padding-top and padding-bottom of td and th elements',
+      '--table-striped-color': 'Background color of even/odd tr elements',
+      '--table-highlight-on-hover-color': 'Background color of tr elements when hovered',
+    },
   },
 
   modifiers: [

@@ -7,8 +7,10 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
   },
 
   vars: {
-    '--text-gradient': 'Text fill gradient, controlled by gradient prop',
-    '--text-line-clamp': 'Number of lines that should be visible, controlled by lineClamp prop',
+    root: {
+      '--text-gradient': 'Text fill gradient, controlled by gradient prop',
+      '--text-line-clamp': 'Number of lines that should be visible, controlled by lineClamp prop',
+    },
   },
 
   modifiers: [

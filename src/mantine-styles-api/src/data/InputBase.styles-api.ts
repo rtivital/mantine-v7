@@ -7,4 +7,6 @@ export const InputBaseStylesApi: StylesApiData<InputBaseFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
   },
+
+  vars: {},
 };

@@ -7,7 +7,9 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
   },
 
   vars: {
-    '--loader-size': 'Loader width, controlled by size prop',
-    '--loader-color': 'Svg stroke/fille color, controlled by color prop',
+    root: {
+      '--loader-size': 'Loader width, controlled by size prop',
+      '--loader-color': 'Svg stroke/fille color, controlled by color prop',
+    },
   },
 };

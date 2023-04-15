@@ -11,15 +11,17 @@ export const SegmentedControlStylesApi: StylesApiData<SegmentedControlFactory> =
   },
 
   vars: {
-    '--sc-color': 'Control background-color of indicator',
-    '--sc-font-size': 'Controls font-size of labels',
-    '--sc-padding': 'Controls padding of control',
-    '--sc-radius': 'Controls border-radius of indicator and root elements',
-    '--sc-shadow': 'Controls box-shadow of indicator',
-    '--sc-transition-duration':
-      'Controls transition-duration of various elements that have animations',
-    '--sc-transition-timing-function':
-      'Controls transition-timing-function of various elements that have animations',
+    root: {
+      '--sc-color': 'Control background-color of indicator',
+      '--sc-font-size': 'Controls font-size of labels',
+      '--sc-padding': 'Controls padding of control',
+      '--sc-radius': 'Controls border-radius of indicator and root elements',
+      '--sc-shadow': 'Controls box-shadow of indicator',
+      '--sc-transition-duration':
+        'Controls transition-duration of various elements that have animations',
+      '--sc-transition-timing-function':
+        'Controls transition-timing-function of various elements that have animations',
+    },
   },
 
   modifiers: [

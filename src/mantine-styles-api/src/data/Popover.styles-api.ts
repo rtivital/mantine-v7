@@ -8,8 +8,10 @@ export const PopoverStylesApi: StylesApiData<PopoverFactory> = {
   },
 
   vars: {
-    '--popover-radius': 'Controls dropdown border-radius',
-    '--popover-shadow': 'Controls dropdown box-shadow',
+    dropdown: {
+      '--popover-radius': 'Controls dropdown border-radius',
+      '--popover-shadow': 'Controls dropdown box-shadow',
+    },
   },
 
   modifiers: [

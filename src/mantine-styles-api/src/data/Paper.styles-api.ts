@@ -7,8 +7,10 @@ export const PaperStylesApi: StylesApiData<PaperFactory> = {
   },
 
   vars: {
-    '--paper-radius': 'Border radius',
-    '--paper-shadow': 'Box shadow',
+    root: {
+      '--paper-radius': 'Border radius',
+      '--paper-shadow': 'Box shadow',
+    },
   },
 
   modifiers: [

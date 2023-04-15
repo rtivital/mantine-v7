@@ -4,4 +4,6 @@ export * from './use-styles/use-styles';
 export type {
   VarsResolver,
   PartialVarsResolver,
+  TransformVars,
+  PartialTransformVars,
 } from './create-vars-resolver/create-vars-resolver';

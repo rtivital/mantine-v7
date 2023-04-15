@@ -11,7 +11,9 @@ export const ScrollAreaStylesApi: StylesApiData<ScrollAreaFactory> = {
   },
 
   vars: {
-    '--scrollarea-scrollbar-size': 'Scrollbar size',
+    root: {
+      '--scrollarea-scrollbar-size': 'Scrollbar size',
+    },
   },
 
   modifiers: [

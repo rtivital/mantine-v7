@@ -18,12 +18,16 @@ export const CodeHighlightTabsStylesApi: StylesApiData<CodeHighlightTabsFactory>
     file: 'File name',
     showCodeButton: 'Button that reveals full code when it is collapsed',
   },
+
+  vars: {},
 };
 
 export const InlineCodeHighlightStylesApi: StylesApiData<InlineCodeHighlightFactory> = {
   selectors: {
     code: 'Root element',
   },
+
+  vars: {},
 };
 
 export const CodeHighlightStylesApi: StylesApiData<CodeHighlightFactory> = {
@@ -33,4 +37,6 @@ export const CodeHighlightStylesApi: StylesApiData<CodeHighlightFactory> = {
     code: 'Code element',
     copy: 'Copy button',
   },
+
+  vars: {},
 };

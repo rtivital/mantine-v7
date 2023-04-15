@@ -7,4 +7,6 @@ export const TextInputStylesApi: StylesApiData<TextInputFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
   },
+
+  vars: {},
 };

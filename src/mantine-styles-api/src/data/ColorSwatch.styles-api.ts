@@ -11,7 +11,9 @@ export const ColorSwatchStylesApi: StylesApiData<ColorSwatchFactory> = {
   },
 
   vars: {
-    '--cs-radius': 'Controls border radius of all overlays and root element',
-    '--cs-size': 'Controls width, height, min-width and min-height of the root element',
+    root: {
+      '--cs-radius': 'Controls border radius of all overlays and root element',
+      '--cs-size': 'Controls width, height, min-width and min-height of the root element',
+    },
   },
 };

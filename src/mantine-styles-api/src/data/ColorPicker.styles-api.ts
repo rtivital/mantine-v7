@@ -17,8 +17,10 @@ export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
   },
 
   vars: {
-    '--cp-body-spacing': '',
-    '--cp-preview-size': 'Controls size of the swatch',
-    '--cp-width': 'Controls width of the root element',
+    wrapper: {
+      '--cp-body-spacing': 'Controls spacing between sliders and saturation',
+      '--cp-preview-size': 'Controls size of the preview swatch',
+      '--cp-width': 'Controls width of the root element',
+    },
   },
 };

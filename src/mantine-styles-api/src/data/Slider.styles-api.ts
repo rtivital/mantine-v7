@@ -15,10 +15,12 @@ export const SliderStylesApi: StylesApiData<SliderFactory> = {
   },
 
   vars: {
-    '--slider-size': 'Controls track height',
-    '--slider-color': 'Controls filled track, thumb and marks color',
-    '--slider-thumb-size': 'Controls thumb width and height',
-    '--slider-radius': 'Controls border-radius of track and thumb',
+    root: {
+      '--slider-size': 'Controls track height',
+      '--slider-color': 'Controls filled track, thumb and marks color',
+      '--slider-thumb-size': 'Controls thumb width and height',
+      '--slider-radius': 'Controls border-radius of track and thumb',
+    },
   },
 
   modifiers: [
