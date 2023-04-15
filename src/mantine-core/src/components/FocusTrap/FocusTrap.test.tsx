@@ -73,6 +73,6 @@ describe('@mantine/core/FocusTrap', () => {
   });
 
   it('has correct displayName', () => {
-    expect(FocusTrap.displayName).toEqual('@mantine/core/FocusTrap');
+    expect(FocusTrap.displayName).toBe('@mantine/core/FocusTrap');
   });
 });

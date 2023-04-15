@@ -3,13 +3,15 @@ import { DEFAULT_THEME } from '../../MantineProvider';
 
 describe('@mantine/core/Box/get-box-style', () => {
   it('returns empty object if no style or vars provided', () => {
-    expect(getBoxStyle({ theme: DEFAULT_THEME, styleProps: {} })).toEqual({});
-    expect(getBoxStyle({ theme: DEFAULT_THEME, style: {}, styleProps: {} })).toEqual({});
-    expect(getBoxStyle({ theme: DEFAULT_THEME, vars: {}, styleProps: {} })).toEqual({});
-    expect(getBoxStyle({ theme: DEFAULT_THEME, vars: {}, style: {}, styleProps: {} })).toEqual({});
+    expect(getBoxStyle({ theme: DEFAULT_THEME, styleProps: {} })).toStrictEqual({});
+    expect(getBoxStyle({ theme: DEFAULT_THEME, style: {}, styleProps: {} })).toStrictEqual({});
+    expect(getBoxStyle({ theme: DEFAULT_THEME, vars: {}, styleProps: {} })).toStrictEqual({});
+    expect(
+      getBoxStyle({ theme: DEFAULT_THEME, vars: {}, style: {}, styleProps: {} })
+    ).toStrictEqual({});
     expect(
       getBoxStyle({ theme: DEFAULT_THEME, vars: () => ({}), style: () => ({}), styleProps: {} })
-    ).toEqual({});
+    ).toStrictEqual({});
   });
 
   it('merges style and vars', () => {
@@ -20,7 +22,7 @@ describe('@mantine/core/Box/get-box-style', () => {
         vars: { '--test': 'red' },
         styleProps: {},
       })
-    ).toEqual({
+    ).toStrictEqual({
       color: 'red',
       '--test': 'red',
     });
@@ -32,7 +34,7 @@ describe('@mantine/core/Box/get-box-style', () => {
         vars: (theme) => ({ '--test': theme.spacing.md }),
         styleProps: {},
       })
-    ).toEqual({
+    ).toStrictEqual({
       color: DEFAULT_THEME.colors.blue[7],
       '--test': DEFAULT_THEME.spacing.md,
     });

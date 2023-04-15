@@ -4,7 +4,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
   it('calculates offsets correctly when error is below input', () => {
     expect(
       getInputOffsets(['label', 'input', 'error'], { hasDescription: false, hasError: true })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: true,
       offsetTop: false,
     });
@@ -13,7 +13,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
   it('calculates offsets correctly when error is above input', () => {
     expect(
       getInputOffsets(['label', 'error', 'input'], { hasDescription: false, hasError: true })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: false,
       offsetTop: true,
     });
@@ -25,7 +25,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
         hasDescription: true,
         hasError: false,
       })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: true,
       offsetTop: false,
     });
@@ -37,7 +37,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
         hasDescription: true,
         hasError: false,
       })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: false,
       offsetTop: true,
     });
@@ -49,7 +49,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
         hasDescription: true,
         hasError: true,
       })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: true,
       offsetTop: true,
     });
@@ -61,7 +61,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
         hasDescription: true,
         hasError: true,
       })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: true,
       offsetTop: true,
     });
@@ -73,7 +73,7 @@ describe('@mantine/core/InputWrapper/get-input-offsets', () => {
         hasDescription: false,
         hasError: false,
       })
-    ).toEqual({
+    ).toStrictEqual({
       offsetBottom: false,
       offsetTop: false,
     });

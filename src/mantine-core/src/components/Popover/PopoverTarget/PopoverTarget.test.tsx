@@ -42,6 +42,6 @@ describe('@mantine/core/PopoverTarget', () => {
   });
 
   it('has correct displayName', () => {
-    expect(PopoverTarget.displayName).toEqual('@mantine/core/PopoverTarget');
+    expect(PopoverTarget.displayName).toBe('@mantine/core/PopoverTarget');
   });
 });

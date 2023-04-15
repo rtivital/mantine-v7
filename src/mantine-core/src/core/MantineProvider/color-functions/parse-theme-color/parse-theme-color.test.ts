@@ -3,7 +3,7 @@ import { DEFAULT_THEME } from '../../default-theme';
 
 describe('@mantine/core/parse-theme-color', () => {
   it('parses theme color correctly', () => {
-    expect(parseThemeColor({ color: 'red', theme: DEFAULT_THEME })).toEqual({
+    expect(parseThemeColor({ color: 'red', theme: DEFAULT_THEME })).toStrictEqual({
       color: 'red',
       shade: undefined,
       isThemeColor: true,
@@ -12,7 +12,7 @@ describe('@mantine/core/parse-theme-color', () => {
   });
 
   it('parses theme color with shade correctly', () => {
-    expect(parseThemeColor({ color: 'orange.5', theme: DEFAULT_THEME })).toEqual({
+    expect(parseThemeColor({ color: 'orange.5', theme: DEFAULT_THEME })).toStrictEqual({
       color: 'orange',
       shade: 5,
       isThemeColor: true,
@@ -21,7 +21,7 @@ describe('@mantine/core/parse-theme-color', () => {
   });
 
   it('parses non theme color correctly', () => {
-    expect(parseThemeColor({ color: '#FEFEFE', theme: DEFAULT_THEME })).toEqual({
+    expect(parseThemeColor({ color: '#FEFEFE', theme: DEFAULT_THEME })).toStrictEqual({
       color: '#FEFEFE',
       isThemeColor: false,
       shade: undefined,
@@ -30,14 +30,14 @@ describe('@mantine/core/parse-theme-color', () => {
   });
 
   it('parses white and black colors correctly', () => {
-    expect(parseThemeColor({ color: 'white', theme: DEFAULT_THEME })).toEqual({
+    expect(parseThemeColor({ color: 'white', theme: DEFAULT_THEME })).toStrictEqual({
       color: 'white',
       isThemeColor: false,
       shade: undefined,
       variable: '--mantine-color-white',
     });
 
-    expect(parseThemeColor({ color: 'black', theme: DEFAULT_THEME })).toEqual({
+    expect(parseThemeColor({ color: 'black', theme: DEFAULT_THEME })).toStrictEqual({
       color: 'black',
       isThemeColor: false,
       shade: undefined,

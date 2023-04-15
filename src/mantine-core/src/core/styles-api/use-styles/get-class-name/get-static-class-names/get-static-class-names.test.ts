@@ -8,7 +8,7 @@ describe('@mantine/core/get-static-class-names', () => {
         selector: 'wrapper',
         classNamesPrefix: 'mantine',
       })
-    ).toEqual(['mantine-Input-wrapper']);
+    ).toStrictEqual(['mantine-Input-wrapper']);
   });
 
   it('returns correct static class names for multiple themeNames', () => {
@@ -18,6 +18,6 @@ describe('@mantine/core/get-static-class-names', () => {
         selector: 'wrapper',
         classNamesPrefix: 'mantine',
       })
-    ).toEqual(['mantine-Input-wrapper', 'mantine-Select-wrapper']);
+    ).toStrictEqual(['mantine-Input-wrapper', 'mantine-Select-wrapper']);
   });
 });

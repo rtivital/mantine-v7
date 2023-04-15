@@ -14,7 +14,7 @@ describe('@mantine/core/resolve-styles', () => {
         props: {},
         stylesCtx: undefined,
       })
-    ).toEqual({ root: { color: 'red' } });
+    ).toStrictEqual({ root: { color: 'red' } });
   });
 
   it('resolves styles from function', () => {
@@ -31,7 +31,7 @@ describe('@mantine/core/resolve-styles', () => {
         props: { outline: 'cyan' },
         stylesCtx: { textDecoration: 'underline' },
       })
-    ).toEqual({
+    ).toStrictEqual({
       root: {
         color: DEFAULT_THEME.colors.blue[1],
         outlineColor: 'cyan',

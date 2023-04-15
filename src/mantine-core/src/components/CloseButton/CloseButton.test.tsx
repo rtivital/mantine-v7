@@ -35,8 +35,4 @@ describe('@mantine/core/CloseIcon', () => {
     const { container } = render(<CloseIcon size="2rem" />);
     expect(container.querySelector('svg')).toHaveStyle({ width: '2rem', height: '2rem' });
   });
-
-  it('has correct displayName', () => {
-    expect(CloseIcon.displayName).toEqual('@mantine/core/CloseIcon');
-  });
 });

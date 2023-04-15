@@ -3,7 +3,7 @@ import { DEFAULT_THEME } from '../../default-theme';
 
 describe('@mantine/core/get-gradient', () => {
   it('returns default gradient from theme if gradient is not provided', () => {
-    expect(getGradient(undefined, DEFAULT_THEME)).toEqual(
+    expect(getGradient(undefined, DEFAULT_THEME)).toStrictEqual(
       'linear-gradient(45deg, var(--mantine-color-blue-filled) 0%, var(--mantine-color-cyan-filled) 100%)'
     );
   });
@@ -18,7 +18,7 @@ describe('@mantine/core/get-gradient', () => {
         },
         DEFAULT_THEME
       )
-    ).toEqual(
+    ).toStrictEqual(
       'linear-gradient(90deg, var(--mantine-color-red-filled) 0%, var(--mantine-color-blue-filled) 100%)'
     );
   });
@@ -33,7 +33,7 @@ describe('@mantine/core/get-gradient', () => {
         },
         DEFAULT_THEME
       )
-    ).toEqual(
+    ).toStrictEqual(
       'linear-gradient(90deg, var(--mantine-color-red-3) 0%, var(--mantine-color-blue-8) 100%)'
     );
   });
@@ -48,6 +48,6 @@ describe('@mantine/core/get-gradient', () => {
         },
         DEFAULT_THEME
       )
-    ).toEqual('linear-gradient(90deg, #FEFEFE 0%, #CDCDCD 100%)');
+    ).toStrictEqual('linear-gradient(90deg, #FEFEFE 0%, #CDCDCD 100%)');
   });
 });

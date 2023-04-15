@@ -6,7 +6,7 @@ describe('@mantine/core/Box/get-box-mod', () => {
   });
 
   it('transforms adds data- prefix to keys that do not have it', () => {
-    expect(getBoxMod({ test: true, 'data-test-2': true })).toEqual({
+    expect(getBoxMod({ test: true, 'data-test-2': true })).toStrictEqual({
       'data-test': true,
       'data-test-2': true,
     });
@@ -22,7 +22,7 @@ describe('@mantine/core/Box/get-box-mod', () => {
         'data-test-5': '',
         'data-test-6': false,
       })
-    ).toEqual({
+    ).toStrictEqual({
       'data-test': true,
       'data-test-2': 'test',
     });
@@ -48,7 +48,7 @@ describe('@mantine/core/Box/get-box-mod', () => {
           'data-test-6': false,
         },
       ])
-    ).toEqual({
+    ).toStrictEqual({
       'data-test': true,
       'data-test-2': 'test-2',
     });
