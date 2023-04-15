@@ -1,8 +1,9 @@
 import { CSSProperties } from 'react';
-import { MantineTheme, useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
+import { useMantineTheme, useMantineClassNamesPrefix } from '../../MantineProvider';
 import type { MantineStyleProp } from '../../Box';
 import { FactoryPayload } from '../../factory';
 import { getClassName } from './get-class-name/get-class-name';
+import { getStyle } from './get-style/get-style';
 import { Styles, ClassNames, GetStylesApiOptions } from '../styles-api.types';
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
@@ -18,29 +19,8 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
   styles?: Styles<Payload>;
 }
 
-function resolveStyles<Payload extends FactoryPayload>(
-  styles: Styles<Payload> | ClassNames<Payload> | undefined,
-  theme: MantineTheme,
-  props: Payload['props'],
-  ctx: Payload['ctx']
-) {
-  return typeof styles === 'function' ? styles(theme, props, ctx) : styles;
-}
-
-function resolveStyle(style: MantineStyleProp | undefined, theme: MantineTheme) {
-  if (style == null) {
-    return {};
-  }
-
-  const arrayStyle = Array.isArray(style) ? style : [style];
-  return arrayStyle.reduce(
-    (acc, val) => ({ ...acc, ...(typeof val === 'function' ? val(theme) : val) }),
-    {}
-  );
-}
-
 export type GetStylesApi<Payload extends FactoryPayload> = (
-  selector: Payload['stylesNames'],
+  selector: NonNullable<Payload['stylesNames']>,
   options?: GetStylesApiOptions
 ) => {
   className: string;
@@ -54,7 +34,7 @@ export function useStyles<Payload extends FactoryPayload>({
   stylesCtx,
   className,
   style,
-  rootSelector = 'root' as Payload['stylesNames'],
+  rootSelector = 'root' as NonNullable<Payload['stylesNames']>,
   unstyled,
   classNames,
   styles,
@@ -62,46 +42,33 @@ export function useStyles<Payload extends FactoryPayload>({
   const theme = useMantineTheme();
   const classNamesPrefix = useMantineClassNamesPrefix();
   const themeName = (Array.isArray(name) ? name : [name]).filter((n) => n) as string[];
-  const resolvedStyles = resolveStyles(styles, theme, props, stylesCtx!);
-  const resolvedStyle = resolveStyle(style, theme);
 
-  return (selector: Payload['stylesNames'], options?: GetStylesApiOptions) => {
-    const _selector = selector!;
-    const themeStyles = themeName
-      .map(
-        (n) =>
-          (resolveStyles(theme.components?.[n]?.styles as any, theme, props, stylesCtx!) as any)?.[
-            _selector
-          ]
-      )
-      .reduce((acc, val) => ({ ...acc, ...val }), {});
+  return (selector, options) => ({
+    className: getClassName({
+      theme,
+      options,
+      themeName,
+      selector,
+      classNamesPrefix,
+      classNames,
+      classes,
+      unstyled,
+      className,
+      rootSelector,
+      props,
+      stylesCtx,
+    }),
 
-    const componentStyles = resolveStyles(options?.styles as any, theme, props, stylesCtx!);
-
-    const _style = {
-      ...themeStyles,
-      ...(resolvedStyles as any)?.[_selector],
-      ...(componentStyles as any)?.[_selector],
-      ...(rootSelector === selector ? resolvedStyle : {}),
-      ...resolveStyle(options?.style, theme),
-    } as CSSProperties;
-
-    return {
-      className: getClassName({
-        theme,
-        options,
-        themeName,
-        selector: selector!,
-        classNamesPrefix,
-        classNames,
-        classes,
-        unstyled,
-        className,
-        rootSelector: rootSelector!,
-        props,
-        stylesCtx,
-      }),
-      style: _style,
-    };
-  };
+    style: getStyle({
+      theme,
+      themeName,
+      selector,
+      options,
+      props,
+      stylesCtx,
+      rootSelector,
+      styles,
+      style,
+    }),
+  });
 }
