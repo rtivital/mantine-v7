@@ -6,7 +6,6 @@ import {
   MantineSize,
   MantineColor,
   MantineRadius,
-  CssVarsProp,
 } from '../../../core';
 import { useSliderContext } from '../Slider.context';
 
@@ -18,7 +17,6 @@ export interface SliderRootProps extends BoxProps, ElementProps<'div'> {
   variant?: string;
   thumbSize: string | number | undefined;
   radius: MantineRadius | (string & {}) | number | undefined;
-  vars: CssVarsProp;
 }
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(

@@ -67,7 +67,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         aria-valuemin={min}
         aria-valuenow={value}
         ref={ref}
-        vars={{ '--slider-thumb-offset': `${position}%` }}
+        __vars={{ '--slider-thumb-offset': `${position}%` }}
         {...getStyles('thumb', { focusable: true })}
         mod={{ dragging, disabled }}
         onFocus={() => {

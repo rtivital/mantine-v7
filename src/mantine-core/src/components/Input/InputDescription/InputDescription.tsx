@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineSize,
   getFontSize,
   rem,
@@ -19,7 +18,9 @@ import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputDescriptionStylesNames = 'description';
 export type InputDescriptionVariant = string;
-export type InputDescriptionCssVariables = '--input-description-size';
+export type InputDescriptionCssVariables = {
+  description: '--input-description-size';
+};
 
 export interface InputDescriptionProps
   extends BoxProps,
@@ -44,7 +45,9 @@ const defaultProps: Partial<InputDescriptionProps> = {
 };
 
 const varsResolver = createVarsResolver<InputDescriptionFactory>((_, { size }) => ({
-  '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  description: {
+    '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  },
 }));
 
 export const InputDescription = factory<InputDescriptionFactory>((_props, ref) => {
@@ -73,16 +76,11 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
     styles,
     unstyled,
     rootSelector: 'description',
+    vars,
+    varsResolver,
   });
 
   const getStyles = ctx.getStyles || _getStyles;
-
-  const _vars = useVars<InputDescriptionFactory>({
-    name: 'InputDescription',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
 
   return (
     <Box
@@ -91,7 +89,6 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
       variant={variant}
       size={size}
       {...getStyles('description')}
-      vars={_vars}
       {...others}
     />
   );

@@ -5,7 +5,6 @@ import {
   StylesApiProps,
   polymorphicFactory,
   useProps,
-  useVars,
   useStyles,
   MantineShadow,
   MantineRadius,
@@ -18,7 +17,9 @@ import classes from './Paper.module.css';
 
 export type PaperStylesNames = 'root';
 export type PaperVariant = string;
-export type PaperCssVariables = '--paper-radius' | '--paper-shadow';
+export type PaperCssVariables = {
+  root: '--paper-radius' | '--paper-shadow';
+};
 
 export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
   /** Key of `theme.shadows` or any valid CSS value to set box-shadow, `none` by default */
@@ -42,8 +43,10 @@ export type PaperFactory = PolymorphicFactory<{
 const defaultProps: Partial<PaperProps> = {};
 
 const varsResolver = createVarsResolver<PaperFactory>((_, { radius, shadow }) => ({
-  '--paper-radius': getRadius(radius),
-  '--paper-shadow': getShadow(shadow),
+  root: {
+    '--paper-radius': getRadius(radius),
+    '--paper-shadow': getShadow(shadow),
+  },
 }));
 
 export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
@@ -71,13 +74,8 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<PaperFactory>({
-    name: 'Paper',
-    resolver: varsResolver,
     vars,
-    props,
+    varsResolver,
   });
 
   return (
@@ -85,7 +83,6 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, ref) => {
       ref={ref}
       mod={{ 'data-with-border': withBorder }}
       {...getStyles('root')}
-      vars={_vars}
       variant={variant}
       {...others}
     />

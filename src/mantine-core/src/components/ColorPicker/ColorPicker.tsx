@@ -8,7 +8,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineSize,
   getSize,
   getSpacing,
@@ -40,7 +39,9 @@ export type ColorPickerStylesNames =
   | 'swatches'
   | 'swatch';
 export type ColorPickerVariant = string;
-export type ColorPickerCssVariables = '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
+export type ColorPickerCssVariables = {
+  wrapper: '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
+};
 
 export interface __ColorPickerProps {
   /** Controlled component value */
@@ -114,9 +115,11 @@ const defaultProps: Partial<ColorPickerProps> = {
 };
 
 const varsResolver = createVarsResolver<ColorPickerFactory>((_, { size, fullWidth }) => ({
-  '--cp-preview-size': getSize(size, 'cp-preview-size'),
-  '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
-  '--cp-body-spacing': getSpacing(size),
+  wrapper: {
+    '--cp-preview-size': getSize(size, 'cp-preview-size'),
+    '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
+    '--cp-body-spacing': getSpacing(size),
+  },
 }));
 
 export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
@@ -157,13 +160,8 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
     styles,
     unstyled,
     rootSelector: 'wrapper',
-  });
-
-  const _vars = useVars<ColorPickerFactory>({
-    name: 'ColorPicker',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const formatRef = useRef(format);
@@ -210,7 +208,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
   return (
     <ColorPickerProvider value={{ getStyles }}>
-      <Box ref={ref} {...getStyles('wrapper')} vars={_vars} size={size} {...others}>
+      <Box ref={ref} {...getStyles('wrapper')} size={size} {...others}>
         {withPicker && (
           <>
             <Saturation

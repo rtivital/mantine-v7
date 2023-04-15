@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineSpacing,
   getSpacing,
   createVarsResolver,
@@ -17,7 +16,9 @@ import classes from './Stack.module.css';
 
 export type StackStylesNames = 'root';
 export type StackVariant = string;
-export type StackCssVariables = '--stack-gap' | '--stack-align' | '--stack-justify';
+export type StackCssVariables = {
+  root: '--stack-gap' | '--stack-align' | '--stack-justify';
+};
 
 export interface StackProps extends BoxProps, StylesApiProps<StackFactory>, ElementProps<'div'> {
   /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem (1rem = 16px), `'md'` by default */
@@ -45,9 +46,11 @@ const defaultProps: Partial<StackProps> = {
 };
 
 const varsResolver = createVarsResolver<StackFactory>((_, { gap, align, justify }) => ({
-  '--stack-gap': getSpacing(gap),
-  '--stack-align': align,
-  '--stack-justify': justify,
+  root: {
+    '--stack-gap': getSpacing(gap),
+    '--stack-align': align,
+    '--stack-justify': justify,
+  },
 }));
 
 export const Stack = factory<StackFactory>((_props, ref) => {
@@ -75,16 +78,11 @@ export const Stack = factory<StackFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<StackFactory>({
-    name: 'Stack',
-    resolver: varsResolver,
     vars,
-    props,
+    varsResolver,
   });
 
-  return <Box ref={ref} {...getStyles('root')} variant={variant} vars={_vars} {...others} />;
+  return <Box ref={ref} {...getStyles('root')} variant={variant} {...others} />;
 });
 
 Stack.displayName = '@mantine/core/Stack';

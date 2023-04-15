@@ -11,13 +11,7 @@ export function Usage() {
       <CloseButton variant="filled" size="md" />
       <CloseButton variant="filled" size="lg" />
       <CloseButton variant="filled" size="xl" />
-      <CloseButton
-        variant="filled"
-        size="10rem"
-        vars={{
-          '--icon-size': '5rem',
-        }}
-      />
+      <CloseButton variant="filled" size="10rem" iconSize="8rem" />
     </div>
   );
 }

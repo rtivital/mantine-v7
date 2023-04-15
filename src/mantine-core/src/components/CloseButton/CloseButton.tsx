@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  polymorphicFactory,
-  useProps,
-  rem,
-  StylesApiProps,
-  useVars,
-  createVarsResolver,
-  PolymorphicFactory,
-} from '../../core';
+import { polymorphicFactory, useProps, rem, PolymorphicFactory } from '../../core';
 import {
   ActionIcon,
   ActionIconProps,
@@ -16,13 +8,10 @@ import {
 } from '../ActionIcon';
 import { CloseIcon } from './CloseIcon';
 
-export type CloseButtonCssVariables = '--cb-icon-size';
 export type CloseButtonVariant = ActionIconVariant;
 export type CloseButtonStylesNames = ActionIconStylesNames;
 
-export interface CloseButtonProps
-  extends Omit<ActionIconProps, 'vars' | 'styles' | 'classNames'>,
-    StylesApiProps<CloseButtonFactory> {
+export interface CloseButtonProps extends ActionIconProps {
   /** X icon width and height, 80% by default */
   iconSize?: number | string;
 }
@@ -33,7 +22,6 @@ export type CloseButtonFactory = PolymorphicFactory<{
   defaultRef: HTMLButtonElement;
   stylesNames: CloseButtonStylesNames;
   variant: CloseButtonVariant;
-  vars: CloseButtonCssVariables;
 }>;
 
 const defaultProps: Partial<CloseButtonProps> = {
@@ -42,22 +30,16 @@ const defaultProps: Partial<CloseButtonProps> = {
   color: 'gray',
 };
 
-const varsResolver = createVarsResolver<CloseButtonFactory>((_, { iconSize }) => ({
-  '--cb-icon-size': rem(iconSize),
-}));
-
 export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, ref) => {
   const props = useProps('CloseButton', defaultProps, _props);
   const { iconSize, children, vars, ...others } = props;
-  const _vars = useVars<CloseButtonFactory>({
-    name: 'CloseButton',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
-
   return (
-    <ActionIcon ref={ref} {...others} vars={_vars} __staticSelector="CloseButton">
+    <ActionIcon
+      ref={ref}
+      {...others}
+      __vars={{ '--cb-icon-size': rem(iconSize) }}
+      __staticSelector="CloseButton"
+    >
       {children || <CloseIcon />}
     </ActionIcon>
   );

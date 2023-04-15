@@ -17,7 +17,7 @@ import { useTabsContext } from '../Tabs.context';
 export type TabsTabStylesNames = 'tab' | 'tabRightSection' | 'tabLeftSection' | 'tabLabel';
 
 export interface TabsTabProps
-  extends Omit<UnstyledButtonProps, 'classNames' | 'styles'>,
+  extends Omit<UnstyledButtonProps, 'classNames' | 'styles' | 'vars'>,
     StylesApiProps<TabsTabFactory>,
     ElementProps<'button'> {
   /** Value that is used to connect Tab with associated panel */
@@ -58,6 +58,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     style,
     classNames,
     styles,
+    vars,
     ...others
   } = useProps('TabsTab', defaultProps, props);
 
@@ -93,7 +94,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
       tabIndex={active || ctx.value === null ? 0 : -1}
       aria-controls={ctx.getPanelId(value)}
       onClick={activateTab}
-      vars={{ '--tabs-color': color ? getThemeColor(color, theme) : undefined }}
+      __vars={{ '--tabs-color': color ? getThemeColor(color, theme) : undefined }}
       onKeyDown={createScopedKeydownHandler({
         siblingSelector: '[role="tab"]',
         parentSelector: '[role="tablist"]',

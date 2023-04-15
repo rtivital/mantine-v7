@@ -8,7 +8,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineColor,
   MantineSize,
   MantineRadius,
@@ -27,14 +26,16 @@ const WRAPPER_PADDING = 4;
 
 export type SegmentedControlStylesNames = 'root' | 'input' | 'label' | 'control' | 'indicator';
 export type SegmentedControlVariant = string;
-export type SegmentedControlCssVariables =
-  | '--sc-radius'
-  | '--sc-color'
-  | '--sc-font-size'
-  | '--sc-padding'
-  | '--sc-shadow'
-  | '--sc-transition-duration'
-  | '--sc-transition-timing-function';
+export type SegmentedControlCssVariables = {
+  root:
+    | '--sc-radius'
+    | '--sc-color'
+    | '--sc-font-size'
+    | '--sc-padding'
+    | '--sc-shadow'
+    | '--sc-transition-duration'
+    | '--sc-transition-timing-function';
+};
 
 export interface SegmentedControlItem {
   value: string;
@@ -104,13 +105,15 @@ const defaultProps: Partial<SegmentedControlProps> = {
 
 const varsResolver = createVarsResolver<SegmentedControlFactory>(
   (theme, { radius, color, transitionDuration, size, transitionTimingFunction }) => ({
-    '--sc-radius': getRadius(radius),
-    '--sc-color': color ? getThemeColor(color, theme) : undefined,
-    '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
-    '--sc-transition-duration': `${transitionDuration}ms`,
-    '--sc-transition-timing-function': transitionTimingFunction,
-    '--sc-padding': getSize(size, 'sc-padding'),
-    '--sc-font-size': getFontSize(size),
+    root: {
+      '--sc-radius': getRadius(radius),
+      '--sc-color': color ? getThemeColor(color, theme) : undefined,
+      '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
+      '--sc-transition-duration': `${transitionDuration}ms`,
+      '--sc-transition-timing-function': transitionTimingFunction,
+      '--sc-padding': getSize(size, 'sc-padding'),
+      '--sc-font-size': getFontSize(size),
+    },
   })
 );
 
@@ -150,13 +153,8 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<SegmentedControlFactory>({
-    name: 'SegmentedControl',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const { dir } = useDirection();
@@ -236,7 +234,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
         ref={(node) => {
           refs.current[item.value] = node!;
         }}
-        vars={{
+        __vars={{
           '--sc-label-color': color !== undefined ? 'var(--mantine-color-white)' : undefined,
         }}
       >
@@ -258,7 +256,6 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
       size={size}
       ref={mergedRef}
       mod={{ 'full-width': fullWidth, orientation }}
-      vars={_vars}
       {...others}
       role="radiogroup"
     >
@@ -266,7 +263,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
         <Box
           component="span"
           {...getStyles('indicator')}
-          vars={{
+          __vars={{
             '--sc-indicator-width': `${activePosition.width}px`,
             '--sc-indicator-height': `${activePosition.height}px`,
             '--sc-indicator-transform': `translate(${activePosition.translate[0]}px, ${activePosition.translate[1]}px)`,

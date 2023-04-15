@@ -7,7 +7,6 @@ import {
   getDefaultZIndex,
   isElement,
   useProps,
-  useVars,
   useDirection,
   useStyles,
   getThemeColor,
@@ -99,8 +98,10 @@ const defaultProps: Partial<TooltipProps> = {
 };
 
 const varsResolver = createVarsResolver<TooltipFactory>((theme, { radius, color }) => ({
-  '--tooltip-radius': getRadius(radius),
-  '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+  tooltip: {
+    '--tooltip-radius': getRadius(radius),
+    '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+  },
 }));
 
 export const Tooltip = factory<TooltipFactory>((_props, ref) => {
@@ -171,13 +172,8 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     styles,
     unstyled,
     rootSelector: 'tooltip',
-  });
-
-  const _vars = useVars<TooltipFactory>({
-    name: 'Tooltip',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   if (!isElement(children)) {
@@ -203,7 +199,6 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
               {...others}
               variant={variant}
               mod={{ multiline }}
-              vars={_vars}
               {...tooltip.getFloatingProps({
                 ref: tooltip.floating,
                 className: getStyles('tooltip').className,

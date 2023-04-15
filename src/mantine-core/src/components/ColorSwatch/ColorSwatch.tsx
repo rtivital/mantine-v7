@@ -9,7 +9,6 @@ import {
   rem,
   useProps,
   useStyles,
-  useVars,
   createVarsResolver,
   PolymorphicFactory,
 } from '../../core';
@@ -22,7 +21,9 @@ export type ColorSwatchStylesNames =
   | 'colorOverlay'
   | 'childrenOverlay';
 export type ColorSwatchVariant = string;
-export type ColorSwatchCssVariables = '--cs-radius' | '--cs-size';
+export type ColorSwatchCssVariables = {
+  root: '--cs-radius' | '--cs-size';
+};
 
 export interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFactory> {
   /** Color to display */
@@ -57,8 +58,10 @@ const defaultProps: Partial<ColorSwatchProps> = {
 };
 
 const varsResolver = createVarsResolver<ColorSwatchFactory>((_, { radius, size }) => ({
-  '--cs-radius': getRadius(radius),
-  '--cs-size': rem(size),
+  root: {
+    '--cs-radius': getRadius(radius),
+    '--cs-size': rem(size),
+  },
 }));
 
 export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((_props, ref) => {
@@ -88,13 +91,8 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((_props, ref) 
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<ColorSwatchFactory>({
-    name: 'ColorSwatch',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   return (
@@ -103,7 +101,6 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((_props, ref) 
       variant={variant}
       size={size}
       {...getStyles('root', { focusable: true })}
-      vars={_vars}
       {...others}
     >
       <span {...getStyles('alphaOverlay')} />

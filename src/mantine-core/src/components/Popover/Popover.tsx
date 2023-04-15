@@ -12,7 +12,6 @@ import {
   createVarsResolver,
   getRadius,
   getShadow,
-  useVars,
   StylesApiProps,
 } from '../../core';
 import { TransitionOverride } from '../Transition';
@@ -31,7 +30,9 @@ import { PopoverDropdown } from './PopoverDropdown/PopoverDropdown';
 import classes from './Popover.module.css';
 
 export type PopoverStylesNames = 'dropdown' | 'arrow';
-export type PopoverCssVariables = '--popover-radius' | '--popover-shadow';
+export type PopoverCssVariables = {
+  dropdown: '--popover-radius' | '--popover-shadow';
+};
 
 export interface __PopoverProps {
   /** Dropdown position relative to the target element, `'bottom'` by default */
@@ -164,8 +165,10 @@ const defaultProps: Partial<PopoverProps> = {
 };
 
 const varsResolver = createVarsResolver<PopoverFactory>((_, { radius, shadow }) => ({
-  '--popover-radius': getRadius(radius),
-  '--popover-shadow': getShadow(shadow),
+  dropdown: {
+    '--popover-radius': getRadius(radius),
+    '--popover-shadow': getShadow(shadow),
+  },
 }));
 
 export function Popover(_props: PopoverProps) {
@@ -220,13 +223,8 @@ export function Popover(_props: PopoverProps) {
     styles,
     unstyled,
     rootSelector: 'dropdown',
-  });
-
-  const _vars = useVars<PopoverFactory>({
-    name: 'PopoverDropdown',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const arrowRef = useRef<HTMLDivElement | null>(null);
@@ -314,7 +312,6 @@ export function Popover(_props: PopoverProps) {
         variant,
         keepMounted,
         getStyles,
-        vars: _vars,
       }}
     >
       {children}

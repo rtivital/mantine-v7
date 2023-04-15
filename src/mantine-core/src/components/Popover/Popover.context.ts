@@ -5,7 +5,6 @@ import {
   ClassNames,
   MantineRadius,
   GetStylesApi,
-  CssVariable,
 } from '../../core';
 import { FloatingPosition, ArrowPosition } from '../Floating';
 import { TransitionOverride } from '../Transition';
@@ -53,7 +52,6 @@ interface PopoverContext {
   variant: string | undefined;
   keepMounted: boolean | undefined;
   getStyles: GetStylesApi<PopoverFactory>;
-  vars: Record<CssVariable, string | undefined>;
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContext>(

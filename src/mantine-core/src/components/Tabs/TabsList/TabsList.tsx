@@ -63,7 +63,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
         inverted: ctx.inverted,
       }}
       aria-orientation={ctx.orientation}
-      vars={{ '--tabs-justify': justify }}
+      __vars={{ '--tabs-justify': justify }}
     >
       {children}
     </Box>

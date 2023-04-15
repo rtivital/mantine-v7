@@ -10,7 +10,6 @@ import {
   StylesApiProps,
   useStyles,
   factory,
-  useVars,
   getSize,
   createVarsResolver,
   Factory,
@@ -23,7 +22,9 @@ import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
 export type LoaderVariant = string;
-export type LoaderCssVariables = '--loader-size' | '--loader-color';
+export type LoaderCssVariables = {
+  root: '--loader-size' | '--loader-color';
+};
 
 export interface LoaderProps
   extends BoxProps,
@@ -61,8 +62,10 @@ const defaultProps: Partial<LoaderProps> = {
 };
 
 const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) => ({
-  '--loader-size': getSize(size, 'loader-size'),
-  '--loader-color': getThemeColor(color, theme),
+  root: {
+    '--loader-size': getSize(size, 'loader-size'),
+    '--loader-color': getThemeColor(color, theme),
+  },
 }));
 
 export const Loader = factory<LoaderFactory>((_props, ref) => {
@@ -82,13 +85,6 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const _vars = useVars<LoaderFactory>({
-    name: 'Loader',
-    resolver: varsResolver,
-    vars,
-    props,
-  });
-
   const getStyles = useStyles<LoaderFactory>({
     name: 'Loader',
     props,
@@ -98,6 +94,8 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   const theme = useMantineTheme();
@@ -110,7 +108,6 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
       component={loaders![loader]}
       variant={variant}
       size={size}
-      vars={_vars}
       {...others}
     />
   );

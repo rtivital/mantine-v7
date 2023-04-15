@@ -7,7 +7,6 @@ import {
   MantineGradient,
   useStyles,
   useProps,
-  useVars,
   getGradient,
   BoxMod,
   packMod,
@@ -32,7 +31,9 @@ function getTextTruncate(truncate: TextTruncate | undefined) {
 
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
-export type TextCssVariables = '--text-gradient' | '--text-line-clamp';
+export type TextCssVariables = {
+  root: '--text-gradient' | '--text-line-clamp';
+};
 
 export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   __staticSelector?: string;
@@ -73,8 +74,10 @@ const defaultProps: Partial<TextProps> = {
 };
 
 const varsResolver = createVarsResolver<TextFactory>((theme, { variant, lineClamp, gradient }) => ({
-  '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
-  '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+  root: {
+    '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
+    '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+  },
 }));
 
 export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
@@ -97,14 +100,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
     mod,
     __size,
     ...others
-  } = useProps('Text', defaultProps, props);
-
-  const _vars = useVars<TextFactory>({
-    name: 'Text',
-    resolver: varsResolver,
-    vars,
-    props,
-  });
+  } = props;
 
   const getStyles = useStyles<TextFactory>({
     name: ['Text', __staticSelector],
@@ -115,6 +111,8 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   return (
@@ -132,7 +130,6 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
         },
         ...packMod(mod),
       ]}
-      vars={_vars}
       size={__size}
       {...others}
     />

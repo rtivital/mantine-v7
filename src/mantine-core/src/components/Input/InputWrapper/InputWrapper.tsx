@@ -9,16 +9,32 @@ import {
   useStyles,
   MantineSize,
   Factory,
+  createVarsResolver,
+  getFontSize,
+  rem,
 } from '../../../core';
-import { InputLabel, InputLabelStylesNames } from '../InputLabel/InputLabel';
+import {
+  InputLabel,
+  InputLabelStylesNames,
+  InputLabelCssVariables,
+} from '../InputLabel/InputLabel';
 import {
   InputDescription,
   InputDescriptionStylesNames,
+  InputDescriptionCssVariables,
 } from '../InputDescription/InputDescription';
-import { InputError, InputErrorStylesNames } from '../InputError/InputError';
+import {
+  InputError,
+  InputErrorStylesNames,
+  InputErrorCssVariables,
+} from '../InputError/InputError';
 import { InputWrapperProvider } from '../InputWrapper.context';
 import { getInputOffsets } from './get-input-offsets/get-input-offsets';
 import classes from './InputWrapper.module.css';
+
+export type InputWrapperCssVariables = InputLabelCssVariables &
+  InputErrorCssVariables &
+  InputDescriptionCssVariables;
 
 export type InputWrapperStylesNames =
   | 'root'
@@ -82,6 +98,7 @@ export type InputWrapperFactory = Factory<{
   props: InputWrapperProps;
   ref: HTMLDivElement;
   stylesNames: InputWrapperStylesNames;
+  vars: InputWrapperCssVariables;
 }>;
 
 const defaultProps: Partial<InputWrapperProps> = {
@@ -90,6 +107,21 @@ const defaultProps: Partial<InputWrapperProps> = {
   inputContainer: (children) => children,
   inputWrapperOrder: ['label', 'description', 'input', 'error'],
 };
+
+const varsResolver = createVarsResolver<InputWrapperFactory>((_, { size }) => ({
+  label: {
+    '--input-label-size': getFontSize(size),
+    '--input-asterisk-color': 'var(--mantine-color-red-filled)',
+  },
+
+  error: {
+    '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  },
+
+  description: {
+    '--input-description-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  },
+}));
 
 export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   const props = useProps('InputWrapper', defaultProps, _props);
@@ -129,6 +161,8 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   const sharedProps = {

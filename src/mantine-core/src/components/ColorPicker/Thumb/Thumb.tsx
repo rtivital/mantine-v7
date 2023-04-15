@@ -15,7 +15,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
       <Box
         ref={ref}
         {...getStyles('thumb', { style })}
-        vars={{
+        __vars={{
           '--thumb-size': getSize(size, 'thumb-size'),
           '--thumb-y-offset': `${position.y * 100}%`,
           '--thumb-x-offset': `${position.x * 100}%`,

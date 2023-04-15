@@ -35,7 +35,7 @@ export function Track({
         <Box {...getStyles('track')} mod={{ inverted, disabled }}>
           <Box
             mod={{ inverted, disabled }}
-            vars={{
+            __vars={{
               '--slider-bar-width': `calc(${filled}% + var(--slider-size))`,
               '--slider-bar-offset': `calc(${offset}% - var(--slider-size))`,
             }}

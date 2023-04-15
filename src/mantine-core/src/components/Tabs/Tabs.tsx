@@ -8,7 +8,6 @@ import {
   StylesApiProps,
   factory,
   useProps,
-  useVars,
   getSafeId,
   useStyles,
   ElementProps,
@@ -30,7 +29,9 @@ export type TabsStylesNames =
   | TabsTabStylesNames;
 
 export type TabsVariant = 'default' | 'outline' | 'pills';
-export type TabsCssVariables = '--tabs-color' | '--tabs-radius';
+export type TabsCssVariables = {
+  root: '--tabs-color' | '--tabs-radius';
+};
 
 export interface TabsProps
   extends BoxProps,
@@ -108,8 +109,10 @@ const defaultProps: Partial<TabsProps> = {
 };
 
 const varsResolver = createVarsResolver<TabsFactory>((theme, { radius, color }) => ({
-  '--tabs-radius': getRadius(radius),
-  '--tabs-color': getThemeColor(color, theme),
+  root: {
+    '--tabs-radius': getRadius(radius),
+    '--tabs-color': getThemeColor(color, theme),
+  },
 }));
 
 export const Tabs = factory<TabsFactory>((_props, ref) => {
@@ -157,13 +160,8 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<TabsFactory>({
-    name: 'Tabs',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   return (
@@ -192,7 +190,6 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
         ref={ref}
         id={uid}
         variant={variant}
-        vars={_vars}
         mod={{
           orientation,
           inverted: orientation === 'horizontal' && inverted,

@@ -7,15 +7,12 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
-  createVarsResolver,
   Factory,
 } from '../../../core';
 import classes from './InputPlaceholder.module.css';
 
 export type InputPlaceholderStylesNames = 'placeholder';
 export type InputPlaceholderVariant = string;
-export type InputPlaceholderCssVariables = '--input-placeholder-color';
 
 export interface InputPlaceholderProps
   extends BoxProps,
@@ -28,15 +25,10 @@ export type InputPlaceholderFactory = Factory<{
   props: InputPlaceholderProps;
   ref: HTMLSpanElement;
   stylesNames: InputPlaceholderStylesNames;
-  vars: InputPlaceholderCssVariables;
   variant: InputPlaceholderVariant;
 }>;
 
 const defaultProps: Partial<InputPlaceholderProps> = {};
-
-const varsResolver = createVarsResolver<InputPlaceholderFactory>(() => ({
-  '--input-placeholder-color': 'var(--mantine-color-placeholder)',
-}));
 
 export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) => {
   const props = useProps('InputPlaceholder', defaultProps, _props);
@@ -64,22 +56,8 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) =
     rootSelector: 'placeholder',
   });
 
-  const _vars = useVars<InputPlaceholderFactory>({
-    name: 'InputPlaceholder',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
-
   return (
-    <Box
-      {...getStyles('placeholder')}
-      component="span"
-      variant={variant}
-      ref={ref}
-      vars={_vars}
-      {...others}
-    />
+    <Box {...getStyles('placeholder')} component="span" variant={variant} ref={ref} {...others} />
   );
 });
 

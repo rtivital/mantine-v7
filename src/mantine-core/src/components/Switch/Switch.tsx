@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineColor,
   MantineSize,
   MantineRadius,
@@ -32,14 +31,16 @@ export type SwitchStylesNames =
   | 'input'
   | InlineInputStylesNames;
 export type SwitchVariant = string;
-export type SwitchCssVariables =
-  | '--switch-radius'
-  | '--switch-height'
-  | '--switch-width'
-  | '--switch-thumb-size'
-  | '--switch-label-font-size'
-  | '--switch-track-label-padding'
-  | '--switch-color';
+export type SwitchCssVariables = {
+  root:
+    | '--switch-radius'
+    | '--switch-height'
+    | '--switch-width'
+    | '--switch-thumb-size'
+    | '--switch-label-font-size'
+    | '--switch-track-label-padding'
+    | '--switch-color';
+};
 
 export interface SwitchProps
   extends BoxProps,
@@ -100,13 +101,15 @@ const defaultProps: Partial<SwitchProps> = {
 };
 
 const varsResolver = createVarsResolver<SwitchFactory>((theme, { radius, color, size }) => ({
-  '--switch-radius': getRadius(radius),
-  '--switch-height': getSize(size, 'switch-height'),
-  '--switch-width': getSize(size, 'switch-width'),
-  '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
-  '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
-  '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
-  '--switch-color': getThemeColor(color, theme),
+  root: {
+    '--switch-radius': getRadius(radius),
+    '--switch-height': getSize(size, 'switch-height'),
+    '--switch-width': getSize(size, 'switch-width'),
+    '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
+    '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
+    '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
+    '--switch-color': getThemeColor(color, theme),
+  },
 }));
 
 export const Switch = factory<SwitchFactory>((_props, ref) => {
@@ -151,13 +154,8 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<SwitchFactory>({
-    name: 'Switch',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const { styleProps, rest } = extractStyleProps(others);
@@ -181,7 +179,6 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       {...getStyles('root')}
       __staticSelector="Switch"
       __stylesApiProps={props}
-      style={style}
       id={uuid}
       size={_size}
       labelPosition={labelPosition}
@@ -194,7 +191,6 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
-      vars={_vars}
       {...styleProps}
       {...wrapperProps}
     >

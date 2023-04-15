@@ -10,6 +10,9 @@ import {
   getStyleObject,
   useMantineTheme,
   Factory,
+  createVarsResolver,
+  getRadius,
+  getThemeColor,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import { TooltipBaseProps, TooltipCssVariables, TooltipStylesNames } from '../Tooltip.types';
@@ -35,6 +38,13 @@ const defaultProps: Partial<TooltipFloatingProps> = {
   position: 'right',
   zIndex: getDefaultZIndex('popover'),
 };
+
+const varsResolver = createVarsResolver<TooltipFloatingFactory>((theme, { radius, color }) => ({
+  tooltip: {
+    '--tooltip-radius': getRadius(radius),
+    '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
+  },
+}));
 
 export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => {
   const props = useProps('TooltipFloating', defaultProps, _props);
@@ -72,6 +82,8 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
     styles,
     unstyled,
     rootSelector: 'tooltip',
+    vars,
+    varsResolver,
   });
 
   const { handleMouseMove, x, y, opened, boundaryRef, floating, setOpened } = useFloatingTooltip({
@@ -103,16 +115,17 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
       <OptionalPortal {...portalProps} withinPortal={withinPortal}>
         <Box
           {...others}
-          {...getStyles('tooltip')}
+          {...getStyles('tooltip', {
+            style: {
+              ...getStyleObject(style, theme),
+              zIndex,
+              display: !disabled && opened ? 'block' : 'none',
+              top: (y && Math.round(y)) ?? '',
+              left: (x && Math.round(x)) ?? '',
+            },
+          })}
           variant={variant}
           ref={floating}
-          style={{
-            ...getStyleObject(style, theme),
-            zIndex,
-            display: !disabled && opened ? 'block' : 'none',
-            top: (y && Math.round(y)) ?? '',
-            left: (x && Math.round(x)) ?? '',
-          }}
         >
           {label}
         </Box>

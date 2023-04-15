@@ -80,10 +80,9 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       <Box
         {...getStyles('root')}
         ref={ref}
-        vars={{
+        __vars={{
           '--label-fz': getFontSize(size),
           '--label-lh': getSize(size, 'label-lh'),
-          ...vars,
         }}
         mod={{ 'label-position': labelPosition }}
         variant={variant}

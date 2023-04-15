@@ -6,7 +6,6 @@ import {
   factory,
   ElementProps,
   useProps,
-  useVars,
   useStyles,
   MantineColor,
   createVarsResolver,
@@ -17,7 +16,9 @@ import classes from './Mark.module.css';
 
 export type MarkStylesNames = 'root';
 export type MarkVariant = string;
-export type MarkCssVariables = '--mark-bg-dark' | '--mark-bg-light';
+export type MarkCssVariables = {
+  root: '--mark-bg-dark' | '--mark-bg-light';
+};
 
 export interface MarkProps extends BoxProps, StylesApiProps<MarkFactory>, ElementProps<'mark'> {
   /** Key of `theme.colors` or any valid CSS color, `yellow` by default */
@@ -36,8 +37,10 @@ const defaultProps: Partial<MarkProps> = {
 };
 
 const varsResolver = createVarsResolver<MarkFactory>((theme, { color }) => ({
-  '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),
-  '--mark-bg-light': getMarkColor({ color, theme, defaultShade: 2 }),
+  root: {
+    '--mark-bg-dark': getMarkColor({ color, theme, defaultShade: 5 }),
+    '--mark-bg-light': getMarkColor({ color, theme, defaultShade: 2 }),
+  },
 }));
 
 export const Mark = factory<MarkFactory>((_props, ref) => {
@@ -53,25 +56,11 @@ export const Mark = factory<MarkFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<MarkFactory>({
-    name: 'Mark',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
-  return (
-    <Box
-      component="mark"
-      ref={ref}
-      variant={variant}
-      {...getStyles('root')}
-      vars={_vars}
-      {...others}
-    />
-  );
+  return <Box component="mark" ref={ref} variant={variant} {...getStyles('root')} {...others} />;
 });
 
 Mark.displayName = '@mantine/core/Mark';

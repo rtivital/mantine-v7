@@ -51,7 +51,7 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
       <Box
         {...getStyles('swatches')}
         ref={ref}
-        vars={{ '--swatch-size': `${100 / swatchesPerRow!}%` }}
+        __vars={{ '--swatch-size': `${100 / swatchesPerRow!}%` }}
         {...others}
       >
         {colors}

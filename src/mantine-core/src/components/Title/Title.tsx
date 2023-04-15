@@ -5,7 +5,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   createVarsResolver,
   Factory,
 } from '../../core';
@@ -18,7 +17,9 @@ export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'];
 
 export type TitleStylesNames = 'root';
 export type TitleVariant = TextVariant;
-export type TitleCssVariables = '--title-fw' | '--title-lh' | '--title-fz';
+export type TitleCssVariables = {
+  root: '--title-fw' | '--title-lh' | '--title-fz';
+};
 
 export interface TitleProps
   extends Omit<TextProps, 'vars' | 'styles' | 'classNames'>,
@@ -46,9 +47,11 @@ const defaultProps: Partial<TitleProps> = {
 const varsResolver = createVarsResolver<TitleFactory>((_, { order, size }) => {
   const sizeVariables = getTitleSize(order!, size);
   return {
-    '--title-fw': sizeVariables.fontWeight,
-    '--title-lh': sizeVariables.lineHeight,
-    '--title-fz': sizeVariables.fontSize,
+    root: {
+      '--title-fw': sizeVariables.fontWeight,
+      '--title-lh': sizeVariables.lineHeight,
+      '--title-fz': sizeVariables.fontSize,
+    },
   };
 });
 
@@ -77,13 +80,8 @@ export const Title = factory<TitleFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<TitleFactory>({
-    name: 'Title',
-    resolver: varsResolver,
     vars,
-    props,
+    varsResolver,
   });
 
   if (![1, 2, 3, 4, 5, 6].includes(order!)) {
@@ -96,7 +94,6 @@ export const Title = factory<TitleFactory>((_props, ref) => {
       component={`h${order!}`}
       variant={variant}
       ref={ref}
-      vars={_vars}
       inherit={inherit || false}
       {...others}
       mod={{ order }}

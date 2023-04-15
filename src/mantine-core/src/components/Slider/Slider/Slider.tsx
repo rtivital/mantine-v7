@@ -17,7 +17,6 @@ import {
   getThemeColor,
   getRadius,
   rem,
-  useVars,
 } from '../../../core';
 import { MantineTransition } from '../../Transition';
 import { SliderRoot } from '../SliderRoot/SliderRoot';
@@ -140,11 +139,13 @@ const defaultProps: Partial<SliderProps> = {
 
 const varsResolver = createVarsResolver<SliderFactory>(
   (theme, { size, color, thumbSize, radius }) => ({
-    '--slider-size': getSize(size, 'slider-size'),
-    '--slider-color': getThemeColor(color, theme),
-    '--slider-radius': getRadius(radius),
-    '--slider-thumb-size':
-      typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+    root: {
+      '--slider-size': getSize(size, 'slider-size'),
+      '--slider-color': getThemeColor(color, theme),
+      '--slider-radius': getRadius(radius),
+      '--slider-thumb-size':
+        typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+    },
   })
 );
 
@@ -190,13 +191,8 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     className,
     styles,
     style,
-  });
-
-  const _vars = useVars<SliderFactory>({
-    name: 'Slider',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const { dir } = useDirection();
@@ -315,7 +311,6 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         onMouseDownCapture={() => root.current?.focus()}
         size={size!}
         disabled={disabled}
-        vars={_vars}
       >
         <Track
           inverted={inverted}

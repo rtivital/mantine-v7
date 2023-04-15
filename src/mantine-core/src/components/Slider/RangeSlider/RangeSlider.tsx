@@ -17,7 +17,6 @@ import {
   getRadius,
   rem,
   useStyles,
-  useVars,
 } from '../../../core';
 import { MantineTransition } from '../../Transition';
 import {
@@ -135,11 +134,13 @@ export type RangeSliderFactory = Factory<{
 
 const varsResolver = createVarsResolver<RangeSliderFactory>(
   (theme, { size, color, thumbSize, radius }) => ({
-    '--slider-size': getSize(size, 'slider-size'),
-    '--slider-color': getThemeColor(color, theme),
-    '--slider-radius': getRadius(radius),
-    '--slider-thumb-size':
-      typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+    root: {
+      '--slider-size': getSize(size, 'slider-size'),
+      '--slider-color': getThemeColor(color, theme),
+      '--slider-radius': getRadius(radius),
+      '--slider-thumb-size':
+        typeof thumbSize !== 'undefined' ? rem(thumbSize) : 'calc(var(--slider-size) * 2)',
+    },
   })
 );
 
@@ -205,13 +206,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     className,
     styles,
     style,
-  });
-
-  const _vars = useVars<RangeSliderFactory>({
-    name: 'Slider',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const { dir } = useDirection();
@@ -424,7 +420,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 
   return (
     <SliderProvider value={{ getStyles }}>
-      <SliderRoot {...others} size={size!} ref={ref} disabled={disabled} vars={_vars}>
+      <SliderRoot {...others} size={size!} ref={ref} disabled={disabled}>
         <Track
           offset={positions[0]}
           marksOffset={_value[0]}

@@ -91,7 +91,7 @@ export function Saturation({
       aria-valuetext={convertHsvaTo('rgba', value)}
       tabIndex={focusable ? 0 : -1}
       onKeyDown={handleKeyDown}
-      vars={{
+      __vars={{
         '--saturation-height': getSize(size, 'saturation-height'),
         '--thumb-size': getSize(size, 'thumb-size'),
       }}

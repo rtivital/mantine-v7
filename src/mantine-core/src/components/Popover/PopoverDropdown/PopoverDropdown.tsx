@@ -96,7 +96,6 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
                   ...packStyle(style),
                 ],
               })}
-              vars={ctx.vars}
             >
               {children}
 

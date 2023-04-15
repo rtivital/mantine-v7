@@ -24,7 +24,7 @@ export function Marks({ marks, min, max, disabled, value, offset, inverted }: Ma
   const items = marks.map((mark, index) => (
     <Box
       {...getStyles('markWrapper')}
-      vars={{ '--mark-offset': `${getPosition({ value: mark.value, min, max })}%` }}
+      __vars={{ '--mark-offset': `${getPosition({ value: mark.value, min, max })}%` }}
       key={index}
     >
       <Box

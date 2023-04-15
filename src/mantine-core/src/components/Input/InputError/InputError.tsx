@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineSize,
   getFontSize,
   rem,
@@ -19,7 +18,9 @@ import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputErrorStylesNames = 'error';
 export type InputErrorVariant = string;
-export type InputErrorCssVariables = '--input-error-size';
+export type InputErrorCssVariables = {
+  error: '--input-error-size';
+};
 
 export interface InputErrorProps
   extends BoxProps,
@@ -44,7 +45,9 @@ const defaultProps: Partial<InputErrorProps> = {
 };
 
 const varsResolver = createVarsResolver<InputErrorFactory>((_, { size }) => ({
-  '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  error: {
+    '--input-error-size': `calc(${getFontSize(size)} - ${rem(2)})`,
+  },
 }));
 
 export const InputError = factory<InputErrorFactory>((_props, ref) => {
@@ -60,7 +63,7 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     __staticSelector,
     variant,
     ...others
-  } = useProps('InputError', defaultProps, props);
+  } = props;
 
   const _getStyles = useStyles<InputErrorFactory>({
     name: ['InputWrapper', __staticSelector],
@@ -72,17 +75,12 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
     styles,
     unstyled,
     rootSelector: 'error',
+    vars,
+    varsResolver,
   });
 
   const ctx = useInputWrapperContext();
   const getStyles = ctx.getStyles || _getStyles;
-
-  const _vars = useVars<InputErrorFactory>({
-    name: 'InputError',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
 
   return (
     <Box
@@ -91,7 +89,6 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
       variant={variant}
       size={size}
       {...getStyles('error')}
-      vars={_vars}
       {...others}
     />
   );

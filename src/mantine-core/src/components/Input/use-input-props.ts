@@ -39,6 +39,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     inputWrapperOrder,
     withAsterisk,
     variant,
+    vars,
     ...others
   } = props;
 

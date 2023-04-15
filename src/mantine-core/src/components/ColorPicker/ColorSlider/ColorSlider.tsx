@@ -99,7 +99,7 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>((props, 
       aria-valuemin={0}
       tabIndex={focusable ? 0 : -1}
       onKeyDown={handleKeyDown}
-      vars={{ '--thumb-size': getSize(size, 'thumb-size'), '--thumb-bg': thumbColor }}
+      __vars={{ '--thumb-size': getSize(size, 'thumb-size'), '--thumb-bg': thumbColor }}
       data-focus-ring={theme.focusRing}
     >
       {layers}

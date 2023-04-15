@@ -8,7 +8,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   useDirection,
   rem,
   packStyle,
@@ -19,7 +18,9 @@ import classes from './ScrollArea.module.css';
 
 export type ScrollAreaStylesNames = 'root' | 'viewport' | 'scrollbar' | 'thumb' | 'corner';
 export type ScrollAreaVariant = string;
-export type ScrollAreaCssVariables = '--scrollarea-scrollbar-size';
+export type ScrollAreaCssVariables = {
+  root: '--scrollarea-scrollbar-size';
+};
 
 export interface ScrollAreaProps
   extends BoxProps,
@@ -73,7 +74,9 @@ const defaultProps: Partial<ScrollAreaProps> = {
 };
 
 const varsResolver = createVarsResolver<ScrollAreaFactory>((_, { scrollbarSize }) => ({
-  '--scrollarea-scrollbar-size': rem(scrollbarSize),
+  root: {
+    '--scrollarea-scrollbar-size': rem(scrollbarSize),
+  },
 }));
 
 export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
@@ -100,13 +103,6 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
   const { dir } = useDirection();
   const [scrollbarHovered, setScrollbarHovered] = useState(false);
 
-  const _vars = useVars<ScrollAreaFactory>({
-    name: 'ScrollArea',
-    resolver: varsResolver,
-    vars,
-    props,
-  });
-
   const getStyles = useStyles<ScrollAreaFactory>({
     name: 'ScrollArea',
     props,
@@ -116,6 +112,8 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   return (
@@ -126,7 +124,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
       ref={ref}
       asChild
     >
-      <Box {...getStyles('root')} variant={variant} vars={_vars} {...others}>
+      <Box {...getStyles('root')} variant={variant} {...others}>
         <Rsa.Viewport
           {...viewportProps}
           {...getStyles('viewport')}

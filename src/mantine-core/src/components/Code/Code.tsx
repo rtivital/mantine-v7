@@ -8,7 +8,6 @@ import {
   useProps,
   useStyles,
   MantineColor,
-  useVars,
   getThemeColor,
   createVarsResolver,
   Factory,
@@ -17,7 +16,9 @@ import classes from './Code.module.css';
 
 export type CodeStylesNames = 'root';
 export type CodeVariant = string;
-export type CodeCssVariables = '--code-bg';
+export type CodeCssVariables = {
+  root: '--code-bg';
+};
 
 export interface CodeProps extends BoxProps, StylesApiProps<CodeFactory>, ElementProps<'code'> {
   /** Key of `theme.colors` or any valid CSS color, controls background color of the code, by default value is calculated based on color scheme */
@@ -38,7 +39,9 @@ export type CodeFactory = Factory<{
 const defaultProps: Partial<CodeProps> = {};
 
 const varsResolver = createVarsResolver<CodeFactory>((theme, { color }) => ({
-  '--code-bg': color ? getThemeColor(color, theme) : undefined,
+  root: {
+    '--code-bg': color ? getThemeColor(color, theme) : undefined,
+  },
 }));
 
 export const Code = factory<CodeFactory>((_props, ref) => {
@@ -55,13 +58,8 @@ export const Code = factory<CodeFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<CodeFactory>({
-    name: 'Code',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   return (
@@ -69,9 +67,8 @@ export const Code = factory<CodeFactory>((_props, ref) => {
       component={block ? 'pre' : 'code'}
       variant={variant}
       ref={ref}
-      {...getStyles('root')}
       mod={{ block }}
-      vars={_vars}
+      {...getStyles('root')}
       {...others}
       dir="ltr"
     />

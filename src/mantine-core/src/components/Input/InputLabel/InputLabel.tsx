@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineSize,
   getFontSize,
   createVarsResolver,
@@ -18,7 +17,9 @@ import classes from '../InputWrapper/InputWrapper.module.css';
 
 export type InputLabelStylesNames = 'label' | 'required';
 export type InputLabelVariant = string;
-export type InputLabelCssVariables = '--input-asterisk-color' | '--input-label-size';
+export type InputLabelCssVariables = {
+  label: '--input-asterisk-color' | '--input-label-size';
+};
 
 export interface InputLabelProps
   extends BoxProps,
@@ -50,8 +51,10 @@ const defaultProps: Partial<InputLabelProps> = {
 };
 
 const varsResolver = createVarsResolver<InputLabelFactory>((_, { size }) => ({
-  '--input-label-size': getFontSize(size),
-  '--input-asterisk-color': 'var(--mantine-color-red-filled)',
+  label: {
+    '--input-label-size': getFontSize(size),
+    '--input-asterisk-color': 'var(--mantine-color-red-filled)',
+  },
 }));
 
 export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
@@ -84,17 +87,12 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
     styles,
     unstyled,
     rootSelector: 'label',
+    vars,
+    varsResolver,
   });
 
   const ctx = useInputWrapperContext();
   const getStyles = ctx.getStyles || _getStyles;
-
-  const _vars = useVars<InputLabelFactory>({
-    name: 'InputLabel',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
 
   return (
     <Box
@@ -111,7 +109,6 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
           event.preventDefault();
         }
       }}
-      vars={_vars}
       {...others}
     >
       {children}

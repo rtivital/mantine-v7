@@ -6,7 +6,6 @@ import {
   StylesApiProps,
   useProps,
   useStyles,
-  useVars,
   rem,
   createVarsResolver,
   Factory,
@@ -15,7 +14,9 @@ import classes from './ActionIconGroup.module.css';
 
 export type ActionIconGroupStylesNames = 'root';
 export type ActionIconGroupVariant = string;
-export type ActionIconGroupCssVariables = '--ai-border-width';
+export type ActionIconGroupCssVariables = {
+  root: '--ai-border-width';
+};
 
 export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupFactory> {
   /** `<ActionIcon />` components */
@@ -42,7 +43,7 @@ const defaultProps: Partial<ActionIconGroupProps> = {
 };
 
 const varsResolver = createVarsResolver<ActionIconGroupFactory>((_, { borderWidth }) => ({
-  '--ai-border-width': rem(borderWidth),
+  root: { '--ai-border-width': rem(borderWidth) },
 }));
 
 export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => {
@@ -60,13 +61,6 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
     ...others
   } = useProps('ActionIconGroup', defaultProps, _props);
 
-  const _vars = useVars<ActionIconGroupFactory>({
-    name: 'ActionIconGroup',
-    props,
-    resolver: varsResolver,
-    vars,
-  });
-
   const getStyles = useStyles<ActionIconGroupFactory>({
     name: 'ActionIconGroup',
     props,
@@ -76,6 +70,8 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   return (
@@ -84,7 +80,6 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
       ref={ref}
       variant={variant}
       mod={{ 'data-orientation': orientation }}
-      vars={_vars}
       role="group"
       {...others}
     />

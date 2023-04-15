@@ -11,7 +11,6 @@ import {
   extractStyleProps,
   getSize,
   getFontSize,
-  useVars,
   getRadius,
   rem,
   createVarsResolver,
@@ -34,17 +33,19 @@ export type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 
 export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
 export type InputVariant = 'default' | 'filled' | 'unstyled';
-export type InputCssVariables =
-  | '--input-height'
-  | '--input-fz'
-  | '--input-radius'
-  | '--input-left-section-width'
-  | '--input-right-section-width'
-  | '--input-left-section-pointer-events'
-  | '--input-right-section-pointer-events'
-  | '--input-padding-y'
-  | '--input-margin-top'
-  | '--input-margin-bottom';
+export type InputCssVariables = {
+  wrapper:
+    | '--input-height'
+    | '--input-fz'
+    | '--input-radius'
+    | '--input-left-section-width'
+    | '--input-right-section-width'
+    | '--input-left-section-pointer-events'
+    | '--input-right-section-pointer-events'
+    | '--input-padding-y'
+    | '--input-margin-top'
+    | '--input-margin-bottom';
+};
 
 export interface InputStylesCtx {
   offsetTop: boolean;
@@ -133,18 +134,20 @@ const defaultProps: Partial<InputProps> = {
 };
 
 const varsResolver = createVarsResolver<InputFactory>((_, props, ctx) => ({
-  '--input-margin-top': ctx.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
-  '--input-margin-bottom': ctx.offsetBottom ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
-  '--input-height': getSize(props.size, 'input-height'),
-  '--input-fz': getFontSize(props.size),
-  '--input-radius': getRadius(props.radius),
-  '--input-left-section-width':
-    props.leftSectionWidth !== undefined ? rem(props.leftSectionWidth) : undefined,
-  '--input-right-section-width':
-    props.rightSectionWidth !== undefined ? rem(props.rightSectionWidth) : undefined,
-  '--input-padding-y': props.multiline ? getSize(props.size, 'input-padding-y') : undefined,
-  '--input-left-section-pointer-events': props.leftSectionPointerEvents,
-  '--input-right-section-pointer-events': props.rightSectionPointerEvents,
+  wrapper: {
+    '--input-margin-top': ctx.offsetTop ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+    '--input-margin-bottom': ctx.offsetBottom ? 'calc(var(--mantine-spacing-xs) / 2)' : undefined,
+    '--input-height': getSize(props.size, 'input-height'),
+    '--input-fz': getFontSize(props.size),
+    '--input-radius': getRadius(props.radius),
+    '--input-left-section-width':
+      props.leftSectionWidth !== undefined ? rem(props.leftSectionWidth) : undefined,
+    '--input-right-section-width':
+      props.rightSectionWidth !== undefined ? rem(props.rightSectionWidth) : undefined,
+    '--input-padding-y': props.multiline ? getSize(props.size, 'input-padding-y') : undefined,
+    '--input-left-section-pointer-events': props.leftSectionPointerEvents,
+    '--input-right-section-pointer-events': props.rightSectionPointerEvents,
+  },
 }));
 
 export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
@@ -193,14 +196,8 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     unstyled,
     stylesCtx,
     rootSelector: 'wrapper',
-  });
-
-  const _vars = useVars<InputFactory>({
-    name: 'Input',
-    resolver: varsResolver,
-    props,
     vars,
-    stylesCtx,
+    varsResolver,
   });
 
   return (
@@ -218,7 +215,6 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       }}
       variant={variant}
       size={size}
-      vars={_vars}
     >
       {leftSection && (
         <div

@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useVars,
   MantineColor,
   MantineSpacing,
   getSpacing,
@@ -38,14 +37,16 @@ export type TableStylesNames =
   | 'caption';
 
 export type TableVariant = string;
-export type TableCssVariables =
-  | '--table-layout'
-  | '--table-border-color'
-  | '--table-caption-side'
-  | '--table-horizontal-spacing'
-  | '--table-vertical-spacing'
-  | '--table-striped-color'
-  | '--table-highlight-on-hover-color';
+export type TableCssVariables = {
+  table:
+    | '--table-layout'
+    | '--table-border-color'
+    | '--table-caption-side'
+    | '--table-horizontal-spacing'
+    | '--table-vertical-spacing'
+    | '--table-striped-color'
+    | '--table-highlight-on-hover-color';
+};
 
 export interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProps<'table'> {
   /** Value of `table-layout` style, `unset` by default */
@@ -123,17 +124,19 @@ const varsResolver = createVarsResolver<TableFactory>(
       highlightOnHover,
     }
   ) => ({
-    '--table-layout': layout,
-    '--table-caption-side': captionSide,
-    '--table-horizontal-spacing': getSpacing(horizontalSpacing),
-    '--table-vertical-spacing': getSpacing(verticalSpacing),
-    '--table-border-color': borderColor ? getThemeColor(borderColor, theme) : undefined,
-    '--table-striped-color':
-      striped && stripedColor ? getThemeColor(stripedColor, theme) : undefined,
-    '--table-highlight-on-hover-color':
-      highlightOnHover && highlightOnHoverColor
-        ? getThemeColor(highlightOnHoverColor, theme)
-        : undefined,
+    table: {
+      '--table-layout': layout,
+      '--table-caption-side': captionSide,
+      '--table-horizontal-spacing': getSpacing(horizontalSpacing),
+      '--table-vertical-spacing': getSpacing(verticalSpacing),
+      '--table-border-color': borderColor ? getThemeColor(borderColor, theme) : undefined,
+      '--table-striped-color':
+        striped && stripedColor ? getThemeColor(stripedColor, theme) : undefined,
+      '--table-highlight-on-hover-color':
+        highlightOnHover && highlightOnHoverColor
+          ? getThemeColor(highlightOnHoverColor, theme)
+          : undefined,
+    },
   })
 );
 
@@ -162,13 +165,6 @@ export const Table = factory<TableFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const _vars = useVars<TableFactory>({
-    name: 'Table',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
-
   const getStyles = useStyles<TableFactory>({
     name: 'Table',
     props,
@@ -179,6 +175,8 @@ export const Table = factory<TableFactory>((_props, ref) => {
     styles,
     unstyled,
     rootSelector: 'table',
+    vars,
+    varsResolver,
   });
 
   return (
@@ -197,7 +195,6 @@ export const Table = factory<TableFactory>((_props, ref) => {
         variant={variant}
         ref={ref}
         mod={{ 'data-with-table-border': withTableBorder }}
-        vars={_vars}
         {...getStyles('table')}
         {...others}
       />

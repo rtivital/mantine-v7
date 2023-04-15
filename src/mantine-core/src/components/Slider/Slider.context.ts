@@ -11,11 +11,9 @@ export type SliderStylesNames =
   | 'mark'
   | 'markLabel';
 
-export type SliderCssVariables =
-  | '--slider-size'
-  | '--slider-color'
-  | '--slider-thumb-size'
-  | '--slider-radius';
+export type SliderCssVariables = {
+  root: '--slider-size' | '--slider-color' | '--slider-thumb-size' | '--slider-radius';
+};
 
 export type SliderVariant = string;
 

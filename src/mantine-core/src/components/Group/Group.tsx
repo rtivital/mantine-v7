@@ -9,7 +9,6 @@ import {
   useStyles,
   MantineSpacing,
   getSpacing,
-  useVars,
   createVarsResolver,
   Factory,
 } from '../../core';
@@ -18,12 +17,14 @@ import classes from './Group.module.css';
 
 export type GroupStylesNames = 'root';
 export type GroupVariant = string;
-export type GroupCssVariables =
-  | '--group-gap'
-  | '--group-align'
-  | '--group-justify'
-  | '--group-wrap'
-  | '--group-child-width';
+export type GroupCssVariables = {
+  root:
+    | '--group-gap'
+    | '--group-align'
+    | '--group-justify'
+    | '--group-wrap'
+    | '--group-child-width';
+};
 
 export interface GroupStylesCtx {
   childWidth: string;
@@ -67,11 +68,13 @@ const defaultProps: Partial<GroupProps> = {
 
 const varsResolver = createVarsResolver<GroupFactory>(
   (_, { grow, preventGrowOverflow, gap, align, justify, wrap }, { childWidth }) => ({
-    '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
-    '--group-gap': getSpacing(gap),
-    '--group-align': align,
-    '--group-justify': justify,
-    '--group-wrap': wrap,
+    root: {
+      '--group-child-width': grow && preventGrowOverflow ? childWidth : undefined,
+      '--group-gap': getSpacing(gap),
+      '--group-align': align,
+      '--group-justify': justify,
+      '--group-wrap': wrap,
+    },
   })
 );
 
@@ -113,18 +116,12 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars<GroupFactory>({
-    name: 'Group',
-    resolver: varsResolver,
-    props,
-    stylesCtx,
     vars,
+    varsResolver,
   });
 
   return (
-    <Box {...getStyles('root')} ref={ref} variant={variant} mod={{ grow }} vars={_vars} {...others}>
+    <Box {...getStyles('root')} ref={ref} variant={variant} mod={{ grow }} {...others}>
       {filteredChildren}
     </Box>
   );
