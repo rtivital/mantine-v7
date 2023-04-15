@@ -28,6 +28,8 @@ const defaultOptions: GetStyleInput = {
   stylesCtx: undefined,
   styles: undefined,
   style: undefined,
+  vars: undefined,
+  varsResolver: undefined,
 };
 
 describe('@mantine/core/get-style', () => {
@@ -132,5 +134,23 @@ describe('@mantine/core/get-style', () => {
       background: 'blue',
       outlineColor: DEFAULT_THEME.colors.red[0],
     });
+  });
+
+  it('resolves vars', () => {
+    expect(
+      getStyle({
+        ...defaultOptions,
+        vars: (theme) => ({ root: { '--color': theme.colors.red[0] } }),
+      })
+    ).toStrictEqual({ '--color': DEFAULT_THEME.colors.red[0] });
+  });
+
+  it('resolves varsResolver', () => {
+    expect(
+      getStyle({
+        ...defaultOptions,
+        varsResolver: (theme) => ({ root: { '--color': theme.colors.red[0] } }),
+      })
+    ).toStrictEqual({ '--color': DEFAULT_THEME.colors.red[0] });
   });
 });

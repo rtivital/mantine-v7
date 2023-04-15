@@ -14,7 +14,7 @@ export function DemoArea({ withPadding = true, centered, maxWidth, children }: D
     <Box
       className={classes.demo}
       mod={{ 'with-padding': withPadding, centered: centered && !maxWidth }}
-      vars={{
+      __vars={{
         '--demo-max-width': maxWidth ? rem(maxWidth) : undefined,
         '--demo-margin-y': maxWidth && centered ? 'auto' : undefined,
       }}

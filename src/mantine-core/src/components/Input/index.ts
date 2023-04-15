@@ -38,7 +38,6 @@ export type {
   InputLabelVariant,
 } from './InputLabel/InputLabel';
 export type {
-  InputPlaceholderCssVariables,
   InputPlaceholderFactory,
   InputPlaceholderProps,
   InputPlaceholderStylesNames,

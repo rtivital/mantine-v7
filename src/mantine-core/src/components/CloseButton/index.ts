@@ -4,7 +4,6 @@ export type {
   CloseButtonProps,
   CloseButtonStylesNames,
   CloseButtonFactory,
-  CloseButtonCssVariables,
   CloseButtonVariant,
 } from './CloseButton';
 export type { CloseIconProps } from './CloseIcon';

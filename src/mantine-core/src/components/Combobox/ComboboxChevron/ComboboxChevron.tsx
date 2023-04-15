@@ -23,7 +23,7 @@ export function ComboboxChevron({
       xmlns="http://www.w3.org/2000/svg"
       mod={{ error, 'combobox-chevron': true }}
       className={cx(classes.root, className)}
-      vars={{ '--combobox-chevron-size': getSize(size, 'combobox-chevron-size') }}
+      __vars={{ '--combobox-chevron-size': getSize(size, 'combobox-chevron-size') }}
       {...others}
     >
       <path

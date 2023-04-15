@@ -17,7 +17,6 @@ import {
   ScrollArea,
   createVarsResolver,
   rem,
-  useVars,
   Factory,
 } from '@mantine/core';
 import { CopyIcon } from './CopyIcon';
@@ -41,7 +40,9 @@ export type CodeHighlightTabsStylesNames =
   | 'files';
 
 export type CodeHighlightTabsVariant = string;
-export type CodeHighlightTabsCssVariables = '--ch-max-collapsed-height';
+export type CodeHighlightTabsCssVariables = {
+  root: '--ch-max-collapsed-height';
+};
 
 export interface CodeHighlightTabsCode {
   language?: string;
@@ -116,7 +117,7 @@ const defaultProps: Partial<CodeHighlightTabsProps> = {
 };
 
 const varsResolver = createVarsResolver<CodeHighlightTabsFactory>((_, { maxCollapsedHeight }) => ({
-  '--ch-max-collapsed-height': rem(maxCollapsedHeight),
+  root: { '--ch-max-collapsed-height': rem(maxCollapsedHeight) },
 }));
 
 export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref) => {
@@ -156,13 +157,8 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
     classNames,
     styles,
     unstyled,
-  });
-
-  const _vars = useVars({
-    name: 'CodeHighlightTabs',
-    resolver: varsResolver,
-    props,
     vars,
+    varsResolver,
   });
 
   const [value, setValue] = useUncontrolled({
@@ -199,7 +195,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
   ));
 
   return (
-    <Box {...getStyles('root')} ref={ref} vars={_vars} {...others} dir="ltr">
+    <Box {...getStyles('root')} ref={ref} {...others} dir="ltr">
       {withHeader && (
         <div {...getStyles('header')}>
           <ScrollArea type="never" dir="ltr" offsetScrollbars={false}>
