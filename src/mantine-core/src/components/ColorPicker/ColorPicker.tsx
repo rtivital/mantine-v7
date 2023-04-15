@@ -38,9 +38,16 @@ export type ColorPickerStylesNames =
   | 'thumb'
   | 'swatches'
   | 'swatch';
+
 export type ColorPickerVariant = string;
 export type ColorPickerCssVariables = {
-  wrapper: '--cp-preview-size' | '--cp-width' | '--cp-body-spacing';
+  wrapper:
+    | '--cp-preview-size'
+    | '--cp-width'
+    | '--cp-body-spacing'
+    | '--cp-swatch-size'
+    | '--cp-thumb-size'
+    | '--cp-saturation-height';
 };
 
 export interface __ColorPickerProps {
@@ -114,13 +121,18 @@ const defaultProps: Partial<ColorPickerProps> = {
   __staticSelector: 'ColorPicker',
 };
 
-const varsResolver = createVarsResolver<ColorPickerFactory>((_, { size, fullWidth }) => ({
-  wrapper: {
-    '--cp-preview-size': getSize(size, 'cp-preview-size'),
-    '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
-    '--cp-body-spacing': getSpacing(size),
-  },
-}));
+const varsResolver = createVarsResolver<ColorPickerFactory>(
+  (_, { size, fullWidth, swatchesPerRow }) => ({
+    wrapper: {
+      '--cp-preview-size': getSize(size, 'cp-preview-size'),
+      '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
+      '--cp-body-spacing': getSpacing(size),
+      '--cp-swatch-size': `${100 / swatchesPerRow!}%`,
+      '--cp-thumb-size': getSize(size, 'cp-thumb-size'),
+      '--cp-saturation-height': getSize(size, 'cp-saturation-height'),
+    },
+  })
+);
 
 export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   const props = useProps('ColorPicker', defaultProps, _props);

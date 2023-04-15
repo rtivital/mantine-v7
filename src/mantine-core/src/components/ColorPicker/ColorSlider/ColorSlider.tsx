@@ -6,7 +6,7 @@ import {
   useMergedRef,
   useMove,
 } from '@mantine/hooks';
-import { Box, ElementProps, MantineSize, getSize, useMantineTheme, rem } from '../../../core';
+import { Box, ElementProps, MantineSize, useMantineTheme, rem } from '../../../core';
 import { Thumb } from '../Thumb/Thumb';
 import { useColorPickerContext } from '../ColorPicker.context';
 
@@ -99,12 +99,15 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>((props, 
       aria-valuemin={0}
       tabIndex={focusable ? 0 : -1}
       onKeyDown={handleKeyDown}
-      __vars={{ '--thumb-size': getSize(size, 'thumb-size'), '--thumb-bg': thumbColor }}
       data-focus-ring={theme.focusRing}
     >
       {layers}
 
-      <Thumb position={position} size={size!} {...getStyles('thumb', { style: { top: rem(1) } })} />
+      <Thumb
+        position={position}
+        size={size!}
+        {...getStyles('thumb', { style: { top: rem(1), background: thumbColor } })}
+      />
     </Box>
   );
 });

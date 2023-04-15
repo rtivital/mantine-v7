@@ -21,6 +21,9 @@ export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
       '--cp-body-spacing': 'Controls spacing between sliders and saturation',
       '--cp-preview-size': 'Controls size of the preview swatch',
       '--cp-width': 'Controls width of the root element',
+      '--cp-swatch-size': 'Controls swatch width and height',
+      '--cp-thumb-size': 'Controls thumb width and height in all sliders and saturation picker',
+      '--cp-saturation-height': 'Controls height of the saturation picker',
     },
   },
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { UseMovePosition, clampUseMovePosition, useMove } from '@mantine/hooks';
-import { Box, ElementProps, MantineSize, getSize } from '../../../core';
+import { Box, ElementProps, MantineSize } from '../../../core';
 import { HsvaColor } from '../ColorPicker.types';
 import { convertHsvaTo } from '../converters';
 import { Thumb } from '../Thumb/Thumb';
@@ -91,10 +91,6 @@ export function Saturation({
       aria-valuetext={convertHsvaTo('rgba', value)}
       tabIndex={focusable ? 0 : -1}
       onKeyDown={handleKeyDown}
-      __vars={{
-        '--saturation-height': getSize(size, 'saturation-height'),
-        '--thumb-size': getSize(size, 'thumb-size'),
-      }}
     >
       <div
         {...getStyles('saturationOverlay', {

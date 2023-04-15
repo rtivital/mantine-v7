@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Box, MantineSize, getSize } from '../../../core';
+import { Box, MantineSize } from '../../../core';
 import { useColorPickerContext } from '../ColorPicker.context';
 
 export interface ThumbProps extends React.ComponentPropsWithoutRef<'div'> {
@@ -16,9 +16,8 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         ref={ref}
         {...getStyles('thumb', { style })}
         __vars={{
-          '--thumb-size': getSize(size, 'thumb-size'),
-          '--thumb-y-offset': `${position.y * 100}%`,
-          '--thumb-x-offset': `${position.x * 100}%`,
+          '--_thumb-y-offset': `${position.y * 100}%`,
+          '--_thumb-x-offset': `${position.x * 100}%`,
         }}
         {...others}
       />
