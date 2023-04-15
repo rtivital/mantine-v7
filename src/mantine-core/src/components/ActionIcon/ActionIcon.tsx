@@ -9,7 +9,6 @@ import {
   MantineGradient,
   getRadius,
   polymorphicFactory,
-  useVars,
   getSize,
   createVarsResolver,
   MantineRadius,
@@ -31,13 +30,9 @@ export type ActionIconVariant =
   | 'gradient';
 
 export type ActionIconStylesNames = 'root' | 'loader';
-export type ActionIconCssVariables =
-  | '--ai-radius'
-  | '--ai-size'
-  | '--ai-bg'
-  | '--ai-hover'
-  | '--ai-color'
-  | '--ai-bd';
+export type ActionIconCssVariables = {
+  root: '--ai-radius' | '--ai-size' | '--ai-bg' | '--ai-hover' | '--ai-color' | '--ai-bd';
+};
 
 export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFactory> {
   __staticSelector?: string;
@@ -86,15 +81,17 @@ const defaultProps: Partial<ActionIconProps> = {
 
 const varsResolver = createVarsResolver<ActionIconFactory>(
   (theme, { size, radius, variant, gradient, color }) => ({
-    '--ai-size': getSize(size, 'ai-size'),
-    '--ai-radius': getRadius(radius),
-    ...theme.variantColorResolver({
-      color: color || theme.primaryColor,
-      theme,
-      gradient,
-      variant: variant!,
-      prefix: 'ai' as const,
-    }),
+    root: {
+      '--ai-size': getSize(size, 'ai-size'),
+      '--ai-radius': getRadius(radius),
+      ...theme.variantColorResolver({
+        color: color || theme.primaryColor,
+        theme,
+        gradient,
+        variant: variant!,
+        prefix: 'ai' as const,
+      }),
+    },
   })
 );
 
@@ -120,13 +117,6 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
     ...others
   } = props;
 
-  const _vars = useVars<ActionIconFactory>({
-    name: 'ActionIcon',
-    resolver: varsResolver,
-    props,
-    vars,
-  });
-
   const getStyles = useStyles<ActionIconFactory>({
     name: ['ActionIcon', __staticSelector],
     props,
@@ -136,6 +126,8 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   return (
@@ -147,7 +139,6 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
       size={size}
       disabled={disabled || loading}
       ref={ref}
-      vars={_vars}
       mod={{
         loading,
         disabled: disabled && !loading,

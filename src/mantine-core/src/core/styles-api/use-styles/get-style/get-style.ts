@@ -5,6 +5,7 @@ import { GetStylesApiOptions } from '../../styles-api.types';
 import { getThemeStyles } from './get-theme-styles/get-theme-styles';
 import { resolveStyles } from './resolve-styles/resolve-styles';
 import { resolveStyle } from './resolve-style/resolve-style';
+import { resolveVars, VarsResolver } from './resolve-vars/resolve-vars';
 
 export type _Styles =
   | undefined
@@ -25,6 +26,8 @@ export interface GetStyleInput {
   stylesCtx: Record<string, any> | undefined;
   styles: _Styles;
   style: MantineStyleProp | undefined;
+  vars: VarsResolver | undefined;
+  varsResolver: VarsResolver | undefined;
 }
 
 export function getStyle({
@@ -37,6 +40,8 @@ export function getStyle({
   rootSelector,
   styles,
   style,
+  vars,
+  varsResolver,
 }: GetStyleInput): CSSProperties {
   return {
     ...getThemeStyles({ theme, themeName, props, stylesCtx, selector }),
@@ -44,6 +49,7 @@ export function getStyle({
     ...resolveStyles({ theme, styles: options?.styles, props: options?.props || props, stylesCtx })[
       selector
     ],
+    ...resolveVars({ theme, props, stylesCtx, vars, varsResolver, selector }),
     ...(rootSelector === selector ? resolveStyle({ style, theme }) : null),
     ...resolveStyle({ style: options?.style, theme }),
   };

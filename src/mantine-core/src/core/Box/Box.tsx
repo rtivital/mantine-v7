@@ -24,6 +24,9 @@ export interface BoxProps extends MantineStyleProps {
 
   /** Inline style added to root component element, can subscribe to theme defined on MantineProvider */
   style?: MantineStyleProp;
+
+  /** CSS variables defined on root component element */
+  __vars?: CssVarsProp;
 }
 
 export type ElementProps<
@@ -32,9 +35,6 @@ export type ElementProps<
 > = Omit<React.ComponentPropsWithoutRef<ElementType>, 'style' | PropsToOmit>;
 
 export interface BoxComponentProps extends BoxProps {
-  /** CSS variables defined on root component element */
-  vars?: CssVarsProp;
-
   /** Variant passed from parent component, sets `data-variant` */
   variant?: string;
 
@@ -46,7 +46,7 @@ export interface BoxComponentProps extends BoxProps {
 }
 
 const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; className: string }>(
-  ({ component, style, vars, className, variant, mod, size, ...others }, ref) => {
+  ({ component, style, __vars, className, variant, mod, size, ...others }, ref) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
     const { styleProps, rest } = extractStyleProps(others);
@@ -68,7 +68,12 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
         )}
         <Element
           ref={ref}
-          style={getBoxStyle({ theme, style, vars, styleProps: parsedStyleProps.inlineStyles })}
+          style={getBoxStyle({
+            theme,
+            style,
+            vars: __vars,
+            styleProps: parsedStyleProps.inlineStyles,
+          })}
           className={cx(className, { [responsiveClassName]: parsedStyleProps.hasResponsiveStyles })}
           data-variant={variant}
           data-size={isNumberLike(size) ? undefined : size || undefined}

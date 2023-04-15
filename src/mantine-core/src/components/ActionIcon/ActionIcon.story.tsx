@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionIcon, ActionIconCssVariables, ActionIconProps } from './ActionIcon';
+import { ActionIcon, ActionIconProps } from './ActionIcon';
 import { DEFAULT_THEME } from '../../core';
 
 export default { title: 'ActionIcon' };
@@ -127,12 +127,13 @@ export function Variables() {
     <div style={{ padding: 40 }}>
       <ActionIcon
         size="xl"
+        __vars={{ '--aasdsad': 'asdasd' }}
         vars={(theme, props) => {
-          const result: Partial<Record<ActionIconCssVariables, string>> = {};
+          const result = { root: {} as any };
           if (props.size === 'xl') {
-            result['--ai-size'] = '12rem';
-            result['--ai-bg'] = 'pink';
-            result['--ai-hover'] = 'orange';
+            result.root['--ai-size'] = '12rem';
+            result.root['--ai-bg'] = 'pink';
+            result.root['--ai-hover'] = 'orange';
           }
 
           return result;

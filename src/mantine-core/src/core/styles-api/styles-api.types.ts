@@ -1,7 +1,8 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import type { MantineTheme } from '../MantineProvider';
-import type { CssVariables, MantineStyleProp } from '../Box';
+import type { MantineStyleProp } from '../Box';
 import type { FactoryPayload } from '../factory';
+import { PartialVarsResolver } from './create-vars-resolver/create-vars-resolver';
 
 export interface GetStylesApiOptions {
   className?: string;
@@ -39,13 +40,5 @@ export interface StylesApiProps<Payload extends FactoryPayload> {
   variant?: Payload['variant'] extends string ? Payload['variant'] | (string & {}) : string;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
-  vars?: Payload['vars'] extends string
-    ?
-        | CssVariables<Payload['vars'] | (string & {})>
-        | ((
-            theme: MantineTheme,
-            props: Payload['props'],
-            ctx: Payload['ctx']
-          ) => CssVariables<Payload['vars'] | (string & {})>)
-    : CssVariables;
+  vars?: PartialVarsResolver<Payload>;
 }

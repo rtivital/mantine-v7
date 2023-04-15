@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import type { MantineTheme, MantineThemeComponent } from '../MantineProvider';
-import type { Styles, ClassNames } from '../styles-api';
+import type { MantineThemeComponent } from '../MantineProvider';
+import type { Styles, ClassNames, PartialVarsResolver } from '../styles-api';
 
 export type DataAttributes = Record<`data-${string}`, any>;
 
@@ -9,22 +9,16 @@ export interface FactoryPayload {
   ctx?: any;
   ref?: any;
   stylesNames?: string;
-  vars?: string;
+  vars?: any;
   variant?: string;
   staticComponents?: Record<string, any>;
 }
-
-export type ExtendVars<Vars extends string, Props extends Record<string, any>, Context = unknown> =
-  | Partial<Record<Vars, string>>
-  | ((theme: MantineTheme, props: Props, ctx: Context) => Partial<Record<Vars, string>>);
 
 export interface ExtendComponent<Payload extends FactoryPayload> {
   defaultProps?: Partial<Payload['props']> & DataAttributes;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
-  vars?: Payload['vars'] extends string
-    ? ExtendVars<Payload['vars'], Payload['props'], Payload['ctx']>
-    : never;
+  vars?: PartialVarsResolver<Payload>;
 }
 
 export type StaticComponents<Input> = Input extends Record<string, any>
