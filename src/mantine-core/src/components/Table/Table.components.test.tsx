@@ -33,6 +33,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableCellElement,
       displayName: '@mantine/core/TableTh',
       selector: 'th',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['th'],
+      providerStylesApi: false,
     });
 
     it('sets data-with-column-border attribute when withColumnBorders prop is set on Table component', () => {
@@ -59,6 +62,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableCellElement,
       displayName: '@mantine/core/TableTd',
       selector: 'td',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['td'],
+      providerStylesApi: false,
     });
 
     it('sets data-with-column-border attribute when withColumnBorders prop is set on Table component', () => {
@@ -85,6 +91,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableRowElement,
       displayName: '@mantine/core/TableTr',
       selector: 'tr',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['tr'],
+      providerStylesApi: false,
     });
 
     it('sets data-with-row-border attribute when withRowBorders prop is set on Table component', () => {
@@ -129,6 +138,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableSectionElement,
       displayName: '@mantine/core/TableThead',
       selector: 'thead',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['thead'],
+      providerStylesApi: false,
     });
   });
 
@@ -143,6 +155,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableSectionElement,
       displayName: '@mantine/core/TableTbody',
       selector: 'tbody',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['tbody'],
+      providerStylesApi: false,
     });
   });
 
@@ -157,6 +172,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableSectionElement,
       displayName: '@mantine/core/TableTfoot',
       selector: 'tfoot',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['tfoot'],
+      providerStylesApi: false,
     });
   });
 
@@ -171,6 +189,9 @@ describe('@mantine/core/Table', () => {
       refType: HTMLTableCaptionElement,
       displayName: '@mantine/core/TableCaption',
       selector: 'caption',
+      stylesApiName: 'Table',
+      stylesApiSelectors: ['caption'],
+      providerStylesApi: false,
     });
 
     it('sets data-side attribute based on value set on Table component', () => {

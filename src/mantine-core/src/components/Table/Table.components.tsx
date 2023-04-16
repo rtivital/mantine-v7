@@ -1,49 +1,77 @@
 import React from 'react';
-import { Box, BoxProps, ElementProps, factory, useProps, FactoryPayload } from '../../core';
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  ElementProps,
+  factory,
+  useProps,
+  FactoryPayload,
+  Factory,
+} from '../../core';
 import { useTableContext, TableContextValue } from './Table.context';
+import type { TableFactory } from './Table';
 
-export interface TableThProps extends BoxProps, ElementProps<'th'> {}
-export interface TableTdProps extends BoxProps, ElementProps<'td'> {}
-export interface TableTrProps extends BoxProps, ElementProps<'tr'> {}
-export interface TableTheadProps extends BoxProps, ElementProps<'thead'> {}
-export interface TableTbodyProps extends BoxProps, ElementProps<'tbody'> {}
-export interface TableTfootProps extends BoxProps, ElementProps<'tfoot'> {}
-export interface TableCaptionProps extends BoxProps, ElementProps<'caption'> {}
+export interface TableElementProps<Selector extends string>
+  extends BoxProps,
+    StylesApiProps<Omit<TableFactory, 'stylesNames'> & { stylesNames: Selector }> {}
 
-export interface TableThFactory {
+export interface TableThProps extends TableElementProps<'th'>, ElementProps<'th'> {}
+export interface TableTdProps extends TableElementProps<'td'>, ElementProps<'td'> {}
+export interface TableTrProps extends TableElementProps<'tr'>, ElementProps<'tr'> {}
+export interface TableTheadProps extends TableElementProps<'thead'>, ElementProps<'thead'> {}
+export interface TableTbodyProps extends TableElementProps<'tbody'>, ElementProps<'tbody'> {}
+export interface TableTfootProps extends TableElementProps<'tfoot'>, ElementProps<'tfoot'> {}
+export interface TableCaptionProps extends TableElementProps<'caption'>, ElementProps<'caption'> {}
+
+export type TableThFactory = Factory<{
   props: TableThProps;
   ref: HTMLTableCellElement;
-}
+  stylesNames: 'th';
+  compound: true;
+}>;
 
-export interface TableTdFactory {
+export type TableTdFactory = Factory<{
   props: TableTdProps;
   ref: HTMLTableCellElement;
-}
+  stylesNames: 'td';
+  compound: true;
+}>;
 
-export interface TableTrFactory {
+export type TableTrFactory = Factory<{
   props: TableTrProps;
   ref: HTMLTableRowElement;
-}
+  stylesNames: 'tr';
+  compound: true;
+}>;
 
-export interface TableTheadFactory {
+export type TableTheadFactory = Factory<{
   props: TableTheadProps;
   ref: HTMLTableSectionElement;
-}
+  stylesNames: 'thead';
+  compound: true;
+}>;
 
-export interface TableTbodyFactory {
+export type TableTbodyFactory = Factory<{
   props: TableTbodyProps;
   ref: HTMLTableSectionElement;
-}
+  stylesNames: 'tbody';
+  compound: true;
+}>;
 
-export interface TableTfootFactory {
+export type TableTfootFactory = Factory<{
   props: TableTfootProps;
   ref: HTMLTableSectionElement;
-}
+  stylesNames: 'tfoot';
+  compound: true;
+}>;
 
-export interface TableCaptionFactory {
+export type TableCaptionFactory = Factory<{
   props: TableCaptionProps;
   ref: HTMLTableCaptionElement;
-}
+  stylesNames: 'caption';
+  compound: true;
+}>;
 
 interface TableElementOptions {
   columnBorder?: true;
@@ -88,8 +116,9 @@ export function tableElement<Factory extends FactoryPayload>(
   options?: TableElementOptions
 ) {
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
-  const Component = factory<Factory>((props, ref) => {
-    const { classNames, className, style, styles, unstyled, ...others } = useProps(name, {}, props);
+  const Component = factory<Factory>((_props, ref) => {
+    const props = useProps(name, {}, _props);
+    const { classNames, className, style, styles, unstyled, ...others } = props;
 
     const ctx = useTableContext();
 
@@ -98,7 +127,7 @@ export function tableElement<Factory extends FactoryPayload>(
         component={element}
         ref={ref}
         {...getDataAttributes(ctx, options)}
-        {...ctx.getStyles(element, { className, classNames, style, styles })}
+        {...ctx.getStyles(element, { className, classNames, style, styles, props })}
         {...others}
       />
     );
