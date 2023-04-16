@@ -5,6 +5,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { MdxProvider } from '@/components/MdxProvider';
+import '../styles/variables.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

@@ -1,3 +1,14 @@
 .main {
   background-color: red;
+  padding-top: var(--docs-header-height);
+  padding-left: var(--docs-navbar-width);
+
+  @media (max-width: $docs-navbar-breakpoint) {
+    padding-left: 0;
+    background-color: orange;
+  }
+}
+
+.content {
+  padding: var(--mantine-spacing-md);
 }

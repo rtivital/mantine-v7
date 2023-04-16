@@ -1,0 +1,8 @@
+.navbar {
+  background-color: blue;
+  position: fixed;
+  top: var(--docs-header-height);
+  bottom: 0;
+  z-index: 100;
+  width: var(--docs-navbar-width);
+}

@@ -49,6 +49,7 @@
 "@mantine/code-highlight@../src/mantine-code-highlight":
   version "6.0.0-alpha.6"
   dependencies:
+    clsx "1.1.1"
     highlight.js "^11.7.0"
 
 "@mantine/core@../src/mantine-core":
@@ -1147,6 +1148,18 @@ picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
+
+postcss-env-function@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-env-function/-/postcss-env-function-5.0.1.tgz#29bad355f29c1e71e0f68214c895b317e0c6b665"
+  integrity sha512-hfwf40QSq/+gQMhstHeSvSEKdcQJSxzEy6V8RWLDgFPiyTnVGsSSt3B1nLHprLg/wW61Qfh2uQzNXJjspv3c3Q==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+
+postcss-value-parser@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
+  integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@8.4.14:
   version "8.4.14"

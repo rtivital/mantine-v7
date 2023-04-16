@@ -119,6 +119,7 @@
     "open": "^8.2.0",
     "postcss": "^8.4.21",
     "postcss-preset-mantine": "^1.0.2",
+    "postcss-simple-vars": "^7.0.1",
     "prettier": "^2.4.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-docgen-typescript": "2.1.0",
