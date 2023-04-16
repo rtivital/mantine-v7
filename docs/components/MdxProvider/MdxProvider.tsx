@@ -1,7 +1,7 @@
 import React from 'react';
+import { CodeHighlight } from '@mantine/code-highlight';
+import { Demo } from '@mantine/ds';
 import { MDXProvider } from '@mdx-js/react';
-import { Demo } from '@/components/Demo';
-import { CodeBlock } from '@/components/CodeBlock';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -11,13 +11,12 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         pre: (props: any) => {
           const matches = (props.children.props.className || '').match(/language-(?<lang>.*)/);
           return (
-            <CodeBlock
+            <CodeHighlight
+              code={props.children.props.children}
               language={
                 matches && matches.groups && matches.groups.lang ? matches.groups.lang : 'tsx'
               }
-            >
-              {props.children.props.children}
-            </CodeBlock>
+            />
           );
         },
       }}
