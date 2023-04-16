@@ -4,18 +4,20 @@ import '@mantine/ds/styles.css';
 
 import React from 'react';
 import { AppProps } from 'next/app';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, DirectionProvider } from '@mantine/core';
 import { MdxProvider } from '@/components/MdxProvider';
 import { HotKeysHandler } from '@/components/HotKeysHandler';
 import '../styles/variables.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MantineProvider>
-      <MdxProvider>
-        <HotKeysHandler />
-        <Component {...pageProps} />
-      </MdxProvider>
-    </MantineProvider>
+    <DirectionProvider initialDirection="ltr" detectDirection={false}>
+      <MantineProvider>
+        <MdxProvider>
+          <HotKeysHandler />
+          <Component {...pageProps} />
+        </MdxProvider>
+      </MantineProvider>
+    </DirectionProvider>
   );
 }
