@@ -30,9 +30,20 @@ export type PopoverDropdownFactory = Factory<{
 
 const defaultProps: Partial<PopoverDropdownProps> = {};
 
-export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
-  const { className, style, unstyled, vars, children, onKeyDownCapture, variant, ...others } =
-    useProps('PopoverDropdown', defaultProps, props);
+export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => {
+  const props = useProps('PopoverDropdown', defaultProps, _props);
+  const {
+    className,
+    style,
+    unstyled,
+    vars,
+    children,
+    onKeyDownCapture,
+    variant,
+    classNames,
+    styles,
+    ...others
+  } = props;
 
   const ctx = usePopoverContext();
 
@@ -85,6 +96,9 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
               data-position={ctx.placement}
               {...ctx.getStyles('dropdown', {
                 className,
+                props,
+                classNames,
+                styles,
                 style: [
                   {
                     ...transitionStyles,
@@ -109,7 +123,11 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((props, ref) => {
                 arrowRadius={ctx.arrowRadius}
                 arrowOffset={ctx.arrowOffset}
                 arrowPosition={ctx.arrowPosition}
-                {...ctx.getStyles('arrow')}
+                {...ctx.getStyles('arrow', {
+                  props,
+                  classNames,
+                  styles,
+                })}
               />
             </Box>
           </FocusTrap>

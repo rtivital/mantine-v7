@@ -21,6 +21,8 @@ describe('@mantine/core/PopoverDropdown', () => {
     variant: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/PopoverDropdown',
+    stylesApiName: 'Popover',
+    stylesApiSelectors: ['dropdown', 'arrow'],
   });
 
   tests.itThrowsContextError({

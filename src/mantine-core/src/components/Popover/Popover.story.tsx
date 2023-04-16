@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '../../core';
+import { Box, MantineThemeProvider } from '../../core';
 import { Popover } from './Popover';
 import { Tooltip } from '../Tooltip';
 import { Group } from '../Group';
@@ -8,15 +8,27 @@ export default { title: 'Popover' };
 
 export function Uncontrolled() {
   return (
-    <div style={{ padding: 40 }}>
-      <Popover opened styles={{ dropdown: { background: 'red' } }}>
-        <Popover.Target>
-          <button type="button">Toggle popover</button>
-        </Popover.Target>
+    <MantineThemeProvider
+      theme={{
+        components: {
+          PopoverDropdown: Popover.Dropdown.extend({
+            defaultProps: {
+              'data-hello': 'world',
+            },
+          }),
+        },
+      }}
+    >
+      <div style={{ padding: 40 }}>
+        <Popover opened styles={{ dropdown: { background: 'red' } }}>
+          <Popover.Target>
+            <button type="button">Toggle popover</button>
+          </Popover.Target>
 
-        <Popover.Dropdown className="test-class">Dropdown</Popover.Dropdown>
-      </Popover>
-    </div>
+          <Popover.Dropdown data-test="orange">Dropdown</Popover.Dropdown>
+        </Popover>
+      </div>
+    </MantineThemeProvider>
   );
 }
 

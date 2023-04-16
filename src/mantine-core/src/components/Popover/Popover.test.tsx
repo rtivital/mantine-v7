@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, tests, wait, renderWithAct, userEvent, screen } from '@mantine/tests';
-import { Popover, PopoverProps } from './Popover';
+import { Popover, PopoverProps, PopoverStylesNames } from './Popover';
 import { PopoverDropdown } from './PopoverDropdown/PopoverDropdown';
 import { PopoverTarget } from './PopoverTarget/PopoverTarget';
 
 const defaultProps: PopoverProps = {
   opened: true,
+  withinPortal: false,
+  withArrow: true,
   children: 'test-children',
 };
 
@@ -29,6 +31,12 @@ function TestContainer(props: Partial<PopoverProps>) {
 describe('@mantine/core/Popover', () => {
   tests.axe([<TestContainer opened />, <TestContainer opened={false} />]);
   tests.itRendersChildren({ component: Popover, props: defaultProps });
+  tests.itSupportsStylesApi<PopoverProps, PopoverStylesNames>({
+    component: TestContainer,
+    props: defaultProps,
+    selectors: ['dropdown', 'arrow'],
+    providerName: 'Popover',
+  });
 
   it('supports uncontrolled mode', async () => {
     render(<TestContainer />);
