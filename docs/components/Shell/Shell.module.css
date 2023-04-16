@@ -6,6 +6,15 @@
     padding-left: 0;
   }
 
+  @mixin rtl {
+    padding-left: 0;
+    padding-right: var(--docs-navbar-width);
+
+    @media (max-width: $docs-navbar-breakpoint) {
+      padding-right: 0;
+    }
+  }
+
   @mixin light {
     background-color: var(--mantine-color-white);
   }
@@ -16,5 +25,5 @@
 }
 
 .content {
-  padding: var(--mantine-spacing-md);
+  padding: var(--docs-content-spacing);
 }

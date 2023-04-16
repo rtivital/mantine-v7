@@ -1,14 +1,17 @@
 body {
   --docs-header-height: rem(60px);
   --docs-navbar-width: rem(260px);
+  --docs-content-spacing: rem(40px);
 
   @mixin light {
-    --docs-shell-bg: var(--mantine-color-white);
     --docs-shell-border: var(--mantine-color-gray-2);
   }
 
   @mixin dark {
-    --docs-shell-bg: var(--mantine-color-dark-8);
     --docs-shell-border: var(--mantine-color-dark-8);
+  }
+
+  @media (max-width: $docs-navbar-breakpoint) {
+    --docs-content-spacing: var(--mantine-spacing-md);
   }
 }

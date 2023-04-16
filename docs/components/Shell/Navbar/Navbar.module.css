@@ -1,13 +1,28 @@
 .navbar {
-  background-color: var(--docs-shell-bg);
   border-right: rem(1px) solid var(--docs-shell-border);
   position: fixed;
   top: var(--docs-header-height);
   bottom: 0;
+  left: 0;
   z-index: 100;
   width: var(--docs-navbar-width);
   display: flex;
   flex-direction: column;
+
+  @mixin light {
+    background-color: var(--mantine-color-white);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-8);
+  }
+
+  @mixin rtl {
+    border-left: rem(1px) solid var(--docs-shell-border);
+    border-right: 0;
+    left: unset;
+    right: 0;
+  }
 
   &[data-hidden] {
     @media (max-width: $docs-navbar-breakpoint) {

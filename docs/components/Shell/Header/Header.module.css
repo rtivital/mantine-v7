@@ -21,6 +21,11 @@
 .version {
   margin-top: rem(4px);
   margin-left: var(--mantine-spacing-md);
+
+  @mixin rtl {
+    margin-left: 0;
+    margin-right: var(--mantine-spacing-md);
+  }
 }
 
 .logoLink {
