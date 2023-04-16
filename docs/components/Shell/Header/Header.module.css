@@ -1,8 +1,30 @@
 .header {
-  background-color: green;
+  background-color: var(--docs-shell-bg);
+  border-bottom: rem(1px) solid var(--docs-shell-border);
   height: var(--docs-header-height);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.version {
+  margin-top: rem(4px);
+  margin-left: var(--mantine-spacing-md);
+}
+
+.logoLink {
+  color: inherit;
+  display: flex;
+  align-items: center;
 }

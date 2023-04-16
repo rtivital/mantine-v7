@@ -1,4 +1,14 @@
-:root {
+body {
   --docs-header-height: rem(60px);
   --docs-navbar-width: rem(260px);
+
+  @mixin light {
+    --docs-shell-bg: var(--mantine-color-white);
+    --docs-shell-border: var(--mantine-color-gray-2);
+  }
+
+  @mixin dark {
+    --docs-shell-bg: var(--mantine-color-dark-8);
+    --docs-shell-border: var(--mantine-color-dark-5);
+  }
 }

@@ -1,8 +1,32 @@
 .navbar {
-  background-color: blue;
+  background-color: var(--docs-shell-bg);
+  border-right: rem(1px) solid var(--docs-shell-border);
   position: fixed;
   top: var(--docs-header-height);
   bottom: 0;
   z-index: 100;
   width: var(--docs-navbar-width);
+  display: flex;
+  flex-direction: column;
+
+  &[data-hidden] {
+    @media (max-width: $docs-navbar-breakpoint) {
+      display: none;
+    }
+  }
+
+  @media (max-width: $docs-navbar-breakpoint) {
+    width: unset;
+    left: 0;
+    right: 0;
+  }
+}
+
+.scrollarea {
+  flex: 1;
+}
+
+.content {
+  padding: var(--mantine-spacing-md);
+  padding-bottom: rem(100px);
 }
