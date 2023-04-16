@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--docs-shell-bg);
+  background-color: var(--mantine-color-body);
   border-bottom: rem(1px) solid var(--docs-shell-border);
   height: var(--docs-header-height);
   position: fixed;
@@ -24,7 +24,14 @@
 }
 
 .logoLink {
-  color: inherit;
   display: flex;
   align-items: center;
+
+  @mixin dark {
+    color: var(--mantine-color-white);
+  }
+
+  @mixin light {
+    color: var(--mantine-color-black);
+  }
 }
