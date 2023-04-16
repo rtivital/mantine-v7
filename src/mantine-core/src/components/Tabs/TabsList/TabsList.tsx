@@ -30,16 +30,14 @@ export type TabsListFactory = Factory<{
   props: TabsListProps;
   ref: HTMLDivElement;
   stylesNames: TabsListStylesNames;
+  compound: true;
 }>;
 
 const defaultProps: Partial<TabsListProps> = {};
 
-export const TabsList = factory<TabsListFactory>((props, ref) => {
-  const { children, className, grow, justify, classNames, styles, style, ...others } = useProps(
-    'TabsList',
-    defaultProps,
-    props
-  );
+export const TabsList = factory<TabsListFactory>((_props, ref) => {
+  const props = useProps('TabsList', defaultProps, _props);
+  const { children, className, grow, justify, classNames, styles, style, ...others } = props;
 
   const ctx = useTabsContext();
 
@@ -51,6 +49,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
         style,
         classNames,
         styles,
+        props,
         variant: ctx.variant,
       })}
       ref={ref}

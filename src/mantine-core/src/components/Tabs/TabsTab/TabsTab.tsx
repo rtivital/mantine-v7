@@ -40,11 +40,13 @@ export type TabsTabFactory = Factory<{
   props: TabsTabProps;
   ref: HTMLButtonElement;
   stylesNames: TabsTabStylesNames;
+  compound: true;
 }>;
 
 const defaultProps: Partial<TabsTabProps> = {};
 
-export const TabsTab = factory<TabsTabFactory>((props, ref) => {
+export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
+  const props = useProps('TabsTab', defaultProps, _props);
   const {
     className,
     children,
@@ -60,7 +62,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     styles,
     vars,
     ...others
-  } = useProps('TabsTab', defaultProps, props);
+  } = props;
 
   const theme = useMantineTheme();
   const { dir } = useDirection();
@@ -71,7 +73,7 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     onClick?.(event);
   };
 
-  const stylesApiProps = { classNames, styles };
+  const stylesApiProps = { classNames, styles, props };
 
   return (
     <UnstyledButton

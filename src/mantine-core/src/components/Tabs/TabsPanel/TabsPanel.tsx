@@ -27,16 +27,14 @@ export type TabsPanelFactory = Factory<{
   props: TabsPanelProps;
   ref: HTMLDivElement;
   stylesNames: TabsPanelStylesNames;
+  compound: true;
 }>;
 
 const defaultProps: Partial<TabsPanelProps> = {};
 
-export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
-  const { children, className, value, classNames, styles, style, ...others } = useProps(
-    'TabsPanel',
-    defaultProps,
-    props
-  );
+export const TabsPanel = factory<TabsPanelFactory>((_props, ref) => {
+  const props = useProps('TabsPanel', defaultProps, _props);
+  const { children, className, value, classNames, styles, style, ...others } = props;
 
   const ctx = useTabsContext();
 
@@ -46,7 +44,7 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('panel', { className, classNames, styles, style })}
+      {...ctx.getStyles('panel', { className, classNames, styles, style, props })}
       ref={ref}
       mod={{ hidden: !active, orientation: ctx.orientation }}
       role="tabpanel"
