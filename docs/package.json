@@ -15,7 +15,6 @@
     "@mantine/demos": "../src/mantine-demos",
     "@mantine/ds": "../src/mantine-ds",
     "@mantine/hooks": "../src/mantine-hooks",
-    "@mantine/logo": "../src/mantine-logo",
     "@mantine/styles-api": "../src/mantine-styles-api",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",

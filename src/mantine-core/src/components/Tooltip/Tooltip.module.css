@@ -2,7 +2,7 @@
   position: absolute;
   padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-xs);
   pointer-events: none;
-  font-size: var(--mantine-size-sm);
+  font-size: var(--mantine-font-size-sm);
   white-space: var(--_tooltip-white-space);
   background-color: var(--_tooltip-bg);
   color: var(--_tooltip-color);
