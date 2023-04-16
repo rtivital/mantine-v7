@@ -33,3 +33,4 @@ export * from './Title';
 export * from './Tooltip';
 export * from './Transition';
 export * from './UnstyledButton';
+export * from './VisuallyHidden';
