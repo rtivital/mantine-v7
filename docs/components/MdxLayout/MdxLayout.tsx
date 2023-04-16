@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Frontmatter } from '@/types';
+import { Shell } from '@/components/Shell';
 
 interface MdxLayoutProps {
   meta: Frontmatter;
@@ -13,10 +14,7 @@ export function MdxLayout({ meta, children }: MdxLayoutProps) {
       <Head>
         <title>{`${meta.title} | Mantine`}</title>
       </Head>
-      <div>Header: {meta.title}</div>
-      <div>Navbar</div>
-      <div>{children}</div>
-      <div>Footer</div>
+      <Shell>{children}</Shell>
     </>
   );
 }
