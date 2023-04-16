@@ -10,6 +10,7 @@ const defaultProps: PopoverTargetProps = {
 const TestContainer = createContextContainer(PopoverTarget, Popover, { opened: true });
 
 describe('@mantine/core/PopoverTarget', () => {
+  tests.itHasExtend({ component: PopoverTarget });
   tests.itThrowsContextError({
     component: PopoverTarget,
     props: defaultProps,

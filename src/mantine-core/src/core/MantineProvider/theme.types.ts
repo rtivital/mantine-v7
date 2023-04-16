@@ -1,7 +1,6 @@
 import type { PartialDeep } from 'type-fest';
 import type { MantineLoader } from '../../components/Loader/Loader.types';
 import type { VariantColorsResolver } from './color-functions';
-import type { Styles, ClassNames, PartialVarsResolver } from '../styles-api';
 
 export interface MantineTheme {
   /** Controls focus ring styles. Supports the following options:
@@ -126,10 +125,10 @@ export type MantineThemeOverride = PartialDeep<MantineTheme>;
 export type MantineStylesRecord = Record<string, React.CSSProperties>;
 
 export interface MantineThemeComponent {
-  classNames?: ClassNames<{ props: Record<string, any>; stylesNames: string }>;
-  styles?: Styles<{ props: Record<string, any>; stylesNames: string }>;
-  vars?: PartialVarsResolver<{ props: Record<string, any>; stylesNames: string }>;
-  defaultProps?: Record<string, any> | ((theme: MantineTheme) => Record<string, any>);
+  classNames?: any;
+  styles?: any;
+  vars?: any;
+  defaultProps?: any;
 }
 
 export type MantineThemeComponents = Record<string, MantineThemeComponent>;

@@ -22,6 +22,7 @@ interface Options<Props extends Record<string, any> = any, Selectors extends str
   props: Props;
   selectors: Selectors[];
   providerName: string;
+  providerStylesApi?: boolean;
 }
 
 export function itSupportsStylesApi<
@@ -108,106 +109,111 @@ export function itSupportsStylesApi<
     });
   });
 
-  it(`${name}: classNames (MantineProvider object)`, () => {
-    const classNames = getTestObjectClassNames(options.selectors);
-    const { container } = render(<options.component {...options.props} classNames={classNames} />, {
-      components: {
-        [options.providerName]: {
-          classNames,
+  if (options.providerStylesApi === undefined || options.providerStylesApi === true) {
+    it(`${name}: classNames (MantineProvider object)`, () => {
+      const classNames = getTestObjectClassNames(options.selectors);
+      const { container } = render(
+        <options.component {...options.props} classNames={classNames} />,
+        {
+          components: {
+            [options.providerName]: {
+              classNames,
+            },
+          },
+        }
+      );
+
+      options.selectors.forEach((selector) => {
+        expect(container.querySelector(`.${classNames[selector]}`)).toBeInTheDocument();
+      });
+    });
+
+    it(`${name}: classNames (MantineProvider function)`, () => {
+      const classNames = getTestFunctionClassNames(options.selectors);
+      const { container } = render(
+        <options.component {...options.props} data-test="__test" classNames={classNames} />,
+        {
+          components: {
+            [options.providerName]: {
+              classNames: classNames as any,
+            },
+          },
+        }
+      );
+      options.selectors.forEach((selector) => {
+        expect(
+          container.querySelector(
+            `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
+          )
+        ).toBeInTheDocument();
+      });
+    });
+
+    it(`${name}: styles (MantineProvider object)`, () => {
+      const classNames = getTestObjectClassNames(options.selectors);
+      const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
+        (acc, selector) => {
+          acc[selector] = { fontSize: `${randomNumber()}px` };
+          return acc;
         },
-      },
-    });
+        {}
+      );
 
-    options.selectors.forEach((selector) => {
-      expect(container.querySelector(`.${classNames[selector]}`)).toBeInTheDocument();
-    });
-  });
-
-  it(`${name}: classNames (MantineProvider function)`, () => {
-    const classNames = getTestFunctionClassNames(options.selectors);
-    const { container } = render(
-      <options.component {...options.props} data-test="__test" classNames={classNames} />,
-      {
+      const { container } = render(<options.component {...options.props} />, {
         components: {
           [options.providerName]: {
+            styles,
+            classNames,
+          },
+        },
+      });
+
+      options.selectors.forEach((selector) => {
+        expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
+          ...styles[selector],
+        });
+      });
+    });
+
+    it(`${name}: styles (MantineProvider function)`, () => {
+      const classNames = getTestObjectClassNames(options.selectors);
+      const styles = (theme: MantineTheme, props: any) =>
+        options.selectors.reduce<Record<string, React.CSSProperties>>((acc, selector) => {
+          acc[selector] = {
+            outlineColor: props['data-test'],
+            boxShadow: theme.shadows.xl,
+          };
+          return acc;
+        }, {});
+
+      const { container } = render(<options.component {...options.props} data-test="orange" />, {
+        components: {
+          [options.providerName]: {
+            styles: styles as any,
             classNames: classNames as any,
           },
         },
-      }
-    );
-    options.selectors.forEach((selector) => {
-      expect(
-        container.querySelector(
-          `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
-        )
-      ).toBeInTheDocument();
-    });
-  });
+      });
 
-  it(`${name}: styles (MantineProvider object)`, () => {
-    const classNames = getTestObjectClassNames(options.selectors);
-    const styles = options.selectors.reduce<Record<string, React.CSSProperties>>(
-      (acc, selector) => {
-        acc[selector] = { fontSize: `${randomNumber()}px` };
-        return acc;
-      },
-      {}
-    );
-
-    const { container } = render(<options.component {...options.props} />, {
-      components: {
-        [options.providerName]: {
-          styles,
-          classNames,
-        },
-      },
-    });
-
-    options.selectors.forEach((selector) => {
-      expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-        ...styles[selector],
+      options.selectors.forEach((selector) => {
+        expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
+          ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+        });
       });
     });
-  });
 
-  it(`${name}: styles (MantineProvider function)`, () => {
-    const classNames = getTestObjectClassNames(options.selectors);
-    const styles = (theme: MantineTheme, props: any) =>
-      options.selectors.reduce<Record<string, React.CSSProperties>>((acc, selector) => {
-        acc[selector] = {
-          outlineColor: props['data-test'],
-          boxShadow: theme.shadows.xl,
-        };
-        return acc;
-      }, {});
+    it(`${name}: static classNames (MantineProvider)`, () => {
+      const { container } = render(
+        <options.component {...options.props} />,
+        {},
+        { classNamesPrefix: 'test' }
+      );
 
-    const { container } = render(<options.component {...options.props} data-test="orange" />, {
-      components: {
-        [options.providerName]: {
-          styles: styles as any,
-          classNames: classNames as any,
-        },
-      },
-    });
-
-    options.selectors.forEach((selector) => {
-      expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-        ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+      options.selectors.forEach((selector) => {
+        expect(
+          container.querySelector(`.test-${options.providerName}-${selector}`)
+        ).toBeInTheDocument();
       });
     });
-  });
-
-  it(`${name}: static classNames (MantineProvider)`, () => {
-    const { container } = render(
-      <options.component {...options.props} />,
-      {},
-      { classNamesPrefix: 'test' }
-    );
-
-    options.selectors.forEach((selector) => {
-      expect(
-        container.querySelector(`.test-${options.providerName}-${selector}`)
-      ).toBeInTheDocument();
-    });
-  });
+  }
 }

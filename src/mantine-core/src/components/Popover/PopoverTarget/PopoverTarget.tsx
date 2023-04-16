@@ -1,8 +1,7 @@
-/* eslint-disable react/no-unused-prop-types */
-import React, { cloneElement, forwardRef } from 'react';
+import React, { cloneElement } from 'react';
 import cx from 'clsx';
 import { useMergedRef } from '@mantine/hooks';
-import { isElement, useProps } from '../../../core';
+import { isElement, useProps, factory, Factory } from '../../../core';
 import { usePopoverContext } from '../Popover.context';
 
 export interface PopoverTargetProps {
@@ -21,7 +20,13 @@ const defaultProps: Partial<PopoverTargetProps> = {
   popupType: 'dialog',
 };
 
-export const PopoverTarget = forwardRef<HTMLElement, PopoverTargetProps>((props, ref) => {
+export type PopoverTargetFactory = Factory<{
+  props: PopoverTargetProps;
+  ref: HTMLElement;
+  compound: true;
+}>;
+
+export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
   const { children, refProp, popupType, ...others } = useProps(
     'PopoverTarget',
     defaultProps,

@@ -11,7 +11,7 @@ const THEME_WITH_STYLES: MantineTheme = {
     },
 
     TestComponentFunction: {
-      styles: (theme, props) => ({
+      styles: (theme: MantineTheme, props: Record<string, any>) => ({
         root: { background: props['data-color'], outlineColor: theme.colors.red[0] },
       }),
     },

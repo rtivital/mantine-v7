@@ -30,6 +30,7 @@ function TestContainer(props: Partial<PopoverProps>) {
 
 describe('@mantine/core/Popover', () => {
   tests.axe([<TestContainer opened />, <TestContainer opened={false} />]);
+  tests.itHasExtend({ component: Popover });
   tests.itRendersChildren({ component: Popover, props: defaultProps });
   tests.itSupportsStylesApi<PopoverProps, PopoverStylesNames>({
     component: TestContainer,

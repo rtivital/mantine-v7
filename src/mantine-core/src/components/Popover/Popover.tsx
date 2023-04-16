@@ -13,6 +13,7 @@ import {
   getRadius,
   getShadow,
   StylesApiProps,
+  ExtendComponent,
 } from '../../core';
 import { TransitionOverride } from '../Transition';
 import {
@@ -322,3 +323,4 @@ export function Popover(_props: PopoverProps) {
 Popover.Target = PopoverTarget;
 Popover.Dropdown = PopoverDropdown;
 Popover.displayName = '@mantine/core/Popover';
+Popover.extend = (input: ExtendComponent<PopoverFactory>) => input;

@@ -13,6 +13,7 @@ import { itSupportsStylesApi } from './shared/it-supports-style-api';
 import { itThrowsContextError } from './shared/it-throws-context-error';
 import { itSupportsVariant } from './shared/it-supports-variant';
 import { itSupportsSize } from './shared/it-supports-size';
+import { itHasExtend } from './shared/it-has-extend';
 
 // Style props tests
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
@@ -51,6 +52,7 @@ export const tests = {
   itThrowsContextError,
   itSupportsVariant,
   itSupportsSize,
+  itHasExtend,
 
   itSupportsMarginsProps,
   itSupportsPaddingsProps,

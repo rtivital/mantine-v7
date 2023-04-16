@@ -16,6 +16,7 @@ import { OptionalPortal } from '../../Portal';
 import { Transition } from '../../Transition';
 import { FocusTrap } from '../../FocusTrap';
 import { FloatingArrow } from '../../Floating';
+import type { PopoverStylesNames } from '../Popover';
 import { usePopoverContext } from '../Popover.context';
 
 export interface PopoverDropdownProps
@@ -26,6 +27,8 @@ export interface PopoverDropdownProps
 export type PopoverDropdownFactory = Factory<{
   props: PopoverDropdownProps;
   ref: HTMLDivElement;
+  stylesNames: PopoverStylesNames;
+  compound: true;
 }>;
 
 const defaultProps: Partial<PopoverDropdownProps> = {};

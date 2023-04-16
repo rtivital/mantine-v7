@@ -8,6 +8,7 @@ import { itSupportsProviderDefaultProps } from './shared/it-supports-provider-de
 import { itSupportsStylesApi } from './shared/it-supports-style-api';
 import { itSupportsVariant } from './shared/it-supports-variant';
 import { itSupportsSize } from './shared/it-supports-size';
+import { itHasExtend } from './shared/it-has-extend';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -36,6 +37,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   polymorphicSelector?: string;
   variantSelector?: string;
   sizeSelector?: string;
+  providerStylesApi?: boolean;
 }
 
 export function itSupportsSystemProps<
@@ -88,9 +90,7 @@ export function itSupportsSystemProps<
     }
 
     if (options.extend) {
-      it('has static extend function', () => {
-        expect(typeof (options.component as any).extend).toBe('function');
-      });
+      itHasExtend(options);
     }
 
     if (options.displayName) {

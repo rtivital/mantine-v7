@@ -12,14 +12,24 @@ export interface FactoryPayload {
   vars?: any;
   variant?: string;
   staticComponents?: Record<string, any>;
+  // Compound components cannot have classNames, styles and vars on MantineProvider
+  compound?: boolean;
 }
 
-export interface ExtendComponent<Payload extends FactoryPayload> {
+export interface ExtendCompoundComponent<Payload extends FactoryPayload> {
+  defaultProps?: Partial<Payload['props']> & DataAttributes;
+}
+
+export interface ExtendsRootComponent<Payload extends FactoryPayload> {
   defaultProps?: Partial<Payload['props']> & DataAttributes;
   classNames?: ClassNames<Payload>;
   styles?: Styles<Payload>;
   vars?: PartialVarsResolver<Payload>;
 }
+
+export type ExtendComponent<Payload extends FactoryPayload> = Payload['compound'] extends true
+  ? ExtendCompoundComponent<Payload>
+  : ExtendsRootComponent<Payload>;
 
 export type StaticComponents<Input> = Input extends Record<string, any>
   ? Input

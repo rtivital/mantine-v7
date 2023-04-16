@@ -11,7 +11,7 @@ const THEME_WITH_CLASSNAMES: MantineTheme = {
     },
 
     TestComponentFunction: {
-      classNames: (_, props) => ({
+      classNames: (_: any, props: Record<string, any>) => ({
         root: `__test-function-${props.test}`,
       }),
     },

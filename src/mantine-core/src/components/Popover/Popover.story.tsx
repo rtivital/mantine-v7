@@ -13,19 +13,26 @@ export function Uncontrolled() {
         components: {
           PopoverDropdown: Popover.Dropdown.extend({
             defaultProps: {
-              'data-hello': 'world',
+              'data-test': 'red',
             },
           }),
         },
       }}
     >
       <div style={{ padding: 40 }}>
-        <Popover opened styles={{ dropdown: { background: 'red' } }}>
+        <Popover opened>
           <Popover.Target>
             <button type="button">Toggle popover</button>
           </Popover.Target>
 
-          <Popover.Dropdown data-test="orange">Dropdown</Popover.Dropdown>
+          <Popover.Dropdown
+            data-test="orange"
+            styles={(_, props: Record<string, any>) => ({
+              dropdown: { background: props['data-test'] },
+            })}
+          >
+            Dropdown
+          </Popover.Dropdown>
         </Popover>
       </div>
     </MantineThemeProvider>

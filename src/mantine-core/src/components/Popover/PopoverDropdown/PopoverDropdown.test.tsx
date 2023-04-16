@@ -23,6 +23,7 @@ describe('@mantine/core/PopoverDropdown', () => {
     displayName: '@mantine/core/PopoverDropdown',
     stylesApiName: 'Popover',
     stylesApiSelectors: ['dropdown', 'arrow'],
+    providerStylesApi: false,
   });
 
   tests.itThrowsContextError({
