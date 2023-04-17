@@ -158,6 +158,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
       {...getStyles('root', { active: !disabled && !loading })}
       unstyled={unstyled}
       variant={variant}
+      disabled={disabled}
       mod={{
         button: true,
         disabled,

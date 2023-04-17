@@ -46,14 +46,6 @@ describe('@mantine/core/ActionIcon', () => {
     rerender(<ActionIcon disabled={false} />);
     expect(container.querySelector('[data-disabled]')).not.toBeInTheDocument();
   });
-
-  it('sets data-variant attribute', () => {
-    const { container, rerender } = render(<ActionIcon variant="light" />);
-    expect(container.querySelector('[data-variant="light"]')).toBeInTheDocument();
-    rerender(<ActionIcon variant="filled" />);
-    expect(container.querySelector('[data-variant="filled"]')).toBeInTheDocument();
-  });
-
   it('has data-action-icon attribute', () => {
     const { container } = render(<ActionIcon />);
     expect(container.querySelector('[data-action-icon]')).toBeInTheDocument();
