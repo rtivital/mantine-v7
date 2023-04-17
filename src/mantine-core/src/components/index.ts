@@ -1,6 +1,7 @@
 export * from './ActionIcon';
 export * from './Anchor';
 export * from './BackgroundImage';
+export * from './Button';
 export * from './Checkbox';
 export * from './CloseButton';
 export * from './Code';
