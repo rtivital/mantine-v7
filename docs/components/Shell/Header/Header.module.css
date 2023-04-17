@@ -27,16 +27,3 @@
     margin-right: var(--mantine-spacing-md);
   }
 }
-
-.logoLink {
-  display: flex;
-  align-items: center;
-
-  @mixin dark {
-    color: var(--mantine-color-white);
-  }
-
-  @mixin light {
-    color: var(--mantine-color-black);
-  }
-}

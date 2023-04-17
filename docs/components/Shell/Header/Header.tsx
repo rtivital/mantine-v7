@@ -2,7 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Code } from '@mantine/core';
-import { MantineLogo, HeaderControls } from '@mantine/ds';
+import { HeaderControls } from '@mantine/ds';
+import { Logo } from '@/components/Logo';
 import packageJson from '../../../../package.json';
 import classes from './Header.module.css';
 
@@ -15,9 +16,7 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/" className={classes.logoLink}>
-          <MantineLogo size={30} />
-        </Link>
+        <Logo />
         <Code fw="bold" className={classes.version}>
           {packageJson.version}
         </Code>
