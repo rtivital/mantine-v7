@@ -52,7 +52,7 @@
       position: absolute;
       inset: rem(-1px);
       border-radius: var(--ai-radius);
-      background-color: var(--_loading-overlay_bg);
+      background-color: var(--_loading-overlay-bg);
     }
   }
 
