@@ -1,0 +1,89 @@
+import React from 'react';
+import {
+  factory,
+  Box,
+  BoxProps,
+  StylesApiProps,
+  useProps,
+  useStyles,
+  rem,
+  createVarsResolver,
+  Factory,
+} from '../../../core';
+import classes from './ButtonGroup.module.css';
+
+export type ButtonGroupStylesNames = 'root';
+export type ButtonGroupVariant = string;
+export type ButtonGroupCssVariables = {
+  root: '--button-border-width';
+};
+
+export interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFactory> {
+  /** `<ActionIcon />` components */
+  children?: React.ReactNode;
+
+  /** Horizontal or vertical orientation */
+  orientation?: 'horizontal' | 'vertical';
+
+  /** Controls border-width of child `<ActionIcon />` components. Default value in `1`. Numbers are converted to rem (1rem = 16px). */
+  borderWidth?: number | string;
+}
+
+export type ButtonGroupFactory = Factory<{
+  props: ButtonGroupProps;
+  ref: HTMLDivElement;
+  variant: ButtonGroupVariant;
+  stylesNames: ButtonGroupStylesNames;
+  vars: ButtonGroupCssVariables;
+}>;
+
+const defaultProps: Partial<ButtonGroupProps> = {
+  orientation: 'horizontal',
+  borderWidth: 1,
+};
+
+const varsResolver = createVarsResolver<ButtonGroupFactory>((_, { borderWidth }) => ({
+  root: { '--button-border-width': rem(borderWidth) },
+}));
+
+export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
+  const props = useProps('ButtonGroup', defaultProps, _props);
+  const {
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    orientation,
+    vars,
+    borderWidth,
+    variant,
+    ...others
+  } = useProps('ButtonGroup', defaultProps, _props);
+
+  const getStyles = useStyles<ButtonGroupFactory>({
+    name: 'ButtonGroup',
+    props,
+    classes,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver,
+  });
+
+  return (
+    <Box
+      {...getStyles('root')}
+      ref={ref}
+      variant={variant}
+      mod={{ 'data-orientation': orientation }}
+      role="group"
+      {...others}
+    />
+  );
+});
+
+ButtonGroup.displayName = '@mantine/core/ButtonGroup';

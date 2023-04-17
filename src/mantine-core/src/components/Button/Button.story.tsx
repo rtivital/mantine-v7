@@ -233,47 +233,47 @@ export function Sections() {
   );
 }
 
-// export function ButtonGroup() {
-//   return (
-//     <div style={{ padding: 40, display: 'flex', gap: 20 }}>
-//       <Button size="lg" variant="default">
-//         S
-//       </Button>
-//       <Button.Group>
-//         <Button size="lg" variant="default">
-//           S
-//         </Button>
-//       </Button.Group>
+export function ButtonGroup() {
+  return (
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
+      <Button size="lg" variant="default">
+        S
+      </Button>
+      <Button.Group>
+        <Button size="lg" variant="default">
+          S
+        </Button>
+      </Button.Group>
 
-//       <Button.Group borderWidth={1}>
-//         <Button size="lg" variant="default">
-//           1
-//         </Button>
-//         <Button size="lg" variant="default">
-//           2
-//         </Button>
-//         <Button size="lg" variant="default">
-//           2
-//         </Button>
-//         <Button size="lg" variant="default">
-//           3
-//         </Button>
-//       </Button.Group>
+      <Button.Group borderWidth={1}>
+        <Button size="lg" variant="default">
+          1
+        </Button>
+        <Button size="lg" variant="default">
+          2
+        </Button>
+        <Button size="lg" variant="default">
+          2
+        </Button>
+        <Button size="lg" variant="default">
+          3
+        </Button>
+      </Button.Group>
 
-//       <Button.Group orientation="vertical">
-//         <Button size="lg" variant="default">
-//           1
-//         </Button>
-//         <Button size="lg" variant="default">
-//           2
-//         </Button>
-//         <Button size="lg" variant="default">
-//           2
-//         </Button>
-//         <Button size="lg" variant="default">
-//           3
-//         </Button>
-//       </Button.Group>
-//     </div>
-//   );
-// }
+      <Button.Group orientation="vertical">
+        <Button size="lg" variant="default">
+          1
+        </Button>
+        <Button size="lg" variant="default">
+          2
+        </Button>
+        <Button size="lg" variant="default">
+          2
+        </Button>
+        <Button size="lg" variant="default">
+          3
+        </Button>
+      </Button.Group>
+    </div>
+  );
+}

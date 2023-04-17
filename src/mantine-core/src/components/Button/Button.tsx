@@ -17,8 +17,9 @@ import {
   getFontSize,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
-import classes from './Button.module.css';
 import { Loader, LoaderProps } from '../Loader';
+import { ButtonGroup } from './ButtonGroup/ButtonGroup';
+import classes from './Button.module.css';
 
 export type ButtonStylesNames = 'root' | 'inner' | 'loader' | 'section' | 'label';
 export type ButtonVariant =
@@ -84,6 +85,9 @@ export type ButtonFactory = PolymorphicFactory<{
   defaultComponent: 'button';
   stylesNames: ButtonStylesNames;
   vars: ButtonCssVariables;
+  staticComponents: {
+    Group: typeof ButtonGroup;
+  };
 }>;
 
 const defaultProps: Partial<ButtonProps> = {
@@ -196,3 +200,4 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
 });
 
 Button.displayName = '@mantine/core/Button';
+Button.Group = ButtonGroup;
