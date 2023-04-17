@@ -15,10 +15,7 @@ export function Shell({ children }: ShellProps) {
     <>
       <Header navbarOpened={navbarOpened} onNavbarToggle={navbarHandlers.toggle} />
       <Navbar navbarOpened={navbarOpened} onNavbarClose={navbarHandlers.close} />
-
-      <main className={classes.main}>
-        <div className={classes.content}>{children}</div>
-      </main>
+      <main className={classes.main}>{children}</main>
     </>
   );
 }

@@ -23,7 +23,3 @@
     background-color: var(--mantine-color-dark-7);
   }
 }
-
-.content {
-  padding: var(--docs-content-spacing);
-}
