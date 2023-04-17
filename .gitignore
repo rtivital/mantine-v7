@@ -34,7 +34,6 @@ docs/.docgen/
 # project
 .eslintcache
 docs/.cache
-docs/public
 storybook-static
 .next
 docs/src/components/Test.tsx
