@@ -6,3 +6,4 @@ export * from './SearchControl';
 export * from './HeaderControl';
 export { MantineLogo } from './MantineLogo';
 export type { MantineLogoProps } from './MantineLogo';
+export { SocialButton, DiscordButton } from './SocialButton/SocialButton';
