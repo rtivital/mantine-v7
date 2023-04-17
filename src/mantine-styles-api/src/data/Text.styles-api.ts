@@ -14,7 +14,6 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-variant', selector: 'root', value: 'Value of variant prop' },
     {
       modifier: 'data-truncate',
       selector: 'root',

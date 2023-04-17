@@ -22,11 +22,6 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
 
   modifiers: [
     {
-      modifier: 'data-variant',
-      selector: ['root', 'tab', 'list'],
-      value: 'Value of variant prop',
-    },
-    {
       modifier: 'data-orientation',
       selector: ['root', 'tab', 'list', 'panel'],
       value: 'Value of orientation prop',
