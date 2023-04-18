@@ -8,6 +8,7 @@ export * from './Code';
 export * from './Collapse';
 export * from './ColorPicker';
 export * from './ColorSwatch';
+export * from './Container';
 export * from './CopyButton';
 export * from './Floating';
 export * from './FocusTrap';
