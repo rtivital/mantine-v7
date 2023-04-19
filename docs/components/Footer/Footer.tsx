@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Text, Group } from '@mantine/core';
+import { Container, Text, Group, Box } from '@mantine/core';
 import { TwitterButton, DiscordButton } from '@mantine/ds';
 import { Logo } from '../Logo/Logo';
 import { LinksGroup } from './LinksGroup/LinksGroup';
@@ -16,9 +16,9 @@ export function Footer({ withNavbar }: FooterProps) {
   ));
 
   return (
-    <>
+    <div className={classes.root}>
       <div className={classes.spacer} />
-      <div className={cx(classes.wrapper, { [classes.withNavbar]: withNavbar })}>
+      <Box mod={{ 'with-navbar': withNavbar }} className={classes.wrapper}>
         <Container size={1100}>
           <div className={classes.inner}>
             <div className={classes.logoSection}>
@@ -46,7 +46,7 @@ export function Footer({ withNavbar }: FooterProps) {
             </Group>
           </div>
         </Container>
-      </div>
-    </>
+      </Box>
+    </div>
   );
 }
