@@ -1,13 +1,13 @@
 import React from 'react';
-import { Code } from '@mantine/core';
 import { Demo } from '@mantine/ds';
 import { MDXProvider } from '@mdx-js/react';
 import { NextLink } from './NextLink/NextLink';
 import { DataTable } from './DataTable/DataTable';
 import { Pre } from './Pre/Pre';
 import { MdxLink } from './MdxLink/MdxLink';
-import { MdxParagraph, MdxLi, MdxUl } from './MdxTypography/MdxTypography';
+import { MdxParagraph, MdxLi, MdxUl, MdxCode } from './MdxTypography/MdxTypography';
 import { h } from './MdxTitle/MdxTitle';
+import { MdxQuote } from './MdxInfo/MdxInfo';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +27,8 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         p: MdxParagraph,
         li: MdxLi,
         ul: MdxUl,
-        inlineCode: Code,
+        blockquote: MdxQuote,
+        code: MdxCode,
       }}
     >
       {children}

@@ -1,0 +1,36 @@
+.root {
+  margin-top: calc(var(--mantine-spacing-xl) * 1.2);
+  margin-bottom: var(--mantine-spacing-md);
+
+  & > p {
+    line-height: 1.55;
+  }
+
+  & > p > strong:only-child {
+    font-family: var(--docs-font-primary);
+    font-size: var(--mantine-font-size-lg);
+  }
+
+  & > p:first-of-type {
+    margin-top: 0;
+  }
+
+  & > p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & :global(.mantine-Code-root) {
+    @mixin light {
+      background-color: var(--docs-bq-code-bg-light);
+    }
+
+    @mixin dark {
+      background-color: var(--docs-bq-code-bg-dark);
+    }
+  }
+}
+
+.icon {
+  width: rem(28px);
+  height: rem(28px);
+}
