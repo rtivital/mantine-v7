@@ -1,6 +1,6 @@
 /* eslint-disable import/no-relative-packages */
 import React from 'react';
-import { Code, Group } from '@mantine/core';
+import { Code, Group, Burger } from '@mantine/core';
 import { HeaderControls, ColorSchemeControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
 import packageJson from '../../../../package.json';
@@ -31,7 +31,13 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
 
       <header className={classes.header} data-mobile>
         <Group justify="space-between" w="100%">
-          <div>bur</div>
+          <Burger
+            opened={navbarOpened}
+            onClick={onNavbarToggle}
+            size="sm"
+            aria-label="Toggle navbar"
+          />
+
           <Logo />
 
           <ColorSchemeControl />
