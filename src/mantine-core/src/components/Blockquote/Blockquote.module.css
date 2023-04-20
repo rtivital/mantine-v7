@@ -7,7 +7,6 @@
   border-radius: var(--bq-radius);
   border-bottom-left-radius: var(--_bq-radius-left, 0);
   border-bottom-right-radius: var(--_bq-radius-right, var(--bq-radius));
-  color: var(--_bq-color);
   padding: var(--mantine-spacing-xl) rem(38px);
 
   @mixin rtl {
@@ -19,12 +18,10 @@
 
   @mixin light {
     --_bq-bg: var(--bq-bg-light);
-    --_bq-color: var(--mantine-color-black);
   }
 
   @mixin dark {
     --_bq-bg: var(--bq-bg-dark);
-    --_bq-color: var(--mantine-color-white);
   }
 }
 
