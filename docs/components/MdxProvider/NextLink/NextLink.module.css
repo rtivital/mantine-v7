@@ -1,0 +1,8 @@
+.link {
+  color: var(--mantine-color-anchor);
+  text-decoration: none;
+
+  @mixin hover {
+    text-decoration: underline;
+  }
+}
