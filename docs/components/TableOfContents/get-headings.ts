@@ -2,7 +2,25 @@ export interface Heading {
   depth: number;
   content: string;
   id: string;
-  node: HTMLHeadingElement;
+  getNode: () => HTMLHeadingElement;
+}
+
+function getHeadingsData(headings: HTMLHeadingElement[]): Heading[] {
+  const result: Heading[] = [];
+
+  for (let i = 0; i < headings.length; i += 1) {
+    const heading = headings[i];
+    if (heading.id) {
+      result.push({
+        depth: parseInt(heading.getAttribute('data-order')!, 10),
+        content: heading.getAttribute('data-heading') || '',
+        id: heading.id,
+        getNode: () => document.getElementById(heading.id) as HTMLHeadingElement,
+      });
+    }
+  }
+
+  return result;
 }
 
 export function getHeadings(): Heading[] {
@@ -12,14 +30,5 @@ export function getHeadings(): Heading[] {
     return [];
   }
 
-  const headings = root.querySelectorAll('[data-heading]');
-  const headingsArray = Array.from(headings) as HTMLHeadingElement[];
-  const headingsWithId = headingsArray.filter((heading) => heading.id);
-
-  return headingsWithId.map((heading) => ({
-    depth: parseInt(heading.getAttribute('data-order')!, 10),
-    content: heading.getAttribute('data-heading') || '',
-    id: heading.id,
-    node: heading,
-  }));
+  return getHeadingsData(Array.from(root.querySelectorAll('[data-heading]')));
 }

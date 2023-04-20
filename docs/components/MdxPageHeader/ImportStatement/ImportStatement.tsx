@@ -15,12 +15,9 @@ export function ImportStatement({ code }: ImportStatementProps) {
   return (
     <HeaderItem label="Import" className={classes.wrapper}>
       <Tooltip
-        label={clipboard.copied ? 'Copied' : 'Copy'}
+        label={clipboard.copied ? 'Copied' : 'Copy code'}
         position="right"
-        withArrow
-        arrowSize={6}
         offset={10}
-        color={clipboard.copied ? 'teal' : undefined}
         disabled={mobile}
       >
         <UnstyledButton className={classes.copy} type="button" onClick={() => clipboard.copy(code)}>

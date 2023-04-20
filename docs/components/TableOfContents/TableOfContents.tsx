@@ -40,14 +40,16 @@ export function TableOfContents({ withTabs }: TableOfContentsProps) {
   const filteredHeadings = headings.filter((heading) => heading.depth > 1);
 
   const handleScroll = () => {
-    setActive(getActiveElement(headingsRef.current.map((d) => d.node.getBoundingClientRect())));
+    setActive(
+      getActiveElement(headingsRef.current.map((d) => d.getNode().getBoundingClientRect()))
+    );
   };
 
   useEffect(() => {
     const _headings = getHeadings();
     headingsRef.current = _headings;
     setHeadings(_headings);
-    setActive(getActiveElement(_headings.map((d) => d.node.getBoundingClientRect())));
+    setActive(getActiveElement(_headings.map((d) => d.getNode().getBoundingClientRect())));
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
