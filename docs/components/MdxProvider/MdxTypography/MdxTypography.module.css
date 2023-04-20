@@ -1,0 +1,13 @@
+.paragraph {
+  line-height: 1.55;
+}
+
+.ul {
+  line-height: 1.65;
+  margin-bottom: rem(20px);
+  margin-top: rem(10px);
+}
+
+.li {
+  margin-top: rem(4px);
+}

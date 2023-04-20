@@ -6,6 +6,7 @@ import { NextLink } from './NextLink/NextLink';
 import { DataTable } from './DataTable/DataTable';
 import { Pre } from './Pre/Pre';
 import { MdxLink } from './MdxLink/MdxLink';
+import { MdxParagraph, MdxLi, MdxUl } from './MdxTypography/MdxTypography';
 import { h } from './MdxTitle/MdxTitle';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
@@ -23,6 +24,9 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         h5: h(5),
         h6: h(6),
         a: MdxLink,
+        p: MdxParagraph,
+        li: MdxLi,
+        ul: MdxUl,
         inlineCode: Code,
       }}
     >
