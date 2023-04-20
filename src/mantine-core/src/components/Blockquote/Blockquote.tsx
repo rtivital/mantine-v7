@@ -80,7 +80,18 @@ const varsResolver = createVarsResolver<BlockquoteFactory>((theme, { color, icon
 
 export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {
   const props = useProps('Blockquote', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, children, icon, ...others } = props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    children,
+    icon,
+    iconSize,
+    ...others
+  } = props;
 
   const getStyles = useStyles<BlockquoteFactory>({
     name: 'Blockquote',

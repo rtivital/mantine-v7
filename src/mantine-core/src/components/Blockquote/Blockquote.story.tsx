@@ -7,7 +7,10 @@ export default { title: 'Blockquote' };
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 820 }}>
-      <Blockquote icon={<IconInfoCircle style={{ width: '2rem', height: '2rem' }} stroke={1.5} />}>
+      <Blockquote
+        icon={<IconInfoCircle style={{ width: '2rem', height: '2rem' }} stroke={1.5} />}
+        color="#F0000E"
+      >
         <b>Hello there</b>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime fugiat rerum officiis,
