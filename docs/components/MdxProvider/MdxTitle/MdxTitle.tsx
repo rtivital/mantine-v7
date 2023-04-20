@@ -21,7 +21,7 @@ export default function MdxTitle({
 
   return (
     <>
-      <div id={id} className={classes.offset} />
+      <div id={id} data-heading={children} data-order={order} className={classes.offset} />
       <Title order={order} className={classes.title} style={{ fontWeight: 600 }} {...others}>
         <a className={cx(classes.link, theme.focusClassNames.auto)} href={`#${id}`}>
           {children}
