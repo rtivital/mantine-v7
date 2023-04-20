@@ -20,7 +20,7 @@ export type KbdCssVariables = {
   root: '--kbd-padding' | '--kbd-fz';
 };
 
-export interface KbdProps extends BoxProps, StylesApiProps<KbdFactory>, ElementProps<'div'> {
+export interface KbdProps extends BoxProps, StylesApiProps<KbdFactory>, ElementProps<'kbd'> {
   /** Controls font-size and padding, `'sm'` by default */
   size?: MantineSize | (string & {});
 }

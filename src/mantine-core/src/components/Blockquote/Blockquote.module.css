@@ -1,0 +1,18 @@
+.root {
+  margin: 0;
+  background-color: var(--_bq-bg);
+  border-left: rem(3px) solid var(--bq-bd);
+  border-radius: var(--mantine-radius-sm);
+  color: var(--_bq-color);
+  padding: var(--mantine-spacing-xl) rem(38px);
+
+  @mixin light {
+    --_bq-bg: var(--bq-bg-light);
+    --_bq-color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    --_bq-bg: var(--bq-bg-dark);
+    --_bq-color: var(--mantine-color-white);
+  }
+}
