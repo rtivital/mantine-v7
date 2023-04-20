@@ -1,17 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import Slugger from 'github-slugger';
-import { Text, ScrollArea, useMantineTheme, rem, Box } from '@mantine/core';
+import { Text, ScrollArea, rem, Box } from '@mantine/core';
 import { IconList } from '@tabler/icons-react';
+import { getHeadings, Heading } from './get-headings';
 import classes from './TableOfContents.module.css';
 
-interface Heading {
-  depth: number;
-  value: string;
-}
-
 interface TableOfContentsProps {
-  headings: Heading[];
   withTabs: boolean;
 }
 
@@ -37,28 +31,23 @@ function getActiveElement(rects: DOMRect[]) {
   return closest.index;
 }
 
-export function TableOfContents({ headings, withTabs }: TableOfContentsProps) {
-  const theme = useMantineTheme();
-  const slugger = new Slugger();
+export function TableOfContents({ withTabs }: TableOfContentsProps) {
   const [active, setActive] = useState(0);
+  const [headings, setHeadings] = useState<Heading[]>([]);
+  const headingsRef = useRef<Heading[]>([]);
   const router = useRouter();
 
-  const slugs = useRef<HTMLDivElement[]>([]);
   const filteredHeadings = headings.filter((heading) => heading.depth > 1);
 
-  useEffect(() => {
-    slugger.reset();
-    slugs.current = filteredHeadings.map(
-      (heading) => document.getElementById(slugger.slug(heading.value)) as HTMLDivElement
-    );
-  }, [headings]);
-
   const handleScroll = () => {
-    setActive(getActiveElement(slugs.current.map((d) => d.getBoundingClientRect())));
+    setActive(getActiveElement(headingsRef.current.map((d) => d.node.getBoundingClientRect())));
   };
 
   useEffect(() => {
-    setActive(getActiveElement(slugs.current.map((d) => d.getBoundingClientRect())));
+    const _headings = getHeadings();
+    headingsRef.current = _headings;
+    setHeadings(_headings);
+    setActive(getActiveElement(_headings.map((d) => d.node.getBoundingClientRect())));
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -67,26 +56,23 @@ export function TableOfContents({ headings, withTabs }: TableOfContentsProps) {
     return null;
   }
 
-  const items = filteredHeadings.map((heading, index) => {
-    const slug = slugger.slug(heading.value);
-    return (
-      <Text<'a'>
-        key={slug}
-        component="a"
-        fz="sm"
-        className={classes.link}
-        mod={{ active: active === index }}
-        href={`#${slug}`}
-        style={{ paddingLeft: `calc(${heading.depth - 1} * ${theme.spacing.lg})` }}
-        onClick={(event) => {
-          event.preventDefault();
-          router.replace(`${router.pathname}#${slug}`);
-        }}
-      >
-        {heading.value}
-      </Text>
-    );
-  });
+  const items = filteredHeadings.map((heading, index) => (
+    <Text<'a'>
+      key={heading.id}
+      component="a"
+      fz="sm"
+      className={classes.link}
+      mod={{ active: active === index }}
+      href={`#${heading.id}`}
+      __vars={{ '--toc-link-offset': `${heading.depth - 1}` }}
+      onClick={(event) => {
+        event.preventDefault();
+        router.replace(`${router.pathname}#${heading.id}`);
+      }}
+    >
+      {heading.content}
+    </Text>
+  ));
 
   return (
     <Box component="nav" mod={{ 'with-tabs': withTabs }} className={classes.wrapper}>
@@ -96,7 +82,7 @@ export function TableOfContents({ headings, withTabs }: TableOfContentsProps) {
             <IconList size={20} stroke={1.5} />
             <Text className={classes.title}>Table of contents</Text>
           </div>
-          <ScrollArea.Autosize mah={`calc(100vh - ${rem(140)})`} type="scroll" offsetScrollbars>
+          <ScrollArea.Autosize mah={`calc(100vh - ${rem(140)})`} type="never" offsetScrollbars>
             <div className={classes.items}>{items}</div>
           </ScrollArea.Autosize>
         </div>

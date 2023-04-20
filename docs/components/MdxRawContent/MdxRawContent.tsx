@@ -17,7 +17,7 @@ export function MdxRawContent({ children }: MdxRawContentProps) {
         </div>
 
         <div className={classes.tableOfContents}>
-          <TableOfContents headings={[]} withTabs={false} />
+          <TableOfContents withTabs={false} />
         </div>
       </div>
     </MdxPageBase>
