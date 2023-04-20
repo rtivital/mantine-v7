@@ -16,6 +16,7 @@ export * from './Group';
 export * from './Highlight';
 export * from './Input';
 export * from './InputBase';
+export * from './Kbd';
 export * from './Loader';
 export * from './Mark';
 export * from './NativeSelect';
