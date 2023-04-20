@@ -11,6 +11,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
+
+  &[data-desktop] {
+    @media (max-width: 40em) {
+      display: none;
+    }
+  }
+
+  &[data-mobile] {
+    @media (min-width: 40em) {
+      display: none;
+    }
+  }
 }
 
 .logo {
@@ -25,5 +38,9 @@
   @mixin rtl {
     margin-left: 0;
     margin-right: var(--mantine-spacing-md);
+  }
+
+  @media (max-width: 50em) {
+    display: none;
   }
 }
