@@ -3,7 +3,7 @@ import cx from 'clsx';
 import { Title, rem, useMantineTheme } from '@mantine/core';
 import classes from './MdxTitle.module.css';
 
-export default function MdxTitle({
+export function MdxTitle({
   id,
   children,
   order,

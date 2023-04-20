@@ -6,6 +6,7 @@
     line-height: 1.55;
   }
 
+  /* Considered to be a heading of the info */
   & > p > strong:only-child {
     font-family: var(--docs-font-primary);
     font-size: var(--mantine-font-size-lg);
