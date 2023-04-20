@@ -32,7 +32,7 @@ export function Footer({ withNavbar }: FooterProps) {
           </div>
 
           <div className={classes.afterFooter}>
-            <Group justify="space-between">
+            <Group justify="space-between" wrap="wrap">
               <Text fz="xs" className={classes.afterFooterNote}>
                 Built by <a href="https://github.com/rtivital">Vitaly Rtishchev</a> and{' '}
                 <a href="https://github.com/mantinedev/mantine/graphs/contributors">

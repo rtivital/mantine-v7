@@ -69,7 +69,7 @@ $footer-breakpoint-mobile: 40em;
   display: flex;
   justify-content: space-between;
 
-  @media ($footer-breakpoint-tablet) {
+  @media (max-width: $footer-breakpoint-tablet) {
     flex-direction: column;
   }
 
@@ -152,7 +152,7 @@ $footer-breakpoint-mobile: 40em;
 .socialButton {
   @media (max-width: $footer-breakpoint-mobile) {
     width: 100%;
-    margin-left: 0;
-    margin-top: var(--mantine-spacing-md);
+    margin-left: 0 !important;
+    margin-top: var(--mantine-spacing-sm);
   }
 }
