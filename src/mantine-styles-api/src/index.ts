@@ -13,6 +13,7 @@ export * from './data/Container.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Input.styles-api';
 export * from './data/InputBase.styles-api';
+export * from './data/Kbd.styles-api';
 export * from './data/Loader.styles-api';
 export * from './data/Mark.styles-api';
 export * from './data/NativeSelect.styles-api';
