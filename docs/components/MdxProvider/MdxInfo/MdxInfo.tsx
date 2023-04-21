@@ -4,7 +4,7 @@ import { IconInfoCircle } from '@tabler/icons-react';
 import { Blockquote, rgba, useMantineTheme } from '@mantine/core';
 import classes from './MdxInfo.module.css';
 
-export function MdxQuote({ className, ...others }: React.ComponentPropsWithoutRef<'blockquote'>) {
+export function MdxInfo({ className, ...others }: React.ComponentPropsWithoutRef<'blockquote'>) {
   const theme = useMantineTheme();
   return (
     <Blockquote

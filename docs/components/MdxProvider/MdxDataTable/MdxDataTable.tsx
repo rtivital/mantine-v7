@@ -7,7 +7,7 @@ interface DataTableProps {
   head?: string[];
 }
 
-export function DataTable({ data, head }: DataTableProps) {
+export function MdxDataTable({ data, head }: DataTableProps) {
   const rows = data.map((row, index) => {
     const cells = row.map((cell, cellIndex) => <Table.Td key={cellIndex}>{cell}</Table.Td>);
     return <Table.Tr key={index}>{cells}</Table.Tr>;

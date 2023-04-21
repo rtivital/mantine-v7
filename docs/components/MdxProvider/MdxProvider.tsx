@@ -1,24 +1,22 @@
 import React from 'react';
 import { Demo } from '@mantine/ds';
 import { MDXProvider } from '@mdx-js/react';
-import { NextLink } from './NextLink/NextLink';
-import { DataTable } from './DataTable/DataTable';
-import { Pre } from './Pre/Pre';
+import { MdxDataTable } from './MdxDataTable/MdxDataTable';
+import { MdxPre } from './MdxPre/MdxPre';
 import { MdxLink } from './MdxLink/MdxLink';
 import { MdxParagraph, MdxLi, MdxUl, MdxCode } from './MdxTypography/MdxTypography';
 import { h } from './MdxTitle/MdxTitle';
-import { MdxQuote } from './MdxInfo/MdxInfo';
-import { KeyboardEventsTable } from './KeyboardEventsTable/KeyboardEventsTable';
+import { MdxInfo } from './MdxInfo/MdxInfo';
+import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEventsTable';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
     <MDXProvider
       components={{
         Demo,
-        NextLink,
-        DataTable,
-        KeyboardEventsTable,
-        pre: Pre,
+        DataTable: MdxDataTable,
+        KeyboardEventsTable: MdxKeyboardEventsTable,
+        pre: MdxPre,
         h1: h(1),
         h2: h(2),
         h3: h(3),
@@ -29,7 +27,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         p: MdxParagraph,
         li: MdxLi,
         ul: MdxUl,
-        blockquote: MdxQuote,
+        blockquote: MdxInfo,
         code: MdxCode,
       }}
     >

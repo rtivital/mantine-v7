@@ -5,7 +5,7 @@ interface KeyboardEventsTableProps {
   data: { key: string; description: string; condition: string }[];
 }
 
-export function KeyboardEventsTable({ data }: KeyboardEventsTableProps) {
+export function MdxKeyboardEventsTable({ data }: KeyboardEventsTableProps) {
   const hasCondition = data.some((item) => item.condition);
   const rows = data.map((item, index) => (
     <Table.Tr key={index}>
