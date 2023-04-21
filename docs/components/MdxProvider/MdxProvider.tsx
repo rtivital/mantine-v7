@@ -8,6 +8,7 @@ import { MdxLink } from './MdxLink/MdxLink';
 import { MdxParagraph, MdxLi, MdxUl, MdxCode } from './MdxTypography/MdxTypography';
 import { h } from './MdxTitle/MdxTitle';
 import { MdxQuote } from './MdxInfo/MdxInfo';
+import { KeyboardEventsTable } from './KeyboardEventsTable/KeyboardEventsTable';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         Demo,
         NextLink,
         DataTable,
+        KeyboardEventsTable,
         pre: Pre,
         h1: h(1),
         h2: h(2),
