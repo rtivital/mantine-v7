@@ -6,6 +6,7 @@ import type { Modifier } from '@mantine/styles-api';
 import { HtmlText } from '@/components/HtmlText';
 import { TableInlineCode } from '@/components/TableInlineCode';
 import { DocsSection } from '@/components/DocsSection';
+import { TableError } from '@/components/TableError';
 import classes from './StylesApiTable.module.css';
 
 interface StylesApiData {
@@ -23,21 +24,7 @@ export interface StylesApiTableProps {
 export function StylesApiTable({ component }: StylesApiTableProps) {
   const data = STYLES_API_DATA[`${component}StylesApi`];
   if (!data) {
-    return (
-      <Text>
-        <Text span c="red">
-          Error loading component styles api data.{' '}
-        </Text>
-        If you see this message please let us know by{' '}
-        <Anchor
-          href="https://github.com/mantinedev/mantine/issues/new?assignees=&labels=&template=docs_report.yml"
-          target="_blank"
-        >
-          opening an issue on GitHub
-        </Anchor>
-        .
-      </Text>
-    );
+    return <TableError errorOf="Styles API" />;
   }
 
   const selectorsRows = Object.keys(data.selectors).map((selector) => (
@@ -74,22 +61,23 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
     return acc;
   }, []);
 
-  const modifiersRows = data.modifiers.map((modifier, index) => (
-    <Table.Tr key={index}>
-      <Table.Td>
-        {Array.isArray(modifier.selector) ? modifier.selector.join(', ') : modifier.selector}
-      </Table.Td>
-      <Table.Td>
-        <TableInlineCode>{modifier.modifier}</TableInlineCode>
-      </Table.Td>
-      <Table.Td>
-        <HtmlText>{modifier.condition || '–'}</HtmlText>
-      </Table.Td>
-      <Table.Td>
-        <HtmlText>{modifier.value || '–'}</HtmlText>
-      </Table.Td>
-    </Table.Tr>
-  ));
+  const modifiersRows =
+    data.modifiers?.map((modifier, index) => (
+      <Table.Tr key={index}>
+        <Table.Td>
+          {Array.isArray(modifier.selector) ? modifier.selector.join(', ') : modifier.selector}
+        </Table.Td>
+        <Table.Td>
+          <TableInlineCode>{modifier.modifier}</TableInlineCode>
+        </Table.Td>
+        <Table.Td>
+          <HtmlText>{modifier.condition || '–'}</HtmlText>
+        </Table.Td>
+        <Table.Td>
+          <HtmlText>{modifier.value || '–'}</HtmlText>
+        </Table.Td>
+      </Table.Tr>
+    )) || [];
 
   return (
     <DocsSection>

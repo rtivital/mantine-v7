@@ -1,8 +1,9 @@
 import React from 'react';
-import { Table, Text, Highlight, rem, Anchor } from '@mantine/core';
+import { Table, Text, Highlight, rem } from '@mantine/core';
 import { DocsSection } from '@/components/DocsSection';
 import { HtmlText } from '@/components/HtmlText';
 import { TableInlineCode } from '@/components/TableInlineCode';
+import { TableError } from '@/components/TableError';
 import docgenData from '@/.docgen/docgen.json';
 
 export interface DocgenProp {
@@ -32,21 +33,7 @@ interface PropsTableProps {
 
 export function PropsTable({ component, query }: PropsTableProps) {
   if (!PROPS_DATA[component]) {
-    return (
-      <Text>
-        <Text span c="red">
-          Error loading component props data.{' '}
-        </Text>
-        If you see this message please let us know by{' '}
-        <Anchor
-          href="https://github.com/mantinedev/mantine/issues/new?assignees=&labels=&template=docs_report.yml"
-          target="_blank"
-        >
-          opening an issue on GitHub
-        </Anchor>
-        .
-      </Text>
-    );
+    return <TableError errorOf="props" />;
   }
 
   const rows = Object.keys(PROPS_DATA[component].props)

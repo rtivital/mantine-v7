@@ -8,8 +8,8 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
 
   vars: {
     root: {
-      '--loader-size': 'Loader width, controlled by size prop',
-      '--loader-color': 'Svg stroke/fille color, controlled by color prop',
+      '--loader-size': 'Loader width, controlled by `size` prop',
+      '--loader-color': 'SVG `stroke`/`fill` color, controlled by `color` prop',
     },
   },
 };
