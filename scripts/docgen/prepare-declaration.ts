@@ -5,14 +5,18 @@ function replaceBackticks(str: string): string {
 }
 
 const replace = {
-  MantineSize: '"xs" | "sm" | "md" | "lg" | "xl"',
-  GroupPosition: '"right" | "center" | "left" | "apart"',
   DefaultMantineColor: 'MantineColor',
   ReactText: 'string | number',
   'ReactElement<any, string | ((props: any) => ReactElement<any, any>) | (new (props: any) => Component<any, any, any>)>':
     'ReactElement',
   'string | number | boolean | {} | ReactElement<any, string | ((props: any) => ReactElement<any, any>) | (new (props: any) => Component<any, any, any>)> | ReactNodeArray | ReactPortal | ((value: number) => ReactNode)':
     'ReactNode | (value: number) => ReactNode',
+  'Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> | undefined':
+    'React.ComponentPropsWithoutRef<"div">',
+  'PointerEvents | undefined': 'React.CSSProperties["pointerEvents"]',
+  'Width<string | number> | undefined': 'React.CSSProperties["width"]',
+  ReactNode: 'React.ReactNode',
+  '(string & {}) | MantineSize | undefined': 'MantineSize',
 };
 
 export function prepareDeclaration(declaration: ComponentDoc) {
@@ -25,17 +29,23 @@ export function prepareDeclaration(declaration: ComponentDoc) {
     delete data.props[prop].declarations;
     delete data.description;
 
-    data.props[prop].type.name = data.props[prop].type.name.replace(' | undefined', '');
+    if (data.props[prop].type.name === 'enum') {
+      data.props[prop].type.name = data.props[prop].type.raw;
+    }
 
     if (data.props[prop].type.name in replace) {
       data.props[prop].type.name = (replace as any)[data.props[prop].type.name];
     }
 
-    if (data.props[prop].type.name === 'enum') {
-      data.props[prop].type.name = data.props[prop].type.value
-        .map((val: { value: string }) => val.value)
-        .join(' | ');
+    if (prop === 'radius') {
+      data.props[prop].type.name = 'MantineRadius | number';
     }
+
+    data.props[prop].type.name = data.props[prop].type.name
+      .replace(' | undefined', '')
+      .replace('undefined |', '')
+      .replace('"xs" | "sm" | "md" | "lg" | "xl"', 'MantineSize')
+      .trim();
   });
 
   // This sorts the props object in ascending order

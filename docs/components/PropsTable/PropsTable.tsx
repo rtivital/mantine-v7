@@ -70,7 +70,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
 
   if (rows.length === 0) {
     return (
-      <Text color="dimmed" mb="xl">
+      <Text c="dimmed" mb="xl" fz="sm">
         Nothing found
       </Text>
     );
@@ -80,7 +80,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
     <DocsSection>
       <div style={{ overflowX: 'auto' }}>
         <div style={{ minWidth: rem(500) }}>
-          <Table withTableBorder>
+          <Table>
             <Table.Thead>
               <Table.Tr>
                 <Table.Th>Name</Table.Th>

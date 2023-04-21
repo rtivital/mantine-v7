@@ -1,5 +1,5 @@
 import { Layout } from '@/layout';
-import { PropsTable } from '@/components/PropsTable';
+import { PropsTablesList } from '@/components/PropsTable';
 import { StylesApiTable } from '@/components/StylesApiTable';
 
 export const meta = {
@@ -34,6 +34,7 @@ function Demo() {
 
 <StylesApiTable component="Switch" />
 
-## Props
-
-<PropsTable component="Loader" query="" />
+<PropsTablesList
+  components={['Input', 'InputWrapper', 'InputLabel', 'InputError']}
+  componentPrefix="Input"
+/>
