@@ -14,13 +14,13 @@
   z-index: 100;
 
   &[data-desktop] {
-    @media (max-width: 40em) {
+    @media (max-width: 47.5em) {
       display: none;
     }
   }
 
   &[data-mobile] {
-    @media (min-width: 40em) {
+    @media (min-width: 47.5625em) {
       display: none;
     }
   }
