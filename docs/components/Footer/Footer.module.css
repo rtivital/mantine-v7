@@ -150,9 +150,21 @@ $footer-breakpoint-mobile: 40em;
 }
 
 .socialButton {
+  &:last-of-type {
+    margin-left: var(--mantine-spacing-md);
+  }
+
+  @mixin rtl {
+    &:last-of-type {
+      margin-left: 0;
+      margin-right: var(--mantine-spacing-md);
+    }
+  }
+
   @media (max-width: $footer-breakpoint-mobile) {
     width: 100%;
     margin-left: 0 !important;
+    margin-right: 0 !important;
     margin-top: var(--mantine-spacing-sm);
   }
 }

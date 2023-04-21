@@ -1,25 +1,24 @@
 .wrapper {
-  & + & {
-    margin-left: rem(60px);
+  margin-right: rem(60px);
+
+  &:last-of-type {
+    margin-right: 0;
   }
 
   @media (max-width: 62.5em) {
-    & + & {
-      margin-left: rem(40px);
-    }
+    margin-right: rem(40px);
   }
 
   @mixin rtl {
-    & + & {
+    margin-right: 0;
+    margin-left: rem(60px);
+
+    &:last-of-type {
       margin-left: 0;
-      margin-right: rem(60px);
     }
 
     @media (max-width: 62.5em) {
-      & + & {
-        margin-left: 0;
-        margin-right: rem(40px);
-      }
+      margin-left: rem(40px);
     }
   }
 }

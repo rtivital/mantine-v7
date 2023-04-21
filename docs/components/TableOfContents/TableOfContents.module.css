@@ -81,6 +81,11 @@
 
 .title {
   margin-left: var(--mantine-spacing-md);
+
+  @mixin rtl {
+    margin-left: 0;
+    margin-right: var(--mantine-spacing-md);
+  }
 }
 
 .items {
@@ -92,5 +97,18 @@
 
   @mixin dark {
     border-color: var(--mantine-color-dark-4);
+  }
+
+  @mixin rtl {
+    border-left: 0;
+    border-right: rem(1px) solid;
+
+    @mixin light {
+      border-color: var(--mantine-color-gray-3);
+    }
+
+    @mixin dark {
+      border-color: var(--mantine-color-dark-4);
+    }
   }
 }
