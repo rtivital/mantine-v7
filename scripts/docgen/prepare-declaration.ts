@@ -1,7 +1,10 @@
 import { ComponentDoc } from 'react-docgen-typescript';
 
+function replaceBackticks(str: string): string {
+  return str.replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+
 const replace = {
-  MantineNumberSize: 'number | "xs" | "sm" | "md" | "lg" | "xl"',
   MantineSize: '"xs" | "sm" | "md" | "lg" | "xl"',
   GroupPosition: '"right" | "center" | "left" | "apart"',
   DefaultMantineColor: 'MantineColor',
@@ -22,6 +25,8 @@ export function prepareDeclaration(declaration: ComponentDoc) {
     delete data.props[prop].declarations;
     delete data.description;
 
+    data.props[prop].type.name = data.props[prop].type.name.replace(' | undefined', '');
+
     if (data.props[prop].type.name in replace) {
       data.props[prop].type.name = (replace as any)[data.props[prop].type.name];
     }
@@ -39,6 +44,7 @@ export function prepareDeclaration(declaration: ComponentDoc) {
     .reduce<Record<string, any>>((obj, key) => {
       // eslint-disable-next-line no-param-reassign
       obj[key] = data.props[key];
+      data.props[key].description = replaceBackticks(data.props[key].description);
       return obj;
     }, {});
 
