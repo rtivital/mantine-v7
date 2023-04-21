@@ -5,7 +5,6 @@ import * as stylesData from '@mantine/styles-api';
 import type { Modifier } from '@mantine/styles-api';
 import { HtmlText } from '@/components/HtmlText';
 import { TableInlineCode } from '@/components/TableInlineCode';
-import { DocsSection } from '@/components/DocsSection';
 import { TableError } from '@/components/TableError';
 import classes from './StylesApiTable.module.css';
 
@@ -80,11 +79,11 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
     )) || [];
 
   return (
-    <DocsSection>
+    <>
       <div style={{ overflowX: 'auto' }}>
         <div style={{ minWidth: rem(500) }}>
           <div className={classes.section}>
-            <Text className={classes.title}>{component} component selectors</Text>
+            <Text className={classes.title}>{component} selectors</Text>
             <Anchor component={Link} href="/styles/styles-api/" className={classes.link}>
               Learn how to customize components styles with Styles API →
             </Anchor>
@@ -102,7 +101,7 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
 
           {variablesRows.length > 0 && (
             <div className={classes.section}>
-              <Text className={classes.title}>{component} component CSS variables</Text>
+              <Text className={classes.title}>{component} CSS variables</Text>
               <Anchor component={Link} href="/styles/styles-api/" className={classes.link}>
                 Learn how to handle dynamic styles with CSS variables →
               </Anchor>
@@ -140,6 +139,6 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
           )}
         </div>
       </div>
-    </DocsSection>
+    </>
   );
 }

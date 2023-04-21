@@ -33,6 +33,7 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
         variant="outline"
         value={activeTab}
         classNames={{ list: classes.tabsList, tab: classes.tab }}
+        keepMounted={false}
         onChange={(value) => {
           router.replace(value === 'docs' ? router.pathname : `${router.pathname}?t=${value}`);
           setActiveTab(value!);

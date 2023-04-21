@@ -79,7 +79,7 @@
 }
 
 .main {
-  width: calc(100% - var(--table-of-contents-width));
+  width: calc(100% - var(--docs-table-of-contents-width));
   max-width: var(--docs-mdx-content-width);
   margin-left: auto;
   margin-right: auto;
@@ -91,7 +91,7 @@
 }
 
 .tableOfContents {
-  flex: 0 0 var(--table-of-contents-width);
+  flex: 0 0 var(--docs-table-of-contents-width);
   margin-top: var(--mantine-spacing-xl);
 
   @media (max-width: $docs-mdx-breakpoint) {
