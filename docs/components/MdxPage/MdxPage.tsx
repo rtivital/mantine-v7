@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdxPageHeader } from '@/components/MdxPageHeader';
-// import { MdxPageTabs } from '@/components/MdxPageTabs';
+import { MdxTabs } from '@/components/MdxTabs';
 import { MdxRawContent } from '@/components/MdxRawContent';
 import { Frontmatter } from '@/types';
 
@@ -13,13 +13,7 @@ export function MdxPage(props: MdxPageProps) {
   return (
     <>
       <MdxPageHeader {...props} />
-      <MdxRawContent {...props} />
-
-      {/* {Array.isArray(props.frontmatter.props) ? (
-        <MdxPageTabs {...props} />
-      ) : (
-        <MdxRawContent {...props} />
-      )} */}
+      {Array.isArray(props.meta.props) ? <MdxTabs {...props} /> : <MdxRawContent {...props} />}
     </>
   );
 }
