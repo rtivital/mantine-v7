@@ -4,6 +4,7 @@ import { MdxTitle } from '../MdxTitle/MdxTitle';
 import { MdxCodeHighlight } from '../MdxPre/MdxPre';
 import { MdxParagraph, MdxCode } from '../MdxTypography/MdxTypography';
 import { MdxLink } from '../MdxLink/MdxLink';
+import { MdxInfo } from '../MdxInfo/MdxInfo';
 
 interface MdxPolymorphic {
   component: string;
@@ -23,14 +24,19 @@ function Demo() {
 }
 
 function getNextLinkCode(input: MdxPolymorphic) {
-  return `
-import Link from 'next/link';
+  return `import Link from 'next/link';
 import { ${input.component} } from '${input.package || '@mantine/core'}';
 
 function Demo() {
   return <${input.component} component={Link} href="/" />;
+}`;
 }
-  `;
+
+function getInterfaceCode(input: MdxPolymorphic) {
+  return `import type { ${input.component}Props } from '${input.package || '@mantine/core'}';
+
+interface My${input.component}Props extends ${input.component}Props,
+  React.ComponentPropsWithoutRef<'${input.changeToElement}'> {}`;
 }
 
 export function MdxPolymorphic(props: MdxPolymorphic) {
@@ -54,6 +60,38 @@ export function MdxPolymorphic(props: MdxPolymorphic) {
           <MdxCodeHighlight code={getNextLinkCode(props)} />
         </>
       )}
+
+      <MdxInfo>
+        <MdxParagraph>
+          <strong>Polymorphic components with TypeScript</strong>
+        </MdxParagraph>
+
+        <MdxParagraph>
+          Note that polymorphic components props types are different from regular components – they
+          do not extend HTML element props of default element. For example,{' '}
+          <MdxCode>{props.component}Props</MdxCode> does not extend{' '}
+          <MdxCode>
+            React.ComponentPropsWithoutRef{"'<'"}div{"'>'"}
+          </MdxCode>{' '}
+          although <MdxCode>{props.defaultElement}</MdxCode> is the default element.
+        </MdxParagraph>
+
+        <MdxParagraph>
+          If you want to create a wrapper for a polymorphic component that is not polymorphic (does
+          not support <MdxCode>component</MdxCode> prop), then your component props interface should
+          extend HTML element props, for example:{' '}
+        </MdxParagraph>
+
+        <MdxParagraph>
+          <MdxCodeHighlight code={getInterfaceCode(props)}></MdxCodeHighlight>
+        </MdxParagraph>
+
+        <MdxParagraph>
+          If you want your component to remain polymorphic after wrapping, use{' '}
+          <MdxCode>createPolymorphicComponent</MdxCode> function described in{' '}
+          <MdxLink href="/guides/polymorphic/">this guide</MdxLink>.
+        </MdxParagraph>
+      </MdxInfo>
     </>
   );
 }
