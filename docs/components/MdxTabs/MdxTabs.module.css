@@ -3,19 +3,18 @@
 
   @mixin light {
     background-color: var(--mantine-color-gray-0);
-    border-bottom: rem(1px) solid var(--mantine-color-gray-3);
+    border-bottom: rem(1px) solid var(--mantine-color-gray-2);
   }
 
   @mixin dark {
     background-color: var(--mantine-color-dark-8);
-    border-bottom: rem(1px) solid var(--mantine-color-dark-8);
+    border-bottom: rem(1px) solid var(--mantine-color-dark-6);
   }
 
   @media (max-width: $docs-mdx-breakpoint) {
     padding-left: var(--mantine-spacing-xl);
   }
 
-  /* check this */
   @media (min-width: 86.25em) {
     padding-left: 0;
   }
@@ -25,11 +24,21 @@
   max-width: rem(1082px);
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0;
+  margin-bottom: rem(-1px);
 
   @media (max-width: $docs-mdx-breakpoint) {
     max-width: 100%;
     padding-right: 0;
+  }
+
+  &::before {
+    @mixin light {
+      border-color: var(--mantine-color-gray-2);
+    }
+
+    @mixin dark {
+      border-color: var(--mantine-color-dark-6);
+    }
   }
 }
 
@@ -39,27 +48,21 @@
   height: rem(46px);
   padding-left: var(--mantine-spacing-lg);
   padding-right: var(--mantine-spacing-lg);
-  margin-bottom: rem(-1px);
   background-color: transparent;
-
-  /* check this */
-  @mixin light {
-    border-color: var(--mantine-color-gray-3) !important;
-  }
-
-  @mixin dark {
-    border-color: var(--mantine-color-dark-8) !important;
-  }
 
   &[data-active] {
     background-color: var(--mantine-color-body);
 
     @mixin light {
       color: var(--mantine-color-black);
+      border-color: var(--mantine-color-gray-2);
+      border-bottom-color: transparent;
     }
 
     @mixin dark {
       color: var(--mantine-color-white);
+      border-color: var(--mantine-color-dark-6);
+      border-bottom-color: transparent;
     }
   }
 }

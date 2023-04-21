@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, rem, em } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Tabs, rem } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { TableOfContents } from '@/components/TableOfContents';
 import { MdxPageBase } from '@/components/MdxPageBase';
@@ -15,7 +14,6 @@ interface MdxTabsProps {
 }
 
 export function MdxTabs({ children, meta }: MdxTabsProps) {
-  const mobile = useMediaQuery(`(max-width: ${em(500)})`);
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('docs');
   const hasProps = Array.isArray(meta.props);
@@ -43,10 +41,8 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
         <div className={classes.tabsWrapper}>
           <Tabs.List>
             <Tabs.Tab value="docs">Documentation</Tabs.Tab>
-            {hasProps && <Tabs.Tab value="props">{mobile ? 'Props' : 'Component props'}</Tabs.Tab>}
-            {hasStyles && (
-              <Tabs.Tab value="styles-api">{mobile ? 'Styles' : 'Styles API'}</Tabs.Tab>
-            )}
+            {hasProps && <Tabs.Tab value="props">Props</Tabs.Tab>}
+            {hasStyles && <Tabs.Tab value="styles-api">Styles API</Tabs.Tab>}
           </Tabs.List>
         </div>
 
