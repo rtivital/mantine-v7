@@ -1,0 +1,17 @@
+.title {
+  font-weight: bold;
+  margin-bottom: rem(2px);
+  font-family: var(--docs-font-primary);
+}
+
+.section {
+  & + & {
+    margin-top: rem(32px);
+  }
+}
+
+.link {
+  font-size: var(--mantine-font-size-xs);
+  margin-bottom: var(--mantine-spacing-xs);
+  display: block;
+}

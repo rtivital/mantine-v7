@@ -1,8 +1,9 @@
 import React from 'react';
-import { Table, Text, Highlight, rem } from '@mantine/core';
+import { Table, Text, Highlight, rem, Anchor } from '@mantine/core';
 import { DocsSection } from '@/components/DocsSection';
+import { HtmlText } from '@/components/HtmlText';
+import { TableInlineCode } from '@/components/TableInlineCode';
 import docgenData from '@/.docgen/docgen.json';
-import classes from './PropsTable.module.css';
 
 export interface DocgenProp {
   defaultValue: {
@@ -31,7 +32,21 @@ interface PropsTableProps {
 
 export function PropsTable({ component, query }: PropsTableProps) {
   if (!PROPS_DATA[component]) {
-    return null;
+    return (
+      <Text>
+        <Text span c="red">
+          Error loading component props data.{' '}
+        </Text>
+        If you see this message please let us know by{' '}
+        <Anchor
+          href="https://github.com/mantinedev/mantine/issues/new?assignees=&labels=&template=docs_report.yml"
+          target="_blank"
+        >
+          opening an issue on GitHub
+        </Anchor>
+        .
+      </Text>
+    );
   }
 
   const rows = Object.keys(PROPS_DATA[component].props)
@@ -57,17 +72,10 @@ export function PropsTable({ component, query }: PropsTableProps) {
           </Table.Td>
 
           <Table.Td>
-            <Text className={classes.type} fz="xs" fw={500}>
-              {prop.type.name}
-            </Text>
+            <TableInlineCode>{prop.type.name}</TableInlineCode>
           </Table.Td>
           <Table.Td>
-            <Text
-              className={classes.description}
-              component="span"
-              fz="sm"
-              dangerouslySetInnerHTML={{ __html: prop.description }}
-            />
+            <HtmlText fz="sm">{prop.description}</HtmlText>
           </Table.Td>
         </Table.Tr>
       );
@@ -85,7 +93,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
     <DocsSection>
       <div style={{ overflowX: 'auto' }}>
         <div style={{ minWidth: rem(500) }}>
-          <Table>
+          <Table withTableBorder>
             <Table.Thead>
               <Table.Tr>
                 <Table.Th>Name</Table.Th>

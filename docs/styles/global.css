@@ -1,16 +1,4 @@
-.type {
-  font-family: var(--mantine-font-family-monospace);
-
-  @mixin light {
-    color: var(--mantine-color-indigo-filled);
-  }
-
-  @mixin dark {
-    color: var(--mantine-color-red-filled);
-  }
-}
-
-.description {
+[data-docs-inline-code] {
   & code {
     font-family: var(--mantine-font-family-monospace);
     line-height: var(--mantine-line-height);
