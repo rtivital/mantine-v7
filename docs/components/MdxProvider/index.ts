@@ -1,3 +1,5 @@
+export * from './MdxSharedContent';
+
 export { MdxProvider } from './MdxProvider';
 export { MdxTitle } from './MdxTitle/MdxTitle';
 export { MdxDataTable } from './MdxDataTable/MdxDataTable';

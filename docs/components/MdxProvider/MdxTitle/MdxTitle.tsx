@@ -6,7 +6,7 @@ import classes from './MdxTitle.module.css';
 export function MdxTitle({
   id,
   children,
-  order,
+  order = 2,
   ...others
 }: React.ComponentPropsWithoutRef<typeof Title>) {
   const theme = useMantineTheme();

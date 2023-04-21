@@ -8,12 +8,14 @@ import { MdxParagraph, MdxLi, MdxUl, MdxCode } from './MdxTypography/MdxTypograp
 import { h } from './MdxTitle/MdxTitle';
 import { MdxInfo } from './MdxInfo/MdxInfo';
 import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEventsTable';
+import { MdxGetElementRef } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
     <MDXProvider
       components={{
         Demo,
+        GetElementRef: MdxGetElementRef,
         DataTable: MdxDataTable,
         KeyboardEventsTable: MdxKeyboardEventsTable,
         pre: MdxPre,
