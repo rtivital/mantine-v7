@@ -9,7 +9,6 @@ import {
   useProps,
   getGradient,
   BoxMod,
-  packMod,
   createVarsResolver,
   PolymorphicFactory,
   MantineSize,
@@ -138,7 +137,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
           'data-inline': inline,
           'data-inherit': inherit,
         },
-        ...packMod(mod),
+        mod,
       ]}
       size={size}
       {...others}
