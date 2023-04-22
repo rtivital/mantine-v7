@@ -2,20 +2,20 @@ export const MDX_DATA = {
   // ----------------------------------- Theming -----------------------------------
   MantineProvider: {
     title: 'MantineProvider',
-    slug: '/theming/mantine-provider/',
+    slug: '/theming/mantine-provider',
     search: 'Theme context, CSS reset, CSS variables, context classes and styles',
   },
 
   ThemeObject: {
     title: 'Theme object',
-    slug: '/theming/theme-object/',
+    slug: '/theming/theme-object',
     search: 'use-mantine-theme, theme override, MantineTheme',
   },
 
   // ----------------------------------- Guides ------------------------------------
   Polymorphic: {
     title: 'Polymorphic components',
-    slug: '/guides/polymorphic/',
+    slug: '/guides/polymorphic',
     search: 'createPolymorphicComponent, change root element, component prop',
   },
 
@@ -23,7 +23,7 @@ export const MDX_DATA = {
   Loader: {
     title: 'Loader',
     package: '@mantine/core',
-    slug: '/core/loader/',
+    slug: '/core/loader',
     category: 'feedback',
     description: 'Indicate loading state',
     props: ['Loader'],

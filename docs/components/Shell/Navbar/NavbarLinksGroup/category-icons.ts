@@ -13,7 +13,7 @@ import {
   IconComponents,
 } from '@tabler/icons-react';
 
-export const CATEGORY_ICONS = {
+export const CATEGORY_ICONS: Record<string, typeof IconBox> = {
   'State management': IconBox,
   'UI and Dom': IconForms,
   Utilities: IconBulb,
