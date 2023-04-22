@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unused-prop-types */
 import React from 'react';
+import { TypeScriptCircleIcon } from '@mantine/ds';
 import { MdxTitle } from '../MdxTitle/MdxTitle';
 import { MdxCodeHighlight } from '../MdxPre/MdxPre';
 import { MdxParagraph, MdxCode } from '../MdxTypography/MdxTypography';
@@ -61,7 +62,7 @@ export function MdxPolymorphic(props: MdxPolymorphic) {
         </>
       )}
 
-      <MdxInfo>
+      <MdxInfo icon={<TypeScriptCircleIcon size={32} />} color="#3178C6">
         <MdxParagraph>
           <strong>Polymorphic components with TypeScript</strong>
         </MdxParagraph>

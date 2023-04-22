@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'clsx';
 import { IconInfoCircle } from '@tabler/icons-react';
-import { Blockquote, rgba, useMantineTheme } from '@mantine/core';
+import { Blockquote, BlockquoteProps, rgba, useMantineTheme } from '@mantine/core';
 import classes from './MdxInfo.module.css';
 
-export function MdxInfo({ className, ...others }: React.ComponentPropsWithoutRef<'blockquote'>) {
+export function MdxInfo({ className, ...others }: BlockquoteProps) {
   const theme = useMantineTheme();
   return (
     <Blockquote
