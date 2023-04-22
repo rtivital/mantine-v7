@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { Title, rem, useMantineTheme } from '@mantine/core';
+import { Title, useMantineTheme } from '@mantine/core';
 import classes from './MdxTitle.module.css';
 
 export function MdxTitle({
@@ -13,7 +13,7 @@ export function MdxTitle({
 
   if (order === 1) {
     return (
-      <Title className={classes.title} style={{ fontWeight: 900, fontSize: rem(44) }}>
+      <Title className={classes.title} data-h1>
         {children}
       </Title>
     );
@@ -22,7 +22,7 @@ export function MdxTitle({
   return (
     <>
       <div id={id} data-heading={children} data-order={order} className={classes.offset} />
-      <Title order={order} className={classes.title} style={{ fontWeight: 600 }} {...others}>
+      <Title order={order} className={classes.title} {...others}>
         <a className={cx(classes.link, theme.focusClassNames.auto)} href={`#${id}`}>
           {children}
         </a>
