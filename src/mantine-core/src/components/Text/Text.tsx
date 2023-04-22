@@ -12,6 +12,9 @@ import {
   packMod,
   createVarsResolver,
   PolymorphicFactory,
+  MantineSize,
+  getFontSize,
+  getLineHeight,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -32,13 +35,15 @@ function getTextTruncate(truncate: TextTruncate | undefined) {
 export type TextStylesNames = 'root';
 export type TextVariant = 'text' | 'gradient';
 export type TextCssVariables = {
-  root: '--text-gradient' | '--text-line-clamp';
+  root: '--text-gradient' | '--text-line-clamp' | '--text-fz' | '--text-lh';
 };
 
 export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   __staticSelector?: string;
-  __size?: any;
   mod?: BoxMod;
+
+  /** Controls `font-size` and `line-height`, `'md'` by default */
+  size?: MantineSize | (string & {});
 
   /** CSS -webkit-line-clamp property */
   lineClamp?: number;
@@ -71,14 +76,19 @@ export type TextFactory = PolymorphicFactory<{
 const defaultProps: Partial<TextProps> = {
   variant: 'text',
   inherit: true,
+  size: 'md',
 };
 
-const varsResolver = createVarsResolver<TextFactory>((theme, { variant, lineClamp, gradient }) => ({
-  root: {
-    '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
-    '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
-  },
-}));
+const varsResolver = createVarsResolver<TextFactory>(
+  (theme, { variant, lineClamp, gradient, size }) => ({
+    root: {
+      '--text-fz': getFontSize(size),
+      '--text-lh': getLineHeight(size),
+      '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
+      '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+    },
+  })
+);
 
 export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
   const props = useProps('Text', defaultProps, _props);
@@ -98,7 +108,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
     unstyled,
     variant,
     mod,
-    __size,
+    size,
     ...others
   } = props;
 
@@ -130,7 +140,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
         },
         ...packMod(mod),
       ]}
-      size={__size}
+      size={size}
       {...others}
     />
   );

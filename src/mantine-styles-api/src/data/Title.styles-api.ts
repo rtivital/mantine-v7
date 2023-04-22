@@ -1,9 +1,10 @@
 import type { TitleFactory } from '@mantine/core';
 import type { StylesApiData } from '../types';
-import { TextStylesApi } from './Text.styles-api';
 
 export const TitleStylesApi: StylesApiData<TitleFactory> = {
-  ...TextStylesApi,
+  selectors: {
+    root: 'Root element',
+  },
 
   vars: {
     root: {
@@ -13,8 +14,5 @@ export const TitleStylesApi: StylesApiData<TitleFactory> = {
     },
   },
 
-  modifiers: [
-    ...TextStylesApi.modifiers!,
-    { modifier: 'data-order', selector: 'root', value: 'Value of order prop' },
-  ],
+  modifiers: [{ modifier: 'data-order', selector: 'root', value: 'Value of order prop' }],
 };

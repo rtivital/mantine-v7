@@ -30,7 +30,7 @@ export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVari
       '--mantine-color-white': theme.white,
       '--mantine-color-black': theme.black,
       '--mantine-color-primary': `var(--mantine-color-${theme.primaryColor}-filled)`,
-      '--mantine-line-height': theme.lineHeight,
+      '--mantine-line-height': theme.lineHeights.md,
       '--mantine-font-family': theme.fontFamily,
       '--mantine-font-family-monospace': theme.fontFamilyMonospace,
       '--mantine-font-family-headings': theme.headings.fontFamily,
@@ -61,11 +61,12 @@ export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVari
     },
   };
 
-  assignSizeVariables(result.variables, theme.shadows, 'shadow');
-  assignSizeVariables(result.variables, theme.fontSizes, 'font-size');
-  assignSizeVariables(result.variables, theme.radius, 'radius');
-  assignSizeVariables(result.variables, theme.spacing, 'spacing');
   assignSizeVariables(result.variables, theme.breakpoints, 'breakpoint');
+  assignSizeVariables(result.variables, theme.spacing, 'spacing');
+  assignSizeVariables(result.variables, theme.fontSizes, 'font-size');
+  assignSizeVariables(result.variables, theme.lineHeights, 'line-height');
+  assignSizeVariables(result.variables, theme.shadows, 'shadow');
+  assignSizeVariables(result.variables, theme.radius, 'radius');
 
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {

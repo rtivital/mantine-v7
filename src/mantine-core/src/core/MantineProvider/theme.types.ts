@@ -68,9 +68,6 @@ export interface MantineTheme {
     };
   };
 
-  /** Base line-height used in all typography components, `1.55` by default */
-  lineHeight: string;
-
   /** Object of values that are used to set border-radius in all components that support it */
   radius: MantineRadiusValues;
 
@@ -82,6 +79,9 @@ export interface MantineTheme {
 
   /** Object of values that are used to control font-size property in all components */
   fontSizes: MantineFontSizesValues;
+
+  /** Object of values that are used to control line-height property in Text component */
+  lineHeights: MantineLineHeightValues;
 
   /** Object of values that are used to control breakpoints in all components, values are expected to be defined in em */
   breakpoints: MantineBreakpointsValues;
@@ -145,12 +145,14 @@ export type MantineFontSizesValues = Record<MantineSize, string>;
 export type MantineRadiusValues = Record<MantineSize, string>;
 export type MantineSpacingValues = Record<MantineSize, string>;
 export type MantineShadowsValues = Record<MantineSize, string>;
+export type MantineLineHeightValues = Record<MantineSize, string>;
 
 export type MantineBreakpoint = keyof MantineBreakpointsValues;
 export type MantineFontSize = keyof MantineFontSizesValues;
 export type MantineRadius = keyof MantineRadiusValues;
 export type MantineSpacing = keyof MantineSpacingValues;
 export type MantineShadow = keyof MantineShadowsValues;
+export type MantineLineHeight = keyof MantineLineHeightValues;
 
 export type MantineThemeOther = Record<string, any>;
 

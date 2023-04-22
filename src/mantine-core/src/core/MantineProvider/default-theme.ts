@@ -18,7 +18,6 @@ export const DEFAULT_THEME: MantineTheme = {
   fontFamily: DEFAULT_FONT_FAMILY,
   fontFamilyMonospace:
     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
-  lineHeight: '1.55',
   respectReducedMotion: false,
   cursorType: 'default',
   defaultGradient: { from: 'blue', to: 'cyan', deg: 45 },
@@ -49,6 +48,14 @@ export const DEFAULT_THEME: MantineTheme = {
     md: '1rem',
     lg: '1.125rem',
     xl: '1.25rem',
+  },
+
+  lineHeights: {
+    xs: '1.4',
+    sm: '1.45',
+    md: '1.55',
+    lg: '1.6',
+    xl: '1.6',
   },
 
   radius: {

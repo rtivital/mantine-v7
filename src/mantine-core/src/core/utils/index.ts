@@ -4,7 +4,6 @@ export { camelToKebabCase } from './camel-to-kebab-case/camel-to-kebab-case';
 export { px, rem, em } from './units-converters';
 export { filterProps } from './filter-props/filter-props';
 export { isNumberLike } from './is-number-like/is-number-like';
-export { getSize, getSpacing, getShadow, getRadius, getFontSize } from './get-size/get-size';
 export { isElement } from './is-element/is-element';
 export { createSafeContext } from './create-safe-context/create-safe-context';
 export { getSafeId } from './get-safe-id/get-safe-id';
@@ -15,3 +14,11 @@ export { packMod } from './pack-mod/pack-mod';
 export { getDefaultZIndex } from './get-default-z-index/get-default-z-index';
 export { closeOnEscape } from './close-on-escape/close-on-escape';
 export { noop } from './noop/noop';
+export {
+  getSize,
+  getSpacing,
+  getShadow,
+  getRadius,
+  getFontSize,
+  getLineHeight,
+} from './get-size/get-size';

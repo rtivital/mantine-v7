@@ -11,6 +11,29 @@ export function Usage() {
   );
 }
 
+const lorem =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate asperiores mollitia excepturi voluptas inventore doloribus saepe in iure obcaecati sunt architecto facere quis quasi suscipit recusandae fugit, veniam eaque perspiciatis?';
+
+export function Sizes() {
+  return (
+    <div style={{ padding: 40, maxWidth: 500 }}>
+      <Text size="xs">{lorem}</Text>
+      <Text size="sm" mt="xl">
+        {lorem}
+      </Text>
+      <Text size="md" mt="xl">
+        {lorem}
+      </Text>
+      <Text size="lg" mt="xl">
+        {lorem}
+      </Text>
+      <Text size="xl" mt="xl">
+        {lorem}
+      </Text>
+    </div>
+  );
+}
+
 export function Truncate() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>

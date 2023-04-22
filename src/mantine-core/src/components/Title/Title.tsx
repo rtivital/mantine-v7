@@ -7,8 +7,9 @@ import {
   useStyles,
   createVarsResolver,
   Factory,
+  Box,
+  BoxProps,
 } from '../../core';
-import { Text, TextVariant, TextProps } from '../Text';
 import { getTitleSize } from './get-title-size';
 import classes from './Title.module.css';
 
@@ -16,15 +17,12 @@ export type TitleOrder = 1 | 2 | 3 | 4 | 5 | 6;
 export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'];
 
 export type TitleStylesNames = 'root';
-export type TitleVariant = TextVariant;
+export type TitleVariant = string;
 export type TitleCssVariables = {
   root: '--title-fw' | '--title-lh' | '--title-fz';
 };
 
-export interface TitleProps
-  extends Omit<TextProps, 'vars' | 'styles' | 'classNames'>,
-    StylesApiProps<TitleFactory>,
-    ElementProps<'h1'> {
+export interface TitleProps extends BoxProps, StylesApiProps<TitleFactory>, ElementProps<'h1'> {
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */
   order?: TitleOrder;
 
@@ -57,19 +55,8 @@ const varsResolver = createVarsResolver<TitleFactory>((_, { order, size }) => {
 
 export const Title = factory<TitleFactory>((_props, ref) => {
   const props = useProps('Title', defaultProps, _props);
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    order,
-    vars,
-    inherit,
-    size,
-    variant,
-    ...others
-  } = props;
+  const { classNames, className, style, styles, unstyled, order, vars, size, variant, ...others } =
+    props;
 
   const getStyles = useStyles<TitleFactory>({
     name: 'Title',
@@ -89,15 +76,14 @@ export const Title = factory<TitleFactory>((_props, ref) => {
   }
 
   return (
-    <Text
+    <Box
       {...getStyles('root')}
       component={`h${order!}`}
       variant={variant}
       ref={ref}
-      inherit={inherit || false}
-      {...others}
       mod={{ order }}
-      __size={size}
+      size={size}
+      {...others}
     />
   );
 });

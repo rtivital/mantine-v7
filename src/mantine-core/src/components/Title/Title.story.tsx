@@ -15,15 +15,3 @@ export function Usage() {
     </div>
   );
 }
-
-export function TextVariant() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Title variant="gradient" gradient={{ from: 'red', to: 'blue' }} fw={400}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eius tempore reiciendis
-        nulla harum illum consectetur nam! Culpa, ullam temporibus iste quos reprehenderit totam
-        iusto animi asperiores voluptatibus in deserunt?
-      </Title>
-    </div>
-  );
-}
