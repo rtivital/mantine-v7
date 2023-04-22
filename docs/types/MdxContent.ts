@@ -70,5 +70,5 @@ export interface MdxPagesCategory {
 
 export interface MdxPagesGroup {
   group: string;
-  pages: (Frontmatter | MdxPagesCategory)[];
+  pages: Frontmatter[] | MdxPagesCategory[];
 }

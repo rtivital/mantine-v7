@@ -1,0 +1,30 @@
+import {
+  IconRefresh,
+  IconBulb,
+  IconForms,
+  IconBox,
+  IconLayout2,
+  IconClick,
+  IconMenu2,
+  IconNotebook,
+  IconBoxMultiple,
+  IconLetterCase,
+  IconSpeakerphone,
+  IconComponents,
+} from '@tabler/icons-react';
+
+export const CATEGORY_ICONS = {
+  'State management': IconBox,
+  'UI and Dom': IconForms,
+  Utilities: IconBulb,
+  Lifecycle: IconRefresh,
+  'Data display': IconNotebook,
+  overlay: IconBoxMultiple,
+  navigation: IconMenu2,
+  inputs: IconForms,
+  misc: IconComponents,
+  feedback: IconSpeakerphone,
+  typography: IconLetterCase,
+  layout: IconLayout2,
+  buttons: IconClick,
+};
