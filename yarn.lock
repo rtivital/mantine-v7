@@ -12362,14 +12362,14 @@ postcss-ordered-values@^5.1.3:
     cssnano-utils "^3.1.0"
     postcss-value-parser "^4.2.0"
 
-postcss-preset-mantine@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.4.tgz#975b207aac0bd0a00c5b1ac04c7b9d227e361fef"
-  integrity sha512-L2fyxQ65wi85o4YLAZgvRnWsQgAXI2GMGndpW+jWQswJ/VyH8+9ik0mwILk3nzHeCObGQVa/MKUh8NYEq3An/w==
+postcss-preset-mantine@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.5.tgz#1d7a1c7d3e6c91230c05dbd90faba47d1bba385a"
+  integrity sha512-0AmnEtp1J2wTKB2nz2Tb6LhukZZOoU+Fn6xSDJp8eUt+GQFzAuRtmGHWWkYCwmpXtywsnxGkkU/Zf1i1FevkqQ==
   dependencies:
     postcss-mixins "^9.0.4"
     postcss-nested "^6.0.1"
-    postcss-rem "^2.0.2"
+    startijenn-rem "^1.1.1"
 
 postcss-reduce-initial@^5.1.2:
   version "5.1.2"
@@ -12385,14 +12385,6 @@ postcss-reduce-transforms@^5.1.0:
   integrity sha512-2fbdbmgir5AvpW9RLtdONx1QoYG2/EtqpNQbFASDlixBbAYuTcJ0dECwlqNqH7VbaUnEnh8SrxOe2sRIn24XyQ==
   dependencies:
     postcss-value-parser "^4.2.0"
-
-postcss-rem@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-rem/-/postcss-rem-2.0.2.tgz#5633589f6e816516be60f9ab6df5d8037f64ff41"
-  integrity sha512-rhREfkcljKJtCY7adt5e+sRkPkj4z4GEW8utwiqsDgC6xF4U3guQZ08Dlu7XQDrwtUD4PGXwoh/qyD+RJpJq7g==
-  dependencies:
-    postcss "^8.3.5"
-    startijenn-rem "^1.0.1"
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
@@ -12459,7 +12451,7 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.2.15, postcss@^8.3.5, postcss@^8.4.21:
+postcss@^8.2.15, postcss@^8.4.21:
   version "8.4.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
   integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
@@ -14013,10 +14005,10 @@ stackframe@^1.3.4:
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.3.4.tgz#b881a004c8c149a5e8efef37d51b16e412943310"
   integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
 
-startijenn-rem@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/startijenn-rem/-/startijenn-rem-1.1.0.tgz#08aa3423bb9ac60c4fd19b01ffa20bfcf40391f2"
-  integrity sha512-nwTgM+M2kqWGollfk3/iXHpN23JVvuMgDWHL0foUp/rjl/pYUulnMBrANMnHgMSbR41pEBL2Yw5jdKPQM7q+Gw==
+startijenn-rem@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/startijenn-rem/-/startijenn-rem-1.1.1.tgz#6b237cf931fe1294d2d9bcad09d90c3612198a4c"
+  integrity sha512-aqr56HWDgRs4cA+6cVwp83iVHB8YEwMD2e5uybeaZRq8JJC8QqlW8gtXZYucqFO/kdyioQhlFv7NmntlEsiMiQ==
 
 state-toggle@^1.0.0:
   version "1.0.3"
