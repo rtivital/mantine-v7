@@ -1,5 +1,4 @@
 import React from 'react';
-import hljs from 'highlight.js';
 import cx from 'clsx';
 import {
   Box,
@@ -15,6 +14,7 @@ import {
   ScrollArea,
   Factory,
 } from '@mantine/core';
+import { useHighlight } from './use-highlight';
 import { CopyIcon } from './CopyIcon';
 import _classes from './CodeHighlight.module.css';
 import themeClasses from './CodeHighlight.theme.module.css';
@@ -42,6 +42,9 @@ export interface CodeHighlightProps
 
   /** Copied tooltip label, `'Copied'` by default */
   copiedLabel?: string;
+
+  /** Determines whether code should be highlighted only after component is mounted to the dom (disables code highlight on server), `false` by default */
+  highlightOnClient?: boolean;
 }
 
 export type CodeHighlightFactory = Factory<{
@@ -73,6 +76,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
     copyLabel,
     language,
     withCopyButton,
+    highlightOnClient,
     ...others
   } = props;
 
@@ -87,7 +91,11 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
     unstyled,
   });
 
-  const highlighted = hljs.highlight(code.trim(), { language: language! }).value;
+  const getCodeProps = useHighlight({
+    code,
+    language: language!,
+    highlightOnClient,
+  });
 
   return (
     <Box {...getStyles('root')} ref={ref} {...others} dir="ltr">
@@ -105,7 +113,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props, ref) => {
 
       <ScrollArea type="auto" dir="ltr" offsetScrollbars={false}>
         <pre {...getStyles('pre')}>
-          <code {...getStyles('code')} dangerouslySetInnerHTML={{ __html: highlighted }} />
+          <code {...getStyles('code')} {...getCodeProps()} />
         </pre>
       </ScrollArea>
     </Box>

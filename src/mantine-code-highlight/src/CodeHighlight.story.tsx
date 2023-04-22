@@ -182,7 +182,7 @@ function CSSIcon(props: React.ComponentProps<'svg'>) {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <CodeHighlight code={tsxCode} />
+      <CodeHighlight code={tsxCode} highlightOnClient />
     </div>
   );
 }
