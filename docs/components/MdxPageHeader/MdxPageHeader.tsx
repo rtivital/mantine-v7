@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Title, Text, rem } from '@mantine/core';
 import { GithubIcon, NpmIcon } from '@mantine/ds';
-import { IconLicense, IconPencil } from '@tabler/icons-react';
+import { IconLicense, IconPencil, IconSwitch2 } from '@tabler/icons-react';
 import { Frontmatter } from '@/types';
 import { LinkItem } from './LinkItem/LinkItem';
 import classes from './MdxPageHeader.module.css';
@@ -30,6 +30,16 @@ export function MdxPageHeader({ meta }: MdxPageHeaderProps) {
         <Text className={classes.description}>{meta.description}</Text>
 
         {meta.import && <ImportStatement code={meta.import} />}
+
+        {meta.polymorphic && (
+          <LinkItem
+            label="Polymorphic"
+            icon={<IconSwitch2 style={{ width: rem(14), height: rem(14) }} stroke={1.5} />}
+            link="/guides/polymorphic"
+          >
+            Polymorphic component
+          </LinkItem>
+        )}
 
         {meta.source && (
           <LinkItem
