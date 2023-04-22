@@ -1,1 +1,1 @@
-export { MDX_META } from './mdx-meta';
+export { MDX_META, MDX_PAGES_GROUPS } from './mdx-meta';

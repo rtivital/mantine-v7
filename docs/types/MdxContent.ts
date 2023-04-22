@@ -62,3 +62,13 @@ export interface MdxContent {
   content: string;
   data: Frontmatter;
 }
+
+export interface MdxPagesCategory {
+  category: string;
+  pages: Frontmatter[];
+}
+
+export interface MdxPagesGroup {
+  group: string;
+  pages: (Frontmatter | MdxPagesCategory)[];
+}
