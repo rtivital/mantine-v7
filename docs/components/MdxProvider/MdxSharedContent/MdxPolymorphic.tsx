@@ -82,9 +82,7 @@ export function MdxPolymorphic(props: MdxPolymorphic) {
           extend HTML element props, for example:{' '}
         </MdxParagraph>
 
-        <MdxParagraph>
-          <MdxCodeHighlight code={getInterfaceCode(props)}></MdxCodeHighlight>
-        </MdxParagraph>
+        <MdxCodeHighlight code={getInterfaceCode(props)} />
 
         <MdxParagraph>
           If you want your component to remain polymorphic after wrapping, use{' '}

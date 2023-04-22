@@ -70,7 +70,7 @@ const varsResolver = createVarsResolver<BlockquoteFactory>((theme, { color, icon
   return {
     root: {
       '--bq-bg-light': rgba(lightParsed.value, 0.07),
-      '--bq-bg-dark': rgba(darkParsed.value, 0.12),
+      '--bq-bg-dark': rgba(darkParsed.value, 0.06),
       '--bq-bd': getThemeColor(color, theme),
       '--bq-icon-size': rem(iconSize),
       '--bq-radius': getRadius(radius),
