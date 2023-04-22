@@ -47,3 +47,11 @@
   padding: var(--mantine-spacing-md);
   padding-bottom: rem(100px);
 }
+
+.body {
+  padding-top: var(--mantine-spacing-md);
+}
+
+.groups {
+  padding-top: var(--mantine-spacing-xl);
+}
