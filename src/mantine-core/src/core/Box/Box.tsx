@@ -15,8 +15,8 @@ import {
 import { getBoxMod } from './get-box-mod/get-box-mod';
 import { isNumberLike } from '../utils';
 
-export type Mod = Record<string, any>;
-export type BoxMod = Mod | Mod[];
+export type Mod = Record<string, any> | string;
+export type BoxMod = Mod | Mod[] | BoxMod[];
 
 export interface BoxProps extends MantineStyleProps {
   /** Class added to root element, if applicable */

@@ -53,4 +53,18 @@ describe('@mantine/core/Box/get-box-mod', () => {
       'data-test-2': 'test-2',
     });
   });
+
+  it('correctly converts nested array of mods', () => {
+    expect(getBoxMod([[{ 'data-test': true }]])).toStrictEqual({ 'data-test': true });
+  });
+
+  it('supports string mod', () => {
+    expect(getBoxMod('test')).toStrictEqual({ 'data-test': true });
+    expect(getBoxMod('data-test')).toStrictEqual({ 'data-test': true });
+
+    expect(getBoxMod(['test', { variant: 'test' }])).toStrictEqual({
+      'data-test': true,
+      'data-variant': 'test',
+    });
+  });
 });

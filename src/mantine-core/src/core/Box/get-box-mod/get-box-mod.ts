@@ -1,29 +1,35 @@
-import type { BoxMod, Mod } from '../Box';
-import { keys } from '../../utils';
+function transformModKey(key: string) {
+  return key.startsWith('data-') ? key : `data-${key}`;
+}
 
-export function getMod(props: Mod) {
-  return keys(props).reduce<Mod>((acc, key) => {
+export function getMod(props: Record<string, any>) {
+  return Object.keys(props).reduce<Record<string, any>>((acc, key) => {
     const value = props[key];
-    const modKey = key.startsWith('data-') ? key : `data-${key}`;
 
     if (value === undefined || value === '' || value === false || value === null) {
       return acc;
     }
 
-    acc[modKey] = props[key];
+    acc[transformModKey(key)] = props[key];
     return acc;
   }, {});
 }
 
-export function getBoxMod(mod?: BoxMod) {
+export function getBoxMod(mod?: any): Record<string, any> | null {
   if (!mod) {
     return null;
   }
 
-  const transformed = Array.isArray(mod) ? mod : [mod];
+  if (typeof mod === 'string') {
+    return { [transformModKey(mod)]: true };
+  }
 
-  return transformed.reduce<Record<`data-${string}`, any>>(
-    (acc, value) => ({ ...acc, ...getMod(value) }),
-    {}
-  );
+  if (Array.isArray(mod)) {
+    return [...mod].reduce<Record<`data-${string}`, any>>(
+      (acc, value) => ({ ...acc, ...getBoxMod(value) }),
+      {}
+    );
+  }
+
+  return getMod(mod);
 }
