@@ -39,4 +39,64 @@ describe('@mantine/core/Box/get-box-style', () => {
       '--test': DEFAULT_THEME.spacing.md,
     });
   });
+
+  it('merges array styles and vars', () => {
+    expect(
+      getBoxStyle({
+        theme: DEFAULT_THEME,
+        style: [{ color: 'red' }, { backgroundColor: 'blue' }],
+        vars: [{ '--test': 'red' }, { '--test2': 'blue' }],
+        styleProps: {},
+      })
+    ).toStrictEqual({
+      color: 'red',
+      backgroundColor: 'blue',
+      '--test': 'red',
+      '--test2': 'blue',
+    });
+
+    expect(
+      getBoxStyle({
+        theme: DEFAULT_THEME,
+        style: [{ color: 'red' }, (theme) => ({ backgroundColor: theme.colors.blue[7] })],
+        vars: [{ '--test': 'red' }, (theme) => ({ '--test2': theme.spacing.md })],
+        styleProps: {},
+      })
+    ).toStrictEqual({
+      color: 'red',
+      backgroundColor: DEFAULT_THEME.colors.blue[7],
+      '--test': 'red',
+      '--test2': DEFAULT_THEME.spacing.md,
+    });
+  });
+
+  it('merges deeply nested array styles and vars', () => {
+    expect(
+      getBoxStyle({
+        theme: DEFAULT_THEME,
+        style: [{ color: 'red' }, [{ backgroundColor: 'blue' }]],
+        vars: [{ '--test': 'red' }, [{ '--test2': 'blue' }]],
+        styleProps: {},
+      })
+    ).toStrictEqual({
+      color: 'red',
+      backgroundColor: 'blue',
+      '--test': 'red',
+      '--test2': 'blue',
+    });
+
+    expect(
+      getBoxStyle({
+        theme: DEFAULT_THEME,
+        style: [{ color: 'red' }, [(theme) => ({ backgroundColor: theme.colors.blue[7] })]],
+        vars: [{ '--test': 'red' }, [(theme) => ({ '--test2': theme.spacing.md })]],
+        styleProps: {},
+      })
+    ).toStrictEqual({
+      color: 'red',
+      backgroundColor: DEFAULT_THEME.colors.blue[7],
+      '--test': 'red',
+      '--test2': DEFAULT_THEME.spacing.md,
+    });
+  });
 });

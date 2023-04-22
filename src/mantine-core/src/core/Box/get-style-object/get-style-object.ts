@@ -6,7 +6,7 @@ export function getStyleObject(
   theme: MantineTheme
 ): React.CSSProperties {
   if (Array.isArray(style)) {
-    return style.reduce<React.CSSProperties>(
+    return [...style].reduce<Record<string, any>>(
       (acc, item) => ({ ...acc, ...getStyleObject(item, theme) }),
       {}
     );
@@ -16,5 +16,9 @@ export function getStyleObject(
     return style(theme);
   }
 
-  return style || {};
+  if (style == null) {
+    return {};
+  }
+
+  return style;
 }

@@ -12,14 +12,22 @@ function mergeStyles(
   styles: MantineStyleProp | CssVarsProp | undefined,
   theme: MantineTheme
 ): React.CSSProperties {
-  const flat = Array.isArray(styles) ? styles : styles ? [styles] : [];
-  return flat.reduce<React.CSSProperties>((acc, item) => {
-    if (typeof item === 'function') {
-      return { ...acc, ...item(theme, {}) };
-    }
+  if (Array.isArray(styles)) {
+    return [...styles].reduce<Record<string, any>>(
+      (acc, item) => ({ ...acc, ...mergeStyles(item, theme) }),
+      {}
+    );
+  }
 
-    return { ...acc, ...item };
-  }, {});
+  if (typeof styles === 'function') {
+    return styles(theme);
+  }
+
+  if (styles == null) {
+    return {};
+  }
+
+  return styles;
 }
 
 export function getBoxStyle({
