@@ -10,7 +10,6 @@ import {
   rem,
   closeOnEscape,
   Factory,
-  packStyle,
 } from '../../../core';
 import { OptionalPortal } from '../../Portal';
 import { Transition } from '../../Transition';
@@ -110,7 +109,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                     left: ctx.x ?? 0,
                     width: ctx.width === 'target' ? undefined : rem(ctx.width),
                   },
-                  ...packStyle(style),
+                  style,
                 ],
               })}
             >

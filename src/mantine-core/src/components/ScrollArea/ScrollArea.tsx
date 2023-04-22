@@ -10,7 +10,6 @@ import {
   useStyles,
   useDirection,
   rem,
-  packStyle,
   createVarsResolver,
   Factory,
 } from '../../core';
@@ -195,7 +194,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaFactory>((props, ref) => {
   } = useProps('ScrollAreaAutosize', defaultProps, props);
 
   return (
-    <Box {...others} ref={ref} style={[{ display: 'flex' }, ...packStyle(style)]}>
+    <Box {...others} ref={ref} style={[{ display: 'flex' }, style]}>
       <Box style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
         <ScrollArea
           classNames={classNames}
