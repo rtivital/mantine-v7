@@ -1,6 +1,5 @@
 .header {
   background-color: var(--mantine-color-body);
-  border-bottom: rem(1px) solid var(--docs-shell-border);
   height: var(--docs-header-height);
   position: fixed;
   top: 0;
@@ -12,6 +11,14 @@
   align-items: center;
   justify-content: space-between;
   z-index: 100;
+
+  @mixin light {
+    border-bottom: rem(1px) solid var(--mantine-color-gray-2);
+  }
+
+  @mixin dark {
+    border-bottom: rem(1px) solid var(--mantine-color-dark-8);
+  }
 
   &[data-desktop] {
     @media (max-width: 47.5em) {

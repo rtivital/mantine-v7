@@ -1,5 +1,5 @@
 .navbar {
-  border-right: rem(1px) solid var(--docs-shell-border);
+  border-right: rem(1px) solid var(--navbar-border-color);
   position: fixed;
   top: var(--docs-header-height);
   bottom: 0;
@@ -10,15 +10,17 @@
   flex-direction: column;
 
   @mixin light {
+    --navbar-border-color: var(--mantine-color-gray-2);
     background-color: var(--mantine-color-white);
   }
 
   @mixin dark {
+    --navbar-border-color: var(--mantine-color-dark-7);
     background-color: var(--mantine-color-dark-8);
   }
 
   @mixin rtl {
-    border-left: rem(1px) solid var(--docs-shell-border);
+    border-left: rem(1px) solid var(--navbar-border-color);
     border-right: 0;
     left: unset;
     right: 0;

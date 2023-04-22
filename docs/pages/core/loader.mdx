@@ -1,22 +1,7 @@
 import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
 
-export const meta = {
-  polymorphic: true,
-  title: 'Loader',
-  package: '@mantine/core',
-  group: 'mantine-core',
-  slug: '/core/loader/',
-  order: 1,
-  category: 'feedback',
-  description: 'Indicate loading state',
-  props: ['Loader'],
-  styles: ['Loader'],
-  import: "import { Loader, Notification } from '@mantine/core';",
-  source: 'mantine-core/src/components/Loader/Loader.tsx',
-  docs: 'core/Loader.mdx',
-};
-
-export default Layout(meta);
+export default Layout(MDX_DATA.Loader);
 
 ## Usage
 
@@ -31,5 +16,3 @@ function Demo() {
   return <Loader />;
 }
 ```
-
-<Polymorphic component="Loader" defaultElement="div" changeToElement="button" withNext />
