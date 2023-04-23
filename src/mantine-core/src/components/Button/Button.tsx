@@ -34,6 +34,7 @@ export type ButtonVariant =
 
 export type ButtonCssVariables = {
   root:
+    | '--button-justify'
     | '--button-height'
     | '--button-padding-x'
     | '--button-fz'
@@ -50,6 +51,9 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
   color?: MantineColor;
+
+  /** Sets `justify-content` of `inner` element, can be used to change distribution of sections and label, `'center'` by default */
+  justify?: React.CSSProperties['justifyContent'];
 
   /** Content displayed on the left side of the button label */
   leftSection?: React.ReactNode;
@@ -96,8 +100,9 @@ const defaultProps: Partial<ButtonProps> = {
 };
 
 const varsResolver = createVarsResolver<ButtonFactory>(
-  (theme, { radius, color, gradient, variant, size }) => ({
+  (theme, { radius, color, gradient, variant, size, justify }) => ({
     root: {
+      '--button-justify': justify,
       '--button-height': getSize(size, 'button-height'),
       '--button-padding-x': getSize(size, 'button-padding-x'),
       '--button-fz': getFontSize(size),

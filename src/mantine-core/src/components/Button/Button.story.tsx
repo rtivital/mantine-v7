@@ -52,6 +52,16 @@ export function Usage() {
   );
 }
 
+export function FullWidth() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Button fullWidth leftSection="L" rightSection="R" justify="space-between">
+        Button
+      </Button>
+    </div>
+  );
+}
+
 export function Sizes() {
   return (
     <>

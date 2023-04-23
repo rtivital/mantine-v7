@@ -20,6 +20,7 @@ export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
       '--button-height': 'Controls height of the button',
       '--button-padding-x': 'Controls horizontal padding of the button',
       '--button-fz': 'Controls font-size of the button',
+      '--button-justify': 'Controls justify-content of `inner` element',
     },
   },
 

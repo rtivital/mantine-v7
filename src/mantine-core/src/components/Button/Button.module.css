@@ -27,6 +27,7 @@
   font-weight: 600;
   position: relative;
   line-height: 1;
+  text-align: center;
 
   width: var(--_button-width, auto);
   cursor: var(--_button-cursor, pointer);
@@ -94,7 +95,7 @@
 .inner {
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: var(--button-justify, center);
   height: 100%;
   overflow: visible;
 }
