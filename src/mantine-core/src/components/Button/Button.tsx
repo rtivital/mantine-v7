@@ -159,14 +159,16 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
       unstyled={unstyled}
       variant={variant}
       disabled={disabled}
-      mod={{
-        button: true,
-        disabled,
-        loading,
-        block: fullWidth,
-        'with-left-section': hasLeftSection,
-        'with-right-section': hasRightSection,
-      }}
+      mod={[
+        'button',
+        {
+          disabled,
+          loading,
+          block: fullWidth,
+          'with-left-section': hasLeftSection,
+          'with-right-section': hasRightSection,
+        },
+      ]}
       {...others}
     >
       <span {...getStyles('inner')}>

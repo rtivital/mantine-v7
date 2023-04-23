@@ -103,7 +103,7 @@ export const Burger = factory<BurgerFactory>((_props, ref) => {
 
   return (
     <UnstyledButton {...getStyles('root')} ref={ref} {...others}>
-      <Box mod={{ opened, 'reduce-motion': true }} {...getStyles('burger')} />
+      <Box mod={['reduce-motion', { opened }]} {...getStyles('burger')} />
       {children}
     </UnstyledButton>
   );

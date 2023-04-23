@@ -21,7 +21,7 @@ export function ComboboxChevron({
       viewBox="0 0 15 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      mod={{ error, 'combobox-chevron': true }}
+      mod={['combobox-chevron', { error }]}
       className={cx(classes.root, className)}
       __vars={{ '--combobox-chevron-size': getSize(size, 'combobox-chevron-size') }}
       {...others}
