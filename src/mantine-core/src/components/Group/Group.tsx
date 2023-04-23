@@ -37,7 +37,7 @@ export interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, Elem
   /** Controls `align-items` CSS property, `'center'` by default */
   align?: React.CSSProperties['alignItems'];
 
-  /** Controls `flex-wrap` CSS property, `'nowrap'` by default */
+  /** Controls `flex-wrap` CSS property, `'wrap'` by default */
   wrap?: React.CSSProperties['flexWrap'];
 
   /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem (1rem = 16px), `'md'` by default */

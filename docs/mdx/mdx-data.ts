@@ -12,6 +12,12 @@ export const MDX_DATA = {
     search: 'use-mantine-theme, theme override, MantineTheme',
   },
 
+  Colors: {
+    title: 'Colors',
+    slug: '/theming/colors',
+    search: 'Default colors, primaryColor, primaryShade',
+  },
+
   // ----------------------------------- Guides ------------------------------------
   Polymorphic: {
     title: 'Polymorphic components',
