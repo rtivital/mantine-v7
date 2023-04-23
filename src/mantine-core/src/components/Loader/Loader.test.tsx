@@ -15,7 +15,7 @@ describe('@mantine/core/Loader', () => {
     size: true,
     variant: true,
     extend: true,
-    refType: SVGSVGElement,
+    refType: HTMLSpanElement,
     displayName: '@mantine/core/Loader',
     stylesApiSelectors: ['root'],
   });

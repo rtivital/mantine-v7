@@ -7,9 +7,9 @@ export default { title: 'Loader' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Loader display="block" />
-      <Loader type="bars" display="block" mt="xl" />
-      <Loader type="dots" display="block" mt="xl" />
+      <Loader />
+      <Loader type="bars" mt="xl" />
+      <Loader type="dots" mt="xl" />
     </div>
   );
 }
@@ -17,8 +17,8 @@ export function Usage() {
 export function Colors() {
   return (
     <div style={{ padding: 40 }}>
-      <Loader display="block" color="orange.3" />
-      <Loader display="block" color="#FEFE00" mt="xl" />
+      <Loader color="orange.3" />
+      <Loader color="#FEFE00" mt="xl" />
     </div>
   );
 }

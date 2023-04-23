@@ -45,7 +45,7 @@ export interface LoaderProps
 
 export type LoaderFactory = Factory<{
   props: LoaderProps;
-  ref: SVGSVGElement;
+  ref: HTMLSpanElement;
   stylesNames: LoaderStylesNames;
   vars: LoaderCssVariables;
 }>;
