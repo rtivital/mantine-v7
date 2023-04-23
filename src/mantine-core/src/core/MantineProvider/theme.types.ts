@@ -1,5 +1,4 @@
 import type { PartialDeep } from 'type-fest';
-import type { MantineLoader } from '../../components/Loader/Loader.types';
 import type { VariantColorsResolver } from './color-functions';
 
 export interface MantineTheme {
@@ -12,9 +11,6 @@ export interface MantineTheme {
 
   /** Determines whether font-smoothing property should be set on body, true by default */
   fontSmoothing: boolean;
-
-  /** Determines which loader will be used in all components that reference `Loader` component, `oval` by default */
-  loader: MantineLoader;
 
   /** White color, used with `light` color scheme */
   white: string;

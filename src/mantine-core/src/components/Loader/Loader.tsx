@@ -5,7 +5,6 @@ import {
   MantineColor,
   BoxProps,
   useProps,
-  useMantineTheme,
   getThemeColor,
   StylesApiProps,
   useStyles,
@@ -36,7 +35,7 @@ export interface LoaderProps
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor;
 
-  /** Loader type, default value is `theme.loader` */
+  /** Loader type, default value is `'oval'` */
   type?: MantineLoader;
 
   /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
@@ -62,6 +61,7 @@ export const defaultLoaders: MantineLoadersRecord = {
 const defaultProps: Partial<LoaderProps> = {
   size: 'md',
   loaders: defaultLoaders,
+  type: 'oval',
 };
 
 const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) => ({
@@ -101,14 +101,11 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
     varsResolver,
   });
 
-  const theme = useMantineTheme();
-  const loader = type! in loaders! ? type! : theme.loader;
-
   return (
     <Box
       {...getStyles('root')}
       ref={ref}
-      component={loaders![loader]}
+      component={loaders![type!]}
       variant={variant}
       size={size}
       {...others}

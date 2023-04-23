@@ -35,13 +35,13 @@ describe('@mantine/core/Loader', () => {
 
   it('supports custom loaders on MantineProvider', () => {
     const { container } = render(<Loader />, {
-      loader: 'custom',
       components: {
-        Loader: {
+        Loader: Loader.extend({
           defaultProps: {
+            type: 'custom',
             loaders: { ...defaultLoaders, custom: customLoader },
           },
-        },
+        }),
       },
     });
 
