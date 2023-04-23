@@ -5,10 +5,6 @@
   --ai-size-lg: rem(34px);
   --ai-size-xl: rem(44px);
 
-  --_bg: var(--ai-bg);
-  --_color: var(--ai-color);
-  --_cursor: pointer;
-
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -21,46 +17,46 @@
   min-width: var(--ai-size);
   min-height: var(--ai-size);
   border-radius: var(--ai-radius);
-  background: var(--_bg);
-  color: var(--_color);
+  background: var(--_ai-bg, var(--ai-bg));
+  color: var(--_ai-color, var(--ai-color));
   border: var(--ai-bd);
-  cursor: var(--_cursor);
+  cursor: var(--_ai-cursor, pointer);
 
   @mixin hover {
     &:not([data-loading]):not(:disabled):not([data-disabled]) {
-      --_bg: var(--ai-hover);
+      --_ai-bg: var(--ai-hover);
     }
   }
 
   @mixin light {
-    --_loading-overlay-bg: rgba(255, 255, 255, 0.35);
-    --_disabled-bg: var(--mantine-color-gray-1);
-    --_disabled-color: var(--mantine-color-gray-5);
+    --_ai-loading-overlay-bg: rgba(255, 255, 255, 0.35);
+    --_ai-disabled-bg: var(--mantine-color-gray-1);
+    --_ai-disabled-color: var(--mantine-color-gray-5);
   }
 
   @mixin dark {
-    --_loading-overlay-bg: rgba(0, 0, 0, 0.35);
-    --_disabled-bg: var(--mantine-color-dark-6);
-    --_disabled-color: var(--mantine-color-dark-3);
+    --_ai-loading-overlay-bg: rgba(0, 0, 0, 0.35);
+    --_ai-disabled-bg: var(--mantine-color-dark-6);
+    --_ai-disabled-color: var(--mantine-color-dark-3);
   }
 
   &[data-loading] {
-    --_cursor: not-allowed;
+    --_ai-cursor: not-allowed;
 
     &::before {
       content: '';
       position: absolute;
       inset: rem(-1px);
       border-radius: var(--ai-radius);
-      background-color: var(--_loading-overlay-bg);
+      background-color: var(--_ai-loading-overlay-bg);
     }
   }
 
   &:disabled:not([data-loading]),
   &[data-disabled]:not([data-loading]) {
-    --_cursor: not-allowed;
-    --_bg: var(--_disabled-bg);
-    --_color: var(--_disabled-color);
+    --_ai-cursor: not-allowed;
+    --_ai-bg: var(--_ai-disabled-bg);
+    --_ai-color: var(--_ai-disabled-color);
   }
 }
 

@@ -1,15 +1,13 @@
 .root {
   font-family: var(--mantine-font-family-monospace);
   line-height: var(--mantine-line-height);
-  padding: var(--_code-padding);
+  padding: var(--_code-padding, rem(2px) calc(var(--mantine-spacing-xs) / 2));
   border-radius: var(--mantine-radius-sm);
   font-size: var(--mantine-font-size-xs);
   background-color: var(--_code-bg);
   color: var(--_code-color);
   margin: 0;
   overflow: auto;
-
-  --_code-padding: rem(2px) calc(var(--mantine-spacing-xs) / 2);
 
   @mixin light {
     --_code-bg: var(--code-bg, var(--mantine-color-gray-1));

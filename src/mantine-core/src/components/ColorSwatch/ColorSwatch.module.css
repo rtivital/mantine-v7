@@ -13,9 +13,6 @@
   color: inherit;
   text-decoration: none;
 
-  --_alpha-overlay-color: rgba(0, 0, 0, 0.1);
-  --_alpha-overlay-bg: rgba(255, 255, 255, 0.1);
-
   @mixin light {
     --_alpha-overlay-color: var(--mantine-color-gray-3);
     --_alpha-overlay-bg: var(--mantine-color-white);

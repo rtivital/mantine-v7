@@ -6,10 +6,7 @@
   text-decoration: none;
   border-radius: var(--paper-radius);
   box-shadow: var(--paper-shadow);
-  border: var(--_paper-border-width) solid var(--_paper-border-color);
-
-  --_paper-border-width: 0;
-  --_paper-border-color: transparent;
+  border: var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent);
 
   &[data-with-border] {
     --_paper-border-width: 1px;

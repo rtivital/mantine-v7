@@ -5,9 +5,7 @@
   font-size: var(--mantine-font-size-sm);
   table-layout: var(--table-layout, auto);
   caption-side: var(--table-caption-side);
-  border: var(--_table-border);
-
-  --_table-border: none;
+  border: var(--_table-border, none);
 
   @mixin light {
     --_table-hover-color: var(--table-highlight-on-hover-color, var(--mantine-color-gray-1));
@@ -27,9 +25,7 @@
 }
 
 .th {
-  text-align: var(--_th-text-align);
-
-  --_th-text-align: left;
+  text-align: var(--_th-text-align, left);
 
   @mixin rtl {
     --_th-text-align: right;
@@ -37,13 +33,11 @@
 }
 
 .tr {
-  border-bottom: var(--_tr-border-bottom);
+  border-bottom: var(--_tr-border-bottom, none);
   background-color: var(--_tr-bg, transparent);
 
-  --_tr-border-bottom: none;
-
   @mixin hover {
-    background-color: var(--_tr-hover-bg, transparent);
+    --_tr-bg: var(--_tr-hover-bg, transparent);
   }
 
   &[data-with-row-border] {
@@ -94,11 +88,8 @@
 
 .caption {
   color: var(--mantine-color-dimmed);
-  margin-top: var(--_margin-top);
-  margin-bottom: var(--_margin-bottom);
-
-  --_margin-top: 0;
-  --_margin-bottom: 0;
+  margin-top: var(--_margin-top, 0);
+  margin-bottom: var(--_margin-bottom, 0);
 
   &[data-side='top'] {
     --_margin-bottom: var(--mantine-spacing-xs);

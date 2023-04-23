@@ -154,7 +154,7 @@
   z-index: 2;
   transition: border-color var(--sc-transition-duration) var(--sc-transition-timing-function);
   border-style: solid;
-  border-width: var(--_border-width, 0rem);
+  border-width: var(--_border-width, 0);
   border-color: var(--_border-color);
 
   @mixin light {

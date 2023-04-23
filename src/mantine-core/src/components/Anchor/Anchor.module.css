@@ -1,6 +1,6 @@
 .root {
   color: var(--mantine-color-anchor);
-  text-decoration: var(--_text-decoration);
+  text-decoration: var(--_text-decoration, none);
   appearance: none;
   border: none;
   display: inline;
@@ -8,8 +8,6 @@
   margin: 0;
   background-color: transparent;
   cursor: pointer;
-
-  --_text-decoration: none;
 
   &[data-underline='hover'] {
     @mixin hover {

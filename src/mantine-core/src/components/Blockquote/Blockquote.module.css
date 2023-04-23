@@ -1,8 +1,10 @@
 .root {
+  --_bq-border: rem(3px) solid var(--bq-bd);
+
   position: relative;
   margin: 0;
   background-color: var(--_bq-bg);
-  border-left: var(--_bq-border-left, rem(3px) solid var(--bq-bd));
+  border-left: var(--_bq-border-left, var(--_bq-border));
   border-right: var(--_bq-border-right, 0);
   border-radius: var(--bq-radius);
   border-bottom-left-radius: var(--_bq-radius-left, 0);
@@ -13,7 +15,7 @@
     --_bq-radius-left: var(--bq-radius);
     --_bq-radius-right: 0;
     --_bq-border-left: 0;
-    --_bq-border-right: rem(3px) solid var(--bq-bd);
+    --_bq-border-right: var(--_bq-border);
   }
 
   @mixin light {
