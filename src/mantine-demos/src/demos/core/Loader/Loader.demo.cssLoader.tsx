@@ -1,11 +1,11 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
 import { Loader, MantineThemeProvider } from '@mantine/core';
-import { RingLoader, ringLoaderCode } from './_RingLoader';
+import { CssLoader, cssLoaderModuleCssCode, cssLoaderTsxCode } from './_CssLoader';
 
 const code = `
 import { MantineProvider, Loader } from '@mantine/core';
-import { RingLoader } from './RingLoader';
+import { CssLoader } from './CssLoader';
 
 function Demo() {
   return (
@@ -14,8 +14,8 @@ function Demo() {
         components: {
           Loader: Loader.extend({
             defaultProps: {
-              loaders: { ...Loader.defaultLoaders, ring: RingLoader },
-              type: 'ring',
+              loaders: { ...Loader.defaultLoaders, custom: CssLoader },
+              type: 'custom',
             },
           }),
         },
@@ -34,8 +34,8 @@ function Demo() {
         components: {
           Loader: Loader.extend({
             defaultProps: {
-              loaders: { ...Loader.defaultLoaders, ring: RingLoader },
-              type: 'ring',
+              loaders: { ...Loader.defaultLoaders, custom: CssLoader },
+              type: 'custom',
             },
           }),
         },
@@ -46,12 +46,13 @@ function Demo() {
   );
 }
 
-export const customType: MantineDemo = {
+export const cssLoader: MantineDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
     { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'RingLoader.tsx', language: 'tsx', code: ringLoaderCode },
+    { fileName: 'CssLoader.tsx', language: 'tsx', code: cssLoaderTsxCode },
+    { fileName: 'CssLoader.module.css', language: 'css', code: cssLoaderModuleCssCode },
   ],
 };

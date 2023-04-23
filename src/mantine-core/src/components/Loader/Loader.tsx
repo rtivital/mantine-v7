@@ -48,6 +48,9 @@ export type LoaderFactory = Factory<{
   ref: HTMLSpanElement;
   stylesNames: LoaderStylesNames;
   vars: LoaderCssVariables;
+  staticComponents: {
+    defaultLoaders: typeof defaultLoaders;
+  };
 }>;
 
 export const defaultLoaders: MantineLoadersRecord = {
