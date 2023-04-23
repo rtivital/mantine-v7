@@ -6,7 +6,6 @@
     "baseUrl": ".",
     "outDir": "lib",
     "declaration": true,
-    "declarationMap": true,
     "declarationDir": "lib",
     "composite": true
   }
