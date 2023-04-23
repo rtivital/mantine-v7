@@ -2,6 +2,7 @@ import type {
   MantineBreakpoint,
   MantineSpacing,
   MantineFontSize,
+  MantineLineHeight,
   MantineColor,
 } from '../../MantineProvider';
 
@@ -35,7 +36,7 @@ export interface MantineStyleProps {
   fw?: StyleProp<React.CSSProperties['fontWeight']>;
   lts?: StyleProp<React.CSSProperties['letterSpacing']>;
   ta?: StyleProp<React.CSSProperties['textAlign']>;
-  lh?: StyleProp<React.CSSProperties['lineHeight']>;
+  lh?: StyleProp<MantineLineHeight | number | (string & {})>;
   fs?: StyleProp<React.CSSProperties['fontStyle']>;
   tt?: StyleProp<React.CSSProperties['textTransform']>;
   td?: StyleProp<React.CSSProperties['textDecoration']>;

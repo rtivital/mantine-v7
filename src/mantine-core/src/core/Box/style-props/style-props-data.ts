@@ -32,7 +32,7 @@ export const STYlE_PROPS_DATA: Record<keyof MantineStyleProps, SystemPropData> =
   fw: { type: 'identity', property: 'fontWeight' },
   lts: { type: 'size', property: 'letterSpacing' },
   ta: { type: 'identity', property: 'textAlign' },
-  lh: { type: 'identity', property: 'lineHeight' },
+  lh: { type: 'lineHeight', property: 'lineHeight' },
   fs: { type: 'identity', property: 'fontStyle' },
   tt: { type: 'identity', property: 'textTransform' },
   td: { type: 'identity', property: 'textDecoration' },
