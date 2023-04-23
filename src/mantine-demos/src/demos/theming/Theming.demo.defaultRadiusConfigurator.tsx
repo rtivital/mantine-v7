@@ -9,7 +9,7 @@ function Demo() {
   return (
     <MantineProvider theme={{ defaultRadius: '${props.defaultRadius}' }}>
       <Button fullWidth>Button with defaultRadius</Button>
-      <TextInput mt="sm" label="TextInput with defaultRadius" />
+      <TextInput mt="sm" label="TextInput with defaultRadius" placeholder="TextInput with default radius" />
     </MantineProvider>
   );
 }
@@ -21,7 +21,12 @@ function Wrapper(props: any) {
       <Button radius={props.defaultRadius} fullWidth>
         Button with defaultRadius
       </Button>
-      <TextInput mt="sm" radius={props.defaultRadius} label="TextInput with defaultRadius" />
+      <TextInput
+        mt="sm"
+        radius={props.defaultRadius}
+        label="TextInput with defaultRadius"
+        placeholder="TextInput with default radius"
+      />
     </>
   );
 }
