@@ -16,6 +16,7 @@ export function SocialButton({ icon, ...others }: SocialButtonProps) {
       target="_blank"
       rel="noopener noreferrer"
       leftSection={icon}
+      radius="md"
       classNames={{
         root: classes.socialButton,
         section: classes.socialButtonSection,
