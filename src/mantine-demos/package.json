@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "react": "*",
+    "clsx": "*",
     "@mantine/core": "6.0.0-alpha.6",
     "@mantine/hooks": "6.0.0-alpha.6",
     "@mantine/ds": "6.0.0-alpha.6",

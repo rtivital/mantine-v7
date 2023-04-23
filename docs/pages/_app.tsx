@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 import '@mantine/ds/styles.css';
+import '@mantine/demos/styles.css';
 
 import React from 'react';
 import { AppProps } from 'next/app';

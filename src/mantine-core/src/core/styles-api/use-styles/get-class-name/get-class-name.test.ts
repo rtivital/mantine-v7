@@ -1,4 +1,5 @@
 import { DEFAULT_THEME, MantineTheme } from '../../../MantineProvider';
+import { FOCUS_CLASS_NAMES } from './get-global-class-names/get-global-class-names';
 import { getClassName, GetClassNameOptions } from './get-class-name';
 
 const THEME_WITH_CLASSNAMES: MantineTheme = {
@@ -37,13 +38,13 @@ describe('@mantine/core/get-class-name', () => {
   it('resolves focusable class name', () => {
     expect(
       getClassName({ ...defaultOptions, options: { focusable: true } }).includes(
-        DEFAULT_THEME.focusClassNames[DEFAULT_THEME.focusRing]
+        FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]
       )
     ).toBe(true);
 
     expect(
       getClassName({ ...defaultOptions, options: { focusable: false } }).includes(
-        DEFAULT_THEME.focusClassNames[DEFAULT_THEME.focusRing]
+        FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]
       )
     ).toBe(false);
   });

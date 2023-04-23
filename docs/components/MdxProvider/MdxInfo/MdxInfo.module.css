@@ -3,7 +3,8 @@
   margin-bottom: var(--mantine-spacing-lg);
 
   & > p {
-    line-height: 1.55;
+    line-height: 1.65;
+    font-size: rem(15px);
   }
 
   /* Considered to be a heading of the info */

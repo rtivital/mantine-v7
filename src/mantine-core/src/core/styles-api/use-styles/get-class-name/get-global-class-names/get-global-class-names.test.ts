@@ -1,5 +1,5 @@
 import { DEFAULT_THEME } from '../../../../MantineProvider';
-import { getGlobalClassNames } from './get-global-class-names';
+import { getGlobalClassNames, FOCUS_CLASS_NAMES } from './get-global-class-names';
 
 describe('@mantine/core/get-global-class-names', () => {
   it('returns empty string if both focusable and active options are false', () => {
@@ -19,7 +19,7 @@ describe('@mantine/core/get-global-class-names', () => {
         options: { focusable: true, active: false },
         unstyled: false,
       })
-    ).toBe(DEFAULT_THEME.focusClassNames[DEFAULT_THEME.focusRing]);
+    ).toBe(FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]);
   });
 
   it('returns correct class names if active is true', () => {
@@ -39,9 +39,7 @@ describe('@mantine/core/get-global-class-names', () => {
         options: { focusable: true, active: true },
         unstyled: false,
       })
-    ).toBe(
-      `${DEFAULT_THEME.focusClassNames[DEFAULT_THEME.focusRing]} ${DEFAULT_THEME.activeClassName}`
-    );
+    ).toBe(`${FOCUS_CLASS_NAMES[DEFAULT_THEME.focusRing]} ${DEFAULT_THEME.activeClassName}`);
   });
 
   it('returns empty string if unstyled is true', () => {

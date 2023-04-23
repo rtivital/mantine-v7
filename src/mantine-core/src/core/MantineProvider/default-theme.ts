@@ -23,11 +23,7 @@ export const DEFAULT_THEME: MantineTheme = {
   defaultGradient: { from: 'blue', to: 'cyan', deg: 45 },
   defaultRadius: 'sm',
   activeClassName: 'mantine-active',
-  focusClassNames: {
-    auto: 'mantine-focus-auto',
-    always: 'mantine-focus-always',
-    never: 'mantine-focus-never',
-  },
+  focusClassName: '',
 
   headings: {
     fontFamily: DEFAULT_FONT_FAMILY,
