@@ -5,7 +5,7 @@ const code = `
 import { Loader } from '@mantine/core';
 
 function Demo() {
-  return <Loader%%props%% />;
+  return <Loader{{props}} />;
 }
 `;
 

@@ -28,11 +28,11 @@ export function injectProps(props: any, code: string) {
   if (!multiline) {
     const joined = propStrings.join(' ');
     return joined.length > 0
-      ? replacedChildrenCode.replace('%%props%%', ` ${joined}`)
-      : replacedChildrenCode.replace('%%props%%', '');
+      ? replacedChildrenCode.replace('{{props}}', ` ${joined}`)
+      : replacedChildrenCode.replace('{{props}}', '');
   }
 
-  const placeholderRegex = /^(\s*)%%props%%(\s*)$/gm;
+  const placeholderRegex = /^(\s*){{props}}(\s*)$/gm;
 
   const result = replacedChildrenCode.replace(placeholderRegex, (_, before, after) => {
     const propsWithWhitespace = propStrings

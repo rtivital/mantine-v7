@@ -44,7 +44,7 @@ export type ConfiguratorControlOptions =
   | ConfiguratorNumberControlOptions;
 
 export interface ConfiguratorDemoProps extends DemoAreaProps {
-  code: string;
+  code: string | ((props: Record<string, any>) => string);
   controls: ConfiguratorControlOptions[];
 }
 
@@ -97,7 +97,10 @@ export function ConfiguratorDemo({
           {
             fileName: 'Demo.tsx',
             language: 'tsx',
-            code: injectProps(clearProps(controls, state), code),
+            code:
+              typeof code === 'function'
+                ? code(clearProps(controls, state))
+                : injectProps(clearProps(controls, state), code),
           },
         ]}
       />

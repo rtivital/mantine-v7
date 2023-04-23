@@ -157,3 +157,12 @@ It can be used to customize active styles of all interactive components.
 To disable active styles for all components, set `theme.activeClassName` to an empty string:
 
 <Demo data={ThemingDemos.activeClassNameEmpty} />
+
+### defaultRadius
+
+`theme.defaultRadius` controls default `border-radius` property in most components, for example, [Button](/core/button) or [TextInput](/core/text-input).
+You can set to either one of the values from `theme.radius` or a number/string to use exact value. Note that numbers are treated as pixels, but
+converted to rem (`1rem = 16px`). For example, `theme.defaultRadius: 4` will be converted to `0.25rem`.
+You can learn more about rem conversion in [rem units guide](/styles/rem).
+
+<Demo data={ThemingDemos.defaultRadiusConfigurator} />
