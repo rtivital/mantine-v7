@@ -1,4 +1,4 @@
-import { MdxPagesGroup } from '@/types';
+import { Frontmatter, MdxPagesCategory, MdxPagesGroup } from '@/types';
 import { MDX_DATA } from './mdx-data';
 
 export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
@@ -6,3 +6,15 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   { group: 'guides', pages: [MDX_DATA.Polymorphic] },
   { group: 'mantine-core', pages: [{ category: 'feedback', pages: [MDX_DATA.Loader] }] },
 ];
+
+export const ALL_MDX_PAGES: Frontmatter[] = MDX_PAGES_GROUPS.reduce<Frontmatter[]>((acc, group) => {
+  group.pages.forEach((item) => {
+    if (item.category) {
+      acc.push(...(item as MdxPagesCategory).pages);
+    } else {
+      acc.push(item as Frontmatter);
+    }
+  });
+
+  return acc;
+}, []);
