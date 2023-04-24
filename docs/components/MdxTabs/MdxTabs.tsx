@@ -3,6 +3,7 @@ import { Tabs, rem } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { TableOfContents } from '@/components/TableOfContents';
 import { MdxPageBase } from '@/components/MdxPageBase';
+import { MdxSiblings } from '@/components/MdxSiblings';
 import { PropsTablesList } from '@/components/PropsTable';
 import { StylesApiTable } from '@/components/StylesApiTable';
 import classes from './MdxTabs.module.css';
@@ -56,7 +57,10 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
               justifyContent: 'space-between',
             }}
           >
-            <div className={classes.main}>{children}</div>
+            <div className={classes.main}>
+              {children}
+              <MdxSiblings slug={meta.slug} />
+            </div>
 
             <div className={classes.tableOfContents}>
               <TableOfContents withTabs />

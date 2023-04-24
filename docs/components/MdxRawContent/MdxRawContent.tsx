@@ -1,19 +1,22 @@
 import React from 'react';
-import { TableOfContents } from '../TableOfContents/TableOfContents';
-import { MdxPageBase } from '../MdxPageBase/MdxPageBase';
+import { Frontmatter } from '@/types';
+import { TableOfContents } from '@/components/TableOfContents';
+import { MdxPageBase } from '@/components/MdxPageBase';
+import { MdxSiblings } from '@/components/MdxSiblings';
 import classes from './MdxRawContent.module.css';
 
 interface MdxRawContentProps {
   children: React.ReactNode;
+  meta: Frontmatter;
 }
 
-export function MdxRawContent({ children }: MdxRawContentProps) {
+export function MdxRawContent({ children, meta }: MdxRawContentProps) {
   return (
     <MdxPageBase>
       <div className={classes.wrapper}>
         <div className={classes.container}>
           {children}
-          <div>Siblings</div>
+          <MdxSiblings slug={meta.slug} />
         </div>
 
         <div className={classes.tableOfContents}>
