@@ -6,13 +6,20 @@ import classes from './ColorsList.module.css';
 interface ColorsListProps {
   colors: chroma.Color[];
   baseColorIndex: number;
+  displayColorsIndex: boolean | undefined;
+  displayColorsValue: boolean | undefined;
 }
 
 function isLight(color: chroma.Color) {
   return chroma.contrast(color, 'white') < 4.5;
 }
 
-export function ColorsList({ colors, baseColorIndex }: ColorsListProps) {
+export function ColorsList({
+  colors,
+  baseColorIndex,
+  displayColorsIndex,
+  displayColorsValue,
+}: ColorsListProps) {
   const items = colors.map((color, index) => (
     <div key={index} className={classes.item}>
       <ColorSwatch
@@ -24,8 +31,8 @@ export function ColorsList({ colors, baseColorIndex }: ColorsListProps) {
         c={isLight(color) ? 'black' : 'white'}
       >
         <div className={classes.label}>
-          <span className={classes.index}>{index}</span>
-          <span className={classes.hex}>{color.hex()}</span>
+          {displayColorsIndex && <span className={classes.index}>{index}</span>}
+          {displayColorsValue && <span className={classes.hex}>{color.hex()}</span>}
         </div>
       </ColorSwatch>
     </div>
