@@ -1,9 +1,9 @@
 import React from 'react';
 import { ColorSwatch, Group, Text, DEFAULT_THEME } from '@mantine/core';
-import { generateColors } from './generate-colors/generate-colors';
+import { generateColorsMap } from '@mantine/colors-generator';
 
 export function ColorsGenerator() {
-  const { colors, hueDown, hueUp, baseColorIndex } = generateColors('#FFE3E3');
+  const { colors, hueDown, hueUp, baseColorIndex } = generateColorsMap('#FFE3E3');
 
   console.log(baseColorIndex);
 
