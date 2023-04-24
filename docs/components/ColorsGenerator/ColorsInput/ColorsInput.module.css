@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  gap: rem(50px);
+}
+
+.saturation {
+  & :global(.mantine-ColorPicker-saturationOverlay) {
+    border-radius: var(--mantine-radius-md);
+  }
+}
+
+.input {
+  max-width: rem(280px);
+  margin-bottom: var(--mantine-spacing-sm);
+}

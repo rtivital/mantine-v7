@@ -1,34 +1,16 @@
-import React from 'react';
-import { ColorSwatch, Group, Text, DEFAULT_THEME } from '@mantine/core';
+import React, { useState } from 'react';
 import { generateColorsMap } from '@mantine/colors-generator';
+import { ColorsList } from './ColorsList/ColorsList';
+import { ColorsInput } from './ColorsInput/ColorsInput';
 
 export function ColorsGenerator() {
-  const { colors, hueDown, hueUp, baseColorIndex } = generateColorsMap('#FFE3E3');
-
-  console.log(baseColorIndex);
-
-  const swatches = colors.map((color, index) => (
-    <div key={color.hex()}>
-      <ColorSwatch size={80} color={color.hex()} />
-      <Text fz="xs">
-        {index} – {color.hex()}
-      </Text>
-    </div>
-  ));
-
-  const themeColors = DEFAULT_THEME.colors.red.map((color, index) => (
-    <div key={color}>
-      <ColorSwatch size={80} color={color} />
-      <Text fz="xs">
-        {index} – {color}
-      </Text>
-    </div>
-  ));
+  const [color, setColor] = useState('#F13EAF');
+  const { colors, baseColorIndex } = generateColorsMap(color);
 
   return (
     <div>
-      <Group>{swatches}</Group>
-      <Group>{themeColors}</Group>
+      <ColorsInput value={color} onChange={setColor} />
+      <ColorsList colors={colors} baseColorIndex={baseColorIndex} />
     </div>
   );
 }

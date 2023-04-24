@@ -1,9 +1,7 @@
 import chroma from 'chroma-js';
 
 const LIGHTNESS_MAP = [0.96, 0.907, 0.805, 0.697, 0.605, 0.547, 0.518, 0.445, 0.395, 0.34];
-
 const SATURATION_MAP = [0.32, 0.16, 0.08, 0.04, 0, 0, 0.04, 0.08, 0.16, 0.32];
-const HUE_MAP = [0, 4, 8, 12, 16, 20, 24, 28, 32, 36];
 
 function getClosestLightness(colorObject: chroma.Color) {
   const lightnessGoal = colorObject.get('hsl.l');
@@ -26,26 +24,7 @@ export function generateColorsMap(color: string) {
         : c.desaturate(saturationDelta * -1);
     });
 
-  const hueUp = colors.map((c, i) => {
-    const hueDelta = HUE_MAP[i] - HUE_MAP[baseColorIndex];
-    return hueDelta >= 0
-      ? c.set('hsl.h', `+${hueDelta}`)
-      : c.set('hsl.h', `+${(hueDelta * -1) / 2}`);
-  });
-
-  const hueDown = colors.map((c, i) => {
-    const hueDelta = HUE_MAP[i] - HUE_MAP[baseColorIndex];
-    return hueDelta >= 0
-      ? c.set('hsl.h', `-${hueDelta}`)
-      : c.set('hsl.h', `-${(hueDelta * -1) / 2}`);
-  });
-
-  return {
-    baseColorIndex,
-    colors,
-    hueDown,
-    hueUp,
-  };
+  return { baseColorIndex, colors };
 }
 
 export type MantineColorsTuple = readonly [

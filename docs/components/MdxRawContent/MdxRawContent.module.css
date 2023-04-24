@@ -5,18 +5,11 @@
   justify-content: space-between;
   padding-left: calc(var(--mantine-spacing-xl) * 2);
   padding-right: calc(var(--mantine-spacing-xl) * 2);
+  background-color: var(--mantine-color-body);
 
   @media (max-width: $docs-mdx-breakpoint) {
     padding-left: var(--mantine-spacing-xl);
     padding-right: var(--mantine-spacing-xl);
-  }
-
-  @mixin light {
-    background-color: var(--mantine-color-white);
-  }
-
-  @mixin dark {
-    background-color: var(--mantine-color-dark-7);
   }
 }
 
