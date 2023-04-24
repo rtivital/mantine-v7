@@ -55,4 +55,9 @@
   font-size: var(--mantine-font-size-sm);
   margin-left: var(--mantine-spacing-xs);
   font-weight: 500;
+
+  @mixin rtl {
+    margin-left: 0;
+    margin-right: var(--mantine-spacing-xs);
+  }
 }

@@ -46,11 +46,23 @@
   &[data-next] {
     text-align: left;
     margin-right: var(--mantine-spacing-md);
+
+    @mixin rtl {
+      margin-right: 0;
+      margin-left: var(--mantine-spacing-md);
+      text-align: right;
+    }
   }
 
   &[data-prev] {
     text-align: right;
     margin-left: var(--mantine-spacing-md);
+
+    @mixin rtl {
+      margin-left: 0;
+      margin-right: var(--mantine-spacing-md);
+      text-align: left;
+    }
   }
 }
 
@@ -60,4 +72,10 @@
 
 .description {
   font-size: var(--mantine-font-size-sm);
+}
+
+.icon {
+  @mixin rtl {
+    transform: rotate(180deg);
+  }
 }
