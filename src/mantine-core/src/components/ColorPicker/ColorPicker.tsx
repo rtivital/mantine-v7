@@ -178,7 +178,8 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
   const formatRef = useRef(format);
   const valueRef = useRef<string>();
-  const updateRef = useRef(true);
+  const scrubTimeoutRef = useRef<number>(-1);
+  const isScrubbingRef = useRef(false);
   const withAlpha = format === 'hexa' || format === 'rgba' || format === 'hsla';
 
   const [_value, setValue, controlled] = useUncontrolled({
@@ -190,8 +191,19 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
   const [parsed, setParsed] = useState<HsvaColor>(parseColor(_value));
 
+  const startScrubbing = () => {
+    window.clearTimeout(scrubTimeoutRef.current);
+    isScrubbingRef.current = true;
+  };
+
+  const stopScrubbing = () => {
+    window.clearTimeout(scrubTimeoutRef.current);
+    scrubTimeoutRef.current = window.setTimeout(() => {
+      isScrubbingRef.current = false;
+    }, 200);
+  };
+
   const handleChange = (color: Partial<HsvaColor>) => {
-    updateRef.current = false;
     setParsed((current) => {
       const next = { ...current, ...color };
       valueRef.current = convertHsvaTo(formatRef.current!, next);
@@ -199,17 +211,11 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
     });
 
     setValue(valueRef.current!);
-
-    // Does not work any other way
-    setTimeout(() => {
-      updateRef.current = true;
-    }, 0);
   };
 
   useDidUpdate(() => {
-    if (isColorValid(value!) && updateRef.current) {
+    if (isColorValid(value!) && !isScrubbingRef.current) {
       setParsed(parseColor(value!));
-      updateRef.current = true;
     }
   }, [value]);
 
@@ -233,6 +239,8 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
               size={size!}
               focusable={focusable}
               saturationLabel={saturationLabel}
+              onScrubStart={startScrubbing}
+              onScrubEnd={stopScrubbing}
             />
 
             <div {...getStyles('body')}>
@@ -246,6 +254,8 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                   size={size}
                   focusable={focusable}
                   aria-label={hueLabel}
+                  onScrubStart={startScrubbing}
+                  onScrubEnd={stopScrubbing}
                 />
 
                 {withAlpha && (
@@ -257,9 +267,10 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                     }}
                     size={size}
                     color={convertHsvaTo('hex', parsed)}
-                    // mt={6}
                     focusable={focusable}
                     aria-label={alphaLabel}
+                    onScrubStart={startScrubbing}
+                    onScrubEnd={stopScrubbing}
                   />
                 )}
               </div>

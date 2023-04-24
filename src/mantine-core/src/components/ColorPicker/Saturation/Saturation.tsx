@@ -10,6 +10,8 @@ export interface SaturationProps extends ElementProps<'div', 'onChange'> {
   value: HsvaColor;
   onChange(color: Partial<HsvaColor>): void;
   onChangeEnd(color: Partial<HsvaColor>): void;
+  onScrubStart?(): void;
+  onScrubEnd?(): void;
   saturationLabel?: string;
   size: MantineSize | (string & {});
   color: string;
@@ -25,6 +27,8 @@ export function Saturation({
   focusable = true,
   size,
   color,
+  onScrubStart,
+  onScrubEnd,
   ...others
 }: SaturationProps) {
   const { getStyles } = useColorPickerContext();
@@ -41,7 +45,9 @@ export function Saturation({
       onScrubEnd: () => {
         const { x, y } = positionRef.current;
         onChangeEnd({ s: Math.round(x * 100), v: Math.round((1 - y) * 100) });
+        onScrubEnd?.();
       },
+      onScrubStart,
     }
   );
 

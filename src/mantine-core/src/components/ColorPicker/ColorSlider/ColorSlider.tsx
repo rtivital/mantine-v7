@@ -14,6 +14,8 @@ export interface __ColorSliderProps extends ElementProps<'div', 'onChange'> {
   value: number;
   onChange?(value: number): void;
   onChangeEnd?(value: number): void;
+  onScrubStart?(): void;
+  onScrubEnd?(): void;
   size?: MantineSize | (string & {});
   focusable?: boolean;
 }
@@ -37,6 +39,8 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>((props, 
     value,
     overlays,
     thumbColor = 'transparent',
+    onScrubStart,
+    onScrubEnd,
     ...others
   } = props;
 
@@ -55,7 +59,9 @@ export const ColorSlider = forwardRef<HTMLDivElement, ColorSliderProps>((props, 
       onScrubEnd: () => {
         const { x } = positionRef.current;
         onChangeEnd?.(getChangeValue(x));
+        onScrubEnd?.();
       },
+      onScrubStart,
     }
   );
 
