@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Tabs, rem } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { TableOfContents } from '@/components/TableOfContents';
-import { MdxPageBase } from '@/components/MdxPageBase';
+import { PageBase } from '@/components/PageBase';
 import { MdxSiblings } from '@/components/MdxSiblings';
 import { PropsTablesList } from '@/components/PropsTable';
 import { StylesApiTable } from '@/components/StylesApiTable';
@@ -29,7 +29,7 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
   }
 
   return (
-    <MdxPageBase>
+    <PageBase>
       <Tabs
         variant="outline"
         value={activeTab}
@@ -96,6 +96,6 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
           </div>
         </Tabs.Panel>
       </Tabs>
-    </MdxPageBase>
+    </PageBase>
   );
 }

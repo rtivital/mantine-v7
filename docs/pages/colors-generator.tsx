@@ -1,11 +1,11 @@
 import React from 'react';
-import { Shell } from '@/components/Shell';
+import { ContentPageBase } from '@/components/ContentPageBase';
 import { ColorsGenerator } from '@/components/ColorsGenerator';
 
 export default function ColorsGeneratorPage() {
   return (
-    <Shell>
+    <ContentPageBase>
       <ColorsGenerator />
-    </Shell>
+    </ContentPageBase>
   );
 }

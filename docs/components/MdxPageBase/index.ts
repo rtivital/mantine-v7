@@ -1,1 +1,0 @@
-export { MdxPageBase } from './MdxPageBase';

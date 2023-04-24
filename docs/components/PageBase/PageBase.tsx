@@ -1,12 +1,12 @@
 import React from 'react';
 import { Footer } from '@/components/Footer';
-import classes from './MdxPageBase.module.css';
+import classes from './PageBase.module.css';
 
-interface MdxPageBaseProps {
+interface PageBaseProps {
   children: React.ReactNode;
 }
 
-export function MdxPageBase({ children }: MdxPageBaseProps) {
+export function PageBase({ children }: PageBaseProps) {
   return (
     <>
       <div className={classes.content}>{children}</div>

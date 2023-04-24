@@ -1,7 +1,7 @@
 import React from 'react';
 import { Frontmatter } from '@/types';
 import { TableOfContents } from '@/components/TableOfContents';
-import { MdxPageBase } from '@/components/MdxPageBase';
+import { PageBase } from '@/components/PageBase';
 import { MdxSiblings } from '@/components/MdxSiblings';
 import classes from './MdxRawContent.module.css';
 
@@ -12,7 +12,7 @@ interface MdxRawContentProps {
 
 export function MdxRawContent({ children, meta }: MdxRawContentProps) {
   return (
-    <MdxPageBase>
+    <PageBase>
       <div className={classes.wrapper}>
         <div className={classes.container}>
           {children}
@@ -23,6 +23,6 @@ export function MdxRawContent({ children, meta }: MdxRawContentProps) {
           <TableOfContents withTabs={false} />
         </div>
       </div>
-    </MdxPageBase>
+    </PageBase>
   );
 }

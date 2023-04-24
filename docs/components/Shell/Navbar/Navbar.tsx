@@ -1,5 +1,11 @@
 import React from 'react';
-import { IconBrandMantine, IconCompass, IconApi, IconHeartHandshake } from '@tabler/icons-react';
+import {
+  IconBrandMantine,
+  IconCompass,
+  IconApi,
+  IconHeartHandshake,
+  IconPalette,
+} from '@tabler/icons-react';
 import { Box, ScrollArea } from '@mantine/core';
 import { MDX_PAGES_GROUPS } from '@/mdx';
 import { NavbarMainLink } from './NavbarMainLink/NavbarMainLink';
@@ -31,6 +37,9 @@ export function Navbar({ navbarOpened, onNavbarClose }: NavbarProps) {
           </NavbarMainLink>
           <NavbarMainLink icon={<IconHeartHandshake stroke={1.5} />} href="/contribute">
             Contribute
+          </NavbarMainLink>
+          <NavbarMainLink icon={<IconPalette stroke={1.5} />} href="/colors-generator">
+            Colors generator
           </NavbarMainLink>
           <div className={classes.groups}>{groups}</div>
         </div>
