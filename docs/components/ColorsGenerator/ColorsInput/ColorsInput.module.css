@@ -1,6 +1,16 @@
 .root {
   display: flex;
   gap: rem(50px);
+
+  @media (max-width: em(950px)) {
+    flex-direction: column;
+  }
+}
+
+.colorPicker {
+  @media (max-width: em(950px)) {
+    width: 100%;
+  }
 }
 
 .saturation {
@@ -12,4 +22,15 @@
 .input {
   max-width: rem(280px);
   margin-bottom: var(--mantine-spacing-sm);
+
+  @media (max-width: em(950px)) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.switches {
+  @media (max-width: em(600px)) {
+    display: none;
+  }
 }

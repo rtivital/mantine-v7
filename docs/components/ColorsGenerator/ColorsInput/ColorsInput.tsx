@@ -86,10 +86,10 @@ export function ColorsInput({
           onChange={handleChange}
           onChangeEnd={updateQuery}
           size="lg"
-          classNames={{ saturation: classes.saturation }}
+          classNames={{ saturation: classes.saturation, wrapper: classes.colorPicker }}
         />
 
-        <Stack mt="xl">
+        <Stack mt="xl" className={classes.switches}>
           <Switch
             label="Display colors index"
             size="md"
