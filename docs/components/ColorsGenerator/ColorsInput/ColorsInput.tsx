@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import chroma from 'chroma-js';
-import { IconCopy } from '@tabler/icons-react';
+import { IconCopy, IconCheck } from '@tabler/icons-react';
+import { useClipboard } from '@mantine/hooks';
 import {
   ColorPicker,
   TextInput,
@@ -35,6 +36,7 @@ export function ColorsInput({
   const [inputState, setInputState] = useState(value);
   const [error, setError] = useState(false);
   const router = useRouter();
+  const clipboard = useClipboard();
 
   const updateQuery = (color: string) => {
     router.replace({ query: { ...router.query, color: color.replace('#', '') } });
@@ -106,14 +108,21 @@ export function ColorsInput({
 
         <Button
           fullWidth
-          leftSection={<IconCopy style={{ width: '1.2rem' }} />}
+          leftSection={
+            clipboard.copied ? (
+              <IconCheck style={{ width: '1.2rem' }} />
+            ) : (
+              <IconCopy style={{ width: '1.2rem' }} />
+            )
+          }
           rightSection={<span />}
           justify="space-between"
           size="md"
           mt="xl"
           radius="md"
+          onClick={() => clipboard.copy(window.location.href)}
         >
-          Copy url to clipboard
+          {clipboard.copied ? 'Copied' : 'Copy URL'}
         </Button>
       </div>
       <div className={classes.presets}>
