@@ -5,6 +5,7 @@ import { generateColorsMap } from '@mantine/colors-generator';
 import { MdxTitle } from '@/components/MdxProvider';
 import { ColorsList } from './ColorsList/ColorsList';
 import { ColorsInput } from './ColorsInput/ColorsInput';
+import { ComponentsPreview } from './ComponentsPreview/ComponentsPreview';
 
 export function ColorsGenerator() {
   const router = useRouter();
@@ -44,6 +45,8 @@ export function ColorsGenerator() {
         displayColorsIndex={displayColorsIndex}
         displayColorsValue={displayColorsValue}
       />
+
+      <ComponentsPreview colors={colors.map((c) => c.hex()) as any} />
     </div>
   );
 }
