@@ -127,9 +127,7 @@ export function ColorsInput({
       </div>
       <div className={classes.presets}>
         <Input.Label size="md">Preset</Input.Label>
-        <Group mt={5} gap="xs">
-          {presetControls}
-        </Group>
+        <Group gap="xs">{presetControls}</Group>
       </div>
     </div>
   );
