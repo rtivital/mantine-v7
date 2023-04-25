@@ -4,7 +4,7 @@ import { ColorsGenerator } from '@/components/ColorsGenerator';
 
 export default function ColorsGeneratorPage() {
   return (
-    <ContentPageBase>
+    <ContentPageBase title="Colors generator">
       <ColorsGenerator />
     </ContentPageBase>
   );
