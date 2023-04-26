@@ -60,7 +60,7 @@ This will allow you to use them in all components that support `color` prop, for
 >         primaryColor: '#CEFEDC', // This will throw an error
 >       }}
 >     >
->       {/* Your app here */}
+>       <App />
 >     </MantineProvider>
 >   );
 > }
@@ -68,7 +68,23 @@ This will allow you to use them in all components that support `color` prop, for
 
 ## primaryShade
 
+`theme.primaryShade` is a number from 0 to 9. It determines which shade will be used for the components that have `color` prop.
+
 <Demo data={ThemingDemos.primaryShadeConfigurator} />
+
+You can also customize primary shade for dark and light color schemes separately:
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider theme={{ primaryShade: { light: 6, dark: 8 } }}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ## Default colors
 
