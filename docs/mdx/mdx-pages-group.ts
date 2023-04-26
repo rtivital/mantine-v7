@@ -8,6 +8,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.ThemeObject,
       MDX_DATA.MantineProvider,
       MDX_DATA.Colors,
+      MDX_DATA.ColorFunctions,
       MDX_DATA.Typography,
       MDX_DATA.DefaultProps,
     ],

@@ -18,6 +18,12 @@ export const MDX_DATA = {
     search: 'Default colors, primaryColor, primaryShade',
   },
 
+  ColorFunctions: {
+    title: 'Color functions',
+    slug: '/theming/color-functions',
+    search: 'Functions to manipulate colors, darken, lighten, parse',
+  },
+
   Typography: {
     title: 'Typography',
     slug: '/theming/typography',
