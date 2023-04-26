@@ -12,13 +12,8 @@ export function ColorsGenerator() {
   const urlColor = `#${router.query.color}`;
   const [color, setColor] = useState('#5474B4');
   const { colors, baseColorIndex } = generateColorsMap(color);
-  const [displayColorsIndex, setDisplayColorsIndex] = useLocalStorage({
-    key: 'display-colors-index',
-    defaultValue: true,
-  });
-
-  const [displayColorsValue, setDisplayColorsValue] = useLocalStorage({
-    key: 'display-colors-value',
+  const [displayColorsInfo, setDisplayColorsInfo] = useLocalStorage({
+    key: 'display-colors-info',
     defaultValue: true,
   });
 
@@ -34,16 +29,13 @@ export function ColorsGenerator() {
       <ColorsInput
         value={color}
         onChange={setColor}
-        displayColorsIndex={displayColorsIndex}
-        setDisplayColorsIndex={setDisplayColorsIndex}
-        displayColorsValue={displayColorsValue}
-        setDisplayColorsValue={setDisplayColorsValue}
+        displayColorsInfo={displayColorsInfo}
+        setDisplayColorsInfo={setDisplayColorsInfo}
       />
       <ColorsList
         colors={colors}
         baseColorIndex={baseColorIndex}
-        displayColorsIndex={displayColorsIndex}
-        displayColorsValue={displayColorsValue}
+        displayColorsInfo={displayColorsInfo}
       />
 
       <ComponentsPreview colors={colors.map((c) => c.hex()) as any} />

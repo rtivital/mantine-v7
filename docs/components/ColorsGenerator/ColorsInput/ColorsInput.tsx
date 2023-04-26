@@ -3,35 +3,22 @@ import { useRouter } from 'next/router';
 import chroma from 'chroma-js';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
-import {
-  ColorPicker,
-  TextInput,
-  Input,
-  Button,
-  ColorSwatch,
-  Group,
-  Switch,
-  Stack,
-} from '@mantine/core';
+import { ColorPicker, TextInput, Input, Button, ColorSwatch, Group, Switch } from '@mantine/core';
 import { COLORS_PRESET } from './colors-preset';
 import classes from './ColorsInput.module.css';
 
 interface ColorsInputProps {
   value: string;
   onChange(value: string): void;
-  displayColorsIndex: boolean | undefined;
-  setDisplayColorsIndex(value: boolean): void;
-  displayColorsValue: boolean | undefined;
-  setDisplayColorsValue(value: boolean): void;
+  displayColorsInfo: boolean | undefined;
+  setDisplayColorsInfo(value: boolean): void;
 }
 
 export function ColorsInput({
   value,
   onChange,
-  displayColorsIndex,
-  displayColorsValue,
-  setDisplayColorsIndex,
-  setDisplayColorsValue,
+  displayColorsInfo,
+  setDisplayColorsInfo,
 }: ColorsInputProps) {
   const [inputState, setInputState] = useState(value);
   const [error, setError] = useState(false);
@@ -91,20 +78,14 @@ export function ColorsInput({
           classNames={{ saturation: classes.saturation, wrapper: classes.colorPicker }}
         />
 
-        <Stack mt="xl" className={classes.switches}>
-          <Switch
-            label="Display colors index"
-            size="md"
-            checked={displayColorsIndex}
-            onChange={(event) => setDisplayColorsIndex(event.currentTarget.checked)}
-          />
-          <Switch
-            label="Display colors value"
-            size="md"
-            checked={displayColorsValue}
-            onChange={(event) => setDisplayColorsValue(event.currentTarget.checked)}
-          />
-        </Stack>
+        <Switch
+          className={classes.switch}
+          label="Display colors info"
+          size="md"
+          checked={displayColorsInfo}
+          onChange={(event) => setDisplayColorsInfo(event.currentTarget.checked)}
+          mt="xl"
+        />
 
         <Button
           fullWidth

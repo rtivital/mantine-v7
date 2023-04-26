@@ -29,7 +29,7 @@
   }
 }
 
-.switches {
+.switch {
   @media (max-width: em(600px)) {
     display: none;
   }
