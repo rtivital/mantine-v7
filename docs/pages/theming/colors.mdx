@@ -29,16 +29,42 @@ This will allow you to use them in all components that support `color` prop, for
 
 > **10 shades per color**
 >
-> Colors override must include at least 10 shades per color, otherwise you will get a TypeScript error
+> Colors override must include **at least 10 shades per color**, otherwise you will get a TypeScript error
 > and some variants will not have proper colors. If you only have one color value you can either
 > pick remaining colors by hand or use [colors generator tool](/colors-generator).
 >
-> You can add more than 10 shades per color, but these values will not be used by Mantine components
-> with default colors resolver.
+> You can add more than 10 shades per color: these values will not be used by Mantine components with default colors resolver,
+> but you can still reference them by index, for example, `color="blue.11"`.
 
 ## primaryColor
 
+`theme.primaryColor` is a key of `theme.colors`, it is used:
+
+- As a default value for most of the components that support `color` prop
+- To set default focus ring outline color
+
 <Demo data={ThemingDemos.primaryColor} />
+
+> **CSS color values at `theme.primaryColor`**
+>
+> Value of `theme.primaryColor` must be a key of `theme.colors` object. For example, `blue`, `orange` or `green`.
+> You cannot assign CSS color values, for example, the following code will throw an error during theme merging:
+>
+> ```tsx
+> import { MantineProvider } from '@mantine/core';
+>
+> function Demo() {
+>   return (
+>     <MantineProvider
+>       theme={{
+>         primaryColor: '#CEFEDC', // This will throw an error
+>       }}
+>     >
+>       {/* Your app here */}
+>     </MantineProvider>
+>   );
+> }
+> ```
 
 ## primaryShade
 

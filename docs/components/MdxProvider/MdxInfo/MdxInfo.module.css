@@ -19,6 +19,10 @@
     @mixin dark {
       color: var(--mantine-color-white);
     }
+
+    & > code {
+      font-size: 80%;
+    }
   }
 
   & > p:first-of-type {
@@ -40,6 +44,8 @@
   }
 
   & :global(.mantine-CodeHighlight-root) {
+    margin-top: var(--mantine-spacing-md);
+
     @mixin light {
       background-color: var(--mantine-color-white);
     }
