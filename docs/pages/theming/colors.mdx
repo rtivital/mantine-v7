@@ -25,7 +25,16 @@ You can add any number of extra colors to `theme.colors` object.
 This will allow you to use them in all components that support `color` prop, for example
 [Button](/core/button), [Badge](/core/badge) and [Switch](/core/switch).
 
-Note that all added colors must have **at least 10 shades**.
+<Demo data={ThemingDemos.colorsOverride} />
+
+> **10 shades per color**
+>
+> Colors override must include at least 10 shades per color, otherwise you will get a TypeScript error
+> and some variants will not have proper colors. If you only have one color value you can either
+> pick remaining colors by hand or use [colors generator tool](/colors-generator).
+>
+> You can add more than 10 shades per color, but these values will not be used by Mantine components
+> with default colors resolver.
 
 ## primaryColor
 
