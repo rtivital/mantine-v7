@@ -86,6 +86,16 @@ function Demo() {
 }
 ```
 
+## Color prop
+
+Components that support changing their color have `color` prop. This prop supports the following values:
+
+- Key of `theme.colors`, for example, `blue` or `green`
+- Key of `theme.colors` with color index, for example, `blue.5` or `green.9`
+- CSS color value, for example, `#fff` or `rgba(0, 0, 0, 0.5)`
+
+<Demo data={ThemingDemos.colorProp} />
+
 ## Colors index reference
 
 You can reference colors by index in `color` prop and [style props](/styles/style-props), for example `c` prop:

@@ -7,3 +7,4 @@ export { primaryShadeConfigurator } from './Theming.demo.primaryShadeConfigurato
 export { primaryColor } from './Theming.demo.primaryColor';
 export { colorsOverride } from './Theming.demo.colorsOverride';
 export { colorsIndexConfigurator } from './Theming.demo.colorsIndexConfigurator';
+export { colorProp } from './Theming.demo.colorProp';
