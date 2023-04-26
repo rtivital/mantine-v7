@@ -101,19 +101,19 @@ export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVari
     result.dark[`--mantine-color-${color}-filled`] = theme.colors[color][darkPrimaryShade];
     result.dark[`--mantine-color-${color}-filled-hover`] = darkFilledHover;
     result.dark[`--mantine-color-${color}-light`] = rgba(
-      theme.colors[color][darkPrimaryShade],
+      theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
       0.1
     );
     result.dark[`--mantine-color-${color}-light-hover`] = rgba(
-      theme.colors[color][darkPrimaryShade],
+      theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
       0.12
     );
     result.dark[`--mantine-color-${color}-light-color`] =
-      theme.colors[color][Math.min(darkPrimaryShade, 6)];
+      theme.colors[color][Math.max(darkPrimaryShade - 3, 0)];
     result.dark[`--mantine-color-${color}-outline`] =
-      theme.colors[color][Math.min(darkPrimaryShade, 6)];
+      theme.colors[color][Math.max(darkPrimaryShade - 4, 0)];
     result.dark[`--mantine-color-${color}-outline-hover`] = rgba(
-      theme.colors[color][Math.min(darkPrimaryShade, 6)],
+      theme.colors[color][Math.max(darkPrimaryShade - 4, 0)],
       0.05
     );
   });

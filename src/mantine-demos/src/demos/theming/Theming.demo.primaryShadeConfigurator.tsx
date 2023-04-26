@@ -1,6 +1,6 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { Button, Group } from '@mantine/core';
+import { Button, Group, MantineProvider } from '@mantine/core';
 
 const code = (props: any) => `
 import { MantineProvider, Button, Group } from '@mantine/core';
@@ -20,15 +20,18 @@ function Demo() {
 
 function Wrapper(props: any) {
   return (
-    <Group>
-      <Button color={`blue.${props.primaryShade}`}>Filled</Button>
-      <Button color={`blue.${props.primaryShade}`} variant="light">
-        Light
-      </Button>
-      <Button color={`blue.${props.primaryShade}`} variant="outline">
-        Outline
-      </Button>
-    </Group>
+    <div id="primary-color-demo-root">
+      <MantineProvider
+        cssVariablesSelector="#primary-color-demo-root"
+        theme={{ primaryShade: props.primaryShade }}
+      >
+        <Group>
+          <Button>Filled</Button>
+          <Button variant="light">Light</Button>
+          <Button variant="outline">Outline</Button>
+        </Group>
+      </MantineProvider>
+    </div>
   );
 }
 
