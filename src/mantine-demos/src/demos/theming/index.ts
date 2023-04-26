@@ -6,3 +6,4 @@ export { defaultRadiusConfigurator } from './Theming.demo.defaultRadiusConfigura
 export { primaryShadeConfigurator } from './Theming.demo.primaryShadeConfigurator';
 export { primaryColor } from './Theming.demo.primaryColor';
 export { colorsOverride } from './Theming.demo.colorsOverride';
+export { colorsIndexConfigurator } from './Theming.demo.colorsIndexConfigurator';
