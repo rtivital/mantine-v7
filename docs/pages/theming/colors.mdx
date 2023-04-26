@@ -102,6 +102,25 @@ You can reference colors by index in `color` prop and [style props](/styles/styl
 
 <Demo data={ThemingDemos.colorsIndexConfigurator} />
 
+## Difference between color and c props
+
+`color` prop is used to control multiple CSS properties of the component. These properties can vary across different components,
+but usually `color` prop controls `background`, `color` and `border-color` CSS properties. For example,
+when you set `color="#C3FF36"` on [Button](/core/button) component (with `variant="filled"`), it will set the following CSS properties:
+
+- `background-color` to `#C3FF36`
+- `background-color` when button is hovered to `#B0E631` (`#C3FF36` darkened by 10%)
+- `color` to `var(--mantine-color-white)`
+- `border-color` to `transparent`
+
+`c` is a [style prop](/styles/style-props) – it is responsible for setting single CSS property `color` (color of the text).
+You can combine both props to achieve better contrast between text and background. In the following example:
+
+- `color` prop sets all `background: #C3FF36` and `color: var(--mantine-color-white)`
+- `c` prop overrides color styles to `color: var(--mantine-color-black)`
+
+<Demo data={ThemingDemos.colorAndCProps} />
+
 ## Default colors
 
 <ThemeColors />
