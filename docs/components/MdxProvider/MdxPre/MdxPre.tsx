@@ -15,7 +15,7 @@ function getCode(children: any) {
 }
 
 export function MdxCodeHighlight(props: CodeHighlightProps) {
-  return <CodeHighlight style={{ borderRadius: 'var(--mantine-radius-md)' }} {...props} />;
+  return <CodeHighlight style={{ borderRadius: 'var(--mantine-radius-md)' }} mb="md" {...props} />;
 }
 
 export function MdxPre({ children }: PreProps) {

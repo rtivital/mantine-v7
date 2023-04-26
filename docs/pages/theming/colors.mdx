@@ -121,6 +121,45 @@ You can combine both props to achieve better contrast between text and backgroun
 
 <Demo data={ThemingDemos.colorAndCProps} />
 
+## Colors variant resolver
+
+`theme.variantColorResolver` is a function that is used to determine which colors will be used
+in different variants in the following components: [Button](/core/button), [Badge](/core/badge), [ActionIcon](/core/action-icon) and [ThemeIcon](/core/theme-icon).
+
+It accepts an object argument with the following properties:
+
+```tsx
+interface VariantColorsResolverInput {
+  /** `color` prop passed to component */
+  color: MantineColor | undefined;
+
+  /** `variant` prop passed to component */
+  variant: string;
+
+  /** `gradient` prop passed to component, used only for gradient variant by default */
+  gradient?: MantineGradient;
+
+  /** Theme object */
+  theme: MantineTheme;
+}
+```
+
+`theme.variantColorResolver` must return an object with the following properties:
+
+```tsx
+interface VariantColorResolverResult {
+  background: string;
+  hover: string;
+  color: string;
+  border: string;
+}
+```
+
+You can use `theme.variantColorResolver` to customize colors handling by default variants
+or to add new variants support:
+
+<Demo data={ThemingDemos.variantColorsResolver} />
+
 ## Default colors
 
 <ThemeColors />

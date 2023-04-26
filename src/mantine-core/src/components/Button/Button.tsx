@@ -100,22 +100,28 @@ const defaultProps: Partial<ButtonProps> = {
 };
 
 const varsResolver = createVarsResolver<ButtonFactory>(
-  (theme, { radius, color, gradient, variant, size, justify }) => ({
-    root: {
-      '--button-justify': justify,
-      '--button-height': getSize(size, 'button-height'),
-      '--button-padding-x': getSize(size, 'button-padding-x'),
-      '--button-fz': getFontSize(size),
-      '--button-radius': getRadius(radius),
-      ...theme.variantColorResolver({
-        color: color || theme.primaryColor,
-        theme,
-        gradient,
-        variant: variant!,
-        prefix: 'button' as const,
-      }),
-    },
-  })
+  (theme, { radius, color, gradient, variant, size, justify }) => {
+    const colors = theme.variantColorResolver({
+      color: color || theme.primaryColor,
+      theme,
+      gradient,
+      variant: variant!,
+    });
+
+    return {
+      root: {
+        '--button-justify': justify,
+        '--button-height': getSize(size, 'button-height'),
+        '--button-padding-x': getSize(size, 'button-padding-x'),
+        '--button-fz': getFontSize(size),
+        '--button-radius': getRadius(radius),
+        '--button-bg': colors.background,
+        '--button-hover': colors.hover,
+        '--button-color': colors.color,
+        '--button-bd': colors.border,
+      },
+    };
+  }
 );
 
 export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {

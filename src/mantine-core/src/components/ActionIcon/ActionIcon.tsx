@@ -80,19 +80,25 @@ const defaultProps: Partial<ActionIconProps> = {
 };
 
 const varsResolver = createVarsResolver<ActionIconFactory>(
-  (theme, { size, radius, variant, gradient, color }) => ({
-    root: {
-      '--ai-size': getSize(size, 'ai-size'),
-      '--ai-radius': getRadius(radius),
-      ...theme.variantColorResolver({
-        color: color || theme.primaryColor,
-        theme,
-        gradient,
-        variant: variant!,
-        prefix: 'ai' as const,
-      }),
-    },
-  })
+  (theme, { size, radius, variant, gradient, color }) => {
+    const colors = theme.variantColorResolver({
+      color: color || theme.primaryColor,
+      theme,
+      gradient,
+      variant: variant!,
+    });
+
+    return {
+      root: {
+        '--ai-size': getSize(size, 'ai-size'),
+        '--ai-radius': getRadius(radius),
+        '--ai-bg': colors.background,
+        '--ai-hover': colors.hover,
+        '--ai-color': colors.color,
+        '--ai-bd': colors.border,
+      },
+    };
+  }
 );
 
 export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) => {
