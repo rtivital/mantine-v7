@@ -9,6 +9,7 @@ import {
   DirectionProvider,
   useDirection,
 } from '@mantine/core';
+import { theme } from '../docs/theme';
 
 export const parameters = { layout: 'fullscreen' };
 
@@ -50,5 +51,5 @@ function DirectionWrapper({ children }: { children: React.ReactNode }) {
 export const decorators = [
   (renderStory: any) => <DirectionWrapper>{renderStory()}</DirectionWrapper>,
   (renderStory: any) => <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>,
-  (renderStory: any) => <MantineProvider>{renderStory()}</MantineProvider>,
+  (renderStory: any) => <MantineProvider theme={theme}>{renderStory()}</MantineProvider>,
 ];

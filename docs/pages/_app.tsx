@@ -10,6 +10,7 @@ import { MantineProvider, DirectionProvider } from '@mantine/core';
 import { MdxProvider } from '@/components/MdxProvider';
 import { HotKeysHandler } from '@/components/HotKeysHandler';
 import { FontsStyle } from '@/fonts';
+import { theme } from '../theme';
 import '../styles/variables.css';
 import '../styles/global.css';
 
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <FontsStyle />
       <DirectionProvider initialDirection="ltr" detectDirection={false}>
-        <MantineProvider>
+        <MantineProvider theme={theme}>
           <MdxProvider>
             <HotKeysHandler />
             <Component {...pageProps} />

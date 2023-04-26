@@ -7,6 +7,26 @@ export default Layout(MDX_DATA.Colors);
 
 # Colors
 
+Mantine uses [open-color](https://yeun.github.io/open-color/) in default theme with some additions.
+Each color has 10 shades.
+
+Colors are exposed on [theme object](/theming/theme-object) as an array of strings,
+you can access color shade by color name and index (0-9), colors with larger index are darker:
+
+```tsx
+theme.colors.red[5];
+theme.colors.gray[9];
+theme.colors.blue[0];
+```
+
+## Adding extra colors
+
+You can add any number of extra colors to `theme.colors` object.
+This will allow you to use them in all components that support `color` prop, for example
+[Button](/core/button), [Badge](/core/badge) and [Switch](/core/switch).
+
+Note that all added colors must have **at least 10 shades**.
+
 ## primaryColor
 
 <Demo data={ThemingDemos.primaryColor} />
