@@ -1,16 +1,12 @@
 import React from 'react';
 import chroma from 'chroma-js';
-import { ColorSwatch, Group } from '@mantine/core';
+import { ColorSwatch, Group, isLightColor } from '@mantine/core';
 import classes from './ColorsList.module.css';
 
 interface ColorsListProps {
   colors: chroma.Color[];
   baseColorIndex: number;
   displayColorsInfo: boolean | undefined;
-}
-
-function isLight(color: chroma.Color) {
-  return chroma.contrast(color, 'white') < 4.5;
 }
 
 export function ColorsList({ colors, baseColorIndex, displayColorsInfo }: ColorsListProps) {
@@ -22,7 +18,8 @@ export function ColorsList({ colors, baseColorIndex, displayColorsInfo }: Colors
         className={classes.swatch}
         withShadow={false}
         data-base={index === baseColorIndex || undefined}
-        c={isLight(color) ? 'black' : 'white'}
+        c={isLightColor(color.hex()) ? 'black' : 'white'}
+        // c={isLight(color) ? 'black' : 'white'}
       >
         {displayColorsInfo && (
           <div className={classes.label}>
