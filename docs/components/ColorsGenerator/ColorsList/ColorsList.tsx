@@ -19,7 +19,6 @@ export function ColorsList({ colors, baseColorIndex, displayColorsInfo }: Colors
         withShadow={false}
         data-base={index === baseColorIndex || undefined}
         c={isLightColor(color.hex()) ? 'black' : 'white'}
-        // c={isLight(color) ? 'black' : 'white'}
       >
         {displayColorsInfo && (
           <div className={classes.label}>
