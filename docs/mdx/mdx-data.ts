@@ -12,6 +12,12 @@ export const MDX_DATA = {
     search: 'use-mantine-theme, theme override, MantineTheme',
   },
 
+  ColorSchemes: {
+    title: 'Color schemes',
+    slug: '/theming/color-schemes',
+    search: 'use-mantine-color-scheme, color schemes management, data-mantine-color-scheme',
+  },
+
   Colors: {
     title: 'Colors',
     slug: '/theming/colors',
@@ -41,6 +47,12 @@ export const MDX_DATA = {
     title: 'PostCSS preset',
     slug: '/styles/postcss-preset',
     search: 'postcss-preset-mantine',
+  },
+
+  GlobalStyles: {
+    title: 'Global styles',
+    slug: '/styles/global-styles',
+    search: 'Global styles that are required for Mantine components to work properly',
   },
 
   CssVariables: {

@@ -11,7 +11,7 @@ export function InlineStyles({ selector, styles, media }: InlineStylesInput) {
   return (
     <style
       data-mantine-styles="inline"
-      nonce={nonce}
+      nonce={nonce?.()}
       dangerouslySetInnerHTML={{ __html: stylesToString({ selector, styles, media }) }}
     />
   );

@@ -10,7 +10,7 @@ interface MantineContextValue {
   colorSchemeManager: MantineColorSchemeManager;
   getRootElement(): HTMLElement | undefined;
   classNamesPrefix: string;
-  styleNonce: string | undefined;
+  getStyleNonce?(): string | undefined;
   cssVariablesResolver(theme: MantineTheme): ConvertCSSVariablesInput;
 }
 
@@ -35,5 +35,5 @@ export function useMantineClassNamesPrefix() {
 }
 
 export function useMantineStyleNonce() {
-  return useMantineContext().styleNonce;
+  return useMantineContext().getStyleNonce;
 }

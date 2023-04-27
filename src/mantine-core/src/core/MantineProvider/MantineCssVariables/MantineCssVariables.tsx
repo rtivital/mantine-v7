@@ -23,7 +23,7 @@ export function MantineCssVariables({ cssVariablesSelector }: MantineCssVariable
   return (
     <style
       data-mantine-styles
-      nonce={nonce}
+      nonce={nonce?.()}
       dangerouslySetInnerHTML={{
         __html: `${css}${getColorSchemeCssVariables(cssVariablesSelector)}`,
       }}

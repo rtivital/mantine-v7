@@ -28,13 +28,13 @@ export interface MantineProviderProps {
   withCssVariables?: boolean;
 
   /** Function ro resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
-  getRootElement?: () => HTMLElement | undefined;
+  getRootElement?(): HTMLElement | undefined;
 
   /** A prefix for components static classNames (for example {selector}-Text-root), `mantine` by default */
   classNamesPrefix?: string;
 
-  /** nonce attribute added to all generated `<style />` tags */
-  styleNonce?: string;
+  /** Function to generate nonce attribute added to all generated `<style />` tags */
+  getStyleNonce?(): string;
 
   /** Function to generate CSS variables styles based on theme object */
   cssVariablesResolver?(theme: MantineTheme): ConvertCSSVariablesInput;
@@ -46,7 +46,7 @@ export interface MantineProviderProps {
 export function MantineProvider({
   theme,
   children,
-  styleNonce,
+  getStyleNonce,
   withCssVariables = true,
   cssVariablesSelector = ':root',
   classNamesPrefix = 'mantine',
@@ -75,7 +75,7 @@ export function MantineProvider({
         clearColorScheme,
         getRootElement,
         classNamesPrefix,
-        styleNonce,
+        getStyleNonce,
         cssVariablesResolver,
       }}
     >

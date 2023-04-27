@@ -5,10 +5,11 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'theming',
     pages: [
-      MDX_DATA.ThemeObject,
       MDX_DATA.MantineProvider,
+      MDX_DATA.ThemeObject,
       MDX_DATA.Colors,
       MDX_DATA.ColorFunctions,
+      MDX_DATA.ColorSchemes,
       MDX_DATA.Typography,
       MDX_DATA.DefaultProps,
     ],
@@ -17,6 +18,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     group: 'styles',
     pages: [
       MDX_DATA.PostCSSPreset,
+      MDX_DATA.GlobalStyles,
       MDX_DATA.CssVariables,
       MDX_DATA.Rem,
       MDX_DATA.StyleProp,
