@@ -8,6 +8,7 @@ import { MdxParagraph, MdxLi, MdxUl, MdxCode } from './MdxTypography/MdxTypograp
 import { h } from './MdxTitle/MdxTitle';
 import { MdxInfo } from './MdxInfo/MdxInfo';
 import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEventsTable';
+import { MdxInstallScript } from './MdxInstallScript/MdxInstallScript';
 import { MdxGetElementRef, MdxPolymorphic } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
@@ -19,6 +20,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         Polymorphic: MdxPolymorphic,
         DataTable: MdxDataTable,
         KeyboardEventsTable: MdxKeyboardEventsTable,
+        InstallScript: MdxInstallScript,
         pre: MdxPre,
         h1: h(1),
         h2: h(2),

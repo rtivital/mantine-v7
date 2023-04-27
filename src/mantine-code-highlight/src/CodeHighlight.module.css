@@ -90,7 +90,7 @@
 
   @mixin light {
     --_file-color: var(--mantine-color-gray-8);
-    --_file-bd: var(--mantine-color-gray-3);
+    --_file-bd: var(--mantine-color-gray-2);
     --_file-active-bg: var(--mantine-color-white);
     --_file-active-color: var(--mantine-color-black);
   }

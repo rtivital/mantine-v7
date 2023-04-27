@@ -160,6 +160,37 @@ or to add new variants support:
 
 <Demo data={ThemingDemos.variantColorsResolver} />
 
+## Colors generation
+
+You can use [colors generator](/colors-generator) to generate 10 shades of color based on single value
+or install `@mantine/colors-generator` package to generate dynamic colors in your application:
+
+<InstallScript packages="chroma-js @mantine/colors-generator" />
+
+The package exports `generateColors` function that accepts color value and returns an array of 10 shades.
+Note that `generateColors` function works best with darker colors (blue, violet, red) and may produce
+colors with poor contrast for lighter colors (yellow, teal, orange). Usually it is better to generate
+colors in advance to avoid contrast issues.
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+import { generateColors } from '@mantine/colors-generator';
+
+function Demo() {
+  return (
+    <MantineProvider
+      theme={{
+        colors: {
+          'pale-blue': generateColors('#375EAC'),
+        },
+      }}
+    >
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
 ## Default colors
 
 <ThemeColors />
