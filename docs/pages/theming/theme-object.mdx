@@ -163,3 +163,66 @@ converted to rem (`1rem = 16px`). For example, `theme.defaultRadius: 4` will be 
 You can learn more about rem conversion in [rem units guide](/styles/rem).
 
 <Demo data={ThemingDemos.defaultRadiusConfigurator} />
+
+## Store theme override object in a variable
+
+To store theme override object in a variable use `createTheme` function:
+
+```tsx
+import { createTheme, MantineProvider } from '@mantine/core';
+
+const myTheme = createTheme({
+  primaryColor: 'orange',
+  defaultRadius: 0,
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={myTheme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## Merge multiple theme overrides
+
+Use `mergeThemeOverrides` function to merge multiple themes into one theme override object:
+
+```tsx
+import { createTheme, mergeThemeOverrides, MantineProvider } from '@mantine/core';
+
+const theme1 = createTheme({
+  primaryColor: 'orange',
+  defaultRadius: 0,
+});
+
+const theme2 = createTheme({
+  cursorType: 'pointer',
+});
+
+// Note: It is better to to store theme override outside of component body
+// to prevent unnecessary re-renders
+const myTheme = mergeThemeOverrides(theme1, theme2);
+
+function Demo() {
+  return (
+    <MantineProvider theme={myTheme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## use-mantine-theme hook
+
+`useMantineTheme` hook returns theme from [MantineProvider](/theming/mantine-provider) context:
+
+```tsx
+import { useMantineTheme } from '@mantine/core';
+
+function Demo() {
+  const theme = useMantineTheme();
+  return <div style={{ background: theme.colors.blue[5] }} />;
+}
+```

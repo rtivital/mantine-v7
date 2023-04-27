@@ -24,3 +24,5 @@ export type { MantineProviderProps } from './MantineProvider';
 export { useProps } from './use-props/use-props';
 export { convertCssVariables } from './convert-css-variables';
 export type { ConvertCSSVariablesInput } from './convert-css-variables';
+export { createTheme } from './create-theme/create-theme';
+export { mergeThemeOverrides } from './merge-theme-overrides/merge-theme-overrides';
