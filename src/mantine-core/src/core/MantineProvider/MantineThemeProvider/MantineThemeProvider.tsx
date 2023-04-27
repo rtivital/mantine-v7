@@ -19,7 +19,7 @@ export function useMantineTheme() {
 }
 
 export interface MantineThemeProviderProps {
-  /** Determines whether theme should be inherited from parent MantineProvider, `false` by default */
+  /** Determines whether theme should be inherited from parent MantineProvider, `true` by default */
   inherit?: boolean;
 
   /** Theme override object */
@@ -29,7 +29,11 @@ export interface MantineThemeProviderProps {
   children: React.ReactNode;
 }
 
-export function MantineThemeProvider({ theme, children, inherit }: MantineThemeProviderProps) {
+export function MantineThemeProvider({
+  theme,
+  children,
+  inherit = true,
+}: MantineThemeProviderProps) {
   const parentTheme = useSafeMantineTheme();
   const mergedTheme = useMemo(
     () => mergeMantineTheme(inherit ? parentTheme : DEFAULT_THEME, theme),

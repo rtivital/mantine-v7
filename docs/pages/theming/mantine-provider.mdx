@@ -1,5 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { ThemingDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.MantineProvider);
 
@@ -176,3 +177,21 @@ Now [Text](/core/text) component will have the following classes:
 You can learn more about Mantine CSS variables in [CSS variables guide](/styles/css-variables/).
 
 ## MantineThemeProvider
+
+`MantineThemeProvider` allows you to override [theme](/theming/theme-object) values for a subtree of components.
+Note that values that are used to generate [CSS variables](/styles/css-variables) cannot be overridden with `MantineThemeProvider`.
+For example, you cannot use `MantineThemeProvider` to override `colors` or `fontSizes`.
+
+<Demo data={ThemingDemos.themeProvider} />
+
+> **Difference between MantineProvider and MantineThemeProvider**
+>
+> `MantineProvider` is used for:
+>
+> - Color scheme management
+> - CSS variables generation
+> - Providing theme context
+>
+> `MantineThemeProvider` is only used to change theme context – it does not generate CSS variables or manage color scheme.
+>
+> It is not recommended to have more that one `MantineProvider` in your application, but you can have as many `MantineThemeProvider` as you need.

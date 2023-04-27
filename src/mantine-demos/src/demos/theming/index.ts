@@ -10,3 +10,4 @@ export { colorsIndexConfigurator } from './Theming.demo.colorsIndexConfigurator'
 export { colorProp } from './Theming.demo.colorProp';
 export { colorAndCProps } from './Theming.demo.colorAndCProps';
 export { variantColorsResolver } from './Theming.demo.variantColorsResolver';
+export { themeProvider } from './Theming.demo.themeProvider';
