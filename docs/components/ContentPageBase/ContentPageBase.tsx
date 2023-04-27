@@ -12,7 +12,7 @@ export function ContentPageBase({ title, ...others }: ContentPageBaseProps) {
   return (
     <>
       <Head>
-        <title>{title} | Mantine</title>
+        <title>{`${title} | Mantine`}</title>
       </Head>
       <Shell>
         <PageBase>
