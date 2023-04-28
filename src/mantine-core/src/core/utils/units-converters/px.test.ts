@@ -6,6 +6,11 @@ describe('@mantine/core/units-converters/px', () => {
     expect(px('1.25rem')).toBe(20);
   });
 
+  it('converts em string to px number', () => {
+    expect(px('1em')).toBe(16);
+    expect(px('1.25em')).toBe(20);
+  });
+
   it('converts px string to px number', () => {
     expect(px('12px')).toBe(12);
   });

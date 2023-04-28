@@ -12,6 +12,10 @@ export function px(value: unknown) {
       return Number(value.replace('rem', '')) * 16;
     }
 
+    if (value.includes('em')) {
+      return Number(value.replace('em', '')) * 16;
+    }
+
     return Number(value);
   }
 

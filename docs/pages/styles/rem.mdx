@@ -4,3 +4,91 @@ import { MDX_DATA } from '@/mdx';
 export default Layout(MDX_DATA.Rem);
 
 # rem, em and px units
+
+## rem and em units
+
+All Mantine components use `rem` units to apply size styles. `1rem` is always `16px` – it cannot be changed.
+All components scale based on user's browser font-size settings.
+
+`em` units are supposed to be used only in media queries. `1em` is considered to be `16px`.
+
+## px conversions
+
+You can use numbers in some Mantine components props. Numbers are treated as `px` and converted to `rem`, for example:
+
+```tsx
+import { ColorSwatch } from '@mantine/core';
+
+function DemoPx() {
+  // Specify ColorSwatch size in px, it will be automatically converted to rem
+  // Width and height of ColorSwatch in this case will be 32px / 16 = 2rem
+  return <ColorSwatch color="#000" size={32} />;
+}
+
+function DemoRem() {
+  // This demo will have the same size as previous one
+  return <ColorSwatch color="#000" size="2rem" />;
+}
+```
+
+The same conversion happens in [style props](/styles/style-props/):
+
+```tsx
+import { Box } from '@mantine/core';
+
+function Demo() {
+  // width: 2rem,
+  // height: 1rem
+  return <Box w={32} h={16} />;
+}
+```
+
+## rem and em function
+
+`@mantine/core` package exports `rem` and `em` function that can be used to convert `px` into `rem`/`em`:
+
+```tsx
+import { rem, em } from '@mantine/core';
+
+// numbers and values in px are converted to rem
+rem(32); // -> 2rem
+em(32); // -> 2em
+rem('16px'); // -> 1rem
+em('16px'); // -> 1em
+
+// other values are returned as is
+rem('2rem'); // -> 2rem
+em('2rem'); // -> 2rem
+
+rem('50%'); // -> 50%
+em('50%'); // -> 50%
+
+rem('5vh'); // -> 5vh
+em('5vh'); // -> 5vh
+```
+
+## Convert rem to px
+
+To convert `rem`/`em` to `px` use `px` function exported from `@mantine/core`:
+
+```tsx
+import { px } from '@mantine/core';
+
+px('2rem'); // -> 32
+px('10rem'); // -> 160
+```
+
+## rem/em functions in css files
+
+You can use `rem` and `em` function in [css files](/styles/css-modules) if
+[postcss-preset-mantine](/styles/postcss-preset) is installed:
+
+```css
+.demo {
+  font-size: rem(16px);
+
+  @media (min-width: em(320px)) {
+    font-size: rem(32px);
+  }
+}
+```
