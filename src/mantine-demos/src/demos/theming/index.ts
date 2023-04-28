@@ -13,3 +13,6 @@ export { variantColorsResolver } from './Theming.demo.variantColorsResolver';
 export { themeProvider } from './Theming.demo.themeProvider';
 export { defaultProps } from './Theming.demo.defaultProps';
 export { usePropsHook } from './Theming.demo.usePropsHook';
+export { fonts } from './Theming.demo.fonts';
+export { headingsStyles } from './Theming.demo.headingsStyles';
+export { fontSizeConfigurator } from './Theming.demo.fontSizeConfigurator';

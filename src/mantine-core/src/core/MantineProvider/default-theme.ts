@@ -50,7 +50,7 @@ export const DEFAULT_THEME: MantineTheme = {
     sm: '1.45',
     md: '1.55',
     lg: '1.6',
-    xl: '1.6',
+    xl: '1.65',
   },
 
   radius: {
