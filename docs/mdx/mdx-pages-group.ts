@@ -17,6 +17,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'styles',
     pages: [
+      MDX_DATA.CSSModules,
       MDX_DATA.PostCSSPreset,
       MDX_DATA.GlobalStyles,
       MDX_DATA.CssVariables,
@@ -25,7 +26,6 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.ResponsiveStyles,
       MDX_DATA.StylesApi,
       MDX_DATA.StyleProps,
-      MDX_DATA.DarkTheme,
       MDX_DATA.Rtl,
     ],
   },

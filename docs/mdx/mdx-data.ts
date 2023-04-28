@@ -43,10 +43,16 @@ export const MDX_DATA = {
   },
 
   // ----------------------------------- Styles ------------------------------------
+  CSSModules: {
+    title: 'CSS modules',
+    slug: '/styles/css-modules',
+    search: 'Get started with CSS modules',
+  },
+
   PostCSSPreset: {
     title: 'PostCSS preset',
     slug: '/styles/postcss-preset',
-    search: 'postcss-preset-mantine',
+    search: 'postcss-preset-mantine, mixins, CSS functions',
   },
 
   GlobalStyles: {
@@ -89,12 +95,6 @@ export const MDX_DATA = {
     title: 'Style props',
     slug: '/styles/style-props',
     search: 'Props to add inline styles',
-  },
-
-  DarkTheme: {
-    title: 'Dark theme',
-    slug: '/styles/dark-theme',
-    search: 'Setup dark theme',
   },
 
   Rtl: {
