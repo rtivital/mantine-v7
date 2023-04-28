@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconChevronDown } from '@tabler/icons-react';
-import { UnstyledButton, Text } from '@mantine/core';
+import { UnstyledButton, Text, Box } from '@mantine/core';
 import { MdxPagesGroup, MdxPagesCategory, Frontmatter } from '@/types';
 import { CATEGORY_ICONS } from './category-icons';
 import classes from './NavbarLinksGroup.module.css';
@@ -31,8 +31,19 @@ function hasCategory(page: Frontmatter | MdxPagesCategory): page is MdxPagesCate
   return 'category' in page;
 }
 
+function hasActiveLink(data: MdxPagesGroup, pathname: string) {
+  return data.pages.some((page) => {
+    if (hasCategory(page)) {
+      return page.pages.some((nestedPage) => nestedPage.slug === pathname);
+    }
+
+    return page.slug === pathname;
+  });
+}
+
 export function NavbarLinksGroup({ data, onNavbarClose }: NavbarLinksGroupProps) {
-  const [opened, setOpened] = useState(true);
+  const router = useRouter();
+  const [opened, setOpened] = useState(hasActiveLink(data, router.pathname));
 
   const pages = data.pages.map((page) => {
     if (hasCategory(page)) {
@@ -58,12 +69,12 @@ export function NavbarLinksGroup({ data, onNavbarClose }: NavbarLinksGroupProps)
   });
 
   return (
-    <div className={classes.group}>
+    <Box className={classes.group} mod={{ opened }}>
       <UnstyledButton className={classes.header} onClick={() => setOpened((o) => !o)}>
         <IconChevronDown className={classes.chevron} data-collapsed={!opened || undefined} />
         <Text className={classes.title}>{data.group.replace('-', ' ')}</Text>
       </UnstyledButton>
       {opened && pages}
-    </div>
+    </Box>
   );
 }
