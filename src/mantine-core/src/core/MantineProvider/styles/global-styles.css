@@ -24,14 +24,14 @@ body {
 
 .mantine-focus-auto {
   &:focus-visible {
-    outline: rem(2px) solid var(--mantine-color-blue-filled);
+    outline: rem(2px) solid var(--mantine-color-primary);
     outline-offset: rem(2px);
   }
 }
 
 .mantine-focus-always {
   &:focus {
-    outline: rem(2px) solid var(--mantine-color-blue-filled);
+    outline: rem(2px) solid var(--mantine-color-primary);
     outline-offset: rem(2px);
   }
 }

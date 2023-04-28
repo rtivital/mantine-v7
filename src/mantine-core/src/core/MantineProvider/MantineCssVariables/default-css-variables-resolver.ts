@@ -68,6 +68,9 @@ export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVari
   assignSizeVariables(result.variables, theme.shadows, 'shadow');
   assignSizeVariables(result.variables, theme.radius, 'radius');
 
+  result.light['--mantine-color-primary'] = theme.colors[theme.primaryColor][lightPrimaryShade];
+  result.dark['--mantine-color-primary'] = theme.colors[theme.primaryColor][darkPrimaryShade];
+
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {
       result.variables[`--mantine-color-${color}-${index}`] = shade;
