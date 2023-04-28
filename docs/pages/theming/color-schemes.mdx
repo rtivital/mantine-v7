@@ -1,6 +1,104 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { ThemingDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.ColorSchemes);
 
-# Color scheme
+# Color schemes
+
+## Usage
+
+[MantineProvider](/theming/mantine-provider/) component manages color scheme context in your application.
+You can configure default color scheme value with `defaultColorScheme` prop, possible values are `light`,
+`dark` and `auto` (system color scheme is used). Default value is `auto`.
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider defaultColorScheme="dark">
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## data-mantine-color-scheme attribute
+
+When [MantineProvider](/theming/mantine-provider/) is mounted it sets `data-mantine-color-scheme`
+attribute on `<html />` element to the value that user has selected previously or to the value of `defaultColorScheme` prop.
+`data-mantine-color-scheme` attribute is used in all components styles to determine which colors should component use.
+
+## use-mantine-color-scheme hook
+
+`useMantineColorScheme` hook can be used to get and set current color scheme value:
+
+```tsx
+function useMantineColorScheme(): {
+  /** Current color scheme value */
+  colorScheme: 'dark' | 'light' | 'auto';
+
+  /** Sets colors scheme to given value */
+  setColorScheme: (colorScheme: 'dark' | 'light' | 'auto') => void;
+
+  /** Clears color scheme value from storage and sets it to `defaultColorScheme` */
+  clearColorScheme: () => void;
+};
+```
+
+<Demo data={ThemingDemos.colorScheme} />
+
+## use-computed-color-scheme hook
+
+`useComputedColorScheme` returns computed color scheme value, it returns either `light` or `dark`.
+It can be used to implement color scheme toggle logic:
+
+```tsx
+import { useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
+
+function Demo() {
+  // -> colorScheme is 'auto' | 'light' | 'dark'
+  const { colorScheme, setColorScheme } = useMantineColorScheme();
+
+  // -> computedColorScheme is 'light' | 'dark'
+  const computedColorScheme = useComputedColorScheme(colorScheme);
+
+  // Incorrect color scheme toggle implementation
+  // If colorScheme is 'auto', then it is not possible to
+  // change color scheme correctly in all cases:
+  // 'auto' can mean both light and dark
+  const toggleColorScheme = () => {
+    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+  };
+
+  // Correct color scheme toggle implementation
+  // computedColorScheme is always either 'light' or 'dark'
+  const toggleColorScheme = () => {
+    setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
+  };
+}
+```
+
+## Color scheme value caveats
+
+Color scheme value by default is stored in local storage, and its value is saved in state
+before component is mounted to avoid flash of inaccurate color scheme. This means that
+color scheme value can be different on client and server, as server does not have access
+to local storage and always uses default value.
+
+If you have server side rendering in your application (for example if you use [Next.js](/guides/next) or [Remix](/guides/remix)), then you cannot use `colorScheme`
+value in your application to avoid hydration issues. Instead you can use `dark` and `light`
+mixins from [postcss-preset-mantine](/styles/postcss-preset) to generate styles that will
+hide elements based on color scheme value:
+
+<Demo data={ThemingDemos.colorSchemeControl} />
+
+> **colorScheme for client only applications**
+>
+> You can safely use `colorScheme` value in client only applications (for example Vite or create-react-app applications).
+> In this case, there is no hydration, and thus hydration error cannot occur.
+
+## ColorSchemeScript
+
+## Color scheme manager

@@ -34,8 +34,9 @@ export function useProviderColorScheme({
 
   const clearColorScheme = useCallback(() => {
     setValue(defaultColorScheme);
+    setColorSchemeAttribute(defaultColorScheme, getRootElement);
     manager.clear();
-  }, [manager.clear]);
+  }, [manager.clear, defaultColorScheme]);
 
   useEffect(() => {
     manager.subscribe(setColorScheme);

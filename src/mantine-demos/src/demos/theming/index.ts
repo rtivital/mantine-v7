@@ -16,3 +16,5 @@ export { usePropsHook } from './Theming.demo.usePropsHook';
 export { fonts } from './Theming.demo.fonts';
 export { headingsStyles } from './Theming.demo.headingsStyles';
 export { fontSizeConfigurator } from './Theming.demo.fontSizeConfigurator';
+export { colorScheme } from './Theming.demo.colorScheme';
+export { colorSchemeControl } from './Theming.demo.colorSchemeControl';
