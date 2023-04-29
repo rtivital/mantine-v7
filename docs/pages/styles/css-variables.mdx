@@ -118,3 +118,74 @@ Usage:
 ```
 
 ## Colors
+
+All `theme.colors` values are exposed as CSS variables in `--mantine-color-{x}-{y}` format,
+where `x` is color name and `y` is color shade. For example, `--mantine-color-red-6` is `theme.colors.red[6]`.
+You can find full default colors list in [colors guide](/theming/colors/#default-colors).
+
+Usage:
+
+```css
+.demo {
+  color: var(--mantine-color-red-6);
+  background-color: var(--mantine-color-red-0);
+}
+```
+
+## Variant specific colors
+
+Variant specific variables for each color are exposed in the following format
+(`x` is color name):
+
+- `--mantine-color-{x}-filled` – filled variant background-color
+- `--mantine-color-{x}-filled-hover` – filled variant background-color on hover
+- `--mantine-color-{x}-light` – light variant background-color
+- `--mantine-color-{x}-light-hover` – light variant background-color on hover
+- `--mantine-color-{x}-light-color` – light variant text color
+- `--mantine-color-{x}-outline` – outline variant border-color and text color
+- `--mantine-color-{x}-outline-hover` – outline variant border-color on hover
+
+Usage:
+
+```css
+.demo {
+  background-color: var(--mantine-color-blue-filled);
+  color: var(--mantine-color-white);
+
+  @mixin hover {
+    background-color: var(--mantine-color-blue-filled-hover);
+  }
+}
+```
+
+## Other colors variables
+
+- `--mantine-color-white` – value of `theme.white`
+- `--mantine-color-black` – value of `theme.black`
+- `--mantine-color-text` – text color set on `body` element
+- `--mantine-color-body` – `body` element background-color
+- `--mantine-color-error` – error color, used in [Input](/core/input) and other similar components
+- `--mantine-color-placeholder` – placeholder color, used in [Input](/core/input) and other similar components to set text color of placeholder
+- `--mantine-color-anchor` – anchor color, used in [Anchor](/core/anchor) component
+- `--mantine-color-default` – default variant background-color
+- `--mantine-color-default-hover` – default variant background-color on hover
+- `--mantine-color-default-color` – default variant text color
+- `--mantine-color-default-border` – default variant border-color
+
+Usage:
+
+```css
+.demo {
+  background-color: var(--mantine-color-body);
+
+  &[data-error] {
+    color: var(--mantine-color-error);
+  }
+
+  &::placeholder {
+    color: var(--mantine-color-placeholder);
+  }
+}
+```
+
+## CSS variables resolver
