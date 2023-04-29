@@ -1,5 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { CssVariablesTable } from '@/components/CssVariablesTable';
 
 export default Layout(MDX_DATA.CssVariables);
 
@@ -9,12 +10,111 @@ export default Layout(MDX_DATA.CssVariables);
 You can use these variables in [css](/styles/css-modules) files, [style prop](/styles/style) or any other styles.
 Note that not all values are documented on this page, you can find full list of variables on [this page](/styles/css-variables-list).
 
-## Typography
+## Typography CSS variables
+
+The following CSS variables are used to control all typography styles (`font-family`, `font-size`, `line-height`)
+in all Mantine components:
+
+<CssVariablesTable
+  variables={[
+    '--mantine-font-family',
+    '--mantine-font-family-monospace',
+    '--mantine-font-family-headings',
+    '--mantine-font-size-xs',
+    '--mantine-font-size-sm',
+    '--mantine-font-size-md',
+    '--mantine-font-size-lg',
+    '--mantine-font-size-xl',
+    '--mantine-line-height-xs',
+    '--mantine-line-height-sm',
+    '--mantine-line-height-md',
+    '--mantine-line-height-lg',
+    '--mantine-line-height-xl',
+  ]}
+/>
+
+Usage:
+
+```css
+.demo {
+  font-family: var(--mantine-font-family);
+  font-size: var(--mantine-font-size-md);
+  line-height: var(--mantine-line-height-md);
+}
+```
 
 ## Spacing
 
+Spacing CSS variables are used to control margins and paddings in most of Mantine components.
+They are also used in `p` and `m` [style props](/styles/style-props):
+
+<CssVariablesTable
+  variables={[
+    '--mantine-spacing-xs',
+    '--mantine-spacing-sm',
+    '--mantine-spacing-md',
+    '--mantine-spacing-lg',
+    '--mantine-spacing-xl',
+  ]}
+/>
+
+Usage:
+
+```css
+.demo {
+  margin: var(--mantine-spacing-md);
+
+  /* With calc */
+  padding: calc(var(--mantine-spacing-xl) * 1.5);
+
+  /* Negative value */
+  margin-left: calc(var(--mantine-spacing-md) * -1);
+}
+```
+
 ## Shadows
 
+Shadows CSS variables are used to control shadows in all Mantine components that support `shadow` prop:
+
+<CssVariablesTable
+  variables={[
+    '--mantine-shadow-xs',
+    '--mantine-shadow-sm',
+    '--mantine-shadow-md',
+    '--mantine-shadow-lg',
+    '--mantine-shadow-xl',
+  ]}
+/>
+
+Usage:
+
+```css
+.demo {
+  box-shadow: var(--mantine-shadow-md);
+}
+```
+
 ## Radius
+
+Radius CSS variables are used to control border-radius in all Mantine components that support `radius` prop:
+
+<CssVariablesTable
+  variables={[
+    '--mantine-radius-default',
+    '--mantine-radius-xs',
+    '--mantine-radius-sm',
+    '--mantine-radius-md',
+    '--mantine-radius-lg',
+    '--mantine-radius-xl',
+  ]}
+/>
+
+Usage:
+
+```css
+.demo {
+  border-radius: var(--mantine-radius-md);
+}
+```
 
 ## Colors
