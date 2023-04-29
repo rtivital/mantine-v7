@@ -67,6 +67,12 @@ export const MDX_DATA = {
     search: 'Mantine CSS variables and resolvers',
   },
 
+  CSSVariablesList: {
+    title: 'CSS variables list',
+    slug: '/styles/css-variables-list',
+    search: 'List of all default CSS variables',
+  },
+
   Rem: {
     title: 'rem, em and px units',
     slug: '/styles/rem',
