@@ -107,6 +107,41 @@ Will be transformed to:
 }
 ```
 
+## light-dark function
+
+`light-dark` function is an alternative to `light` and `dark` mixins. It accepts two arguments:
+first argument is rule that will be applied in light color scheme, second argument is rule that will be applied in dark color scheme.
+
+```css
+.demo {
+  color: light-dark(red, blue);
+}
+```
+
+Will be transformed to:
+
+```css
+[data-mantine-color-scheme='light'] .demo {
+  color: red;
+}
+
+[data-mantine-color-scheme='dark'] .demo {
+  color: blue;
+}
+
+@media (prefers-color-scheme: light) {
+  .demo {
+    color: red;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .demo {
+    color: blue;
+  }
+}
+```
+
 ## hover mixin
 
 `hover` mixin can be used to create styles that will be applied on hover.
