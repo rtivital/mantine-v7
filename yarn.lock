@@ -12372,10 +12372,10 @@ postcss-ordered-values@^5.1.3:
     cssnano-utils "^3.1.0"
     postcss-value-parser "^4.2.0"
 
-postcss-preset-mantine@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.5.tgz#1d7a1c7d3e6c91230c05dbd90faba47d1bba385a"
-  integrity sha512-0AmnEtp1J2wTKB2nz2Tb6LhukZZOoU+Fn6xSDJp8eUt+GQFzAuRtmGHWWkYCwmpXtywsnxGkkU/Zf1i1FevkqQ==
+postcss-preset-mantine@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.0.6.tgz#86999bfef99321bd97b978332e06b11c37a514f1"
+  integrity sha512-t8xxFybHgSfj/QNHIF/G+pJBySOwVS2pQcjphxBcX9czZPvW0K4xMYcSc+121I9UnVTVEtlTL8VyEZIhyNSLOw==
   dependencies:
     postcss-mixins "^9.0.4"
     postcss-nested "^6.0.1"
