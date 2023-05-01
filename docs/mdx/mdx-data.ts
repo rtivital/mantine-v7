@@ -109,6 +109,12 @@ export const MDX_DATA = {
     search: 'Change text direction to right-to-left',
   },
 
+  StylesPerformance: {
+    title: 'Styles performance',
+    slug: '/styles/styles-performance',
+    search: 'Learn how to improve your styles performance',
+  },
+
   // ----------------------------------- Guides ------------------------------------
   Polymorphic: {
     title: 'Polymorphic components',

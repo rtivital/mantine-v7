@@ -1,0 +1,35 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { StylesDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.StylesPerformance);
+
+# Styles performance
+
+## CSS modules
+
+[CSS modules](/styles/css-modules) is the most performant way to apply styles –
+this approach generates static CSS that is never re-evaluated. 99% of Mantine components
+styles are generated with CSS modules – components are optimized out of the box.
+
+In most cases it is recommended to use [CSS modules](/styles/css-modules) to style your components as well.
+You can apply styles to HTML elements with `className` prop and to Mantine components with `className`,
+`classNames` props.
+
+Applying styles with `className`:
+
+<Demo data={StylesDemos.className} />
+
+Applying styles with `classNames` (see [Styles API guide](/styles/styles-api) to learn more):
+
+<Demo data={StylesDemos.classNames} />
+
+## Inline styles
+
+<Demo data={StylesDemos.styles} />
+
+## Style props
+
+## Responsive style props
+
+## Responsive components
