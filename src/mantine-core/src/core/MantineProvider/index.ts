@@ -27,3 +27,4 @@ export type { ConvertCSSVariablesInput } from './convert-css-variables';
 export { createTheme } from './create-theme/create-theme';
 export { mergeThemeOverrides } from './merge-theme-overrides/merge-theme-overrides';
 export { defaultCssVariablesResolver } from './MantineCssVariables/default-css-variables-resolver';
+export type { CSSVariablesResolver } from './MantineCssVariables/default-css-variables-resolver';

@@ -3,6 +3,8 @@ import { keys, rem } from '../../utils';
 import { getPrimaryShade, rgba } from '../color-functions';
 import { ConvertCSSVariablesInput } from '../convert-css-variables';
 
+export type CSSVariablesResolver = (theme: MantineTheme) => ConvertCSSVariablesInput;
+
 function assignSizeVariables(
   variables: Record<string, string>,
   sizes: Record<string, string>,
@@ -13,7 +15,7 @@ function assignSizeVariables(
   );
 }
 
-export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVariablesInput {
+export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
   const darkPrimaryShade = getPrimaryShade(theme, 'dark');
   const lightPrimaryShade = getPrimaryShade(theme, 'light');
   const defaultRadius =
@@ -131,4 +133,4 @@ export function defaultCssVariablesResolver(theme: MantineTheme): ConvertCSSVari
   });
 
   return result;
-}
+};

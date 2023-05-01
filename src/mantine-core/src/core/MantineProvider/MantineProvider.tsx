@@ -2,14 +2,13 @@ import './styles/css-reset.css';
 import './styles/global-styles.css';
 
 import React from 'react';
-import { MantineCssVariables, defaultCssVariablesResolver } from './MantineCssVariables';
+import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';
 import { MantineThemeProvider } from './MantineThemeProvider';
-import type { MantineColorScheme, MantineTheme, MantineThemeOverride } from './theme.types';
+import type { MantineColorScheme, MantineThemeOverride } from './theme.types';
 import { localStorageColorSchemeManager, MantineColorSchemeManager } from './color-scheme-managers';
 import { MantineContext } from './Mantine.context';
 import { useProviderColorScheme } from './use-mantine-color-scheme';
 import { useRespectReduceMotion } from './use-respect-reduce-motion';
-import { ConvertCSSVariablesInput } from './convert-css-variables';
 
 export interface MantineProviderProps {
   /** Theme override object */
@@ -37,7 +36,7 @@ export interface MantineProviderProps {
   getStyleNonce?(): string;
 
   /** Function to generate CSS variables styles based on theme object */
-  cssVariablesResolver?(theme: MantineTheme): ConvertCSSVariablesInput;
+  cssVariablesResolver?: CSSVariablesResolver;
 
   /** Your application */
   children?: React.ReactNode;
@@ -53,7 +52,7 @@ export function MantineProvider({
   colorSchemeManager = localStorageColorSchemeManager(),
   defaultColorScheme = 'auto',
   getRootElement = () => document.documentElement,
-  cssVariablesResolver = defaultCssVariablesResolver,
+  cssVariablesResolver,
 }: MantineProviderProps) {
   const { colorScheme, setColorScheme, clearColorScheme } = useProviderColorScheme({
     defaultColorScheme,

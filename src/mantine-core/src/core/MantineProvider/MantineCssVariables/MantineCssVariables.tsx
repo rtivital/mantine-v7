@@ -2,6 +2,7 @@ import React from 'react';
 import { useMantineStyleNonce, useMantineCssVariablesResolver } from '../Mantine.context';
 import { useMantineTheme } from '../MantineThemeProvider';
 import { convertCssVariables } from '../convert-css-variables/convert-css-variables';
+import { getMergedVariables } from './get-merged-variables';
 
 interface MantineCssVariablesProps {
   cssVariablesSelector: string;
@@ -18,7 +19,7 @@ export function MantineCssVariables({ cssVariablesSelector }: MantineCssVariable
   const theme = useMantineTheme();
   const nonce = useMantineStyleNonce();
   const generator = useMantineCssVariablesResolver();
-  const css = convertCssVariables(generator(theme), cssVariablesSelector);
+  const css = convertCssVariables(getMergedVariables({ theme, generator }), cssVariablesSelector);
 
   return (
     <style

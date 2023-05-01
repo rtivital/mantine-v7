@@ -11,7 +11,7 @@ interface MantineContextValue {
   getRootElement(): HTMLElement | undefined;
   classNamesPrefix: string;
   getStyleNonce?(): string | undefined;
-  cssVariablesResolver(theme: MantineTheme): ConvertCSSVariablesInput;
+  cssVariablesResolver?(theme: MantineTheme): ConvertCSSVariablesInput;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
