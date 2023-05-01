@@ -189,3 +189,58 @@ Usage:
 ```
 
 ## CSS variables resolver
+
+`cssVariablesResolver` prop on [MantineProvider](/theming/mantine-provider) allows you to
+modify values of Mantine CSS variables or even add your own variables.
+`cssVariablesResolver` is a function that accepts [theme](/theming/theme-object) as a single
+argument and returns object with CSS variables divided into three groups:
+
+- `variables` – variables that do not depend on color scheme
+- `light` – variables for light color scheme only
+- `dark` – variables for dark color scheme only
+
+Example of adding new CSS variables based on `theme.other`:
+
+```tsx
+import { MantineProvider, CSSVariablesResolver, createTheme } from '@mantine/core';
+
+const themeOverride = createTheme({
+  other: {
+    deepOrangeLight: '#E17900',
+    deepOrangeDark: '#FC8C0C',
+    heroHeight: '20rem',
+  },
+});
+
+const resolver: CSSVariablesResolver = (theme) => ({
+  variables: {
+    '--mantine-hero-height': theme.other.heroHeight,
+  },
+  light: {
+    '--mantine-color-deep-orange': theme.other.deepOrangeLight,
+  },
+  dark: {
+    '--mantine-color-deep-orange': theme.other.deepOrangeDark,
+  },
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={themeOverride} cssVariablesResolver={resolver}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+Then you will be able to use `--mantine-hero-height` and `--mantine-color-deep-orange` variables
+in any part of your application:
+
+```css
+.hero {
+  height: var(--mantine-hero-height);
+
+  /* background color will automatically change based on color scheme */
+  background-color: var(--mantine-color-deep-orange);
+}
+```

@@ -59,7 +59,7 @@ export interface MantineProviderProps {
   getStyleNonce?(): string;
 
   /** Function to generate CSS variables styles based on theme object */
-  cssVariablesResolver?(theme: MantineTheme): ConvertCSSVariablesInput;
+  cssVariablesResolver?: CSSVariablesResolver;
 
   /** Your application */
   children?: React.ReactNode;
