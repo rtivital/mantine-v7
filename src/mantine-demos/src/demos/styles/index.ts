@@ -6,3 +6,5 @@ export { useMediaQueryHook } from './Styles.demo.useMediaQueryHook';
 export { classNames } from './Styles.demo.classNames';
 export { styles } from './Styles.demo.styles';
 export { responsiveStyleProps } from './Styles.demo.responsiveStyleProps';
+export { directionControl } from './Styles.demo.directionControl';
+export { rtlMixin } from './Styles.demo.rtlMixin';
