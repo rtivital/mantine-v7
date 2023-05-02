@@ -97,6 +97,12 @@ export const MDX_DATA = {
     search: 'classNames, styles and unstyled props',
   },
 
+  DataAttributes: {
+    title: 'data-* attributes',
+    slug: '/styles/data-attributes',
+    search: 'Usage of data-* attributes to apply styles',
+  },
+
   StyleProps: {
     title: 'Style props',
     slug: '/styles/style-props',
