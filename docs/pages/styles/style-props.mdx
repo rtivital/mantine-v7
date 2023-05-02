@@ -4,3 +4,19 @@ import { MDX_DATA } from '@/mdx';
 export default Layout(MDX_DATA.StyleProps);
 
 # Style props
+
+With style props you can add inline styles to any Mantine component.
+Style props add styles to the **root** element, if you need to style nested elements
+use [Styles API](/styles/styles-api/) instead.
+
+```tsx
+import { Box } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Box mx="auto" maw={400} c="blue.6" bg="#fff">
+      Your component
+    </Box>
+  );
+}
+```
