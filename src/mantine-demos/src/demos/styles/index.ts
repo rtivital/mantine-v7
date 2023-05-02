@@ -5,3 +5,4 @@ export { sizesMedia } from './Styles.demo.sizesMedia';
 export { useMediaQueryHook } from './Styles.demo.useMediaQueryHook';
 export { classNames } from './Styles.demo.classNames';
 export { styles } from './Styles.demo.styles';
+export { responsiveStyleProps } from './Styles.demo.responsiveStyleProps';
