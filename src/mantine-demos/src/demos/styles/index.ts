@@ -11,3 +11,4 @@ export { rtlMixin } from './Styles.demo.rtlMixin';
 export { dataAttributes } from './Styles.demo.dataAttributes';
 export { unstyled } from './Styles.demo.unstyled';
 export { vars } from './Styles.demo.vars';
+export { customVariant } from './Styles.demo.customVariant';
