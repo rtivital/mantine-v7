@@ -127,6 +127,12 @@ export const MDX_DATA = {
     search: 'Learn how to improve your styles performance',
   },
 
+  UnstyledComponents: {
+    title: 'Unstyled / headless',
+    slug: '/styles/unstyled',
+    search: 'Headless/unstyled components',
+  },
+
   // ----------------------------------- Guides ------------------------------------
   Polymorphic: {
     title: 'Polymorphic components',

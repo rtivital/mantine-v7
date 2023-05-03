@@ -121,10 +121,6 @@
 
 .panel {
   flex-grow: var(--_panel-grow);
-
-  &[data-hidden] {
-    display: none;
-  }
 }
 
 .tab {

@@ -44,9 +44,15 @@ export const TabsPanel = factory<TabsPanelFactory>((_props, ref) => {
   return (
     <Box
       {...others}
-      {...ctx.getStyles('panel', { className, classNames, styles, style, props })}
+      {...ctx.getStyles('panel', {
+        className,
+        classNames,
+        styles,
+        style: [style, !active ? { display: 'none' } : undefined],
+        props,
+      })}
       ref={ref}
-      mod={{ hidden: !active, orientation: ctx.orientation }}
+      mod={{ orientation: ctx.orientation }}
       role="tabpanel"
       id={ctx.getPanelId(value)}
       aria-labelledby={ctx.getTabId(value)}
