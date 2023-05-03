@@ -4,15 +4,23 @@ import { Input } from '@mantine/core';
 import classes from './Styles.demo.customVariant.module.css';
 
 const code = `
-import { Input } from '@mantine/core';
+import { Input, MantineProvider, createTheme } from '@mantine/core';
 import classes from './Demo.module.css';
+
+// It is better to add new variants in theme.components
+// This way you will be able to use them in anywhere in the app
+const theme = createTheme({
+  components: {
+    Input: Input.extend({ classNames: classes }),
+  }
+});
 
 function Demo() {
   return (
-    <>
-      <Input classNames={classes} variant="underline" placeholder="Underline input" />
-      <Input classNames={classes} variant="filled" placeholder="Filled input" mt="md" />
-    </>
+    <MantineProvider theme={theme}>
+      <Input variant="underline" placeholder="Underline input" />
+      <Input variant="filled" placeholder="Filled input" mt="md" />
+    </MantineProvider>
   );
 }
 `;

@@ -14,10 +14,18 @@ The easiest way to add custom variants is to add styles that use `[data-variant=
 
 Example of adding new variant to [Input](/core/input) component:
 
+- `underline` variant styles are added
+- `filled` variant is a default variant – you do not need to define any additional styles for it
+
 <Demo data={StylesDemos.customVariant} />
 
 Note that you can add custom variants to every Mantine component that supports [Styles API](/styles/api)
 even if there are no variants defined on the library side.
+
+> **Overriding existing variants styles**
+>
+> Apart from adding new variants you can also override existing ones, for example you can change
+> `filled` variant of [Input](/core/input) component with `.input[data-variant="filled"]` selector.
 
 ## Sizes with components CSS variables
 
