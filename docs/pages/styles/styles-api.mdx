@@ -8,14 +8,37 @@ export default Layout(MDX_DATA.StylesApi);
 
 ## What is Styles API
 
+Styles API is a set of props and techniques that allows you to customize styles of any element
+inside Mantine component inline or with [theme object](/theming/theme-object). All Mantine components that
+have styles support Styles API.
+
 ## Styles API selectors
 
-## classNames
+## classNames prop
 
-## styles
+<Demo data={StylesDemos.classNames} />
 
-## CSS variables
+## styles prop
+
+<Demo data={StylesDemos.styles} />
+
+## Component CSS variables
+
+<Demo data={StylesDemos.vars} />
 
 ## Static classes
 
-## Styles API on theme object
+Every component that supports Styles API also includes static classes that can be used to style
+component without using `classNames` or `styles` props. By default, static classes have
+`.mantine-{ComponentName}-{selector}` format. For example, `root` selector of [Button](/core/button)
+component will have `.mantine-Button-root` class.
+
+You can use static classes to style component with CSS or [any other styling solution](/styles/css-modules#styling-mantine-components-without-css-modules):
+
+```css
+.mantine-Button-root {
+  background-color: red;
+}
+```
+
+Static classes prefix can be changed with `classNamesPrefix` on [MantineProvider](/theming/mantine-provider#classnamesprefix).
