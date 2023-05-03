@@ -26,6 +26,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.ResponsiveStyles,
       MDX_DATA.StylesApi,
       MDX_DATA.DataAttributes,
+      MDX_DATA.VariantsAndSizes,
       MDX_DATA.StyleProps,
       MDX_DATA.Rtl,
       MDX_DATA.StylesPerformance,

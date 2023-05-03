@@ -8,7 +8,7 @@ import { TableInlineCode } from '@/components/TableInlineCode';
 import { TableError } from '@/components/TableError';
 import classes from './StylesApiTable.module.css';
 
-interface StylesApiData {
+export interface StylesApiData {
   selectors: Record<string, string>;
   vars: Record<string, Record<string, string>>;
   modifiers: Modifier<string>[];

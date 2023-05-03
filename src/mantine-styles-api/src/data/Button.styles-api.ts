@@ -28,8 +28,8 @@ export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
     { modifier: 'data-disabled', selector: 'root', condition: 'disabled prop is set' },
     { modifier: 'data-loading', selector: ['root', 'label'], condition: 'loading prop is set' },
     { modifier: 'data-block', selector: 'root', condition: 'fullWidth prop is set' },
-    { modifier: 'data-with-left-section', selector: 'root', value: 'leftSection is set' },
-    { modifier: 'data-with-right-section', selector: 'root', value: 'rightSection is set' },
+    { modifier: 'data-with-left-section', selector: 'root', condition: 'leftSection is set' },
+    { modifier: 'data-with-right-section', selector: 'root', condition: 'rightSection is set' },
     { modifier: 'data-position', selector: 'section', value: 'Section position: left or right' },
   ],
 };

@@ -15,6 +15,7 @@ export function HtmlText({ children, ...others }: HtmlTextProps) {
       component="span"
       data-docs-inline-code
       dangerouslySetInnerHTML={{ __html: replaceBackticks(children) }}
+      fz="sm"
       {...others}
     />
   );

@@ -103,6 +103,12 @@ export const MDX_DATA = {
     search: 'Usage of data-* attributes to apply styles',
   },
 
+  VariantsAndSizes: {
+    title: 'Variants and sizes',
+    slug: '/styles/variants-sizes',
+    search: 'Customize components sizes and variants',
+  },
+
   StyleProps: {
     title: 'Style props',
     slug: '/styles/style-props',
