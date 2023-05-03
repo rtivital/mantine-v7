@@ -12,19 +12,69 @@ Styles API is a set of props and techniques that allows you to customize styles 
 inside Mantine component inline or with [theme object](/theming/theme-object). All Mantine components that
 have styles support Styles API.
 
-## Styles API selectors
-
 ## classNames prop
+
+With `classNames` prop you can add classes to inner elements of Mantine components. It accepts
+object with keys as element names and values as classes:
 
 <Demo data={StylesDemos.classNames} />
 
+## classNames in theme.components
+
+You can also define classNames in [theme.components](/theming/theme-object) to apply them to all
+components of specific type:
+
+```tsx
+import { useState } from 'react';
+import { TextInput, MantineProvider, createTheme } from '@mantine/core';
+// Styles are the same as in previous example
+import classes from './Demo.module.css';
+
+const theme = createTheme({
+  components: {
+    TextInput: TextInput.extends({
+      classNames: {
+        root: classes.root,
+        input: classes.input,
+        label: classes.label,
+      },
+    }),
+  },
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## Components CSS variables
+
+Most of Mantine components use CSS variables to define colors, sizes, paddings and other
+properties. You can override these values by with a custom CSS variables resolver function
+in [theme.components](/theming/theme-object) or by passing it to `vars` prop.
+
+For example, custom css variables resolver function can be used to add more sizes to [Button](/core/button) component:
+
+<Demo data={StylesDemos.vars} />
+
 ## styles prop
+
+`styles` prop works the same way as `classNames`, but applies inline styles. Note that inline
+styles have higher specificity than classes, so if will not be able to override them with classes
+without using `!important`. You cannot use pseudo-classes (for example, `:hover`, `:first-of-type`)
+and media queries inside `styles` prop.
 
 <Demo data={StylesDemos.styles} />
 
-## Component CSS variables
-
-<Demo data={StylesDemos.vars} />
+> **styles prop usage**
+>
+> Some examples and demos in documentation use `styles` prop for convenience, but it is not
+> recommended to use `styles` prop as the primary means of styling components, as `classNames`
+> prop is more flexible and has [better performance](/styles/styles-performance).
 
 ## Static classes
 
