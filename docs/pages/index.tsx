@@ -1,22 +1,17 @@
 import React from 'react';
-import { UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import Link from 'next/link';
+import { Stack, Button } from '@mantine/core';
+import { MdxTitle } from '@/components/MdxProvider';
 
 export default function Home() {
-  const { colorScheme, setColorScheme, clearColorScheme } = useMantineColorScheme();
   return (
     <>
-      <button type="button" onClick={() => setColorScheme('light')}>
-        Light
-      </button>
-      <button type="button" onClick={() => setColorScheme('dark')}>
-        Dark
-      </button>
-      <button type="button" onClick={() => setColorScheme('auto')}>
-        Auto
-      </button>
-      <button type="button" onClick={() => clearColorScheme()}>
-        Clear
-      </button>
+      <Stack align="center" mt={200}>
+        <MdxTitle order={1}>Imagine a home page here</MdxTitle>
+        <Button component={Link} href="/getting-started" size="xl" radius="md">
+          Get started with 7.x
+        </Button>
+      </Stack>
     </>
   );
 }
