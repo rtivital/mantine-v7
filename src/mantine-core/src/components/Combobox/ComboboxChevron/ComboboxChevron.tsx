@@ -4,7 +4,7 @@ import { MantineSize, Box, getSize } from '../../../core';
 import classes from './ComboboxChevron.module.css';
 
 interface ComboboxChevronProps extends Omit<React.ComponentPropsWithoutRef<'svg'>, 'display'> {
-  size: MantineSize;
+  size: MantineSize | (string & {});
   error: React.ReactNode;
 }
 

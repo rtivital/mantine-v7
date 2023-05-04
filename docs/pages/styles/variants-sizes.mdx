@@ -1,6 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { StylesDemos } from '@mantine/demos';
+import { StylesDemos, ThemingDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.VariantsAndSizes);
 
@@ -27,9 +27,25 @@ even if there are no variants defined on the library side.
 > Apart from adding new variants you can also override existing ones, for example you can change
 > `filled` variant of [Input](/core/input) component with `.input[data-variant="filled"]` selector.
 
+## variantColorResolver
+
+[Button](/core/button), [Badge](/core/badge), [ActionIcon](/core/action-icon) and [ThemeIcon](/core/theme-icon)
+components support custom variants with [variantColorResolver](/theming/colors#colors-variant-resolver)
+– it supports both changing colors and adding new variants. Note that `theme.variantColorResolver` is
+responsible only for colors, if you need to change other properties, use `data-variant` attribute.
+
+<Demo data={ThemingDemos.variantColorsResolver} />
+
 ## Sizes with components CSS variables
 
 You can add custom sizes to any component that supports `size` prop by providing a custom
 CSS variables resolver, usually it is done in `theme.components`:
 
 <Demo data={StylesDemos.vars} />
+
+## Sizes with data-size attribute
+
+Every component that supports `size` prop exposes it as `data-size="{value}"` attribute on root element.
+You can use it to add custom sizes:
+
+<Demo data={StylesDemos.dataSize} />

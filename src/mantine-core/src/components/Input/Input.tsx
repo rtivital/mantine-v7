@@ -90,7 +90,7 @@ export interface __InputProps {
   disabled?: boolean;
 
   /** Input size */
-  size?: MantineSize;
+  size?: MantineSize | (string & {});
 
   /** Determines whether the input should have `cursor: pointer` style, `false` by default */
   pointer?: boolean;
