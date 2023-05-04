@@ -1,4 +1,23 @@
 export const MDX_DATA = {
+  // ----------------------------------- Meta --------------------------------------
+  About: {
+    title: 'About Mantine',
+    slug: '/about',
+    search: 'Browser support, releases cycle, previous versions documentation',
+  },
+
+  Overview: {
+    title: 'Mantine API overview',
+    slug: '/overview',
+    search: 'Overview of Mantine components API',
+  },
+
+  Contribute: {
+    title: 'Contributing to Mantine',
+    slug: '/contribute',
+    search: 'Learn how to contribute to Mantine',
+  },
+
   // ----------------------------------- Theming -----------------------------------
   MantineProvider: {
     title: 'MantineProvider',

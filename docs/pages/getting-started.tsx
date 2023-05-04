@@ -1,10 +1,10 @@
 import React from 'react';
-import { Shell } from '@/components/Shell';
+import { ContentPageBase } from '@/components/ContentPageBase';
 
 export default function GettingStarted() {
   return (
-    <Shell>
+    <ContentPageBase title="Getting started">
       <div>Getting started</div>
-    </Shell>
+    </ContentPageBase>
   );
 }
