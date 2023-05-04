@@ -78,7 +78,7 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider>
+    <MantineProvider theme={theme}>
       <Group>
         <Button size="xxl">XXL Button</Button>
         <Button size="xxs">XXS Button</Button>
