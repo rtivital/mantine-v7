@@ -1,6 +1,8 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
 import { StylesDemos } from '@mantine/demos';
+import { ButtonStylesApi } from '@mantine/styles-api';
+import { SelectorsTable, VariablesTable } from '@/components/StylesApiTable';
 
 export default Layout(MDX_DATA.StylesApi);
 
@@ -11,6 +13,76 @@ export default Layout(MDX_DATA.StylesApi);
 Styles API is a set of props and techniques that allows you to customize styles of any element
 inside Mantine component inline or with [theme object](/theming/theme-object). All Mantine components that
 have styles support Styles API.
+
+## Styles API selectors
+
+Every Mantine component that supports Styles API has a set of elements names that can be used to
+apply styles to inner elements inside the component. For simplicity, these elements names are called
+selectors in Mantine documentation. You can find selectors information under `Styles API` tab
+in component documentation.
+
+Example of [Button](/core/button) component selectors:
+
+<SelectorsTable data={ButtonStylesApi} component="Button" withTableBorder={false} />
+
+You can use these selectors in `classNames` and `styles` both in component props and in `theme.components`:
+
+```tsx
+import { Button, createTheme, MantineProvider } from '@mantine/core';
+
+function ClassNamesDemo() {
+  return (
+    <Button
+      classNames={{
+        root: 'my-root-class',
+        label: 'my-label-class',
+        inner: 'my-inner-class',
+      }}
+    >
+      Button
+    </Button>
+  );
+}
+
+function StylesDemo() {
+  return (
+    <Button
+      styles={{
+        root: { backgroundColor: 'red' },
+        label: { color: 'blue' },
+        inner: { fontSize: 20 },
+      }}
+    >
+      Button
+    </Button>
+  );
+}
+
+const theme = createTheme({
+  components: {
+    Button: Button.extend({
+      classNames: {
+        root: 'my-root-class',
+        label: 'my-label-class',
+        inner: 'my-inner-class',
+      },
+      styles: {
+        root: { backgroundColor: 'red' },
+        label: { color: 'blue' },
+        inner: { fontSize: 20 },
+      },
+    }),
+  },
+});
+
+function ProviderDemo() {
+  return (
+    <MantineProvider theme={theme}>
+      <Button>Button</Button>
+    </MantineProvider>
+  );
+}
+```
 
 ## classNames prop
 
@@ -57,7 +129,12 @@ Most of Mantine components use CSS variables to define colors, sizes, paddings a
 properties. You can override these values by with a custom CSS variables resolver function
 in [theme.components](/theming/theme-object) or by passing it to `vars` prop.
 
-For example, custom css variables resolver function can be used to add more sizes to [Button](/core/button) component:
+You can find CSS variables information under `Styles API` tab in component documentation.
+Example of [Button](/core/button) component CSS variables:
+
+<VariablesTable data={ButtonStylesApi} withTableBorder={false} />
+
+Example of custom CSS variables resolver function used to add more sizes to [Button](/core/button) component:
 
 <Demo data={StylesDemos.vars} />
 
