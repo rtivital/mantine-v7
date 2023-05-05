@@ -1,5 +1,8 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { StylesDemos } from '@mantine/demos';
+import { TextInputStylesApi } from '@mantine/styles-api';
+import { SelectorsTable, VariablesTable } from '@/components/StylesApiTable';
 import { ColorsGroup } from '@/components/ThemeColors';
 
 export default Layout(MDX_DATA.Overview);
@@ -105,20 +108,106 @@ To access colors in styles use [CSS variables](/styles/css-variables):
 }
 ```
 
-## Typography
-
 ## CSS modules
+
+All Mantine components use [CSS modules](/styles/css-modules) for styling.
+It is recommended to use [CSS modules](/styles/css-modules) in your project as well, but it is not required –
+Mantine components are fully compatible with any third-party styling solution and native CSS.
+
+CSS modules are available in most modern frameworks out of the box. To use them, create a file with `.module.css` extension:
+
+```css
+/* Button.module.css */
+
+.button {
+  color: red;
+}
+```
+
+And then import it in your component:
+
+```tsx
+import classes from './Button.module.css';
+
+function Demo() {
+  return (
+    <button className={classes.button} type="button">
+      Button
+    </button>
+  );
+}
+```
 
 ## PostCSS preset
 
+[postcss-preset-mantine](/styles/postcss-preset) provides several CSS functions and mixins to help you write styles.
+It is not required to use it but highly recommended. All demos that feature styles
+assume that you have this preset installed.
+
+[postcss-preset-mantine](/styles/postcss-preset) allows you to use functions and mixins in `.css` files:
+
+```scss
+.demo {
+  padding: rem(20px); /* Convert px to rem */
+
+  /* Convert px to em (for media queries) */
+  @media (max-width: em(500px)) {
+  }
+
+  /* light and dark mixins to apply styles based on Mantine color scheme */
+  @mixin light {
+    background-color: var(--mantine-color-white);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-black);
+  }
+
+  /* light-dark function as an inline shortcut for light and dark mixins */
+  background: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+
+  /* rtl mixin to apply styles for right-to-left direction */
+  padding-left: 1rem;
+  @mixin rtl {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+}
+```
+
 ## CSS variables
 
+[Theme](/theming/theme-object) values are converted to [CSS variables](/styles/css-variables) and are available to
+use in your styles. All Mantine CSS variables are prefixed with `--mantine-`, for example:
+
+- `theme.fontFamily` → `--mantine-font-family`
+- `theme.colors.blue[9]` → `--mantine-color-blue-9`
+- `theme.spacing.xl` → `--mantine-spacing-xl`
+
+Most of Mantine components have associated [CSS variables](/styles/styles-api) that can be
+customized in [theme](/theming/theme-object) or inline with `vars` prop. Example of customizing
+[Button](/core/button) CSS variables to add new `xxl` and `xxs` sizes:
+
+<Demo data={StylesDemos.vars} />
+
 ## Styles API
+
+[Styles API](/styles/styles-api) is a set of props and techniques that allows you to customize styles of any element
+inside Mantine component inline or with [theme object](/theming/theme-object). All Mantine components that
+have styles support [Styles API](/styles/styles-api).
+
+Every Mantine component has a set of elements names that can be used to
+apply styles to inner elements inside the component.
+Example of [TextInput](/core/text-input) component selectors:
+
+<SelectorsTable data={TextInputStylesApi} component="Button" withTableBorder={false} />
+
+These selectors can be used to apply styles to inner elements with [classNames or styles](/styles/styles-api) props:
+
+<Demo data={StylesDemos.classNames} />
 
 ## Color scheme
 
 ## Unstyled components
-
-## Styles performance
 
 ## RTL (right-to-left) direction
