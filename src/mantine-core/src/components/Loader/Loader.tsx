@@ -29,13 +29,13 @@ export interface LoaderProps
   extends BoxProps,
     StylesApiProps<LoaderFactory>,
     Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
-  /** Width of the loader. Loader has predefined xs-xl values, number value (in px) ix converted to rem (1rem = 16px). */
+  /** Width/height of the loader. Loader has predefined xs-xl values, number value (in px) is converted to rem `(1rem = 16px)`. */
   size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor;
 
-  /** Loader type, default value is `'oval'` */
+  /** Loader type, key of `loaders` prop, default value is `'oval'` */
   type?: MantineLoader;
 
   /** Object of loaders components, can be customized via default props or inline. Default value contains `bars`, `oval` and `dots` */
