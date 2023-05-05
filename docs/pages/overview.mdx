@@ -1,6 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { StylesDemos } from '@mantine/demos';
+import { StylesDemos, ThemingDemos } from '@mantine/demos';
 import { TextInputStylesApi } from '@mantine/styles-api';
 import { SelectorsTable, VariablesTable } from '@/components/StylesApiTable';
 import { ColorsGroup } from '@/components/ThemeColors';
@@ -208,6 +208,34 @@ These selectors can be used to apply styles to inner elements with [classNames o
 
 ## Color scheme
 
+All Mantine components support `light`, `dark` and `auto` [color schemes](/theming/color-schemes). By default,
+color scheme is `auto` (same as user system preferences), it can be changed by user and will be persisted in `localStorage`.
+
+You can use configure default color scheme on [MantineProvider](/theming/mantine-provider):
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider defaultColorScheme="dark">
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+And use [useMantineColorScheme hook](/theming/color-schemes) to create color scheme toggle control:
+
+<Demo data={ThemingDemos.colorSchemeControl} />
+
 ## Unstyled components
 
-## RTL (right-to-left) direction
+You can use Mantine as a [headless UI library](/styles/unstyled). To do that simply do not import `@mantine/*/styles.css`
+in your application. Then you will be able to apply styles to Mantine components using [Styles API](/styles/styles-api/)
+with a styling solution of your choice.
+
+All components also support [unstyled prop](/styles/unstyled)
+that removes all library styles from component:
+
+<Demo data={StylesDemos.unstyled} />
