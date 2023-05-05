@@ -105,7 +105,7 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
     <Box
       {...getStyles('root')}
       ref={ref}
-      component={loaders![type!]}
+      component={(loaders as any)[type!]}
       variant={variant}
       size={size}
       {...others}

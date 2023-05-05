@@ -12,10 +12,16 @@ export function CodeDemo({
   centered,
   defaultExpanded = true,
   maxWidth,
+  minHeight,
 }: CodeDemoProps) {
   return (
     <DemoRoot>
-      <DemoArea withPadding={withPadding} centered={centered} maxWidth={maxWidth}>
+      <DemoArea
+        withPadding={withPadding}
+        centered={centered}
+        maxWidth={maxWidth}
+        minHeight={minHeight}
+      >
         {children}
       </DemoArea>
       <DemoCode code={code} defaultExpanded={defaultExpanded} />

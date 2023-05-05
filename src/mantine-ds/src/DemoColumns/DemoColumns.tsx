@@ -14,13 +14,19 @@ export function DemoColumns({
   withPadding,
   centered,
   maxWidth,
+  minHeight,
   title,
   description,
   controls,
 }: DemoColumnsProps) {
   return (
     <div className={classes.columns}>
-      <DemoArea withPadding={withPadding} maxWidth={maxWidth} centered={centered}>
+      <DemoArea
+        withPadding={withPadding}
+        maxWidth={maxWidth}
+        minHeight={minHeight}
+        centered={centered}
+      >
         {children}
       </DemoArea>
 

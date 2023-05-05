@@ -7,15 +7,23 @@ export interface DemoAreaProps {
   withPadding?: boolean;
   centered?: boolean;
   maxWidth?: number;
+  minHeight?: number;
 }
 
-export function DemoArea({ withPadding = true, centered, maxWidth, children }: DemoAreaProps) {
+export function DemoArea({
+  withPadding = true,
+  centered,
+  maxWidth,
+  minHeight,
+  children,
+}: DemoAreaProps) {
   return (
     <Box
       className={classes.demo}
       mod={{ 'with-padding': withPadding, centered: centered && !maxWidth }}
       __vars={{
         '--demo-max-width': maxWidth ? rem(maxWidth) : undefined,
+        '--demo-min-height': minHeight ? rem(minHeight) : undefined,
         '--demo-margin-y': maxWidth && centered ? 'auto' : undefined,
       }}
     >

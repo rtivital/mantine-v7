@@ -54,6 +54,7 @@ export function ConfiguratorDemo({
   children,
   centered,
   maxWidth,
+  minHeight,
   withPadding,
 }: ConfiguratorDemoProps) {
   const initialState = controls.reduce<Record<string, any>>((acc, control) => {
@@ -89,6 +90,7 @@ export function ConfiguratorDemo({
         centered={centered}
         withPadding={withPadding}
         maxWidth={maxWidth}
+        minHeight={minHeight}
       >
         {React.cloneElement(children as JSX.Element, state)}
       </DemoColumns>
