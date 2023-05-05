@@ -13,3 +13,4 @@ export { unstyled } from './Styles.demo.unstyled';
 export { vars } from './Styles.demo.vars';
 export { customVariant } from './Styles.demo.customVariant';
 export { dataSize } from './Styles.demo.dataSize';
+export { classNamesProps } from './Styles.demo.classNamesProps';

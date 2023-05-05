@@ -153,6 +153,18 @@ and media queries inside `styles` prop.
 > recommended to use `styles` prop as the primary means of styling components, as `classNames`
 > prop is more flexible and has [better performance](/styles/styles-performance).
 
+## Styles API based on component props
+
+You can also pass a callback function to `classNames` and `styles`. This function will receive
+[theme](/theming/theme-object) as first argument and component props as second. It should return
+object of classes (`classNames`) or styles (`styles`).
+
+You can use this feature to conditionally apply styles based on component props. For example,
+you can change [TextInput](/core/text-input) label color if input is required or change input
+background color if input has error:
+
+<Demo data={StylesDemos.classNamesProps} />
+
 ## Static classes
 
 Every component that supports Styles API also includes static classes that can be used to style
