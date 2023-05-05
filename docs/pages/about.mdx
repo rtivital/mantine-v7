@@ -1,9 +1,20 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { GuidesDemos } from '@mantine/demos';
 import { LogoAssets } from '@/components/LogoAssets';
 
 export default Layout(MDX_DATA.About);
 
 # About Mantine
 
+## Mantine logo
+
+Download Mantine logos in `.svg` format:
+
 <LogoAssets />
+
+You can also install `@mantine/ds` package and import `MantineLogo` component:
+
+<InstallScript packages="@mantine/ds" />
+
+<Demo data={GuidesDemos.logo} />

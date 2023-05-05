@@ -4,12 +4,12 @@ import {
   Input,
   BoxProps,
   ElementProps,
-  useMantineTheme,
   CheckIcon,
   Group,
   Popover,
   UnstyledButton,
   ColorPicker,
+  DEFAULT_THEME,
 } from '@mantine/core';
 import { getControlLabel } from './get-control-label';
 import { ConfiguratorControl } from './types';
@@ -35,7 +35,6 @@ export function ConfiguratorColorControl({
   prop,
   ...others
 }: ConfiguratorColorControlProps) {
-  const theme = useMantineTheme();
   const [colorPickerColor, setColorPickerColor] = useState('#fff');
 
   const handleColorPickerChange = (color: string) => {
@@ -43,7 +42,7 @@ export function ConfiguratorColorControl({
     onChange(color);
   };
 
-  const colors = Object.keys(theme.colors)
+  const colors = Object.keys(DEFAULT_THEME.colors)
     .filter((color) => color !== 'dark')
     .map((color) => (
       <ColorSwatch

@@ -2,6 +2,7 @@
   border: rem(1px) solid;
   border-radius: var(--mantine-radius-md);
   overflow: hidden;
+  margin-bottom: var(--mantine-spacing-xl);
 
   @mixin light {
     border-color: var(--mantine-color-gray-2);
