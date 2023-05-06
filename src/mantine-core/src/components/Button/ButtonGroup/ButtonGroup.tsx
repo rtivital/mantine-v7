@@ -19,13 +19,13 @@ export type ButtonGroupCssVariables = {
 };
 
 export interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFactory> {
-  /** `<ActionIcon />` components */
+  /** `Button` components */
   children?: React.ReactNode;
 
-  /** Horizontal or vertical orientation */
+  /** Orientation of the group, `horizontal` by default */
   orientation?: 'horizontal' | 'vertical';
 
-  /** Controls border-width of child `<ActionIcon />` components. Default value in `1`. Numbers are converted to rem (1rem = 16px). */
+  /** Controls border-width of child `Button` components. Default value in `1`. Numbers are converted to rem (1rem = 16px). */
   borderWidth?: number | string;
 }
 

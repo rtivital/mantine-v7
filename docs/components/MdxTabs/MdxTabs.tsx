@@ -5,9 +5,9 @@ import { TableOfContents } from '@/components/TableOfContents';
 import { PageBase } from '@/components/PageBase';
 import { MdxSiblings } from '@/components/MdxSiblings';
 import { PropsTablesList } from '@/components/PropsTable';
-import { StylesApiTable } from '@/components/StylesApiTable';
-import classes from './MdxTabs.module.css';
+import { StylesApiTablesList } from '@/components/StylesApiTable';
 import { Frontmatter } from '@/types';
+import classes from './MdxTabs.module.css';
 
 interface MdxTabsProps {
   children: React.ReactNode;
@@ -78,7 +78,7 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
             }}
             className={classes.tabContent}
           >
-            <PropsTablesList components={meta.props!} />
+            <PropsTablesList components={meta.props!} componentPrefix={meta.componentPrefix} />
           </div>
         </Tabs.Panel>
 
@@ -92,7 +92,7 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
             }}
             className={classes.tabContent}
           >
-            <StylesApiTable component={meta.styles![0]} />
+            <StylesApiTablesList components={meta.styles!} componentPrefix={meta.componentPrefix} />
           </div>
         </Tabs.Panel>
       </Tabs>

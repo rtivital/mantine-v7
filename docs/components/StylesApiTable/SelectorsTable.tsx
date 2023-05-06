@@ -25,7 +25,7 @@ export function SelectorsTable({ data, component, ...others }: SelectorsTablePro
   ));
 
   return (
-    <Table withTableBorder {...others}>
+    <Table {...others}>
       <Table.Thead>
         <Table.Tr>
           <Table.Th>Selector</Table.Th>

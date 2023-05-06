@@ -4,8 +4,8 @@ import type { StylesApiData } from '../types';
 export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
   selectors: {
     root: 'Root element',
-    loader: 'Loader component, displayed only when loading prop is set',
-    inner: 'Contains all other elements, child of root',
+    loader: 'Loader component, displayed only when `loading` prop is set',
+    inner: 'Contains all other elements, child of the `root` element',
     section: 'Left and right sections of the button',
     label: 'Button children',
   },
@@ -41,12 +41,11 @@ export const ButtonGroupStylesApi: StylesApiData<ButtonGroupFactory> = {
 
   vars: {
     root: {
-      '--button-border-width':
-        'Controls border width of child Button components that are placed beside one another',
+      '--button-border-width': 'Controls border width of child `Button` components',
     },
   },
 
   modifiers: [
-    { modifier: 'data-orientation', selector: 'root', value: 'Value of orientation prop' },
+    { modifier: 'data-orientation', selector: 'root', value: 'Value of `orientation` prop' },
   ],
 };

@@ -1,4 +1,6 @@
-export const MDX_DATA = {
+import { Frontmatter } from '@/types';
+
+export const MDX_DATA: Record<string, Frontmatter> = {
   // ----------------------------------- Meta --------------------------------------
   About: {
     title: 'About Mantine',
@@ -202,8 +204,9 @@ export const MDX_DATA = {
     slug: '/core/button',
     category: 'buttons',
     description: 'Button component to render button or link',
-    props: ['Button'],
-    styles: ['Button'],
+    componentPrefix: 'Button',
+    props: ['Button', 'ButtonGroup'],
+    styles: ['Button', 'ButtonGroup'],
     import: "import { Button } from '@mantine/core';",
     source: 'mantine-core/src/components/Button/Button.tsx',
     docs: 'core/Button.mdx',

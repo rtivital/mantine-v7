@@ -9,6 +9,9 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-core/src/components/Input/InputWrapper/InputWrapper.tsx',
   '../src/mantine-core/src/components/Input/InputDescription/InputDescription.tsx',
   '../src/mantine-core/src/components/Input/InputError/InputError.tsx',
+
+  // Button
+  '../src/mantine-core/src/components/Button/ButtonGroup/ButtonGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

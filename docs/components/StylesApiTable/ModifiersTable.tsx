@@ -28,7 +28,7 @@ export function ModifiersTable({ data, ...others }: ModifiersTableProps) {
     )) || [];
 
   return (
-    <Table withTableBorder {...others}>
+    <Table {...others}>
       <Table.Thead>
         <Table.Tr>
           <Table.Th>Selector</Table.Th>

@@ -30,7 +30,7 @@ export function VariablesTable({ data, ...others }: VariablesTableProps) {
   }, []);
 
   return (
-    <Table withTableBorder {...others}>
+    <Table {...others}>
       <Table.Thead>
         <Table.Tr>
           <Table.Th>Selector</Table.Th>

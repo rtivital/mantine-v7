@@ -48,7 +48,7 @@ export type ButtonCssVariables = {
 export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   'data-disabled'?: boolean;
 
-  /** Controls button height and horizontal padding, `'sm'` by default */
+  /** Controls button height, font-size and horizontal padding, `'sm'` by default */
   size?: MantineSize | `compact-${MantineSize}` | (string & {});
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
