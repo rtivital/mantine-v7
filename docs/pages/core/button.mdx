@@ -1,9 +1,79 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { LoaderDemos } from '@mantine/demos';
+import { ButtonDemos, StylesDemos, ThemingDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Button);
 
 ## Usage
 
+<Demo data={ButtonDemos.configurator} />
+
+## Full width
+
+<Demo data={ButtonDemos.fullWidth} />
+
+## Left and right sections
+
+<Demo data={ButtonDemos.sections} />
+
+## Sections position
+
+<Demo data={ButtonDemos.sectionsJustify} />
+
+## Compact size
+
+<Demo data={ButtonDemos.compact} />
+
+## Gradient variant
+
+<Demo data={ButtonDemos.gradient} />
+
+## Disabled state
+
+<Demo data={ButtonDemos.disabled} />
+
+## Customize disabled styles
+
+<Demo data={ButtonDemos.disabledStyles} />
+
+## Disabled button with Tooltip
+
+<Demo data={ButtonDemos.disabledTooltip} />
+
+## Loading state
+
+<Demo data={ButtonDemos.loading} />
+
+## Loader props
+
+<Demo data={ButtonDemos.loaderProps} />
+
+## Styles API
+
+<Demo data={StylesDemos.dataAttributes} />
+
+## Custom variants
+
+<Demo data={StylesDemos.customVariant} />
+
+## Customize variants colors
+
+<Demo data={ThemingDemos.variantColorsResolver} />
+
+## Button.Group
+
+<Demo data={ButtonDemos.group} />
+
 <Polymorphic defaultElement="button" changeToElement="a" component="Button" withNext />
+
+## Get ref
+
+```tsx
+import { useRef } from 'react';
+import { Button } from '@mantine/core';
+
+function Demo() {
+  const ref = useRef<HTMLButtonElement>(null);
+  return <Button ref={ref} />;
+}
+```

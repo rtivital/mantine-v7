@@ -48,10 +48,20 @@
 
   &[data-with-left-section] {
     --_button-padding-left: calc(var(--button-padding-x) / 1.5);
+
+    @mixin rtl {
+      --_button-padding-left: var(--button-padding-x);
+      --_button-padding-right: calc(var(--button-padding-x) / 1.5);
+    }
   }
 
   &[data-with-right-section] {
     --_button-padding-right: calc(var(--button-padding-x) / 1.5);
+
+    @mixin rtl {
+      --_button-padding-right: var(--button-padding-x);
+      --_button-padding-left: calc(var(--button-padding-x) / 1.5);
+    }
   }
 
   &:disabled:not([data-loading]),

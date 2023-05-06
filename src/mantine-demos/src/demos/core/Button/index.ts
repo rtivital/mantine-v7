@@ -9,3 +9,5 @@ export { fullWidth } from './Button.demo.fullWidth';
 export { group } from './Button.demo.group';
 export { disabledTooltip } from './Button.demo.disabledTooltip';
 export { customVariant } from './Button.demo.customVariant';
+export { sections } from './Button.demo.sections';
+export { sectionsJustify } from './Button.demo.sectionsJustify';
