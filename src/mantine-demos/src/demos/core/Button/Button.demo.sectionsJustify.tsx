@@ -3,16 +3,37 @@ import { MantineDemo } from '@mantine/ds';
 import { Button } from '@mantine/core';
 import { IconPhoto } from '@tabler/icons-react';
 
-const code = `
+const code = (props: any) => `
 import { Button } from '@mantine/core';
 import { IconPhoto } from '@tabler/icons-react';
 
 function Demo() {
   const icon = <IconPhoto size={14} />;
   return (
-    <Button{{props}} fullWidth leftSection={icon} rightSection={icon} variant="default">
-      Button label
-    </Button>
+    <>
+      <Button justify="${props.justify}" fullWidth leftSection={icon} rightSection={icon} variant="default">
+        Button label
+      </Button>
+
+      <Button justify="${props.justify}" fullWidth leftSection={icon} variant="default" mt="md">
+        Button label
+      </Button>
+
+      <Button justify="${props.justify}" fullWidth rightSection={icon} variant="default" mt="md">
+        Button label
+      </Button>
+
+      <Button
+        justify="${props.justify}"
+        fullWidth
+        rightSection={icon}
+        leftSection={<span />}
+        variant="default"
+        mt="md"
+      >
+        Button label
+      </Button>
+    </>
   );
 }
 `;
@@ -20,9 +41,30 @@ function Demo() {
 function Wrapper(props: any) {
   const icon = <IconPhoto size={14} />;
   return (
-    <Button fullWidth leftSection={icon} rightSection={icon} variant="default" {...props}>
-      Button label
-    </Button>
+    <>
+      <Button fullWidth leftSection={icon} rightSection={icon} variant="default" {...props}>
+        Button label
+      </Button>
+
+      <Button fullWidth leftSection={icon} variant="default" mt="md" {...props}>
+        Button label
+      </Button>
+
+      <Button fullWidth rightSection={icon} variant="default" mt="md" {...props}>
+        Button label
+      </Button>
+
+      <Button
+        fullWidth
+        rightSection={icon}
+        leftSection={<span />}
+        variant="default"
+        mt="md"
+        {...props}
+      >
+        Button label
+      </Button>
+    </>
   );
 }
 

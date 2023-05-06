@@ -1,7 +1,7 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
 import { Button } from '@mantine/core';
-import classes from './Button.disabledStyles.module.css';
+import classes from './Button.demo.disabledStyles.module.css';
 
 const code = `
 import { Button } from '@mantine/core';
@@ -18,6 +18,7 @@ function Demo() {
 
 const cssCode = `
 .button {
+  &:disabled,
   &[data-disabled] {
     border-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
     background-color: transparent;
