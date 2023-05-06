@@ -45,7 +45,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.Storybook,
     ],
   },
-  { group: 'mantine-core', pages: [{ category: 'feedback', pages: [MDX_DATA.Loader] }] },
+  {
+    group: 'mantine-core',
+    pages: [
+      { category: 'buttons', pages: [MDX_DATA.Button] },
+      { category: 'feedback', pages: [MDX_DATA.Loader] },
+    ],
+  },
 ];
 
 export const ALL_MDX_PAGES: Frontmatter[] = MDX_PAGES_GROUPS.reduce<Frontmatter[]>((acc, group) => {

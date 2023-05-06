@@ -7,7 +7,7 @@ import { MdxParagraph, MdxCode } from '../MdxTypography/MdxTypography';
 import { MdxLink } from '../MdxLink/MdxLink';
 import { MdxInfo } from '../MdxInfo/MdxInfo';
 
-interface MdxPolymorphic {
+interface MdxPolymorphicProps {
   component: string;
   defaultElement: string;
   changeToElement: string;
@@ -15,7 +15,7 @@ interface MdxPolymorphic {
   package?: string;
 }
 
-function getElementCode(input: MdxPolymorphic) {
+function getElementCode(input: MdxPolymorphicProps) {
   return `import { ${input.component} } from '${input.package || '@mantine/core'}';
 
 function Demo() {
@@ -24,7 +24,7 @@ function Demo() {
   `;
 }
 
-function getNextLinkCode(input: MdxPolymorphic) {
+function getNextLinkCode(input: MdxPolymorphicProps) {
   return `import Link from 'next/link';
 import { ${input.component} } from '${input.package || '@mantine/core'}';
 
@@ -33,14 +33,14 @@ function Demo() {
 }`;
 }
 
-function getInterfaceCode(input: MdxPolymorphic) {
+function getInterfaceCode(input: MdxPolymorphicProps) {
   return `import type { ${input.component}Props } from '${input.package || '@mantine/core'}';
 
 interface My${input.component}Props extends ${input.component}Props,
   React.ComponentPropsWithoutRef<'${input.changeToElement}'> {}`;
 }
 
-export function MdxPolymorphic(props: MdxPolymorphic) {
+export function MdxPolymorphic(props: MdxPolymorphicProps) {
   return (
     <>
       <MdxTitle id="polymorphic-component">Polymorphic component</MdxTitle>

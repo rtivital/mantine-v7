@@ -196,6 +196,18 @@ export const MDX_DATA = {
   },
 
   // ------------------------------- Core components -------------------------------
+  Button: {
+    title: 'Button',
+    package: '@mantine/core',
+    slug: '/core/button',
+    category: 'buttons',
+    description: 'Button component to render button or link',
+    props: ['Button'],
+    styles: ['Button'],
+    import: "import { Button } from '@mantine/core';",
+    source: 'mantine-core/src/components/Button/Button.tsx',
+    docs: 'core/Button.mdx',
+  },
   Loader: {
     title: 'Loader',
     package: '@mantine/core',
