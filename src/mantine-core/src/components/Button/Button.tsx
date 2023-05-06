@@ -46,6 +46,8 @@ export type ButtonCssVariables = {
 };
 
 export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
+  'data-disabled'?: boolean;
+
   /** Controls button height and horizontal padding, `'sm'` by default */
   size?: MantineSize | `compact-${MantineSize}` | (string & {});
 
@@ -113,7 +115,9 @@ const varsResolver = createVarsResolver<ButtonFactory>(
         '--button-justify': justify,
         '--button-height': getSize(size, 'button-height'),
         '--button-padding-x': getSize(size, 'button-padding-x'),
-        '--button-fz': getFontSize(size),
+        '--button-fz': size?.includes('compact')
+          ? getFontSize(size.replace('compact-', ''))
+          : getFontSize(size),
         '--button-radius': getRadius(radius),
         '--button-bg': colors.background,
         '--button-hover': colors.hover,
@@ -144,6 +148,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
+    'data-disabled': dataDisabled,
     ...others
   } = props;
 
@@ -166,14 +171,14 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
   return (
     <UnstyledButton
       ref={ref}
-      {...getStyles('root', { active: !disabled && !loading })}
+      {...getStyles('root', { active: !disabled && !loading && !dataDisabled })}
       unstyled={unstyled}
       variant={variant}
-      disabled={disabled}
+      disabled={disabled || loading}
       mod={[
         'button',
         {
-          disabled,
+          disabled: disabled || dataDisabled,
           loading,
           block: fullWidth,
           'with-left-section': hasLeftSection,

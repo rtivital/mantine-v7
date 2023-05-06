@@ -1,24 +1,15 @@
 import { ConfiguratorControlOptions } from '@mantine/ds';
 
-export const STATIC_VARIANTS = [
-  'filled',
-  'light',
-  'outline',
-  'transparent',
-  'white',
-  'default',
-  'gradient',
-];
+export const STATIC_VARIANTS = ['filled', 'light', 'outline', 'transparent', 'white', 'default'];
 
 export const INTERACTIVE_VARIANTS = [
+  'default',
   'filled',
   'light',
   'outline',
+  'subtle',
   'transparent',
   'white',
-  'subtle',
-  'default',
-  'gradient',
 ];
 
 export const interactiveVariantsControl: ConfiguratorControlOptions = {

@@ -1,3 +1,11 @@
 export { configurator } from './Button.demo.configurator';
 export { disabled } from './Button.demo.disabled';
 export { disabledStyles } from './Button.demo.disabledStyles';
+export { compact } from './Button.demo.compact';
+export { loading } from './Button.demo.loading';
+export { loaderProps } from './Button.demo.loaderProps';
+export { gradient } from './Button.demo.gradient';
+export { fullWidth } from './Button.demo.fullWidth';
+export { group } from './Button.demo.group';
+export { disabledTooltip } from './Button.demo.disabledTooltip';
+export { customVariant } from './Button.demo.customVariant';
