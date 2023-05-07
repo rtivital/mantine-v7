@@ -223,4 +223,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Loader/Loader.tsx',
     docs: 'core/Loader.mdx',
   },
+  Container: {
+    title: 'Container',
+    package: '@mantine/core',
+    slug: '/core/container',
+    category: 'layout',
+    description: 'Center content with padding and max-width',
+    props: ['Container'],
+    styles: ['Container'],
+    import: "import { Container } from '@mantine/core';",
+    source: 'mantine-core/src/components/Container/Container.tsx',
+    docs: 'core/Container.mdx',
+  },
 };

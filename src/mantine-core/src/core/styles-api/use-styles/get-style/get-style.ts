@@ -49,7 +49,7 @@ export function getStyle({
     ...resolveStyles({ theme, styles: options?.styles, props: options?.props || props, stylesCtx })[
       selector
     ],
-    ...resolveVars({ theme, props, stylesCtx, vars, varsResolver, selector }),
+    ...resolveVars({ theme, props, stylesCtx, vars, varsResolver, selector, themeName }),
     ...(rootSelector === selector ? resolveStyle({ style, theme }) : null),
     ...resolveStyle({ style: options?.style, theme }),
   };
