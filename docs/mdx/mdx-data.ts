@@ -247,4 +247,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Anchor/Anchor.tsx',
     docs: 'core/Anchor.mdx',
   },
+  Input: {
+    title: 'Input',
+    package: '@mantine/core',
+    slug: '/core/input',
+    category: 'inputs',
+    description: 'Base component to create custom inputs',
+    componentPrefix: 'Input',
+    props: ['Input', 'InputWrapper', 'InputLabel', 'InputDescription', 'InputError'],
+    styles: ['Input', 'InputWrapper'],
+    polymorphic: true,
+    import: "import { Input } from '@mantine/core';",
+    source: 'mantine-core/src/components/Input/Input.tsx',
+    docs: 'core/Input.mdx',
+  },
 };
