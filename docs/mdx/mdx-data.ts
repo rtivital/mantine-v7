@@ -235,4 +235,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Container/Container.tsx',
     docs: 'core/Container.mdx',
   },
+  Anchor: {
+    title: 'Anchor',
+    package: '@mantine/core',
+    slug: '/core/anchor',
+    category: 'navigation',
+    description: 'Display link with theme styles',
+    props: ['Anchor'],
+    styles: ['Anchor'],
+    import: "import { Anchor } from '@mantine/core';",
+    source: 'mantine-core/src/components/Anchor/Anchor.tsx',
+    docs: 'core/Anchor.mdx',
+  },
 };

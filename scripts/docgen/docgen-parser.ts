@@ -56,6 +56,7 @@ const EXCLUDE_PROPS = [
   'w',
   'vars',
   'variant',
+  'mod',
 ];
 
 export const docgenParser = withCustomConfig(path.join(__dirname, '../../tsconfig.json'), {

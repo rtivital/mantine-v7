@@ -17,7 +17,7 @@ import {
 } from '../../core';
 import classes from './Text.module.css';
 
-type TextTruncate = 'end' | 'start' | true;
+type TextTruncate = 'end' | 'start' | boolean;
 
 function getTextTruncate(truncate: TextTruncate | undefined) {
   if (truncate === 'start') {
@@ -44,22 +44,22 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   /** Controls `font-size` and `line-height`, `'md'` by default */
   size?: MantineSize | (string & {});
 
-  /** CSS -webkit-line-clamp property */
+  /** Number of lines after which Text will be truncated */
   lineClamp?: number;
 
-  /** CSS truncate overflowing text with an ellipsis */
-  truncate?: 'end' | 'start' | true;
+  /** Side on which Text must be truncated, if `true`, text in truncated from the start */
+  truncate?: TextTruncate;
 
-  /** Sets line-height to 1 for centering */
+  /** Sets `line-height` to 1 for centering, `false` by default */
   inline?: boolean;
 
-  /** Inherit font properties from parent element */
+  /** Determines whether font properties should be inherited from parent, `true` by default */
   inherit?: boolean;
 
-  /** Controls gradient settings in gradient variant only */
+  /** Gradient object, ignored when `variant` is not `gradient`, `theme.defaultGradient` by default */
   gradient?: MantineGradient;
 
-  /** Shorthand for component="span" */
+  /** Shorthand for `component="span"`, `false` by default, default root element is `p` */
   span?: boolean;
 }
 
