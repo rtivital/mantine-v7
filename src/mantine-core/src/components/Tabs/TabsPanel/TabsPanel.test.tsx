@@ -32,8 +32,14 @@ describe('@mantine/core/TabsPanel', () => {
   });
 
   it('sets data-orientation attribute based on context value', () => {
-    const Vertical = createContextContainer(TabsPanel, Tabs, { orientation: 'vertical' });
-    const Horizontal = createContextContainer(TabsPanel, Tabs, { orientation: 'horizontal' });
+    const Vertical = createContextContainer(TabsPanel, Tabs, {
+      orientation: 'vertical',
+      defaultValue: 'test',
+    });
+    const Horizontal = createContextContainer(TabsPanel, Tabs, {
+      orientation: 'horizontal',
+      defaultValue: 'test',
+    });
 
     const { rerender } = render(<Vertical {...defaultProps} />);
     expect(screen.getByRole('tabpanel')).toHaveAttribute('data-orientation', 'vertical');
@@ -47,9 +53,9 @@ describe('@mantine/core/TabsPanel', () => {
     const Visible = createContextContainer(TabsPanel, Tabs, { value: 'test' });
 
     const { rerender } = render(<Hidden {...defaultProps} value="test" />);
-    expect(screen.getByRole('tabpanel')).toHaveAttribute('data-hidden', 'true');
+    expect(screen.queryByRole('tabpanel')).not.toBeInTheDocument();
 
     rerender(<Visible {...defaultProps} value="test" />);
-    expect(screen.getByRole('tabpanel')).not.toHaveAttribute('data-hidden');
+    expect(screen.getByRole('tabpanel')).toBeInTheDocument();
   });
 });

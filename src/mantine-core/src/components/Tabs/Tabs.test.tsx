@@ -28,11 +28,11 @@ type TabValue = typeof TAB_VALUES[number];
 const expectActiveTab = (value: TabValue | null) => {
   const hidden = ['tab-1', 'tab-2', 'tab-3'].filter((panel) => panel !== value);
   hidden.forEach((panel) => {
-    expect(screen.getByText(`${panel} panel`)).toHaveAttribute('data-hidden');
+    expect(screen.queryByText(`${panel} panel`)).toHaveStyle({ display: 'none' });
   });
 
   if (value) {
-    expect(screen.getByText(`${value} panel`)).not.toHaveAttribute('data-hidden');
+    expect(screen.getByText(`${value} panel`)).not.toHaveStyle({ display: 'none' });
   }
 };
 
