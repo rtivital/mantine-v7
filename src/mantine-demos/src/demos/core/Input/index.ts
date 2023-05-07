@@ -10,3 +10,4 @@ export { compound } from './Input.demo.compound';
 export { placeholder } from './Input.demo.placeholder';
 export { defaultProps } from './Input.demo.defaultProps';
 export { sharedStyles } from './Input.demo.sharedStyles';
+export { focusStyles } from './Input.demo.focusStyles';

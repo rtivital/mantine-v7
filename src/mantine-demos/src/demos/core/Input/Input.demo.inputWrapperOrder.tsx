@@ -51,5 +51,7 @@ function Demo() {
 export const inputWrapperOrder: MantineDemo = {
   type: 'code',
   component: Demo,
+  maxWidth: 340,
+  centered: true,
   code,
 };

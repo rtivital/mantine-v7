@@ -7,7 +7,7 @@ import { Input } from '@mantine/core';
 
 function Demo() {
   return (
-    <Input component="button">
+    <Input component="button" pointer>
       <Input.Placeholder>Placeholder content</Input.Placeholder>
     </Input>
   );
@@ -16,7 +16,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Input component="button">
+    <Input component="button" pointer>
       <Input.Placeholder>Placeholder content</Input.Placeholder>
     </Input>
   );
