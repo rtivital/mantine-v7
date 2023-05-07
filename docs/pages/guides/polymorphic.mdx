@@ -84,6 +84,23 @@ Example of creating polymorphic wrapper component for Mantine polymorphic compon
 
 <Demo data={GuidesDemos.createPolymorphic} />
 
+## Dynamic component prop
+
+You can use dynamic value in `component` prop, but in this case you need to either provide types manually
+or disable type checking by passing `any` as a type argument to polymorphic component:
+
+```tsx
+import { Box } from '@mantine/core';
+
+function KeepTypes() {
+  return <Box<'input'> component={(Math.random() > 0.5 ? 'input' : 'div') as any} />;
+}
+
+function NukeTypes() {
+  return <Box<any> component={Math.random() > 0.5 ? 'input' : 'div'} />;
+}
+```
+
 ## Create your own polymorphic components
 
 Use `createPolymorphicComponent` function and [Box](/core/box) component to create new polymorphic components:

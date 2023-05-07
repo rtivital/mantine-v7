@@ -5,8 +5,7 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
   selectors: {
     wrapper: 'Root element, contains input and left/right sections',
     input: 'Input element itself',
-    leftSection: 'Left section',
-    rightSection: 'Right section',
+    section: 'Left and right sections',
   },
 
   vars: {
@@ -40,6 +39,7 @@ export const InputStylesApi: StylesApiData<InputFactory> = {
     },
     { modifier: 'data-multiline', selector: 'wrapper', condition: 'multiline prop is set' },
     { modifier: 'data-pointer', selector: 'wrapper', condition: 'pointer prop is set' },
+    { modifier: 'data-position', selector: 'section', value: 'Section position: left or right' },
   ],
 };
 

@@ -40,7 +40,7 @@ describe('@mantine/core/Input', () => {
     refType: HTMLInputElement,
     polymorphicSelector: '.mantine-Input-input',
     displayName: '@mantine/core/Input',
-    stylesApiSelectors: ['input', 'leftSection', 'rightSection', 'wrapper'],
+    stylesApiSelectors: ['input', 'section', 'wrapper'],
   });
 
   tests.itSupportsFocusEvents<InputProps>({

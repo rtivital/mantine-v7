@@ -31,7 +31,7 @@ import classes from './Input.module.css';
 export interface __BaseInputProps extends __InputWrapperProps, __InputProps {}
 export type __InputStylesNames = InputStylesNames | InputWrapperStylesNames;
 
-export type InputStylesNames = 'input' | 'wrapper' | 'leftSection' | 'rightSection';
+export type InputStylesNames = 'input' | 'wrapper' | 'section';
 export type InputVariant = 'default' | 'filled' | 'unstyled';
 export type InputCssVariables = {
   wrapper:
@@ -219,7 +219,8 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       {leftSection && (
         <div
           {...leftSectionProps}
-          {...getStyles('leftSection', {
+          data-position="left"
+          {...getStyles('section', {
             className: leftSectionProps?.className,
             style: leftSectionProps?.style,
           })}
@@ -244,7 +245,8 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       {rightSection && (
         <div
           {...rightSectionProps}
-          {...getStyles('rightSection', {
+          data-position="right"
+          {...getStyles('section', {
             className: rightSectionProps?.className,
             style: rightSectionProps?.style,
           })}

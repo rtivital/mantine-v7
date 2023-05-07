@@ -21,11 +21,13 @@
   --_input-padding: calc(var(--input-height) / 3);
   --_input-padding-left: var(--_input-padding);
   --_input-padding-right: var(--_input-padding);
-  --_input-section-color: inherit;
   --_input-placeholder-color: var(--mantine-color-placeholder);
   --_input-color: inherit;
-  --_input-left-section-size: var(--input-left-section-width, var(--input-height));
-  --_input-right-section-size: var(--input-right-section-width, var(--input-height));
+  --_input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - rem(2px)));
+  --_input-right-section-size: var(
+    --input-right-section-width,
+    calc(var(--input-height) - rem(2px))
+  );
   --_input-size: var(--input-height);
 
   --_section-y: rem(1px);
@@ -188,34 +190,34 @@
   }
 }
 
-.leftSection {
-  pointer-events: var(--input-left-section-pointer-events);
+.section {
+  pointer-events: var(--_section-pointer-events);
   position: absolute;
-  color: var(--_input-section-color);
   z-index: 1;
-  left: var(--_left-section-left);
-  right: var(--_left-section-right);
+  left: var(--_section-left);
+  right: var(--_section-right);
   bottom: var(--_section-y);
   top: var(--_section-y);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--_input-left-section-size);
-  border-radius: var(--_left-section-border-radius);
-}
+  width: var(--_section-size);
+  border-radius: var(--_section-border-radius);
+  color: var(--mantine-color-placeholder);
 
-.rightSection {
-  pointer-events: var(--input-right-section-pointer-events);
-  position: absolute;
-  color: var(--_input-section-color);
-  z-index: 1;
-  left: var(--_right-section-left);
-  right: var(--_right-section-right);
-  bottom: var(--_section-y);
-  top: var(--_section-y);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--_input-right-section-size);
-  border-radius: var(--_right-section-border-radius);
+  &[data-position='right'] {
+    --_section-pointer-events: var(--input-right-section-pointer-events);
+    --_section-left: var(--_right-section-left);
+    --_section-right: var(--_right-section-right);
+    --_section-size: var(--_input-right-section-size);
+    --_section-border-radius: var(--_right-section-border-radius);
+  }
+
+  &[data-position='left'] {
+    --_section-pointer-events: var(--input-left-section-pointer-events);
+    --_section-left: var(--_left-section-left);
+    --_section-right: var(--_left-section-right);
+    --_section-size: var(--_input-left-section-size);
+    --_section-border-radius: var(--_left-section-border-radius);
+  }
 }

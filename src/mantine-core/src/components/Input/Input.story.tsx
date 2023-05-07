@@ -28,8 +28,7 @@ export function Sizes() {
       rightSection={size}
       mt="md"
       styles={{
-        rightSection: { backgroundColor: 'pink' },
-        leftSection: { backgroundColor: 'cyan' },
+        section: { backgroundColor: 'pink' },
       }}
     />
   ));
@@ -46,7 +45,7 @@ export function RightSection() {
         defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
         rightSectionWidth={40}
         styles={{
-          rightSection: { backgroundColor: 'pink' },
+          section: { backgroundColor: 'pink' },
         }}
       />
     </div>

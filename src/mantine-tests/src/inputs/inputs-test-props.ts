@@ -15,7 +15,6 @@ export const inputStylesApiSelectors: __InputStylesNames[] = [
   'error',
   'label',
   'wrapper',
-  'leftSection',
   'required',
-  'rightSection',
+  'section',
 ];
