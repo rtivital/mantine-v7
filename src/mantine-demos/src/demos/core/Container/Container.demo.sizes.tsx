@@ -3,7 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { Container, MantineThemeProvider, createTheme, rem } from '@mantine/core';
 
 const code = `
-import { Container, MantineThemeProvider, createTheme, rem } from '@mantine/core';
+import { Container, MantineProvider, createTheme, rem } from '@mantine/core';
 
 const CONTAINER_SIZES: Record<string, string> = {
   xxs: rem(300),
@@ -33,11 +33,11 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <MantineProvider theme={theme}>
       <Container size="xxs" bg="var(--mantine-color-blue-light)">
         Container with custom size
       </Container>
-    </MantineThemeProvider>
+    </MantineProvider>
   );
 }
 
