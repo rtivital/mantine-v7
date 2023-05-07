@@ -12,6 +12,9 @@ const EXTRA_FILES_PATHS = [
 
   // Button
   '../src/mantine-core/src/components/Button/ButtonGroup/ButtonGroup.tsx',
+
+  // ActionIcon
+  '../src/mantine-core/src/components/ActionIcon/ActionIconGroup/ActionIconGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

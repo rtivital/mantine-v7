@@ -17,7 +17,7 @@ export const interactiveVariantsControl: ConfiguratorControlOptions = {
   prop: 'variant',
   data: INTERACTIVE_VARIANTS,
   initialValue: 'filled',
-  libraryValue: 'filled',
+  libraryValue: '__none__',
 };
 
 export const staticVariantsControl: ConfiguratorControlOptions = {
@@ -25,5 +25,5 @@ export const staticVariantsControl: ConfiguratorControlOptions = {
   prop: 'variant',
   data: STATIC_VARIANTS,
   initialValue: 'filled',
-  libraryValue: 'filled',
+  libraryValue: '__none__',
 };

@@ -261,4 +261,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Input/Input.tsx',
     docs: 'core/Input.mdx',
   },
+  ActionIcon: {
+    title: 'ActionIcon',
+    package: '@mantine/core',
+    slug: '/core/action-icon',
+    category: 'buttons',
+    description: 'Icon button',
+    componentPrefix: 'ActionIcon',
+    props: ['ActionIcon', 'ActionIconGroup'],
+    styles: ['ActionIcon', 'ActionIconGroup'],
+    polymorphic: true,
+    import: "import { ActionIcon } from '@mantine/core';",
+    source: 'mantine-core/src/components/ActionIcon/ActionIcon.tsx',
+    docs: 'core/ActionIcon.mdx',
+  },
 };

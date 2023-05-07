@@ -1,0 +1,37 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { ActionIconDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.ActionIcon);
+
+## Usage
+
+`ActionIcon` is similar to [Button](/core/button) component: it supports the same customization
+options – follow [Button](/core/button) documentation to learn about ways to customize it.
+
+<Demo data={ActionIconDemos.usage} />
+
+## ActionIcon.Group
+
+<Demo data={ActionIconDemos.group} />
+
+Note that you cannot wrap child `ActionIcon` components with any additional elements:
+
+```tsx
+import { ActionIcon } from '@mantine/core';
+
+function Demo() {
+  return (
+    <ActionIcon.Group>
+      <div>
+        <ActionIcon>This will not work</ActionIcon>
+      </div>
+      <ActionIcon>ActionIcons will have incorrect borders</ActionIcon>
+    </ActionIcon.Group>
+  );
+}
+```
+
+<Polymorphic defaultElement="button" changeToElement="a" component="ActionIcon" withNext />
+
+<GetElementRef component="ActionIcon" refType="button" />
