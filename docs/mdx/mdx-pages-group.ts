@@ -67,7 +67,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       { category: 'feedback', pages: [MDX_DATA.Loader] },
       { category: 'Data display', pages: [MDX_DATA.BackgroundImage] },
-      { category: 'typography', pages: [MDX_DATA.Blockquote] },
+      { category: 'typography', pages: [MDX_DATA.Blockquote, MDX_DATA.Code] },
     ],
   },
 ];

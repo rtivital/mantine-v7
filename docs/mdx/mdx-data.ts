@@ -379,4 +379,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Center/Center.tsx',
     docs: 'core/Center.mdx',
   },
+  Code: {
+    title: 'Code',
+    package: '@mantine/core',
+    slug: '/core/code',
+    props: ['Code'],
+    styles: ['Code'],
+    description: 'Inline and block code',
+    import: "import { Code } from '@mantine/core';",
+    source: 'mantine-core/src/components/Code/Code.tsx',
+    docs: 'core/Code.mdx',
+  },
 };
