@@ -24,6 +24,11 @@
     --_list-line-top: 0;
     --_tab-radius: 0 0 var(--tabs-radius) var(--tabs-radius);
     --_tab-border-width: var(--_list-border-width) 0 0 0;
+
+    & .list--default::before {
+      top: 0;
+      bottom: unset;
+    }
   }
 
   &[data-orientation='vertical'] {
@@ -133,7 +138,7 @@
   align-items: center;
   line-height: 1;
   user-select: none;
-  flex-grow: var(--tab-grow);
+  flex-grow: var(--_tab-grow);
   justify-content: var(--_tab-justify);
 
   &:disabled,

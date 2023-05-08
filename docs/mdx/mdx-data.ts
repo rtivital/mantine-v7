@@ -321,4 +321,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/UnstyledButton/UnstyledButton.tsx',
     docs: 'core/UnstyledButton.mdx',
   },
+  Tabs: {
+    title: 'Tabs',
+    package: '@mantine/core',
+    slug: '/core/tabs',
+    category: 'buttons',
+    props: ['Tabs', 'TabsList', 'TabsTab', 'TabsPanel'],
+    styles: ['Tabs'],
+    description: 'Switch between different views',
+    import: "import { Tabs } from '@mantine/core';",
+    source: 'mantine-core/src/components/Tabs/Tabs.tsx',
+    docs: 'core/Tabs.mdx',
+  },
 };

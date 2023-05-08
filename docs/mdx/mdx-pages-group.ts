@@ -61,7 +61,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.UnstyledButton,
         ],
       },
-      { category: 'navigation', pages: [MDX_DATA.Anchor] },
+      { category: 'navigation', pages: [MDX_DATA.Anchor, MDX_DATA.Tabs] },
       { category: 'feedback', pages: [MDX_DATA.Loader] },
     ],
   },
