@@ -35,3 +35,28 @@ function Demo() {
 <Polymorphic defaultElement="button" changeToElement="a" component="ActionIcon" withNext />
 
 <GetElementRef component="ActionIcon" refType="button" />
+
+## Accessibility
+
+To make `ActionIcon` accessible for screen readers you need to either set `aria-label` or
+use [VisuallyHidden](/core/visually-hidden) component:
+
+```tsx
+import { ActionIcon, VisuallyHidden } from '@mantine/core';
+import { IconHeart } from '@tabler/icons-react';
+
+function Demo() {
+  return (
+    <>
+      <ActionIcon aria-label="Like post">
+        <IconHeart />
+      </ActionIcon>
+
+      <ActionIcon>
+        <VisuallyHidden>Like post</VisuallyHidden>
+        <IconHeart />
+      </ActionIcon>
+    </>
+  );
+}
+```

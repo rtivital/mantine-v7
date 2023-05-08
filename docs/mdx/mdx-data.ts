@@ -275,4 +275,17 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ActionIcon/ActionIcon.tsx',
     docs: 'core/ActionIcon.mdx',
   },
+  CloseButton: {
+    title: 'CloseButton',
+    package: '@mantine/core',
+    slug: '/core/close-button',
+    category: 'buttons',
+    description: 'ActionIcon with close icon',
+    props: ['CloseButton'],
+    styles: ['CloseButton'],
+    polymorphic: true,
+    import: "import { CloseButton } from '@mantine/core';",
+    source: 'mantine-core/src/components/CloseButton/CloseButton.tsx',
+    docs: 'core/CloseButton.mdx',
+  },
 };
