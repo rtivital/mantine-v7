@@ -423,4 +423,14 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ColorSwatch/ColorSwatch.tsx',
     docs: 'core/ColorSwatch.mdx',
   },
+  FocusTrap: {
+    title: 'FocusTrap',
+    package: '@mantine/core',
+    slug: '/core/focus-trap',
+    props: ['FocusTrap'],
+    description: 'Trap focus at child node',
+    import: "import { FocusTrap } from '@mantine/core';",
+    source: 'mantine-core/src/components/FocusTrap/FocusTrap.tsx',
+    docs: 'core/FocusTrap.mdx',
+  },
 };

@@ -18,6 +18,7 @@ export * as ColorSwatchDemos from './demos/core/ColorSwatch';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as FileButtonDemos from './demos/core/FileButton';
+export * as FocusTrapDemos from './demos/core/FocusTrap';
 export * as InputDemos from './demos/core/Input';
 export * as LoaderDemos from './demos/core/Loader';
 export * as TabsDemos from './demos/core/Tabs';
