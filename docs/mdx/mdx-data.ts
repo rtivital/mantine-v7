@@ -345,4 +345,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Blockquote/Blockquote.tsx',
     docs: 'core/Blockquote.mdx',
   },
+  Breadcrumbs: {
+    title: 'Breadcrumbs',
+    package: '@mantine/core',
+    slug: '/core/breadcrumbs',
+    props: ['Breadcrumbs'],
+    styles: ['Breadcrumbs'],
+    description: 'Separates list of react nodes with given separator',
+    import: "import { Breadcrumbs } from '@mantine/core';",
+    source: 'mantine-core/src/components/Breadcrumbs/Breadcrumbs.tsx',
+    docs: 'core/Breadcrumbs.mdx',
+  },
 };
