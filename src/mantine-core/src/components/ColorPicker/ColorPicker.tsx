@@ -114,7 +114,7 @@ export type ColorPickerFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ColorPickerProps> = {
-  swatchesPerRow: 10,
+  swatchesPerRow: 7,
   size: 'sm',
   withPicker: true,
   focusable: true,

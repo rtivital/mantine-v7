@@ -400,4 +400,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Collapse/Collapse.tsx',
     docs: 'core/Collapse.mdx',
   },
+  ColorPicker: {
+    title: 'ColorPicker',
+    package: '@mantine/core',
+    slug: '/core/color-picker',
+    props: ['ColorPicker'],
+    styles: ['ColorPicker'],
+    description: 'Pick colors',
+    import: "import { ColorPicker } from '@mantine/core';",
+    source: 'mantine-core/src/components/ColorPicker/ColorPicker.tsx',
+    docs: 'core/ColorPicker.mdx',
+  },
 };
