@@ -58,6 +58,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.CloseButton,
           MDX_DATA.CopyButton,
           MDX_DATA.FileButton,
+          MDX_DATA.UnstyledButton,
         ],
       },
       { category: 'navigation', pages: [MDX_DATA.Anchor] },

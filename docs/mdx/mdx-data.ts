@@ -310,4 +310,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/FileButton/FileButton.tsx',
     docs: 'core/FileButton.mdx',
   },
+  UnstyledButton: {
+    title: 'UnstyledButton',
+    package: '@mantine/core',
+    slug: '/core/unstyled-button',
+    category: 'buttons',
+    description: 'Unstyled polymorphic button',
+    polymorphic: true,
+    import: "import { UnstyledButton } from '@mantine/core';",
+    source: 'mantine-core/src/components/UnstyledButton/UnstyledButton.tsx',
+    docs: 'core/UnstyledButton.mdx',
+  },
 };

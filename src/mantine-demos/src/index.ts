@@ -11,3 +11,4 @@ export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as FileButtonDemos from './demos/core/FileButton';
 export * as InputDemos from './demos/core/Input';
 export * as LoaderDemos from './demos/core/Loader';
+export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
