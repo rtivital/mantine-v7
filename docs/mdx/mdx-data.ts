@@ -390,4 +390,14 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Code/Code.tsx',
     docs: 'core/Code.mdx',
   },
+  Collapse: {
+    title: 'Collapse',
+    package: '@mantine/core',
+    slug: '/core/collapse',
+    props: ['Collapse'],
+    description: 'Animate presence with slide down/up transition',
+    import: "import { Collapse } from '@mantine/core';",
+    source: 'mantine-core/src/components/Collapse/Collapse.tsx',
+    docs: 'core/Collapse.mdx',
+  },
 };

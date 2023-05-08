@@ -12,6 +12,7 @@ export * as ButtonDemos from './demos/core/Button';
 export * as CenterDemos from './demos/core/Center';
 export * as CloseButtonDemos from './demos/core/CloseButton';
 export * as CodeDemos from './demos/core/Code';
+export * as CollapseDemos from './demos/core/Collapse';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as FileButtonDemos from './demos/core/FileButton';
