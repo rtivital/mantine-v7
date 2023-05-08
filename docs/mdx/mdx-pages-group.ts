@@ -50,7 +50,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     pages: [
       { category: 'layout', pages: [MDX_DATA.Container] },
       { category: 'inputs', pages: [MDX_DATA.Input] },
-      { category: 'buttons', pages: [MDX_DATA.ActionIcon, MDX_DATA.Button, MDX_DATA.CloseButton] },
+      {
+        category: 'buttons',
+        pages: [MDX_DATA.ActionIcon, MDX_DATA.Button, MDX_DATA.CloseButton, MDX_DATA.CopyButton],
+      },
       { category: 'navigation', pages: [MDX_DATA.Anchor] },
       { category: 'feedback', pages: [MDX_DATA.Loader] },
     ],

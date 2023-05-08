@@ -51,7 +51,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
             </Highlight>
 
             {prop.required && (
-              <Text component="sup" color="red" fz="xs">
+              <Text component="sup" c="red" fz="xs">
                 {' '}
                 *
               </Text>

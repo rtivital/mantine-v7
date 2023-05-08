@@ -288,4 +288,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/CloseButton/CloseButton.tsx',
     docs: 'core/CloseButton.mdx',
   },
+  CopyButton: {
+    title: 'CopyButton',
+    package: '@mantine/core',
+    slug: '/core/copy-button',
+    category: 'buttons',
+    description: 'Copies given text to clipboard',
+    props: ['CopyButton'],
+    import: "import { CopyButton } from '@mantine/core';",
+    source: 'mantine-core/src/components/CopyButton/CopyButton.tsx',
+    docs: 'core/CopyButton.mdx',
+  },
 };
