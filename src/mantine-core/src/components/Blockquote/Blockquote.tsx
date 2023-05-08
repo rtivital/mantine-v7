@@ -19,7 +19,7 @@ import {
 } from '../../core';
 import classes from './Blockquote.module.css';
 
-export type BlockquoteStylesNames = 'root' | 'icon';
+export type BlockquoteStylesNames = 'root' | 'icon' | 'cite';
 export type BlockquoteVariant = string;
 export type BlockquoteCssVariables = {
   root: '--bq-bg-light' | '--bq-bg-dark' | '--bq-bd' | '--bq-icon-size' | '--bq-radius';
@@ -28,7 +28,7 @@ export type BlockquoteCssVariables = {
 export interface BlockquoteProps
   extends BoxProps,
     StylesApiProps<BlockquoteFactory>,
-    ElementProps<'blockquote'> {
+    ElementProps<'blockquote', 'cite'> {
   /** Blockquote icon, displayed on the top left */
   icon?: React.ReactNode;
 
@@ -40,6 +40,9 @@ export interface BlockquoteProps
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
+
+  /** Describe a reference to a cited quote */
+  cite?: React.ReactNode;
 }
 
 export type BlockquoteFactory = Factory<{
@@ -90,6 +93,7 @@ export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {
     children,
     icon,
     iconSize,
+    cite,
     ...others
   } = props;
 
@@ -110,6 +114,7 @@ export const Blockquote = factory<BlockquoteFactory>((_props, ref) => {
     <Box component="blockquote" ref={ref} {...getStyles('root')} {...others}>
       {icon && <span {...getStyles('icon')}>{icon}</span>}
       {children}
+      {cite && <cite {...getStyles('cite')}>{cite}</cite>}
     </Box>
   );
 });
