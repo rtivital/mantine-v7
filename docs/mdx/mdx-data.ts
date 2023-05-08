@@ -433,4 +433,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/FocusTrap/FocusTrap.tsx',
     docs: 'core/FocusTrap.mdx',
   },
+  Group: {
+    title: 'Group',
+    package: '@mantine/core',
+    slug: '/core/group',
+    props: ['Group'],
+    styles: ['Group'],
+    description: 'Compose elements and components in a horizontal flex container',
+    import: "import { Group } from '@mantine/core';",
+    source: 'mantine-core/src/components/Group/Group.tsx',
+    docs: 'core/Group.mdx',
+  },
 };

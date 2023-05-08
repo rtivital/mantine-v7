@@ -1,0 +1,38 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { GroupDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.Group);
+
+## Usage
+
+<Demo data={GroupDemos.usage} />
+
+## Group children
+
+**!important** Group works correctly only with React elements.
+Strings, numbers, fragments may have incorrect styles if `grow` prop is set:
+
+```tsx
+// Invalid Group usage, do not do this
+import { Group } from '@mantine/core';
+
+function InvalidDemo() {
+  return (
+    <Group>
+      First string
+      <>
+        <div>element inside fragment</div>
+        <div>another inside fragment</div>
+      </>
+      {20}
+    </Group>
+  );
+}
+```
+
+## Browser support
+
+Group uses [flexbox gap](https://caniuse.com/flexbox-gap) to add spacing between children.
+In older browsers Group children will not have spacing. You can install PostCSS [flex-gap-polyfill](https://github.com/gavinmcfarland/flex-gap-polyfill)
+to add support for older browsers.
