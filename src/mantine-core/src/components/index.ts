@@ -13,6 +13,7 @@ export * from './ColorPicker';
 export * from './ColorSwatch';
 export * from './Container';
 export * from './CopyButton';
+export * from './FileButton';
 export * from './Floating';
 export * from './FocusTrap';
 export * from './Group';

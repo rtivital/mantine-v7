@@ -8,5 +8,6 @@ export * as ButtonDemos from './demos/core/Button';
 export * as CloseButtonDemos from './demos/core/CloseButton';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
+export * as FileButtonDemos from './demos/core/FileButton';
 export * as InputDemos from './demos/core/Input';
 export * as LoaderDemos from './demos/core/Loader';

@@ -299,4 +299,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/CopyButton/CopyButton.tsx',
     docs: 'core/CopyButton.mdx',
   },
+  FileButton: {
+    title: 'FileButton',
+    package: '@mantine/core',
+    slug: '/core/file-button',
+    category: 'buttons',
+    description: 'Open file picker with a button click',
+    props: ['FileButton'],
+    import: "import { FileButton } from '@mantine/core';",
+    source: 'mantine-core/src/components/FileButton/FileButton.tsx',
+    docs: 'core/FileButton.mdx',
+  },
 };
