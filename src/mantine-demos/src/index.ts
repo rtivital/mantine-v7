@@ -4,6 +4,7 @@ export * as GuidesDemos from './demos/guides';
 
 export * as ActionIconDemos from './demos/core/ActionIcon';
 export * as AnchorDemos from './demos/core/Anchor';
+export * as BackgroundImageDemos from './demos/core/BackgroundImage';
 export * as ButtonDemos from './demos/core/Button';
 export * as CloseButtonDemos from './demos/core/CloseButton';
 export * as ContainerDemos from './demos/core/Container';

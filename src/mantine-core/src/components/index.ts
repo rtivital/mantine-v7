@@ -5,6 +5,7 @@ export * from './Blockquote';
 export * from './Breadcrumbs';
 export * from './Burger';
 export * from './Button';
+export * from './Center';
 export * from './Checkbox';
 export * from './CloseButton';
 export * from './Code';
