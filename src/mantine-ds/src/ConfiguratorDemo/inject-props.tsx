@@ -7,7 +7,7 @@ function isMultiLine(code: string) {
 export function injectProps(props: any, code: string) {
   const propStrings: string[] = [];
   const multiline = isMultiLine(code);
-  const replacedChildrenCode = code.replace('%%children%%', props.children || '');
+  const replacedChildrenCode = code.replace('{{children}}', props.children || '');
 
   for (const [key, value] of Object.entries(props)) {
     if (key !== 'children') {

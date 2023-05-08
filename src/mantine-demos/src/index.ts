@@ -20,6 +20,7 @@ export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as FileButtonDemos from './demos/core/FileButton';
 export * as FocusTrapDemos from './demos/core/FocusTrap';
 export * as GroupDemos from './demos/core/Group';
+export * as HighlightDemos from './demos/core/Highlight';
 export * as InputDemos from './demos/core/Input';
 export * as LoaderDemos from './demos/core/Loader';
 export * as TabsDemos from './demos/core/Tabs';

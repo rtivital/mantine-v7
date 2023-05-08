@@ -444,4 +444,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Group/Group.tsx',
     docs: 'core/Group.mdx',
   },
+  Highlight: {
+    title: 'Highlight',
+    package: '@mantine/core',
+    slug: '/core/highlight',
+    props: ['Highlight'],
+    styles: ['Highlight'],
+    description: 'Highlight given part of a string with mark',
+    import: "import { Highlight } from '@mantine/core';",
+    source: 'mantine-core/src/components/Highlight/Highlight.tsx',
+    docs: 'core/Highlight.mdx',
+  },
 };
