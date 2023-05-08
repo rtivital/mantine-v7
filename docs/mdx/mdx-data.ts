@@ -367,4 +367,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Burger/Burger.tsx',
     docs: 'core/Burger.mdx',
   },
+  Center: {
+    title: 'Center',
+    package: '@mantine/core',
+    slug: '/core/center',
+    props: ['Center'],
+    styles: ['Center'],
+    polymorphic: true,
+    description: 'Centers content vertically and horizontally',
+    import: "import { Center } from '@mantine/core';",
+    source: 'mantine-core/src/components/Center/Center.tsx',
+    docs: 'core/Center.mdx',
+  },
 };

@@ -9,6 +9,7 @@ export * as BlockquoteDemos from './demos/core/Blockquote';
 export * as BreadcrumbsDemos from './demos/core/Breadcrumbs';
 export * as BurgerDemos from './demos/core/Burger';
 export * as ButtonDemos from './demos/core/Button';
+export * as CenterDemos from './demos/core/Center';
 export * as CloseButtonDemos from './demos/core/CloseButton';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
