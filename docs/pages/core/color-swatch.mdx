@@ -1,0 +1,16 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { ColorSwatchDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.ColorSwatch);
+
+## Usage
+
+<Demo data={ColorSwatchDemos.usage} />
+
+## Component prop
+
+`ColorSwatch` is a [polymorphic](/guides/polymorphic) component, you can change root element
+with `component` prop:
+
+<Demo data={ColorSwatchDemos.component} />

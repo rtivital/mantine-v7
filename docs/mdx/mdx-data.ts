@@ -411,4 +411,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ColorPicker/ColorPicker.tsx',
     docs: 'core/ColorPicker.mdx',
   },
+  ColorSwatch: {
+    title: 'ColorSwatch',
+    package: '@mantine/core',
+    slug: '/core/color-swatch',
+    props: ['ColorSwatch'],
+    styles: ['ColorSwatch'],
+    polymorphic: true,
+    description: 'Displays color',
+    import: "import { ColorSwatch } from '@mantine/core';",
+    source: 'mantine-core/src/components/ColorSwatch/ColorSwatch.tsx',
+    docs: 'core/ColorSwatch.mdx',
+  },
 };
