@@ -356,4 +356,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Breadcrumbs/Breadcrumbs.tsx',
     docs: 'core/Breadcrumbs.mdx',
   },
+  Burger: {
+    title: 'Burger',
+    package: '@mantine/core',
+    slug: '/core/burger',
+    props: ['Burger'],
+    styles: ['Burger'],
+    description: 'Open/close navigation button',
+    import: "import { Burger } from '@mantine/core';",
+    source: 'mantine-core/src/components/Burger/Burger.tsx',
+    docs: 'core/Burger.mdx',
+  },
 };
