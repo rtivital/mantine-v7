@@ -149,20 +149,20 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
           onMouseEnter={() => setScrollbarHovered(true)}
           onMouseLeave={() => setScrollbarHovered(false)}
         >
-          <Rsa.Thumb className={classes.thumb} />
+          <Rsa.Thumb {...getStyles('thumb')} />
         </Rsa.Scrollbar>
         <Rsa.Scrollbar
+          {...getStyles('scrollbar')}
           orientation="vertical"
           data-hidden={type === 'never' || undefined}
-          className={classes.scrollbar}
           forceMount
           onMouseEnter={() => setScrollbarHovered(true)}
           onMouseLeave={() => setScrollbarHovered(false)}
         >
-          <Rsa.Thumb className={classes.thumb} />
+          <Rsa.Thumb {...getStyles('thumb')} />
         </Rsa.Scrollbar>
         <Rsa.Corner
-          className={classes.corner}
+          {...getStyles('corner')}
           data-hovered={scrollbarHovered || undefined}
           data-hidden={type === 'never' || undefined}
         />

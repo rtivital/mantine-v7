@@ -523,4 +523,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Portal/Portal.tsx',
     docs: 'core/Portal.mdx',
   },
+  ScrollArea: {
+    title: 'ScrollArea',
+    package: '@mantine/core',
+    slug: '/core/scroll-area',
+    props: ['ScrollArea'],
+    styles: ['ScrollArea'],
+    description: 'Area with custom scrollbars',
+    import: "import { ScrollArea } from '@mantine/core';",
+    source: 'mantine-core/src/components/ScrollArea/ScrollArea.tsx',
+    docs: 'core/ScrollArea.mdx',
+  },
 };

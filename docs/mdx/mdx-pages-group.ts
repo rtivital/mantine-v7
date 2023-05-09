@@ -77,7 +77,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       {
         category: 'misc',
-        pages: [MDX_DATA.Collapse, MDX_DATA.FocusTrap, MDX_DATA.Paper, MDX_DATA.Portal],
+        pages: [
+          MDX_DATA.Collapse,
+          MDX_DATA.FocusTrap,
+          MDX_DATA.Paper,
+          MDX_DATA.Portal,
+          MDX_DATA.ScrollArea,
+        ],
       },
     ],
   },

@@ -28,5 +28,6 @@ export * as MarkDemos from './demos/core/Mark';
 export * as NativeSelectDemos from './demos/core/NativeSelect';
 export * as PaperDemos from './demos/core/Paper';
 export * as PopoverDemos from './demos/core/Popover';
+export * as ScrollAreaDemos from './demos/core/ScrollArea';
 export * as TabsDemos from './demos/core/Tabs';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
