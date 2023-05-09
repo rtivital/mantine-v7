@@ -15,8 +15,10 @@ export function NativeSelectOption({ data }: NativeSelectOptionProps) {
     return <optgroup label={data.group}>{items}</optgroup>;
   }
 
+  const { value, label, ...others } = data;
+
   return (
-    <option key={data.value} value={data.value}>
+    <option key={data.value} value={data.value} {...others}>
       {data.label}
     </option>
   );

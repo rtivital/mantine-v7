@@ -478,4 +478,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Mark/Mark.tsx',
     docs: 'core/Mark.mdx',
   },
+  NativeSelect: {
+    title: 'NativeSelect',
+    package: '@mantine/core',
+    slug: '/core/native-select',
+    props: ['NativeSelect'],
+    styles: ['NativeSelect'],
+    description: 'Native select element based on Input',
+    import: "import { NativeSelect } from '@mantine/core';",
+    source: 'mantine-core/src/components/NativeSelect/NativeSelect.tsx',
+    docs: 'core/NativeSelect.mdx',
+  },
 };
