@@ -534,4 +534,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ScrollArea/ScrollArea.tsx',
     docs: 'core/ScrollArea.mdx',
   },
+  SegmentedControl: {
+    title: 'SegmentedControl',
+    package: '@mantine/core',
+    slug: '/core/segmented-control',
+    props: ['SegmentedControl'],
+    styles: ['SegmentedControl'],
+    description: 'A linear set of two or more segments',
+    import: "import { SegmentedControl } from '@mantine/core';",
+    source: 'mantine-core/src/components/SegmentedControl/SegmentedControl.tsx',
+    docs: 'core/SegmentedControl.mdx',
+  },
 };
