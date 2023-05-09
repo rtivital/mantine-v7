@@ -52,28 +52,6 @@ export async function buildPackage(_packageName: string, options?: BuildOptions)
       }
     }
 
-    fs.copySync(
-      path.join(packagePath, '/esm'),
-      path.join(__dirname, '../../docs/node_modules', packageName, '/esm')
-    );
-
-    fs.copySync(
-      path.join(packagePath, '/cjs'),
-      path.join(__dirname, '../../docs/node_modules', packageName, '/cjs')
-    );
-
-    fs.copySync(
-      path.join(packagePath, '/lib'),
-      path.join(__dirname, '../../docs/node_modules', packageName, '/lib')
-    );
-
-    if (fs.existsSync(path.join(packagePath, '/styles.css'))) {
-      fs.copySync(
-        path.join(packagePath, '/styles.css'),
-        path.join(__dirname, '../../docs/node_modules', packageName, 'styles.css')
-      );
-    }
-
     logger.info(
       `Package ${chalk.cyan(packageName)} was built in ${chalk.green(
         `${((Date.now() - startTime) / 1000).toFixed(2)}s`
