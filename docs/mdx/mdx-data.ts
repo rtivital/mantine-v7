@@ -501,4 +501,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Paper/Paper.tsx',
     docs: 'core/Paper.mdx',
   },
+  Popover: {
+    title: 'Popover',
+    package: '@mantine/core',
+    slug: '/core/popover',
+    componentPrefix: 'Popover',
+    props: ['Popover', 'PopoverTarget', 'PopoverDropdown'],
+    styles: ['Popover'],
+    description: 'Display popover section relative to given target element',
+    import: "import { Popover } from '@mantine/core';",
+    source: 'mantine-core/src/components/Popover/Popover.tsx',
+    docs: 'core/Popover.mdx',
+  },
 };

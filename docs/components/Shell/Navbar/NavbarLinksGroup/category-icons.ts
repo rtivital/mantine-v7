@@ -19,7 +19,7 @@ export const CATEGORY_ICONS: Record<string, typeof IconBox> = {
   Utilities: IconBulb,
   Lifecycle: IconRefresh,
   'Data display': IconNotebook,
-  overlay: IconBoxMultiple,
+  overlays: IconBoxMultiple,
   navigation: IconMenu2,
   inputs: IconForms,
   misc: IconComponents,
