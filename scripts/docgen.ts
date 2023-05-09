@@ -15,6 +15,10 @@ const EXTRA_FILES_PATHS = [
 
   // ActionIcon
   '../src/mantine-core/src/components/ActionIcon/ActionIconGroup/ActionIconGroup.tsx',
+
+  // Popover
+  '../src/mantine-core/src/components/Popover/PopoverTarget/PopoverTarget.tsx',
+  '../src/mantine-core/src/components/Popover/PopoverDropdown/PopoverDropdown.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
