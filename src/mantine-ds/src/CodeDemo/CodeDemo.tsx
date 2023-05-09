@@ -13,6 +13,7 @@ export function CodeDemo({
   defaultExpanded = true,
   maxWidth,
   minHeight,
+  dimmed,
 }: CodeDemoProps) {
   return (
     <DemoRoot>
@@ -21,6 +22,7 @@ export function CodeDemo({
         centered={centered}
         maxWidth={maxWidth}
         minHeight={minHeight}
+        dimmed={dimmed}
       >
         {children}
       </DemoArea>

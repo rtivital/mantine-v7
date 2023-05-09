@@ -26,5 +26,6 @@ export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
 export * as MarkDemos from './demos/core/Mark';
 export * as NativeSelectDemos from './demos/core/NativeSelect';
+export * as PaperDemos from './demos/core/Paper';
 export * as TabsDemos from './demos/core/Tabs';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';

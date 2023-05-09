@@ -489,4 +489,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/NativeSelect/NativeSelect.tsx',
     docs: 'core/NativeSelect.mdx',
   },
+  Paper: {
+    title: 'Paper',
+    package: '@mantine/core',
+    slug: '/core/paper',
+    props: ['Paper'],
+    styles: ['Paper'],
+    description: 'Renders white or dark background depending on color scheme',
+    polymorphic: true,
+    import: "import { Paper } from '@mantine/core';",
+    source: 'mantine-core/src/components/Paper/Paper.tsx',
+    docs: 'core/Paper.mdx',
+  },
 };

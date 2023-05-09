@@ -18,6 +18,7 @@ export function DemoColumns({
   title,
   description,
   controls,
+  dimmed,
 }: DemoColumnsProps) {
   return (
     <div className={classes.columns}>
@@ -26,6 +27,7 @@ export function DemoColumns({
         maxWidth={maxWidth}
         minHeight={minHeight}
         centered={centered}
+        dimmed={dimmed}
       >
         {children}
       </DemoArea>

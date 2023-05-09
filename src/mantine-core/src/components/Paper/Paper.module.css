@@ -6,6 +6,7 @@
   text-decoration: none;
   border-radius: var(--paper-radius);
   box-shadow: var(--paper-shadow);
+  background-color: var(--mantine-color-body);
   border: var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent);
 
   &[data-with-border] {

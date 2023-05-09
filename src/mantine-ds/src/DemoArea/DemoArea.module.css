@@ -6,6 +6,10 @@
     --_demo-spacing: var(--mantine-spacing-md);
   }
 
+  &[data-dimmed] {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+  }
+
   &[data-centered] {
     display: flex;
     justify-content: center;
