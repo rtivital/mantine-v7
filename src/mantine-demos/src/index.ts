@@ -24,5 +24,6 @@ export * as HighlightDemos from './demos/core/Highlight';
 export * as InputDemos from './demos/core/Input';
 export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
+export * as MarkDemos from './demos/core/Mark';
 export * as TabsDemos from './demos/core/Tabs';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';

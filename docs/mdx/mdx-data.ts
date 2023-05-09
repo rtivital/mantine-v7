@@ -467,4 +467,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Kbd/Kbd.tsx',
     docs: 'core/Kbd.mdx',
   },
+  Mark: {
+    title: 'Mark',
+    package: '@mantine/core',
+    slug: '/core/mark',
+    props: ['Mark'],
+    styles: ['Mark'],
+    description: 'Highlight part of the text',
+    import: "import { Mark } from '@mantine/core';",
+    source: 'mantine-core/src/components/Mark/Mark.tsx',
+    docs: 'core/Mark.mdx',
+  },
 };

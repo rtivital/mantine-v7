@@ -70,7 +70,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
         category: 'Data display',
         pages: [MDX_DATA.BackgroundImage, MDX_DATA.ColorSwatch, MDX_DATA.Kbd],
       },
-      { category: 'typography', pages: [MDX_DATA.Blockquote, MDX_DATA.Code, MDX_DATA.Highlight] },
+      {
+        category: 'typography',
+        pages: [MDX_DATA.Blockquote, MDX_DATA.Code, MDX_DATA.Highlight, MDX_DATA.Mark],
+      },
       { category: 'misc', pages: [MDX_DATA.Collapse, MDX_DATA.FocusTrap] },
     ],
   },
