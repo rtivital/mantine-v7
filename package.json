@@ -39,7 +39,7 @@
     "docs:clean": "cd docs && npm run clean",
     "docs:build": "npm run docs:docgen && npm run build:private && cd docs && npm run build",
     "docs:serve": "cd docs && npm run serve",
-    "docs:deploy": "npm run docs:build && gh-pages -d docs/public",
+    "docs:deploy": "npm run docs:build && gh-pages -d docs/out -t true",
     "_release:no-test": "esno scripts/release",
     "_release": "npm run release:prepare && esno scripts/release",
     "_release:alpha": "npm run _release minor -- --stage alpha --tag next",
