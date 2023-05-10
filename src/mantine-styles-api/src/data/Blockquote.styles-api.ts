@@ -5,6 +5,7 @@ export const BlockquoteStylesApi: StylesApiData<BlockquoteFactory> = {
   selectors: {
     root: 'Root element',
     icon: 'Icon element',
+    cite: 'Cite element',
   },
 
   vars: {
