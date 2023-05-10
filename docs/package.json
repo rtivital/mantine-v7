@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev -p 7545",
-    "build": "next build && next export && cp CNAME out/CNAME",
+    "build": "next build && next export && cp CNAME out/CNAME && touch out/.nojekyll",
     "start": "next start",
     "lint": "next lint"
   },
