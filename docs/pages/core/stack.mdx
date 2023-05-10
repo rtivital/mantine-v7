@@ -1,0 +1,15 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { StackDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.Stack);
+
+## Usage
+
+<Demo data={StackDemos.configurator} />
+
+## Browser support
+
+Stack uses [flexbox gap](https://caniuse.com/flexbox-gap) to add spacing between children.
+In older browsers `Stack` children will not have spacing. You can install PostCSS [flex-gap-polyfill](https://github.com/gavinmcfarland/flex-gap-polyfill)
+to add support for older browsers.

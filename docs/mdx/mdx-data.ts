@@ -556,4 +556,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Slider/Slider.tsx',
     docs: 'core/Slider.mdx',
   },
+  Stack: {
+    title: 'Stack',
+    package: '@mantine/core',
+    slug: '/core/stack',
+    props: ['Stack'],
+    styles: ['Stack'],
+    description: 'Compose elements and components in a vertical flex container',
+    import: "import { Stack } from '@mantine/core';",
+    source: 'mantine-core/src/components/Stack/Stack.tsx',
+    docs: 'core/Stack.mdx',
+  },
 };

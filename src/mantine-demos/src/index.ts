@@ -31,5 +31,6 @@ export * as PopoverDemos from './demos/core/Popover';
 export * as ScrollAreaDemos from './demos/core/ScrollArea';
 export * as SegmentedControlDemos from './demos/core/SegmentedControl';
 export * as SliderDemos from './demos/core/Slider';
+export * as StackDemos from './demos/core/Stack';
 export * as TabsDemos from './demos/core/Tabs';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';

@@ -48,7 +48,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'mantine-core',
     pages: [
-      { category: 'layout', pages: [MDX_DATA.Container, MDX_DATA.Center, MDX_DATA.Group] },
+      {
+        category: 'layout',
+        pages: [MDX_DATA.Container, MDX_DATA.Center, MDX_DATA.Group, MDX_DATA.Stack],
+      },
       {
         category: 'inputs',
         pages: [
