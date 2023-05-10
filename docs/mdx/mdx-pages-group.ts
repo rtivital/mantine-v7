@@ -86,7 +86,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       {
         category: 'typography',
-        pages: [MDX_DATA.Blockquote, MDX_DATA.Code, MDX_DATA.Highlight, MDX_DATA.Mark],
+        pages: [
+          MDX_DATA.Blockquote,
+          MDX_DATA.Code,
+          MDX_DATA.Highlight,
+          MDX_DATA.Mark,
+          MDX_DATA.Table,
+        ],
       },
       {
         category: 'misc',

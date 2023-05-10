@@ -578,4 +578,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Switch/Switch.tsx',
     docs: 'core/Switch.mdx',
   },
+  Table: {
+    title: 'Table',
+    package: '@mantine/core',
+    slug: '/core/table',
+    props: ['Table'],
+    styles: ['Table'],
+    description: 'Render table with theme styles',
+    import: "import { Table } from '@mantine/core';",
+    source: 'mantine-core/src/components/Table/Table.tsx',
+    docs: 'core/Table.mdx',
+  },
 };
