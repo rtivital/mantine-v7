@@ -56,6 +56,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.ColorPicker,
           MDX_DATA.NativeSelect,
           MDX_DATA.SegmentedControl,
+          MDX_DATA.Slider,
         ],
       },
       {

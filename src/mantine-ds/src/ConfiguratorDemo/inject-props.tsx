@@ -1,6 +1,6 @@
 function isMultiLine(code: string) {
-  const placeholderLine = code.split('\n').find((line) => line.includes('%%props%%'));
-  return placeholderLine && placeholderLine.trim().startsWith('%%props%%');
+  const placeholderLine = code.split('\n').find((line) => line.includes('{{props}}'));
+  return placeholderLine && placeholderLine.trim().startsWith('{{props}}');
 }
 
 /* eslint-disable no-restricted-syntax */
@@ -36,7 +36,10 @@ export function injectProps(props: any, code: string) {
 
   const result = replacedChildrenCode.replace(placeholderRegex, (_, before, after) => {
     const propsWithWhitespace = propStrings
-      .map((propString) => `${before}${propString}\n`)
+      .map(
+        (propString, index) =>
+          `${before}${propString}${index !== propStrings.length - 1 ? '\n' : ''}`
+      )
       .join('');
     return `${propsWithWhitespace}${after}`;
   });

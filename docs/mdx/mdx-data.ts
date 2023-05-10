@@ -545,4 +545,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/SegmentedControl/SegmentedControl.tsx',
     docs: 'core/SegmentedControl.mdx',
   },
+  Slider: {
+    title: 'Slider',
+    package: '@mantine/core',
+    slug: '/core/slider',
+    props: ['Slider'],
+    styles: ['Slider'],
+    description: 'Slider and RangeSlider components',
+    import: "import { Slider } from '@mantine/core';",
+    source: 'mantine-core/src/components/Slider/Slider.tsx',
+    docs: 'core/Slider.mdx',
+  },
 };
