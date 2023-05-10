@@ -567,4 +567,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Stack/Stack.tsx',
     docs: 'core/Stack.mdx',
   },
+  Switch: {
+    title: 'Switch',
+    package: '@mantine/core',
+    slug: '/core/switch',
+    props: ['Switch', 'SwitchGroup'],
+    styles: ['Switch'],
+    description: 'Capture boolean input from user',
+    import: "import { Switch } from '@mantine/core';",
+    source: 'mantine-core/src/components/Switch/Switch.tsx',
+    docs: 'core/Switch.mdx',
+  },
 };

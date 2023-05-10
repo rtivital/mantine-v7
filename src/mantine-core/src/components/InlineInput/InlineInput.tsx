@@ -32,7 +32,7 @@ export interface InlineInputProps
   id: string;
   disabled: boolean | undefined;
   error: React.ReactNode;
-  size: MantineSize | (string & {}) | number | undefined;
+  size: MantineSize | (string & {}) | undefined;
   labelPosition?: 'left' | 'right';
 }
 
@@ -100,11 +100,15 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
             )}
 
             {description && (
-              <Input.Description {...getStyles('description')}>{description}</Input.Description>
+              <Input.Description size={size} {...getStyles('description')}>
+                {description}
+              </Input.Description>
             )}
 
             {error && error !== 'boolean' && (
-              <Input.Error {...getStyles('error')}>{error}</Input.Error>
+              <Input.Error size={size} {...getStyles('error')}>
+                {error}
+              </Input.Error>
             )}
           </div>
         </div>
