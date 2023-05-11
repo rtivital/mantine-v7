@@ -40,5 +40,6 @@ export * from './TextInput';
 export * from './Title';
 export * from './Tooltip';
 export * from './Transition';
+export * from './TypographyStylesProvider';
 export * from './UnstyledButton';
 export * from './VisuallyHidden';

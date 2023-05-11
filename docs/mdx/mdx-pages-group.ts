@@ -92,6 +92,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Highlight,
           MDX_DATA.Mark,
           MDX_DATA.Table,
+          MDX_DATA.Text,
         ],
       },
       {

@@ -1,0 +1,49 @@
+import React from 'react';
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  useStyles,
+  Factory,
+} from '../../core';
+import classes from './TypographyStylesProvider.module.css';
+
+export type TypographyStylesProviderStylesNames = 'root';
+export type TypographyStylesProviderVariant = string;
+
+export interface TypographyStylesProviderProps
+  extends BoxProps,
+    StylesApiProps<TypographyStylesProviderFactory>,
+    ElementProps<'div'> {}
+
+export type TypographyStylesProviderFactory = Factory<{
+  props: TypographyStylesProviderProps;
+  ref: HTMLDivElement;
+  stylesNames: TypographyStylesProviderStylesNames;
+  variant: TypographyStylesProviderVariant;
+}>;
+
+const defaultProps: Partial<TypographyStylesProviderProps> = {};
+
+export const TypographyStylesProvider = factory<TypographyStylesProviderFactory>((_props, ref) => {
+  const props = useProps('TypographyStylesProvider', defaultProps, _props);
+  const { classNames, className, style, styles, unstyled, ...others } = props;
+
+  const getStyles = useStyles<TypographyStylesProviderFactory>({
+    name: 'TypographyStylesProvider',
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+  });
+
+  return <Box ref={ref} {...getStyles('root')} {...others} />;
+});
+
+TypographyStylesProvider.displayName = '@mantine/core/TypographyStylesProvider';

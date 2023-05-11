@@ -589,4 +589,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Table/Table.tsx',
     docs: 'core/Table.mdx',
   },
+  Text: {
+    title: 'Text',
+    package: '@mantine/core',
+    slug: '/core/text',
+    props: ['Text'],
+    styles: ['Text'],
+    description: 'Display text',
+    import: "import { Text } from '@mantine/core';",
+    source: 'mantine-core/src/components/Text/Text.tsx',
+    docs: 'core/Text.mdx',
+  },
 };

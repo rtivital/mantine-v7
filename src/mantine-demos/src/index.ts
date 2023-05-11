@@ -35,4 +35,5 @@ export * as StackDemos from './demos/core/Stack';
 export * as SwitchDemos from './demos/core/Switch';
 export * as TableDemos from './demos/core/Table';
 export * as TabsDemos from './demos/core/Tabs';
+export * as TextDemos from './demos/core/Text';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
