@@ -41,15 +41,7 @@ the same font-size as `xs` – `xl` but reduced padding and height.
 
 <Demo data={ButtonDemos.compact} />
 
-## Gradient variant
-
-When `variant` prop is set to `gradient`, you can control button gradient with `gradient` prop,
-it accepts an object with `from`, `to` and `deg` properties. If gradient property is not set
-`Button` will use `theme.defaultGradient` which can be configured on [theme object](/theming/theme-object).
-`gradient` prop is ignored when `variant` is not `gradient`.
-
-Note that `variant="gradient"` supports only linear gradients with two colors. If you need more
-complex gradient, then use [Styles API](/styles/styles-api) to modify `Button` styles.
+<Gradient component="Button" />
 
 <Demo data={ButtonDemos.gradient} />
 

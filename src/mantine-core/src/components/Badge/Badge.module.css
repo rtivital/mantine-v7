@@ -59,8 +59,8 @@
   }
 
   @mixin dark {
-    --_badge-bg: var(--mantine-color-dark-6);
-    --_badge-border-color: var(--mantine-color-dark-6);
+    --_badge-bg: var(--mantine-color-dark-5);
+    --_badge-border-color: var(--mantine-color-dark-5);
     --_badge-color: var(--mantine-color-white);
   }
 
@@ -88,6 +88,9 @@
 
 .section {
   --_section-margin: calc(var(--mantine-spacing-xs) / 2);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
   &[data-position='left'] {
     margin-left: var(--_left-section-ml, 0);

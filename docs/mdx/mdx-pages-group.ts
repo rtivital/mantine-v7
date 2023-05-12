@@ -83,7 +83,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       { category: 'overlays', pages: [MDX_DATA.Popover] },
       {
         category: 'Data display',
-        pages: [MDX_DATA.BackgroundImage, MDX_DATA.ColorSwatch, MDX_DATA.Kbd],
+        pages: [MDX_DATA.BackgroundImage, MDX_DATA.ColorSwatch, MDX_DATA.Kbd, MDX_DATA.Badge],
       },
       {
         category: 'typography',

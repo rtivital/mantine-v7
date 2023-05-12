@@ -622,4 +622,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Title/Title.tsx',
     docs: 'core/Title.mdx',
   },
+  Badge: {
+    title: 'Badge',
+    package: '@mantine/core',
+    slug: '/core/badge',
+    props: ['Badge'],
+    styles: ['Badge'],
+    description: 'Display badge, pill or tag',
+    import: "import { Badge } from '@mantine/core';",
+    source: 'mantine-core/src/components/Badge/Badge.tsx',
+    docs: 'core/Badge.mdx',
+  },
 };

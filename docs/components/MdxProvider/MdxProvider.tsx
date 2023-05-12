@@ -16,6 +16,7 @@ import {
   MdxInputFeatures,
   MdxInputAccessibility,
   MdxFlexboxGapSupport,
+  MdxGradient,
 } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
@@ -28,6 +29,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         InputFeatures: MdxInputFeatures,
         InputAccessibility: MdxInputAccessibility,
         FlexboxGapSupport: MdxFlexboxGapSupport,
+        Gradient: MdxGradient,
         DataTable: MdxDataTable,
         TargetComponent: MdxTargetComponent,
         KeyboardEventsTable: MdxKeyboardEventsTable,
