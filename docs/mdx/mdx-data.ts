@@ -197,6 +197,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Usage with TypeScript',
   },
 
+  Icons: {
+    title: 'Icons libraries',
+    slug: '/guides/icons',
+    search: 'Usage of icons libraries with Mantine',
+  },
+
   // ------------------------------- Core components -------------------------------
   Button: {
     title: 'Button',

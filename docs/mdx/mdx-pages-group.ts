@@ -37,6 +37,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     group: 'guides',
     pages: [
       MDX_DATA.Polymorphic,
+      MDX_DATA.Icons,
       MDX_DATA.NextJs,
       MDX_DATA.Vite,
       MDX_DATA.Remix,
