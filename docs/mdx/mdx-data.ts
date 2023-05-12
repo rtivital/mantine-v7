@@ -611,4 +611,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/TextInput/TextInput.tsx',
     docs: 'core/TextInput.mdx',
   },
+  Title: {
+    title: 'Title',
+    package: '@mantine/core',
+    slug: '/core/title',
+    props: ['Title'],
+    styles: ['Title'],
+    description: 'h1-h6 heading',
+    import: "import { Title } from '@mantine/core';",
+    source: 'mantine-core/src/components/Title/Title.tsx',
+    docs: 'core/Title.mdx',
+  },
 };

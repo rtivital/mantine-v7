@@ -37,4 +37,5 @@ export * as TableDemos from './demos/core/Table';
 export * as TabsDemos from './demos/core/Tabs';
 export * as TextDemos from './demos/core/Text';
 export * as TextInputDemos from './demos/core/TextInput';
+export * as TitleDemos from './demos/core/Title';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
