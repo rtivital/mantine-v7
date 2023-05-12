@@ -41,4 +41,5 @@ export * as TextInputDemos from './demos/core/TextInput';
 export * as TitleDemos from './demos/core/Title';
 export * as TooltipDemos from './demos/core/Tooltip';
 export * as TransitionDemos from './demos/core/Transition';
+export * as TypographyStylesProviderDemos from './demos/core/TypographyStylesProvider';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';

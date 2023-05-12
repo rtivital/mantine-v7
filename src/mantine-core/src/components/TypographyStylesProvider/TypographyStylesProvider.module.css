@@ -67,6 +67,15 @@
     }
   }
 
+  & a {
+    color: var(--mantine-color-anchor);
+    text-decoration: none;
+
+    @mixin hover {
+      text-decoration: underline;
+    }
+  }
+
   & hr {
     margin-top: var(--mantine-spacing-md);
     margin-bottom: var(--mantine-spacing-md);
@@ -90,7 +99,7 @@
     margin-bottom: var(--mantine-spacing-md);
     overflow-x: auto;
     font-family: var(--mantine-font-family-monospace);
-    font-size: var(--mantine-font-size-sm);
+    font-size: var(--mantine-font-size-xs);
     border-radius: var(--mantine-radius-sm);
 
     @mixin light {
@@ -185,8 +194,7 @@
     font-size: var(--mantine-font-size-lg);
     line-height: var(--mantine-line-height);
     margin: var(--mantine-spacing-md) 0;
-    border-top-right-radius: var(--mantine-radius-sm);
-    border-bottom-right-radius: var(--mantine-radius-sm);
+    border-radius: var(--mantine-radius-sm);
     padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
 
     @mixin light {
