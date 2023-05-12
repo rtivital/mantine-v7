@@ -650,7 +650,6 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     package: '@mantine/core',
     slug: '/core/transition',
     props: ['Transition'],
-    styles: ['Transition'],
     description: 'Animate presence of component with premade animations',
     import: "import { Transition } from '@mantine/core';",
     source: 'mantine-core/src/components/Transition/Transition.tsx',
@@ -666,5 +665,14 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     import: "import { TypographyStylesProvider } from '@mantine/core';",
     source: 'mantine-core/src/components/TypographyStylesProvider/TypographyStylesProvider.tsx',
     docs: 'core/TypographyStylesProvider.mdx',
+  },
+  VisuallyHidden: {
+    title: 'VisuallyHidden',
+    package: '@mantine/core',
+    slug: '/core/visually-hidden',
+    description: 'Hide element visually but keep it accessible for screen readers',
+    import: "import { VisuallyHidden } from '@mantine/core';",
+    source: 'mantine-core/src/components/VisuallyHidden/VisuallyHidden.tsx',
+    docs: 'core/VisuallyHidden.mdx',
   },
 };
