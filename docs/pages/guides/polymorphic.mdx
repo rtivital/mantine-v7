@@ -106,3 +106,22 @@ function NukeTypes() {
 Use `createPolymorphicComponent` function and [Box](/core/box) component to create new polymorphic components:
 
 <Demo data={GuidesDemos.newPolymorphic} />
+
+## Make Mantine component polymorphic
+
+Polymorphic components have performance overhead for tsserver (no impact on runtime performance),
+because of that not all Mantine components have polymorphic types, but all components still
+accept `component` prop – root element can be changed.
+
+To make Mantine component polymorphic, use `createPolymorphicComponent` function the same way
+as in previous example:
+
+```tsx
+import { Group, GroupProps, createPolymorphicComponent } from '@mantine/core';
+
+const PolymorphicGroup = createPolymorphicComponent<'button', GroupProps>(Group);
+
+function Demo() {
+  return <PolymorphicGroup component="a" href="https://mantine.dev" />;
+}
+```
