@@ -633,4 +633,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Badge/Badge.tsx',
     docs: 'core/Badge.mdx',
   },
+  Tooltip: {
+    title: 'Tooltip',
+    package: '@mantine/core',
+    slug: '/core/tooltip',
+    props: ['Tooltip'],
+    styles: ['Tooltip'],
+    description: 'Renders tooltip at given element on mouse over or other event',
+    import: "import { Tooltip } from '@mantine/core';",
+    source: 'mantine-core/src/components/Tooltip/Tooltip.tsx',
+    docs: 'core/Tooltip.mdx',
+  },
 };

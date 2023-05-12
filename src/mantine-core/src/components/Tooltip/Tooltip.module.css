@@ -19,7 +19,7 @@
   }
 
   &[data-multiline] {
-    --_tooltip-white-space: unset;
+    --_tooltip-white-space: normal;
   }
 }
 

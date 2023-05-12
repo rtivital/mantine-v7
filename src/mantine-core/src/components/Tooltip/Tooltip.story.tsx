@@ -27,7 +27,7 @@ export function Multiline() {
       <Tooltip
         position="right"
         label="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, quaerat vero. Tempora reiciendis deserunt tenetur blanditiis velit. Illo, ipsam. Dignissimos fugit tempora iure accusamus, ipsum minima tenetur ex sequi eveniet."
-        w={400}
+        w={300}
         withArrow
         transitionProps={{ duration: 0 }}
         radius="md"
