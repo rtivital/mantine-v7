@@ -18,6 +18,7 @@ export * as ColorPickerDemos from './demos/core/ColorPicker';
 export * as ColorSwatchDemos from './demos/core/ColorSwatch';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
+export * as DividerDemos from './demos/core/Divider';
 export * as FileButtonDemos from './demos/core/FileButton';
 export * as FocusTrapDemos from './demos/core/FocusTrap';
 export * as GroupDemos from './demos/core/Group';

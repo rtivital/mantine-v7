@@ -681,4 +681,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/VisuallyHidden/VisuallyHidden.tsx',
     docs: 'core/VisuallyHidden.mdx',
   },
+  Divider: {
+    title: 'Divider',
+    package: '@mantine/core',
+    slug: '/core/divider',
+    props: ['Divider'],
+    styles: ['Divider'],
+    description: 'Horizontal line with optional label or vertical divider',
+    import: "import { Divider } from '@mantine/core';",
+    source: 'mantine-core/src/components/Divider/Divider.tsx',
+    docs: 'core/Divider.mdx',
+  },
 };

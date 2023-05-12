@@ -18,6 +18,13 @@
       var(--divider-color, var(--_divider-color));
   }
 
+  &[data-orientation='vertical'] {
+    border-left: var(--divider-size) var(--divider-border-style, solid)
+      var(--divider-color, var(--_divider-color));
+    height: auto;
+    align-self: stretch;
+  }
+
   &[data-with-label] {
     border: 0;
   }

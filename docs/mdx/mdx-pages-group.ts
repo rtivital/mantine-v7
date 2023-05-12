@@ -109,6 +109,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.ScrollArea,
           MDX_DATA.Transition,
           MDX_DATA.VisuallyHidden,
+          MDX_DATA.Divider,
         ],
       },
     ],
