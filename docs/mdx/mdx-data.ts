@@ -600,4 +600,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Text/Text.tsx',
     docs: 'core/Text.mdx',
   },
+  TextInput: {
+    title: 'TextInput',
+    package: '@mantine/core',
+    slug: '/core/text-input',
+    props: ['TextInput'],
+    styles: ['TextInput'],
+    description: 'Capture string input from user',
+    import: "import { TextInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/TextInput/TextInput.tsx',
+    docs: 'core/TextInput.mdx',
+  },
 };

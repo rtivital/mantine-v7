@@ -9,7 +9,13 @@ import { h } from './MdxTitle/MdxTitle';
 import { MdxInfo } from './MdxInfo/MdxInfo';
 import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEventsTable';
 import { MdxInstallScript } from './MdxInstallScript/MdxInstallScript';
-import { MdxGetElementRef, MdxPolymorphic, MdxTargetComponent } from './MdxSharedContent';
+import {
+  MdxGetElementRef,
+  MdxPolymorphic,
+  MdxTargetComponent,
+  MdxInputFeatures,
+  MdxInputAccessibility,
+} from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +24,8 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         Demo,
         GetElementRef: MdxGetElementRef,
         Polymorphic: MdxPolymorphic,
+        InputFeatures: MdxInputFeatures,
+        InputAccessibility: MdxInputAccessibility,
         DataTable: MdxDataTable,
         TargetComponent: MdxTargetComponent,
         KeyboardEventsTable: MdxKeyboardEventsTable,

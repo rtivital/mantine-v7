@@ -61,6 +61,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.SegmentedControl,
           MDX_DATA.Slider,
           MDX_DATA.Switch,
+          MDX_DATA.TextInput,
         ],
       },
       {
