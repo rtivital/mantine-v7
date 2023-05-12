@@ -1,6 +1,7 @@
 export * from './ActionIcon';
 export * from './Anchor';
 export * from './BackgroundImage';
+export * from './Badge';
 export * from './Blockquote';
 export * from './Breadcrumbs';
 export * from './Burger';
