@@ -51,7 +51,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     pages: [
       {
         category: 'layout',
-        pages: [MDX_DATA.Container, MDX_DATA.Center, MDX_DATA.Group, MDX_DATA.Stack],
+        pages: [
+          MDX_DATA.Container,
+          MDX_DATA.Center,
+          MDX_DATA.Group,
+          MDX_DATA.Stack,
+          MDX_DATA.AspectRatio,
+        ],
       },
       {
         category: 'inputs',

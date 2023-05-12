@@ -2,6 +2,7 @@ export * from './types';
 
 export * from './data/ActionIcon.styles-api';
 export * from './data/Anchor.styles-api';
+export * from './data/AspectRatio.styles-api';
 export * from './data/BackgroundImage.styles-api';
 export * from './data/Badge.styles-api';
 export * from './data/Blockquote.styles-api';

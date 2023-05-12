@@ -692,4 +692,15 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Divider/Divider.tsx',
     docs: 'core/Divider.mdx',
   },
+  AspectRatio: {
+    title: 'AspectRatio',
+    package: '@mantine/core',
+    slug: '/core/aspect-ratio',
+    props: ['AspectRatio'],
+    styles: ['AspectRatio'],
+    description: 'Maintain responsive consistent width/height ratio',
+    import: "import { AspectRatio } from '@mantine/core';",
+    source: 'mantine-core/src/components/AspectRatio/AspectRatio.tsx',
+    docs: 'core/AspectRatio.mdx',
+  },
 };

@@ -4,6 +4,7 @@ export * as GuidesDemos from './demos/guides';
 
 export * as ActionIconDemos from './demos/core/ActionIcon';
 export * as AnchorDemos from './demos/core/Anchor';
+export * as AspectRatioDemos from './demos/core/AspectRatio';
 export * as BackgroundImageDemos from './demos/core/BackgroundImage';
 export * as BadgeDemos from './demos/core/Badge';
 export * as BlockquoteDemos from './demos/core/Blockquote';

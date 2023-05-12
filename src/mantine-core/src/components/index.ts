@@ -1,5 +1,6 @@
 export * from './ActionIcon';
 export * from './Anchor';
+export * from './AspectRatio';
 export * from './BackgroundImage';
 export * from './Badge';
 export * from './Blockquote';
