@@ -1,5 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { StylesDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Rem);
 
@@ -11,6 +12,8 @@ All Mantine components use `rem` units to apply size styles. `1rem` is always `1
 All components scale based on user's browser font-size settings.
 
 `em` units are supposed to be used only in media queries. `1em` is considered to be `16px`.
+
+<Demo data={StylesDemos.remSlider} />
 
 ## px conversions
 
