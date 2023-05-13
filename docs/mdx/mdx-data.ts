@@ -715,4 +715,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Overlay/Overlay.tsx',
     docs: 'core/Overlay.mdx',
   },
+  Avatar: {
+    title: 'Avatar',
+    package: '@mantine/core',
+    slug: '/core/avatar',
+    props: ['Avatar'],
+    styles: ['Avatar'],
+    polymorphic: true,
+    description: 'Display user profile image, initials or fallback icon',
+    import: "import { Avatar } from '@mantine/core';",
+    source: 'mantine-core/src/components/Avatar/Avatar.tsx',
+    docs: 'core/Avatar.mdx',
+  },
 };
