@@ -6,8 +6,11 @@ export default { title: 'AspectRatio' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <AspectRatio ratio={16 / 9}>
-        <div style={{ background: 'tomato' }} />
+      <AspectRatio ratio={1}>
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80"
+          alt="img"
+        />
       </AspectRatio>
     </div>
   );
