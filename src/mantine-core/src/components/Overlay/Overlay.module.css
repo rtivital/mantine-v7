@@ -1,0 +1,18 @@
+.root {
+  inset: 0;
+  position: var(--_overlay-position, absolute);
+  background: var(--overlay-bg);
+  backdrop-filter: var(--overlay-filter);
+  border-radius: var(--overlay-radius);
+  z-index: var(--overlay-z-index);
+
+  &[data-fixed] {
+    --_overlay-position: fixed;
+  }
+
+  &[data-center] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
