@@ -1,0 +1,74 @@
+.root {
+  background-color: var(--alert-bg);
+  padding: var(--mantine-spacing-md) var(--mantine-spacing-xl);
+  border-radius: var(--alert-radius);
+  position: relative;
+  overflow: hidden;
+  border: var(--alert-bd);
+  color: var(--alert-color);
+}
+
+.root--filled {
+  --_message-color: var(--alert-color);
+}
+
+.wrapper {
+  display: flex;
+}
+
+.body {
+  flex: 1;
+}
+
+.title {
+  margin-bottom: var(--mantine-spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 700;
+
+  &[data-with-clos-button] {
+    padding-right: var(--mantine-spacing-md);
+  }
+}
+
+.label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  line-height: 1;
+  width: rem(20px);
+  height: rem(20px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: var(--mantine-spacing-md);
+  margin-top: rem(1px);
+}
+
+.message {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--_message-color, var(--__message-color));
+
+  @mixin light {
+    --__message-color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    --__message-color: var(--mantine-color-white);
+  }
+}
+
+.closeButton {
+  width: rem(20px);
+  height: rem(20px);
+  margin-right: calc(var(--mantine-spacing-md) * -1);
+  margin-top: calc(var(--mantine-spacing-sm) * -0.5);
+  color: var(--alert-color);
+}
