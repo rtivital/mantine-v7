@@ -12,6 +12,10 @@
   --_message-color: var(--alert-color);
 }
 
+.root--white {
+  --_message-color: var(--mantine-color-black);
+}
+
 .wrapper {
   display: flex;
 }

@@ -727,4 +727,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Avatar/Avatar.tsx',
     docs: 'core/Avatar.mdx',
   },
+
+  Alert: {
+    title: 'Alert',
+    package: '@mantine/core',
+    slug: '/core/alert',
+    props: ['Alert'],
+    styles: ['Alert'],
+    description: 'Attract user attention with important static message',
+    import: "import { Alert } from '@mantine/core';",
+    source: 'mantine-core/src/components/Alert/Alert.tsx',
+    docs: 'core/Alert.mdx',
+  },
 };

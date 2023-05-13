@@ -22,8 +22,9 @@ export function DemoArea({
   return (
     <Box
       className={classes.demo}
-      mod={{ 'with-padding': withPadding, centered: centered && !maxWidth, dimmed }}
+      mod={{ 'with-padding': withPadding, centered, dimmed }}
       __vars={{
+        '--demo-flex': maxWidth ? '1' : undefined,
         '--demo-max-width': maxWidth ? rem(maxWidth) : undefined,
         '--demo-min-height': minHeight ? rem(minHeight) : undefined,
         '--demo-margin-y': maxWidth && centered ? 'auto' : undefined,

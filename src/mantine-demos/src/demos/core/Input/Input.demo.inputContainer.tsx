@@ -47,6 +47,8 @@ function Demo() {
 
 export const inputContainer: MantineDemo = {
   type: 'code',
+  centered: true,
+  maxWidth: 400,
   component: Demo,
   code,
 };

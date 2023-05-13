@@ -18,6 +18,7 @@
 }
 
 .demoInner {
+  flex: var(--demo-flex);
   max-width: var(--demo-max-width, 100%);
   min-height: var(--demo-min-height, unset);
   margin-left: var(--demo-margin-y, unset);
