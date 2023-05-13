@@ -1,7 +1,9 @@
+// System demos
 export * as ThemingDemos from './demos/theming';
 export * as StylesDemos from './demos/styles';
 export * as GuidesDemos from './demos/guides';
 
+// Core demos
 export * as ActionIconDemos from './demos/core/ActionIcon';
 export * as AnchorDemos from './demos/core/Anchor';
 export * as AspectRatioDemos from './demos/core/AspectRatio';
@@ -29,6 +31,7 @@ export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
 export * as MarkDemos from './demos/core/Mark';
 export * as NativeSelectDemos from './demos/core/NativeSelect';
+export * as OverlayDemos from './demos/core/Overlay';
 export * as PaperDemos from './demos/core/Paper';
 export * as PopoverDemos from './demos/core/Popover';
 export * as ScrollAreaDemos from './demos/core/ScrollArea';

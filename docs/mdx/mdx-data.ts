@@ -703,4 +703,16 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/AspectRatio/AspectRatio.tsx',
     docs: 'core/AspectRatio.mdx',
   },
+  Overlay: {
+    title: 'Overlay',
+    package: '@mantine/core',
+    slug: '/core/overlay',
+    props: ['Overlay'],
+    styles: ['Overlay'],
+    polymorphic: true,
+    description: 'Overlays parent element with div element with any color and opacity',
+    import: "import { Overlay } from '@mantine/core';",
+    source: 'mantine-core/src/components/Overlay/Overlay.tsx',
+    docs: 'core/Overlay.mdx',
+  },
 };
