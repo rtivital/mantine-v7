@@ -9,6 +9,9 @@ interface ModifiersTableProps extends TableProps {
 }
 
 export function ModifiersTable({ data, ...others }: ModifiersTableProps) {
+  const hasConditions = data.modifiers?.some((modifier) => !!modifier.condition);
+  const hasValues = data.modifiers?.some((modifier) => !!modifier.value);
+
   const rows =
     data.modifiers?.map((modifier, index) => (
       <Table.Tr key={index}>
@@ -18,12 +21,16 @@ export function ModifiersTable({ data, ...others }: ModifiersTableProps) {
         <Table.Td>
           <TableInlineCode>{modifier.modifier}</TableInlineCode>
         </Table.Td>
-        <Table.Td>
-          <HtmlText>{modifier.condition || '–'}</HtmlText>
-        </Table.Td>
-        <Table.Td>
-          <HtmlText>{modifier.value || '–'}</HtmlText>
-        </Table.Td>
+        {hasConditions && (
+          <Table.Td>
+            <HtmlText>{modifier.condition || '–'}</HtmlText>
+          </Table.Td>
+        )}
+        {hasValues && (
+          <Table.Td>
+            <HtmlText>{modifier.value || '–'}</HtmlText>
+          </Table.Td>
+        )}
       </Table.Tr>
     )) || [];
 
@@ -33,8 +40,8 @@ export function ModifiersTable({ data, ...others }: ModifiersTableProps) {
         <Table.Tr>
           <Table.Th>Selector</Table.Th>
           <Table.Th>Attribute</Table.Th>
-          <Table.Th>Condition</Table.Th>
-          <Table.Th>Value</Table.Th>
+          {hasConditions && <Table.Th>Condition</Table.Th>}
+          {hasValues && <Table.Th>Value</Table.Th>}
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
