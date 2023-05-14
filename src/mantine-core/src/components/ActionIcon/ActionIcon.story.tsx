@@ -18,6 +18,15 @@ function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
   return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
 }
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <ActionIcon size="lg">$$</ActionIcon>
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <>

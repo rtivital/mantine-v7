@@ -57,12 +57,13 @@
     --_ai-cursor: not-allowed;
     --_ai-bg: var(--_ai-disabled-bg);
     --_ai-color: var(--_ai-disabled-color);
+
+    &:active {
+      transform: none;
+    }
   }
 }
 
 .loader {
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

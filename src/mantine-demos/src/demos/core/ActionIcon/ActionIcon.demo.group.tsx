@@ -9,7 +9,7 @@ import { IconPhoto, IconSettings, IconHeart } from '@tabler/icons-react';
 
 function Demo() {
   return (
-    <ActionIcon.Group>
+    <ActionIcon.Group{{props}}>
       <ActionIcon variant="default" size="lg" aria-label="Gallery">
         <IconPhoto style={{ width: '1.2rem' }} stroke={1.5} />
       </ActionIcon>
@@ -26,9 +26,9 @@ function Demo() {
 }
 `;
 
-function Demo() {
+function Wrapper(props: any) {
   return (
-    <ActionIcon.Group>
+    <ActionIcon.Group {...props}>
       <ActionIcon variant="default" size="lg" aria-label="Gallery">
         <IconPhoto style={{ width: '1.2rem' }} stroke={1.5} />
       </ActionIcon>
@@ -45,8 +45,17 @@ function Demo() {
 }
 
 export const group: MantineDemo = {
-  type: 'code',
-  component: Demo,
-  centered: true,
+  type: 'configurator',
+  component: Wrapper,
   code,
+  centered: true,
+  controls: [
+    {
+      type: 'segmented',
+      prop: 'orientation',
+      data: ['horizontal', 'vertical'],
+      initialValue: 'horizontal',
+      libraryValue: 'horizontal',
+    },
+  ],
 };

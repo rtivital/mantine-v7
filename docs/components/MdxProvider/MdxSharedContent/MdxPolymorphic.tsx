@@ -69,7 +69,7 @@ export function MdxPolymorphic(props: MdxPolymorphicProps) {
 
         <MdxParagraph>
           Note that polymorphic components props types are different from regular components – they
-          do not extend HTML element props of default element. For example,{' '}
+          do not extend HTML element props of the default element. For example,{' '}
           <MdxCode>{props.component}Props</MdxCode> does not extend{' '}
           <MdxCode>
             React.ComponentPropsWithoutRef{"'<'"}div{"'>'"}

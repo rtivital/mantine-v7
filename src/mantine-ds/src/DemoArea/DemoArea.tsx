@@ -9,6 +9,7 @@ export interface DemoAreaProps {
   maxWidth?: number;
   minHeight?: number;
   dimmed?: boolean;
+  striped?: boolean;
 }
 
 export function DemoArea({
@@ -18,11 +19,12 @@ export function DemoArea({
   minHeight,
   children,
   dimmed,
+  striped,
 }: DemoAreaProps) {
   return (
     <Box
       className={classes.demo}
-      mod={{ 'with-padding': withPadding, centered, dimmed }}
+      mod={{ 'with-padding': withPadding, centered, dimmed, striped }}
       __vars={{
         '--demo-flex': maxWidth ? '1' : undefined,
         '--demo-max-width': maxWidth ? rem(maxWidth) : undefined,

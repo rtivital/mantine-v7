@@ -57,6 +57,7 @@ export function ConfiguratorDemo({
   minHeight,
   withPadding,
   dimmed,
+  striped,
 }: ConfiguratorDemoProps) {
   const initialState = controls.reduce<Record<string, any>>((acc, control) => {
     acc[control.prop] = control.initialValue;
@@ -93,6 +94,7 @@ export function ConfiguratorDemo({
         maxWidth={maxWidth}
         minHeight={minHeight}
         dimmed={dimmed}
+        striped={striped}
       >
         {React.cloneElement(children as JSX.Element, state)}
       </DemoColumns>

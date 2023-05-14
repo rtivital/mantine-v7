@@ -5,6 +5,7 @@ function replaceBackticks(str: string): string {
 }
 
 const replace = {
+  'DefaultMantineColor | undefined': 'MantineColor',
   DefaultMantineColor: 'MantineColor',
   ReactText: 'string | number',
   'ReactElement<any, string | ((props: any) => ReactElement<any, any>) | (new (props: any) => Component<any, any, any>)>':

@@ -24,6 +24,8 @@ export function StylesApiDemo({
   maxWidth,
   centered,
   children,
+  dimmed,
+  striped,
 }: StylesApiDemoProps) {
   const [hovered, setHovered] = React.useState<string | null>(null);
 
@@ -53,6 +55,8 @@ export function StylesApiDemo({
           maxWidth={maxWidth}
           centered={centered}
           controls={controls}
+          dimmed={dimmed}
+          striped={striped}
           title="Component Styles API"
           description="Hover over selectors to highlight corresponding elements"
         >

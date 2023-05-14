@@ -14,6 +14,7 @@ export function CodeDemo({
   maxWidth,
   minHeight,
   dimmed,
+  striped,
 }: CodeDemoProps) {
   return (
     <DemoRoot>
@@ -23,6 +24,7 @@ export function CodeDemo({
         maxWidth={maxWidth}
         minHeight={minHeight}
         dimmed={dimmed}
+        striped={striped}
       >
         {children}
       </DemoArea>

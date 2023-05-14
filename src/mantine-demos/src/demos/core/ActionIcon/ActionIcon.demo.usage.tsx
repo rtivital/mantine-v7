@@ -10,7 +10,7 @@ import { IconAdjustments } from '@tabler/icons-react';
 
 function Demo() {
   return (
-    <ActionIcon{{props}}>
+    <ActionIcon{{props}} aria-label="Settings">
       <IconAdjustments />
     </ActionIcon>
   );
@@ -27,7 +27,7 @@ const iconSizes: Record<string, string> = {
 
 function Wrapper(props: any) {
   return (
-    <ActionIcon {...props}>
+    <ActionIcon {...props} aria-label="Settings">
       <IconAdjustments
         style={{ width: iconSizes[props.size], height: iconSizes[props.size] }}
         stroke={1.5}
@@ -41,12 +41,11 @@ export const usage: MantineDemo = {
   component: Wrapper,
   code,
   centered: true,
+  striped: true,
   controls: [
-    { prop: 'color', type: 'color', initialValue: 'gray', libraryValue: 'gray' },
+    interactiveVariantsControl,
+    { prop: 'color', type: 'color', initialValue: 'blue', libraryValue: 'blue' },
     { prop: 'size', type: 'size', initialValue: 'md', libraryValue: 'md' },
     { prop: 'radius', type: 'size', initialValue: 'sm', libraryValue: 'sm' },
-    interactiveVariantsControl,
-    { prop: 'disabled', type: 'boolean', initialValue: false, libraryValue: false },
-    { prop: 'loading', type: 'boolean', initialValue: false, libraryValue: false },
   ],
 };
