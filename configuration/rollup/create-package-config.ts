@@ -65,12 +65,8 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     ];
   } else {
     externals = [
-      '@emotion/server/create-instance',
       'dayjs/locale/ru',
       'highlight.js/lib/languages/typescript',
-      '@emotion/cache',
-      '@emotion/utils',
-      '@emotion/serialize',
       'prism-react-renderer/themes/duotoneDark',
       'prism-react-renderer/themes/duotoneLight',
       ...(config?.externals || []),

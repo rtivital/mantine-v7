@@ -23,8 +23,7 @@
     "ui-kit",
     "library",
     "frontend",
-    "design",
-    "emotion"
+    "design"
   ],
   "peerDependencies": {
     "@mantine/hooks": "7.0.0-alpha.2",
