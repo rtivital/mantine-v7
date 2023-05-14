@@ -12,12 +12,14 @@
     "paths": {
       "@mantine/core": ["../mantine-core/src"],
       "@mantine/hooks": ["../mantine-hooks/src"],
+      "@mantine/styles-api": ["../mantine-styles-api/src"],
       "@mantine/dates": ["../mantine-code-highlight/src"]
     }
   },
   "references": [
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
+    { "path": "../mantine-styles-api" },
     { "path": "../mantine-code-highlight" }
   ]
 }

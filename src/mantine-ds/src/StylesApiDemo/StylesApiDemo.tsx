@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnstyledButton, Text, Anchor } from '@mantine/core';
+import { UnstyledButton, Text } from '@mantine/core';
 import { DemoAreaProps } from '../DemoArea';
 import { DemoCode } from '../DemoCode';
 import { DemoRoot } from '../DemoRoot';
@@ -9,7 +9,6 @@ import classes from './StylesApiDemo.module.css';
 export interface StylesApiDemoProps extends DemoAreaProps {
   data: { selectors: Record<string, string> };
   code: string;
-  onStylesApiLink(): void;
 }
 
 function getCss(hovered: string | null) {
@@ -25,26 +24,16 @@ export function StylesApiDemo({
   maxWidth,
   centered,
   children,
-  onStylesApiLink,
 }: StylesApiDemoProps) {
   const [hovered, setHovered] = React.useState<string | null>(null);
-  const [selected, setSelected] = React.useState<string[]>([]);
 
   const selectors = Object.keys(data.selectors);
   const controls = selectors.map((selector) => (
     <UnstyledButton
       className={classes.selector}
-      mod={{ hovered: hovered === selector, selected: selected.some((s) => s === selector) }}
       key={selector}
       onMouseEnter={() => setHovered(selector)}
       onMouseLeave={() => setHovered(null)}
-      onClick={() => {
-        if (selected.some((s) => s === selector)) {
-          setSelected(selected.filter((s) => s !== selector));
-        } else {
-          setSelected([...selected, selector]);
-        }
-      }}
     >
       <Text mb={2}>{selector}</Text>
       <Text fz={11} c="dimmed">
@@ -52,6 +41,8 @@ export function StylesApiDemo({
       </Text>
     </UnstyledButton>
   ));
+
+  const classNamesProp = hovered ? ` classNames={{ ${hovered}: classes.${hovered} }}` : '';
 
   return (
     <>
@@ -63,15 +54,7 @@ export function StylesApiDemo({
           centered={centered}
           controls={controls}
           title="Component Styles API"
-          description={
-            <>
-              Hover over selectors to highlight corresponding elements. Follow{' '}
-              <Anchor component="button" onClick={onStylesApiLink}>
-                Styles API
-              </Anchor>{' '}
-              documentation to learn more.
-            </>
-          }
+          description="Hover over selectors to highlight corresponding elements"
         >
           {React.cloneElement(children as JSX.Element, {
             classNames: selectors.reduce<Record<string, string>>((acc, item) => {
@@ -84,7 +67,11 @@ export function StylesApiDemo({
         <DemoCode
           code={[
             { fileName: 'Demo.module.css', language: 'css', code: getCss(hovered) },
-            { fileName: 'Demo.tsx', language: 'tsx', code },
+            {
+              fileName: 'Demo.tsx',
+              language: 'tsx',
+              code: code.replace('{{props}}', classNamesProp),
+            },
           ]}
         />
       </DemoRoot>
