@@ -16,7 +16,7 @@ export default Layout(MDX_DATA.ActionIcon);
 
 You can use any valid CSS value in `size` prop, it is used to set `width`, `min-width` and `height`
 properties. Note that `size` prop does not control child [icon](/guides/icons) size, you need to
-set it manually on icon component. When `size` is a number, value is treated as `px` units and
+set it manually on icon component. When `size` is a number, the value is treated as `px` units and
 converted to [rem](/styles/rem) units (1rem = 16px).
 
 <Demo data={ActionIconDemos.size} />
@@ -24,7 +24,7 @@ converted to [rem](/styles/rem) units (1rem = 16px).
 ## Disabled state
 
 To make `ActionIcon` disabled set `disabled` prop, this will prevent any interactions with the button
-and add disabled styles. If you want button to just look disabled but still be interactive,
+and add disabled styles. If you want the button to just look disabled but still be interactive,
 set `data-disabled` prop instead. Note that disabled styles are the same for all variants.
 
 <Demo data={ActionIconDemos.disabled} />
@@ -32,22 +32,22 @@ set `data-disabled` prop instead. Note that disabled styles are the same for all
 ## Disabled state when ActionIcon is link
 
 `<a />` element does not support `disabled` attribute. To make `ActionIcon` disabled when it is
-rendered as `<a />` set `data-disabled` attribute instead and prevent default behavior in
+rendered as a link, set `data-disabled` attribute instead and prevent default behavior in
 `onClick` event handler.
 
 <Demo data={ActionIconDemos.disabledLink} />
 
 ## Customize disabled styles
 
-To customize disabled styles it is recommended to use both `&:disabled` and `&[data-disabled]`
+To customize disabled styles, it is recommended to use both `&:disabled` and `&[data-disabled]`
 selectors:
 
-- `&:disabled` is used to style button when `disabled` prop is set and
-  also when button is disabled by parent component (for example, when `disabled` prop is set on
-  `<fieldset />` which contains `ActionIcon`).
-- `&[data-disabled]` is used to style button when it is not actually disabled but should look like
+- `&:disabled` is used to style the button when `disabled` prop is set and
+  also when the button is disabled by the parent component (for example, when `disabled` prop is set on a
+  `<fieldset />` element which contains `ActionIcon`).
+- `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
   it is (for example, `data-disabled` should be used if you need to use [Tooltip](/core/tooltip) with disabled `ActionIcon`
-  or when `ActionIcon` is used as link)
+  or when `ActionIcon` is used as a link)
 
 <Demo data={ActionIconDemos.disabledStyles} />
 
@@ -77,7 +77,7 @@ You can customize [Loader](/core/loader) with `loaderProps` prop, it accepts all
 
 ## Add custom variants
 
-To add new `ActionIcon` variants use [data-variant](/styles/variants-sizes) attribute.
+To add new `ActionIcon` variants, use [data-variant](/styles/variants-sizes) attribute.
 Usually new variants are added on [theme](/theming/theme-object), this way they are
 available in all `ActionIcon` components in your application.
 
@@ -94,7 +94,7 @@ define additional `--ai-size-{x}` variables on the `root` element:
 
 <Demo data={ActionIconDemos.group} />
 
-Note that you cannot wrap child `ActionIcon` components with any additional elements:
+Note that you must not wrap child `ActionIcon` components with any additional elements:
 
 ```tsx
 import { ActionIcon } from '@mantine/core';

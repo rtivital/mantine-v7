@@ -48,7 +48,7 @@ the same font-size as `xs` – `xl` but reduced padding and height.
 ## Disabled state
 
 To make `Button` disabled set `disabled` prop, this will prevent any interactions with the button
-and add disabled styles. If you want button to just look disabled but still be interactive,
+and add disabled styles. If you want the button to just look disabled but still be interactive,
 set `data-disabled` prop instead. Note that disabled styles are the same for all variants.
 
 <Demo data={ButtonDemos.disabled} />
@@ -56,22 +56,22 @@ set `data-disabled` prop instead. Note that disabled styles are the same for all
 ## Disabled state when Button is link
 
 `<a />` element does not support `disabled` attribute. To make `Button` disabled when it is
-rendered as `<a />` set `data-disabled` attribute instead and prevent default behavior in
+rendered as a link, set `data-disabled` attribute instead and prevent default behavior in
 `onClick` event handler.
 
 <Demo data={ButtonDemos.disabledLink} />
 
 ## Customize disabled styles
 
-To customize disabled styles it is recommended to use both `&:disabled` and `&[data-disabled]`
+To customize disabled styles, it is recommended to use both `&:disabled` and `&[data-disabled]`
 selectors:
 
-- `&:disabled` is used to style button when `disabled` prop is set and
-  also when button is disabled by parent component (for example, when `disabled` prop is set on
-  `<fieldset />` which contains `Button`).
-- `&[data-disabled]` is used to style button when it is not actually disabled but should look like
+- `&:disabled` is used to style the button when `disabled` prop is set and
+  also when the button is disabled by the parent component (for example, when `disabled` prop is set on a
+  `<fieldset />` element which contains `Button`).
+- `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
   it is (for example, `data-disabled` should be used if you need to use [Tooltip](/core/tooltip) with disabled `Button`
-  or when `Button` is used as link)
+  or when `Button` is used as a link)
 
 <Demo data={ButtonDemos.disabledStyles} />
 
@@ -108,7 +108,7 @@ and [data-\* attributes](/styles/data-attributes):
 
 ## Custom variants
 
-To add new `Button` variants use [data-variant](/styles/variants-sizes) attribute.
+To add new `Button` variants, use [data-variant](/styles/variants-sizes) attribute.
 Usually new variants are added on [theme](/theming/theme-object), this way they are
 available in all `Button` components in your application.
 
@@ -125,7 +125,7 @@ You can customize colors for `Button` and other components variants by adding
 
 <Demo data={ButtonDemos.group} />
 
-Note that you cannot wrap child `Button` components with any additional elements:
+Note that you must not wrap child `Button` components with any additional elements:
 
 ```tsx
 import { Button } from '@mantine/core';

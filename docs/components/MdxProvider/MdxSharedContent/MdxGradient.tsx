@@ -14,16 +14,16 @@ export function MdxGradient({ component }: MdxGradientProps) {
       <MdxParagraph>
         When <MdxCode>variant</MdxCode> prop is set to <MdxCode>gradient</MdxCode>, you can control
         button gradient with <MdxCode>gradient</MdxCode> prop, it accepts an object with{' '}
-        <MdxCode>from</MdxCode>, <MdxCode>to</MdxCode> and <MdxCode>deg</MdxCode> properties. If
-        gradient property is not set <MdxCode>{component}</MdxCode> will use{' '}
-        <MdxCode>theme.defaultGradient</MdxCode> which can be configured on{' '}
+        <MdxCode>from</MdxCode>, <MdxCode>to</MdxCode> and <MdxCode>deg</MdxCode> properties. If the
+        <MdxCode>gradient</MdxCode> prop is not set <MdxCode>{component}</MdxCode> will use{' '}
+        <MdxCode>theme.defaultGradient</MdxCode> which can be configured on the{' '}
         <MdxLink href="/theming/theme-object">theme object</MdxLink>. <MdxCode>gradient</MdxCode>{' '}
         prop is ignored when <MdxCode>variant</MdxCode> is not <MdxCode>gradient</MdxCode>.
       </MdxParagraph>
 
       <MdxParagraph>
         Note that <MdxCode>variant=&quot;gradient&quot;</MdxCode> supports only linear gradients
-        with two colors. If you need more complex gradient, then use{' '}
+        with two colors. If you need a more complex gradient, then use{' '}
         <MdxLink href="/styles/styles-api">Styles API</MdxLink> to modify{' '}
         <MdxCode>{component}</MdxCode> styles.
       </MdxParagraph>
