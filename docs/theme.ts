@@ -1,6 +1,7 @@
-import { MantineThemeOverride } from '@mantine/core';
+import { DEFAULT_THEME, createTheme } from '@mantine/core';
 
-export const theme: MantineThemeOverride = {
+export const theme = createTheme({
+  fontFamilyMonospace: `Menlo, Monaco, ${DEFAULT_THEME.fontFamilyMonospace}`,
   colors: {
     'ocean-blue': [
       '#7AD1DD',
@@ -27,4 +28,4 @@ export const theme: MantineThemeOverride = {
       '#AD1374',
     ],
   },
-};
+});

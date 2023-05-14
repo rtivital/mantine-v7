@@ -11,6 +11,7 @@
   display: block;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   margin: 0;
+  font-size: 16px; /* Required for Safari to be set in px */
   --_code-line-height: 1.7;
 }
 

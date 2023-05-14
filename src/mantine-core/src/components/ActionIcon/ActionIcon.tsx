@@ -153,7 +153,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
         <Loader
           {...getStyles('loader')}
           color="var(--ai-color)"
-          size="calc(var(--ai-size) * 0.65)"
+          size="calc(var(--ai-size) * 0.55)"
           {...loaderProps}
         />
       ) : (
