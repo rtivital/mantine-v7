@@ -8,3 +8,5 @@ export { disabledTooltip } from './ActionIcon.demo.disabledTooltip';
 export { disabledStyles } from './ActionIcon.demo.disabledStyles';
 export { loading } from './ActionIcon.demo.loading';
 export { loaderProps } from './ActionIcon.demo.loaderProps';
+export { customVariant } from './ActionIcon.demo.customVariant';
+export { customSize } from './ActionIcon.demo.customSize';
