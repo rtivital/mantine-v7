@@ -4,23 +4,23 @@ import type { StylesApiData } from '../types';
 export const ActionIconStylesApi: StylesApiData<ActionIconFactory> = {
   selectors: {
     root: 'Root element',
-    loader: 'Loader component, rendered inside root element when loading prop is set',
+    loader: '`Loader` component, rendered inside root element when `loading` prop is set',
   },
 
   vars: {
     root: {
-      '--ai-bg': 'Controls background',
-      '--ai-bd': 'Control border',
-      '--ai-hover': 'Controls background when hovered',
-      '--ai-color': 'Control color',
-      '--ai-radius': 'Controls border-radius',
-      '--ai-size': 'Controls width, height, min-width and min-height styles',
+      '--ai-bg': 'Controls `background`',
+      '--ai-hover': 'Controls `background` when hovered',
+      '--ai-bd': 'Controls `border`',
+      '--ai-color': 'Controls icon `color`',
+      '--ai-radius': 'Controls `border-radius`',
+      '--ai-size': 'Controls `width`, `height`, `min-width` and `min-height` styles',
     },
   },
 
   modifiers: [
-    { modifier: 'data-disabled', selector: 'root', condition: 'disabled prop is set' },
-    { modifier: 'data-loading', selector: 'root', condition: 'loading prop is set' },
+    { modifier: 'data-disabled', selector: 'root', condition: '`disabled` prop is set' },
+    { modifier: 'data-loading', selector: 'root', condition: '`loading` prop is set' },
   ],
 };
 
@@ -32,11 +32,11 @@ export const ActionIconGroupStylesApi: StylesApiData<ActionIconGroupFactory> = {
   vars: {
     root: {
       '--ai-border-width':
-        'Controls border width of child ActionIcon components that are placed beside one another',
+        'Controls `border-width` of child ActionIcon components that are placed beside one another',
     },
   },
 
   modifiers: [
-    { modifier: 'data-orientation', selector: 'root', value: 'Value of orientation prop' },
+    { modifier: 'data-orientation', selector: 'root', value: 'Value of `orientation` prop' },
   ],
 };
