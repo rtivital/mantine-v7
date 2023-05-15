@@ -50,7 +50,7 @@ export interface AlertProps
   /** Determines whether close button should be displayed, `false` by default */
   withCloseButton?: boolean;
 
-  /** Called when close button is clicked */
+  /** Called when the close button is clicked */
   onClose?(): void;
 
   /** Close button `aria-label` */

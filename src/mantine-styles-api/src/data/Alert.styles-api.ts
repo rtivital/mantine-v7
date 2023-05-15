@@ -4,21 +4,21 @@ import type { StylesApiData } from '../types';
 export const AlertStylesApi: StylesApiData<AlertFactory> = {
   selectors: {
     root: 'Root element',
-    wrapper: 'Wraps body and icon',
-    body: 'Body element, wraps title and message',
-    title: 'Title element, contains label and icon',
+    wrapper: 'Wrapper around `body` and `icon`',
+    body: 'Body element, contains `title` and `message`',
+    title: 'Title element, contains `label` and `icon`',
     label: 'Title label',
-    message: 'Alert message, defined by children',
-    icon: 'Icon wrapper',
-    closeButton: 'Close button, defined by withCloseButton prop',
+    message: 'Alert message',
+    icon: 'Icon element',
+    closeButton: 'Close button',
   },
 
   vars: {
     root: {
-      '--alert-bd': 'Controls border',
-      '--alert-bg': 'Controls background color',
-      '--alert-color': 'Controls text color',
-      '--alert-radius': 'Controls border-radius',
+      '--alert-bd': 'Controls `border`',
+      '--alert-bg': 'Controls `background`',
+      '--alert-color': 'Controls `color`',
+      '--alert-radius': 'Controls `border-radius`',
     },
   },
 
