@@ -1,5 +1,7 @@
 export * from './utils';
 
+export { useCallbackRef } from './use-callback-ref/use-callback-ref';
+export { useDebounceCallback } from './use-debounced-callback/use-debounced-callback';
 export { useClickOutside } from './use-click-outside/use-click-outside';
 export { useClipboard } from './use-clipboard/use-clipboard';
 export { useColorScheme } from './use-color-scheme/use-color-scheme';
