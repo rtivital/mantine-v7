@@ -28,7 +28,7 @@ export interface TooltipBaseProps
   /** Determines whether tooltip should be rendered within `Portal`, `true` by default */
   withinPortal?: boolean;
 
-  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem (1rem = 16px), `theme.defaultRadius` by default */
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, controls tooltip background, by default set based on current color scheme */

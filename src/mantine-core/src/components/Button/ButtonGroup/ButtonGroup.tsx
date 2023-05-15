@@ -25,7 +25,7 @@ export interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFa
   /** Orientation of the group, `horizontal` by default */
   orientation?: 'horizontal' | 'vertical';
 
-  /** Controls border-width of child `Button` components. Default value in `1`. Numbers are converted to rem (1rem = 16px). */
+  /** Controls border-width of child `Button` components. Numbers are converted to rem. Default value in `1`. */
   borderWidth?: number | string;
 }
 

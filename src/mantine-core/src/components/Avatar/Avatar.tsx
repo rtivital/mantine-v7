@@ -35,7 +35,7 @@ export type AvatarCssVariables = {
 };
 
 export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
-  /** Width and height of the avatar, numbers are converted to rem (1rem = 16px), `'md'` by default */
+  /** Width and height of the avatar, numbers are converted to rem, `'md'` by default */
   size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `'100%'` by default */

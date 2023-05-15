@@ -40,7 +40,7 @@ export interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, Elem
   /** Controls `flex-wrap` CSS property, `'wrap'` by default */
   wrap?: React.CSSProperties['flexWrap'];
 
-  /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem (1rem = 16px), `'md'` by default */
+  /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
   gap?: MantineSpacing | (string & {}) | number;
 
   /** Determines whether each child element should have `flex-grow: 1` style, `false` by default */

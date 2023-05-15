@@ -39,7 +39,7 @@ export interface SliderProps
   /** Key of `theme.colors` or any valid CSS color, controls color of track and thumb, `theme.primaryColor` by default */
   color?: MantineColor;
 
-  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem (1rem = 16px), `'xl'` by default */
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Controls size of the track, `'md'` by default */

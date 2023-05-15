@@ -74,7 +74,7 @@ export interface SegmentedControlProps
   /** Controls `font-size`, `padding` and `height` properties, `'sm'` by default */
   size?: MantineSize | (string & {});
 
-  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem (1rem = 16px), `theme.defaultRadius` by default */
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Indicator `transition-duration` in ms, set to 0 to turn off transitions, `200` by default */

@@ -21,7 +21,7 @@ export type StackCssVariables = {
 };
 
 export interface StackProps extends BoxProps, StylesApiProps<StackFactory>, ElementProps<'div'> {
-  /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem (1rem = 16px), `'md'` by default */
+  /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem, `'md'` by default */
   gap?: MantineSpacing | (string & {}) | number;
 
   /** Controls `align-items` CSS property, `'stretch'` by default */

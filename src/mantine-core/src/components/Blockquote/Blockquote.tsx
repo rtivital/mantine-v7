@@ -32,7 +32,7 @@ export interface BlockquoteProps
   /** Blockquote icon, displayed on the top left */
   icon?: React.ReactNode;
 
-  /** Controls icon width and height, numbers are converted to rem (`1rem = 16px`), `40` by default */
+  /** Controls icon width and height, numbers are converted to rem, `40` by default */
   iconSize?: number | string;
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
