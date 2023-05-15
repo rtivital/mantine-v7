@@ -5,19 +5,19 @@
     flex-direction: row;
 
     & [data-button] {
-      &:not(:only-child):first-of-type {
+      &:not(:only-child):first-child {
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
         border-right-width: calc(var(--button-border-width) / 2);
       }
 
-      &:not(:only-child):last-of-type {
+      &:not(:only-child):last-child {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
         border-left-width: calc(var(--button-border-width) / 2);
       }
 
-      &:not(:only-child):not(:first-of-type):not(:last-of-type) {
+      &:not(:only-child):not(:first-child):not(:last-child) {
         border-radius: 0;
         border-right-width: calc(var(--button-border-width) / 2);
         border-left-width: calc(var(--button-border-width) / 2);
@@ -29,19 +29,19 @@
     flex-direction: column;
 
     & [data-button] {
-      &:not(:only-child):first-of-type {
+      &:not(:only-child):first-child {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom-width: calc(var(--button-border-width) / 2);
       }
 
-      &:not(:only-child):last-of-type {
+      &:not(:only-child):last-child {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         border-top-width: calc(var(--button-border-width) / 2);
       }
 
-      &:not(:only-child):not(:first-of-type):not(:last-of-type) {
+      &:not(:only-child):not(:first-child):not(:last-child) {
         border-radius: 0;
         border-bottom-width: calc(var(--button-border-width) / 2);
         border-top-width: calc(var(--button-border-width) / 2);

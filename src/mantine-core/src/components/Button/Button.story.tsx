@@ -256,12 +256,13 @@ export function ButtonGroup() {
       </Button.Group>
 
       <Button.Group borderWidth={1}>
+        <Button size="lg" variant="default" component="a" href="https://mantine.dev">
+          2
+        </Button>
         <Button size="lg" variant="default">
           1
         </Button>
-        <Button size="lg" variant="default">
-          2
-        </Button>
+
         <Button size="lg" variant="default">
           2
         </Button>

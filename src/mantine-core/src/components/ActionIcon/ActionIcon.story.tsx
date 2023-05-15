@@ -196,7 +196,7 @@ export function ActionIconGroup() {
         <ActionIcon size="lg" variant="default">
           1
         </ActionIcon>
-        <ActionIcon size="lg" variant="default">
+        <ActionIcon size="lg" variant="default" component="a" href="https://mantine.dev">
           2
         </ActionIcon>
         <ActionIcon size="lg" variant="default">
