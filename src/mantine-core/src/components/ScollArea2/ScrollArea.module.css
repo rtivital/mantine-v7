@@ -41,8 +41,8 @@
   transition: background-color 150ms ease, opacity 150ms ease;
 
   padding: calc(var(--scrollarea-scrollbar-size) / 5);
-  display: var(--_scrollbar-display);
-  background-color: var(--_scrollbar-bg);
+  display: var(--_scrollbar-display, flex);
+  background-color: var(--_scrollbar-bg, transparent);
   width: var(--_scrollbar-width);
   height: var(--_scrollbar-height);
   flex-direction: var(--_scrollbar-direction, row);
@@ -50,9 +50,6 @@
   & > .thumb {
     background-color: var(--_thumb-bg);
   }
-
-  --_scrollbar-display: flex;
-  --_scrollbar-bg: transparent;
 
   @mixin hover {
     @mixin light {
@@ -73,11 +70,29 @@
 
   &[data-orientation='vertical'] {
     --_scrollbar-width: var(--scrollarea-scrollbar-size);
+
+    top: 0;
+    bottom: var(--sa-corner-width);
+    right: 0;
+
+    @mixin rtl {
+      right: unset;
+      left: 0;
+    }
   }
 
   &[data-orientation='horizontal'] {
     --_scrollbar-height: var(--scrollarea-scrollbar-size);
     --_scrollbar-direction: column;
+
+    bottom: 0;
+    left: 0;
+    right: var(--sa-corner-height);
+
+    @mixin rtl {
+      right: 0;
+      left: var(--sa-corner-height);
+    }
   }
 }
 
@@ -111,13 +126,19 @@
 }
 
 .corner {
-  opacity: var(--_corner-opacity);
+  position: absolute;
+  opacity: var(--_corner-opacity, 0);
   transition: opacity 150ms ease;
   background-color: var(--_corner-bg);
-  display: var(--_corner-display);
+  display: var(--_corner-display, block);
+  right: 0;
+  bottom: 0;
 
-  --_corner-opacity: 0;
-  --_corner-display: block;
+  @mixin rtl {
+    right: unset;
+    left: 0;
+    bottom: 0;
+  }
 
   @mixin light {
     --_corner-bg: var(--mantine-color-gray-0);

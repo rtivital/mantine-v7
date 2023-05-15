@@ -7,7 +7,7 @@ import { isScrollingWithinScrollbarBounds, getThumbSize, toInt } from '../utils'
 
 export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollbarAxisProps>(
   (props, forwardedRef) => {
-    const { sizes, onSizesChange, ...scrollbarProps } = props;
+    const { sizes, onSizesChange, ...others } = props;
     const context = useScrollAreaContext();
     const [computedStyle, setComputedStyle] = React.useState<CSSStyleDeclaration>();
     const ref = useRef<HTMLDivElement>(null);
@@ -19,17 +19,13 @@ export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollb
 
     return (
       <ScrollAreaScrollbarImpl
+        {...others}
         data-orientation="vertical"
-        {...scrollbarProps}
+        {...context.getStyles('scrollbar')}
         ref={composeRefs}
         sizes={sizes}
         style={{
           // @YYY
-          top: 0,
-          right: 0,
-          // right: context.dir === 'ltr' ? 0 : undefined,
-          // left: context.dir === 'rtl' ? 0 : undefined,
-          bottom: 'var(--sa-corner-width)',
           ['--radix-scroll-area-thumb-height' as any]: `${getThumbSize(sizes)}px`,
           ...props.style,
         }}
@@ -39,7 +35,6 @@ export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollb
           if (context.viewport) {
             const scrollPos = context.viewport.scrollTop + event.deltaY;
             props.onWheelScroll(scrollPos);
-            // prevent window scroll when wheeling on scrollbar
             if (isScrollingWithinScrollbarBounds(scrollPos, maxScrollPos)) {
               event.preventDefault();
             }

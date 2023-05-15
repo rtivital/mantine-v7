@@ -50,8 +50,8 @@ export const ScrollAreaScrollbarVisible = forwardRef<
     },
   };
 
-  const getScrollPosition = (pointerPos: number) =>
-    getScrollPositionFromPointer(pointerPos, pointerOffsetRef.current, sizes, dir);
+  const getScrollPosition = (pointerPos: number, direction?: 'ltr' | 'rtl') =>
+    getScrollPositionFromPointer(pointerPos, pointerOffsetRef.current, sizes, direction);
 
   if (orientation === 'horizontal') {
     return (
@@ -70,7 +70,7 @@ export const ScrollAreaScrollbarVisible = forwardRef<
         }}
         onDragScroll={(pointerPos) => {
           if (context.viewport) {
-            context.viewport.scrollLeft = getScrollPosition(pointerPos);
+            context.viewport.scrollLeft = getScrollPosition(pointerPos, dir);
           }
         }}
       />

@@ -7,7 +7,7 @@ interface ScrollAreaScrollbarHoverProps extends ScrollAreaScrollbarAutoProps {
 }
 
 export const ScrollAreaScrollbarHover = forwardRef<HTMLDivElement, ScrollAreaScrollbarHoverProps>(
-  (props, forwardedRef) => {
+  (props, ref) => {
     const { forceMount, ...scrollbarProps } = props;
     const context = useScrollAreaContext();
     const [visible, setVisible] = useState(false);
@@ -35,16 +35,16 @@ export const ScrollAreaScrollbarHover = forwardRef<HTMLDivElement, ScrollAreaScr
       return undefined;
     }, [context.scrollArea, context.scrollHideDelay]);
 
-    if (!forceMount && !visible) {
-      return null;
+    if (forceMount || visible) {
+      return (
+        <ScrollAreaScrollbarAuto
+          data-state={visible ? 'visible' : 'hidden'}
+          {...scrollbarProps}
+          ref={ref}
+        />
+      );
     }
 
-    return (
-      <ScrollAreaScrollbarAuto
-        data-state={visible ? 'visible' : 'hidden'}
-        {...scrollbarProps}
-        ref={forwardedRef}
-      />
-    );
+    return null;
   }
 );

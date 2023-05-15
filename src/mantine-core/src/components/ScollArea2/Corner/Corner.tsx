@@ -24,22 +24,6 @@ export const ScrollAreaCornerImpl = React.forwardRef<HTMLDivElement, ScrollAreaC
       setWidth(w);
     });
 
-    return hasSize ? (
-      <div
-        {...cornerProps}
-        ref={forwardedRef}
-        style={{
-          // @YYY: Migrate
-          width,
-          height,
-          position: 'absolute',
-          right: 0,
-          // right: context.dir === 'ltr' ? 0 : undefined,
-          // left: context.dir === 'rtl' ? 0 : undefined,
-          bottom: 0,
-          ...props.style,
-        }}
-      />
-    ) : null;
+    return hasSize ? <div {...cornerProps} ref={forwardedRef} style={{ width, height }} /> : null;
   }
 );

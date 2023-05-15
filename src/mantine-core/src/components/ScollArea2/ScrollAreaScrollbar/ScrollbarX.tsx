@@ -8,10 +8,10 @@ import { isScrollingWithinScrollbarBounds, getThumbSize, toInt } from '../utils'
 export const ScrollAreaScrollbarX = forwardRef<HTMLDivElement, ScrollAreaScrollbarAxisProps>(
   (props, forwardedRef) => {
     const { sizes, onSizesChange, ...scrollbarProps } = props;
-    const context = useScrollAreaContext();
+    const ctx = useScrollAreaContext();
     const [computedStyle, setComputedStyle] = useState<CSSStyleDeclaration>();
     const ref = useRef<HTMLDivElement>(null);
-    const composeRefs = useMergedRef(forwardedRef, ref, context.onScrollbarXChange);
+    const composeRefs = useMergedRef(forwardedRef, ref, ctx.onScrollbarXChange);
 
     useEffect(() => {
       if (ref.current) setComputedStyle(getComputedStyle(ref.current));
@@ -25,17 +25,14 @@ export const ScrollAreaScrollbarX = forwardRef<HTMLDivElement, ScrollAreaScrollb
         sizes={sizes}
         style={{
           // @YYY
-          bottom: 0,
-          left: 0,
-          right: 'var(--sa-corner-height)',
           ['--radix-scroll-area-thumb-width' as any]: `${getThumbSize(sizes)}px`,
           ...props.style,
         }}
         onThumbPointerDown={(pointerPos) => props.onThumbPointerDown(pointerPos.x)}
         onDragScroll={(pointerPos) => props.onDragScroll(pointerPos.x)}
         onWheelScroll={(event, maxScrollPos) => {
-          if (context.viewport) {
-            const scrollPos = context.viewport.scrollLeft + event.deltaX;
+          if (ctx.viewport) {
+            const scrollPos = ctx.viewport.scrollLeft + event.deltaX;
             props.onWheelScroll(scrollPos);
             if (isScrollingWithinScrollbarBounds(scrollPos, maxScrollPos)) {
               event.preventDefault();
@@ -43,10 +40,10 @@ export const ScrollAreaScrollbarX = forwardRef<HTMLDivElement, ScrollAreaScrollb
           }
         }}
         onResize={() => {
-          if (ref.current && context.viewport && computedStyle) {
+          if (ref.current && ctx.viewport && computedStyle) {
             onSizesChange({
-              content: context.viewport.scrollWidth,
-              viewport: context.viewport.offsetWidth,
+              content: ctx.viewport.scrollWidth,
+              viewport: ctx.viewport.offsetWidth,
               scrollbar: {
                 size: ref.current.clientWidth,
                 paddingStart: toInt(computedStyle.paddingLeft),

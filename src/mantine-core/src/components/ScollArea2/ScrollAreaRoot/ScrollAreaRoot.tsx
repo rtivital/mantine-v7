@@ -14,8 +14,16 @@ import {
 import { ScrollAreaProvider } from '../ScrollArea.context';
 import classes from '../ScrollArea.module.css';
 
-export type ScrollAreaRootStylesNames = 'root' | 'viewport' | 'viewportInner';
+export type ScrollAreaRootStylesNames =
+  | 'root'
+  | 'viewport'
+  | 'viewportInner'
+  | 'scrollbar'
+  | 'thumb'
+  | 'corner';
+
 export type ScrollAreaRootVariant = string;
+
 export type ScrollAreaRootCssVariables = {
   root: '--sa-corner-width' | '--sa-corner-height';
 };
