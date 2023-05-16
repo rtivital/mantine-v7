@@ -42,6 +42,8 @@
   padding: rem(8px) var(--mantine-spacing-md);
   margin-left: rem(-1px);
   padding-left: calc(var(--toc-link-offset) * var(--mantine-spacing-lg));
+  border-top-right-radius: var(--mantine-radius-sm);
+  border-bottom-right-radius: var(--mantine-radius-sm);
 
   @mixin light {
     color: var(--mantine-color-gray-7);
@@ -56,6 +58,10 @@
     border-right: rem(1px) solid transparent;
     margin-left: 0;
     margin-right: rem(-1px);
+    border-top-left-radius: var(--mantine-radius-sm);
+    border-bottom-left-radius: var(--mantine-radius-sm);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   &[data-active] {

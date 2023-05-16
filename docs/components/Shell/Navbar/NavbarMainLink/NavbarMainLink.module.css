@@ -46,7 +46,7 @@
   }
 
   @mixin dark {
-    background-color: rgba(24, 100, 171, 0.3);
+    background-color: rgba(24, 100, 171, 0.45);
     color: var(--mantine-color-blue-2);
   }
 }
