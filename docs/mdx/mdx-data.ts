@@ -739,4 +739,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Alert/Alert.tsx',
     docs: 'core/Alert.mdx',
   },
+
+  // ----------------------------------- Meta --------------------------------------
+  Changelog700: {
+    title: 'Version v7.0.0',
+    slug: '/changelog/7-0-0',
+    release: 'https://github.com/mantinedev/mantine/releases/tag/7.0.0',
+    date: 'Some time this year',
+  },
 };

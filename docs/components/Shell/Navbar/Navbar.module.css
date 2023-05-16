@@ -43,13 +43,9 @@
   flex: 1;
 }
 
-.content {
-  padding: var(--mantine-spacing-md);
-  padding-bottom: rem(100px);
-}
-
 .body {
   padding-top: var(--mantine-spacing-md);
+  padding-bottom: rem(100px);
 }
 
 .groups {

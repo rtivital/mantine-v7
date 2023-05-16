@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Title, Text, rem } from '@mantine/core';
 import { GithubIcon, NpmIcon } from '@mantine/ds';
-import { IconLicense, IconPencil, IconSwitch2 } from '@tabler/icons-react';
+import { IconCalendar, IconLicense, IconPencil, IconSwitch2 } from '@tabler/icons-react';
 import { Frontmatter } from '@/types';
 import { LinkItem } from './LinkItem/LinkItem';
 import classes from './MdxPageHeader.module.css';
@@ -51,9 +51,19 @@ export function MdxPageHeader({ meta }: MdxPageHeaderProps) {
           </LinkItem>
         )}
 
+        {meta.date && meta.release && (
+          <LinkItem
+            label="Release date"
+            icon={<IconCalendar style={{ width: rem(14), height: rem(14) }} stroke={1.5} />}
+            link={meta.release}
+          >
+            {meta.date}
+          </LinkItem>
+        )}
+
         {meta.release && (
           <LinkItem label="Source code" icon={<GithubIcon size={14} />} link={meta.release}>
-            View release on GitHub
+            Release on GitHub
           </LinkItem>
         )}
 

@@ -126,6 +126,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
     ],
   },
+  {
+    group: 'changelog',
+    pages: [MDX_DATA.Changelog700],
+  },
 ];
 
 export const ALL_MDX_PAGES: Frontmatter[] = MDX_PAGES_GROUPS.reduce<Frontmatter[]>((acc, group) => {
