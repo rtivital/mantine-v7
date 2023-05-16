@@ -44,10 +44,10 @@ export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor;
 
-  /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
+  /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
 
-  /** Image url, if image cannot be loaded or `src={null}`, then placeholder is displayed instead */
+  /** Image url, if the image cannot be loaded or `src={null}`, then placeholder is displayed instead */
   src?: string | null;
 
   /** Image `alt` attribute, also used as `title` attribute for placeholder */
@@ -56,7 +56,7 @@ export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
   /** `img` tag attributes */
   imageProps?: React.ComponentPropsWithoutRef<'img'>;
 
-  /** Avatar placeholder, displayed when `src={null}` or when image cannot be loaded */
+  /** Avatar placeholder, displayed when `src={null}` or when the image cannot be loaded */
   children?: React.ReactNode;
 }
 

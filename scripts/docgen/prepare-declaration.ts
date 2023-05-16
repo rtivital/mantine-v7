@@ -20,6 +20,8 @@ const replace = {
   '(string & {}) | MantineSize | undefined': 'MantineSize',
   '(Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | ... 2 more ... | undefined; }) | undefined':
     'React.ComponentPropsWithoutRef<"div">',
+  'Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, "ref"> | undefined':
+    'React.ComponentPropsWithoutRef<"img">',
 };
 
 export function prepareDeclaration(declaration: ComponentDoc) {
