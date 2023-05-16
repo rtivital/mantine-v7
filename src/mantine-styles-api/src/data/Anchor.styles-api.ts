@@ -6,6 +6,6 @@ export const AnchorStylesApi: StylesApiData<AnchorFactory> = {
   ...TextStylesApi,
   modifiers: [
     ...TextStylesApi.modifiers!,
-    { modifier: 'data-underline', selector: 'root', value: 'Value of underline prop' },
+    { modifier: 'data-underline', selector: 'root', value: 'Value of `underline` prop' },
   ],
 };

@@ -56,7 +56,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   /** Determines whether font properties should be inherited from parent, `true` by default */
   inherit?: boolean;
 
-  /** Gradient object, ignored when `variant` is not `gradient`, `theme.defaultGradient` by default */
+  /** Gradient configuration, ignored when `variant` is not `gradient`, `theme.defaultGradient` by default */
   gradient?: MantineGradient;
 
   /** Shorthand for `component="span"`, `false` by default, default root element is `p` */

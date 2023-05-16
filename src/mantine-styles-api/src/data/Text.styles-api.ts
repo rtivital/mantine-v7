@@ -19,11 +19,11 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
     {
       modifier: 'data-truncate',
       selector: 'root',
-      value: 'Value of truncate prop',
-      condition: 'truncate prop is set',
+      value: 'Value of `truncate` prop',
+      condition: '`truncate` prop is set',
     },
-    { modifier: 'data-line-clamp', selector: 'root', condition: 'lineClamp prop is a number' },
-    { modifier: 'data-inline', selector: 'root', condition: 'inline prop is set' },
-    { modifier: 'data-inherit', selector: 'root', condition: 'inherit prop is set' },
+    { modifier: 'data-line-clamp', selector: 'root', condition: '`lineClamp` prop is a number' },
+    { modifier: 'data-inline', selector: 'root', condition: '`inline` prop is set' },
+    { modifier: 'data-inherit', selector: 'root', condition: '`inherit` prop is set' },
   ],
 };

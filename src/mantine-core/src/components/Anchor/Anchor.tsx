@@ -8,7 +8,7 @@ export type AnchorStylesNames = TextStylesNames;
 export type AnchorVariant = TextVariant;
 export type AnchorCssVariables = TextCssVariables;
 
-export interface AnchorProps extends TextProps {
+export interface AnchorProps extends Omit<TextProps, 'span'> {
   /** Determines in which cases link should have `text-decoration: underline` styles, `hover` by default */
   underline?: 'always' | 'hover' | 'never';
 }
