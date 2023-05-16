@@ -19,9 +19,9 @@ export type CenterCssVariables = {
 
 export interface CenterProps extends BoxProps, StylesApiProps<CenterFactory> {
   /** Content that should be centered vertically and horizontally */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
-  /** Set to true to use `inline-flex` instead of `flex`, `false` by default */
+  /** Determines whether `inline-flex` should be used instead of `flex`, `false` by default */
   inline?: boolean;
 }
 

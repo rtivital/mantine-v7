@@ -8,7 +8,7 @@ export const CenterStylesApi: StylesApiData<CenterFactory> = {
 
   vars: {
     root: {
-      '--center-display': 'Controls display property of root element',
+      '--center-display': 'Controls `display` property of the root element',
     },
   },
 };
