@@ -22,7 +22,7 @@ export { useListState } from './use-list-state/use-list-state';
 export { useLocalStorage } from './use-local-storage/use-local-storage';
 export { useSessionStorage } from './use-session-storage/use-session-storage';
 export { useMediaQuery } from './use-media-query/use-media-query';
-export { useMergedRef, mergeRefs } from './use-merged-ref/use-merged-ref';
+export { useMergedRef, mergeRefs, assignRef } from './use-merged-ref/use-merged-ref';
 export { useMouse } from './use-mouse/use-mouse';
 export { useMove, clampUseMovePosition } from './use-move/use-move';
 export { usePagination } from './use-pagination/use-pagination';
