@@ -8,7 +8,7 @@ export const ContainerStylesApi: StylesApiData<ContainerFactory> = {
 
   vars: {
     root: {
-      '--container-size': 'Controls container max-width',
+      '--container-size': 'Controls container `max-width`',
     },
   },
 };

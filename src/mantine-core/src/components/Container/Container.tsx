@@ -24,7 +24,7 @@ export interface ContainerProps
   extends BoxProps,
     StylesApiProps<ContainerFactory>,
     ElementProps<'div'> {
-  /** Sets `max-width` of the container, value is not responsive – it is set for all screen sizes. Numbers are converted to rem. Ignored when `fluid` prop is set. `'md'` by default */
+  /** Sets `max-width` of the container, value is not responsive – it is the same for all screen sizes. Numbers are converted to rem. Ignored when `fluid` prop is set. `'md'` by default */
   size?: MantineSize | (string & {}) | number;
 
   /** Determines whether the container should take 100% of its parent width. If set, `size` prop is ignored. `false` by default. */
