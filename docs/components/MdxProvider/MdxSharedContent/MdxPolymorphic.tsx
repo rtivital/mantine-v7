@@ -34,10 +34,12 @@ function Demo() {
 }
 
 function getInterfaceCode(input: MdxPolymorphicProps) {
-  return `import type { ${input.component}Props } from '${input.package || '@mantine/core'}';
+  return `import type { ${input.component}Props, ElementProps } from '${
+    input.package || '@mantine/core'
+  }';
 
 interface My${input.component}Props extends ${input.component}Props,
-  React.ComponentPropsWithoutRef<'${input.changeToElement}'> {}`;
+  ElementProps<'${input.changeToElement}', keyof ${input.component}Props> {}`;
 }
 
 export function MdxPolymorphic(props: MdxPolymorphicProps) {

@@ -19,7 +19,20 @@ export default Layout(MDX_DATA.Alert);
 - Set `closeButtonLabel` prop to make close button accessible
 
 ```tsx
-<Alert withCloseButton /> // -> not ok
-<Alert withCloseButton closeButtonLabel="Close alert" /> // -> ok
-<Alert /> // -> ok, without close button, closeButtonLabel is not needed
+import { Alert } from '@mantine/core';
+
+function Invalid() {
+  // -> not ok
+  return <Alert withCloseButton />;
+}
+
+function Valid() {
+  // -> ok
+  return <Alert withCloseButton closeButtonLabel="Dismiss" />;
+}
+
+function AlsoValid() {
+  // -> ok, without close button, closeButtonLabel is not needed
+  return <Alert />;
+}
 ```

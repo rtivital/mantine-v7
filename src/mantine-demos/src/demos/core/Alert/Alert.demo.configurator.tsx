@@ -10,7 +10,11 @@ import { IconInfoCircle } from '@tabler/icons-react';
 
 function Demo() {
   const icon = <IconInfoCircle />;
-  return <Alert{{props}} icon={icon} />;
+  return (
+    <Alert{{props}} icon={icon}>
+      {{children}}
+    </Alert>
+  );
 }
 `;
 

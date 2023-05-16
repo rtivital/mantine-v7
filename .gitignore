@@ -36,8 +36,6 @@ docs/.docgen/
 docs/.cache
 storybook-static
 .next
-docs/src/components/Test.tsx
-____*.internal.ts
-____*.internal.tsx
+docs/components/___test.internal.tsx
 src/*/styles.css
 .stylelintcache
