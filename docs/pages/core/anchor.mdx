@@ -24,7 +24,7 @@ You can also configure `underline` prop for all `Anchor` components with [defaul
 import { Anchor, createTheme, MantineProvider } from '@mantine/core';
 
 const theme = createTheme({
-  defaultProps: {
+  components: {
     Anchor: Anchor.extend({
       defaultProps: {
         underline: 'always',

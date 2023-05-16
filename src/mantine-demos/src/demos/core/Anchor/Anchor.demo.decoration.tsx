@@ -3,6 +3,8 @@ import { MantineDemo } from '@mantine/ds';
 import { Anchor, Group } from '@mantine/core';
 
 const code = `
+import { Anchor, Group } from '@mantine/core';
+
 function Demo() {
   return (
     <Group justify="center">
