@@ -10,14 +10,14 @@ export const BadgeStylesApi: StylesApiData<BadgeFactory> = {
 
   vars: {
     root: {
-      '--badge-bd': 'Controls border',
-      '--badge-bg': 'Controls background color',
-      '--badge-color': 'Controls text color',
-      '--badge-dot-color': 'Controls dot color, only applicable when variant="dot"',
-      '--badge-fz': 'Controls font-size',
-      '--badge-height': 'Controls height',
-      '--badge-padding-x': 'Controls horizontal padding',
-      '--badge-radius': 'Controls border-radius',
+      '--badge-bd': 'Controls `border`',
+      '--badge-bg': 'Controls `background`',
+      '--badge-color': 'Controls text `color`',
+      '--badge-dot-color': 'Controls dot `color`, only applicable when `variant="dot"`',
+      '--badge-fz': 'Controls `font-size`',
+      '--badge-height': 'Controls `height`',
+      '--badge-padding-x': 'Controls horizontal `padding`',
+      '--badge-radius': 'Controls `border-radius`',
     },
   },
 

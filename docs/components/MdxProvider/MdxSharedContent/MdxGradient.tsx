@@ -15,7 +15,7 @@ export function MdxGradient({ component }: MdxGradientProps) {
         When <MdxCode>variant</MdxCode> prop is set to <MdxCode>gradient</MdxCode>, you can control
         button gradient with <MdxCode>gradient</MdxCode> prop, it accepts an object with{' '}
         <MdxCode>from</MdxCode>, <MdxCode>to</MdxCode> and <MdxCode>deg</MdxCode> properties. If the
-        <MdxCode>gradient</MdxCode> prop is not set <MdxCode>{component}</MdxCode> will use{' '}
+        <MdxCode>gradient</MdxCode> prop is not set, <MdxCode>{component}</MdxCode> will use{' '}
         <MdxCode>theme.defaultGradient</MdxCode> which can be configured on the{' '}
         <MdxLink href="/theming/theme-object">theme object</MdxLink>. <MdxCode>gradient</MdxCode>{' '}
         prop is ignored when <MdxCode>variant</MdxCode> is not <MdxCode>gradient</MdxCode>.

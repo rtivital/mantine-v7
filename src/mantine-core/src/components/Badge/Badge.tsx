@@ -42,7 +42,7 @@ export type BadgeCssVariables = {
 };
 
 export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
-  /** Controls font-size, height and horizontal padding, `'md'` by default */
+  /** Controls `font-size`, `height` and horizontal `padding`, `'md'` by default */
   size?: MantineSize | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
@@ -51,7 +51,7 @@ export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
   color?: MantineColor;
 
-  /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
+  /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
 
   /** Content displayed on the left side of the badge label */
@@ -63,7 +63,7 @@ export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
   /** Determines whether Badge should take 100% of its parent width, `false` by default */
   fullWidth?: boolean;
 
-  /** Badge label */
+  /** Main badge content */
   children?: React.ReactNode;
 }
 

@@ -12,8 +12,6 @@ export default Layout(MDX_DATA.Badge);
 
 <Demo data={BadgeDemos.gradient} />
 
-<Polymorphic defaultElement="div" changeToElement="a" component="Badge" withNext />
-
 ## Left and right sections
 
 <Demo data={BadgeDemos.sections} />
@@ -23,5 +21,9 @@ export default Layout(MDX_DATA.Badge);
 Set `fullWidth` to make badge span full width of its parent element:
 
 <Demo data={BadgeDemos.fullWidth} />
+
+<StylesApiSelectors component="Badge" />
+
+<Demo data={BadgeDemos.stylesApi} />
 
 <Polymorphic defaultElement="div" changeToElement="a" component="Badge" withNext />
