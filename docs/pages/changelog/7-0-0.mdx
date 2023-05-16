@@ -1,4 +1,39 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { LoaderDemos, TableDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
+
+## Loader changes
+
+[Loader](/core/loader) component is now built with CSS only. This change improves performance and reduces
+HTML output of the component.
+
+<Demo data={LoaderDemos.configurator} />
+
+It is also now possible to add custom loaders on [theme](/theming/theme-object) with [default prop](/theming/default-props).
+Specified [Loader](/core/loader) will be used in all components that use it under the hood ([LoadingOverlay](/core/loading-overlay), [Button](/core/button), [ActionIcon](/core/action-icon), [Stepper](/core/stepper), etc.).
+
+<Demo data={LoaderDemos.cssLoader} />
+
+## Table changes
+
+[Table](/core/table) component changes:
+
+- [Styles API](/styles/styles-api) support
+- It is now required to use compound components instead of elements: `Table.Tr`, `Table.Td`, etc.
+- It is now easier to override styles – all styles are added with classes instead of deeply nested selectors on root element
+- New props: `borderColor`, `withRowBorders`, `stripedColor`, `highlightOnHoverColor`
+- `withBorder` prop was renamed to `withTableBorder`
+- `fontSize` prop was removed, use `fz` [style prop](/styles/style-props) instead
+
+<Demo data={TableDemos.usage} />
+
+## Other changes
+
+- New [VisuallyHidden](/core/visually-hidden) component
+- [Blockquote](/core/blockquote) components has new design
+- [Breadcrumbs](/core/breadcrumbs) component now supports `separatorMargin` prop
+- [Slider and RangeSlider](/core/slider) components `radius` prop now affects thumb as well as track
+- [NativeSelect](/core/native-select/) component now supports setting options as `children` and options groups
+- [Anchor](/core/anchor) component now supports `underline` prop which lets you configure how link will be underlined: `hover` (default), `always` or `never`
