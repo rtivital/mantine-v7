@@ -1,13 +1,13 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { useMergedRef } from '@mantine/hooks';
-import { ScrollAreaScrollbarImpl } from './Scrollbar';
+import { Scrollbar } from './Scrollbar';
 import { useScrollAreaContext } from '../ScrollArea.context';
 import { ScrollAreaScrollbarAxisProps } from '../ScrollArea.types';
 import { isScrollingWithinScrollbarBounds, getThumbSize, toInt } from '../utils';
 
 export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollbarAxisProps>(
   (props, forwardedRef) => {
-    const { sizes, onSizesChange, ...others } = props;
+    const { sizes, onSizesChange, style, ...others } = props;
     const context = useScrollAreaContext();
     const [computedStyle, setComputedStyle] = React.useState<CSSStyleDeclaration>();
     const ref = useRef<HTMLDivElement>(null);
@@ -18,15 +18,14 @@ export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollb
     }, [ref]);
 
     return (
-      <ScrollAreaScrollbarImpl
+      <Scrollbar
         {...others}
         data-orientation="vertical"
         ref={composeRefs}
         sizes={sizes}
         style={{
-          // @YYY
-          ['--radix-scroll-area-thumb-height' as any]: `${getThumbSize(sizes)}px`,
-          ...props.style,
+          ['--sa-thumb-height' as any]: `${getThumbSize(sizes)}px`,
+          ...style,
         }}
         onThumbPointerDown={(pointerPos) => props.onThumbPointerDown(pointerPos.y)}
         onDragScroll={(pointerPos) => props.onDragScroll(pointerPos.y)}

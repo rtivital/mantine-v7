@@ -7,7 +7,7 @@ import { addUnlinkedScrollListener, composeEventHandlers } from '../utils';
 interface ThumbProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 export const Thumb = forwardRef<HTMLDivElement, ThumbProps>((props, forwardedRef) => {
-  const { style, ...thumbProps } = props;
+  const { style, ...others } = props;
   const scrollAreaContext = useScrollAreaContext();
   const scrollbarContext = useScrollbarContext();
   const { onThumbPositionChange } = scrollbarContext;
@@ -42,12 +42,11 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>((props, forwardedRef
   return (
     <div
       data-state={scrollbarContext.hasThumb ? 'visible' : 'hidden'}
-      {...thumbProps}
+      {...others}
       ref={composedRef}
       style={{
-        // @YYY
-        width: 'var(--radix-scroll-area-thumb-width)',
-        height: 'var(--radix-scroll-area-thumb-height)',
+        width: 'var(--sa-thumb-width)',
+        height: 'var(--sa-thumb-height)',
         ...style,
       }}
       onPointerDownCapture={composeEventHandlers(props.onPointerDownCapture, (event) => {
