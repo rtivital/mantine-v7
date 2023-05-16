@@ -740,6 +740,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Alert.mdx',
   },
 
+  Affix: {
+    title: 'Affix',
+    package: '@mantine/core',
+    slug: '/core/affix',
+    props: ['Affix'],
+    styles: ['Affix'],
+    description: 'Renders children inside portal at fixed position',
+    import: "import { Affix } from '@mantine/core';",
+    source: 'mantine-core/src/components/Affix/Affix.tsx',
+    docs: 'core/Affix.mdx',
+  },
+
   // ----------------------------------- Meta --------------------------------------
   Changelog700: {
     title: 'Version v7.0.0',

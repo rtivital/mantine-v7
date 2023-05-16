@@ -1,4 +1,5 @@
 export * from './ActionIcon';
+export * from './Affix';
 export * from './Alert';
 export * from './Anchor';
 export * from './AspectRatio';

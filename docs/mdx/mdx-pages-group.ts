@@ -87,7 +87,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
         pages: [MDX_DATA.Anchor, MDX_DATA.Tabs, MDX_DATA.Breadcrumbs, MDX_DATA.Burger],
       },
       { category: 'feedback', pages: [MDX_DATA.Loader, MDX_DATA.Alert] },
-      { category: 'overlays', pages: [MDX_DATA.Popover, MDX_DATA.Tooltip, MDX_DATA.Overlay] },
+      {
+        category: 'overlays',
+        pages: [MDX_DATA.Popover, MDX_DATA.Tooltip, MDX_DATA.Overlay, MDX_DATA.Affix],
+      },
       {
         category: 'Data display',
         pages: [

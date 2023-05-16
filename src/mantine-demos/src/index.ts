@@ -5,6 +5,7 @@ export * as GuidesDemos from './demos/guides';
 
 // Core demos
 export * as ActionIconDemos from './demos/core/ActionIcon';
+export * as AffixDemos from './demos/core/Affix';
 export * as AlertDemos from './demos/core/Alert';
 export * as AnchorDemos from './demos/core/Anchor';
 export * as AspectRatioDemos from './demos/core/AspectRatio';

@@ -1,6 +1,10 @@
 import { rem, em } from './rem';
 
 describe('@mantine/units-converters/rem', () => {
+  it('returns undefined if input is undefined', () => {
+    expect(rem(undefined)).toBe(undefined);
+  });
+
   it('converts numbers to rem', () => {
     expect(rem(0)).toBe('0rem');
     expect(rem(16)).toBe('1rem');
