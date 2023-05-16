@@ -8,9 +8,13 @@ export default Layout(MDX_DATA.ColorSwatch);
 
 <Demo data={ColorSwatchDemos.usage} />
 
-## Component prop
+## withShadow
 
-`ColorSwatch` is a [polymorphic](/guides/polymorphic) component, you can change root element
-with `component` prop:
+By default, `ColorSwatch` has an inner box-shadow to make it more visible on light backgrounds,
+you can disable it by setting `withShadow={false}` prop:
+
+<Demo data={ColorSwatchDemos.shadow} />
+
+<Polymorphic defaultElement="div" changeToElement="a" component="ColorSwatch" withNext />
 
 <Demo data={ColorSwatchDemos.component} />
