@@ -29,6 +29,15 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 
 <Demo data={TableDemos.usage} />
 
+## Group changes
+
+[Group](/core/group) component changes:
+
+- `position` prop was renamed to `justify` – it now supports all `justify-content` values
+- `noWrap` prop was replaced with `wrap="nowrap"`, `wrap` prop now supports all `flex-wrap` values
+- `spacing` prop was replaced with `gap`
+- `Group` now supports new `preventGrowOverflow` prop which allows to customize how group items will behave when they grow larger than their dedicated space
+
 ## Other changes
 
 - New [VisuallyHidden](/core/visually-hidden) component

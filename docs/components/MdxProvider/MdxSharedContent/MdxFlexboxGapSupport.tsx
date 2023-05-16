@@ -14,7 +14,7 @@ export function MdxFlexboxGapSupport({ component }: MdxFlexboxGapSupportProps) {
       <MdxParagraph>
         <MdxCode>{component}</MdxCode> uses{' '}
         <MdxLink href="https://caniuse.com/flexbox-gap">flexbox gap</MdxLink> to add spacing between
-        children. In older browsers <MdxCode>{component}</MdxCode> children may not have spacing.
+        children. In older browsers, <MdxCode>{component}</MdxCode> children may not have spacing.
         You can install PostCSS{' '}
         <MdxLink href="https://github.com/gavinmcfarland/flex-gap-polyfill">
           flex-gap-polyfill

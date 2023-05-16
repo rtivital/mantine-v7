@@ -1,7 +1,7 @@
 .root {
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
-  font-size: var(--_text-fz, var(--test-fz));
+  font-size: var(--_text-fz, var(--text-fz));
   line-height: var(--_text-line-height, var(--text-lh));
   font-weight: normal;
   margin: 0;
