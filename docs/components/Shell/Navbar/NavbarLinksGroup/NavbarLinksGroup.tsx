@@ -67,7 +67,8 @@ export function NavbarLinksGroup({ data, onNavbarClose }: NavbarLinksGroupProps)
 
   const pages = data.pages.map((page) => {
     if (hasCategory(page)) {
-      const nested = page.pages.map((nestedPage) => (
+      const sorted = page.pages.sort((a, b) => a.title.localeCompare(b.title));
+      const nested = sorted.map((nestedPage) => (
         <NavbarLink
           key={nestedPage.slug}
           data={nestedPage}
