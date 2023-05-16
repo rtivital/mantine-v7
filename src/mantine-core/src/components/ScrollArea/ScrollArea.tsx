@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as Rsa from '@radix-ui/react-scroll-area';
 import {
   Box,
   BoxProps,
@@ -8,12 +7,16 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  useDirection,
   rem,
   createVarsResolver,
   Factory,
 } from '../../core';
+import { ScrollAreaScrollbar } from './ScrollAreaScrollbar/ScrollAreaScrollbar';
+import { ScrollAreaCorner } from './ScrollAreaCorner/ScrollAreaCorner';
+import { ScrollAreaRoot } from './ScrollAreaRoot/ScrollAreaRoot';
+import { ScrollAreaViewport } from './ScrollAreaViewport/ScrollAreaViewport';
 import classes from './ScrollArea.module.css';
+import { ScrollAreaThumb } from './ScrollAreaThumb/ScrollAreaThumb';
 
 export type ScrollAreaStylesNames = 'root' | 'viewport' | 'scrollbar' | 'thumb' | 'corner';
 export type ScrollAreaVariant = string;
@@ -94,12 +97,10 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
     viewportRef,
     onScrollPositionChange,
     children,
-    variant,
     offsetScrollbars,
     ...others
   } = props;
 
-  const { dir } = useDirection();
   const [scrollbarHovered, setScrollbarHovered] = useState(false);
 
   const getStyles = useStyles<ScrollAreaFactory>({
@@ -116,58 +117,56 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
   });
 
   return (
-    <Rsa.Root
+    <ScrollAreaRoot
       type={type === 'never' ? 'always' : type}
       scrollHideDelay={scrollHideDelay}
-      dir={dir}
       ref={ref}
-      asChild
+      {...getStyles('root')}
+      {...others}
     >
-      <Box {...getStyles('root')} variant={variant} {...others}>
-        <Rsa.Viewport
-          {...viewportProps}
-          {...getStyles('viewport')}
-          ref={viewportRef}
-          data-offset-scrollbars={offsetScrollbars || undefined}
-          onScroll={
-            typeof onScrollPositionChange === 'function'
-              ? ({ currentTarget }) =>
-                  onScrollPositionChange({
-                    x: currentTarget.scrollLeft,
-                    y: currentTarget.scrollTop,
-                  })
-              : undefined
-          }
-        >
-          {children}
-        </Rsa.Viewport>
-        <Rsa.Scrollbar
-          {...getStyles('scrollbar')}
-          orientation="horizontal"
-          data-hidden={type === 'never' || undefined}
-          forceMount
-          onMouseEnter={() => setScrollbarHovered(true)}
-          onMouseLeave={() => setScrollbarHovered(false)}
-        >
-          <Rsa.Thumb {...getStyles('thumb')} />
-        </Rsa.Scrollbar>
-        <Rsa.Scrollbar
-          {...getStyles('scrollbar')}
-          orientation="vertical"
-          data-hidden={type === 'never' || undefined}
-          forceMount
-          onMouseEnter={() => setScrollbarHovered(true)}
-          onMouseLeave={() => setScrollbarHovered(false)}
-        >
-          <Rsa.Thumb {...getStyles('thumb')} />
-        </Rsa.Scrollbar>
-        <Rsa.Corner
-          {...getStyles('corner')}
-          data-hovered={scrollbarHovered || undefined}
-          data-hidden={type === 'never' || undefined}
-        />
-      </Box>
-    </Rsa.Root>
+      <ScrollAreaViewport
+        {...viewportProps}
+        {...getStyles('viewport')}
+        ref={viewportRef}
+        data-offset-scrollbars={offsetScrollbars || undefined}
+        onScroll={
+          typeof onScrollPositionChange === 'function'
+            ? ({ currentTarget }) =>
+                onScrollPositionChange({
+                  x: currentTarget.scrollLeft,
+                  y: currentTarget.scrollTop,
+                })
+            : undefined
+        }
+      >
+        {children}
+      </ScrollAreaViewport>
+      <ScrollAreaScrollbar
+        {...getStyles('scrollbar')}
+        orientation="horizontal"
+        data-hidden={type === 'never' || undefined}
+        forceMount
+        onMouseEnter={() => setScrollbarHovered(true)}
+        onMouseLeave={() => setScrollbarHovered(false)}
+      >
+        <ScrollAreaThumb {...getStyles('thumb')} />
+      </ScrollAreaScrollbar>
+      <ScrollAreaScrollbar
+        {...getStyles('scrollbar')}
+        orientation="vertical"
+        data-hidden={type === 'never' || undefined}
+        forceMount
+        onMouseEnter={() => setScrollbarHovered(true)}
+        onMouseLeave={() => setScrollbarHovered(false)}
+      >
+        <ScrollAreaThumb {...getStyles('thumb')} />
+      </ScrollAreaScrollbar>
+      <ScrollAreaCorner
+        {...getStyles('corner')}
+        data-hovered={scrollbarHovered || undefined}
+        data-hidden={type === 'never' || undefined}
+      />
+    </ScrollAreaRoot>
   );
 });
 

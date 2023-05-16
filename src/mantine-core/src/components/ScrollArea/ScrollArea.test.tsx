@@ -10,7 +10,6 @@ describe('@mantine/core/ScrollArea', () => {
   tests.itSupportsSystemProps<ScrollAreaProps, ScrollAreaStylesNames>({
     component: ScrollArea,
     props: defaultProps,
-    polymorphic: true,
     styleProps: true,
     children: true,
     extend: true,
@@ -26,7 +25,6 @@ describe('@mantine/core/ScrollAreaAutosize', () => {
   tests.itSupportsSystemProps<ScrollAreaProps, ScrollAreaStylesNames>({
     component: ScrollArea.Autosize,
     props: defaultProps,
-    polymorphic: true,
     styleProps: true,
     children: true,
     extend: true,

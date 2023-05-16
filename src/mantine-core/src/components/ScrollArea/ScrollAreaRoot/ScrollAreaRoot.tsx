@@ -1,18 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { useMergedRef } from '@mantine/hooks';
-import {
-  Box,
-  BoxProps,
-  StylesApiProps,
-  factory,
-  ElementProps,
-  useProps,
-  useStyles,
-  createVarsResolver,
-  Factory,
-} from '../../../core';
+import { Box, BoxProps, ElementProps, useProps, Factory } from '../../../core';
 import { ScrollAreaProvider } from '../ScrollArea.context';
-import classes from '../ScrollArea.module.css';
 
 export type ScrollAreaRootStylesNames =
   | 'root'
@@ -33,13 +22,7 @@ export interface ScrollAreaRootStylesCtx {
   cornerHeight: number;
 }
 
-export interface ScrollAreaRootProps
-  extends BoxProps,
-    StylesApiProps<ScrollAreaRootFactory>,
-    ElementProps<'div'> {
-  /** Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 0.75rem */
-  scrollbarSize?: number | string;
-
+export interface ScrollAreaRootProps extends BoxProps, ElementProps<'div'> {
   /**
    * Defines scrollbars behavior, `hover` by default
    * - `hover` – scrollbars are visible when mouse is over the scroll area
@@ -52,52 +35,22 @@ export interface ScrollAreaRootProps
 
   /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
   scrollHideDelay?: number;
-
-  /** Determines whether scrollbars should be offset with padding, `false` by default */
-  offsetScrollbars?: boolean;
-
-  /** Called with current position (`x` and `y` coordinates) when viewport is scrolled */
-  onScrollPositionChange?(position: { x: number; y: number }): void;
 }
 
 export type ScrollAreaRootFactory = Factory<{
   props: ScrollAreaRootProps;
   ref: HTMLDivElement;
   stylesNames: ScrollAreaRootStylesNames;
-  ctx: ScrollAreaRootStylesCtx;
-  vars: ScrollAreaRootCssVariables;
-  variant: ScrollAreaRootVariant;
 }>;
 
 const defaultProps: Partial<ScrollAreaRootProps> = {
-  scrollbarSize: 12,
   scrollHideDelay: 1000,
   type: 'hover',
 };
 
-const varsResolver = createVarsResolver<ScrollAreaRootFactory>((_, props, ctx) => ({
-  root: {
-    '--sa-corner-width': `${ctx.cornerWidth}px`,
-    '--sa-corner-height': `${ctx.cornerHeight}px`,
-  },
-}));
-
-export const ScrollAreaRoot = factory<ScrollAreaRootFactory>((_props, ref) => {
+export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>((_props, ref) => {
   const props = useProps('ScrollAreaRoot', defaultProps, _props);
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    scrollbarSize,
-    type,
-    scrollHideDelay,
-    offsetScrollbars,
-    onScrollPositionChange,
-    ...others
-  } = props;
+  const { type, scrollHideDelay, ...others } = props;
 
   const [scrollArea, setScrollArea] = useState<HTMLDivElement | null>(null);
   const [viewport, setViewport] = useState<HTMLDivElement | null>(null);
@@ -109,20 +62,6 @@ export const ScrollAreaRoot = factory<ScrollAreaRootFactory>((_props, ref) => {
   const [scrollbarXEnabled, setScrollbarXEnabled] = useState(false);
   const [scrollbarYEnabled, setScrollbarYEnabled] = useState(false);
   const rootRef = useMergedRef(ref, (node) => setScrollArea(node));
-
-  const getStyles = useStyles<ScrollAreaRootFactory>({
-    name: 'ScrollArea',
-    classes,
-    props,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    stylesCtx: { cornerHeight, cornerWidth },
-    vars,
-    varsResolver,
-  });
 
   return (
     <ScrollAreaProvider
@@ -144,10 +83,16 @@ export const ScrollAreaRoot = factory<ScrollAreaRootFactory>((_props, ref) => {
         onScrollbarYEnabledChange: setScrollbarYEnabled,
         onCornerWidthChange: setCornerWidth,
         onCornerHeightChange: setCornerHeight,
-        getStyles,
       }}
     >
-      <Box {...others} {...getStyles('root')} ref={rootRef} />
+      <Box
+        {...others}
+        ref={rootRef}
+        __vars={{
+          '--sa-corner-width': `${cornerWidth}px`,
+          '--sa-corner-height': `${cornerHeight}px`,
+        }}
+      />
     </ScrollAreaProvider>
   );
 });

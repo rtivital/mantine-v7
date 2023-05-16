@@ -21,7 +21,6 @@ export const ScrollAreaScrollbarY = forwardRef<HTMLDivElement, ScrollAreaScrollb
       <ScrollAreaScrollbarImpl
         {...others}
         data-orientation="vertical"
-        {...context.getStyles('scrollbar')}
         ref={composeRefs}
         sizes={sizes}
         style={{
