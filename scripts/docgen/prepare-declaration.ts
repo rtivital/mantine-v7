@@ -18,6 +18,8 @@ const replace = {
   'Width<string | number> | undefined': 'React.CSSProperties["width"]',
   ReactNode: 'React.ReactNode',
   '(string & {}) | MantineSize | undefined': 'MantineSize',
+  '(Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | ... 2 more ... | undefined; }) | undefined':
+    'React.ComponentPropsWithoutRef<"div">',
 };
 
 export function prepareDeclaration(declaration: ComponentDoc) {
