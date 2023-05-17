@@ -12,3 +12,4 @@ export { customVariant } from './Button.demo.customVariant';
 export { sections } from './Button.demo.sections';
 export { sectionsJustify } from './Button.demo.sectionsJustify';
 export { disabledLink } from './Button.demo.disabledLink';
+export { stylesApi } from './Button.demo.stylesApi';

@@ -25,7 +25,7 @@ export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIco
   /** Controls group orientation, `'horizontal'` by default */
   orientation?: 'horizontal' | 'vertical';
 
-  /** `border-width` of child `ActionIcon` components. Default value in `1` */
+  /** `border-width` of the child `ActionIcon` components. Default value in `1` */
   borderWidth?: number | string;
 }
 

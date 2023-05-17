@@ -3,11 +3,11 @@ import { MantineDemo } from '@mantine/ds';
 import { Button, Group } from '@mantine/core';
 
 const code = (props: any) => `
-import { Button } from '@mantine/core';
+import { Button, Group } from '@mantine/core';
 
 function Demo() {
   return (
-    <Group>
+    <Group justify="center">
       <Button size="${props.size}">Regular ${props.size}</Button>
       <Button size="compact-${props.size}">Compact ${props.size}</Button>
     </Group>
@@ -17,7 +17,7 @@ function Demo() {
 
 function Wrapper(props: any) {
   return (
-    <Group>
+    <Group justify="center">
       <Button size={props.size}>Regular {props.size}</Button>
       <Button size={`compact-${props.size}`}>Compact {props.size}</Button>
     </Group>

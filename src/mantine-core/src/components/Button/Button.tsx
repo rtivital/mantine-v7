@@ -48,7 +48,7 @@ export type ButtonCssVariables = {
 export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   'data-disabled'?: boolean;
 
-  /** Controls button height, font-size and horizontal padding, `'sm'` by default */
+  /** Controls button `height`, `font-size` and horizontal `padding`, `'sm'` by default */
   size?: MantineSize | `compact-${MantineSize}` | (string & {});
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
@@ -63,13 +63,13 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   /** Content displayed on the right side of the button label */
   rightSection?: React.ReactNode;
 
-  /** Determines whether button must take 100% width of its parent container, `false` by default */
+  /** Determines whether button should take 100% width of its parent container, `false` by default */
   fullWidth?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Gradient styles used when `variant="gradient"`, default value is `theme.defaultGradient` */
+  /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;
 
   /** Indicates disabled state */
@@ -78,10 +78,10 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   /** Button content */
   children?: React.ReactNode;
 
-  /** Determines whether `Loader` component should be displayed over the button */
+  /** Determines whether the `Loader` component should be displayed over the button */
   loading?: boolean;
 
-  /** Props added to the Loader component (only visible when `loading` prop is set) */
+  /** Props added to the `Loader` component (only visible when `loading` prop is set) */
   loaderProps?: LoaderProps;
 }
 

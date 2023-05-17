@@ -7,7 +7,7 @@ import { Button } from '@mantine/core';
 
 function Demo() {
   return (
-    <Button.Group {{props}}>
+    <Button.Group{{props}}>
       <Button variant="default">First</Button>
       <Button variant="default">Second</Button>
       <Button variant="default">Third</Button>
