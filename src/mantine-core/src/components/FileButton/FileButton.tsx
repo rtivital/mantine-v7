@@ -13,7 +13,7 @@ export interface FileButtonProps<Multiple extends boolean = false> {
   /** Determines whether user can pick more than one file */
   multiple?: Multiple;
 
-  /** File input accept attribute, for example, "image/png,image/jpeg" */
+  /** File input accept attribute, for example, `"image/png,image/jpeg"` */
   accept?: string;
 
   /** Input name attribute */
@@ -22,7 +22,7 @@ export interface FileButtonProps<Multiple extends boolean = false> {
   /** Input form attribute */
   form?: string;
 
-  /** Function that should be called when value changes to null or empty array */
+  /** Reference of the function that should be called when value changes to null or empty array */
   resetRef?: React.ForwardedRef<() => void>;
 
   /** Disables file picker */
@@ -31,7 +31,7 @@ export interface FileButtonProps<Multiple extends boolean = false> {
   /** Specifies that, optionally, a new file should be captured, and which device should be used to capture that new media of a type defined by the accept attribute. */
   capture?: boolean | 'user' | 'environment';
 
-  /** Spreads props to input element used to capture files */
+  /** Passes down props to the input element used to capture files */
   inputProps?: React.ComponentPropsWithoutRef<'input'>;
 }
 
