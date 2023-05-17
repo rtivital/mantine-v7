@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const InputStylesApi: StylesApiData<InputFactory> = {
   selectors: {
-    wrapper: 'Root element',
+    wrapper: 'Root element of the Input',
     input: 'Input element',
     section: 'Left and right sections',
   },

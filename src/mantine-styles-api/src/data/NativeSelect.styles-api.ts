@@ -4,8 +4,8 @@ import { InputStylesApi, InputWrapperStylesApi } from './Input.styles-api';
 
 export const NativeSelectStylesApi: StylesApiData<NativeSelectFactory> = {
   selectors: {
-    ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
+    ...InputStylesApi.selectors,
   },
 
   vars: {},
