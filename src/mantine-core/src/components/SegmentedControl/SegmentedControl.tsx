@@ -59,10 +59,10 @@ export interface SegmentedControlProps
   /** Called when value changes */
   onChange?(value: string): void;
 
-  /** Determines whether component is disabled */
+  /** Determines whether the component is disabled */
   disabled?: boolean;
 
-  /** Name of the radio group, by default random id is generated */
+  /** Name of the radio group, by default random name is generated */
   name?: string;
 
   /** Determines whether the component should take 100% width of its parent, `false` by default */
@@ -77,7 +77,7 @@ export interface SegmentedControlProps
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Indicator `transition-duration` in ms, set to 0 to turn off transitions, `200` by default */
+  /** Indicator `transition-duration` in ms, set `0` to turn off transitions, `200` by default */
   transitionDuration?: number;
 
   /** Indicator `transition-timing-function` property, `ease` by default */
@@ -86,7 +86,7 @@ export interface SegmentedControlProps
   /** Determines in which orientation component id displayed, `'horizontal'` by default */
   orientation?: 'vertical' | 'horizontal';
 
-  /** Determines whether value can be changed */
+  /** Determines whether the value can be changed */
   readOnly?: boolean;
 }
 

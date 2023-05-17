@@ -170,6 +170,17 @@
     }
   }
 
+  &[data-orientation='vertical'] {
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      height: rem(1px);
+      width: auto;
+    }
+  }
+
   @mixin light {
     --_separator-color: var(--mantine-color-gray-3);
   }
@@ -180,7 +191,7 @@
 
   &:first-of-type {
     &::before {
-      background-color: transparent;
+      --_separator-color: transparent;
     }
   }
 
