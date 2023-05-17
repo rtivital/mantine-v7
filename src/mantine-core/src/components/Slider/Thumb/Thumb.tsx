@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import { Box } from '../../../core';
-import { Transition, MantineTransition } from '../../Transition';
+import { Transition, TransitionOverride } from '../../Transition';
 import { useSliderContext } from '../Slider.context';
 
 export interface ThumbProps {
@@ -12,9 +12,7 @@ export interface ThumbProps {
   label: React.ReactNode;
   onKeyDownCapture?(event: React.KeyboardEvent<HTMLDivElement>): void;
   onMouseDown?(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void;
-  labelTransition: MantineTransition | undefined;
-  labelTransitionDuration: number | undefined;
-  labelTransitionTimingFunction: string | undefined;
+  labelTransitionProps: TransitionOverride | undefined;
   labelAlwaysOn: boolean | undefined;
   thumbLabel: string | undefined;
   onFocus?(): void;
@@ -38,9 +36,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
       dragging,
       onMouseDown,
       onKeyDownCapture,
-      labelTransition,
-      labelTransitionDuration,
-      labelTransitionTimingFunction,
+      labelTransitionProps,
       labelAlwaysOn,
       thumbLabel,
       onFocus,
@@ -86,9 +82,9 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>(
         {children}
         <Transition
           mounted={label != null && !!isVisible}
-          duration={labelTransitionDuration}
-          transition={labelTransition || 'fade'}
-          timingFunction={labelTransitionTimingFunction}
+          transition="fade"
+          duration={0}
+          {...labelTransitionProps}
         >
           {(transitionStyles) => (
             <div {...getStyles('label', { style: transitionStyles })}>{label}</div>

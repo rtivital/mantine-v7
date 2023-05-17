@@ -19,6 +19,10 @@ const EXTRA_FILES_PATHS = [
   // Popover
   '../src/mantine-core/src/components/Popover/PopoverTarget/PopoverTarget.tsx',
   '../src/mantine-core/src/components/Popover/PopoverDropdown/PopoverDropdown.tsx',
+
+  // Slider
+  '../src/mantine-core/src/components/Slider/Slider/Slider.tsx',
+  '../src/mantine-core/src/components/Slider/RangeSlider/RangeSlider.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

@@ -65,4 +65,6 @@ export const thumbChildren: MantineDemo = {
   type: 'code',
   component: Demo,
   code,
+  maxWidth: 400,
+  centered: true,
 };

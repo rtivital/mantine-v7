@@ -16,7 +16,6 @@ function Demo() {
         { value: 50, label: '50%' },
         { value: 80, label: '80%' },
       ]}
-      labelTransition="fade"
       size={2}
       classNames={classes}
     />
@@ -68,7 +67,6 @@ function Demo() {
           { value: 50, label: '50%' },
           { value: 80, label: '80%' },
         ]}
-        labelTransition="fade"
         size={2}
         classNames={classes}
       />

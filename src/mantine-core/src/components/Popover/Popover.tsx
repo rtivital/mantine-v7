@@ -57,7 +57,7 @@ export interface __PopoverProps {
   /** If set dropdown will not be unmounted from the DOM when it is hidden, display: none styles will be added instead */
   keepMounted?: boolean;
 
-  /** Props added to `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
+  /** Props passed down to `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
   transitionProps?: TransitionOverride;
 
   /** Dropdown width, or `'target'` to make dropdown width the same as target element, `'max-content'` by default */

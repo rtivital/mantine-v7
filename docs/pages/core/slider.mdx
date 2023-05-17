@@ -10,22 +10,27 @@ export default Layout(MDX_DATA.Slider);
 
 ## Controlled
 
-By default, both Slider and RangeSlider are uncontrolled, add onChange and value props to make them controlled:
+Controlled `Slider`:
 
 ```tsx
 import { useState } from 'react';
-import { Slider, RangeSlider } from '@mantine/core';
+import { Slider } from '@mantine/core';
 
 function Demo() {
   const [value, setValue] = useState(40);
-  const [rangeValue, setRangeValue] = useState<[number, number]>([20, 80]);
+  return <Slider value={value} onChange={setValue} />;
+}
+```
 
-  return (
-    <>
-      <Slider value={value} onChange={setValue} />
-      <RangeSlider value={rangeValue} onChange={setRangeValue} />
-    </>
-  );
+Controlled `RangeSlider`:
+
+```tsx
+import { useState } from 'react';
+import { RangeSlider } from '@mantine/core';
+
+function Demo() {
+  const [value, setValue] = useState<[number, number]>([20, 80]);
+  return <RangeSlider value={value} onChange={setValue} />;
 }
 ```
 
@@ -35,7 +40,8 @@ function Demo() {
 
 ## onChangeEnd
 
-`onChangeEnd` callback is called when user stops dragging the slider or uses arrows:
+`onChangeEnd` callback is called when user the slider is stopped from being dragged or value is changed with keyboard.
+You can use it as a debounced callback to avoid too frequent updates.
 
 <Demo data={SliderDemos.changeEnd} />
 
@@ -45,7 +51,7 @@ To change label behavior and appearance, set the following props:
 
 - `label` – formatter function, accepts value as an argument, set null to disable label, defaults to `f => f`
 - `labelAlwaysOn` – if true – label will always be displayed, by default label is visible only when user is dragging
-- `labelTransition`, `labelTransitionDuration`, `labelTransitionTimingFunction` – label uses [Transition](/core/transition/) component to animate presence, you can choose any premade transition or create your own
+- `labelTransitionProps` – props passed down to the [Transition](/core/transition) component, can be used to customize label animation
 
 <Demo data={SliderDemos.label} />
 
@@ -90,33 +96,43 @@ You can invert the track with the `inverted` prop:
 
 <Demo data={SliderDemos.inverted} />
 
-## Styles API
+<StylesApiSelectors component="Slider" />
 
-You can change styles of any element in slider component with [Styles API](/styles/styles-api/) to match your design requirements:
+<Demo data={SliderDemos.stylesApi} />
+
+Example of using [Styles API](/styles/styles-api/) to change `Slider` styles:
 
 <Demo data={SliderDemos.customize} />
 
 ## Vertical slider
 
-Slider and RangeSlider do not provide vertical orientation as it is very rarely used.
-If you need this feature you should build it yourself with [use-move](/hooks/use-move/) hook.
+`Slider` and `RangeSlider` do not provide vertical orientation as it is very rarely used.
+If you need this feature you can build it yourself with [use-move](/hooks/use-move/) hook.
 
 ## Accessibility
 
-Slider and RangeSlider components are accessible by default:
+`Slider` and `RangeSlider` components are accessible by default:
 
-- Slider thumbs are focusable
-- When the user uses mouse to interact with a slider, focus is moved on slider track, when the user presses arrows focus is moved on thumb
+- Thumbs are focusable
+- When the user uses mouse to interact with the slider, focus is moved to the slider track, when the user presses arrows focus is moved to the thumb
 - Value can be changed with arrows with step increment/decrement
 
 To label component for screen readers, add labels to thumbs:
 
 ```tsx
-<Slider thumbLabel="Thumb aria-label" />
-<RangeSlider thumbFromLabel="First thumb aria-label" thumbToLabel="Second thumb aria-label" />
+import { Slider, RangeSlider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <>
+      <Slider thumbLabel="Thumb aria-label" />
+      <RangeSlider thumbFromLabel="First thumb aria-label" thumbToLabel="Second thumb aria-label" />
+    </>
+  );
+}
 ```
 
-### Keyboard interactions
+## Keyboard interactions
 
 <KeyboardEventsTable
   data={[

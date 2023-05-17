@@ -555,7 +555,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     title: 'Slider',
     package: '@mantine/core',
     slug: '/core/slider',
-    props: ['Slider'],
+    props: ['Slider', 'RangeSlider'],
     styles: ['Slider'],
     description: 'Slider and RangeSlider components',
     import: "import { Slider } from '@mantine/core';",

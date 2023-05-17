@@ -18,7 +18,7 @@ import {
   getRadius,
   rem,
 } from '../../../core';
-import { MantineTransition } from '../../Transition';
+import { TransitionOverride } from '../../Transition';
 import { SliderRoot } from '../SliderRoot/SliderRoot';
 import { Track } from '../Track/Track';
 import { Thumb } from '../Thumb/Thumb';
@@ -72,28 +72,22 @@ export interface SliderProps
   /** Hidden input name, use with uncontrolled component */
   name?: string;
 
-  /** Marks which will be placed on the track */
+  /** Marks displayed on the track */
   marks?: { value: number; label?: React.ReactNode }[];
 
   /** Function to generate label or any react node to render instead, set to null to disable label */
   label?: React.ReactNode | ((value: number) => React.ReactNode);
 
-  /** Label appear/disappear transition, `'skew-down'` by default */
-  labelTransition?: MantineTransition;
+  /** Props passed down to the `Transition` component, `{ transition: 'fade', duration: 0 }` by default */
+  labelTransitionProps?: TransitionOverride;
 
-  /** Label appear/disappear transition duration in ms, `0` by default */
-  labelTransitionDuration?: number;
-
-  /** Label appear/disappear transition timing function, `'ease'` by default */
-  labelTransitionTimingFunction?: string;
-
-  /** Determines whether label should be visible when slider is not being dragged or hovered, `false` by default */
+  /** Determines whether the label should be visible when the slider is not being dragged or hovered, `false` by default */
   labelAlwaysOn?: boolean;
 
   /** Thumb `aria-label` */
   thumbLabel?: string;
 
-  /** Determines whether thumb label should be displayed when slider is hovered, `true` by default */
+  /** Determines whether thumb label should be displayed when the slider is hovered, `true` by default */
   showLabelOnHover?: boolean;
 
   /** Content rendered inside thumb */
@@ -102,13 +96,13 @@ export interface SliderProps
   /** Disables slider */
   disabled?: boolean;
 
-  /** Thumb width and height, by default value is computed based on `size` */
+  /** Thumb `width` and `height`, by default value is computed based on `size` prop */
   thumbSize?: number | string;
 
-  /** A transformation function, to change the scale of the slider */
+  /** A transformation function to change the scale of the slider */
   scale?(value: number): number;
 
-  /** Determines whether track value should be inverted, `false` by default */
+  /** Determines whether track value representation should be inverted, `false` by default */
   inverted?: boolean;
 }
 
@@ -128,8 +122,7 @@ const defaultProps: Partial<SliderProps> = {
   step: 1,
   marks: [],
   label: (f) => f,
-  labelTransition: 'skew-down',
-  labelTransitionDuration: 0,
+  labelTransitionProps: { transition: 'fade', duration: 0 },
   labelAlwaysOn: false,
   thumbLabel: '',
   showLabelOnHover: true,
@@ -166,9 +159,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     name,
     marks,
     label,
-    labelTransition,
-    labelTransitionDuration,
-    labelTransitionTimingFunction,
+    labelTransitionProps,
     labelAlwaysOn,
     thumbLabel,
     showLabelOnHover,
@@ -335,9 +326,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
             dragging={active}
             label={_label}
             ref={thumb as any}
-            labelTransition={labelTransition}
-            labelTransitionDuration={labelTransitionDuration}
-            labelTransitionTimingFunction={labelTransitionTimingFunction}
+            labelTransitionProps={labelTransitionProps}
             labelAlwaysOn={labelAlwaysOn}
             thumbLabel={thumbLabel}
             showLabelOnHover={showLabelOnHover}
