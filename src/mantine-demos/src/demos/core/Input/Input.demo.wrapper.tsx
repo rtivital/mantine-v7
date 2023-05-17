@@ -6,7 +6,7 @@ import { inputWrapperOnlyControls } from '../../../shared';
 const code = `
 import { Input } from '@mantine/core';
 
-function Wrapper(props: any) {
+function Wrapper() {
   return (
     <Input.Wrapper{{props}}>
       <Input placeholder="Input inside Input.Wrapper" />

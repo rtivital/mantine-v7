@@ -58,13 +58,13 @@ export interface __InputWrapperProps {
   /** Determines whether required asterisk should be rendered, overrides required prop, does not add required attribute to the input, `false` by default */
   withAsterisk?: boolean;
 
-  /** Props spread to the `Input.Label` component */
+  /** Props passed down to the `Input.Label` component */
   labelProps?: Record<string, any>;
 
-  /** Props spread to the `Input.Description` component */
+  /** Props passed down to the `Input.Description` component */
   descriptionProps?: Record<string, any>;
 
-  /** Props spread to the `InputError` component */
+  /** Props passed down to the `InputError` component */
   errorProps?: Record<string, any>;
 
   /** Input container component, defaults to `React.Fragment` */

@@ -56,28 +56,28 @@ export interface __InputProps {
   /** Content section rendered on the left side of the input */
   leftSection?: React.ReactNode;
 
-  /** Left section width, used to set `width` of the section and input `padding-left`, by default equals to input height */
+  /** Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height */
   leftSectionWidth?: React.CSSProperties['width'];
 
-  /** Props added to `leftSection` element */
+  /** Props added to the `leftSection` element */
   leftSectionProps?: React.ComponentPropsWithoutRef<'div'>;
 
-  /** Sets `pointer-events` styles of `leftSection` node, `'none'` by default */
+  /** Sets `pointer-events` styles on the `leftSection` element, `'none'` by default */
   leftSectionPointerEvents?: React.CSSProperties['pointerEvents'];
 
   /** Content section rendered on the right side of the input */
   rightSection?: React.ReactNode;
 
-  /** Right section width, used to set `width` of the section and input `padding-right`, by default equals to input height */
+  /** Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height */
   rightSectionWidth?: React.CSSProperties['width'];
 
-  /** Props added to `rightSection` element */
+  /** Props added to the `rightSection` element */
   rightSectionProps?: React.ComponentPropsWithoutRef<'div'>;
 
-  /** Sets `pointer-events` styles of `rightSection` node, `'none'` by default */
+  /** Sets `pointer-events` styles on the `rightSection` element, `'none'` by default */
   rightSectionPointerEvents?: React.CSSProperties['pointerEvents'];
 
-  /** Props added to root element of `Input` component */
+  /** Props added to the root element of the `Input` component */
   wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
 
   /** Sets `required` attribute on the `input` element */
@@ -89,7 +89,7 @@ export interface __InputProps {
   /** Sets `disabled` attribute on the `input` element */
   disabled?: boolean;
 
-  /** Input size */
+  /** Controls input `height` and horizontal `padding`, `'sm'` by default */
   size?: MantineSize | (string & {});
 
   /** Determines whether the input should have `cursor: pointer` style, `false` by default */
@@ -99,7 +99,7 @@ export interface __InputProps {
 export interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
   __staticSelector?: string;
 
-  /** Props passed to Styles API context, replaces Input.Wrapper props */
+  /** Props passed to Styles API context, replaces `Input.Wrapper` props */
   __stylesApiProps?: Record<string, any>;
 
   /** Determines whether the input should have error styles and `aria-invalid` attribute */
