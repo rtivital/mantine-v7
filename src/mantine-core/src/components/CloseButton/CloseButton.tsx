@@ -12,7 +12,7 @@ export type CloseButtonVariant = ActionIconVariant;
 export type CloseButtonStylesNames = ActionIconStylesNames;
 
 export interface CloseButtonProps extends ActionIconProps {
-  /** X icon width and height, 80% by default */
+  /** `X` icon `width` and `height`, `80%` by default */
   iconSize?: number | string;
 }
 
