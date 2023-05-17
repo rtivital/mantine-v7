@@ -1,8 +1,14 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { LoaderDemos, TableDemos } from '@mantine/demos';
+import { LoaderDemos, TableDemos, GroupDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
+
+## React 18+ only
+
+Starting from version 7.0 Mantine no longer supports older React versions. Minimum supported version is now React 18.
+It is required because Mantine components now use [useId](https://react.dev/reference/react/useId) and [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore)
+hooks which are available only in React 18.
 
 ## Loader changes
 
@@ -11,7 +17,8 @@ HTML output of the component.
 
 <Demo data={LoaderDemos.configurator} />
 
-It is also now possible to add custom loaders on [theme](/theming/theme-object) with [default prop](/theming/default-props).
+[Theme](/theming/theme-object) object no longer supports `theme.loader` prop –
+it is also now possible to add custom loaders on [theme](/theming/theme-object) with [default prop](/theming/default-props).
 Specified [Loader](/core/loader) will be used in all components that use it under the hood ([LoadingOverlay](/core/loading-overlay), [Button](/core/button), [ActionIcon](/core/action-icon), [Stepper](/core/stepper), etc.).
 
 <Demo data={LoaderDemos.cssLoader} />
@@ -38,9 +45,31 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 - `spacing` prop was replaced with `gap`
 - `Group` now supports new `preventGrowOverflow` prop which allows to customize how group items will behave when they grow larger than their dedicated space
 
+<Demo data={GroupDemos.usage} />
+
+## Tabs changes
+
+- Styles API selector `tabsList` renamed to `list`
+- `TabProps` type was renamed to `TabsTabProps`
+- `onTabChange` prop was renamed to `onChange`
+- `Tabs.List` `position` prop was renamed to `justify`, it now supports all `justify-content` values
+
+## Button changes
+
+- `compact` prop was removed, use `size="compact-XXX"` instead
+- `leftIcon` and `rightIcon` props were renamed to `leftSection` and `rightSection`
+- `uppercase` prop was removed, use `tt` [style prop](/styles/style-props) instead
+- `loaderPosition` prop was removed, [Loader](/core/loader) is now always rendered on the center to prevent layout shifts
+- Styles API selectors were changed, see [Button Styles API](/core/button?t=styles-api) documentation for more details
+
+## @mantine/prism deprecation
+
+`@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
+
 ## Other changes
 
 - New [VisuallyHidden](/core/visually-hidden) component
+- New [ActionIcon.Group](/core/action-icon#actionicongroup) component
 - [Blockquote](/core/blockquote) components has new design
 - [Breadcrumbs](/core/breadcrumbs) component now supports `separatorMargin` prop
 - [Slider and RangeSlider](/core/slider) components `radius` prop now affects thumb as well as track
@@ -48,3 +77,20 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 - [Anchor](/core/anchor) component now supports `underline` prop which lets you configure how link will be underlined: `hover` (default), `always` or `never`
 - [Affix](/core/affix) component no longer supports `target` prop, use `portalProps` instead
 - [Container](/core/container) component no longer supports `sizes` prop, use [CSS variables](/styles/styles-api) to customize sizes on [theme](/theming/theme-object) instead
+- `useComponentDefaultProps` hook was renamed to [useProps](theming/default-props#useprops-hook)
+- `withinPortal` prop is now true by default in all overlay components ([Popover](/core/popover), [HoverCard](/core/hover-card), [Tooltip](/core/tooltip), etc.)
+- `AlphaSlider` and `HueSlider` components are no longer available, they can be used only as a part of [ColorPicker](/core/color-picker)
+- [Text](/core/text) default root element is now `<p />`
+- [Title](/core/title) no longer supports all [Text](/core/text) props, only [style props](/styles/style-props) are available
+- `MediaQuery` component was removed – use [CSS modules](/styles/css-modules) to apply responsive styles
+- [Highlight](/core/highlight) component prop `highlightColor` was renamed to `color`
+- [Tooltip and Tooltip.Floating](/core/tooltip) components no longer support `width` prop, use `w` [style prop](/styles/style-props) instead
+- [Stack](/core/stack) component `spacing` prop was renamed to `gap`
+- [Input](/core/input) and other `Input` based components `icon` prop was renamed to `leftSection`
+- [Loader](/core/loader) component `variant` prop was renamed to `type`
+- `@mantine/core` package no longer depends on [Radix UI ScrollArea](https://www.radix-ui.com/docs/primitives/components/scroll-area#scroll-area), [ScrollArea](/core/scroll-area) component is now a native Mantine component – it reduces bundle size, allows to set CSP for styles and improves performance (all styles are now applied with classes instead of inline `<style />` tags)
+- [Overlay](/core/overlay) `opacity` prop was renamed to `backgroundOpacity` to avoid collision with `opacity` [style prop](/styles/style-props)
+- [Badge](/core/badge) Styles API selectors were changed, see [Badge Styles API](/core/badge?t=styles-api) documentation for more details
+- [Slider](/core/slider) Styles API selectors were changed, see [Slider Styles API](/core/slider?t=styles-api) documentation for more details
+- [Text](/core/text) component no longer supports `underline`, `color`, `strikethrough`, `italic`, `transform`, `align` and `weight` prop – use [style props](/styles/style-props) instead
+- [Portal](/core/portal) component `innerRef` prop was renamed to `ref`
