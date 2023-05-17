@@ -6,6 +6,7 @@ import { inputControls } from '../../../shared';
 const code = `
 import { TextInput } from '@mantine/core';
 
+
 function Demo() {
   return (
     <TextInput
