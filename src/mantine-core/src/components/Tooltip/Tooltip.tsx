@@ -54,7 +54,7 @@ export interface TooltipProps extends TooltipBaseProps {
   /** Arrow position relative to the tooltip, `side` by default **/
   arrowPosition?: ArrowPosition;
 
-  /** Props spread to Transition component that used to animate tooltip presence, use to configure duration and animation type, `{ duration: 100, transition: 'fade' }` by default */
+  /** Props passed down to the `Transition` component that used to animate tooltip presence, use to configure duration and animation type, `{ duration: 100, transition: 'fade' }` by default */
   transitionProps?: TransitionOverride;
 
   /** Determines which events will be used to show tooltip, `{ hover: true, focus: false, touch: false }` by default */

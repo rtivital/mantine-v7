@@ -67,7 +67,7 @@ export interface SwitchProps
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Props spread to wrapper element */
+  /** Props passed down to wrapper element */
   wrapperProps?: Record<string, any>;
 
   /** Icon inside the thumb of switch */
@@ -76,10 +76,10 @@ export interface SwitchProps
   /** Position of the label relative to the input, `'right'` by default */
   labelPosition?: 'left' | 'right';
 
-  /** Description displayed below label */
+  /** Description displayed below the label */
   description?: React.ReactNode;
 
-  /** Error displayed below label */
+  /** Error displayed below the label */
   error?: React.ReactNode;
 }
 

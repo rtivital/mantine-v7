@@ -3,7 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { SwitchGroupProps, Switch, Group } from '@mantine/core';
 
 const code = `
-import { Switch } from '@mantine/core';
+import { Switch, Group } from '@mantine/core';
 
 function Demo() {
   return (
@@ -39,6 +39,7 @@ export const groupConfigurator: MantineDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  centered: true,
   controls: [
     {
       prop: 'label',

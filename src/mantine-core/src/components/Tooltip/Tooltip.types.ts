@@ -13,7 +13,7 @@ export interface TooltipBaseProps
   extends BoxProps,
     StylesApiProps<TooltipFactory>,
     ElementProps<'div'> {
-  /** Target element, must support `ref` prop and spread `...others` */
+  /** Target element, must support `ref` prop and `...others` */
   children: React.ReactNode;
 
   /** Tooltip position relative to target element (`Tooltip` component) or mouse (`Tooltip.Floating` component) */

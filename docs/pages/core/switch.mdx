@@ -54,6 +54,10 @@ function Demo() {
 }
 ```
 
+<StylesApiSelectors component="Switch" />
+
+<Demo data={SwitchDemos.stylesApi} />
+
 ## Get input ref
 
 ```tsx
@@ -68,10 +72,23 @@ function Demo() {
 
 ## Accessibility
 
-Switch is a regular input with checkbox type. Provide `aria-label` if Switch is used without `label`:
+`Switch` is a regular `input[type="checkbox"]`. Set `aria-label` if the `Switch` is used without `label` prop:
 
 ```tsx
-<Switch /> // -> not ok, input is not labeled
-<Switch label="I agree to everything" /> // -> ok, input and label is connected
-<Switch aria-label="I agree to everything" /> // -> ok, label is not visible but will be announced by screen reader
+import { Switch } from '@mantine/core';
+
+// -> not ok, input is not labeled
+function Bad() {
+  return <Switch />;
+}
+
+// -> ok, input has aria-label
+function Good() {
+  return <Switch aria-label="I agree to everything" />;
+}
+
+// -> ok, input has associated label
+function AlsoGood() {
+  return <Switch label="I agree to everything" />;
+}
 ```

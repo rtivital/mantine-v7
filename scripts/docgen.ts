@@ -23,6 +23,9 @@ const EXTRA_FILES_PATHS = [
   // Slider
   '../src/mantine-core/src/components/Slider/Slider/Slider.tsx',
   '../src/mantine-core/src/components/Slider/RangeSlider/RangeSlider.tsx',
+
+  // Switch
+  '../src/mantine-core/src/components/Switch/SwitchGroup/SwitchGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

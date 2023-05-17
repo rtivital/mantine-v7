@@ -8,7 +8,7 @@ export type SwitchGroupStylesNames = InputWrapperStylesNames;
 export type SwitchGroupVariant = string;
 
 export interface SwitchGroupProps extends Omit<InputWrapperProps, 'onChange'> {
-  /** <Switch /> components */
+  /** `Switch` components */
   children: React.ReactNode;
 
   /** Controlled component value */
@@ -20,10 +20,10 @@ export interface SwitchGroupProps extends Omit<InputWrapperProps, 'onChange'> {
   /** Called when value changes */
   onChange?(value: string[]): void;
 
-  /** Props spread to `Input.Wrapper` */
+  /** Props passed down to the `Input.Wrapper` */
   wrapperProps?: Record<string, any>;
 
-  /** Controls size of `Input.Wrapper`, `'sm'` by default */
+  /** Controls size of the `Input.Wrapper`, `'sm'` by default */
   size?: MantineSize | (string & {});
 }
 

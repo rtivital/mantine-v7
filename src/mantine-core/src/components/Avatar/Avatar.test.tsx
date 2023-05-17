@@ -64,7 +64,7 @@ describe('@mantine/core/Avatar', () => {
     expect(container.querySelector('.mantine-Avatar-placeholder')).toBeInTheDocument();
   });
 
-  it('spreads imageProps to img element', () => {
+  it('passes down imageProps to img element', () => {
     const { container } = render(
       <Avatar src="image.png" alt="test-alt" imageProps={{ 'aria-label': 'test-label' }} />
     );

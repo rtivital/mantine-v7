@@ -50,7 +50,7 @@ export interface ScrollAreaProps
   /** Assigns viewport element (scrollable container) ref */
   viewportRef?: React.ForwardedRef<HTMLDivElement>;
 
-  /** Props spread to the viewport element */
+  /** Props passed down to the viewport element */
   viewportProps?: React.ComponentPropsWithRef<'div'>;
 
   /** Called with current position (`x` and `y` coordinates) when viewport is scrolled */

@@ -4,6 +4,7 @@ import { Switch } from '@mantine/core';
 const code = `
 import { Switch } from '@mantine/core';
 
+
 function Demo() {
   return (
     <Switch
@@ -17,7 +18,9 @@ export const configurator: MantineDemo = {
   type: 'configurator',
   component: Switch,
   code,
+  centered: true,
   controls: [
+    { prop: 'color', type: 'color', initialValue: 'blue', libraryValue: 'blue' },
     {
       prop: 'labelPosition',
       type: 'segmented',
@@ -33,7 +36,6 @@ export const configurator: MantineDemo = {
     { prop: 'error', type: 'string', initialValue: '', libraryValue: '' },
     { prop: 'size', type: 'size', initialValue: 'sm', libraryValue: 'sm' },
     { prop: 'radius', type: 'size', initialValue: 'xl', libraryValue: 'xl' },
-    { prop: 'color', type: 'color', initialValue: 'blue', libraryValue: 'blue' },
     { prop: 'disabled', type: 'boolean', initialValue: false, libraryValue: false },
   ],
 };
