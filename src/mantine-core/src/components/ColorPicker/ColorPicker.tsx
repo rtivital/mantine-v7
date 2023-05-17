@@ -60,7 +60,7 @@ export interface __ColorPickerProps {
   /** Called when color changes */
   onChange?(value: string): void;
 
-  /** Called when user stops dragging thumb or changes value with arrow keys */
+  /** Called when user stops dragging or changes value with arrow keys */
   onChangeEnd?(value: string): void;
 
   /** Color format, `'hex'` by default */
@@ -72,10 +72,10 @@ export interface __ColorPickerProps {
   /** Color swatches */
   swatches?: string[];
 
-  /** Number of swatches displayed in one row, `10` by default */
+  /** Number of swatches displayed in one row, `7` by default */
   swatchesPerRow?: number;
 
-  /** Controls size of elements */
+  /** Controls size of hue, alpha and saturation sliders, `'md'` by default */
   size?: MantineSize | (string & {});
 }
 
@@ -92,16 +92,16 @@ export interface ColorPickerProps
   /** Determines whether interactive elements should be focusable, `true` by default */
   focusable?: boolean;
 
-  /** Saturation slider aria-label */
+  /** Saturation slider `aria-label` */
   saturationLabel?: string;
 
-  /** Hue slider aria-label */
+  /** Hue slider `aria-label` */
   hueLabel?: string;
 
-  /** Alpha slider aria-label */
+  /** Alpha slider `aria-label` */
   alphaLabel?: string;
 
-  /** Called when color swatch is clicked */
+  /** Called when one of the color swatches is clicked */
   onColorSwatchClick?(color: string): void;
 }
 

@@ -24,7 +24,7 @@ export function Usage() {
           '#fd7e14',
         ]}
         format="rgba"
-        size="xl"
+        fullWidth
       />
     </div>
   );
