@@ -5,9 +5,9 @@ import { Stack, StackProps, Button } from '@mantine/core';
 function Wrapper(props: StackProps) {
   return (
     <Stack h={300} bg="var(--mantine-color-blue-light)" {...props}>
-      <Button variant="outline">1</Button>
-      <Button variant="outline">2</Button>
-      <Button variant="outline">3</Button>
+      <Button variant="default">1</Button>
+      <Button variant="default">2</Button>
+      <Button variant="default">3</Button>
     </Stack>
   );
 }
@@ -22,9 +22,9 @@ function Demo() {
       bg="var(--mantine-color-blue-light)"
       {{props}}
     >
-      <Button variant="outline">1</Button>
-      <Button variant="outline">2</Button>
-      <Button variant="outline">3</Button>
+      <Button variant="default">1</Button>
+      <Button variant="default">2</Button>
+      <Button variant="default">3</Button>
     </Stack>
   );
 }
