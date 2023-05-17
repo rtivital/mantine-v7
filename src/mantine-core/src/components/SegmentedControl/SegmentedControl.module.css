@@ -153,27 +153,34 @@
   flex: 1;
   z-index: 2;
   transition: border-color var(--sc-transition-duration) var(--sc-transition-timing-function);
-  border-style: solid;
-  border-width: var(--_border-width, 0);
-  border-color: var(--_border-color);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--_separator-color);
+    width: rem(1px);
+    transition: background-color var(--sc-transition-duration) var(--sc-transition-timing-function);
+
+    @mixin rtl {
+      right: 0;
+      left: auto;
+    }
+  }
 
   @mixin light {
-    --_border-color: var(--mantine-color-gray-3);
+    --_separator-color: var(--mantine-color-gray-3);
   }
 
   @mixin dark {
-    --_border-color: var(--mantine-color-dark-4);
+    --_separator-color: var(--mantine-color-dark-4);
   }
 
-  &:not(:first-of-type) {
-    --_border-width: 0 0 0 rem(1px);
-
-    @mixin rtl {
-      --_border-width: 0 rem(1px) 0 0;
-    }
-
-    &[data-orientation='vertical'] {
-      --_border-width: rem(1px) 0 0 0;
+  &:first-of-type {
+    &::before {
+      background-color: transparent;
     }
   }
 
@@ -181,7 +188,9 @@
     [data-mantine-color-scheme] & {
       &,
       & + .control {
-        --_border-color: transparent;
+        &::before {
+          --_separator-color: transparent;
+        }
       }
     }
   }
