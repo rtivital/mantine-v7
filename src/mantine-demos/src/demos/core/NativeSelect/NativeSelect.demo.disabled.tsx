@@ -3,6 +3,8 @@ import { MantineDemo } from '@mantine/ds';
 import { NativeSelect } from '@mantine/core';
 
 const code = `
+import { NativeSelect } from '@mantine/core';
+
 function Demo() {
   return <NativeSelect disabled data={['React', 'Angular']} label="Disabled NativeSelect" />;
 }
