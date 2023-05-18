@@ -9,9 +9,9 @@ export const DividerStylesApi: StylesApiData<DividerFactory> = {
 
   vars: {
     root: {
-      '--divider-border-style': 'Controls border-style of divider',
-      '--divider-color': 'Controls border-color of divider',
-      '--divider-size': 'Controls border-width of divider',
+      '--divider-border-style': 'Controls `border-style`',
+      '--divider-color': 'Controls `border-color`',
+      '--divider-size': 'Controls `border-width`',
     },
   },
 

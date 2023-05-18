@@ -22,7 +22,7 @@ export type PaperCssVariables = {
 };
 
 export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
-  /** Key of `theme.shadows` or any valid CSS value to set box-shadow, `none` by default */
+  /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
   shadow?: MantineShadow | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */

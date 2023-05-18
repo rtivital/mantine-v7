@@ -12,7 +12,7 @@ export default Layout(MDX_DATA.ScrollArea);
   - `hover` – scrollbars are visible on hover
   - `scroll` – scrollbars are visible on scroll
   - `auto` – similar to `overflow: auto` – scrollbars are always visible when the content is overflowing
-  - `always` – same as `auto` but scrollbars are always visible regardless of whether the content is overflowing
+  - `always` – same as `auto`, but scrollbars are always visible regardless of whether the content is overflowing
   - `never` – scrollbars are always hidden
 - `offsetScrollbars` – offset scrollbars with padding
 - `scrollbarSize` – scrollbar size, controls scrollbar and thumb width/height
@@ -26,7 +26,7 @@ export default Layout(MDX_DATA.ScrollArea);
 
 ## Subscribe to scroll position changes
 
-Provider `onScrollPositionChange` function to subscribe to scroll position changes,
+Set `onScrollPositionChange` function to subscribe to scroll position changes,
 it will be called each time user scrolls with x and y coordinates:
 
 <Demo data={ScrollAreaDemos.scrollPosition} />

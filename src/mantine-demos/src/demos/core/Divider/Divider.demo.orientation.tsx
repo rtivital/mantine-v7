@@ -3,7 +3,6 @@ import { MantineDemo } from '@mantine/ds';
 import { Divider, Group, Text } from '@mantine/core';
 
 const code = `
-import React from 'react';
 import { Divider, Group, Text } from '@mantine/core';
 
 function Demo() {

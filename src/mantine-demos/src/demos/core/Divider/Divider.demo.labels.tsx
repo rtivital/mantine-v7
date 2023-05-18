@@ -27,7 +27,7 @@ function Demo() {
       <Divider
         my="xs"
         label={
-          <Anchor href="https://mantine.dev" target="_blank">
+          <Anchor href="https://mantine.dev" target="_blank" inherit>
             Link label
           </Anchor>
         }
@@ -57,7 +57,7 @@ function Demo() {
       <Divider
         my="xs"
         label={
-          <Anchor href="https://mantine.dev" target="_blank">
+          <Anchor href="https://mantine.dev" target="_blank" inherit>
             Link label
           </Anchor>
         }

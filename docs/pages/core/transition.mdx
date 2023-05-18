@@ -4,11 +4,6 @@ import { TooltipDemos, TransitionDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Transition);
 
-## Usage
-
-`Transition` component allow you to work with enter/exit animations.
-Component comes with premade animations and option to create your own based on CSS properties.
-
 ## Premade transitions
 
 Mantine includes several premade transitions:
@@ -20,7 +15,7 @@ To use one of them set `transition` property to one of these values:
 ```tsx
 import { Transition } from '@mantine/core';
 
-function Demo({ opened }) {
+function Demo({ opened }: { opened: boolean }) {
   return (
     <Transition mounted={opened} transition="fade" duration={400} timingFunction="ease">
       {(styles) => <div style={styles}>Your modal</div>}

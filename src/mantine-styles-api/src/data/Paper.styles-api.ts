@@ -8,12 +8,12 @@ export const PaperStylesApi: StylesApiData<PaperFactory> = {
 
   vars: {
     root: {
-      '--paper-radius': 'Border radius',
-      '--paper-shadow': 'Box shadow',
+      '--paper-radius': 'Controls `border-radius`',
+      '--paper-shadow': 'Controls `box-shadow`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-with-border', selector: 'root', condition: 'withBorderProp is set' },
+    { modifier: 'data-with-border', selector: 'root', condition: '`withBorderProp` is set' },
   ],
 };

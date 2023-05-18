@@ -22,5 +22,5 @@ To define the element that will receive initial focus set `data-autofocus` attri
 - Focus is trapped within child node if `active` prop is `true`
 - When FocusTrap component is mounted or when `active` prop changes from `false` to `true` first element with `data-autofocus` attribute is focused
 - If there are no elements with `data-autofocus` attribute, then the first element that supports keyboard interaction is focused
-- If target element does not have focusable elements or does not support `ref`, then focus trap will not work
-- Trap stops working when element outside of child is focused
+- If the target element does not have focusable elements or does not support `ref`, then the focus trap will not work
+- Trap stops working when element outside of the `FocusTrap` child is focused
