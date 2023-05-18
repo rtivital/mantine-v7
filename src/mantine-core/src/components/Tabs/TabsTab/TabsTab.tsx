@@ -14,7 +14,7 @@ import {
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
 
-export type TabsTabStylesNames = 'tab' | 'tabRightSection' | 'tabLeftSection' | 'tabLabel';
+export type TabsTabStylesNames = 'tab' | 'tabSection' | 'tabLabel';
 
 export interface TabsTabProps
   extends Omit<UnstyledButtonProps, 'classNames' | 'styles' | 'vars'>,
@@ -108,11 +108,15 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
       })}
     >
       {leftSection && (
-        <span {...ctx.getStyles('tabLeftSection', stylesApiProps)}>{leftSection}</span>
+        <span {...ctx.getStyles('tabSection', stylesApiProps)} data-position="left">
+          {leftSection}
+        </span>
       )}
       {children && <span {...ctx.getStyles('tabLabel', stylesApiProps)}>{children}</span>}
       {rightSection && (
-        <span {...ctx.getStyles('tabRightSection', stylesApiProps)}>{rightSection}</span>
+        <span {...ctx.getStyles('tabSection', stylesApiProps)} data-position="right">
+          {rightSection}
+        </span>
       )}
     </UnstyledButton>
   );

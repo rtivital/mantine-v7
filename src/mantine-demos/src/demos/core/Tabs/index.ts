@@ -7,3 +7,5 @@ export { disabled } from './Tabs.demo.disabled';
 export { colors } from './Tabs.demo.colors';
 export { deactivate } from './Tabs.demo.deactivate';
 export { keyboardActivation } from './Tabs.demo.keyboardActivation';
+export { customize } from './Tabs.demo.customize';
+export { stylesApi } from './Tabs.demo.stylesApi';

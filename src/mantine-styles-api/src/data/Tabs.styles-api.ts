@@ -8,8 +8,7 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     panel: 'Panel with tab content (`Tabs.Panel` component)',
     tab: 'Tab button (`Tabs.Tab` component)',
     tabLabel: 'Label of `Tabs.Tab`',
-    tabLeftSection: 'Left section of `Tabs.Tab`',
-    tabRightSection: 'Right section of `Tabs.Tab`',
+    tabSection: 'Left and right sections of `Tabs.Tab`',
   },
 
   vars: {
@@ -41,6 +40,11 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
       modifier: 'data-grow',
       selector: ['list'],
       condition: '`grow` prop is set on `Tabs.List` component',
+    },
+    {
+      modifier: 'data-position',
+      selector: ['tabSection'],
+      value: 'Position of the section, left or right',
     },
   ],
 };
