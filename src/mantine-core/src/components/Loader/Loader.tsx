@@ -29,7 +29,7 @@ export interface LoaderProps
   extends BoxProps,
     StylesApiProps<LoaderFactory>,
     Omit<React.ComponentPropsWithoutRef<'svg'>, keyof BoxProps> {
-  /** Width/height of the loader. Loader has predefined xs-xl values, number value (in px) is converted to rem. */
+  /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. Default value is `'md'` */
   size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */

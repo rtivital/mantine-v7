@@ -8,7 +8,8 @@ export const LoaderStylesApi: StylesApiData<LoaderFactory> = {
 
   vars: {
     root: {
-      '--loader-size': 'Controls loader size (usually width and height, in some cases only width)',
+      '--loader-size':
+        'Controls loader size (usually `width` and `height`, in some cases only `width`)',
       '--loader-color': 'Control loader color',
     },
   },
