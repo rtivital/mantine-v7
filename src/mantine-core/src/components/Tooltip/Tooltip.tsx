@@ -14,7 +14,13 @@ import {
   createVarsResolver,
   Factory,
 } from '../../core';
-import { ArrowPosition, FloatingArrow, FloatingPosition, getFloatingPosition } from '../Floating';
+import {
+  ArrowPosition,
+  FloatingArrow,
+  FloatingAxesOffsets,
+  FloatingPosition,
+  getFloatingPosition,
+} from '../Floating';
 import { Transition, TransitionOverride, getTransitionProps } from '../Transition';
 import { OptionalPortal } from '../Portal';
 import { TooltipBaseProps, TooltipCssVariables, TooltipStylesNames } from './Tooltip.types';
@@ -37,7 +43,7 @@ export interface TooltipProps extends TooltipBaseProps {
   opened?: boolean;
 
   /** Space between target element and tooltip in px, `5` by default */
-  offset?: number;
+  offset?: number | FloatingAxesOffsets;
 
   /** Determines whether the tooltip should have an arrow, `false` by default */
   withArrow?: boolean;
@@ -48,10 +54,10 @@ export interface TooltipProps extends TooltipBaseProps {
   /** Arrow offset in px, `5` by default */
   arrowOffset?: number;
 
-  /** Arrow border-radius in px, `0` by default */
+  /** Arrow `border-radius` in px, `0` by default */
   arrowRadius?: number;
 
-  /** Arrow position relative to the tooltip, `side` by default **/
+  /** Arrow position relative to the tooltip, `side` by default */
   arrowPosition?: ArrowPosition;
 
   /** Props passed down to the `Transition` component that used to animate tooltip presence, use to configure duration and animation type, `{ duration: 100, transition: 'fade' }` by default */
@@ -63,10 +69,10 @@ export interface TooltipProps extends TooltipBaseProps {
   /** `useEffect` dependencies to force update tooltip position */
   positionDependencies?: any[];
 
-  /** Must be set if the tooltip target is inline element */
+  /** Must be set if the tooltip target is an inline element */
   inline?: boolean;
 
-  /** If set tooltip will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
+  /** If set, the tooltip will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
   keepMounted?: boolean;
 }
 
@@ -157,7 +163,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     events,
     arrowRef,
     arrowOffset,
-    offset: offset! + (withArrow ? arrowSize! / 2 : 0),
+    offset: typeof offset === 'number' ? offset! + (withArrow ? arrowSize! / 2 : 0) : offset!,
     positionDependencies: [...positionDependencies!, children],
     inline,
   });

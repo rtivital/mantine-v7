@@ -92,15 +92,31 @@ function Demo() {
 }
 ```
 
-## Position and color
+## Color
 
 <Demo data={TooltipDemos.configurator} />
 
 ## Offset
 
+Set `offset` prop to a number to change tooltip position relative to the target element.
+This way you can control tooltip offset on main axis only.
+
 <Demo data={TooltipDemos.offset} />
 
+To control offset on both axis, pass object with `mainAxis` and `crossAxis` properties:
+
+<Demo data={TooltipDemos.offsetAxis} />
+
 ## Arrow
+
+Set `withArrow` prop to add an arrow to the tooltip. Arrow is a `div` element rotated with `transform: rotate(45deg)`.
+
+`arrowPosition` prop determines how arrow is position relative to the target element when `position` is set to `*-start` and `*-end` values on `Popover` component.
+By default, the value is `center` – the arrow is positioned in the center of the target element if it is possible.
+
+If you change `arrowPosition` to `side`, then the arrow will be positioned on the side of the target element,
+and you will be able to control arrow offset with `arrowOffset` prop. Note that when `arrowPosition` is set to `center`,
+`arrowOffset` prop is ignored.
 
 <Demo data={TooltipDemos.arrow} />
 
@@ -131,7 +147,7 @@ function Demo() {
 
 ## Multiline
 
-To enable multiline mode set `multiline` prop to enable line breaks and `width` prop to set tooltip width:
+To enable multiline mode, set `multiline` prop to enable line breaks and `w` [style prop](/styles/style-prop) to set tooltip width:
 
 <Demo data={TooltipDemos.multiline} />
 
@@ -146,12 +162,15 @@ Set `inline` prop to use `Tooltip` with inline elements:
 Tooltip is built with [Transition](/core/transition/) component, it supports `transitionProps` props:
 
 ```tsx
-import { Tooltip } from '@mantine/core';
+import { Tooltip, Button } from '@mantine/core';
 
 function Demo() {
   return (
-    <Tooltip transitionProps={{ transition: 'skew-up', duration: 300 }}>
-      <button>target</button>
+    <Tooltip
+      label="Tooltip with custom transition"
+      transitionProps={{ transition: 'skew-up', duration: 300 }}
+    >
+      <Button>Button with tooltip</Button>
     </Tooltip>
   );
 }
@@ -186,7 +205,7 @@ If you want to build a component that can be used with Tooltip use
 This logic is applied to Tooltip and Tooltip.Floating components:
 
 ```tsx
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Tooltip } from '@mantine/core';
 
 // forwardRef function will allow to get root element ref
@@ -234,18 +253,18 @@ Tooltip follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practi
 - Target element has `aria-describedby` attribute
 - `Tooltip.Floating` is ignored by screen readers
 
-By default, Tooltip is not triggered by focus events and thus users who use screen reader
+By default, Tooltip is not triggered by focus events and thus users who use a screen reader
 or navigate with keyboard will not be able to get tooltip content. Set `events` prop to enable
 focus/blur tooltip events:
 
 ```tsx
-import { Tooltip } from '@mantine/core';
+import { Tooltip, Button } from '@mantine/core';
 
 // Tooltip will be visible for screen readers
 function Demo() {
   return (
     <Tooltip label="Tooltip" events={{ hover: true, focus: true, touch: false }}>
-      <button>target</button>
+      <Button>Button with tooltip</Button>
     </Tooltip>
   );
 }

@@ -9,12 +9,12 @@ export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
 
   vars: {
     tooltip: {
-      '--tooltip-bg': 'Tooltip background-color',
-      '--tooltip-radius': 'Tooltip border-radius',
+      '--tooltip-bg': 'Tooltip `background-color`',
+      '--tooltip-radius': 'Tooltip `border-radius`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-multiline', selector: 'tooltip', condition: 'multiline prop is set' },
+    { modifier: 'data-multiline', selector: 'tooltip', condition: '`multiline` prop is set' },
   ],
 };

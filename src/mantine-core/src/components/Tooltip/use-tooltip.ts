@@ -16,7 +16,7 @@ import {
 } from '@floating-ui/react';
 import { useId, useDidUpdate } from '@mantine/hooks';
 import { useTooltipGroupContext } from './TooltipGroup/TooltipGroup.context';
-import { FloatingPosition, useFloatingAutoUpdate } from '../Floating';
+import { FloatingAxesOffsets, FloatingPosition, useFloatingAutoUpdate } from '../Floating';
 
 interface UseTooltip {
   position: FloatingPosition;
@@ -24,7 +24,7 @@ interface UseTooltip {
   openDelay?: number;
   onPositionChange?(position: FloatingPosition): void;
   opened?: boolean;
-  offset: number;
+  offset: number | FloatingAxesOffsets;
   arrowRef?: React.RefObject<HTMLDivElement>;
   arrowOffset?: number;
   events?: { hover: boolean; focus: boolean; touch: boolean };
