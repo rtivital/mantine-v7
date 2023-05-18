@@ -1,19 +1,29 @@
-function createConverter(units: string) {
-  return (px: unknown) => {
-    if (typeof px === 'number') {
-      return `${px / 16}${units}`;
+function scaleRem(remValue: string) {
+  return `calc(${remValue} * var(--mantine-scale))`;
+}
+
+function createConverter(units: string, { shouldScale = false } = {}) {
+  return (value: unknown) => {
+    if (typeof value === 'number') {
+      const val = `${value / 16}${units}`;
+      return shouldScale ? scaleRem(val) : val;
     }
 
-    if (typeof px === 'string') {
-      const replaced = px.replace('px', '');
+    if (typeof value === 'string') {
+      if (value.includes(units)) {
+        return shouldScale ? scaleRem(value) : value;
+      }
+
+      const replaced = value.replace('px', '');
       if (!Number.isNaN(Number(replaced))) {
-        return `${Number(replaced) / 16}${units}`;
+        const val = `${Number(replaced) / 16}${units}`;
+        return shouldScale ? scaleRem(val) : val;
       }
     }
 
-    return px as string;
+    return value as string;
   };
 }
 
-export const rem = createConverter('rem');
+export const rem = createConverter('rem', { shouldScale: true });
 export const em = createConverter('em');

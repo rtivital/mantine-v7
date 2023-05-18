@@ -25,6 +25,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
 
   const result: ConvertCSSVariablesInput = {
     variables: {
+      '--mantine-scale': theme.scale.toString(),
       '--mantine-cursor-type': theme.cursorType,
       '--mantine-webkit-font-smoothing': theme.fontSmoothing ? 'antialiased' : 'unset',
       '--mantine-color-scheme': 'light dark',

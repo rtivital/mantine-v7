@@ -9,6 +9,9 @@ export interface MantineTheme {
    */
   focusRing: 'auto' | 'always' | 'never';
 
+  /** rem units scale, change if you customize font-size of `<html />` element */
+  scale: number;
+
   /** Determines whether font-smoothing property should be set on body, true by default */
   fontSmoothing: boolean;
 
