@@ -52,6 +52,17 @@ Set `width="target"` prop to make Popover dropdown take the same width as target
 
 <Demo data={PopoverDemos.sameWidth} />
 
+## offset
+
+Set `offset` prop to a number to change dropdown position relative to the target element.
+This way you can control dropdown offset on main axis only.
+
+<Demo data={PopoverDemos.offset} />
+
+To control offset on both axis, pass object with `mainAxis` and `crossAxis` properties:
+
+<Demo data={PopoverDemos.offsetAxis} />
+
 ## Initial focus
 
 Popover uses [FocusTrap](/core/focus-trap/) component to manage focus.

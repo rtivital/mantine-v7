@@ -3,3 +3,5 @@ export { form } from './Popover.demo.form';
 export { hover } from './Popover.demo.hover';
 export { sameWidth } from './Popover.demo.sameWidth';
 export { inline } from './Popover.demo.inline';
+export { offsetAxis } from './Popover.demo.offsetAxis';
+export { offset } from './Popover.demo.offset';
