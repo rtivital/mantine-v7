@@ -7,12 +7,12 @@ import { Popover, Text, Button } from '@mantine/core';
 
 function Demo() {
   return (
-    <Popover width={200} position="bottom" withArrow shadow="md">
+    <Popover width={200} position="bottom" clickOutsideEvents={['mouseup', 'touchend']}>
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">This is uncontrolled popover, it is opened when button is clicked</Text>
+        <Text size="xs">Popover will be closed with mouseup and touchend events</Text>
       </Popover.Dropdown>
     </Popover>
   );
@@ -21,20 +21,20 @@ function Demo() {
 
 function Demo() {
   return (
-    <Popover width={200} position="bottom" withArrow shadow="md">
+    <Popover width={200} position="bottom" clickOutsideEvents={['mouseup', 'touchend']}>
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">This is uncontrolled popover, it is opened when button is clicked</Text>
+        <Text size="xs">Popover will be closed with mouseup and touchend events</Text>
       </Popover.Dropdown>
     </Popover>
   );
 }
 
-export const usage: MantineDemo = {
+export const clickOutsideEvents: MantineDemo = {
   type: 'code',
+  component: Demo,
   code,
   centered: true,
-  component: Demo,
 };

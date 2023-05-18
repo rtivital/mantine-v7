@@ -63,6 +63,35 @@ To control offset on both axis, pass object with `mainAxis` and `crossAxis` prop
 
 <Demo data={PopoverDemos.offsetAxis} />
 
+## Dropdown arrow
+
+Set `withArrow` prop to add an arrow to the dropdown. Arrow is a `div` element rotated with `transform: rotate(45deg)`.
+
+`arrowPosition` prop determines how arrow is position relative to the target element when `position` is set to `*-start` and `*-end` values on `Popover` component.
+By default, the value is `center` – the arrow is positioned in the center of the target element if it is possible.
+
+If you change `arrowPosition` to `side`, then the arrow will be positioned on the side of the target element,
+and you will be able to control arrow offset with `arrowOffset` prop. Note that when `arrowPosition` is set to `center`,
+`arrowOffset` prop is ignored.
+
+<Demo data={PopoverDemos.arrow} />
+
+## Disabled
+
+Set `disabled` prop to prevent `Popover.Dropdown` from rendering:
+
+<Demo data={PopoverDemos.disabled} />
+
+## Click outside
+
+By default, `Popover` closes when you click outside of the dropdown. To disable this behavior, set `closeOnClickOutside={false}`.
+
+You can configure events that are used for click outside detection with `clickOutsideEvents` prop.
+By default, `Popover` listens to `mousedown` and `touchstart` events. You can change it to any other
+events, for example, `mouseup` and `touchend`:
+
+<Demo data={PopoverDemos.clickOutsideEvents} />
+
 ## Initial focus
 
 Popover uses [FocusTrap](/core/focus-trap/) component to manage focus.

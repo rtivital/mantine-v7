@@ -7,34 +7,35 @@ import { Popover, Text, Button } from '@mantine/core';
 
 function Demo() {
   return (
-    <Popover width={200} position="bottom" withArrow shadow="md">
+    <Popover width={200}{{props}}>
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">This is uncontrolled popover, it is opened when button is clicked</Text>
+        <Text size="xs">Disabled popover dropdown is always hidden</Text>
       </Popover.Dropdown>
     </Popover>
   );
 }
 `;
 
-function Demo() {
+function Wrapper(props: any) {
   return (
-    <Popover width={200} position="bottom" withArrow shadow="md">
+    <Popover width={200} {...props}>
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">This is uncontrolled popover, it is opened when button is clicked</Text>
+        <Text size="xs">Disabled popover dropdown is always hidden</Text>
       </Popover.Dropdown>
     </Popover>
   );
 }
 
-export const usage: MantineDemo = {
-  type: 'code',
+export const disabled: MantineDemo = {
+  type: 'configurator',
+  component: Wrapper,
   code,
   centered: true,
-  component: Demo,
+  controls: [{ type: 'boolean', prop: 'disabled', initialValue: false, libraryValue: false }],
 };

@@ -4,9 +4,9 @@ import { Popover, Button, Text } from '@mantine/core';
 import { FLOATING_POSITION_DATA } from '../../../shared';
 
 const code = (props: any) => `
-import { Popover } from '@mantine/core';
+import { Popover, Button, Text } from '@mantine/core';
 
-function Wrapper(props: any) {
+function Demo() {
   return (
     <Popover
       width={200}
