@@ -20,7 +20,7 @@ export interface TabsTabProps
   extends Omit<UnstyledButtonProps, 'classNames' | 'styles' | 'vars'>,
     StylesApiProps<TabsTabFactory>,
     ElementProps<'button'> {
-  /** Value that is used to connect Tab with associated panel */
+  /** Value of associated panel */
   value: string;
 
   /** Tab label */
@@ -32,7 +32,7 @@ export interface TabsTabProps
   /** Content displayed on the left side of the label, for example, icon */
   leftSection?: React.ReactNode;
 
-  /** Key of theme.colors, controls control color based on variant */
+  /** Key of `theme.colors` or any valid CSS color, controls control color based on `variant` */
   color?: MantineColor;
 }
 

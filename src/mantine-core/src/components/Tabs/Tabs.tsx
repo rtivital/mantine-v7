@@ -43,40 +43,40 @@ export interface TabsProps
   /** Value for controlled component */
   value?: string | null;
 
-  /** Called when tab changes */
+  /** Called when value changes */
   onChange?(value: string | null): void;
 
-  /** Tabs orientation, vertical or horizontal */
+  /** Tabs orientation, `'horizontal'` by default */
   orientation?: 'vertical' | 'horizontal';
 
-  /** Tabs.List placement relative to Tabs.Panel, applicable only for orientation="vertical", left by default */
+  /** `Tabs.List` placement relative to `Tabs.Panel`, applicable only when `orientation="vertical"`, `'left'` by default */
   placement?: 'left' | 'right';
 
-  /** Base id, used to generate ids that connect labels with controls, generated randomly by default */
+  /** Base id, used to generate ids to connect labels with controls, generated randomly by default */
   id?: string;
 
-  /** Determines whether arrow key presses should loop though items (first to last and last to first) */
+  /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
   loop?: boolean;
 
-  /** Determines whether tab should be activated with arrow key press, defaults to true */
+  /** Determines whether tab should be activated with arrow key press, `true` by default */
   activateTabWithKeyboard?: boolean;
 
-  /** Determines whether tab can be deactivated, defaults to false */
+  /** Determines whether tab can be deactivated, `false` by default */
   allowTabDeactivation?: boolean;
 
   /** Tabs content */
   children: React.ReactNode;
 
-  /** Changes colors of `<Tabs.Tab />` components when variant is `pills` and `default`, does nothing for other variants */
+  /** Changes colors of `Tabs.Tab` components when variant is `pills` or `default`, does nothing for other variants */
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
   radius?: MantineRadius | number | (string & {});
 
-  /** Determines whether tabs should have inverted styles */
+  /** Determines whether tabs should have inverted styles, `false` by default */
   inverted?: boolean;
 
-  /** If set to false, Tabs.Panel content will not stay mounted when tab is not active */
+  /** If set to `false`, `Tabs.Panel` content will be unmounted when the associated tab is not active, `true` by default */
   keepMounted?: boolean;
 }
 

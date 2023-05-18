@@ -31,7 +31,7 @@ export interface BurgerProps
   extends BoxProps,
     StylesApiProps<BurgerFactory>,
     ElementProps<'button'> {
-  /** Controls burger width and height, numbers are converted to rem, `'md'` by default */
+  /** Controls burger `width` and `height`, numbers are converted to rem, `'md'` by default */
   size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.colors` of any valid CSS value, by default `theme.white` in dark color scheme and `theme.black` in light */

@@ -34,6 +34,8 @@ export const position: MantineDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  centered: true,
+  maxWidth: '100%',
   controls: [
     { prop: 'grow', type: 'boolean', initialValue: false, libraryValue: false },
     {

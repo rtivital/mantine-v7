@@ -6,8 +6,8 @@ export interface DemoAreaProps {
   children?: React.ReactNode;
   withPadding?: boolean;
   centered?: boolean;
-  maxWidth?: number;
-  minHeight?: number;
+  maxWidth?: number | string;
+  minHeight?: number | string;
   dimmed?: boolean;
   striped?: boolean;
 }

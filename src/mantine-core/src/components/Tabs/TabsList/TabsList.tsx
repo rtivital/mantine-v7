@@ -16,10 +16,10 @@ export interface TabsListProps
   extends BoxProps,
     StylesApiProps<TabsListFactory>,
     ElementProps<'div'> {
-  /** <Tabs.Tab /> components */
+  /** `Tabs.Tab` components */
   children: React.ReactNode;
 
-  /** Determines whether tabs should take the whole space, `false` by default */
+  /** Determines whether tabs should take all available space, `false` by default */
   grow?: boolean;
 
   /** Tabs alignment, `flex-start` by default */

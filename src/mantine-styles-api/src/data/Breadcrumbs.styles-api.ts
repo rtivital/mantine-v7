@@ -10,7 +10,7 @@ export const BreadcrumbsStylesApi: StylesApiData<BreadcrumbsFactory> = {
 
   vars: {
     root: {
-      '--bc-separator-margin': 'Control left and right margin of separator',
+      '--bc-separator-margin': 'Control left and right `margin` of separator',
     },
   },
 };

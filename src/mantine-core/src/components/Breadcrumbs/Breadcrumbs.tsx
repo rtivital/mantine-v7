@@ -25,10 +25,10 @@ export interface BreadcrumbsProps
   extends BoxProps,
     StylesApiProps<BreadcrumbsFactory>,
     ElementProps<'div'> {
-  /** Separator between breadcrumbs, `'/'` by default */
+  /** Separator between children, `'/'` by default */
   separator?: React.ReactNode;
 
-  /** Spacing between separator and breadcrumb, `'xs'` by default */
+  /** Controls spacing between separator and breadcrumb, `'xs'` by default */
   separatorMargin?: MantineSpacing | (string & {}) | number;
 
   /** React nodes that should be separated with `separator` */
