@@ -8,10 +8,10 @@ export const OverlayStylesApi: StylesApiData<OverlayFactory> = {
 
   vars: {
     root: {
-      '--overlay-bg': 'Controls background-color',
-      '--overlay-filter': 'Controls backdrop-filter',
-      '--overlay-radius': 'Controls border-radius',
-      '--overlay-z-index': 'Controls z-index',
+      '--overlay-bg': 'Controls `background-color`',
+      '--overlay-filter': 'Controls `backdrop-filter`',
+      '--overlay-radius': 'Controls `border-radius`',
+      '--overlay-z-index': 'Controls `z-index`',
     },
   },
 

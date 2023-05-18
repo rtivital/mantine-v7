@@ -61,7 +61,7 @@ const getForwardRefCode = (component: string) => `
 import { forwardRef } from 'react';
 import { ${component} } from '@mantine/core';
 
-const MyComponent = forwardRef((props, ref) => (
+const MyComponent = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>((props, ref) => (
   <div ref={ref} {...props}>
     My component
   </div>

@@ -11,7 +11,7 @@ function Demo() {
       <Popover.Target>
         <Button>Toggle popover</Button>
       </Popover.Target>
-      <Popover.Dropdown sx={(theme) => ({ background: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white })}>
+      <Popover.Dropdown>
         <TextInput label="Name" placeholder="Name" size="xs" />
         <TextInput label="Email" placeholder="john@doe.com" size="xs" mt="xs" />
       </Popover.Dropdown>

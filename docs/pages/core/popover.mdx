@@ -36,7 +36,7 @@ Controlled example with mouse events:
 
 ## Focus trap
 
-If you need to use any interactive elements within `Popover`, set `trapFocus` prop:
+If you need to use interactive elements (inputs, buttons, etc.) inside `Popover.Dropdown`, set `trapFocus` prop:
 
 <Demo data={PopoverDemos.form} />
 
@@ -58,11 +58,22 @@ Popover uses [FocusTrap](/core/focus-trap/) component to manage focus.
 Add `data-autofocus` attribute to element that should receive initial focus:
 
 ```tsx
-<Popover>
-  <input />
-  <input data-autofocus />
-  <input />
-</Popover>
+import { Popover } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Popover>
+      <Popover.Target>
+        <button type="button">Target</button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <input />
+        <input data-autofocus />
+        <input />
+      </Popover.Dropdown>
+    </Popover>
+  );
+}
 ```
 
 <TargetComponent component="Popover" />
@@ -74,12 +85,10 @@ Popover follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practi
 - Dropdown element has `role="dialog"` and `aria-labelledby="target-id"` attributes
 - Target element has `aria-haspopup="dialog"`, `aria-expanded`, `aria-controls="dropdown-id"` attributes
 
-### Supported target elements
-
 Uncontrolled Popover will be accessible only when used with `button` element or component that renders it ([Button](/core/button/), [ActionIcon](/core/action-icon/), etc.).
 Other elements will not support `Space` and `Enter` key presses.
 
-### Keyboard interactions
+## Keyboard interactions
 
 <KeyboardEventsTable
   data={[

@@ -54,10 +54,10 @@ export interface __PopoverProps {
   /** Called when dropdown opens */
   onOpen?(): void;
 
-  /** If set dropdown will not be unmounted from the DOM when it is hidden, display: none styles will be added instead */
+  /** If set dropdown will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
   keepMounted?: boolean;
 
-  /** Props passed down to `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
+  /** Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type, `{ duration: 150, transition: 'fade' }` by default */
   transitionProps?: TransitionOverride;
 
   /** Dropdown width, or `'target'` to make dropdown width the same as target element, `'max-content'` by default */
@@ -75,65 +75,65 @@ export interface __PopoverProps {
   /** Arrow offset in px, `5` by default */
   arrowOffset?: number;
 
-  /** Arrow border-radius in px, `0` by default */
+  /** Arrow `border-radius` in px, `0` by default */
   arrowRadius?: number;
 
-  /** Arrow position **/
+  /** Arrow position */
   arrowPosition?: ArrowPosition;
 
-  /** Determines whether dropdown should be rendered within Portal, `true` by default */
+  /** Determines whether dropdown should be rendered within the `Portal`, `true` by default */
   withinPortal?: boolean;
 
-  /** Props to pass down to the portal when withinPortal is true */
+  /** Props to pass down to the `Portal` when `withinPortal` is true */
   portalProps?: Omit<PortalProps, 'children'>;
 
-  /** Dropdown z-index */
+  /** Dropdown `z-index`, `300` by default */
   zIndex?: React.CSSProperties['zIndex'];
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Key of theme.shadow or any other valid css box-shadow value */
+  /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
   shadow?: MantineShadow | (string & {});
 
-  /** If set, popover dropdown will not render */
+  /** If set, popover dropdown will not be rendered */
   disabled?: boolean;
 
-  /** Determines whether focus should be automatically returned to control when dropdown closes, false by default */
+  /** Determines whether focus should be automatically returned to control when dropdown closes, `false` by default */
   returnFocus?: boolean;
 }
 
 export interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFactory> {
   __staticSelector?: string;
 
-  /** Popover.Target and Popover.Dropdown components */
+  /** `Popover.Target` and `Popover.Dropdown` components */
   children: React.ReactNode;
 
   /** Initial opened state for uncontrolled component */
   defaultOpened?: boolean;
 
-  /** Controls dropdown opened state */
+  /** Controlled dropdown opened state */
   opened?: boolean;
 
   /** Called with current state when dropdown opens or closes */
   onChange?(opened: boolean): void;
 
-  /** Determines whether dropdown should be closed on outside clicks, default to true */
+  /** Determines whether dropdown should be closed on outside clicks, `true` by default */
   closeOnClickOutside?: boolean;
 
   /** Events that trigger outside clicks */
   clickOutsideEvents?: string[];
 
-  /** Determines whether focus should be trapped within dropdown, default to false */
+  /** Determines whether focus should be trapped within dropdown, `false` by default */
   trapFocus?: boolean;
 
-  /** Determines whether dropdown should be closed when Escape key is pressed, defaults to true */
+  /** Determines whether dropdown should be closed when `Escape` key is pressed, `true` by default */
   closeOnEscape?: boolean;
 
   /** id base to create accessibility connections */
   id?: string;
 
-  /** Determines whether dropdown and target element should have accessible roles, defaults to true */
+  /** Determines whether dropdown and target elements should have accessible roles, `true` by default */
   withRoles?: boolean;
 }
 
