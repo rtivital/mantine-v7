@@ -49,13 +49,13 @@ export type TableCssVariables = {
 };
 
 export interface TableProps extends BoxProps, StylesApiProps<TableFactory>, ElementProps<'table'> {
-  /** Value of `table-layout` style, `unset` by default */
+  /** Value of `table-layout` style, `auto` by default */
   layout?: React.CSSProperties['tableLayout'];
 
   /** Determines on which side `Table.Caption` is displayed, `bottom` by default */
   captionSide?: 'top' | 'bottom';
 
-  /** Color of border, key of `theme.colors` or any valid CSS color, by default inferred from current color scheme */
+  /** Color of table borders, key of `theme.colors` or any valid CSS color */
   borderColor?: MantineColor;
 
   /** Determines whether the table should have outer border, `false` by default */
@@ -76,13 +76,13 @@ export interface TableProps extends BoxProps, StylesApiProps<TableFactory>, Elem
   /** Determines whether every odd/even row background should be changed to `strippedColor`, if set to `true`, then `odd` value will be used, `false` by default  */
   striped?: boolean | 'odd' | 'even';
 
-  /** Background color of striped rows, key of `theme.colors` or any valid CSS color, by default color is inferred from current color scheme */
+  /** Background color of striped rows, key of `theme.colors` or any valid CSS color */
   stripedColor?: MantineColor;
 
   /** Determines whether table rows background should change to `highlightOnHoverColor` when hovered, `false` by default */
   highlightOnHover?: boolean;
 
-  /** Background color of table rows when hovered, key of `theme.colors` or any valid CSS color, by default color is inferred from current color scheme */
+  /** Background color of table rows when hovered, key of `theme.colors` or any valid CSS color */
   highlightOnHoverColor?: MantineColor;
 }
 

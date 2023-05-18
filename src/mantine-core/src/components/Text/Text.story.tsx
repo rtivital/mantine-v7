@@ -6,7 +6,7 @@ export default { title: 'Text' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Text>Just text</Text>
+      <Text size="xl">Just text</Text>
     </div>
   );
 }

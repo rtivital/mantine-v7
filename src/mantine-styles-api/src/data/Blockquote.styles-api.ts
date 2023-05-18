@@ -10,11 +10,11 @@ export const BlockquoteStylesApi: StylesApiData<BlockquoteFactory> = {
 
   vars: {
     root: {
-      '--bq-bd': 'Controls border color',
-      '--bq-bg-dark': 'Controls background color in dark color scheme',
-      '--bq-bg-light': 'Controls background color in light color scheme',
-      '--bq-icon-size': 'Controls width and height of icon',
-      '--bq-radius': 'Controls border-radius',
+      '--bq-bd': 'Controls `border`',
+      '--bq-bg-dark': 'Controls `background-color` in dark color scheme',
+      '--bq-bg-light': 'Controls `background-color` in light color scheme',
+      '--bq-icon-size': 'Controls `width` and `height` of the icon',
+      '--bq-radius': 'Controls `border-radius`',
     },
   },
 };

@@ -14,6 +14,7 @@ export const configurator: MantineDemo = {
   type: 'configurator',
   component: Avatar,
   centered: true,
+  striped: true,
   code,
   controls: [
     staticVariantsControl,

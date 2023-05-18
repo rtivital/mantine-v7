@@ -7,7 +7,7 @@ import { Code, Group } from '@mantine/core';
 
 function Demo() {
   return (
-    <Group>
+    <Group justify="center">
       <Code color="blue.9" c="white">
         React.createElement()
       </Code>
@@ -19,7 +19,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Group>
+    <Group justify="center">
       <Code color="blue.9" c="white">
         React.createElement()
       </Code>

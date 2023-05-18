@@ -53,7 +53,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
   /** Sets `line-height` to 1 for centering, `false` by default */
   inline?: boolean;
 
-  /** Determines whether font properties should be inherited from parent, `true` by default */
+  /** Determines whether font properties should be inherited from the parent, `false` by default */
   inherit?: boolean;
 
   /** Gradient configuration, ignored when `variant` is not `gradient`, `theme.defaultGradient` by default */
@@ -74,7 +74,7 @@ export type TextFactory = PolymorphicFactory<{
 
 const defaultProps: Partial<TextProps> = {
   variant: 'text',
-  inherit: true,
+  inherit: false,
   size: 'md',
 };
 

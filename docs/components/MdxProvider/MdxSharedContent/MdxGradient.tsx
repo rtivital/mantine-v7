@@ -13,7 +13,7 @@ export function MdxGradient({ component }: MdxGradientProps) {
       <MdxTitle id="gradient-variant">Gradient variant</MdxTitle>
       <MdxParagraph>
         When <MdxCode>variant</MdxCode> prop is set to <MdxCode>gradient</MdxCode>, you can control
-        button gradient with <MdxCode>gradient</MdxCode> prop, it accepts an object with{' '}
+        gradient with <MdxCode>gradient</MdxCode> prop, it accepts an object with{' '}
         <MdxCode>from</MdxCode>, <MdxCode>to</MdxCode> and <MdxCode>deg</MdxCode> properties. If the
         <MdxCode>gradient</MdxCode> prop is not set, <MdxCode>{component}</MdxCode> will use{' '}
         <MdxCode>theme.defaultGradient</MdxCode> which can be configured on the{' '}

@@ -5,6 +5,7 @@ import { IconInfoCircle } from '@tabler/icons-react';
 
 const code = `
 import { Blockquote } from '@mantine/core';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 function Demo() {
   const icon = <IconInfoCircle />;

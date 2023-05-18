@@ -26,5 +26,7 @@ export const usage: MantineDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  centered: true,
+  maxWidth: '100%',
   controls: [{ prop: 'color', type: 'color', initialValue: 'yellow', libraryValue: 'yellow' }],
 };

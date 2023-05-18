@@ -8,9 +8,9 @@ export const CodeStylesApi: StylesApiData<CodeFactory> = {
 
   vars: {
     root: {
-      '--code-bg': 'Controls background-color',
+      '--code-bg': 'Controls `background-color`',
     },
   },
 
-  modifiers: [{ modifier: 'data-block', selector: 'root', condition: 'block prop is set' }],
+  modifiers: [{ modifier: 'data-block', selector: 'root', condition: '`block` prop is set' }],
 };

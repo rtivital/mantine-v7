@@ -665,8 +665,6 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     title: 'TypographyStylesProvider',
     package: '@mantine/core',
     slug: '/core/typography-styles-provider',
-    props: ['TypographyStylesProvider'],
-    styles: ['TypographyStylesProvider'],
     description: 'Styles provider for html content',
     import: "import { TypographyStylesProvider } from '@mantine/core';",
     source: 'mantine-core/src/components/TypographyStylesProvider/TypographyStylesProvider.tsx',

@@ -32,7 +32,7 @@ export interface BlockquoteProps
   /** Blockquote icon, displayed on the top left */
   icon?: React.ReactNode;
 
-  /** Controls icon width and height, numbers are converted to rem, `40` by default */
+  /** Controls icon `width` and `height`, numbers are converted to rem, `40` by default */
   iconSize?: number | string;
 
   /** Key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
@@ -41,7 +41,7 @@ export interface BlockquoteProps
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Describe a reference to a cited quote */
+  /** Reference to a cited quote */
   cite?: React.ReactNode;
 }
 

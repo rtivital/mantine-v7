@@ -22,6 +22,8 @@ export const usage: MantineDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  centered: true,
+  maxWidth: '100%',
   controls: [
     { prop: 'highlightColor', type: 'color', initialValue: 'yellow', libraryValue: 'yellow' },
     { prop: 'highlight', type: 'string', initialValue: 'this', libraryValue: null },

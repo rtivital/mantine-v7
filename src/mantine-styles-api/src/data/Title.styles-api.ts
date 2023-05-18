@@ -8,11 +8,11 @@ export const TitleStylesApi: StylesApiData<TitleFactory> = {
 
   vars: {
     root: {
-      '--title-fw': 'Title font-weight, by default value from theme.headings',
-      '--title-fz': 'Title font-size, by default value from theme.headings',
-      '--title-lh': 'Title line-height, by default value from theme.headings',
+      '--title-fw': 'Title `font-weight`, by default value from `theme.headings`',
+      '--title-fz': 'Title `font-size`, by default value from `theme.headings`',
+      '--title-lh': 'Title `line-heigh`t, by default value from `theme.headings`',
     },
   },
 
-  modifiers: [{ modifier: 'data-order', selector: 'root', value: 'Value of order prop' }],
+  modifiers: [{ modifier: 'data-order', selector: 'root', value: 'Value of the `order` prop' }],
 };

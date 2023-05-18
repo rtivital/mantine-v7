@@ -1,8 +1,8 @@
 .root {
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
-  font-size: var(--_text-fz, var(--text-fz));
-  line-height: var(--_text-line-height, var(--text-lh));
+  font-size: var(--text-fz);
+  line-height: var(--text-lh);
   font-weight: normal;
   margin: 0;
   padding: 0;
@@ -39,9 +39,9 @@
   }
 
   &[data-inherit] {
-    --_text-fz: inherit;
-    --_text-line-height: inherit;
+    line-height: inherit;
     font-weight: inherit;
+    font-size: inherit;
   }
 
   &[data-inline] {
