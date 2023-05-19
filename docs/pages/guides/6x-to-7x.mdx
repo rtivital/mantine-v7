@@ -1,6 +1,89 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { ThemingDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.SixToSeven);
 
 # 6.x → 7.x migration guide
+
+This guide is intended to help you migrate your project styles from 6.x to 7.x.
+It is not intended to be a comprehensive guide to all the changes in 7.x.
+For that, please see the [7.0.0 changelog](/changelog/7-0-0).
+
+Before getting started, it is recommended to go though [styles](/styles/css-modules) documentation.
+Most notable parts:
+
+- [CSS Modules](/styles/css-modules)
+- [Mantine PostCSS preset](/styles/postcss-preset)
+- [CSS variables](/styles/css-variables)
+- [data-\* attributes](/styles/data-attributes)
+- [Styles API](/styles/styles-api)
+- [Responsive styles](/styles/responsive-styles)
+
+Note that this guide assumes that you have [postcss-preset-mantine](/styles/postcss-preset) installed and configured
+in your project.
+
+## createStyles
+
+## sx prop
+
+## styles prop
+
+## Global styles
+
+## theme referencing
+
+## theme.colorScheme
+
+Color scheme value is managed by [MantineProvider](/theming/mantine-provider),
+[theme object](/theming/theme-object) no longer includes `colorScheme` property.
+Although it is still possible to access color scheme value in components with
+[useMantineColorScheme](/theming/color-schemes#use-mantine-color-scheme-hook) hook,
+it is not recommended to base your styles on its value. Instead, use `light`/`dark`
+[mixins](/styles/postcss-preset) or `light-dark` CSS [function](/styles/postcss-preset#light-dark-function).
+
+Example of 6.x `createStyles` with `theme.colorScheme` migration to 7.0:
+
+```tsx
+// 6.x
+import { createStyles } from '@mantine/core';
+
+const useStyles = createStyles((theme) => ({
+  root: {
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+  },
+}));
+```
+
+```scss
+/* 7.0 */
+
+/* With light-dark function */
+.root {
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
+
+/* With light/dark mixins */
+.root {
+  @mixin light {
+    background-color: var(--mantine-color-gray-0);
+    color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-6);
+    color: var(--mantine-color-white);
+  }
+}
+```
+
+Note that if your application has server-side rendering, you should not render any
+elements based on its value ([more info](theming/color-schemes#color-scheme-value-caveats)).
+Instead, use `light`/`dark` mixins or `light-dark` function to hide/display elements based
+on color scheme value.
+
+Color scheme toggle example:
+
+<Demo data={ThemingDemos.colorSchemeControl} />
