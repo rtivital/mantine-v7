@@ -14,6 +14,10 @@ function createConverter(units: string, { shouldScale = false } = {}) {
     }
 
     if (typeof value === 'string') {
+      if (value.includes('calc(') || value.includes('var(')) {
+        return value;
+      }
+
       if (value.includes(units)) {
         return shouldScale ? scaleRem(value) : value;
       }

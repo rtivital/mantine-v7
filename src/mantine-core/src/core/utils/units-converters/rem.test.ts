@@ -27,6 +27,10 @@ describe('@mantine/units-converters/rem', () => {
     expect(rem('10%')).toBe('10%');
     expect(rem('5vh')).toBe('5vh');
   });
+
+  it('does not modify scaled values', () => {
+    expect(rem('calc(2rem * var(--mantine-scale))')).toBe('calc(2rem * var(--mantine-scale))');
+  });
 });
 
 describe('@mantine/units-converters/em', () => {
