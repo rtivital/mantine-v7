@@ -3,6 +3,7 @@ import { useMantineStyleNonce, useMantineCssVariablesResolver } from '../Mantine
 import { useMantineTheme } from '../MantineThemeProvider';
 import { convertCssVariables } from '../convert-css-variables/convert-css-variables';
 import { getMergedVariables } from './get-merged-variables';
+import { removeDefaultVariables } from './remove-default-variables';
 
 interface MantineCssVariablesProps {
   cssVariablesSelector: string;
@@ -19,17 +20,28 @@ export function MantineCssVariables({ cssVariablesSelector }: MantineCssVariable
   const theme = useMantineTheme();
   const nonce = useMantineStyleNonce();
   const generator = useMantineCssVariablesResolver();
-  const css = convertCssVariables(getMergedVariables({ theme, generator }), cssVariablesSelector);
+  const mergedVariables = getMergedVariables({ theme, generator });
+  const shouldCleanVariables = cssVariablesSelector === ':root';
+  const cleanedVariables = shouldCleanVariables
+    ? removeDefaultVariables(mergedVariables)
+    : mergedVariables;
+  const css = convertCssVariables(cleanedVariables, cssVariablesSelector);
 
-  return (
-    <style
-      data-mantine-styles
-      nonce={nonce?.()}
-      dangerouslySetInnerHTML={{
-        __html: `${css}${getColorSchemeCssVariables(cssVariablesSelector)}`,
-      }}
-    />
-  );
+  if (css) {
+    return (
+      <style
+        data-mantine-styles
+        nonce={nonce?.()}
+        dangerouslySetInnerHTML={{
+          __html: `${css}${
+            shouldCleanVariables ? '' : getColorSchemeCssVariables(cssVariablesSelector)
+          }`,
+        }}
+      />
+    );
+  }
+
+  return null;
 }
 
 MantineCssVariables.displayName = '@mantine/CssVariables';

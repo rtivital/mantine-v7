@@ -1,5 +1,6 @@
 import './styles/css-reset.css';
 import './styles/global-styles.css';
+import './styles/default-css-variables.css';
 
 import React from 'react';
 import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';

@@ -16,6 +16,7 @@
     "comment-empty-line-before": null,
     "scss/at-mixin-pattern": null,
     "scss/at-rule-no-unknown": null,
+    "value-keyword-case": null,
     "selector-pseudo-class-no-unknown": [
       true,
       {
