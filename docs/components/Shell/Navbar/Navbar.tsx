@@ -6,7 +6,7 @@ import {
   IconHeartHandshake,
   IconPalette,
 } from '@tabler/icons-react';
-import { Box, ScrollArea } from '@mantine/core';
+import { Box, ScrollArea, rem } from '@mantine/core';
 import { MDX_PAGES_GROUPS } from '@/mdx';
 import { NavbarMainLink } from './NavbarMainLink/NavbarMainLink';
 import { NavbarLinksGroup } from './NavbarLinksGroup/NavbarLinksGroup';
@@ -26,19 +26,34 @@ export function Navbar({ navbarOpened, onNavbarClose }: NavbarProps) {
     <Box component="nav" className={classes.navbar} mod={{ hidden: !navbarOpened }}>
       <ScrollArea className={classes.scrollarea} type="never" offsetScrollbars={false}>
         <div className={classes.body}>
-          <NavbarMainLink icon={<IconCompass stroke={1.5} />} href="/getting-started">
+          <NavbarMainLink
+            icon={<IconCompass style={{ width: rem(25), height: rem(25) }} stroke={1.5} />}
+            href="/getting-started"
+          >
             Getting started
           </NavbarMainLink>
-          <NavbarMainLink icon={<IconBrandMantine stroke={1.5} />} href="/about">
+          <NavbarMainLink
+            icon={<IconBrandMantine style={{ width: rem(25), height: rem(25) }} stroke={1.5} />}
+            href="/about"
+          >
             About Mantine
           </NavbarMainLink>
-          <NavbarMainLink icon={<IconApi stroke={1.5} />} href="/overview">
+          <NavbarMainLink
+            icon={<IconApi style={{ width: rem(25), height: rem(25) }} stroke={1.5} />}
+            href="/overview"
+          >
             API Overview
           </NavbarMainLink>
-          <NavbarMainLink icon={<IconHeartHandshake stroke={1.5} />} href="/contribute">
+          <NavbarMainLink
+            icon={<IconHeartHandshake style={{ width: rem(25), height: rem(25) }} stroke={1.5} />}
+            href="/contribute"
+          >
             Contribute
           </NavbarMainLink>
-          <NavbarMainLink icon={<IconPalette stroke={1.5} />} href="/colors-generator">
+          <NavbarMainLink
+            icon={<IconPalette style={{ width: rem(22), height: rem(22) }} stroke={1.5} />}
+            href="/colors-generator"
+          >
             Colors generator
           </NavbarMainLink>
           <div className={classes.groups}>{groups}</div>

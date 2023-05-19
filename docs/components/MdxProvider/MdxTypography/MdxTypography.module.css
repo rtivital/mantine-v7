@@ -8,6 +8,7 @@
   margin-bottom: rem(20px);
   margin-top: rem(10px);
   font-size: rem(15px);
+  padding-left: var(--mantine-spacing-xl);
 }
 
 .li {

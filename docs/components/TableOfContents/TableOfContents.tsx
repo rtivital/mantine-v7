@@ -81,7 +81,7 @@ export function TableOfContents({ withTabs }: TableOfContentsProps) {
       <div className={classes.inner}>
         <div>
           <div className={classes.header}>
-            <IconList size={20} stroke={1.5} />
+            <IconList style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
             <Text className={classes.title}>Table of contents</Text>
           </div>
           <ScrollArea.Autosize mah={`calc(100vh - ${rem(140)})`} type="never" offsetScrollbars>
