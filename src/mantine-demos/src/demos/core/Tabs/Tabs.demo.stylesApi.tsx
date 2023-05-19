@@ -1,14 +1,14 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { Tabs, TabsProps } from '@mantine/core';
+import { Tabs, TabsProps, rem } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
 import { TabsStylesApi } from '@mantine/styles-api';
 
 const code = `
-import { Tabs } from '@mantine/core';
+import { Tabs, rem } from '@mantine/core';
 
-function Demo(props: TabsProps) {
-  const iconStyle = { width: '0.8rem', height: '0.8rem' };
+function Demo() {
+  const iconStyle = { width: rem(12), height: rem(12) };
 
   return (
     <Tabs defaultValue="gallery"{{props}}>
@@ -41,7 +41,7 @@ function Demo(props: TabsProps) {
 `;
 
 function Demo(props: TabsProps) {
-  const iconStyle = { width: '0.8rem', height: '0.8rem' };
+  const iconStyle = { width: rem(12), height: rem(12) };
 
   return (
     <Tabs defaultValue="gallery" {...props}>

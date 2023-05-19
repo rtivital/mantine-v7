@@ -20,59 +20,59 @@ describe('@mantine/core/Text', () => {
   });
 
   it('sets data-truncate attribute based on truncate prop', () => {
-    const { container, rerender } = render(<Text truncate="start" data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-truncate', 'start');
+    const { container, rerender } = render(<Text truncate="start" />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-truncate', 'start');
 
-    rerender(<Text truncate="end" data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-truncate', 'end');
+    rerender(<Text truncate="end" />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-truncate', 'end');
 
-    rerender(<Text truncate data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-truncate', 'end');
+    rerender(<Text truncate />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-truncate', 'end');
 
-    rerender(<Text data-test />);
-    expect(container.querySelector('[data-test]')).not.toHaveAttribute('data-truncate');
+    rerender(<Text />);
+    expect(container.querySelector('.mantine-Text-root')).not.toHaveAttribute('data-truncate');
   });
 
   it('sets data-variant attribute based on variant prop', () => {
-    const { container, rerender } = render(<Text variant="text" data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-variant', 'text');
+    const { container, rerender } = render(<Text variant="text" />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-variant', 'text');
 
-    rerender(<Text variant="gradient" data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-variant', 'gradient');
+    rerender(<Text variant="gradient" />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute(
+      'data-variant',
+      'gradient'
+    );
 
-    rerender(<Text data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-variant', 'text');
+    rerender(<Text />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-variant', 'text');
   });
 
   it('sets data-inline attribute based on inline prop', () => {
-    const { container, rerender } = render(<Text inline data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-inline');
+    const { container, rerender } = render(<Text inline />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-inline');
 
-    rerender(<Text data-test />);
-    expect(container.querySelector('[data-test]')).not.toHaveAttribute('data-inline');
+    rerender(<Text />);
+    expect(container.querySelector('.mantine-Text-root')).not.toHaveAttribute('data-inline');
   });
 
   it('sets data-inherit attribute based on inherit prop', () => {
-    const { container, rerender } = render(<Text inherit data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-inherit');
+    const { container, rerender } = render(<Text inherit />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-inherit');
 
-    rerender(<Text data-test inherit={false} />);
-    expect(container.querySelector('[data-test]')).not.toHaveAttribute('data-inherit');
-
-    rerender(<Text data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-inherit');
+    rerender(<Text inherit={false} />);
+    expect(container.querySelector('.mantine-Text-root')).not.toHaveAttribute('data-inherit');
   });
 
   it('sets data-line-clamp attribute based on lineClamp prop', () => {
-    const { container, rerender } = render(<Text lineClamp={3} data-test />);
-    expect(container.querySelector('[data-test]')).toHaveAttribute('data-line-clamp');
+    const { container, rerender } = render(<Text lineClamp={3} />);
+    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-line-clamp');
 
-    rerender(<Text data-test />);
-    expect(container.querySelector('[data-test]')).not.toHaveAttribute('data-line-clamp');
+    rerender(<Text />);
+    expect(container.querySelector('.mantine-Text-root')).not.toHaveAttribute('data-line-clamp');
   });
 
   it('changes root element to span if span prop is set', () => {
-    const { container } = render(<Text span data-test />);
-    expect(container.querySelector('[data-test]')!.nodeName.toLowerCase()).toBe('span');
+    const { container } = render(<Text span />);
+    expect(container.querySelector('.mantine-Text-root')!.nodeName.toLowerCase()).toBe('span');
   });
 });

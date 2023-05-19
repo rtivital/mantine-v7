@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { Blockquote } from './Blockquote';
+import { rem } from '../../core';
 
 export default { title: 'Blockquote' };
 
@@ -8,7 +9,7 @@ export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 820 }}>
       <Blockquote
-        icon={<IconInfoCircle style={{ width: '2rem', height: '2rem' }} stroke={1.5} />}
+        icon={<IconInfoCircle style={{ width: rem(32), height: rem(32) }} stroke={1.5} />}
         color="#F0000E"
       >
         <b>Hello there</b>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonProps } from './Button';
-import { DEFAULT_THEME } from '../../core';
+import { DEFAULT_THEME, rem } from '../../core';
 
 export default { title: 'Button' };
 
@@ -170,7 +170,7 @@ export function Variables() {
         vars={(theme, props) => {
           const result = { root: {} as any };
           if (props.size === 'xl') {
-            result.root['--ai-size'] = '12rem';
+            result.root['--ai-size'] = rem('12rem');
             result.root['--ai-bg'] = 'pink';
             result.root['--ai-hover'] = 'orange';
           }

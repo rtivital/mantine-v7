@@ -39,18 +39,18 @@ Default values for theme properties:
 `theme.fontSizes` property defines font-size values for all Mantine components:
 
 ```tsx
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, rem } from '@mantine/core';
 
 function Demo() {
   return (
     <MantineProvider
       theme={{
         fontSizes: {
-          xs: '0.6rem',
-          sm: '0.75rem',
-          md: '0.9rem',
-          lg: '1rem',
-          xl: '1.2rem',
+          xs: rem(10),
+          sm: rem(11),
+          md: rem(14),
+          lg: rem(16),
+          xl: rem(20),
         },
       }}
     >
@@ -114,7 +114,7 @@ To customize headings styles in [Title](/core/title/) and [TypographyStylesProvi
 set `theme.headings`:
 
 ```tsx
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, rem } from '@mantine/core';
 
 function Demo() {
   return (
@@ -127,8 +127,8 @@ function Demo() {
 
           // properties for individual headings, all of them are optional
           sizes: {
-            h1: { fontWeight: 100, fontSize: '3rem', lineHeight: 1.4 },
-            h2: { fontSize: '2.2rem', lineHeight: 1.5 },
+            h1: { fontWeight: 100, fontSize: rem(36), lineHeight: 1.4 },
+            h2: { fontSize: rem(30), lineHeight: 1.5 },
             // ...up to h6
             h6: { fontWeight: 900 },
           },

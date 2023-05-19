@@ -4,7 +4,7 @@ import { Collapse, CollapseProps } from './Collapse';
 
 const defaultProps: CollapseProps = {
   in: true,
-  children: <div style={{ height: '50rem' }} />,
+  children: <div style={{ height: '20vh' }} />,
 };
 
 describe('@mantine/core/Collapse', () => {

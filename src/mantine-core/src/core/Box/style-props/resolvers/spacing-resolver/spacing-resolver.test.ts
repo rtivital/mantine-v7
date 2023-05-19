@@ -1,12 +1,13 @@
 import { spacingResolver } from './spacing-resolver';
 import { DEFAULT_THEME } from '../../../../MantineProvider';
+import { rem } from '../../../../utils';
 
 describe('@mantine/core/Box/spacing-resolver', () => {
   it('resolves number correctly', () => {
-    expect(spacingResolver(10, DEFAULT_THEME)).toBe('0.625rem');
-    expect(spacingResolver(-10, DEFAULT_THEME)).toBe('-0.625rem');
-    expect(spacingResolver(1.5, DEFAULT_THEME)).toBe('0.09375rem');
-    expect(spacingResolver(0, DEFAULT_THEME)).toBe('0rem');
+    expect(spacingResolver(10, DEFAULT_THEME)).toBe(rem(10));
+    expect(spacingResolver(-10, DEFAULT_THEME)).toBe(rem(-10));
+    expect(spacingResolver(1.5, DEFAULT_THEME)).toBe(rem(1.5));
+    expect(spacingResolver(0, DEFAULT_THEME)).toBe(rem(0));
   });
 
   it('resolves theme value correctly', () => {
@@ -15,7 +16,8 @@ describe('@mantine/core/Box/spacing-resolver', () => {
   });
 
   it('resolves string correctly', () => {
-    expect(spacingResolver('10px', DEFAULT_THEME)).toBe('10px');
-    expect(spacingResolver('-10px', DEFAULT_THEME)).toBe('-10px');
+    expect(spacingResolver('10px', DEFAULT_THEME)).toBe(rem(10));
+    expect(spacingResolver('-10px', DEFAULT_THEME)).toBe(rem(-10));
+    expect(spacingResolver('1rem', DEFAULT_THEME)).toBe(rem('1rem'));
   });
 });

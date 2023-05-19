@@ -5,8 +5,12 @@ describe('@mantine/units-converters/rem', () => {
     expect(rem(undefined)).toBe(undefined);
   });
 
+  it('handles 0 correctly', () => {
+    expect(rem(0)).toBe('0');
+    expect(rem('0')).toBe('0');
+  });
+
   it('converts numbers to rem', () => {
-    expect(rem(0)).toBe('calc(0rem * var(--mantine-scale))');
     expect(rem(16)).toBe('calc(1rem * var(--mantine-scale))');
     expect(rem(-32)).toBe('calc(-2rem * var(--mantine-scale))');
   });
@@ -27,7 +31,7 @@ describe('@mantine/units-converters/rem', () => {
 
 describe('@mantine/units-converters/em', () => {
   it('converts numbers to em', () => {
-    expect(em(0)).toBe('0em');
+    expect(em(0)).toBe('0');
     expect(em(16)).toBe('1em');
     expect(em(-32)).toBe('-2em');
   });

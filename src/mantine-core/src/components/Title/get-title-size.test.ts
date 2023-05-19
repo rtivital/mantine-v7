@@ -17,7 +17,7 @@ describe('@mantine/core/Title/get-title-size', () => {
 
   it('returns correct font size for size in px', () => {
     expect(getTitleSize(3, 32)).toStrictEqual({
-      fontSize: '2rem',
+      fontSize: 'calc(2rem * var(--mantine-scale))',
       fontWeight: 'var(--mantine-h3-font-weight)',
       lineHeight: 'var(--mantine-h3-line-height)',
     });

@@ -1,15 +1,15 @@
 import React from 'react';
 import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react';
 import { MantineDemo } from '@mantine/ds';
-import { SegmentedControl, VisuallyHidden } from '@mantine/core';
+import { SegmentedControl, VisuallyHidden, rem } from '@mantine/core';
 
 const code = `
-import { SegmentedControl, VisuallyHidden } from '@mantine/core';
+import { SegmentedControl, VisuallyHidden, rem } from '@mantine/core';
 import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react';
 
 function Demo() {
   const iconProps = {
-    style: { width: '1.3rem', height: '1.3rem', display: 'block' },
+    style: { width: rem(20), height: rem(20), display: 'block' },
     stroke: 1.5,
   };
 
@@ -51,7 +51,7 @@ function Demo() {
 
 function Demo() {
   const iconProps = {
-    style: { width: '1.3rem', height: '1.3rem', display: 'block' },
+    style: { width: rem(20), height: rem(20), display: 'block' },
     stroke: 1.5,
   };
 

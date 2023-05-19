@@ -202,13 +202,13 @@ argument and returns object with CSS variables divided into three groups:
 Example of adding new CSS variables based on `theme.other`:
 
 ```tsx
-import { MantineProvider, CSSVariablesResolver, createTheme } from '@mantine/core';
+import { MantineProvider, CSSVariablesResolver, createTheme, rem } from '@mantine/core';
 
 const themeOverride = createTheme({
   other: {
     deepOrangeLight: '#E17900',
     deepOrangeDark: '#FC8C0C',
-    heroHeight: '20rem',
+    heroHeight: rem(400),
   },
 });
 

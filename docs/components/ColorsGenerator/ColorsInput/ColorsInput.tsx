@@ -3,7 +3,16 @@ import { useRouter } from 'next/router';
 import chroma from 'chroma-js';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
-import { ColorPicker, TextInput, Input, Button, ColorSwatch, Group, Switch } from '@mantine/core';
+import {
+  ColorPicker,
+  TextInput,
+  Input,
+  Button,
+  ColorSwatch,
+  Group,
+  Switch,
+  rem,
+} from '@mantine/core';
 import { COLORS_PRESET } from './colors-preset';
 import classes from './ColorsInput.module.css';
 
@@ -91,9 +100,9 @@ export function ColorsInput({
           fullWidth
           leftSection={
             clipboard.copied ? (
-              <IconCheck style={{ width: '1.2rem' }} />
+              <IconCheck style={{ width: rem(18) }} />
             ) : (
-              <IconCopy style={{ width: '1.2rem' }} />
+              <IconCopy style={{ width: rem(18) }} />
             )
           }
           rightSection={<span />}

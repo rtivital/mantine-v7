@@ -6,7 +6,7 @@ import { SliderStylesNames } from '../Slider.context';
 const defaultProps: SliderProps = {
   marks: [{ value: 0, label: 'test-mark' }],
   labelAlwaysOn: true,
-  labelTransitionDuration: 0,
+  labelTransitionProps: { duration: 0 },
   thumbLabel: 'test-label',
 };
 
@@ -91,7 +91,7 @@ describe('@mantine/core/Slider', () => {
   });
 
   it('shows label on hover', async () => {
-    render(<Slider label="test-label" labelTransitionDuration={0} />);
+    render(<Slider label="test-label" labelTransitionProps={{ duration: 0 }} />);
     expect(screen.queryAllByText('test-label')).toHaveLength(0);
     await userEvent.hover(screen.getByRole('slider'));
     expect(screen.getByText('test-label')).toBeInTheDocument();
@@ -105,7 +105,7 @@ describe('@mantine/core/Slider', () => {
         defaultValue={50}
         step={10}
         label={(val) => `test-label-${val}`}
-        labelTransitionDuration={0}
+        labelTransitionProps={{ duration: 0 }}
         labelAlwaysOn
       />
     );

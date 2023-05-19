@@ -10,5 +10,9 @@ export function fontSizeResolver(value: unknown, theme: MantineTheme) {
     return rem(value);
   }
 
+  if (typeof value === 'string') {
+    return rem(value);
+  }
+
   return value;
 }

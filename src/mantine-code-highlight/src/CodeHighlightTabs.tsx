@@ -79,7 +79,7 @@ export interface CodeHighlightTabsProps
   /** Function that returns icon based on file name */
   getFileIcon?(fileName: string): React.ReactNode;
 
-  /** `max-height` of code in collapsed state, `'6rem'` by default */
+  /** `max-height` of code in collapsed state */
   maxCollapsedHeight?: React.CSSProperties['maxHeight'];
 
   /** Controlled expanded state */
@@ -111,7 +111,7 @@ const defaultProps: Partial<CodeHighlightTabsProps> = {
   withHeader: true,
   copyLabel: 'Copy code',
   copiedLabel: 'Copied',
-  maxCollapsedHeight: '8rem',
+  maxCollapsedHeight: rem('8rem'),
   expandCodeLabel: 'Expand code',
   collapseCodeLabel: 'Collapse code',
 };

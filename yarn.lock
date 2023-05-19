@@ -12282,14 +12282,13 @@ postcss-ordered-values@^5.1.3:
     cssnano-utils "^3.1.0"
     postcss-value-parser "^4.2.0"
 
-postcss-preset-mantine@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.1.0.tgz#dac87d1e73ec58df6a99f76341e55c5e20c315de"
-  integrity sha512-16Zw5cknZsUE0RvYNSExQ+oTlpArlf/JPi0OwgZjiAYcQl6yRUgTG4P9GKUNIFpiCo70yNOXC1FxarA4Tb7Yeg==
+postcss-preset-mantine@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.2.0.tgz#9464e488a08b42999452e710bb2e4493a92f653e"
+  integrity sha512-+uwbnd3//57G+QFQOzuXjYvPI2eG/m3Sx+8GEYlH6dnR422SiLliUy9C3U/UBf3yf05FjVCzjppwoepxKqudsA==
   dependencies:
     postcss-mixins "^9.0.4"
     postcss-nested "^6.0.1"
-    startijenn-rem "^1.1.1"
 
 postcss-reduce-initial@^5.1.2:
   version "5.1.2"
@@ -13924,11 +13923,6 @@ stackframe@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.3.4.tgz#b881a004c8c149a5e8efef37d51b16e412943310"
   integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
-
-startijenn-rem@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/startijenn-rem/-/startijenn-rem-1.1.1.tgz#6b237cf931fe1294d2d9bcad09d90c3612198a4c"
-  integrity sha512-aqr56HWDgRs4cA+6cVwp83iVHB8YEwMD2e5uybeaZRq8JJC8QqlW8gtXZYucqFO/kdyioQhlFv7NmntlEsiMiQ==
 
 state-toggle@^1.0.0:
   version "1.0.3"

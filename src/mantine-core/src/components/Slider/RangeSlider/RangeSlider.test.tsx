@@ -6,7 +6,7 @@ import { SliderStylesNames } from '../Slider.context';
 const defaultProps: RangeSliderProps = {
   marks: [{ value: 0, label: 'test-mark' }],
   labelAlwaysOn: true,
-  labelTransitionDuration: 0,
+  labelTransitionProps: { duration: 0 },
   thumbFromLabel: 'test-label',
   thumbToLabel: 'test-label',
 };

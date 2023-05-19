@@ -1,14 +1,14 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { TextInput } from '@mantine/core';
+import { TextInput, rem } from '@mantine/core';
 import { IconAt } from '@tabler/icons-react';
 
 const code = `
-import { TextInput } from '@mantine/core';
+import { TextInput, rem } from '@mantine/core';
 import { IconAt } from '@tabler/icons-react';
 
 function Demo() {
-  const icon = <IconAt style={{ width: '1rem', height: '1rem' }} />;
+  const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
   return (
     <>
       <TextInput
@@ -30,7 +30,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const icon = <IconAt style={{ width: '1rem', height: '1rem' }} />;
+  const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
   return (
     <>
       <TextInput

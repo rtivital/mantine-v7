@@ -1,10 +1,10 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { CopyButton, ActionIcon, Tooltip } from '@mantine/core';
+import { CopyButton, ActionIcon, Tooltip, rem } from '@mantine/core';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
 
 const code = `
-import { CopyButton, ActionIcon, Tooltip } from '@mantine/core';
+import { CopyButton, ActionIcon, Tooltip, rem } from '@mantine/core';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
 
 function Demo() {
@@ -14,9 +14,9 @@ function Demo() {
         <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
           <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle" onClick={copy}>
             {copied ? (
-              <IconCheck style={{ width: '1rem' }} />
+              <IconCheck style={{ width: rem(16) }} />
             ) : (
-              <IconCopy style={{ width: '1rem' }} />
+              <IconCopy style={{ width: rem(16) }} />
             )}
           </ActionIcon>
         </Tooltip>
@@ -34,9 +34,9 @@ function Demo() {
         <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
           <ActionIcon color={copied ? 'teal' : 'gray'} variant="subtle" onClick={copy}>
             {copied ? (
-              <IconCheck style={{ width: '1rem' }} />
+              <IconCheck style={{ width: rem(16) }} />
             ) : (
-              <IconCopy style={{ width: '1rem' }} />
+              <IconCopy style={{ width: rem(16) }} />
             )}
           </ActionIcon>
         </Tooltip>

@@ -23,7 +23,7 @@ describe('@mantine/core/TabsTab', () => {
     children: true,
     selector: '[role="tab"]',
     stylesApiName: 'Tabs',
-    stylesApiSelectors: ['tab', 'tabLabel', 'tabLeftSection', 'tabRightSection'],
+    stylesApiSelectors: ['tab', 'tabLabel', 'tabSection'],
     providerStylesApi: false,
   });
 

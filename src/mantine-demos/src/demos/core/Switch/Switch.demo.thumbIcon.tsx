@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Switch, useMantineTheme } from '@mantine/core';
 import { MantineDemo } from '@mantine/ds';
+import { Switch, useMantineTheme, rem } from '@mantine/core';
 import { IconCheck, IconX } from '@tabler/icons-react';
 
 const code = `
 import { useState } from 'react';
-import { Switch, useMantineTheme } from '@mantine/core';
+import { Switch, useMantineTheme, rem } from '@mantine/core';
 import { IconCheck, IconX } from '@tabler/icons-react';
 
 function Demo() {
@@ -21,13 +21,13 @@ function Demo() {
       thumbIcon={
         checked ? (
           <IconCheck
-            style={{ width: '0.8rem', height: '0.8rem' }}
+            style={{ width: rem(12), height: rem(12) }}
             color={theme.colors.teal[6]}
             stroke={3}
           />
         ) : (
           <IconX
-            style={{ width: '0.8rem', height: '0.8rem' }}
+            style={{ width: rem(12), height: rem(12) }}
             color={theme.colors.red[6]}
             stroke={3}
           />
@@ -51,13 +51,13 @@ function Demo() {
       thumbIcon={
         checked ? (
           <IconCheck
-            style={{ width: '0.8rem', height: '0.8rem' }}
+            style={{ width: rem(12), height: rem(12) }}
             color={theme.colors.teal[6]}
             stroke={3}
           />
         ) : (
           <IconX
-            style={{ width: '0.8rem', height: '0.8rem' }}
+            style={{ width: rem(12), height: rem(12) }}
             color={theme.colors.red[6]}
             stroke={3}
           />

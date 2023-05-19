@@ -1,5 +1,6 @@
 import { fontSizeResolver } from './font-size-resolver';
 import { DEFAULT_THEME } from '../../../../MantineProvider';
+import { rem } from '../../../../utils';
 
 describe('@mantine/core/Box/font-size-resolver', () => {
   it('resolves theme font size', () => {
@@ -11,12 +12,13 @@ describe('@mantine/core/Box/font-size-resolver', () => {
   });
 
   it('resolves number font size', () => {
-    expect(fontSizeResolver(12, DEFAULT_THEME)).toBe('0.75rem');
-    expect(fontSizeResolver(32, DEFAULT_THEME)).toBe('2rem');
+    expect(fontSizeResolver(12, DEFAULT_THEME)).toBe('calc(0.75rem * var(--mantine-scale))');
+    expect(fontSizeResolver(32, DEFAULT_THEME)).toBe('calc(2rem * var(--mantine-scale))');
   });
 
   it('resolves string font size', () => {
-    expect(fontSizeResolver('12px', DEFAULT_THEME)).toBe('12px');
-    expect(fontSizeResolver('1em', DEFAULT_THEME)).toBe('1em');
+    expect(fontSizeResolver('12px', DEFAULT_THEME)).toBe(rem(12));
+    expect(fontSizeResolver('1em', DEFAULT_THEME)).toBe(rem('1em'));
+    expect(fontSizeResolver('1rem', DEFAULT_THEME)).toBe(rem('1rem'));
   });
 });

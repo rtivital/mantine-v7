@@ -1,10 +1,10 @@
 import React from 'react';
 import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react';
 import { MantineDemo } from '@mantine/ds';
-import { Center, SegmentedControl, Box } from '@mantine/core';
+import { Center, SegmentedControl, Box, rem } from '@mantine/core';
 
 const code = `
-import { Center, SegmentedControl, Box } from '@mantine/core';
+import { Center, SegmentedControl, Box, rem } from '@mantine/core';
 import { IconEye, IconCode, IconExternalLink } from '@tabler/icons-react';
 
 function Demo() {
@@ -15,7 +15,7 @@ function Demo() {
           value: 'preview',
           label: (
             <Center>
-              <IconEye style={{ width: '1rem', height: '1rem' }} />
+              <IconEye style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Preview</Box>
             </Center>
           ),
@@ -24,7 +24,7 @@ function Demo() {
           value: 'code',
           label: (
             <Center>
-              <IconCode style={{ width: '1rem', height: '1rem' }} />
+              <IconCode style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Code</Box>
             </Center>
           ),
@@ -33,7 +33,7 @@ function Demo() {
           value: 'export',
           label: (
             <Center>
-              <IconExternalLink style={{ width: '1rem', height: '1rem' }} />
+              <IconExternalLink style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Export</Box>
             </Center>
           ),
@@ -52,7 +52,7 @@ function Demo() {
           value: 'preview',
           label: (
             <Center>
-              <IconEye style={{ width: '1rem', height: '1rem' }} />
+              <IconEye style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Preview</Box>
             </Center>
           ),
@@ -61,7 +61,7 @@ function Demo() {
           value: 'code',
           label: (
             <Center>
-              <IconCode style={{ width: '1rem', height: '1rem' }} />
+              <IconCode style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Code</Box>
             </Center>
           ),
@@ -70,7 +70,7 @@ function Demo() {
           value: 'export',
           label: (
             <Center>
-              <IconExternalLink style={{ width: '1rem', height: '1rem' }} />
+              <IconExternalLink style={{ width: rem(16), height: rem(16) }} />
               <Box ml={10}>Export</Box>
             </Center>
           ),

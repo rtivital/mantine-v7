@@ -29,10 +29,10 @@ export interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFa
   /** Color to display, not related to `theme.colors` – supports only CSS color values */
   color: string;
 
-  /** Controls `width` and `height` of the swatch, any valid CSS value, numbers are converted to rem, `'1.75rem'` by default */
+  /** Controls `width` and `height` of the swatch, any valid CSS value, numbers are converted to rem */
   size?: React.CSSProperties['width'];
 
-  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'1.75rem'` by default */
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Determines whether the swatch should have inner `box-shadow`, `true` by default */
@@ -52,8 +52,8 @@ export type ColorSwatchFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<ColorSwatchProps> = {
-  size: '1.75rem',
-  radius: '1.75rem',
+  size: rem(28),
+  radius: rem(28),
   withShadow: true,
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { rem } from '@mantine/core';
 
 export function ColorWheelIcon() {
   return (
@@ -6,7 +7,7 @@ export function ColorWheelIcon() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 200 200"
-      style={{ width: '1.2rem', height: '1.2rem' }}
+      style={{ width: rem(18), height: rem(18) }}
     >
       <path fill="#FF5178" d="M100 0a100 100 0 00-50 13.398l30 51.961A40 40 0 01100 60V0z" />
       <path

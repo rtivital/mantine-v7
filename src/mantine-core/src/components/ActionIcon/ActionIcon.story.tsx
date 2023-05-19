@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionIcon, ActionIconProps } from './ActionIcon';
-import { DEFAULT_THEME } from '../../core';
+import { DEFAULT_THEME, rem } from '../../core';
 
 export default { title: 'ActionIcon' };
 
@@ -22,7 +22,9 @@ export function WithinDisabledFieldset() {
   return (
     <fieldset disabled style={{ padding: 40 }}>
       <legend>Disabled fieldset</legend>
-      <ActionIcon size="lg">$$</ActionIcon>
+      <ActionIcon size="lg" p={45}>
+        $$
+      </ActionIcon>
     </fieldset>
   );
 }
@@ -140,7 +142,7 @@ export function Variables() {
         vars={(theme, props) => {
           const result = { root: {} as any };
           if (props.size === 'xl') {
-            result.root['--ai-size'] = '12rem';
+            result.root['--ai-size'] = rem('12rem');
             result.root['--ai-bg'] = 'pink';
             result.root['--ai-hover'] = 'orange';
           }

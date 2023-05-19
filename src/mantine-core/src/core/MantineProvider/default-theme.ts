@@ -1,6 +1,7 @@
 import type { MantineTheme } from './theme.types';
 import { DEFAULT_COLORS } from './default-colors';
 import { defaultVariantColorsResolver } from './color-functions';
+import { rem } from '../utils';
 
 const DEFAULT_FONT_FAMILY =
   '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji';
@@ -29,21 +30,21 @@ export const DEFAULT_THEME: MantineTheme = {
     fontFamily: DEFAULT_FONT_FAMILY,
     fontWeight: '700',
     sizes: {
-      h1: { fontSize: '2.125rem', lineHeight: '1.3' },
-      h2: { fontSize: '1.625rem', lineHeight: '1.35' },
-      h3: { fontSize: '1.375rem', lineHeight: '1.4' },
-      h4: { fontSize: '1.125rem', lineHeight: '1.45' },
-      h5: { fontSize: '1rem', lineHeight: '1.5' },
-      h6: { fontSize: '0.875rem', lineHeight: '1.5' },
+      h1: { fontSize: rem(34), lineHeight: '1.3' },
+      h2: { fontSize: rem(26), lineHeight: '1.35' },
+      h3: { fontSize: rem(22), lineHeight: '1.4' },
+      h4: { fontSize: rem(18), lineHeight: '1.45' },
+      h5: { fontSize: rem(16), lineHeight: '1.5' },
+      h6: { fontSize: rem(14), lineHeight: '1.5' },
     },
   },
 
   fontSizes: {
-    xs: '0.75rem',
-    sm: '0.875rem',
-    md: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
+    xs: rem(12),
+    sm: rem(14),
+    md: rem(16),
+    lg: rem(18),
+    xl: rem(20),
   },
 
   lineHeights: {
@@ -55,19 +56,19 @@ export const DEFAULT_THEME: MantineTheme = {
   },
 
   radius: {
-    xs: '0.125rem',
-    sm: '0.25rem',
-    md: '0.5rem',
-    lg: '1rem',
-    xl: '2rem',
+    xs: rem(2),
+    sm: rem(4),
+    md: rem(8),
+    lg: rem(16),
+    xl: rem(32),
   },
 
   spacing: {
-    xs: '0.625rem',
-    sm: '0.75rem',
-    md: '1rem',
-    lg: '1.25rem',
-    xl: '1.5rem',
+    xs: rem(10),
+    sm: rem(12),
+    md: rem(16),
+    lg: rem(20),
+    xl: rem(32),
   },
 
   breakpoints: {
@@ -79,11 +80,19 @@ export const DEFAULT_THEME: MantineTheme = {
   },
 
   shadows: {
-    xs: '0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.1)',
-    sm: '0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 0.625rem 0.9375rem -0.3125rem, rgba(0, 0, 0, 0.04) 0 0.4375rem 0.4375rem -0.3125rem',
-    md: '0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 1.25rem 1.5625rem -0.3125rem, rgba(0, 0, 0, 0.04) 0 0.625rem 0.625rem -0.3125rem',
-    lg: '0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 1.75rem 1.4375rem -0.4375rem, rgba(0, 0, 0, 0.04) 0 0.75rem 0.75rem -0.4375rem',
-    xl: '0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 2.25rem 1.75rem -0.4375rem, rgba(0, 0, 0, 0.04) 0 1.0625rem 1.0625rem -0.4375rem',
+    xs: `0 ${rem(1)} ${rem(3)} rgba(0, 0, 0, 0.05), 0 ${rem(1)} ${rem(2)} rgba(0, 0, 0, 0.1)`,
+    sm: `0 ${rem(1)} ${rem(3)} rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 ${rem(10)} ${rem(
+      15
+    )} ${rem(-5)}, rgba(0, 0, 0, 0.04) 0 ${rem(7)} ${rem(7)} ${rem(-5)}`,
+    md: `0 ${rem(1)} ${rem(3)} rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 ${rem(20)} ${rem(
+      25
+    )} ${rem(-5)}, rgba(0, 0, 0, 0.04) 0 ${rem(10)} ${rem(10)} ${rem(-5)}`,
+    lg: `0 ${rem(1)} ${rem(3)} rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 ${rem(28)} ${rem(
+      23
+    )} ${rem(-7)}, rgba(0, 0, 0, 0.04) 0 ${rem(12)} ${rem(12)} ${rem(-7)}`,
+    xl: `0 ${rem(1)} ${rem(3)} rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 ${rem(36)} ${rem(
+      28
+    )} ${rem(-7)}, rgba(0, 0, 0, 0.04) 0 ${rem(17)} ${rem(17)} ${rem(-7)}`,
   },
 
   other: {},

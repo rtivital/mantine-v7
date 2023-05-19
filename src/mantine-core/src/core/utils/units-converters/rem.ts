@@ -4,6 +4,10 @@ function scaleRem(remValue: string) {
 
 function createConverter(units: string, { shouldScale = false } = {}) {
   return (value: unknown) => {
+    if (value === 0 || value === '0') {
+      return '0';
+    }
+
     if (typeof value === 'number') {
       const val = `${value / 16}${units}`;
       return shouldScale ? scaleRem(val) : val;

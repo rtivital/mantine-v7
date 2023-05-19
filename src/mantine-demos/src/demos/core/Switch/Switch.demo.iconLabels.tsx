@@ -1,10 +1,10 @@
 import React from 'react';
-import { Switch, useMantineTheme } from '@mantine/core';
 import { MantineDemo } from '@mantine/ds';
+import { Switch, useMantineTheme, rem } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 
 const code = `
-import { Switch, useMantineTheme } from '@mantine/core';
+import { Switch, useMantineTheme, rem } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 
 function Demo() {
@@ -12,7 +12,7 @@ function Demo() {
 
   const sunIcon = (
     <IconSun
-      style={{ width: '1rem', height: '1rem' }}
+      style={{ width: rem(16), height: rem(16) }}
       stroke={2.5}
       color={theme.colors.yellow[4]}
     />
@@ -20,7 +20,7 @@ function Demo() {
 
   const moonIcon = (
     <IconMoonStars
-      style={{ width: '1rem', height: '1rem' }}
+      style={{ width: rem(16), height: rem(16) }}
       stroke={2.5}
       color={theme.colors.blue[6]}
     />
@@ -35,7 +35,7 @@ function Demo() {
 
   const sunIcon = (
     <IconSun
-      style={{ width: '1rem', height: '1rem' }}
+      style={{ width: rem(16), height: rem(16) }}
       stroke={2.5}
       color={theme.colors.yellow[4]}
     />
@@ -43,7 +43,7 @@ function Demo() {
 
   const moonIcon = (
     <IconMoonStars
-      style={{ width: '1rem', height: '1rem' }}
+      style={{ width: rem(16), height: rem(16) }}
       stroke={2.5}
       color={theme.colors.blue[6]}
     />

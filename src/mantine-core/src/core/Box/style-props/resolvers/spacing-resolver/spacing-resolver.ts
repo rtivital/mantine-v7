@@ -10,7 +10,7 @@ export function spacingResolver(value: unknown, theme: MantineTheme) {
     const mod = value.replace('-', '');
 
     if (!(mod in theme.spacing)) {
-      return value;
+      return rem(value);
     }
 
     const variable = `--mantine-spacing-${mod}`;

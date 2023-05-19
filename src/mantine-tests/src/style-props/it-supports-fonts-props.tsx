@@ -26,10 +26,14 @@ export function itSupportsFontsProps<Props>(
     const { container: td } = render(<options.component {...options.props} td="underline" />);
 
     expect(theme.querySelector(selector)).toHaveStyle({ fontSize: 'var(--mantine-font-size-xs)' });
-    expect(fz.querySelector(selector)).toHaveStyle({ fontSize: '2rem' });
+    expect(fz.querySelector(selector)).toHaveStyle({
+      fontSize: 'calc(2rem * var(--mantine-scale))',
+    });
     expect(fw.querySelector(selector)).toHaveStyle({ fontWeight: '700' });
     expect(ff.querySelector(selector)).toHaveStyle({ fontFamily: 'sans-serif' });
-    expect(lts.querySelector(selector)).toHaveStyle({ letterSpacing: '1rem' });
+    expect(lts.querySelector(selector)).toHaveStyle({
+      letterSpacing: 'calc(1rem * var(--mantine-scale))',
+    });
     expect(ta.querySelector(selector)).toHaveStyle({ textAlign: 'right' });
     expect(lh.querySelector(selector)).toHaveStyle({ lineHeight: '2.25' });
     expect(fs.querySelector(selector)).toHaveStyle({ fontStyle: 'italic' });

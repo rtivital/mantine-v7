@@ -32,7 +32,7 @@ describe('@mantine/core/CloseIcon', () => {
   tests.itSupportsRef({ component: CloseIcon, refType: SVGSVGElement, props: {} });
 
   it('sets width and height to size prop', () => {
-    const { container } = render(<CloseIcon size="2rem" />);
-    expect(container.querySelector('svg')).toHaveStyle({ width: '2rem', height: '2rem' });
+    const { container } = render(<CloseIcon size="10%" />);
+    expect(container.querySelector('svg')).toHaveStyle({ width: '10%', height: '10%' });
   });
 });

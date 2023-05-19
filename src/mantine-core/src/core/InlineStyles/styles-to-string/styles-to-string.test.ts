@@ -1,35 +1,35 @@
 import { stylesToString } from './styles-to-string';
 
 const baseStylesResult = `.test {
-  padding: 2rem;
+  padding: 2vh;
   border-radius: 5px;
   color: red;
 }`;
 
 const mediaStylesResult = `@media (max-width: 50em) {
   .test {
-    padding: 2rem;
+    padding: 2vh;
     border-radius: 5px;
     color: red;
   }
 }`;
 
 const allStylesResult = `.test {
-  padding: 2rem;
+  padding: 2vh;
   border-radius: 5px;
   color: red;
 }
 
 @media (max-width: 20em) {
   .test {
-    padding: 4rem;
+    padding: 4vh;
     color: black;
   }
 }
 
 @media (max-width: 40em) {
   .test {
-    padding: 6rem;
+    padding: 6vh;
     color: white;
   }
 }`;
@@ -40,7 +40,7 @@ describe('@mantine/core/styles-to-string', () => {
       stylesToString({
         selector: '.test',
         styles: {
-          padding: '2rem',
+          padding: '2vh',
           borderRadius: '5px',
           color: 'red',
         },
@@ -56,7 +56,7 @@ describe('@mantine/core/styles-to-string', () => {
           {
             query: '(max-width: 50em)',
             styles: {
-              padding: '2rem',
+              padding: '2vh',
               borderRadius: '5px',
               color: 'red',
             },
@@ -71,7 +71,7 @@ describe('@mantine/core/styles-to-string', () => {
       stylesToString({
         selector: '.test',
         styles: {
-          padding: '2rem',
+          padding: '2vh',
           borderRadius: '5px',
           color: 'red',
         },
@@ -79,14 +79,14 @@ describe('@mantine/core/styles-to-string', () => {
           {
             query: '(max-width: 20em)',
             styles: {
-              padding: '4rem',
+              padding: '4vh',
               color: 'black',
             },
           },
           {
             query: '(max-width: 40em)',
             styles: {
-              padding: '6rem',
+              padding: '6vh',
               color: 'white',
             },
           },

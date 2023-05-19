@@ -1,13 +1,13 @@
 import { cssObjectToString } from './css-object-to-string';
 
 const result = `
-padding: 1rem;
-font-size: 2.2rem;
+padding: 1vh;
+font-size: 2.2vh;
 border-top-right-radius: 10px;
 `.trim();
 
 const undefinedResult = `
-padding: 1rem;
+padding: 1vh;
 border-top-right-radius: 10px;
 `.trim();
 
@@ -15,8 +15,8 @@ describe('@mantine/core/css-object-to-string', () => {
   it('correctly transforms css object into string', () => {
     expect(
       cssObjectToString({
-        padding: '1rem',
-        fontSize: '2.2rem',
+        padding: '1vh',
+        fontSize: '2.2vh',
         borderTopRightRadius: '10px',
       })
     ).toBe(result);
@@ -25,7 +25,7 @@ describe('@mantine/core/css-object-to-string', () => {
   it('filters out undefined values', () => {
     expect(
       cssObjectToString({
-        padding: '1rem',
+        padding: '1vh',
         fontSize: undefined,
         borderTopRightRadius: '10px',
       })
