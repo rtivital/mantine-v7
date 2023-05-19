@@ -4,6 +4,30 @@ import { LoaderDemos, TableDemos, GroupDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
 
+## Migration to native CSS
+
+Mantine no longer depends on [Emotion](https://emotion.sh/) for styles generation. All `@mantine/*`
+packages are now shipped with native CSS files which can be imported from `@mantine/{package}/styles.css`,
+for example:
+
+```tsx
+import '@mantine/core/styles.css';
+```
+
+This change improves performance, reduces bundle size of the library and allows using Mantine
+in environments where CSS-in-JS is not supported (or supported with limitations), for example,
+Next.js app directory.
+
+Notable breaking changes:
+
+- `createStyles` function is no longer available, use [CSS modules](/styles/css-modules) or any other styling solution of your choice instead
+- Components no longer support `sx` prop. You can use `className` or `style` props instead.
+- `styles` prop no longer supports nested selectors
+
+It is now recommended to use [CSS modules](/styles/css-modules) to style Mantine components.
+To update your project to [CSS modules](/styles/css-modules)
+follow the [6.x → 7.x migration guide](/guides/6x-to-7x).
+
 ## React 18+ only
 
 Starting from version 7.0 Mantine no longer supports older React versions. Minimum supported version is now React 18.

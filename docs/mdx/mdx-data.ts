@@ -203,6 +203,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Usage of icons libraries with Mantine',
   },
 
+  SixToSeven: {
+    title: '6.x to 7.x migration',
+    slug: '/guides/6x-to-7x',
+    search: 'Styles migration guide from 6.x to 7.x',
+  },
+
   // ------------------------------- Core components -------------------------------
   Button: {
     title: 'Button',
