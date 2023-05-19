@@ -6,14 +6,48 @@ export default Layout(MDX_DATA.Rem);
 
 # rem, em and px units
 
-## rem and em units
+## rem units
 
-All Mantine components use `rem` units to apply size styles. `1rem` is considered to be `16px` as it is a default setting in most browsers.
-All components scale based on user's browser font-size settings.
-
-`em` units are supposed to be used only in media queries. `1em` is considered to be `16px` as it is a default setting in most browsers.
+All Mantine components use `rem` units to apply size styles (`margin`, `padding`, `width`, etc.).
+By default, `1rem` is considered to be `16px` as it is a default setting in most browsers.
+All components scale based on user's browser font-size settings or font-size of `html`/`:root`.
 
 <Demo data={StylesDemos.remSlider} />
+
+## rem units scaling
+
+If you want to change font-size of `:root`/`html` element and preserve Mantine components sizes
+set `scale` on [theme](/theming/theme-object) to the value of `1 / htmlFontSize`.
+
+For example, if you want to set `html` font-size to `10px` and scale Mantine components accordingly, you need
+to set `scale` to `1 / (10 / 16)` (16 – default font-size) = `1 / 0.625` = `1.6`:
+
+```css
+:root {
+  font-size: 10px;
+}
+```
+
+```tsx
+import { MantineProvider, createTheme } from '@mantine/core';
+
+const theme = createTheme({
+  scale: 1.6,
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## em units
+
+`em` units are used in media queries the same way as `rem` units, but they are not affected by font-size specified on `html`/`:root` element.
+`1em` is considered to be `16px`.
 
 ## px conversions
 
