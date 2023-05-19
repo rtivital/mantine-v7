@@ -1,22 +1,39 @@
-export function px(value: unknown) {
-  if (typeof value === 'number') {
+function getTransformedScaledValue(value: unknown) {
+  if (typeof value !== 'string' || !value.includes('var(--mantine-scale)')) {
     return value;
   }
 
-  if (typeof value === 'string') {
-    if (value.includes('px')) {
-      return Number(value.replace('px', ''));
+  return value
+    .match(/^calc\((.*?)\)$/)?.[1]
+    .split('*')[0]
+    .trim();
+}
+
+export function px(value: unknown) {
+  const transformedValue = getTransformedScaledValue(value);
+
+  if (typeof transformedValue === 'number') {
+    return transformedValue;
+  }
+
+  if (typeof transformedValue === 'string') {
+    if (transformedValue.includes('calc') || transformedValue.includes('var')) {
+      return transformedValue;
     }
 
-    if (value.includes('rem')) {
-      return Number(value.replace('rem', '')) * 16;
+    if (transformedValue.includes('px')) {
+      return Number(transformedValue.replace('px', ''));
     }
 
-    if (value.includes('em')) {
-      return Number(value.replace('em', '')) * 16;
+    if (transformedValue.includes('rem')) {
+      return Number(transformedValue.replace('rem', '')) * 16;
     }
 
-    return Number(value);
+    if (transformedValue.includes('em')) {
+      return Number(transformedValue.replace('em', '')) * 16;
+    }
+
+    return Number(transformedValue);
   }
 
   return NaN;
