@@ -74,8 +74,8 @@ The same conversion happens in [style props](/styles/style-props/):
 import { Box } from '@mantine/core';
 
 function Demo() {
-  // width: 2rem,
-  // height: 1rem
+  // width: calc(2rem * var(--mantine-scale))
+  // height: calc(1rem * var(--mantine-scale))
   return <Box w={32} h={16} />;
 }
 ```
@@ -88,13 +88,12 @@ function Demo() {
 import { rem, em } from '@mantine/core';
 
 // numbers and values in px are converted to rem
-rem(32); // -> 2rem
+rem(32); // -> calc(2rem * var(--mantine-scale))
 em(32); // -> 2em
-rem('16px'); // -> 1rem
+rem('16px'); // -> calc(1rem * var(--mantine-scale))
 em('16px'); // -> 1em
 
-// other values are returned as is
-rem('2rem'); // -> 2rem
+rem('2rem'); // -> calc(2rem * var(--mantine-scale))
 em('2rem'); // -> 2rem
 
 rem('50%'); // -> 50%
