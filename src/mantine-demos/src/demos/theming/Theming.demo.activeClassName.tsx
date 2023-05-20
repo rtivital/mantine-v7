@@ -9,7 +9,7 @@ import classes from './active.module.css';
 
 function Demo() {
   return (
-    <MantineProvider inherit theme={{ activeClassName: classes.active }}>
+    <MantineProvider theme={{ activeClassName: classes.active }}>
       <Button>Press me to see active styles</Button>
     </MantineProvider>
   );
@@ -28,7 +28,7 @@ const cssCode = `
 
 function Demo() {
   return (
-    <MantineThemeProvider inherit theme={{ activeClassName: classes.active }}>
+    <MantineThemeProvider theme={{ activeClassName: classes.active }}>
       <Button>Press me to see active styles</Button>
     </MantineThemeProvider>
   );

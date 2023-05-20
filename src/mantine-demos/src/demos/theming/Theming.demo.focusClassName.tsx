@@ -9,7 +9,7 @@ import classes from './focus.module.css';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ focusRing: 'always', focusClassName: classes.focus }}>
+    <MantineProvider theme={{ focusClassName: classes.focus }}>
       <Button>Click button to see custom focus ring</Button>
     </MantineProvider>
   );
@@ -37,7 +37,7 @@ const cssCode = `
 
 function Demo() {
   return (
-    <MantineThemeProvider inherit theme={{ focusRing: 'always', focusClassName: classes.focus }}>
+    <MantineThemeProvider inherit theme={{ focusClassName: classes.focus }}>
       <Button>Click button to see custom focus ring</Button>
     </MantineThemeProvider>
   );

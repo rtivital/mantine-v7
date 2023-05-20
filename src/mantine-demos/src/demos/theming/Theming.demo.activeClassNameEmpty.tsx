@@ -7,7 +7,7 @@ import { MantineProvider, Button } from '@mantine/core';
 
 function Demo() {
   return (
-    <MantineProvider inherit theme={{ activeClassName: '' }}>
+    <MantineProvider theme={{ activeClassName: '' }}>
       <Button>No active styles</Button>
     </MantineProvider>
   );
@@ -16,7 +16,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <MantineThemeProvider inherit theme={{ activeClassName: '' }}>
+    <MantineThemeProvider theme={{ activeClassName: '' }}>
       <Button>No active styles</Button>
     </MantineThemeProvider>
   );

@@ -11,47 +11,49 @@ Mantine theme is an object where your application's colors, fonts, spacing, bord
 ```tsx
 interface MantineTheme {
   /** Controls focus ring styles. Supports the following options:
-   * - `auto` – display focus ring only when user navigates with keyboard (default value)
-   * - `always` – display focus ring when user navigates with keyboard and mouse
-   * - `never` – focus ring is always hidden (not recommended)
+   *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
+   *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
+   *  - `never` – focus ring is always hidden (not recommended)
    */
   focusRing: 'auto' | 'always' | 'never';
 
-  /** rem units scale, change if you customize font-size of `<html />` element */
+  /** rem units scale, change if you customize font-size of `<html />` element
+   *  default value is `1` (for `100%`/`16px` font-size on `<html />`)
+   */
   scale: number;
 
-  /** Determines whether font-smoothing property should be set on body, true by default */
+  /** Determines whether `font-smoothing` property should be set on the body, `true` by default */
   fontSmoothing: boolean;
 
-  /** White color, used with `light` color scheme */
+  /** White color */
   white: string;
 
-  /** Black color, used with `light` color scheme */
+  /** Black color */
   black: string;
 
-  /** Object of colors, key is color name, value is an array of 10 strings (colors) */
+  /** Object of colors, key is color name, value is an array of at least 10 strings (colors) */
   colors: MantineThemeColors;
 
   /** Index of theme.colors[color].
-   * Primary shade is used in all components to determine which color from theme.colors[color] should be used.
-   * Can be either a number (0–9) or an object to specify different color shades for light and dark color schemes.
-   * Default value `{ light: 6, dark: 8 }`
+   *  Primary shade is used in all components to determine which color from theme.colors[color] should be used.
+   *  Can be either a number (0–9) or an object to specify different color shades for light and dark color schemes.
+   *  Default value `{ light: 6, dark: 8 }`
    *
-   * @example
-   * { primaryShade: 6 } // shade 6 is used both for dark and light color schemes
-   * { primaryShade: { light: 6, dark: 7 } } // different shades for dark and light color schemes
+   *  For example,
+   *  { primaryShade: 6 } // shade 6 is used both for dark and light color schemes
+   *  { primaryShade: { light: 6, dark: 7 } } // different shades for dark and light color schemes
    * */
   primaryShade: MantineColorShade | MantinePrimaryShade;
 
-  /** Key of theme.colors, hex/rgb/hsl values are not supported.
-   * Determines which color will be used in all components by default.
-   * Default value – `blue`
+  /** Key of `theme.colors`, hex/rgb/hsl values are not supported.
+   *  Determines which color will be used in all components by default.
+   *  Default value – `blue`.
    * */
   primaryColor: string;
 
   /** Function to resolve colors based on variant.
-   * Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
-   * and other components that use colors from theme.
+   *  Can be used to deeply customize how colors are applied to `Button`, `ActionIcon`, `ThemeIcon`
+   *  and other components that use colors from theme.
    * */
   variantColorResolver: VariantColorsResolver;
 
@@ -75,49 +77,53 @@ interface MantineTheme {
     };
   };
 
-  /** Object of values that are used to set border-radius in all components that support it */
+  /** Object of values that are used to set `border-radius` in all components that support it */
   radius: MantineRadiusValues;
 
-  /** Key of theme.radius. Default border-radius used by most components */
-  defaultRadius: MantineRadius;
+  /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
+  defaultRadius: MantineRadius | number | (string & {});
 
   /** Object of values that are used to set various CSS properties that control spacing between elements */
   spacing: MantineSpacingValues;
 
-  /** Object of values that are used to control font-size property in all components */
+  /** Object of values that are used to control `font-size` property in all components */
   fontSizes: MantineFontSizesValues;
 
-  /** Object of values that are used to control line-height property in Text component */
+  /** Object of values that are used to control `line-height` property in `Text` component */
   lineHeights: MantineLineHeightValues;
 
-  /** Object of values that are used to control breakpoints in all components, values are expected to be defined in em */
+  /** Object of values that are used to control breakpoints in all components,
+   *  values are expected to be defined in em
+   * */
   breakpoints: MantineBreakpointsValues;
 
-  /** Object of values that are used to add box-shadow styles to components that support shadow prop */
+  /** Object of values that are used to add `box-shadow` styles to components that support `shadow` prop */
   shadows: MantineShadowsValues;
 
-  /** Determines whether user OS settings to reduce motion should be respected, true by default */
+  /** Determines whether user OS settings to reduce motion should be respected, `false` by default */
   respectReducedMotion: boolean;
 
   /** Determines which cursor type will be used for interactive elements
-   * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles (default option)
+   * - `default` – cursor that is used by native HTML elements, for example, `input[type="checkbox"]` has `cursor: default` styles
    * - `pointer` – sets `cursor: pointer` on interactive elements that do not have these styles by default
    */
   cursorType: 'default' | 'pointer';
 
-  /** Controls gradient that will be used by components that support `variant="gradient"` */
+  /** Default gradient configuration for components that support `variant="gradient"` */
   defaultGradient: MantineGradient;
 
-  /** Class added to elements that have active styles, for example, `Button` and `ActionIcon` */
+  /** Class added to the elements that have active styles, for example, `Button` and `ActionIcon` */
   activeClassName: string;
 
-  /** Class added to elements that have focus styles, for example, `Button` or `ActionIcon` */
+  /** Class added to the elements that have focus styles, for example, `Button` or `ActionIcon`.
+   *  Overrides `theme.focusRing` property.
+   */
   focusClassName: string;
 
-  /** Allows to add `classNames`, `styles` and `defaultProps` to any component */
+  /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
   components: MantineThemeComponents;
 
-  /** Any other properties that you want to access with theme objects */
+  /** Any other properties that you want to access with the theme objects */
   other: MantineThemeOther;
 }
 ```
@@ -125,7 +131,7 @@ interface MantineTheme {
 ## Usage
 
 To customize theme, pass theme override object to [MantineProvider](/theming/mantine-provider/) `theme` prop.
-Theme override will be deeply merged with default theme.
+Theme override will be deeply merged with the default theme.
 
 ```tsx
 import { MantineProvider, createTheme, rem } from '@mantine/core';
@@ -166,9 +172,9 @@ function Demo() {
 
 `theme.focusRing` controls focus ring styles, it supports the following values:
 
-- `auto` (default and recommended) – focus ring is visible only when user navigates with keyboard, this is default browser behavior for native interactive elements
-- `always` – focus ring is visible when user navigates with keyboard and mouse, for example, focus ring will be visible when user clicks on button
-- `never` – focus ring is always hidden, it is not recommended – users who navigate with keyboard will not have visual indication of current focused element
+- `auto` (default and recommended) – focus ring is visible only when the user navigates with keyboard, this is the default browser behavior for native interactive elements
+- `always` – focus ring is visible when user navigates with keyboard and mouse, for example, the focus ring will be visible when user clicks on a button
+- `never` – focus ring is always hidden, it is not recommended – users who navigate with keyboard will not have visual indication of the current focused element
 
 <Demo data={ThemingDemos.focusRing} />
 
@@ -198,16 +204,16 @@ To disable active styles for all components, set `theme.activeClassName` to an e
 
 ### defaultRadius
 
-`theme.defaultRadius` controls default `border-radius` property in most components, for example, [Button](/core/button) or [TextInput](/core/text-input).
+`theme.defaultRadius` controls the default `border-radius` property in most components, for example, [Button](/core/button) or [TextInput](/core/text-input).
 You can set to either one of the values from `theme.radius` or a number/string to use exact value. Note that numbers are treated as pixels, but
 converted to rem. For example, `theme.defaultRadius: 4` will be converted to `0.25rem`.
-You can learn more about rem conversion in [rem units guide](/styles/rem).
+You can learn more about rem conversion in the [rem units guide](/styles/rem).
 
 <Demo data={ThemingDemos.defaultRadiusConfigurator} />
 
 ## Store theme override object in a variable
 
-To store theme override object in a variable use `createTheme` function:
+To store theme override object in a variable, use `createTheme` function:
 
 ```tsx
 import { createTheme, MantineProvider } from '@mantine/core';
@@ -257,7 +263,7 @@ function Demo() {
 
 ## use-mantine-theme hook
 
-`useMantineTheme` hook returns theme from [MantineProvider](/theming/mantine-provider) context:
+`useMantineTheme` hook returns theme object from [MantineProvider](/theming/mantine-provider) context:
 
 ```tsx
 import { useMantineTheme } from '@mantine/core';
