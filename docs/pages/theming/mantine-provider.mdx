@@ -33,32 +33,32 @@ function Demo() {
 `MantineProvider` supports the following props:
 
 ```tsx
-export interface MantineProviderProps {
+interface MantineProviderProps {
   /** Theme override object */
   theme?: MantineThemeOverride;
 
   /** Used to retrieve/set color scheme value in external storage, by default uses `window.localStorage` */
   colorSchemeManager?: MantineColorSchemeManager;
 
-  /** Default value used when colorSchemeManager cannot retrieve value from external storage, `auto` by default */
+  /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
   defaultColorScheme?: MantineColorScheme;
 
-  /** CSS selector to which css variables should be added, `:root` by default */
+  /** CSS selector to which CSS variables should be added, `:root` by default */
   cssVariablesSelector?: string;
 
-  /** Determines whether theme css variables should be added to given `cssVariablesSelector`, `true` by default */
+  /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
   withCssVariables?: boolean;
 
-  /** Function ro resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
+  /** Function to resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?(): HTMLElement | undefined;
 
-  /** A prefix for components static classNames (for example {selector}-Text-root), `mantine` by default */
+  /** A prefix for components static classes (for example {selector}-Text-root), `mantine` by default */
   classNamesPrefix?: string;
 
   /** Function to generate nonce attribute added to all generated `<style />` tags */
   getStyleNonce?(): string;
 
-  /** Function to generate CSS variables styles based on theme object */
+  /** Function to generate CSS variables based on theme object */
   cssVariablesResolver?: CSSVariablesResolver;
 
   /** Your application */
@@ -68,7 +68,7 @@ export interface MantineProviderProps {
 
 ### theme
 
-Pass [theme object](/theming/theme-object) override to `theme` prop. It will be merged with default
+Pass [theme object](/theming/theme-object) override to `theme` prop. It will be merged with the default
 theme and used in all components.
 
 ```tsx
@@ -90,47 +90,111 @@ function Demo() {
 
 ### colorSchemeManager
 
-`colorSchemeManager` is used to retrieve and set color scheme value in external storage. By default
+`colorSchemeManager` is used to retrieve and set color scheme value in external storage. By default,
 `MantineProvider` uses `window.localStorage` to store color scheme value, but you can pass your own
-implementation to `colorSchemeManager` prop. You can learn more about color scheme management in
+implementation to `colorSchemeManager` prop. You can learn more about color scheme management in the
 [color schemes guide](/theming/color-schemes).
+
+```tsx
+import { MantineProvider, localStorageColorSchemeManager } from '@mantine/core';
+
+const colorSchemeManager = localStorageColorSchemeManager({ key: 'my-app-color-scheme' });
+
+function Demo() {
+  return (
+    <MantineProvider colorSchemeManager={colorSchemeManager}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ### defaultColorScheme
 
-`defaultColorScheme` value is used when `colorSchemeManager` cannot retrieve value from external
-storage, for example during server side rendering or when user hasn't selected preferred color scheme.
-Possible values are `light`, `dark` and `auto`. By default it is set to `auto`
-which means that color scheme will be determined based on user system preferences.
-You can learn more about color scheme management in [color schemes guide](/theming/color-schemes).
+`defaultColorScheme` value is used when `colorSchemeManager` cannot retrieve the value from external
+storage, for example during server side rendering or when the user hasn't selected a preferred color scheme.
+Possible values are `light`, `dark` and `auto`. By default, it is set to `auto`,
+which means that the color scheme will be determined based on user system preferences.
+You can learn more about color scheme management in the [color schemes guide](/theming/color-schemes).
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider defaultColorScheme="dark">
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ### cssVariablesSelector
 
-`cssVariablesSelector` is a CSS selector to which css variables should be added. By default it is `:root`.
-`MantineProvider` generates CSS variables based on given [theme override](/theming/theme-object/)
+`cssVariablesSelector` is a CSS selector to which [CSS variables](/styles/css-variables/) should be added.
+By default, it is `:root`. `MantineProvider` generates CSS variables based on given [theme override](/theming/theme-object/)
 and `cssVariablesResolver`, then these variables are rendered into `<style />` tag next to your application.
-You can learn more about Mantine CSS variables in [CSS variables guide](/styles/css-variables/).
+You can learn more about Mantine CSS variables in the [CSS variables guide](/styles/css-variables/).
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider cssVariablesSelector="html">
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ### withCssVariables
 
 `withCssVariables` determines whether theme CSS variables should be added to given `cssVariablesSelector`.
-By default it is set to `true` and you should not change it unless you want to manage CSS variables
-via `.css` file (Note that in this case you will have to generate all theme tokens on your side).
+By default, it is set to `true`, you should not change it unless you want to manage CSS variables
+via `.css` file (Note that in this case you will need to generate all theme tokens
+that are not a part of the default theme on your side).
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider withCssVariables={false}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ### getRootElement
 
-`getRootElement` is a function that returns root element to set `data-mantine-color-scheme` attribute.
-By default it is set to `() => document.documentElement` which means that `data-mantine-color-scheme`
-attribute will be added to `<html />` tag. You can learn more about color scheme management in
+`getRootElement` is a function that returns the root application (usually `html`) element to set `data-mantine-color-scheme` attribute.
+Default value is `() => document.documentElement` which means that `data-mantine-color-scheme`
+attribute will be added to `<html />` tag. You can learn more about color scheme management in the
 [color schemes guide](/theming/color-schemes).
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+const getRootElement = () => (typeof window === 'undefined' ? undefined : document.body);
+
+function Demo() {
+  return (
+    <MantineProvider getRootElement={getRootElement}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ### classNamesPrefix
 
 `classNamesPrefix` is a prefix for components static classes (for example `{selector}-Text-root`).
-By default it is set to `mantine`, it means that all components will have `mantine-` prefix in their
-**static classes**.
+Default value is `mantine` – all components will have `mantine-` prefix in their **static classes**.
 
 ```tsx
-import { Text } from '@mantine/core';
+import { Text, MantineProvider } from '@mantine/core';
 
 function Demo() {
   return (
@@ -150,7 +214,7 @@ In this case (default `classNamesPrefix`), [Text](/core/text) component will hav
 With `classNamesPrefix` you can change only **static class**:
 
 ```tsx
-import { Text } from '@mantine/core';
+import { Text, MantineProvider } from '@mantine/core';
 
 function Demo() {
   return (
@@ -173,12 +237,12 @@ Now [Text](/core/text) component will have the following classes:
 
 ### cssVariablesResolver
 
-`cssVariablesResolver` is a function to generate CSS variables styles based on [theme object](/theming/theme-object).
-You can learn more about Mantine CSS variables in [CSS variables guide](/styles/css-variables/).
+`cssVariablesResolver` is a function to generate CSS variables styles based on the [theme object](/theming/theme-object).
+You can learn more about Mantine CSS variables in the [CSS variables guide](/styles/css-variables#css-variables-resolver).
 
 ## MantineThemeProvider
 
-`MantineThemeProvider` allows you to override [theme](/theming/theme-object) values for a subtree of components.
+`MantineThemeProvider` allows overriding [theme](/theming/theme-object) values for a subtree of components.
 Note that values that are used to generate [CSS variables](/styles/css-variables) cannot be overridden with `MantineThemeProvider`.
 For example, you cannot use `MantineThemeProvider` to override `colors` or `fontSizes`.
 
@@ -194,4 +258,4 @@ For example, you cannot use `MantineThemeProvider` to override `colors` or `font
 >
 > `MantineThemeProvider` is only used to change theme context – it does not generate CSS variables or manage color scheme.
 >
-> It is not recommended to have more that one `MantineProvider` in your application, but you can have as many `MantineThemeProvider` as you need.
+> It is not recommended to have more than one `MantineProvider` in your application, but you can have as many `MantineThemeProvider` as you need.

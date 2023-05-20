@@ -18,25 +18,25 @@ export interface MantineProviderProps {
   /** Used to retrieve/set color scheme value in external storage, by default uses `window.localStorage` */
   colorSchemeManager?: MantineColorSchemeManager;
 
-  /** Default value used when colorSchemeManager cannot retrieve value from external storage, `auto` by default */
+  /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
   defaultColorScheme?: MantineColorScheme;
 
-  /** CSS selector to which css variables should be added, `:root` by default */
+  /** CSS selector to which CSS variables should be added, `:root` by default */
   cssVariablesSelector?: string;
 
-  /** Determines whether theme css variables should be added to given `cssVariablesSelector`, `true` by default */
+  /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
   withCssVariables?: boolean;
 
-  /** Function ro resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
+  /** Function to resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?(): HTMLElement | undefined;
 
-  /** A prefix for components static classNames (for example {selector}-Text-root), `mantine` by default */
+  /** A prefix for components static classes (for example {selector}-Text-root), `mantine` by default */
   classNamesPrefix?: string;
 
   /** Function to generate nonce attribute added to all generated `<style />` tags */
   getStyleNonce?(): string;
 
-  /** Function to generate CSS variables styles based on theme object */
+  /** Function to generate CSS variables based on theme object */
   cssVariablesResolver?: CSSVariablesResolver;
 
   /** Your application */

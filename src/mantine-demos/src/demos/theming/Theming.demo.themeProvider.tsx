@@ -3,7 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { MantineThemeProvider, Button, Group } from '@mantine/core';
 
 const code = `
-import { MantineThemeProvider, MantineProvider, Button, Group } from '@mantine/core';
+import { MantineThemeProvider, Button, Group } from '@mantine/core';
 
 function Demo() {
   return (
