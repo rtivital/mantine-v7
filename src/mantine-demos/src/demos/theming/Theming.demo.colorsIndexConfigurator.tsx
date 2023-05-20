@@ -3,7 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { Button, Text } from '@mantine/core';
 
 const code = (props: any) => `
-import { Button } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 
 function Demo() {
   return (
