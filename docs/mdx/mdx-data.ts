@@ -197,6 +197,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Usage with TypeScript',
   },
 
+  JavaScript: {
+    title: 'Usage with JavaScript',
+    slug: '/guides/javascript',
+    search: 'Usage with JavaScript',
+  },
+
   Icons: {
     title: 'Icons libraries',
     slug: '/guides/icons',
