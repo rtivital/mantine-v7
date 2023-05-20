@@ -8,11 +8,11 @@ export default Layout(MDX_DATA.VariantsAndSizes);
 
 ## Adding custom variants
 
-Most of Mantine components support `variant` prop, it can be used in CSS variables resolver
+Most of Mantine components support `variant` prop, it can be used in CSS variables resolver,
 and it is also exposed as `data-variant="{value}"` attribute on the root element of the component.
 The easiest way to add custom variants is to add styles that use `[data-variant="{value}"]`.
 
-Example of adding new variant to [Input](/core/input) component:
+Example of adding a new variant to the [Input](/core/input) component:
 
 - `underline` variant styles are added
 - `filled` variant is a default variant – you do not need to define any additional styles for it
@@ -24,8 +24,8 @@ even if there are no variants defined on the library side.
 
 > **Overriding existing variants styles**
 >
-> Apart from adding new variants you can also override existing ones, for example you can change
-> `filled` variant of [Input](/core/input) component with `.input[data-variant="filled"]` selector.
+> Apart from adding new variants, you can also override existing ones, for example, you can change the
+> `filled` variant of the [Input](/core/input) component with `.input[data-variant="filled"]` selector.
 
 ## variantColorResolver
 
@@ -45,7 +45,7 @@ CSS variables resolver, usually it is done in `theme.components`:
 
 ## Sizes with data-size attribute
 
-Every component that supports `size` prop exposes it as `data-size="{value}"` attribute on root element.
+Every component that supports `size` prop exposes it as `data-size="{value}"` attribute on the root element.
 You can use it to add custom sizes:
 
 <Demo data={StylesDemos.dataSize} />
@@ -70,7 +70,7 @@ You can override these values with [Styles API](/styles/styles-api) or add new s
 <Demo data={ActionIconDemos.customSize} />
 
 Note that some components have more than one CSS variable for size, for example,
-[Button](/core/button) component has the following CSS variables:
+the [Button](/core/button) component has the following CSS variables:
 
 ```css
 .root {
@@ -100,5 +100,5 @@ Note that some components have more than one CSS variable for size, for example,
 }
 ```
 
-Usually it is more convenient to use `data-size` attribute or `vars` on [theme](/theming/theme-object)
+Usually, it is more convenient to use `data-size` attribute or `vars` on [theme](/theming/theme-object)
 to customize sizes in this case.

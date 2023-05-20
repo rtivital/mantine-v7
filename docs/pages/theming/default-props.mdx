@@ -6,7 +6,7 @@ export default Layout(MDX_DATA.DefaultProps);
 
 # Default props
 
-You can define default props for every Mantine component by setting `theme.components` on [MantineProvider](/theming/mantine-provider).
+You can define default props for every Mantine component by setting `theme.components`.
 These props will be used by default by all components of your application unless they are overridden by component props:
 
 <Demo data={ThemingDemos.defaultProps} />
@@ -62,7 +62,7 @@ function Demo() {
 
           TabsList: Tabs.List.extend({
             defaultProps: {
-              position: 'right',
+              justify: 'center',
             },
           }),
         },

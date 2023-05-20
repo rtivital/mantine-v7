@@ -11,7 +11,7 @@ export default Layout(MDX_DATA.Overview);
 
 This guide will help you get familiar with core Mantine concepts.
 Please read this guide, [theming](/theming/theme-object/) and [styles](/styles/css-modules/) sections before starting development
-to learn about all available theming and styling features.
+to learn about all of the available theming and styling features.
 
 ## MantineProvider
 
@@ -40,7 +40,7 @@ and other data that can be accessed by any Mantine component. Most of the `theme
 Configure `theme` with [MantineProvider](/theming/mantine-provider):
 
 ```tsx
-import { MantineProvider, createTheme, Button } from '@mantine/core';
+import { MantineProvider, createTheme } from '@mantine/core';
 
 // Your theme configuration is merged with default theme
 const theme = createTheme({
@@ -91,11 +91,11 @@ function Demo() {
 ## Colors
 
 [Colors](/theming/colors) are stored in `theme.colors` object and are exposed as [CSS variables](/styles/css-variables).
-Each color must have at least 10 shades. You can generate new colors based on single color value
-with [colors generator](/colors-generator).
+Each color must have at least 10 shades. You can generate new colors based on a single color value
+with the [colors generator](/colors-generator).
 
 Colors are numbered from 0 to 9 where 0 is the lightest and 9 is the darkest color. Example of `blue`
-color from default theme:
+color from the default theme:
 
 <ColorsGroup group="blue" />
 
@@ -118,7 +118,6 @@ CSS modules are available in most modern frameworks out of the box. To use them,
 
 ```css
 /* Button.module.css */
-
 .button {
   color: red;
 }
@@ -141,7 +140,7 @@ function Demo() {
 ## PostCSS preset
 
 [postcss-preset-mantine](/styles/postcss-preset) provides several CSS functions and mixins to help you write styles.
-It is not required to use it but highly recommended. All demos that feature styles
+It is not required to use it, but highly recommended. All demos that feature styles
 assume that you have this preset installed.
 
 [postcss-preset-mantine](/styles/postcss-preset) allows you to use functions and mixins in `.css` files:
@@ -209,9 +208,9 @@ These selectors can be used to apply styles to inner elements with [classNames o
 ## Color scheme
 
 All Mantine components support `light`, `dark` and `auto` [color schemes](/theming/color-schemes). By default,
-color scheme is `auto` (same as user system preferences), it can be changed by user and will be persisted in `localStorage`.
+the color scheme is `auto` (same as user system preferences), it can be changed by the user and will be persisted in `localStorage`.
 
-You can use configure default color scheme on [MantineProvider](/theming/mantine-provider):
+You can use configure the default color scheme on [MantineProvider](/theming/mantine-provider):
 
 ```tsx
 import { MantineProvider } from '@mantine/core';
@@ -231,11 +230,11 @@ And use [useMantineColorScheme hook](/theming/color-schemes) to create color sch
 
 ## Unstyled components
 
-You can use Mantine as a [headless UI library](/styles/unstyled). To do that simply do not import `@mantine/*/styles.css`
+You can use Mantine as a [headless UI library](/styles/unstyled). To do that, simply do not import `@mantine/*/styles.css`
 in your application. Then you will be able to apply styles to Mantine components using [Styles API](/styles/styles-api/)
 with a styling solution of your choice.
 
 All components also support [unstyled prop](/styles/unstyled)
-that removes all library styles from component:
+that removes all library styles from the component:
 
 <Demo data={StylesDemos.unstyled} />

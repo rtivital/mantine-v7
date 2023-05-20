@@ -6,7 +6,7 @@ export default Layout(MDX_DATA.PostCSSPreset);
 # Mantine PostCSS preset
 
 `postcss-preset-mantine` provides several CSS functions and mixins to help you write styles.
-It is not required to use it but highly recommended. All demos that feature styles
+It is not required to use it, but highly recommended. All demos that feature styles
 assume that you have this preset installed.
 
 `postcss-preset-mantine` includes the following PostCSS plugins:
@@ -57,10 +57,10 @@ Will be transformed to:
 
 ```css
 .demo {
-  font-size: 1rem;
+  font-size: calc(1rem * var(--mantine-scale));
 
   @media (min-width: 20em) {
-    font-size: 2rem;
+    font-size: calc(2rem * var(--mantine-scale));
   }
 }
 ```

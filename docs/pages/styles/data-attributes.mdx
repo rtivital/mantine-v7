@@ -20,7 +20,7 @@ Example of applying styles with `data-*` attributes:
 
 Most of the `data-*` attributes do not have associated values, they represent boolean
 state or feature. For example, when `disabled` prop on [Button](/core/button) is set
-`data-disabled` attribute is added to `<button />` element:
+`data-disabled` attribute is added to the `<button />` element:
 
 ```tsx
 import { Button } from '@mantine/core';
@@ -59,8 +59,8 @@ button:
 <button class="my-button">Not disabled button</button>
 ```
 
-In some cases `data-*` attributes have associated values, for example, [Button](/core/button)
-component `section` element has associated `data-position` attribute which can be
+In some cases, `data-*` attributes have associated values, for example, [Button](/core/button)
+component `section` element has an associated `data-position` attribute which can be
 `left` or `right`. The following example will render two `section` elements, one with
 `data-position="left"` and another with `data-position="right"`:
 
@@ -86,7 +86,7 @@ Will output the following HTML:
 </button>
 ```
 
-You can then use this attribute to apply styles to left and right sections:
+You can then use this attribute to apply styles to the left and right sections:
 
 ```css
 .section {
@@ -113,7 +113,7 @@ Every component that uses `data-*` attributes has a dedicated section under `Sty
 
 <ModifiersTable data={ButtonStylesApi} withTableBorder={false} my="xl" />
 
-How to read this table:
+How to read the table:
 
 - `selector` column – [Styles API](/styles/styles-api) selector (or multiple selectors) to which data attribute is added
 - `attribute` column – data attribute name
@@ -122,7 +122,7 @@ How to read this table:
 
 ## Box component mod prop
 
-[Box](/core/box) component supports `mod` prop which allows to add data attributes to
+[Box](/core/box) component supports `mod` prop, which allows adding data attributes to
 the element. You can use to create custom components with data attributes.
 
 ```tsx

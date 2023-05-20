@@ -22,8 +22,8 @@ to use, we recommend [Tabler icons](https://tabler-icons.io/).
 
 ## Icons size
 
-Most of the icons libraries support `size` prop (or similar `width` and `height` props) which allows to change
-icon width and height. Usually it is a number in pixels. All Mantine components use [rem](/styles/rem)
+Most of the icons libraries support `size` prop (or similar `width` and `height` props) which allows changing
+icon width and height. Usually, it is a number in pixels. All Mantine components use [rem](/styles/rem)
 units – components are scaled based on user preferences and `font-size` of the root element. If you want to
 support this feature in your application, set icon width and height in [rem](/styles/rem) units with `style` prop.
 
@@ -36,12 +36,12 @@ support this feature in your application, set icon width and height in [rem](/st
 > on svg element.
 >
 > You can use rem units in `size` prop: `size="1rem"` will be converted to `width="1rem"` and `height="1rem"`,
-> but it is not recommended as it is prohibited by SVG standard – some browsers (Firefox) will show warning in console.
+> but it is not recommended as it is prohibited by SVG standard – some browsers (Firefox) will show a warning in the console.
 
 ## Custom icons
 
-It is recommended to use icons as React components. In this case you will be able to use
-`currentColor` in `fill` and `stroke` prop. This will change icon color based on the context
+It is recommended to use icons as React components. In this case, you will be able to use
+`currentColor` in the `fill` and `stroke` prop. This will change icon color based on the context
 it is used in.
 
 <Demo data={GuidesDemos.customIcon} />

@@ -32,7 +32,7 @@
     "clean:tsbuildinfo": "rimraf src/**/*.tsbuildinfo",
     "clean": "rimraf src/*/{esm,cjs,lib,dist} src/**/*.tsbuildinfo",
     "test": "npm run prettier:test && npm run syncpack && npm run typecheck && npm run lint && npm run jest",
-    "docs": "npm run docs:clean && npm run docs:docgen && cd docs && npm start",
+    "docs": "npm run docs:docgen && cd docs && npm run dev",
     "docs:typecheck": "cd docs && npm run typecheck",
     "docs:lint": "cd docs && npm run lint",
     "docs:docgen": "esno scripts/docgen",

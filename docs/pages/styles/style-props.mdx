@@ -7,8 +7,8 @@ export default Layout(MDX_DATA.StyleProps);
 
 # Style props
 
-With style props you can add inline styles to any Mantine component.
-Style props add styles to the **root** element, if you need to style nested elements
+With style props, you can add inline styles to any Mantine component.
+Style props add styles to the **root** element, if you need to style nested elements,
 use [Styles API](/styles/styles-api/) instead.
 
 ```tsx
@@ -76,7 +76,9 @@ import { Box } from '@mantine/core';
 
 ## Responsive styles
 
-You can use object syntax to add responsive styles with style props:
+You can use object syntax to add responsive styles with style props.
+Note that responsive style props are [less performant](/styles/styles-performance) than regular style props,
+it is not recommended to use them in large lists of elements.
 
 <Demo data={StylesDemos.responsiveStyleProps} />
 

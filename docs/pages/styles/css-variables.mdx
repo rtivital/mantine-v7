@@ -6,8 +6,8 @@ export default Layout(MDX_DATA.CssVariables);
 
 # Mantine CSS variables
 
-[MantineProvider](/theming/mantine-provider) component exposes all Mantine CSS variables based on given [theme](/theming/theme-object).
-You can use these variables in [css](/styles/css-modules) files, [style prop](/styles/style) or any other styles.
+[MantineProvider](/theming/mantine-provider) exposes all Mantine CSS variables based on the given [theme](/theming/theme-object).
+You can use these variables in [CSS](/styles/css-modules) files, [style prop](/styles/style) or any other styles.
 Note that not all values are documented on this page, you can find full list of variables on [this page](/styles/css-variables-list).
 
 ## Typography CSS variables
@@ -120,8 +120,8 @@ Usage:
 ## Colors
 
 All `theme.colors` values are exposed as CSS variables in `--mantine-color-{x}-{y}` format,
-where `x` is color name and `y` is color shade. For example, `--mantine-color-red-6` is `theme.colors.red[6]`.
-You can find full default colors list in [colors guide](/theming/colors/#default-colors).
+where `x` is the color name and `y` is the color shade. For example, `--mantine-color-red-6` is `theme.colors.red[6]`.
+You can find the full default colors list in the [colors guide](/theming/colors/#default-colors).
 
 Usage:
 
@@ -135,7 +135,7 @@ Usage:
 ## Variant specific colors
 
 Variant specific variables for each color are exposed in the following format
-(`x` is color name):
+(`x` is the color name):
 
 - `--mantine-color-{x}-filled` – filled variant background-color
 - `--mantine-color-{x}-filled-hover` – filled variant background-color on hover
@@ -143,7 +143,7 @@ Variant specific variables for each color are exposed in the following format
 - `--mantine-color-{x}-light-hover` – light variant background-color on hover
 - `--mantine-color-{x}-light-color` – light variant text color
 - `--mantine-color-{x}-outline` – outline variant border-color and text color
-- `--mantine-color-{x}-outline-hover` – outline variant border-color on hover
+- `--mantine-color-{x}-outline-hover` – outline variant background-color on hover
 
 Usage:
 
@@ -193,7 +193,7 @@ Usage:
 `cssVariablesResolver` prop on [MantineProvider](/theming/mantine-provider) allows you to
 modify values of Mantine CSS variables or even add your own variables.
 `cssVariablesResolver` is a function that accepts [theme](/theming/theme-object) as a single
-argument and returns object with CSS variables divided into three groups:
+argument and returns an object with CSS variables divided into three groups:
 
 - `variables` – variables that do not depend on color scheme
 - `light` – variables for light color scheme only

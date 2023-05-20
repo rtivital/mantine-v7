@@ -12,12 +12,11 @@ Mantine components are fully compatible with any third-party styling solution an
 
 ## Usage
 
-CSS modules are supported out of the box by all major frameworks and build tools. Usually all you need
+CSS modules are supported out of the box by all major frameworks and build tools. Usually, all you need
 to do is to create `*.module.css` file:
 
 ```css
 /* Button.module.css */
-
 .button {
   color: red;
 }
@@ -44,7 +43,6 @@ For example, when you import the following file in your `.js`/`.ts` file:
 
 ```css
 /* Button.module.css */
-
 .button {
   color: red;
 }
@@ -65,24 +63,24 @@ console.log(classes);
 // Note that generated class names may vary depending on your build tool
 ```
 
-With CSS modules you do not need to worry about class name collisions, you can use any class name you want.
+With CSS modules, you do not need to worry about class name collisions, you can use any class name you want.
 
 ## Mantine components styles
 
 All Mantine components are built with CSS modules, but all styles are bundled before publishing to npm.
-To include these styles you need to import `@mantine/{package}/styles.css` file in your application.
+To include these styles, you need to import `@mantine/{package}/styles.css` file in your application.
 Example with `@mantine/core` package:
 
 ```tsx
 import '@mantine/core/styles.css';
 ```
 
-By adding this import you will have all styles of `@mantine/core` components in your application.
+By adding this import, you will have all styles of `@mantine/core` components in your application.
 
 ## Adding styles to Mantine components
 
 You can add styles to most of Mantine components using `className` prop
-– the same way as you would do with a regular html element.
+– the same way as you would do with a regular HTML element.
 To set properties to your [theme](/theming/theme-object) values, you can use [Mantine CSS variables](/theming/css-variables):
 
 <Demo data={StylesDemos.className} />
@@ -100,7 +98,7 @@ There are two main strategies to apply styles with a third-party library:
 - `className`, `classNames`, `style` and `styles` props
 - with static selectors, for example `.mantine-Text-root`
 
-Example of applying styles with utility CSS library:
+Example of applying styles with a utility CSS library:
 
 ```tsx
 import { TextInput } from '@mantine/core';
@@ -136,7 +134,7 @@ Example of applying styles with global CSS:
 
 You can combine both approaches to achieve desired results, for example,
 `@emotion/styled` and `styled-components` packages will pass `className` prop to
-given component and you can use static selectors to style inner elements:
+a given component, and you can use static selectors to style inner elements:
 
 ```tsx
 import { Slider } from '@mantine/core';
@@ -166,5 +164,5 @@ function Demo() {
 > Before choosing another styling solution, make sure that CSS modules do not fit your needs.
 > Other solutions have limitations, for example:
 >
-> - It is hard to customize styles based on [data-\* attributes](/styles/data-attributes) when using utility based CSS libraries
-> - It is impossible to style inner elements of Mantine components with static selectors when using styled-components and other similar libraries if component uses [Portal](/core/portal) because some elements will be rendered outside of component root and inner elements are not part of component tree
+> - It is hard to customize styles based on [data-\* attributes](/styles/data-attributes) when using utility-based CSS libraries
+> - It is impossible to style inner elements of Mantine components with static selectors when using styled-components and other similar libraries if component uses [Portal](/core/portal) because some elements will be rendered outside of the component root and inner elements are not part of the component tree
