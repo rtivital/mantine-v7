@@ -28,6 +28,19 @@ It is now recommended to use [CSS modules](/styles/css-modules) to style Mantine
 To update your project to [CSS modules](/styles/css-modules)
 follow the [6.x → 7.x migration guide](/guides/6x-to-7x).
 
+## System color scheme support
+
+All components now support system color scheme – when `colorScheme` value is `auto`,
+components will use `prefers-color-scheme` media query to determine if user prefers light or dark color scheme.
+
+## Built-in color scheme manager
+
+[MantineProvider](/theming/mantine-provider) now comes with built-in color scheme manager.
+It is no longer required to use any other components to setup color scheme logic.
+Color scheme can be changed with [useMantineColorScheme hook](/theming/color-schemes#use-mantine-color-scheme-hook):
+
+<Demo data={ThemingDemos.colorScheme} />
+
 ## CSS modules and PostCSS preset
 
 [CSS modules](/styles/css-modules) is now the recommended way to style Mantine components,
@@ -147,6 +160,58 @@ components support custom variants with [variantColorResolver](/theming/colors#c
 
 <Demo data={ThemingDemos.variantColorsResolver} />
 
+## rem units scaling
+
+It is now possible to scale [rem](/styles/rem#rem-units-scaling) units. It is useful when you want to change
+font-size of `html`/`:root` element and preserve Mantine components sizes. For example, if you want to set `html` font-size to `10px` and scale Mantine components accordingly, you need
+to set `scale` to `1 / (10 / 16)` (16 – default font-size) = `1 / 0.625` = `1.6`:
+
+```css
+:root {
+  font-size: 10px;
+}
+```
+
+```tsx
+import { MantineProvider, createTheme } from '@mantine/core';
+
+const theme = createTheme({
+  scale: 1.6,
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## color prop improvements
+
+All components that support `color` prop now support the following color values:
+
+- Key of `theme.colors`, for example, `blue`
+- `theme.colors` index reference, for example, `blue.5`
+- Any valid CSS color value, for example, `#fff`, `rgba(0, 0, 0, 0.5)`, `hsl(0, 0%, 100%)`
+
+<Demo data={ThemingDemos.colorProp} />
+
+## Theme object changes
+
+- `theme.lineHeight` is now `theme.lineHeights` – it is now possible to specify multiple line heights. `theme.lineHeights` values are used in [Text](/core/text) component.
+- `theme.colorScheme` is no longer available, use [useMantineColorScheme](/theming/color-schemes#use-mantine-color-scheme-hook) to get color scheme value
+- `theme.dir` is no longer needed, direction is now managed by [DirectionProvider](/styles/rtl)
+- `theme.loader` was removed, you can now configure default loader with [default props](/theming/default-props) of [Loader](/core/loader) component
+- `theme.transitionTimingFunction` was removed
+- `theme.focusRingStyles` was replaced with `theme.focusClassName`
+- `theme.activeStyles` was replaced with `theme.activeClassName`
+- `theme.globalStyles` was removed
+- New [theme.scale](/styles/rem#rem-units-scaling) property controls rem units scaling
+- New `theme.fontSmoothing` property determines whether font smoothing styles should be applied to the body element
+- New [theme.variantColorResolver](/theming/colors#colors-variant-resolver) property allows to customize component colors per variant
+
 ## React 18+ only
 
 Starting from version 7.0 Mantine no longer supports older React versions. Minimum supported version is now React 18.
@@ -209,10 +274,17 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 
 `@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
 
+## New setup for RTL
+
+`@mantine/core` package now exports [DirectionProvider](/styles/rtl) component which should be used to configure direction of the application.
+`useDirection` hook can be used to toggle direction. All components now include RTL styles by default, it is no
+longer required to setup additional plugins. See [RTL documentation](/styles/rtl) to learn more.
+
 ## Other changes
 
 - New [VisuallyHidden](/core/visually-hidden) component
 - New [ActionIcon.Group](/core/action-icon#actionicongroup) component
+- All transitions are now disabled during color scheme change
 - [Blockquote](/core/blockquote) components has new design
 - [Breadcrumbs](/core/breadcrumbs) component now supports `separatorMargin` prop
 - [Tooltip](/core/tooltip) component now supports `mainAxis` and `crossAxis` offset configuration
