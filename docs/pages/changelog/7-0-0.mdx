@@ -1,6 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { LoaderDemos, TableDemos, GroupDemos } from '@mantine/demos';
+import { ThemingDemos, LoaderDemos, TableDemos, GroupDemos, StylesDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
 
@@ -27,6 +27,125 @@ Notable breaking changes:
 It is now recommended to use [CSS modules](/styles/css-modules) to style Mantine components.
 To update your project to [CSS modules](/styles/css-modules)
 follow the [6.x → 7.x migration guide](/guides/6x-to-7x).
+
+## CSS modules and PostCSS preset
+
+[CSS modules](/styles/css-modules) is now the recommended way to style Mantine components,
+although it is not required – you can choose any other styling solution of your choice.
+
+It is also recommended to use [postcss-preset-mantine](/styles/postcss-preset). It includes
+mixins and functions to simplify styling of Mantine components. [postcss-preset-mantine](/styles/postcss-preset)
+is included in all templates.
+
+## Mantine as a headless UI library
+
+You can now use Mantine as a [headless](/styles/unstyled) library. To do that, just do not import
+`@mantine/*/styles.css` in your application. Then you will be able to apply styles with
+[Styles API](/styles/styles-api).
+
+## createTheme function
+
+`createTheme` function is a replacement for `MantineThemeOverride` type. Use it to create a theme
+override, it will give you autocomplete for all theme properties:
+
+```tsx
+import { createTheme, MantineProvider } from '@mantine/core';
+
+const theme = createTheme({
+  fontFamily: 'sans-serif',
+  primaryColor: 'orange',
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## Components extend functions
+
+All components now have static `extend` function which allows getting autocomplete when customizing
+[defaultProps](/theming/default-props), [classNames and styles](/styles/styles-api) of the component
+on [theme](/theming/theme-object):
+
+```tsx
+import { useState } from 'react';
+import { TextInput, MantineProvider, createTheme } from '@mantine/core';
+import classes from './Demo.module.css';
+
+const theme = createTheme({
+  components: {
+    TextInput: TextInput.extends({
+      styles: (theme, props) => ({
+        input: {
+          fontSize: props.size === 'compact' ? theme.fontSizes.sm : undefined,
+        }
+      })
+      classNames: {
+        root: classes.root,
+        input: classes.input,
+        label: classes.label,
+      },
+
+      defaultProps: {
+        size: 'compact',
+      },
+    }),
+  },
+});
+
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+## classNames based on component props
+
+You can now get component props in [classNames and styles](/styles/styles-api) to conditionally apply styles.
+This feature is a more powerful replacement for styles params.
+
+<Demo data={StylesDemos.classNamesProps} />
+
+## Components CSS variables
+
+You can now customize components [CSS variables](/styles/styles-api) to change component styles based on its props.
+For example, it can be used to add new [sizes](/styles/variants-sizes):
+
+<Demo data={StylesDemos.vars} />
+
+## New variants system
+
+All components now have `data-variant` attribute on the root element, even if component does not have any predefined variants.
+You can use it to apply styles to all components of the same type on [theme](/theming/theme-object):
+
+<Demo data={StylesDemos.customVariant} />
+
+## New sizes system
+
+There are multiple way to customize component sizes:
+
+- With `data-size` attribute
+- With component [CSS variables](/styles/styles-api)
+- With [static CSS variables](/styles/variants-sizes#sizes-with-static-css-variables)
+
+Example of customizing [Button](/core/button) size with `data-size` attribute:
+
+<Demo data={StylesDemos.dataSize} />
+
+## theme.variantColorResolver
+
+[Button](/core/button), [Badge](/core/badge), [ActionIcon](/core/action-icon), [ThemeIcon](/core/theme-icon) and other
+components support custom variants with [variantColorResolver](/theming/colors#colors-variant-resolver)
+– it supports both changing colors of existing variants and adding new variants.
+
+<Demo data={ThemingDemos.variantColorsResolver} />
 
 ## React 18+ only
 
