@@ -25,13 +25,209 @@ in your project.
 
 ## createStyles
 
+`createStyles` function is no longer available in 7.0. Use [CSS Modules](/styles/css-modules) instead.
+
+```tsx
+// 6.x
+import { createStyles } from '@mantine/core';
+
+const useStyles = createStyles((theme) => ({
+  root: {
+    backgroundColor: theme.colors.red[5],
+  },
+}));
+```
+
+```scss
+/* 7.0 */
+.root {
+  background-color: var(--mantine-color-red-5);
+}
+```
+
 ## sx prop
+
+`sx` prop is no longer available in 7.0. Use `className` or [style prop](/styles/style) instead.
+
+```tsx
+// 6.x
+import { Box } from '@mantine/core';
+
+function Demo() {
+  return <Box sx={(theme) => ({ backgroundColor: theme.colors.red[5] })} />;
+}
+```
+
+```tsx
+// 7.0
+import { Box } from '@mantine/core';
+
+function Demo() {
+  return <Box style={{ backgroundColor: 'var(--mantine-color-red-5)' }} />;
+}
+```
+
+Nested selectors are not supported in [style prop](/styles/style), use `className` instead:
+
+```tsx
+// 6.x
+import { Box } from '@mantine/core';
+
+function Demo() {
+  return <Box sx={{ '&:hover': { background: 'red' } }} />;
+}
+```
+
+```scss
+.box {
+  &:hover {
+    background: red;
+  }
+}
+```
 
 ## styles prop
 
+`styles` prop no longer supports nested selectors. Use
+`classNames` instead to apply styles to nested elements.
+
+```tsx
+// 6.x – nested selectors
+import { TextInput } from '@mantine/core';
+
+function Demo() {
+  return (
+    <TextInput
+      styles={{
+        input: {
+          '&:focus': {
+            color: 'red',
+          },
+        },
+      }}
+    />
+  );
+}
+```
+
+```scss
+/* 7.0 */
+.input {
+  &:focus {
+    color: red;
+  }
+}
+```
+
+Regular selectors are still supported:
+
+```tsx
+// Works both in 6.x and 7.x
+import { TextInput } from '@mantine/core';
+
+function Demo() {
+  return (
+    <TextInput
+      styles={{
+        input: {
+          color: 'red',
+        },
+      }}
+    />
+  );
+}
+```
+
 ## Global styles
 
+`Global` component and global styles on theme are not available in 7.0. Instead,
+create a global stylesheet (`.css` file) and import it in your application entry point.
+
+```tsx
+// 6.x
+import { Global } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Global
+      styles={(theme) => ({
+        '*, *::before, *::after': {
+          boxSizing: 'border-box',
+        },
+
+        body: {
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+          color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+          lineHeight: theme.lineHeight,
+        },
+
+        '.your-class': {
+          backgroundColor: 'red',
+        },
+
+        '#your-id > [data-active]': {
+          backgroundColor: 'pink',
+        },
+      })}
+    />
+  );
+}
+```
+
+```scss
+/* 7.0 */
+/* src/index.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  line-height: var(--mantine-line-height);
+}
+
+.your-class {
+  background-color: red;
+}
+
+#your-id > [data-active] {
+  background-color: pink;
+}
+```
+
 ## theme referencing
+
+All [theme](/theming/theme-object) properties are now available as [CSS variables](/styles/css-variables). It is recommended to use
+[CSS variables](/styles/css-variables) instead of referencing theme object in styles.
+
+```tsx
+// 6.x
+import { Box } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Box
+      sx={(theme) => ({
+        backgroundColor: theme.colors.red[6],
+        color: theme.white,
+        padding: `calc(${theme.spacing.xl} * 2)`,
+      })}
+    />
+  );
+}
+```
+
+```scss
+/* 7.0 */
+.box {
+  background-color: var(--mantine-color-red-6);
+  color: var(--mantine-color-white);
+  padding: calc(var(--mantine-spacing-xl) * 2);
+}
+```
 
 ## theme.colorScheme
 
