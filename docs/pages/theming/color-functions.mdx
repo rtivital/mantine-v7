@@ -11,7 +11,7 @@ or extract information before using them as CSS value.
 ## darken and lighten
 
 `darken` and `lighten` functions can be used to manipulate color brightness,
-they accept color in any format as first argument and amount of lightness to add or remove as second argument.
+they accept color in any format as first argument and the amount of lightness to add/remove as second argument.
 
 ```tsx
 import { darken, lighten } from '@mantine/core';
@@ -28,7 +28,7 @@ darken('rgba(245, 159, 0, .3)', 0.5); // darken by 50%
 
 ## rgba
 
-`rgba` function converts color to rgba format with given alpha channel,
+`rgba` function converts color to rgba format with a given alpha channel,
 it is usually used to make colors more transparent:
 
 ```tsx
@@ -37,7 +37,7 @@ rgba('#4578FC', 0.45); // -> rgba(69, 120, 252, 0.45)
 
 ## parseThemeColor
 
-`parseThemeColor` function returns information about given color in the following format:
+`parseThemeColor` function returns information about a given color in the following format:
 
 ```tsx
 interface ParseThemeColorResult {
@@ -81,7 +81,7 @@ interface ParseThemeColorResult {
 ```
 
 `parseThemeColor` function can be used everywhere `theme` object is available,
-for example in [css variables resolver](/styles/css-variables), [variant color resolver](/theming/colors#colors-variant-resolver)
+for example in [CSS variables resolver](/styles/css-variables), [variant color resolver](/theming/colors#colors-variant-resolver)
 or component body:
 
 ```tsx
@@ -109,7 +109,7 @@ function Demo({ color }: DemoProps) {
 
 ## getThemeColor
 
-`getThemeColor` is a simpler version of `parseThemeColor` function, it accepts color string
+`getThemeColor` is a simpler version of `parseThemeColor` function, it accepts a color string
 as first argument and theme object as second argument. It returns parsed color value or CSS variable:
 
 ```tsx

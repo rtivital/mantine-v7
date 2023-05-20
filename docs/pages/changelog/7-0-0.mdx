@@ -208,9 +208,35 @@ All components that support `color` prop now support the following color values:
 - `theme.focusRingStyles` was replaced with `theme.focusClassName`
 - `theme.activeStyles` was replaced with `theme.activeClassName`
 - `theme.globalStyles` was removed
+- `theme.fn` functions were removed, some of the functions are available as [standalone utilities](/theming/color-functions)
 - New [theme.scale](/styles/rem#rem-units-scaling) property controls rem units scaling
 - New `theme.fontSmoothing` property determines whether font smoothing styles should be applied to the body element
 - New [theme.variantColorResolver](/theming/colors#colors-variant-resolver) property allows to customize component colors per variant
+
+## Colors generator
+
+New [@mantine/colors-generator](/theming/colors#colors-generation) package is now available to generate
+color palettes based on single color value. It is also available as [online tool](/colors-generator/).
+Note that it is usually better to generate colors in advance to avoid contrast issues.
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+import { generateColors } from '@mantine/colors-generator';
+
+function Demo() {
+  return (
+    <MantineProvider
+      theme={{
+        colors: {
+          'pale-blue': generateColors('#375EAC'),
+        },
+      }}
+    >
+      <App />
+    </MantineProvider>
+  );
+}
+```
 
 ## React 18+ only
 
