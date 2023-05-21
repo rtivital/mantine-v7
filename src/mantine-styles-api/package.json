@@ -3,9 +3,13 @@
   "description": "Mantine components styles api descriptions",
   "private": true,
   "version": "7.0.0-alpha.7",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "sideEffects": false,

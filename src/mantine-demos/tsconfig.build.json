@@ -11,6 +11,7 @@
     "composite": true,
     "paths": {
       "@mantine/core": ["../mantine-core/src"],
+      "@mantine/ds": ["../mantine-ds/src"],
       "@mantine/hooks": ["../mantine-hooks/src"],
       "@mantine/styles-api": ["../mantine-styles-api/src"],
       "@mantine/code-highlight": ["../mantine-code-highlight/src"]
@@ -19,6 +20,7 @@
   "references": [
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
+    { "path": "../mantine-ds" },
     { "path": "../mantine-styles-api" },
     { "path": "../mantine-code-highlight" }
   ]

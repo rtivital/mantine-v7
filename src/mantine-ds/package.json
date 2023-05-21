@@ -2,12 +2,19 @@
   "name": "@mantine/ds",
   "description": "Internal Mantine components used on *.mantine.dev websites",
   "version": "7.0.0-alpha.7",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./styles.css": "./esm/index.css"
+  },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "homepage": "https://mantine.dev/",
   "repository": {
     "url": "https://github.com/mantinedev/mantine.git",
