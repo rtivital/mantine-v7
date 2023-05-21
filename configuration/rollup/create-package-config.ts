@@ -10,6 +10,7 @@ import alias, { Alias } from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import visualizer from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
+import banner2 from 'rollup-plugin-banner2';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 interface PkgConfigInput {
@@ -52,6 +53,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
         generateScopedName: 'mantine-[hash:base64:7]',
       },
     }),
+    banner2(() => "'use client';\n"),
   ];
 
   let externals;

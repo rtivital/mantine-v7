@@ -127,6 +127,7 @@
     "react-dom": "18.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.50.5",
+    "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-esbuild": "^4.2.3",
     "rollup-plugin-node-externals": "^2.2.0",
     "rollup-plugin-postcss": "^4.0.2",
