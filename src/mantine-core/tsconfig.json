@@ -10,6 +10,7 @@
     "declarationDir": "lib",
     "composite": true,
     "strict": true,
+    "importHelpers": true,
     "paths": {
       "@mantine/hooks": ["../mantine-hooks/src"],
       "@mantine/tests": ["../mantine-tests/src"]

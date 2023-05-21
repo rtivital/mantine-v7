@@ -42,7 +42,8 @@
     "clsx": "1.1.1",
     "react-textarea-autosize": "8.3.4",
     "react-remove-scroll": "^2.5.5",
-    "type-fest": "^3.6.1"
+    "type-fest": "^3.6.1",
+    "tslib": "^2.5.2"
   },
   "devDependencies": {}
 }

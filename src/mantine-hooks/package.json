@@ -28,7 +28,8 @@
     "state"
   ],
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.8.0",
+    "tslib": "^2.5.2"
   },
   "dependencies": {},
   "devDependencies": {}
