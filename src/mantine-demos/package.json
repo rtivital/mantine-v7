@@ -3,6 +3,7 @@
   "description": "Demos used in documentation",
   "private": true,
   "version": "7.0.0-alpha.8",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./esm/index.js",

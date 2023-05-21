@@ -2,11 +2,11 @@
   "name": "@mantine/core",
   "description": "React components library focused on usability, accessibility and developer experience",
   "version": "7.0.0-alpha.8",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./esm/index.js",
-      "require": "./cjs/index.js",
-      "types": "./lib/index.d.ts"
+      "require": "./cjs/index.js"
     },
     "./styles.css": "./esm/index.css"
   },
