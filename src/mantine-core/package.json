@@ -1,7 +1,7 @@
 {
   "name": "@mantine/core",
   "description": "React components library focused on usability, accessibility and developer experience",
-  "version": "7.0.0-alpha.7",
+  "version": "7.0.0-alpha.8",
   "exports": {
     ".": {
       "import": "./esm/index.js",
@@ -33,7 +33,7 @@
     "design"
   ],
   "peerDependencies": {
-    "@mantine/hooks": "7.0.0-alpha.7",
+    "@mantine/hooks": "7.0.0-alpha.8",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
