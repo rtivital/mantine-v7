@@ -2,7 +2,7 @@
   "name": "@mantine/styles-api",
   "description": "Mantine components styles api descriptions",
   "private": true,
-  "version": "7.0.0-alpha.8",
+  "version": "7.0.0-alpha.9",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -20,8 +20,8 @@
     "directory": "src/mantine-styles-api"
   },
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.8",
-    "@mantine/hooks": "7.0.0-alpha.8"
+    "@mantine/core": "7.0.0-alpha.9",
+    "@mantine/hooks": "7.0.0-alpha.9"
   },
   "dependencies": {
     "tslib": "^2.5.2"
