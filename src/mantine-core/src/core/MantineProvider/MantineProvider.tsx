@@ -1,9 +1,8 @@
 import './styles/css-reset.css';
 import './styles/global-styles.css';
 import './styles/default-css-variables.css';
-import './suppress-nextjs-warning';
-
 import React from 'react';
+import { suppressNextjsWarning } from './suppress-nextjs-warning';
 import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';
 import { MantineThemeProvider } from './MantineThemeProvider';
 import type { MantineColorScheme, MantineThemeOverride } from './theme.types';
@@ -11,6 +10,8 @@ import { localStorageColorSchemeManager, MantineColorSchemeManager } from './col
 import { MantineContext } from './Mantine.context';
 import { useProviderColorScheme } from './use-mantine-color-scheme';
 import { useRespectReduceMotion } from './use-respect-reduce-motion';
+
+suppressNextjsWarning();
 
 export interface MantineProviderProps {
   /** Theme override object */
