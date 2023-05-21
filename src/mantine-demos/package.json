@@ -33,6 +33,8 @@
     "@mantine/ds": "7.0.0-alpha.8",
     "@tabler/icons-react": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.5.2"
+  },
   "devDependencies": {}
 }

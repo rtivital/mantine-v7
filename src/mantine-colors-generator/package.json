@@ -30,6 +30,8 @@
   "peerDependencies": {
     "chroma-js": "^2.4.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.5.2"
+  },
   "devDependencies": {}
 }

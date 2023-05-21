@@ -23,6 +23,8 @@
     "@mantine/core": "7.0.0-alpha.8",
     "@mantine/hooks": "7.0.0-alpha.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.5.2"
+  },
   "devDependencies": {}
 }

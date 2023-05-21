@@ -10,6 +10,7 @@ import replace from '@rollup/plugin-replace';
 import visualizer from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
 import typescript from '@rollup/plugin-typescript';
+import banner from 'rollup-plugin-banner2';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 interface PkgConfigInput {
@@ -50,7 +51,13 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
         generateScopedName: 'mantine-[hash:base64:7]',
       },
     }),
-    // banner2(() => "'use client';\n"),
+    banner((chunk) => {
+      if (chunk.fileName === 'index.js') {
+        return "'use client';\n";
+      }
+
+      return undefined;
+    }),
   ];
 
   let externals;
