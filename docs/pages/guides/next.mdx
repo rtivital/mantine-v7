@@ -4,3 +4,67 @@ import { MDX_DATA } from '@/mdx';
 export default Layout(MDX_DATA.NextJs);
 
 # Usage with Next.js
+
+## Server components
+
+All Mantine components use `useContext` hook to support [default props](/theming/default-props)
+and [Styles API](/styles/styles-api). Mantine components cannot be used as server components.
+It means that components will render both on the server and client.
+
+Entry points of all `@mantine/*` packages (`index.js` files) have `'use client';` directive at the
+top of the file – you do not need to add `'use client';` to your pages/layouts/components.
+
+## Composite components in server components
+
+Some components like [Popover](/core/popover) have associated composite components (`Component.XXX`),
+where `XXX` is a composite component name. Composite components cannot be used in server components.
+Instead, use `ComponentXXX` syntax or add `'use client';` directive to the top of the file.
+
+Example that will not work in server components:
+
+```tsx
+import { Popover } from '@mantine/core';
+
+// This will throw an error
+export default function Page() {
+  return (
+    <Popover>
+      <Popover.Trigger>Trigger</Popover.Trigger>
+      <Popover.Dropdown>Dropdown</Popover.Dropdown>
+    </Popover>
+  );
+}
+```
+
+Example with `'use client';` directive:
+
+```tsx
+'use client';
+import { Popover } from '@mantine/core';
+
+// No error
+export default function Page() {
+  return (
+    <Popover>
+      <Popover.Trigger>Trigger</Popover.Trigger>
+      <Popover.Dropdown>Dropdown</Popover.Dropdown>
+    </Popover>
+  );
+}
+```
+
+Example with `ComponentXXX` syntax:
+
+```tsx
+import { Popover, PopoverTarget, PopoverDropdown } from '@mantine/core';
+
+// No error
+export default function Page() {
+  return (
+    <Popover>
+      <PopoverTarget>Trigger</PopoverTarget>
+      <PopoverDropdown>Dropdown</PopoverDropdown>
+    </Popover>
+  );
+}
+```
