@@ -1,4 +1,9 @@
 export { Input } from './Input';
+export { InputWrapper } from './InputWrapper/InputWrapper';
+export { InputDescription } from './InputDescription/InputDescription';
+export { InputError } from './InputError/InputError';
+export { InputLabel } from './InputLabel/InputLabel';
+export { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
 export { useInputProps } from './use-input-props';
 export type {
   __InputProps,

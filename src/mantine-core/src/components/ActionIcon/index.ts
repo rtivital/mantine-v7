@@ -1,4 +1,5 @@
 export { ActionIcon } from './ActionIcon';
+export { ActionIconGroup } from './ActionIconGroup/ActionIconGroup';
 export type {
   ActionIconProps,
   ActionIconStylesNames,

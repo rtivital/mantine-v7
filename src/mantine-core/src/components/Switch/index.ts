@@ -1,4 +1,5 @@
 export { Switch } from './Switch';
+export { SwitchGroup } from './SwitchGroup/SwitchGroup';
 export type {
   SwitchCssVariables,
   SwitchFactory,

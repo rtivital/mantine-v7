@@ -1,4 +1,4 @@
-export { ScrollArea } from './ScrollArea';
+export { ScrollArea, ScrollAreaAutosize } from './ScrollArea';
 export type {
   ScrollAreaProps,
   ScrollAreaAutosizeProps,

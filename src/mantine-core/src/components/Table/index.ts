@@ -1,4 +1,13 @@
 export { Table } from './Table';
+export {
+  TableCaption,
+  TableTbody,
+  TableTd,
+  TableTfoot,
+  TableTr,
+  TableTh,
+  TableThead,
+} from './Table.components';
 export type {
   TableProps,
   TableStylesNames,
