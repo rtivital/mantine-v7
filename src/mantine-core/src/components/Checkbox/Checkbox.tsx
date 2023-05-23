@@ -34,7 +34,7 @@ export interface CheckboxProps
   extends BoxProps,
     StylesApiProps<CheckboxFactory>,
     ElementProps<'input', 'size'> {
-  /** Id is used to bind input and label, if not passed unique id will be generated for each input */
+  /** Id used to bind input and label, if not passed, unique id will be generated instead */
   id?: string;
 
   /** Checkbox label */
@@ -50,7 +50,7 @@ export interface CheckboxProps
   radius?: MantineRadius | (string & {}) | number;
 
   /** Props passed down to wrapper element */
-  wrapperProps?: Record<string, any>;
+  wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
 
   /** Position of the label relative to the input, `'right'` by default */
   labelPosition?: 'left' | 'right';
@@ -110,7 +110,6 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
     wrapperProps,
     children,
     checked,
-    onChange,
     labelPosition,
     description,
     error,

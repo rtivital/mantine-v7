@@ -12,8 +12,8 @@ export const SwitchStylesApi: StylesApiData<SwitchFactory> = {
     body: 'Input body, contains all other elements',
     labelWrapper: 'Contains `label`, `description` and `error`',
     label: 'Label element',
-    description: 'Description displayed below label',
-    error: 'Error message displayed below label',
+    description: 'Description displayed below the label',
+    error: 'Error message displayed below the label',
   },
 
   vars: {

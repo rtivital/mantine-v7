@@ -11,15 +11,15 @@ export const CheckboxStylesApi: StylesApiData<CheckboxFactory> = {
     body: 'Input body, contains all other elements',
     labelWrapper: 'Contains `label`, `description` and `error`',
     label: 'Label element',
-    description: 'Description displayed below label',
-    error: 'Error message displayed below label',
+    description: 'Description displayed below the label',
+    error: 'Error message displayed below the label',
   },
 
   vars: {
     root: {
-      '--checkbox-color': 'Controls checked checkbox background-color',
-      '--checkbox-radius': 'Controls checkbox border-radius',
-      '--checkbox-size': 'Controls checkbox width and height',
+      '--checkbox-color': 'Controls checked checkbox `background-color`',
+      '--checkbox-radius': 'Controls checkbox `border-radius`',
+      '--checkbox-size': 'Controls checkbox `width` and `height`',
     },
   },
 

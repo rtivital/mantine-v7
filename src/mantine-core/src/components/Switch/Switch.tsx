@@ -46,7 +46,7 @@ export interface SwitchProps
   extends BoxProps,
     StylesApiProps<SwitchFactory>,
     ElementProps<'input', 'size'> {
-  /** Id is used to bind input and label, if not passed unique id will be generated for each input */
+  /** Id used to bind input and label, if not passed, unique id will be generated instead */
   id?: string;
 
   /** Switch label */
@@ -67,8 +67,8 @@ export interface SwitchProps
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Props passed down to wrapper element */
-  wrapperProps?: Record<string, any>;
+  /** Props passed down to the wrapper element */
+  wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
 
   /** Icon inside the thumb of switch */
   thumbIcon?: React.ReactNode;

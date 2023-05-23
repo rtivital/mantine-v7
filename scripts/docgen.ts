@@ -27,6 +27,9 @@ const EXTRA_FILES_PATHS = [
   // Switch
   '../src/mantine-core/src/components/Switch/SwitchGroup/SwitchGroup.tsx',
 
+  // Checkbox
+  '../src/mantine-core/src/components/Checkbox/CheckboxGroup/CheckboxGroup.tsx',
+
   // Tabs
   '../src/mantine-core/src/components/Tabs/TabsTab/TabsTab.tsx',
   '../src/mantine-core/src/components/Tabs/TabsList/TabsList.tsx',

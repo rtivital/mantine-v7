@@ -762,6 +762,19 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Affix.mdx',
   },
 
+  Checkbox: {
+    title: 'Checkbox',
+    package: '@mantine/core',
+    slug: '/core/checkbox',
+    componentPrefix: 'Checkbox',
+    props: ['Checkbox', 'CheckboxGroup'],
+    styles: ['Checkbox', 'CheckboxGroup'],
+    description: 'Capture boolean input from user',
+    import: "import { Checkbox } from '@mantine/core';",
+    source: 'mantine-core/src/components/Checkbox/Checkbox.tsx',
+    docs: 'core/Checkbox.mdx',
+  },
+
   // ----------------------------------- Meta --------------------------------------
   Changelog700: {
     title: 'Version v7.0.0',
