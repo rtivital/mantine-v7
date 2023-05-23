@@ -12,7 +12,8 @@ const getScript = ({
 }: Pick<ColorSchemeScriptProps, 'defaultColorScheme' | 'localStorageKey'>) => `
   try {
     var colorScheme = window.localStorage.getItem('${localStorageKey}') || '${defaultColorScheme}';
-    document.documentElement.setAttribute('data-mantine-color-scheme', colorScheme);
+    var computedColorScheme = colorScheme !== 'auto' ? colorScheme : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-mantine-color-scheme', computedColorScheme);
   } catch (e) {}
 `;
 

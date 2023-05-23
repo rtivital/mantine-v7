@@ -7,7 +7,13 @@ function setColorSchemeAttribute(
   colorScheme: MantineColorScheme,
   getRootElement: () => HTMLElement | undefined
 ) {
-  getRootElement()?.setAttribute('data-mantine-color-scheme', colorScheme);
+  const computedColorScheme =
+    colorScheme !== 'auto'
+      ? colorScheme
+      : window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  getRootElement()?.setAttribute('data-mantine-color-scheme', computedColorScheme);
 }
 
 interface UseProviderColorSchemeOptions {

@@ -5,9 +5,10 @@ import { ColorSchemeScript } from '@mantine/core';
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
-      <body>
+      <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
+      </Head>
+      <body>
         <Main />
         <NextScript />
       </body>
