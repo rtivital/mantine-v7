@@ -18,6 +18,7 @@ import {
   MdxFlexboxGapSupport,
   MdxGradient,
   MdxStylesApiSelectors,
+  MdxPackagesInstallation,
 } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
@@ -36,6 +37,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         TargetComponent: MdxTargetComponent,
         KeyboardEventsTable: MdxKeyboardEventsTable,
         InstallScript: MdxInstallScript,
+        PackagesInstallation: MdxPackagesInstallation,
         pre: MdxPre,
         h1: h(1),
         h2: h(2),
