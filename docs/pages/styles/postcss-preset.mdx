@@ -43,7 +43,7 @@ All done! You can now use all the features of the preset.
 `16px = 1rem` and `16px = 1em`, `em` values are supposed to be used in media queries,
 `rem` everywhere else. You can learn more about units conversions in [this guide](/styles/rem).
 
-```css
+```scss
 .demo {
   font-size: rem(16px);
 
@@ -55,7 +55,7 @@ All done! You can now use all the features of the preset.
 
 Will be transformed to:
 
-```css
+```scss
 .demo {
   font-size: calc(1rem * var(--mantine-scale));
 
@@ -69,7 +69,7 @@ Will be transformed to:
 
 `dark` and `light` mixins can be used to create styles that will be applied only in dark or light color scheme.
 
-```css
+```scss
 .demo {
   @mixin light {
     color: red;
@@ -83,8 +83,7 @@ Will be transformed to:
 
 Will be transformed to:
 
-```css
-/* data- attribute styles are applied when colorScheme is light or dark */
+```scss
 [data-mantine-color-scheme='light'] .demo {
   color: red;
 }
@@ -92,16 +91,18 @@ Will be transformed to:
 [data-mantine-color-scheme='dark'] .demo {
   color: blue;
 }
+```
 
-/* Media styles are applied when color scheme is auto */
-@media (prefers-color-scheme: light) {
-  .demo {
-    color: red;
-  }
-}
+Note that usually you do not need to use both `light` and `dark` mixins at the same time.
+It is easier to define styles for light color scheme and then use `dark` mixin to override them in dark color scheme.
 
-@media (prefers-color-scheme: dark) {
-  .demo {
+```scss
+.demo {
+  // Value for light color scheme
+  color: red;
+
+  @mixin dark {
+    // Value for dark color scheme
     color: blue;
   }
 }
@@ -121,24 +122,12 @@ first argument is rule that will be applied in light color scheme, second argume
 Will be transformed to:
 
 ```css
-[data-mantine-color-scheme='light'] .demo {
+.demo {
   color: red;
 }
 
 [data-mantine-color-scheme='dark'] .demo {
   color: blue;
-}
-
-@media (prefers-color-scheme: light) {
-  .demo {
-    color: red;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .demo {
-    color: blue;
-  }
 }
 ```
 
