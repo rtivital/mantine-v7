@@ -17,20 +17,14 @@ export function convertCssVariables(input: ConvertCSSVariablesInput, selector: s
   const shared = sharedVariables ? wrapWithSelector(selector, sharedVariables) : '';
 
   const dark = cssVariablesObjectToString(input.dark);
-  const darkMedia = dark
-    ? wrapWithSelector([selector, '@media (prefers-color-scheme: dark)'], dark)
-    : '';
   const darkForced = dark
     ? wrapWithSelector(`${selector}[data-mantine-color-scheme="dark"]`, dark)
     : '';
 
   const light = cssVariablesObjectToString(input.light);
-  const lightMedia = light
-    ? wrapWithSelector([selector, '@media (prefers-color-scheme: light)'], light)
-    : '';
   const lightForced = light
     ? wrapWithSelector(`${selector}[data-mantine-color-scheme="light"]`, light)
     : '';
 
-  return `${shared}${darkMedia}${darkForced}${lightMedia}${lightForced}`;
+  return `${shared}${darkForced}${lightForced}`;
 }
