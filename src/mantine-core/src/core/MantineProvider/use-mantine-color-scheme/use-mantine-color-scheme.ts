@@ -5,14 +5,12 @@ import { MantineColorScheme } from '../theme.types';
 function disableTransition() {
   const style = document.createElement('style');
   style.innerHTML = '* {transition: none !important;}';
+  style.setAttribute('data-mantine-disable-transition', 'true');
   document.head.appendChild(style);
-  const clear = () => {
-    try {
-      document.head.removeChild(style);
-    } catch (e) {
-      // Already removed
-    }
-  };
+  const clear = () =>
+    document
+      .querySelectorAll('[data-mantine-disable-transition]')
+      .forEach((element) => element.remove());
   return clear;
 }
 

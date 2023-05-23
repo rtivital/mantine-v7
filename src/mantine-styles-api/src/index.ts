@@ -13,6 +13,7 @@ export * from './data/Breadcrumbs.styles-api';
 export * from './data/Burger.styles-api';
 export * from './data/Button.styles-api';
 export * from './data/Center.styles-api';
+export * from './data/Checkbox.styles-api';
 export * from './data/CloseButton.styles-api';
 export * from './data/Code.styles-api';
 export * from './data/CodeHighlight.styles-api';

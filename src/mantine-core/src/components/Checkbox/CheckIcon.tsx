@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface CheckboxIconProps extends React.ComponentPropsWithoutRef<'svg'> {
-  indeterminate: boolean;
+  indeterminate: boolean | undefined;
 }
 
 export function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
