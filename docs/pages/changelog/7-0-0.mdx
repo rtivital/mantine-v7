@@ -238,6 +238,12 @@ function Demo() {
 }
 ```
 
+## New setup for RTL
+
+`@mantine/core` package now exports [DirectionProvider](/styles/rtl) component which should be used to configure direction of the application.
+`useDirection` hook can be used to toggle direction. All components now include RTL styles by default, it is no
+longer required to setup additional plugins. See [RTL documentation](/styles/rtl) to learn more.
+
 ## React 18+ only
 
 Starting from version 7.0 Mantine no longer supports older React versions. Minimum supported version is now React 18.
@@ -299,12 +305,6 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 ## @mantine/prism deprecation
 
 `@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
-
-## New setup for RTL
-
-`@mantine/core` package now exports [DirectionProvider](/styles/rtl) component which should be used to configure direction of the application.
-`useDirection` hook can be used to toggle direction. All components now include RTL styles by default, it is no
-longer required to setup additional plugins. See [RTL documentation](/styles/rtl) to learn more.
 
 ## Other changes
 
