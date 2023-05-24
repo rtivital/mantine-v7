@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Checkbox, Box, Code, Text, Table } from '@mantine/core';
-import { MdxInstallScript } from '@/components/MdxProvider';
+import { Checkbox, Code, Text, Table } from '@mantine/core';
+import { MdxInstallScript } from '../MdxInstallScript/MdxInstallScript';
+import { MdxParagraph } from '../MdxTypography/MdxTypography';
 import { PACKAGES_DATA } from './data';
 import classes from './MdxPackagesInstallation.module.css';
 
@@ -55,8 +56,8 @@ export function MdxPackagesInstallation({ extraPackages = [] }: MdxPackagesInsta
 
   return (
     <>
-      <Box mb="sm">Choose packages that you will use in your application:</Box>
-      <Table>
+      <MdxParagraph>Choose packages that you will use in your application:</MdxParagraph>
+      <Table mb="xl">
         <Table.Thead>
           <Table.Tr>
             <Table.Th>
@@ -73,9 +74,7 @@ export function MdxPackagesInstallation({ extraPackages = [] }: MdxPackagesInsta
         <tbody>{rows}</tbody>
       </Table>
 
-      <Box mb="sm" mt="xl">
-        Install dependencies:
-      </Box>
+      <MdxParagraph>Install dependencies:</MdxParagraph>
 
       <MdxInstallScript packages={getPackagesList(selection, extraPackages)} />
     </>

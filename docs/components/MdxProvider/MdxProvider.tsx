@@ -9,6 +9,7 @@ import { h } from './MdxTitle/MdxTitle';
 import { MdxInfo } from './MdxInfo/MdxInfo';
 import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEventsTable';
 import { MdxInstallScript } from './MdxInstallScript/MdxInstallScript';
+import { MdxPackagesInstallation } from './MdxPackagesInstallation/MdxPackagesInstallation';
 import {
   MdxGetElementRef,
   MdxPolymorphic,
@@ -18,7 +19,6 @@ import {
   MdxFlexboxGapSupport,
   MdxGradient,
   MdxStylesApiSelectors,
-  MdxPackagesInstallation,
 } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
