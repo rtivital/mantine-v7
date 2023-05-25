@@ -5,4 +5,56 @@ export default Layout(MDX_DATA.TypeScript);
 
 # Usage with TypeScript
 
+All `@mantine/*` packages are fully compatible with TypeScript. All examples in documentation
+are written in TypeScript – you can copy-paste them to your project without any changes.
+
+This guide will help you get familiar with types that `@mantine/core` package exports.
+
+## Components props types
+
+Each `@mantine/` package that exports components, exports props types for these components as well.
+You can import component props types by adding `Props` to the component name,
+for example, you can import Button and DatePicker components props like so:
+
+```tsx
+import type { ButtonProps } from '@mantine/core';
+import type { DatePickerProps } from '@mantine/dates';
+```
+
+Note that there are two variations of props types: for polymorphic components and for regular components.
+Regular components props types include `React.ComponentPropsWithoutRef<'X'>`, where `X` is the root element
+type, for example `'div'`.
+
+Example of extending regular component props:
+
+```tsx
+import { GroupProps, Group } from '@mantine/core';
+
+// Interface includes `React.ComponentPropsWithoutRef<'div'>`
+interface MyGroupProps extends GroupProps {
+  spacing: number;
+}
+
+function MyGroup({ spacing, ...others }: MyGroupProps) {
+  return <Group my={spacing} {...others} />;
+}
+```
+
+[Polymorphic components](/guides/polymorphic) props types do not include `React.ComponentPropsWithoutRef<'X'>`
+because their root element depends on the `component` prop value.
+
+Example of extending [polymorphic components](/guides/polymorphic) props:
+
+```tsx
+import { ButtonProps, Button, ElementProps } from '@mantine/core';
+
+interface MyButtonProps extends ButtonProps, ElementProps<'button', keyof ButtonProps> {
+  height: number;
+}
+
+function MyButton({ height, ...others }: MyButtonProps) {
+  return <Button style={{ height }} {...others} />;
+}
+```
+
 ## ElementProps type
