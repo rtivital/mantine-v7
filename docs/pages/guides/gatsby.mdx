@@ -45,15 +45,32 @@ module.exports = {
 
 ## Setup
 
+Create `src/theme.ts` file with your theme override:
+
+```tsx
+// src/theme.ts
+import { createTheme } from '@mantine/core';
+
+export const theme = createTheme({
+  fontFamily: 'serif',
+  // ... other theme override properties
+});
+```
+
 Create `gatsby-ssr.tsx` with the following content:
 
 ```tsx
 import React from 'react';
-import { ColorSchemeScript } from '@mantine/core';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { theme } from './src/theme';
 
 export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   const headComponents = getHeadComponents();
   replaceHeadComponents([...headComponents, <ColorSchemeScript key="color-scheme-script" />]);
+};
+
+export const wrapPageElement = ({ element }) => {
+  return <MantineProvider theme={theme}>{element}</MantineProvider>;
 };
 ```
 
@@ -63,6 +80,13 @@ Create `gatsby-browser.tsx` with the following content:
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
+import React from 'react';
+import { MantineProvider } from '@mantine/core';
+import { theme } from './src/theme';
+
+export const wrapPageElement = ({ element }) => {
+  return <MantineProvider theme={theme}>{element}</MantineProvider>;
+};
 ```
 
 All set! Start development server:
