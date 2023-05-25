@@ -185,6 +185,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Get started with Gatsby',
   },
 
+  Redwood: {
+    title: 'Usage with Redwood',
+    slug: '/guides/redwood',
+    search: 'Get started with Redwood',
+  },
+
   Storybook: {
     title: 'Usage with Storybook',
     slug: '/guides/storybook',

@@ -42,6 +42,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.Vite,
       MDX_DATA.Remix,
       MDX_DATA.Gatsby,
+      MDX_DATA.Redwood,
       MDX_DATA.Storybook,
       MDX_DATA.TypeScript,
       MDX_DATA.JavaScript,
