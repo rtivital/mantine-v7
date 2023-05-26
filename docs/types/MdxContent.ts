@@ -55,6 +55,9 @@ export interface Frontmatter {
 
   /** Determines whether polymorphic component data should be displayed */
   polymorphic?: boolean;
+
+  /** Determines whether page should be hidden in search */
+  hideInSearch?: boolean;
 }
 
 export interface MdxContent {

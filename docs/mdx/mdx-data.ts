@@ -8,6 +8,19 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Browser support, releases cycle, previous versions documentation',
   },
 
+  GettingStarted: {
+    title: 'Getting started',
+    slug: '/getting-started',
+    search: 'Get started with Mantine',
+    hideInSearch: true,
+  },
+
+  Maintainers: {
+    title: 'Become a maintainer',
+    slug: '/maintainers',
+    hideInSearch: true,
+  },
+
   Overview: {
     title: 'Mantine API overview',
     slug: '/overview',
