@@ -23,11 +23,10 @@ npx storybook@latest init
 
 Install Storybook addons:
 
-- [storybook-css-modules](https://storybook.js.org/addons/storybook-css-modules)
 - [storybook-dark-mode](https://storybook.js.org/addons/storybook-dark-mode/)
-- [@storybook/addon-postcss](https://storybook.js.org/addons/@storybook/addon-postcss)
+- [@storybook/addon-styling](https://storybook.js.org/addons/@storybook/addon-styling)
 
-<InstallScript packages="storybook-css-modules storybook-dark-mode @storybook/addon-postcss" dev />
+<InstallScript packages="storybook-css-modules storybook-dark-mode @storybook/addon-styling" dev />
 
 Add addons to `.storybook/main.ts`:
 
@@ -38,8 +37,7 @@ const config: StorybookConfig = {
   // ... other config properties
   addons: [
     // ... other addons
-    'storybook-css-modules',
-    '@storybook/addon-postcss',
+    '@storybook/addon-styling',
     'storybook-dark-mode',
   ],
 };
