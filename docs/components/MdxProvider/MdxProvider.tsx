@@ -21,6 +21,7 @@ import {
   MdxFlexboxGapSupport,
   MdxGradient,
   MdxStylesApiSelectors,
+  MdxGetTemplates,
 } from './MdxSharedContent';
 
 export function MdxProvider({ children }: { children: React.ReactNode }) {
@@ -42,6 +43,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         PackagesInstallation: MdxPackagesInstallation,
         NpmScript: MdxNpmScript,
         TemplatesList: MdxTemplatesList,
+        GetTemplates: MdxGetTemplates,
         pre: MdxPre,
         h1: h(1),
         h2: h(2),
