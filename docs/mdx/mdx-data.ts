@@ -228,6 +228,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Usage of icons libraries with Mantine',
   },
 
+  Jest: {
+    title: 'Testing with Jest',
+    slug: '/guides/jest',
+    search: 'Testing with Jest and React Testing Library',
+  },
+
   SixToSeven: {
     title: '6.x to 7.x migration',
     slug: '/guides/6x-to-7x',

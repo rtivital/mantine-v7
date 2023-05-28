@@ -46,6 +46,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.Storybook,
       MDX_DATA.TypeScript,
       MDX_DATA.JavaScript,
+      MDX_DATA.Jest,
       MDX_DATA.SixToSeven,
     ],
   },
