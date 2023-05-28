@@ -11,6 +11,7 @@ import { MdxKeyboardEventsTable } from './MdxKeyboardEventsTable/MdxKeyboardEven
 import { MdxInstallScript } from './MdxInstallScript/MdxInstallScript';
 import { MdxPackagesInstallation } from './MdxPackagesInstallation/MdxPackagesInstallation';
 import { MdxNpmScript } from './MdxNpmScript/MdxNpmScript';
+import { MdxTemplatesList } from './MdxTemplatesList/MdxTemplatesList';
 import {
   MdxGetElementRef,
   MdxPolymorphic,
@@ -40,6 +41,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         InstallScript: MdxInstallScript,
         PackagesInstallation: MdxPackagesInstallation,
         NpmScript: MdxNpmScript,
+        TemplatesList: MdxTemplatesList,
         pre: MdxPre,
         h1: h(1),
         h2: h(2),
