@@ -5,13 +5,19 @@ import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import { Text, Box, FOCUS_CLASS_NAMES } from '@mantine/core';
 import { getMdxSiblings } from './get-mdx-siblings';
 import classes from './MdxSiblings.module.css';
+import { Frontmatter } from '@/types';
 
 interface MdxSiblingsProps {
-  slug: string;
+  meta: Frontmatter;
 }
 
-export function MdxSiblings({ slug }: MdxSiblingsProps) {
-  const { next, prev } = getMdxSiblings(slug);
+export function MdxSiblings({ meta }: MdxSiblingsProps) {
+  const { next, prev } = getMdxSiblings(meta.slug);
+
+  if (meta.hideSiblings) {
+    return null;
+  }
+
   return (
     <div className={classes.root}>
       {prev && (
