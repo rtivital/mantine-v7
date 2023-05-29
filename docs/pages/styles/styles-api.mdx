@@ -1,5 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { Button } from '@mantine/core';
 import { StylesDemos } from '@mantine/demos';
 import { ButtonStylesApi } from '@mantine/styles-api';
 import { SelectorsTable, VariablesTable } from '@/components/StylesApiTable';
@@ -181,3 +182,23 @@ You can use static classes to style component with CSS or [any other styling sol
 ```
 
 Static classes prefix can be changed with `classNamesPrefix` on [MantineProvider](/theming/mantine-provider#classnamesprefix).
+
+## Components classes
+
+Classes of each component are available in `Component.classes` object. For example, you can
+find [Button](/core/button) classes in `Button.classes`:
+
+<DataTable
+  head={['Key', 'Class']}
+  data={Object.keys(Button.classes).map((key) => [key, Button.classes[key]])}
+/>
+
+You can use these classes to create components with the same styles as Mantine components:
+
+```tsx
+import { Button } from '@mantine/core';
+
+function Demo() {
+  return <button type="button" className={Button.classes.root} />;
+}
+```
