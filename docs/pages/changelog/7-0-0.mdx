@@ -50,6 +50,13 @@ It is also recommended to use [postcss-preset-mantine](/styles/postcss-preset). 
 mixins and functions to simplify styling of Mantine components. [postcss-preset-mantine](/styles/postcss-preset)
 is included in all templates.
 
+## Global styles
+
+Mantine no longer includes normalize.css. Instead, it uses a bare minimum set of [global styles](/styles/global-styles).
+These styles are part of the `@mantine/core` package and are applied automatically when you import
+`@mantine/core/styles.css` in your application. Note that these styles cannot be decoupled from the
+rest of the library.
+
 ## Mantine as a headless UI library
 
 You can now use Mantine as a [headless](/styles/unstyled) library. To do that, just do not import
