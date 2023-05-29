@@ -9,26 +9,17 @@
   margin-left: var(--offset);
   margin-right: var(--offset);
   border-radius: var(--mantine-radius-md);
-
-  @mixin light {
-    color: var(--mantine-color-black);
-  }
+  color: var(--mantine-color-black);
 
   @mixin dark {
     color: var(--mantine-color-white);
   }
 
   &[data-active] {
-    @mixin light {
-      background-color: var(--mantine-color-blue-0);
+    background-color: var(--mantine-color-blue-light-hover);
 
-      .icon {
-        background-color: var(--mantine-color-blue-1);
-      }
-    }
-
-    @mixin dark {
-      background-color: rgba(24, 100, 171, 0.2);
+    & > .icon {
+      background: transparent;
     }
   }
 }
@@ -39,25 +30,19 @@
   justify-content: center;
   padding: rem(4px);
   border-radius: var(--mantine-radius-md);
-
-  @mixin light {
-    background-color: var(--mantine-color-blue-0);
-    color: var(--mantine-color-blue-6);
-  }
-
-  @mixin dark {
-    background-color: rgba(24, 100, 171, 0.45);
-    color: var(--mantine-color-blue-2);
-  }
+  background-color: var(--mantine-color-blue-light-hover);
+  color: var(--mantine-color-blue-light-color);
+  width: rem(34px);
+  height: rem(34px);
 }
 
 .label {
   font-size: var(--mantine-font-size-sm);
-  margin-left: var(--mantine-spacing-xs);
+  margin-left: var(--mantine-spacing-sm);
   font-weight: 500;
 
   @mixin rtl {
     margin-left: 0;
-    margin-right: var(--mantine-spacing-xs);
+    margin-right: var(--mantine-spacing-sm);
   }
 }
