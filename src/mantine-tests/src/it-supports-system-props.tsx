@@ -9,6 +9,7 @@ import { itSupportsStylesApi } from './shared/it-supports-style-api';
 import { itSupportsVariant } from './shared/it-supports-variant';
 import { itSupportsSize } from './shared/it-supports-size';
 import { itHasExtend } from './shared/it-has-extend';
+import { itHasClasses } from './shared/it-has-classes';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -21,6 +22,7 @@ import { itSupportsPositionProps } from './style-props/it-supports-position-prop
 interface Options<Props extends Record<string, any>, StylesApiSelectors extends string> {
   component: React.ComponentType<Props>;
   props: Props;
+  classes?: boolean;
   styleProps?: boolean;
   polymorphic?: boolean;
   children?: boolean;
@@ -91,6 +93,10 @@ export function itSupportsSystemProps<
 
     if (options.extend) {
       itHasExtend(options);
+    }
+
+    if (options.classes) {
+      itHasClasses(options);
     }
 
     if (options.displayName) {
