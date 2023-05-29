@@ -12,6 +12,7 @@ export function RemixIcon({ size = 40, ...others }: IconProps) {
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 512 128"
       className={classes.nextIcon}
+      data-large
       {...others}
     >
       <path
