@@ -273,3 +273,37 @@ function Demo() {
   return <div style={{ background: theme.colors.blue[5] }} />;
 }
 ```
+
+## Default theme
+
+You can import default theme object from `@mantine/core` package. It includes
+all theme properties with default values. When you pass theme override to
+[MantineProvider](/theming/mantine-provider), it will be deeply merged with
+the default theme.
+
+```tsx
+import { DEFAULT_THEME } from '@mantine/core';
+```
+
+## Access theme outside of components
+
+To access theme outside of components, you need to create a full theme object
+(your theme override merged with the default theme).
+
+```tsx
+// theme.ts
+import { createTheme, mergeMantineTheme, DEFAULT_THEME } from '@mantine/theme';
+
+const themeOverride = createTheme({
+  primaryColor: 'orange',
+  defaultRadius: 0,
+});
+
+export const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride);
+```
+
+Then your will be able to import it anywhere in your application:
+
+```tsx
+import { theme } from './theme.ts';
+```
