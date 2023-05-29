@@ -72,7 +72,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
 
   ColorFunctions: {
     title: 'Color functions',
-    slug: '/theming/color-functions',
+    slug: '/styles/color-functions',
     search: 'Functions to manipulate colors, darken, lighten, parse',
   },
 
