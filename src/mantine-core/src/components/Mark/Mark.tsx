@@ -63,4 +63,5 @@ export const Mark = factory<MarkFactory>((_props, ref) => {
   return <Box component="mark" ref={ref} variant={variant} {...getStyles('root')} {...others} />;
 });
 
+Mark.classes = classes;
 Mark.displayName = '@mantine/core/Mark';

@@ -8,4 +8,5 @@ export function VisuallyHidden({ className, ...others }: VisuallyHiddenProps) {
   return <span className={cx(classes.root, className)} {...others} />;
 }
 
+VisuallyHidden.classes = classes;
 VisuallyHidden.displayName = '@mantine/core/VisuallyHidden';

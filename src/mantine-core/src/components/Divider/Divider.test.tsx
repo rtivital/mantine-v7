@@ -14,6 +14,7 @@ describe('@mantine/core/Divider', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Divider',
     stylesApiSelectors: ['root', 'label'],

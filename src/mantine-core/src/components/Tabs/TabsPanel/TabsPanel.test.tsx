@@ -19,6 +19,7 @@ describe('@mantine/core/TabsPanel', () => {
     extend: true,
     styleProps: true,
     children: true,
+    classes: true,
     selector: '[role="tabpanel"]',
     stylesApiName: 'Tabs',
     stylesApiSelectors: ['panel'],

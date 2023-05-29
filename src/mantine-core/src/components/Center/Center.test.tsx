@@ -16,6 +16,7 @@ describe('@mantine/core/Center', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Center',
     stylesApiSelectors: ['root'],

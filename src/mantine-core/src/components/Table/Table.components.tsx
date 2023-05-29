@@ -11,6 +11,7 @@ import {
 } from '../../core';
 import { useTableContext, TableContextValue } from './Table.context';
 import type { TableFactory } from './Table';
+import classes from './Table.module.css';
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
@@ -134,6 +135,7 @@ export function tableElement<Factory extends FactoryPayload>(
   });
 
   Component.displayName = `@mantine/core/${name}`;
+  Component.classes = classes;
   return Component;
 }
 

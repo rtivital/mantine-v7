@@ -204,6 +204,7 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
   );
 });
 
+Tabs.classes = classes;
 Tabs.displayName = '@mantine/core/Tabs';
 Tabs.Tab = TabsTab;
 Tabs.Panel = TabsPanel;

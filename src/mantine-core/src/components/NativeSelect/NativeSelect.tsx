@@ -48,4 +48,5 @@ export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
   );
 });
 
+NativeSelect.classes = InputBase.classes;
 NativeSelect.displayName = '@mantine/core/NativeSelect';

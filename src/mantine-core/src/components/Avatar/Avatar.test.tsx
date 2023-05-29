@@ -17,6 +17,7 @@ describe('@mantine/core/Avatar', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Avatar',
     stylesApiSelectors: ['root', 'placeholder'],

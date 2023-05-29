@@ -162,4 +162,5 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, ref) => {
   );
 });
 
+Badge.classes = classes;
 Badge.displayName = '@mantine/core/Badge';

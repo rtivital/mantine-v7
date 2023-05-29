@@ -67,4 +67,5 @@ export const Container = factory<ContainerFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles('root')} {...others} />;
 });
 
+Container.classes = classes;
 Container.displayName = '@mantine/core/Container';

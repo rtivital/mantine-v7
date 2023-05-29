@@ -217,5 +217,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaFactory>((props, ref) => {
   );
 });
 
+ScrollArea.classes = classes;
 ScrollAreaAutosize.displayName = '@mantine/core/ScrollAreaAutosize';
+ScrollAreaAutosize.classes = classes;
 ScrollArea.Autosize = ScrollAreaAutosize;

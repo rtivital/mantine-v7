@@ -14,6 +14,7 @@ describe('@mantine/core/Text', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLParagraphElement,
     displayName: '@mantine/core/Text',
     stylesApiSelectors: ['root'],

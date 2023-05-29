@@ -14,6 +14,7 @@ describe('@mantine/core/Affix', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Affix',
     stylesApiSelectors: ['root'],

@@ -18,7 +18,7 @@ import {
   Factory,
   Box,
 } from '../../core';
-import { InlineInput, InlineInputStylesNames } from '../InlineInput';
+import { InlineInput, InlineInputStylesNames, InlineInputClasses } from '../InlineInput';
 import { useCheckboxGroupContext } from './CheckboxGroup.context';
 import { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 import { CheckboxIcon } from './CheckIcon';
@@ -187,5 +187,6 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
   );
 });
 
+Checkbox.classes = { ...classes, ...InlineInputClasses };
 Checkbox.displayName = '@mantine/core/Checkbox';
 Checkbox.Group = CheckboxGroup;

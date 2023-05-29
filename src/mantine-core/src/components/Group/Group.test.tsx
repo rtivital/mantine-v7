@@ -13,6 +13,7 @@ describe('@mantine/core/Group', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Group',
     stylesApiSelectors: ['root'],

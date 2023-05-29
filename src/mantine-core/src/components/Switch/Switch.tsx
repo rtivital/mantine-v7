@@ -18,7 +18,7 @@ import {
   createVarsResolver,
   Factory,
 } from '../../core';
-import { InlineInput, InlineInputStylesNames } from '../InlineInput';
+import { InlineInput, InlineInputStylesNames, InlineInputClasses } from '../InlineInput';
 import { useSwitchGroupContext } from './SwitchGroup.context';
 import { SwitchGroup } from './SwitchGroup/SwitchGroup';
 import classes from './Switch.module.css';
@@ -223,5 +223,6 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
   );
 });
 
+Switch.classes = { ...classes, ...InlineInputClasses };
 Switch.displayName = '@mantine/core/Switch';
 Switch.Group = SwitchGroup;

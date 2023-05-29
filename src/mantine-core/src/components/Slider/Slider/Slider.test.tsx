@@ -27,6 +27,7 @@ describe('@mantine/core/Slider', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Slider',
     stylesApiSelectors: [

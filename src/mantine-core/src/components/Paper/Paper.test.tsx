@@ -14,6 +14,7 @@ describe('@mantine/core/Paper', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Paper',
     stylesApiSelectors: ['root'],

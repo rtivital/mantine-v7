@@ -12,6 +12,7 @@ describe('@mantine/core/Kbd', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLElement,
     displayName: '@mantine/core/Kbd',
     stylesApiSelectors: ['root'],

@@ -19,6 +19,7 @@ describe('@mantine/core/BackgroundImage', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/BackgroundImage',
     stylesApiSelectors: ['root'],

@@ -25,6 +25,7 @@ describe('@mantine/core/ColorSwatch', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/ColorSwatch',
     stylesApiSelectors: [

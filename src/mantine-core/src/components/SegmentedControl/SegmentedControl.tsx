@@ -276,4 +276,5 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
   );
 });
 
+SegmentedControl.classes = classes;
 SegmentedControl.displayName = '@mantine/core/SegmentedControl';

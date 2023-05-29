@@ -21,6 +21,7 @@ describe('@mantine/core/UnstyledButton', () => {
     styleProps: true,
     children: true,
     extend: true,
+    classes: true,
     refType: HTMLButtonElement,
     displayName: '@mantine/core/UnstyledButton',
     stylesApiSelectors: ['root'],

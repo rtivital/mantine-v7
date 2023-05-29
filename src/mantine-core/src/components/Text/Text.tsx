@@ -145,4 +145,5 @@ export const Text = polymorphicFactory<TextFactory>((_props, ref) => {
   );
 });
 
+Text.classes = classes;
 Text.displayName = '@mantine/core/Text';

@@ -61,4 +61,5 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) =
   );
 });
 
+InputPlaceholder.classes = classes;
 InputPlaceholder.displayName = '@mantine/core/InputPlaceholder';

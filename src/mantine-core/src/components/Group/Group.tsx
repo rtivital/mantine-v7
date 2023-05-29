@@ -127,4 +127,5 @@ export const Group = factory<GroupFactory>((_props, ref) => {
   );
 });
 
+Group.classes = classes;
 Group.displayName = '@mantine/core/Group';

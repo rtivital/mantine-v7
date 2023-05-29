@@ -12,6 +12,7 @@ describe('@mantine/core/Stack', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Stack',
     stylesApiSelectors: ['root'],

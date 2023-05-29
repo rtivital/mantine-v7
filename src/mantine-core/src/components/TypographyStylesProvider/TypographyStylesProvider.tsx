@@ -46,4 +46,5 @@ export const TypographyStylesProvider = factory<TypographyStylesProviderFactory>
   return <Box ref={ref} {...getStyles('root')} {...others} />;
 });
 
+TypographyStylesProvider.classes = classes;
 TypographyStylesProvider.displayName = '@mantine/core/TypographyStylesProvider';

@@ -113,4 +113,5 @@ export const Loader = factory<LoaderFactory>((_props, ref) => {
   );
 });
 
+Loader.classes = classes;
 Loader.displayName = '@mantine/core/Loader';

@@ -6,6 +6,7 @@ const defaultProps: VisuallyHiddenProps = {};
 describe('@mantine/core/VisuallyHidden', () => {
   tests.itSupportsClassName({ component: VisuallyHidden, props: defaultProps });
   tests.itRendersChildren({ component: VisuallyHidden, props: defaultProps });
+  tests.itHasClasses({ component: VisuallyHidden });
 
   it('has correct displayName', () => {
     expect(VisuallyHidden.displayName).toEqual('@mantine/core/VisuallyHidden');

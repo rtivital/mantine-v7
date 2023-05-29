@@ -17,6 +17,7 @@ import { FocusTrap } from '../../FocusTrap';
 import { FloatingArrow } from '../../Floating';
 import type { PopoverStylesNames } from '../Popover';
 import { usePopoverContext } from '../Popover.context';
+import classes from '../Popover.module.css';
 
 export interface PopoverDropdownProps
   extends BoxProps,
@@ -139,4 +140,5 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
   );
 });
 
+PopoverDropdown.classes = classes;
 PopoverDropdown.displayName = '@mantine/core/PopoverDropdown';
