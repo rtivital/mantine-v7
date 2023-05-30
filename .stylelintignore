@@ -1,3 +1,5 @@
 src/*/esm/*.css
 src/*/cjs/*.css
 src/*/styles.css
+docs/.next
+docs/out
