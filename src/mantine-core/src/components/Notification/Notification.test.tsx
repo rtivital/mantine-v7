@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, tests } from '@mantine/tests';
+import { IconMoodSmile } from '@tabler/icons-react';
 import { Notification, NotificationProps, NotificationStylesNames } from './Notification';
 
 const defaultProps: NotificationProps = {
   title: 'test-notification',
+  children: 'test-description',
+  withCloseButton: true,
+  closeButtonProps: { title: 'test-close' },
+  icon: <IconMoodSmile size={18} />,
 };
 
 describe('@mantine/core/Notification', () => {
@@ -20,7 +25,7 @@ describe('@mantine/core/Notification', () => {
     size: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Notification',
-    stylesApiSelectors: ['root', 'icon', 'loader', 'body', 'title', 'description', 'closeButton'],
+    stylesApiSelectors: ['root', 'icon', 'body', 'title', 'description', 'closeButton'],
   });
 
   it('does not render close button if withCloseButton is false', () => {

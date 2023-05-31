@@ -130,6 +130,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
         'data-with-border': withBorder,
       }}
       ref={ref}
+      variant={variant}
       {...others}
       role="alert"
     >
