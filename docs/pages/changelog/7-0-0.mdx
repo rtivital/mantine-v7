@@ -1,7 +1,14 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
 import { Button } from '@mantine/core';
-import { ThemingDemos, LoaderDemos, TableDemos, GroupDemos, StylesDemos } from '@mantine/demos';
+import {
+  ThemingDemos,
+  LoaderDemos,
+  TableDemos,
+  GroupDemos,
+  StylesDemos,
+  FieldsetDemos,
+} from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
 
@@ -333,6 +340,12 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 ## @mantine/prism deprecation
 
 `@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
+
+## Fieldset component
+
+New [Fieldset](/core/fieldset) component:
+
+<Demo data={FieldsetDemos.usage} />
 
 ## Other changes
 

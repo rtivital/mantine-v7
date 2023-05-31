@@ -799,6 +799,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Affix.mdx',
   },
 
+  Fieldset: {
+    title: 'Fieldset',
+    package: '@mantine/core',
+    slug: '/core/fieldset',
+    props: ['Fieldset'],
+    styles: ['Fieldset'],
+    description: 'Group related elements in a form',
+    import: "import { Fieldset } from '@mantine/core';",
+    source: 'mantine-core/src/components/Fieldset/Fieldset.tsx',
+    docs: 'core/Fieldset.mdx',
+  },
+
   Checkbox: {
     title: 'Checkbox',
     package: '@mantine/core',

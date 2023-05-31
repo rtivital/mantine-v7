@@ -1,7 +1,7 @@
 .root {
   padding: var(--mantine-spacing-lg);
   padding-top: var(--mantine-spacing-xs);
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--fieldset-radius);
 }
 
 .root--default {
@@ -42,4 +42,9 @@
 
 .legend {
   font-size: var(--mantine-font-size-sm);
+}
+
+.legend--unstyled {
+  padding: 0;
+  margin-bottom: var(--mantine-spacing-sm);
 }

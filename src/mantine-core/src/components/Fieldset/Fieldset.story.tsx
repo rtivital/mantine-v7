@@ -17,7 +17,7 @@ export function Usage() {
         <TextInput label="Email" placeholder="Email" mt="md" />
       </Fieldset>
 
-      <Fieldset legend="Filled fieldset" variant="filled" mt="xl">
+      <Fieldset legend="Filled fieldset" variant="filled" mt="xl" radius="md">
         <TextInput label="Name" placeholder="Name" />
         <TextInput label="Email" placeholder="Email" mt="md" />
       </Fieldset>

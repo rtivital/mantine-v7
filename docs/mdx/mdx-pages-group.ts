@@ -74,6 +74,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Switch,
           MDX_DATA.TextInput,
           MDX_DATA.Checkbox,
+          MDX_DATA.Fieldset,
         ],
       },
       {

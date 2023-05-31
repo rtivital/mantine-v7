@@ -7,5 +7,9 @@ export const FieldsetStylesApi: StylesApiData<FieldsetFactory> = {
     legend: 'Legend element',
   },
 
-  vars: {},
+  vars: {
+    root: {
+      '--fieldset-radius': 'Controls `border-radius`',
+    },
+  },
 };
