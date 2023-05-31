@@ -20,6 +20,7 @@ export * from './ColorSwatch';
 export * from './Container';
 export * from './CopyButton';
 export * from './Divider';
+export * from './Fieldset';
 export * from './FileButton';
 export * from './Floating';
 export * from './FocusTrap';
