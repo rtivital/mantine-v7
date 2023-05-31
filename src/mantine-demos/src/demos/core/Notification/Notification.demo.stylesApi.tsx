@@ -5,21 +5,43 @@ import { NotificationStylesApi } from '@mantine/styles-api';
 import { IconCheck } from '@tabler/icons-react';
 
 const code = `
-import { Notification } from '@mantine/core';
+import { Box, Notification } from '@mantine/core';
 
-function Demo() {
-  return <Notification{{props}} />;
+function Demo(props: any) {
+  return (
+    <Box maw={400} mx="auto">
+      <Notification
+        onClose={() => {}}
+        title="Please wait"
+        loading
+        withCloseButton={false}
+      >
+        The application is trying to reconnect to the server
+      </Notification>
+      <Notification
+        icon={<IconCheck size="1.2rem" />}
+        onClose={() => {}}
+        title="We notify you that"
+        withBorder
+      >
+        You are now obligated to give a star to Mantine project on GitHub
+      </Notification>
+    </Box>
+  );
 }
 `;
 
 function Demo(props: any) {
   return (
     <Box maw={400} mx="auto">
-      <Notification onClose={() => {}} title="We notify you that" {...props}>
-        You are now obligated to give a star to Mantine project on GitHub
-      </Notification>
-      <Notification mt="md" onClose={() => {}} title="We notify you that" loading {...props}>
-        You are now obligated to give a star to Mantine project on GitHub
+      <Notification
+        onClose={() => {}}
+        title="Please wait"
+        loading
+        withCloseButton={false}
+        {...props}
+      >
+        The application is trying to reconnect to the server
       </Notification>
       <Notification
         mt="md"
