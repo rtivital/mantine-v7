@@ -18,6 +18,18 @@ const sizeMarks = [
   { value: 100, label: '000' },
 ];
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <Slider defaultValue={45} size="lg" />
+      <Slider defaultValue={45} size="lg" inverted />
+      <Slider defaultValue={45} size="lg" disabled mt="xl" />
+      <RangeSlider defaultValue={[45, 80]} size="lg" />
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>

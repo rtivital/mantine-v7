@@ -5,6 +5,16 @@ import { Stack } from '../Stack';
 
 export default { title: 'Checkbox' };
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <Checkbox label="Disabled checkbox within fieldset" checked />
+      <Checkbox label="Disabled checkbox" checked disabled mt="md" />
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>

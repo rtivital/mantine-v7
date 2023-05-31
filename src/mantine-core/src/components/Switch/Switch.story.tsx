@@ -6,6 +6,16 @@ import { Stack } from '../Stack';
 
 export default { title: 'Switch' };
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <Switch label="Disabled by fieldset" />
+      <Switch label="Disabled by prop" disabled mt="md" />
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>

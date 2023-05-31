@@ -4,6 +4,15 @@ import { DEFAULT_THEME, rem } from '../../core';
 
 export default { title: 'Button' };
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <Button size="lg">Disabled button</Button>
+    </fieldset>
+  );
+}
+
 function Colors({ index, ...others }: ButtonProps & { index?: number }) {
   const colors = Object.keys(DEFAULT_THEME.colors).map((color) => (
     <Button
