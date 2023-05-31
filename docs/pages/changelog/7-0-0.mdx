@@ -1,5 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
+import { Button } from '@mantine/core';
 import { ThemingDemos, LoaderDemos, TableDemos, GroupDemos, StylesDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -205,6 +206,26 @@ All components that support `color` prop now support the following color values:
 
 <Demo data={ThemingDemos.colorProp} />
 
+## Components classes
+
+Classes of each component are now available in `Component.classes` object. For example, you can
+find [Button](/core/button) classes in `Button.classes`:
+
+<DataTable
+  head={['Key', 'Class']}
+  data={Object.keys(Button.classes).map((key) => [key, Button.classes[key]])}
+/>
+
+You can use these classes to create components with the same styles as Mantine components:
+
+```tsx
+import { Button } from '@mantine/core';
+
+function Demo() {
+  return <button type="button" className={Button.classes.root} />;
+}
+```
+
 ## Theme object changes
 
 - `theme.lineHeight` is now `theme.lineHeights` – it is now possible to specify multiple line heights. `theme.lineHeights` values are used in [Text](/core/text) component.
@@ -215,7 +236,7 @@ All components that support `color` prop now support the following color values:
 - `theme.focusRingStyles` was replaced with `theme.focusClassName`
 - `theme.activeStyles` was replaced with `theme.activeClassName`
 - `theme.globalStyles` was removed
-- `theme.fn` functions were removed, some of the functions are available as [standalone utilities](/theming/color-functions)
+- `theme.fn` functions were removed, some of the functions are available as [standalone utilities](/styles/color-functions)
 - New [theme.scale](/styles/rem#rem-units-scaling) property controls rem units scaling
 - New `theme.fontSmoothing` property determines whether font smoothing styles should be applied to the body element
 - New [theme.variantColorResolver](/theming/colors#colors-variant-resolver) property allows to customize component colors per variant

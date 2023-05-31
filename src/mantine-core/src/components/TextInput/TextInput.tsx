@@ -19,4 +19,5 @@ export const TextInput = factory<TextInputFactory>((props, ref) => {
   return <InputBase component="input" ref={ref} {..._props} __staticSelector="TextInput" />;
 });
 
+TextInput.classes = InputBase.classes;
 TextInput.displayName = '@mantine/core/TextInput';

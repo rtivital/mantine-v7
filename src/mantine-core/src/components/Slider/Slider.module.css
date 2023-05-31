@@ -76,6 +76,7 @@
     right: calc(var(--slider-thumb-offset) - var(--slider-thumb-size));
   }
 
+  fieldset:disabled &,
   &[data-disabled] {
     --_thumb-display: none;
   }
@@ -103,6 +104,7 @@
   height: calc(var(--slider-size) * 2);
   cursor: var(--_track-cursor, pointer);
 
+  fieldset:disabled &,
   &[data-disabled] {
     --_track-cursor: not-allowed;
   }
@@ -117,6 +119,7 @@
     --_track-bg: var(--slider-color);
   }
 
+  fieldset:disabled &[data-inverted],
   &[data-inverted][data-disabled] {
     --_track-bg: var(--slider-track-disabled-bg);
   }
@@ -153,6 +156,7 @@
     --_bar-bg: var(--slider-track-bg);
   }
 
+  fieldset:disabled &:not([data-inverted]),
   &[data-disabled]:not([data-inverted]) {
     --_bar-bg: var(--_bar-disabled-bg);
   }

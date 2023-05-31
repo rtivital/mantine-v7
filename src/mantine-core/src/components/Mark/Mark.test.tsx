@@ -12,6 +12,7 @@ describe('@mantine/core/Mark', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLElement,
     displayName: '@mantine/core/Mark',
     stylesApiSelectors: ['root'],

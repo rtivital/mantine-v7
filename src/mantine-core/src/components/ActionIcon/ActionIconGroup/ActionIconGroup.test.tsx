@@ -17,6 +17,7 @@ describe('@mantine/core/ActionIconGroup', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/ActionIconGroup',
     stylesApiSelectors: ['root'],

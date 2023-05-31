@@ -4,6 +4,22 @@ import { MantineThemeProvider } from '../../core';
 
 export default { title: 'SegmentedControl' };
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} size="lg" fullWidth />
+      <SegmentedControl
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        size="lg"
+        disabled
+        mt="md"
+        fullWidth
+      />
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>

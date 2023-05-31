@@ -59,7 +59,7 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
           >
             <div className={classes.main}>
               {children}
-              <MdxSiblings slug={meta.slug} />
+              <MdxSiblings meta={meta} />
             </div>
 
             <div className={classes.tableOfContents}>

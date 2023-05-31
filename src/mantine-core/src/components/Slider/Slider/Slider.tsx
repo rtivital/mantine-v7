@@ -343,4 +343,5 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
   );
 });
 
+Slider.classes = classes;
 Slider.displayName = '@mantine/core/Slider';

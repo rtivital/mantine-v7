@@ -85,4 +85,5 @@ export const Stack = factory<StackFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles('root')} variant={variant} {...others} />;
 });
 
+Stack.classes = classes;
 Stack.displayName = '@mantine/core/Stack';

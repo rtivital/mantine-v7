@@ -56,6 +56,7 @@ describe('@mantine/core/Tabs', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     stylesApiSelectors: ['root', 'tab', 'list', 'panel'],
   });
 

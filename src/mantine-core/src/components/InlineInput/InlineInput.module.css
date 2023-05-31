@@ -48,6 +48,7 @@
   padding-left: var(--_offset-left);
   padding-right: var(--_offset-right);
 
+  fieldset:disabled &,
   &[data-disabled] {
     @mixin light {
       --_label-color: var(--mantine-color-gray-5);

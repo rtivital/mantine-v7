@@ -211,6 +211,53 @@ You can learn more about rem conversion in the [rem units guide](/styles/rem).
 
 <Demo data={ThemingDemos.defaultRadiusConfigurator} />
 
+### cursorType
+
+`theme.cursorType` controls the default cursor type for interactive elements,
+that do not have `cursor: pointer` styles by default. For example, [Checkbox](/core/checkbox),
+[Radio](/core/radio), [NativeSelect](/core/native-select).
+
+<Demo data={ThemingDemos.cursorType} />
+
+### defaultGradient
+
+`theme.defaultGradient` controls the default gradient configuration for components that support `variant="gradient"`
+([Button](/core/button), [ActionIcon](/core/action-icon), [Badge](/core/badge), etc.).
+
+<Demo data={ThemingDemos.defaultGradient} />
+
+### components
+
+`theme.components` allows to override components [default props](/theming/default-props) and styles with `classNames` and `styles` properties.
+You can learn more about these features in [default props](/theming/default-props) and [Styles API](/styles/styles-api) guides.
+
+### other
+
+`theme.other` is an object that can be used to store any other properties that you want to access with the theme objects.
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider
+      theme={{
+        other: {
+          charcoal: '#333333',
+          primaryHeadingSize: 45,
+          fontWeights: {
+            bold: 700,
+            extraBold: 900,
+          },
+        },
+      }}
+    >
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
 ## Store theme override object in a variable
 
 To store theme override object in a variable, use `createTheme` function:
@@ -272,4 +319,38 @@ function Demo() {
   const theme = useMantineTheme();
   return <div style={{ background: theme.colors.blue[5] }} />;
 }
+```
+
+## Default theme
+
+You can import default theme object from `@mantine/core` package. It includes
+all theme properties with default values. When you pass theme override to
+[MantineProvider](/theming/mantine-provider), it will be deeply merged with
+the default theme.
+
+```tsx
+import { DEFAULT_THEME } from '@mantine/core';
+```
+
+## Access theme outside of components
+
+To access theme outside of components, you need to create a full theme object
+(your theme override merged with the default theme).
+
+```tsx
+// theme.ts
+import { createTheme, mergeMantineTheme, DEFAULT_THEME } from '@mantine/theme';
+
+const themeOverride = createTheme({
+  primaryColor: 'orange',
+  defaultRadius: 0,
+});
+
+export const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride);
+```
+
+Then your will be able to import it anywhere in your application:
+
+```tsx
+import { theme } from './theme.ts';
 ```

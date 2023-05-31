@@ -9,6 +9,7 @@ import {
   Factory,
 } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
+import classes from '../Tabs.module.css';
 
 export type TabsPanelStylesNames = 'panel';
 
@@ -62,4 +63,5 @@ export const TabsPanel = factory<TabsPanelFactory>((_props, ref) => {
   );
 });
 
+TabsPanel.classes = classes;
 TabsPanel.displayName = '@mantine/core/TabsPanel';

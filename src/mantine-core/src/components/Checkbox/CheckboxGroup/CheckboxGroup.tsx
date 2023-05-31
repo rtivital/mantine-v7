@@ -74,4 +74,5 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((props, ref) => {
   );
 });
 
+CheckboxGroup.classes = Input.Wrapper.classes;
 CheckboxGroup.displayName = '@mantine/core/CheckboxGroup';

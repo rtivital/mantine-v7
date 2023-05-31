@@ -12,6 +12,7 @@ describe('@mantine/core/AspectRatio', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/AspectRatio',
     stylesApiSelectors: ['root'],

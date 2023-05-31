@@ -30,6 +30,7 @@ describe('@mantine/core/NativeSelect', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLSelectElement,
     displayName: '@mantine/core/NativeSelect',
     stylesApiSelectors: [...inputStylesApiSelectors],

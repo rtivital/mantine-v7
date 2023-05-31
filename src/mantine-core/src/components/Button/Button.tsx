@@ -218,5 +218,6 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, ref) => {
   );
 });
 
+Button.classes = classes;
 Button.displayName = '@mantine/core/Button';
 Button.Group = ButtonGroup;

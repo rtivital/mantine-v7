@@ -20,9 +20,6 @@ export interface Frontmatter {
   /** Page keywords, used for search in spotlight */
   search?: string;
 
-  /** Determines whether table of contents should be hidden */
-  hideToc?: boolean;
-
   /** Release date, displayed in changelogs */
   date?: string;
 
@@ -58,6 +55,9 @@ export interface Frontmatter {
 
   /** Determines whether page should be hidden in search */
   hideInSearch?: boolean;
+
+  /** Determines whether siblings should be hidden */
+  hideSiblings?: boolean;
 }
 
 export interface MdxContent {

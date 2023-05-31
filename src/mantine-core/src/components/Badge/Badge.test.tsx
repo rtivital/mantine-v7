@@ -17,6 +17,7 @@ describe('@mantine/core/Badge', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Badge',
     stylesApiSelectors: ['root', 'section', 'label'],

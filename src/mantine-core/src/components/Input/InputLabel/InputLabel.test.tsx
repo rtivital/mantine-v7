@@ -15,6 +15,7 @@ describe('@mantine/core/InputLabel', () => {
     extend: true,
     size: true,
     variant: true,
+    classes: true,
     refType: HTMLLabelElement,
     stylesApiName: 'InputWrapper',
     displayName: '@mantine/core/InputLabel',

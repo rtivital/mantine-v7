@@ -16,7 +16,7 @@ export function MdxRawContent({ children, meta }: MdxRawContentProps) {
       <div className={classes.wrapper}>
         <div className={classes.container}>
           {children}
-          <MdxSiblings slug={meta.slug} />
+          <MdxSiblings meta={meta} />
         </div>
 
         <div className={classes.tableOfContents}>

@@ -23,6 +23,7 @@ describe('@mantine/core/ActionIcon', () => {
     component: ActionIcon,
     props: defaultProps,
     polymorphic: true,
+    classes: true,
     styleProps: true,
     children: true,
     extend: true,

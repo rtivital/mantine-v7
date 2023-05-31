@@ -62,4 +62,5 @@ export const AspectRatio = factory<AspectRatioFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles('root')} {...others} />;
 });
 
+AspectRatio.classes = classes;
 AspectRatio.displayName = '@mantine/core/AspectRatio';

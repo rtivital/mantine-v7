@@ -64,4 +64,5 @@ export const Kbd = factory<KbdFactory>((_props, ref) => {
   return <Box component="kbd" ref={ref} {...getStyles('root')} {...others} />;
 });
 
+Kbd.classes = classes;
 Kbd.displayName = '@mantine/core/Kbd';

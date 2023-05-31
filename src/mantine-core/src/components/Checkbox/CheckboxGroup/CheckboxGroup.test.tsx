@@ -30,6 +30,7 @@ describe('@mantine/core/CheckboxGroup', () => {
     styleProps: true,
     children: true,
     extend: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/CheckboxGroup',
     stylesApiSelectors: ['root', 'description', 'error', 'label', 'required'],

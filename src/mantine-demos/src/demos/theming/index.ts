@@ -18,3 +18,5 @@ export { headingsStyles } from './Theming.demo.headingsStyles';
 export { fontSizeConfigurator } from './Theming.demo.fontSizeConfigurator';
 export { colorScheme } from './Theming.demo.colorScheme';
 export { colorSchemeControl } from './Theming.demo.colorSchemeControl';
+export { defaultGradient } from './Theming.demo.defaultGradient';
+export { cursorType } from './Theming.demo.cursorType';

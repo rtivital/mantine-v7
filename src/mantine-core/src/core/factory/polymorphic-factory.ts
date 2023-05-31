@@ -1,5 +1,11 @@
 import { forwardRef } from 'react';
-import { FactoryPayload, StaticComponents, ThemeExtend, identity } from './factory';
+import {
+  FactoryPayload,
+  StaticComponents,
+  ThemeExtend,
+  identity,
+  ComponentClasses,
+} from './factory';
 import { PolymorphicComponentProps } from './create-polymorphic-component';
 
 export interface PolymorphicFactoryPayload extends FactoryPayload {
@@ -21,6 +27,7 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
   type PolymorphicComponent = _PolymorphicComponent &
     ComponentProperties &
     ThemeExtend<Payload> &
+    ComponentClasses<Payload> &
     StaticComponents<Payload['staticComponents']>;
 
   const Component = forwardRef(ui) as unknown as PolymorphicComponent;

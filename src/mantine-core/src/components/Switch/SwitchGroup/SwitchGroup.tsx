@@ -74,4 +74,5 @@ export const SwitchGroup = factory<SwitchGroupFactory>((props, ref) => {
   );
 });
 
+SwitchGroup.classes = Input.Wrapper.classes;
 SwitchGroup.displayName = '@mantine/core/SwitchGroup';

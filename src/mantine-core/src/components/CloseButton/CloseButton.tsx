@@ -46,4 +46,5 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, ref) 
   );
 });
 
+CloseButton.classes = ActionIcon.classes;
 CloseButton.displayName = '@mantine/core/CloseButton';

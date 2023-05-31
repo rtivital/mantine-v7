@@ -301,4 +301,5 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   );
 });
 
+ColorPicker.classes = classes;
 ColorPicker.displayName = '@mantine/core/ColorPicker';

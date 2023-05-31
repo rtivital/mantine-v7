@@ -9,6 +9,7 @@ import {
   Factory,
 } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
+import classes from '../Tabs.module.css';
 
 export type TabsListStylesNames = 'list';
 
@@ -69,4 +70,5 @@ export const TabsList = factory<TabsListFactory>((_props, ref) => {
   );
 });
 
+TabsList.classes = classes;
 TabsList.displayName = '@mantine/core/TabsList';

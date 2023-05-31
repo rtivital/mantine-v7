@@ -13,6 +13,8 @@ import {
 import { Input } from '../Input';
 import classes from './InlineInput.module.css';
 
+export const InlineInputClasses = classes;
+
 export type InlineInputStylesNames =
   | 'root'
   | 'body'

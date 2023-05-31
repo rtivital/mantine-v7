@@ -2,10 +2,18 @@ import { Frontmatter } from '@/types';
 
 export const MDX_DATA: Record<string, Frontmatter> = {
   // ----------------------------------- Meta --------------------------------------
+  NotFound: {
+    title: '404',
+    slug: '/404',
+    hideInSearch: true,
+    hideSiblings: true,
+  },
+
   About: {
     title: 'About Mantine',
     slug: '/about',
     search: 'Browser support, releases cycle, previous versions documentation',
+    hideSiblings: true,
   },
 
   GettingStarted: {
@@ -13,24 +21,28 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     slug: '/getting-started',
     search: 'Get started with Mantine',
     hideInSearch: true,
+    hideSiblings: true,
   },
 
   Maintainers: {
     title: 'Become a maintainer',
     slug: '/maintainers',
     hideInSearch: true,
+    hideSiblings: true,
   },
 
   Overview: {
     title: 'Mantine API overview',
     slug: '/overview',
     search: 'Overview of Mantine components API',
+    hideSiblings: true,
   },
 
   Contribute: {
     title: 'Contributing to Mantine',
     slug: '/contribute',
     search: 'Learn how to contribute to Mantine',
+    hideSiblings: true,
   },
 
   // ----------------------------------- Theming -----------------------------------
@@ -60,7 +72,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
 
   ColorFunctions: {
     title: 'Color functions',
-    slug: '/theming/color-functions',
+    slug: '/styles/color-functions',
     search: 'Functions to manipulate colors, darken, lighten, parse',
   },
 

@@ -13,6 +13,7 @@ import {
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
 import { useTabsContext } from '../Tabs.context';
+import classes from '../Tabs.module.css';
 
 export type TabsTabStylesNames = 'tab' | 'tabSection' | 'tabLabel';
 
@@ -122,4 +123,5 @@ export const TabsTab = factory<TabsTabFactory>((_props, ref) => {
   );
 });
 
+TabsTab.classes = classes;
 TabsTab.displayName = '@mantine/core/TabsTab';

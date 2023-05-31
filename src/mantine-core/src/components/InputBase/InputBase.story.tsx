@@ -3,6 +3,16 @@ import { InputBase } from './InputBase';
 
 export default { title: 'InputBase' };
 
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <legend>Disabled fieldset</legend>
+      <InputBase label="Disabled by fieldset" placeholder="Disabled by fieldset" />
+      <InputBase label="Disabled by prop" placeholder="Disabled by prop" disabled mt="md" />
+    </fieldset>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
