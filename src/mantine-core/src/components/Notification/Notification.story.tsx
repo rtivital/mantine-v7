@@ -56,7 +56,6 @@ export function Usage() {
           mt="xl"
           title="Success notification with icon"
           icon={<IconCheck size={18} />}
-          withCloseButton
         >
           Your action was a complete success!
         </Notification>

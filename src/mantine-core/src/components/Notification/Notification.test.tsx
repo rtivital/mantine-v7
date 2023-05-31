@@ -6,7 +6,6 @@ import { Notification, NotificationProps, NotificationStylesNames } from './Noti
 const defaultProps: NotificationProps = {
   title: 'test-notification',
   children: 'test-description',
-  withCloseButton: true,
   closeButtonProps: { title: 'test-close' },
   icon: <IconMoodSmile size={18} />,
 };

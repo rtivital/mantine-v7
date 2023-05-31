@@ -77,7 +77,9 @@ export type NotificationFactory = Factory<{
   variant: NotificationVariant;
 }>;
 
-const defaultProps: Partial<NotificationProps> = {};
+const defaultProps: Partial<NotificationProps> = {
+  withCloseButton: true,
+};
 
 const varsResolver = createVarsResolver<NotificationFactory>((theme, { radius, color }) => ({
   root: {
