@@ -7,11 +7,13 @@ import { IconCheck } from '@tabler/icons-react';
 const code = `
 import { Box, Notification } from '@mantine/core';
 
+const icon = <IconCheck size="1.2rem" />;
+
 function Demo(props: any) {
   return (
     <Box maw={400} mx="auto">
       <Notification
-        onClose={() => {}}
+       {{props}}
         title="Please wait"
         loading
         withCloseButton={false}
@@ -19,8 +21,8 @@ function Demo(props: any) {
         The application is trying to reconnect to the server
       </Notification>
       <Notification
-        icon={<IconCheck size="1.2rem" />}
-        onClose={() => {}}
+       {{props}}
+        icon={icon}
         title="We notify you that"
         withBorder
       >
@@ -34,19 +36,12 @@ function Demo(props: any) {
 function Demo(props: any) {
   return (
     <Box maw={400} mx="auto">
-      <Notification
-        onClose={() => {}}
-        title="Please wait"
-        loading
-        withCloseButton={false}
-        {...props}
-      >
+      <Notification title="Please wait" loading withCloseButton={false} {...props}>
         The application is trying to reconnect to the server
       </Notification>
       <Notification
         mt="md"
         icon={<IconCheck size="1.2rem" />}
-        onClose={() => {}}
         title="We notify you that"
         withBorder
         {...props}
