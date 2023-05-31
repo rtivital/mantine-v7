@@ -4,12 +4,9 @@ import { Notification, NotificationProps, NotificationStylesNames } from './Noti
 
 const defaultProps: NotificationProps = {
   title: 'test-notification',
-  closeButtonProps: { title: 'test-close' },
 };
 
 describe('@mantine/core/Notification', () => {
-  tests.itRendersChildren({ component: Notification, props: defaultProps });
-
   tests.axe([<Notification {...defaultProps} />]);
 
   tests.itSupportsSystemProps<NotificationProps, NotificationStylesNames>({
@@ -23,7 +20,7 @@ describe('@mantine/core/Notification', () => {
     size: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Notification',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['root', 'icon', 'loader', 'body', 'title', 'description', 'closeButton'],
   });
 
   it('does not render close button if withCloseButton is false', () => {
@@ -31,6 +28,7 @@ describe('@mantine/core/Notification', () => {
     const { container: withoutCloseButton } = render(
       <Notification {...defaultProps} withCloseButton={false} />
     );
+
     expect(withCloseButton.querySelectorAll('.mantine-Notification-closeButton')).toHaveLength(1);
     expect(withoutCloseButton.querySelectorAll('.mantine-Notification-closeButton')).toHaveLength(
       0

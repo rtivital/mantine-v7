@@ -125,8 +125,10 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
   return (
     <Box
       {...getStyles('root')}
-      data-with-icon={!!icon || loading || undefined}
-      data-with-border={withBorder || undefined}
+      mod={{
+        'data-with-icon': !!icon || loading,
+        'data-with-border': withBorder,
+      }}
       ref={ref}
       {...others}
       role="alert"
@@ -144,7 +146,9 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
         <Text
           {...getStyles('description')}
           color="dimmed"
-          data-with-title={!!title || undefined}
+          mod={{
+            'data-with-title': !!title,
+          }}
           size="sm"
         >
           {children}
