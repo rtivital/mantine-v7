@@ -41,10 +41,10 @@ export interface NotificationProps
   /** Called when close button is clicked */
   onClose?(): void;
 
-  /** Notification line or icon color */
+  /** Controls notification line or icon color, key of `theme.colors` or any valid CSS color, `theme.primaryColor` by default */
   color?: MantineColor;
 
-  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Notification icon, replaces color line */
@@ -59,13 +59,13 @@ export interface NotificationProps
   /** Replaces colored line or icon with Loader component */
   loading?: boolean;
 
-  /** Adds border styles */
+  /** Determines whether notification should have a border, `false` by default */
   withBorder?: boolean;
 
-  /** Determines whether close button should be visible, true by default */
+  /** Determines whether close button should be visible, `true` by default */
   withCloseButton?: boolean;
 
-  /** Props spread to close button */
+  /** Props passed down to the close button */
   closeButtonProps?: Record<string, any>;
 }
 
