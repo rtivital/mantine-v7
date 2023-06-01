@@ -56,4 +56,33 @@ describe('@mantine/core/resolve-class-names', () => {
       })
     ).toStrictEqual({ test1: 'test1', test2: 'test2' });
   });
+
+  it('correctly resolves classNames array', () => {
+    expect(
+      resolveClassNames({
+        theme: DEFAULT_THEME,
+        classNames: [{ test: 'test-1' }, { test: 'test-2' }],
+        props: {},
+        stylesCtx: undefined,
+      })
+    ).toStrictEqual({ test: 'test-1 test-2' });
+
+    expect(
+      resolveClassNames({
+        theme: DEFAULT_THEME,
+        classNames: [{ test: 'test-1' }, undefined],
+        props: {},
+        stylesCtx: undefined,
+      })
+    ).toStrictEqual({ test: 'test-1' });
+
+    expect(
+      resolveClassNames({
+        theme: DEFAULT_THEME,
+        classNames: [{ test1: 'test1' }, (_, props) => ({ test1: props.test })],
+        props: { test: 'test' },
+        stylesCtx: undefined,
+      })
+    ).toStrictEqual({ test1: 'test1 test' });
+  });
 });

@@ -17,6 +17,7 @@ import {
   getSpacing,
   getDefaultZIndex,
   getShadow,
+  ClassNamesArray,
 } from '../../core';
 import { TransitionOverride } from '../Transition';
 import { PortalProps, OptionalPortal } from '../Portal';
@@ -101,8 +102,9 @@ export interface ModalBaseSettings
   shadow?: MantineShadow | (string & {});
 }
 
-export interface ModalBaseProps extends ModalBaseSettings {
+export interface ModalBaseProps extends Omit<ModalBaseSettings, 'classNames'> {
   __staticSelector: string;
+  classNames?: ClassNamesArray<ModalBaseFactory>;
 }
 
 export type ModalBaseFactory = Factory<{

@@ -10,7 +10,7 @@ import { getSelectorClassName } from './get-selector-class-name/get-selector-cla
 import { getResolvedClassNames } from './get-resolved-class-names/get-resolved-class-names';
 import { getOptionsClassNames } from './get-options-class-names/get-options-class-names';
 
-export type _ClassNames =
+type __ClassNames =
   | undefined
   | Partial<Record<string, string>>
   | ((
@@ -18,6 +18,8 @@ export type _ClassNames =
       props: Record<string, any>,
       ctx: Record<string, any> | undefined
     ) => Partial<Record<string, string>>);
+
+export type _ClassNames = __ClassNames | __ClassNames[];
 
 export interface GetClassNameOptions {
   /** Theme object, resolved by hook */

@@ -5,7 +5,7 @@ import { FactoryPayload } from '../../factory';
 import { PartialVarsResolver, VarsResolver } from '../create-vars-resolver/create-vars-resolver';
 import { getClassName } from './get-class-name/get-class-name';
 import { getStyle } from './get-style/get-style';
-import { Styles, ClassNames, GetStylesApiOptions } from '../styles-api.types';
+import { Styles, ClassNames, GetStylesApiOptions, ClassNamesArray } from '../styles-api.types';
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
@@ -16,7 +16,7 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
   style?: MantineStyleProp;
   rootSelector?: Payload['stylesNames'];
   unstyled?: boolean;
-  classNames?: ClassNames<Payload>;
+  classNames?: ClassNames<Payload> | ClassNamesArray<Payload>;
   styles?: Styles<Payload>;
   vars?: PartialVarsResolver<Payload>;
   varsResolver?: VarsResolver<Payload>;
