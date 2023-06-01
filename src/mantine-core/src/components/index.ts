@@ -33,6 +33,7 @@ export * from './Loader';
 export * from './Mark';
 export * from './ModalBase';
 export * from './NativeSelect';
+export * from './Notification';
 export * from './Overlay';
 export * from './Paper';
 export * from './Popover';

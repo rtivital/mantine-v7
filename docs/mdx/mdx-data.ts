@@ -544,6 +544,17 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/NativeSelect/NativeSelect.tsx',
     docs: 'core/NativeSelect.mdx',
   },
+  Notification: {
+    title: 'Notification',
+    package: '@mantine/core',
+    slug: '/core/notification',
+    props: ['Notification'],
+    styles: ['Notification'],
+    description: 'Show dynamic notifications and alerts to user, part of notifications system',
+    import: "import { Notification } from '@mantine/core';",
+    source: 'mantine-core/src/components/Notification/Notification.tsx',
+    docs: 'core/Notification.mdx',
+  },
   Paper: {
     title: 'Paper',
     package: '@mantine/core',
