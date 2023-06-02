@@ -210,9 +210,13 @@ export function itSupportsStylesApi<
       );
 
       options.selectors.forEach((selector) => {
-        expect(
-          container.querySelector(`.test-${options.providerName}-${selector}`)
-        ).toBeInTheDocument();
+        try {
+          expect(
+            container.querySelector(`.test-${options.providerName}-${selector}`)
+          ).toBeInTheDocument();
+        } catch (e) {
+          throw new Error(`Missing selector: .test-${options.providerName}-${selector}`);
+        }
       });
     });
   }
