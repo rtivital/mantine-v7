@@ -60,7 +60,7 @@ Add styles imports, [MantineProvider](/theming/mantine-provider/) and [ColorSche
 ```tsx
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
-import '@mantine/core/styles.css';
+import mantineCoreStyles from '@mantine/core/styles.css';
 
 import { cssBundleHref } from '@remix-run/css-bundle';
 import type { LinksFunction } from '@remix-run/node';
@@ -69,6 +69,7 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: mantineCoreStyles },
 ];
 
 export default function App() {
