@@ -1,6 +1,12 @@
 import React from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { ModalBase } from './ModalBase';
+import { ModalBaseBody } from './ModalBaseBody';
+import { ModalBaseCloseButton } from './ModalBaseCloseButton';
+import { ModalBaseContent } from './ModalBaseContent';
+import { ModalBaseHeader } from './ModalBaseHeader';
+import { ModalBaseOverlay } from './ModalBaseOverlay';
+import { ModalBaseTitle } from './ModalBaseTitle';
 import { Button } from '../Button';
 
 export default { title: 'ModalBase' };
@@ -11,26 +17,27 @@ const content = Array(20)
   .fill(0)
   .map((_, index) => <p key={index}>{lorem}</p>);
 
-export function Usage() {
+export function Usage2() {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div style={{ padding: 40 }}>
       <ModalBase
         opened={opened}
         onClose={close}
-        __staticSelector="Modal"
         transitionProps={{ keepMounted: true }}
         closeOnEscape
         closeOnClickOutside
+        zIndex={100}
+        padding="md"
       >
-        <ModalBase.Content>
-          <ModalBase.Header>
-            <ModalBase.Title>Modal title</ModalBase.Title>
-            <ModalBase.CloseButton />
-          </ModalBase.Header>
-          <ModalBase.Body>Modal content</ModalBase.Body>
-        </ModalBase.Content>
-        <ModalBase.Overlay />
+        <ModalBaseContent innerProps={{}}>
+          <ModalBaseHeader>
+            <ModalBaseTitle>Modal title</ModalBaseTitle>
+            <ModalBaseCloseButton />
+          </ModalBaseHeader>
+          <ModalBaseBody>Modal content</ModalBaseBody>
+        </ModalBaseContent>
+        <ModalBaseOverlay />
       </ModalBase>
 
       <Button onClick={open}>Open modal</Button>

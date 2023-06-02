@@ -1,26 +1,24 @@
-import { createSafeContext, GetStylesApi } from '../../core';
+import { createSafeContext } from '../../core';
 import { TransitionOverride } from '../Transition';
-import type { ModalBaseFactory } from './ModalBase';
 
-interface ModalBaseContext {
-  __staticSelector: string;
-  opened: boolean;
-  onClose(): void;
-  closeOnClickOutside: boolean | undefined;
-  transitionProps: TransitionOverride;
-  id: string;
-  getTitleId(): string;
-  getBodyId(): string;
+interface ModalBaseContextValue {
   titleMounted: boolean;
   bodyMounted: boolean;
-  setTitleMounted(mounted: boolean): void;
-  setBodyMounted(mounted: boolean): void;
-  trapFocus: boolean | undefined;
+  setTitleMounted(value: boolean): void;
+  setBodyMounted(value: boolean): void;
+  getTitleId(): string;
+  getBodyId(): string;
+  transitionProps: Partial<TransitionOverride> | undefined;
+  zIndex: React.CSSProperties['zIndex'];
+
+  opened: boolean;
+  onClose(): void;
+
   closeOnEscape: boolean | undefined;
-  getStyles: GetStylesApi<ModalBaseFactory>;
-  zIndex: React.CSSProperties['zIndex'] | undefined;
+  trapFocus: boolean | undefined;
+  closeOnClickOutside: boolean | undefined;
 }
 
-export const [ModalBaseProvider, useModalBaseContext] = createSafeContext<ModalBaseContext>(
+export const [ModalBaseProvider, useModalBaseContext] = createSafeContext<ModalBaseContextValue>(
   'ModalBase component was not found in tree'
 );
