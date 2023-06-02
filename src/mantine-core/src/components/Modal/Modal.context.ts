@@ -1,11 +1,12 @@
-import { createSafeContext, MantineRadius } from '../../core';
+import { createSafeContext, GetStylesApi } from '../../core';
+import type { ModalRootFactory } from './ModalRoot/ModalRoot';
 
 export type ScrollAreaComponent = React.FC<any>;
 
 interface ModalContext {
-  yOffset: string | number;
-  radius: MantineRadius | (string & {}) | number;
-  scrollAreaComponent: ScrollAreaComponent;
+  yOffset: string | number | undefined;
+  scrollAreaComponent: ScrollAreaComponent | undefined;
+  getStyles: GetStylesApi<ModalRootFactory>;
 }
 
 export const [ModalProvider, useModalContext] = createSafeContext<ModalContext>(

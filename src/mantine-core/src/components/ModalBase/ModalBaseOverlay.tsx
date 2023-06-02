@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
-import { BoxProps, ElementProps } from '../../core';
-import { Overlay } from '../Overlay';
+import { ElementProps } from '../../core';
+import { Overlay, OverlayProps } from '../Overlay';
 import { Transition, TransitionOverride } from '../Transition';
 import { useModalTransition } from './use-modal-transition';
 import { useModalBaseContext } from './ModalBase.context';
 
-export interface ModalBaseOverlayProps extends BoxProps, ElementProps<'div'> {
+export interface ModalBaseOverlayProps extends OverlayProps, ElementProps<'div', 'color'> {
   /** Props passed down to the `Transition` component */
   transitionProps?: TransitionOverride;
 }

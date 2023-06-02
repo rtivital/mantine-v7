@@ -13,3 +13,13 @@ export type { ModalBaseContentProps } from './ModalBaseContent';
 export type { ModalBaseHeaderProps } from './ModalBaseHeader';
 export type { ModalBaseOverlayProps } from './ModalBaseOverlay';
 export type { ModalBaseTitleProps } from './ModalBaseTitle';
+
+export type ModalBaseStylesNames =
+  | 'body'
+  | 'header'
+  | 'title'
+  | 'overlay'
+  | 'root'
+  | 'content'
+  | 'close'
+  | 'inner';

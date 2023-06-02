@@ -5,6 +5,7 @@ import {
   BoxProps,
   ElementProps,
   MantineShadow,
+  MantineSize,
   MantineSpacing,
   getDefaultZIndex,
   getShadow,
@@ -15,7 +16,7 @@ import { TransitionOverride } from '../Transition';
 import { ModalBaseProvider } from './ModalBase.context';
 import { useModal } from './use-modal';
 
-export interface ModalBaseProps extends BoxProps, ElementProps<'div'> {
+export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
   /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
   keepMounted?: boolean;
 
@@ -63,6 +64,9 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div'> {
 
   /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
   padding?: MantineSpacing | (string & {}) | number;
+
+  /** Controls width of the content area, `'md'` by default */
+  size?: MantineSize | (string & {}) | number;
 }
 
 export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
