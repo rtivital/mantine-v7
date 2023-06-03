@@ -93,11 +93,12 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
     radius,
     fullScreen,
     centered,
+    xOffset,
     ...others
   } = props;
 
   const getStyles = useStyles<ModalRootFactory>({
-    name: 'ModalRoot',
+    name: 'Modal',
     classes,
     props,
     className,
