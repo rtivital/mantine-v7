@@ -50,7 +50,7 @@
 
 .body {
   padding: var(--mb-padding);
-  padding-top: var(--_pt);
+  padding-top: var(--_pt, var(--mb-padding));
 
   &:not(:only-child) {
     --_pt: 0;
