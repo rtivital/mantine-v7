@@ -29,6 +29,7 @@ export * from './data/InputBase.styles-api';
 export * from './data/Kbd.styles-api';
 export * from './data/Loader.styles-api';
 export * from './data/Mark.styles-api';
+export * from './data/Modal.styles-api';
 export * from './data/NativeSelect.styles-api';
 export * from './data/Notification.styles-api';
 export * from './data/Overlay.styles-api';
