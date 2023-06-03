@@ -1,28 +1,25 @@
 import React from 'react';
+import { factory, useProps, Factory, getDefaultZIndex } from '../../core';
+import { ModalBaseOverlayProps, ModalBaseCloseButtonProps } from '../ModalBase';
 import {
-  Box,
-  StylesApiProps,
-  factory,
-  useProps,
-  useStyles,
-  createVarsResolver,
-  Factory,
-} from '../../core';
-import {
-  ModalBaseProps,
-  ModalBaseStylesNames,
-  ModalBaseOverlayProps,
-  ModalBaseCloseButtonProps,
-} from '../ModalBase';
+  ModalRoot,
+  ModalRootProps,
+  ModalRootCssVariables,
+  ModalRootStylesNames,
+} from './ModalRoot';
+import { ModalBody } from './ModalBody';
+import { ModalCloseButton } from './ModalCloseButton';
+import { ModalOverlay } from './ModalOverlay';
+import { ModalContent } from './ModalContent';
+import { ModalTitle } from './ModalTitle';
+import { ModalHeader } from './ModalHeader';
 import classes from './Modal.module.css';
 
-export type ModalStylesNames = ModalBaseStylesNames;
+export type ModalStylesNames = ModalRootStylesNames;
 export type ModalVariant = string;
-export type ModalCssVariables = {
-  root: '--test';
-};
+export type ModalCssVariables = ModalRootCssVariables;
 
-export interface ModalProps extends ModalBaseProps, StylesApiProps<ModalFactory> {
+export interface ModalProps extends ModalRootProps {
   /** Modal title */
   title?: React.ReactNode;
 
@@ -50,32 +47,51 @@ export type ModalFactory = Factory<{
   variant: ModalVariant;
 }>;
 
-const defaultProps: Partial<ModalProps> = {};
-
-const varsResolver = createVarsResolver<ModalFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const defaultProps: Partial<ModalProps> = {
+  closeOnClickOutside: true,
+  withinPortal: true,
+  lockScroll: true,
+  trapFocus: true,
+  returnFocus: true,
+  closeOnEscape: true,
+  keepMounted: false,
+  zIndex: getDefaultZIndex('modal'),
+  padding: 'md',
+  size: 'md',
+  shadow: 'xl',
+  transitionProps: { duration: 200, transition: 'pop' },
+  withOverlay: true,
+  withCloseButton: true,
+};
 
 export const Modal = factory<ModalFactory>((_props, ref) => {
-  const props = useProps('Modal', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const {
+    title,
+    withOverlay,
+    overlayProps,
+    withCloseButton,
+    closeButtonProps,
+    children,
+    ...others
+  } = useProps('Modal', defaultProps, _props);
 
-  const getStyles = useStyles<ModalFactory>({
-    name: 'Modal',
-    classes,
-    props,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-    vars,
-    varsResolver,
-  });
+  const hasHeader = !!title || withCloseButton;
 
-  return <Box ref={ref} {...getStyles('root')} {...others} />;
+  return (
+    <ModalRoot ref={ref} {...others}>
+      {withOverlay && <ModalOverlay {...overlayProps} />}
+      <ModalContent>
+        {hasHeader && (
+          <ModalHeader>
+            {title && <ModalTitle>{title}</ModalTitle>}
+            {withCloseButton && <ModalCloseButton {...closeButtonProps} />}
+          </ModalHeader>
+        )}
+
+        <ModalBody>{children}</ModalBody>
+      </ModalContent>
+    </ModalRoot>
+  );
 });
 
 Modal.classes = classes;

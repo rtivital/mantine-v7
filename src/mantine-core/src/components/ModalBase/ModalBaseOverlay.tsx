@@ -5,7 +5,9 @@ import { Transition, TransitionOverride } from '../Transition';
 import { useModalTransition } from './use-modal-transition';
 import { useModalBaseContext } from './ModalBase.context';
 
-export interface ModalBaseOverlayProps extends OverlayProps, ElementProps<'div', 'color'> {
+export interface ModalBaseOverlayProps
+  extends Omit<OverlayProps, 'styles' | 'classNames' | 'variant' | 'vars'>,
+    ElementProps<'div', 'color'> {
   /** Props passed down to the `Transition` component */
   transitionProps?: TransitionOverride;
 }

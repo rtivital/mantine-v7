@@ -5,6 +5,7 @@ export { ModalBaseContent } from './ModalBaseContent';
 export { ModalBaseHeader } from './ModalBaseHeader';
 export { ModalBaseOverlay } from './ModalBaseOverlay';
 export { ModalBaseTitle } from './ModalBaseTitle';
+export { NativeScrollArea } from './NativeScrollArea';
 
 export type { ModalBaseProps } from './ModalBase';
 export type { ModalBaseBodyProps } from './ModalBaseBody';

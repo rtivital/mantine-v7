@@ -11,10 +11,10 @@ import {
   getDefaultZIndex,
   getSize,
   rem,
-} from '../../../core';
-import { ModalBaseProps, ModalBase, ModalBaseStylesNames } from '../../ModalBase';
-import { ModalProvider, ScrollAreaComponent } from '../Modal.context';
-import classes from './ModalRoot.module.css';
+} from '../../core';
+import { ModalBaseProps, ModalBase, ModalBaseStylesNames } from '../ModalBase';
+import { ModalProvider, ScrollAreaComponent } from './Modal.context';
+import classes from './Modal.module.css';
 
 export type ModalRootStylesNames = ModalBaseStylesNames;
 export type ModalRootVariant = string;
@@ -114,4 +114,5 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
   );
 });
 
+ModalRoot.classes = classes;
 ModalRoot.displayName = '@mantine/core/ModalRoot';

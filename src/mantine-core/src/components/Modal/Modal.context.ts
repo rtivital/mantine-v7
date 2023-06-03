@@ -1,5 +1,5 @@
 import { createSafeContext, GetStylesApi } from '../../core';
-import type { ModalRootFactory } from './ModalRoot/ModalRoot';
+import type { ModalRootFactory } from './ModalRoot';
 
 export type ScrollAreaComponent = React.FC<any>;
 
