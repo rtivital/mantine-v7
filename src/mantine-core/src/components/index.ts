@@ -31,6 +31,7 @@ export * from './InputBase';
 export * from './Kbd';
 export * from './Loader';
 export * from './Mark';
+export * from './Modal';
 export * from './ModalBase';
 export * from './NativeSelect';
 export * from './Notification';

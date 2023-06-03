@@ -45,6 +45,15 @@ export type ModalFactory = Factory<{
   stylesNames: ModalStylesNames;
   vars: ModalCssVariables;
   variant: ModalVariant;
+  staticComponents: {
+    Root: typeof ModalRoot;
+    Overlay: typeof ModalOverlay;
+    Content: typeof ModalContent;
+    Body: typeof ModalBody;
+    Header: typeof ModalHeader;
+    Title: typeof ModalTitle;
+    CloseButton: typeof ModalCloseButton;
+  };
 }>;
 
 const defaultProps: Partial<ModalProps> = {
@@ -96,3 +105,10 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
 
 Modal.classes = classes;
 Modal.displayName = '@mantine/core/Modal';
+Modal.Root = ModalRoot;
+Modal.Overlay = ModalOverlay;
+Modal.Content = ModalContent;
+Modal.Body = ModalBody;
+Modal.Header = ModalHeader;
+Modal.Title = ModalTitle;
+Modal.CloseButton = ModalCloseButton;
