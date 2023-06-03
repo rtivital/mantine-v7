@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Button } from '../Button';
+import { ScrollArea } from '../ScrollArea';
 import { Modal } from './Modal';
 
 export default { title: 'Modal' };
@@ -16,7 +17,7 @@ const content = Array(20)
   ));
 
 export function Usage() {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [opened, { open, close }] = useDisclosure(true);
   return (
     <div style={{ padding: 40 }}>
       <Button onClick={open}>Open modal</Button>
@@ -80,7 +81,7 @@ export function WithScroll() {
   );
 }
 
-export function NativeScrollArea() {
+export function AutosizeScrollarea() {
   return (
     <div style={{ padding: 40 }}>
       <Modal
@@ -88,7 +89,7 @@ export function NativeScrollArea() {
         onClose={() => {}}
         title="Just a Modal"
         size="md"
-        scrollAreaComponent={Modal.NativeScrollArea}
+        scrollAreaComponent={ScrollArea.Autosize}
       >
         {content}
       </Modal>
