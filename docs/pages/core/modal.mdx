@@ -137,8 +137,6 @@ import { RemoveScroll } from '@mantine/core';
 
 `Modal` component follows [WAI-ARIA recommendations](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog) on accessibility.
 
-### Labels
-
 Set `title` props to make component accessible, will add `aria-labelledby` to the content element:
 
 ```tsx
@@ -158,7 +156,3 @@ function Demo() {
   return <Modal closeButtonProps={{ 'aria-label': 'Close modal' }} opened onClose={() => {}} />;
 }
 ```
-
-### Keyboard interactions
-
-<KeyboardEventsTable data={[{ key: 'Escape', description: 'Close modal' }]} />
