@@ -12,7 +12,6 @@ function Wrapper(props: NotificationProps) {
 
 const code = `
 import { Notification } from '@mantine/core';
-import { IconCheck } from '@tabler/icons-react';
 
 function Demo() {
   return (
