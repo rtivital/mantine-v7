@@ -835,6 +835,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Checkbox.mdx',
   },
 
+  Modal: {
+    title: 'Modal',
+    package: '@mantine/core',
+    slug: '/core/modal',
+    props: ['Modal'],
+    styles: ['Modal'],
+    description: 'An accessible overlay dialog',
+    import: "import { Modal } from '@mantine/core';",
+    source: 'mantine-core/src/components/Modal/Modal.tsx',
+    docs: 'core/Modal.mdx',
+  },
+
   // ----------------------------------- Meta --------------------------------------
   Changelog700: {
     title: 'Version v7.0.0',

@@ -25,6 +25,7 @@ export const ModalBaseOverlay = forwardRef<HTMLDivElement, ModalBaseOverlayProps
             fixed
             style={[style, transitionStyles]}
             zIndex={ctx.zIndex}
+            radius={0}
             onClick={(event) => {
               onClick?.(event);
               ctx.closeOnClickOutside && ctx.onClose();

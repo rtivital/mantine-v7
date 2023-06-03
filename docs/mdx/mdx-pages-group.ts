@@ -95,7 +95,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       { category: 'feedback', pages: [MDX_DATA.Loader, MDX_DATA.Alert, MDX_DATA.Notification] },
       {
         category: 'overlays',
-        pages: [MDX_DATA.Popover, MDX_DATA.Tooltip, MDX_DATA.Overlay, MDX_DATA.Affix],
+        pages: [
+          MDX_DATA.Popover,
+          MDX_DATA.Tooltip,
+          MDX_DATA.Overlay,
+          MDX_DATA.Affix,
+          MDX_DATA.Modal,
+        ],
       },
       {
         category: 'Data display',

@@ -64,10 +64,11 @@ const defaultProps: Partial<OverlayProps> = {
   color: '#000',
   backgroundOpacity: 0.6,
   zIndex: getDefaultZIndex('modal'),
+  radius: 0,
 };
 
 const varsResolver = createVarsResolver<OverlayFactory>(
-  (theme, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
+  (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
       '--overlay-bg': gradient || rgba(color || '#000', backgroundOpacity ?? 0.6),
       '--overlay-filter': blur ? `blur(${rem(blur)})` : undefined,

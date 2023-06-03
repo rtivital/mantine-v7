@@ -1,6 +1,7 @@
 /* eslint-disable import/no-relative-packages */
 import React from 'react';
-import { Code, Group, Burger } from '@mantine/core';
+import cx from 'clsx';
+import { Code, Group, Burger, RemoveScroll } from '@mantine/core';
 import { HeaderControls, ColorSchemeControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
 import packageJson from '../../../../package.json';
@@ -14,7 +15,7 @@ interface HeaderProps {
 export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
   return (
     <>
-      <header className={classes.header} data-desktop>
+      <header className={cx(classes.header, RemoveScroll.classNames.fullWidth)} data-desktop>
         <div className={classes.logo}>
           <Logo />
           <Code fw="bold" className={classes.version}>
