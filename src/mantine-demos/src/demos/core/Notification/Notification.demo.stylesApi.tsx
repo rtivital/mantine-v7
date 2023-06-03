@@ -26,7 +26,6 @@ function Demo(props: any) {
         mt="md"
         icon={<IconCheck size="1.2rem" />}
         title="We notify you that"
-        withBorder
         {...props}
       >
         You are now obligated to give a star to Mantine project on GitHub
@@ -39,6 +38,7 @@ export const stylesApi: MantineDemo = {
   type: 'styles-api',
   data: NotificationStylesApi,
   centered: true,
+  dimmed: true,
   component: Demo,
   code,
 };

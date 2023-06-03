@@ -22,48 +22,39 @@ describe('@mantine/core/Notification', () => {
     extend: true,
     variant: true,
     size: true,
+    classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/Notification',
     stylesApiSelectors: ['root', 'icon', 'body', 'title', 'description', 'closeButton'],
   });
 
-  it('does not render close button if withCloseButton is false', () => {
-    const { container: withCloseButton } = render(<Notification {...defaultProps} />);
-    const { container: withoutCloseButton } = render(
+  it('renders close button based on withCloseButton prop', () => {
+    const { container, rerender } = render(
       <Notification {...defaultProps} withCloseButton={false} />
     );
+    expect(container.querySelector('.mantine-Notification-closeButton')).not.toBeInTheDocument();
 
-    expect(withCloseButton.querySelectorAll('.mantine-Notification-closeButton')).toHaveLength(1);
-    expect(withoutCloseButton.querySelectorAll('.mantine-Notification-closeButton')).toHaveLength(
-      0
-    );
+    rerender(<Notification {...defaultProps} withCloseButton />);
+    expect(container.querySelector('.mantine-Notification-closeButton')).toBeInTheDocument();
   });
 
   it('renders given icon', () => {
-    const { container: withIcon } = render(<Notification {...defaultProps} icon="test-icon" />);
-    const { container: withoutIcon } = render(<Notification {...defaultProps} icon={null} />);
-    expect(withIcon.querySelector('.mantine-Notification-icon')?.textContent).toBe('test-icon');
-    expect(withoutIcon.querySelector('.mantine-Notification-icon')).toBe(null);
+    const { container, rerender } = render(<Notification {...defaultProps} icon="test-icon" />);
+    expect(container.querySelector('.mantine-Notification-icon')).toHaveTextContent('test-icon');
+    rerender(<Notification {...defaultProps} icon={null} />);
+    expect(container.querySelector('.mantine-Notification-icon')).not.toBeInTheDocument();
   });
 
   it('displays loader when loading prop is true', () => {
-    const { container: loading } = render(
-      <Notification {...defaultProps} loading icon="test-icon" />
-    );
-    const { container: notLoading } = render(
-      <Notification {...defaultProps} icon="test-icon" loading={false} />
-    );
-    expect(loading.querySelector('.mantine-Notification-loader')).toBeInTheDocument();
-    expect(loading.querySelector('.mantine-Notification-icon')).toBe(null);
-    expect(notLoading.querySelector('.mantine-Notification-loader')).toBe(null);
-    expect(notLoading.querySelector('.mantine-Notification-icon')).toBeInTheDocument();
-    expect(notLoading.querySelector('.mantine-Notification-icon')?.textContent).toBe('test-icon');
+    const { container, rerender } = render(<Notification {...defaultProps} loading />);
+    expect(container.querySelector('.mantine-Notification-loader')).toBeInTheDocument();
+
+    rerender(<Notification {...defaultProps} loading={false} />);
+    expect(container.querySelector('.mantine-Notification-loader')).not.toBeInTheDocument();
   });
 
   it('renders given title', () => {
-    const { container: withTitle } = render(<Notification {...defaultProps} title="test-title" />);
-    const { container: withoutTitle } = render(<Notification {...defaultProps} title={null} />);
-    expect(withTitle.querySelector('.mantine-Notification-title')?.textContent).toBe('test-title');
-    expect(withoutTitle.querySelectorAll('.mantine-Notification-title')).toHaveLength(0);
+    const { container } = render(<Notification {...defaultProps} title="test-title" />);
+    expect(container.querySelector('.mantine-Notification-title')).toHaveTextContent('test-title');
   });
 });

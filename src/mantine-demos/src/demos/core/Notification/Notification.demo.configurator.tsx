@@ -28,6 +28,7 @@ export const configurator: MantineDemo = {
   component: Wrapper,
   centered: true,
   code,
+  dimmed: true,
   controls: [
     { prop: 'loading', type: 'boolean', initialValue: false, libraryValue: false },
     { prop: 'withCloseButton', type: 'boolean', initialValue: true, libraryValue: true },

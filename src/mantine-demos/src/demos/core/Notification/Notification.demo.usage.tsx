@@ -72,5 +72,6 @@ export const usage: MantineDemo = {
   type: 'code',
   code,
   centered: true,
+  dimmed: true,
   component: Demo,
 };
