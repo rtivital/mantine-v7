@@ -13,6 +13,7 @@
       "@mantine/core": ["../mantine-core/src"],
       "@mantine/hooks": ["../mantine-hooks/src"],
       "@mantine/ds": ["../mantine-ds/src"],
+      "@mantine/notifications": ["../mantine-notifications/src"],
       "@mantine/styles-api": ["../mantine-styles-api/src"],
       "@mantine/dates": ["../mantine-code-highlight/src"]
     }
@@ -21,6 +22,7 @@
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
     { "path": "../mantine-ds" },
+    { "path": "../mantine-notifications" },
     { "path": "../mantine-styles-api" },
     { "path": "../mantine-code-highlight" }
   ]

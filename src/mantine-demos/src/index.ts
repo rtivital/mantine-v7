@@ -55,3 +55,6 @@ export * as TransitionDemos from './demos/core/Transition';
 export * as TypographyStylesProviderDemos from './demos/core/TypographyStylesProvider';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
 export * as NotificationDemos from './demos/core/Notification';
+
+// Other demos
+export * as NotificationsDemos from './demos/notifications';

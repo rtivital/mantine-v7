@@ -31,6 +31,7 @@
     "@mantine/hooks": "7.0.0-alpha.12",
     "@mantine/styles-api": "7.0.0-alpha.12",
     "@mantine/ds": "7.0.0-alpha.12",
+    "@mantine/notifications": "7.0.0-alpha.12",
     "@tabler/icons-react": "*"
   },
   "dependencies": {
