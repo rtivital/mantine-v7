@@ -10,7 +10,7 @@ interface NotificationContainerProps extends NotificationProps {
 }
 
 export const NotificationContainer = forwardRef<HTMLDivElement, NotificationContainerProps>(
-  ({ data, onHide, autoClose }, ref) => {
+  ({ data, onHide, autoClose, ...others }, ref) => {
     const { autoClose: _autoClose, message, ...notificationProps } = data;
     const autoCloseDuration = getAutoClose(autoClose, data.autoClose);
     const autoCloseTimeout = useRef<number>();
@@ -36,12 +36,15 @@ export const NotificationContainer = forwardRef<HTMLDivElement, NotificationCont
 
     return (
       <Notification
+        {...others}
         {...notificationProps}
         onClose={handleHide}
         ref={ref}
         onMouseEnter={cancelAutoClose}
         onMouseLeave={handleAutoClose}
-      />
+      >
+        {message}
+      </Notification>
     );
   }
 );
