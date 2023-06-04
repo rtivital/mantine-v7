@@ -142,6 +142,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     ],
   },
   {
+    group: 'others',
+    pages: [MDX_DATA.Notifications],
+  },
+  {
     group: 'changelog',
     pages: [MDX_DATA.Changelog700],
   },

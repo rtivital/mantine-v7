@@ -16,6 +16,8 @@
     "@mantine/demos": "link:../src/mantine-demos",
     "@mantine/ds": "link:../src/mantine-ds",
     "@mantine/hooks": "link:../src/mantine-hooks",
+    "@mantine/notifications": "link:../src/mantine-notifications",
+    "@mantine/store": "link:../src/mantine-store",
     "@mantine/colors-generator": "link:../src/mantine-colors-generator",
     "@mantine/styles-api": "link:../src/mantine-styles-api",
     "@mdx-js/loader": "^2.3.0",

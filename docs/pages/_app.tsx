@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import '@mantine/code-highlight/styles.css';
 import '@mantine/ds/styles.css';
 import '@mantine/demos/styles.css';
@@ -7,6 +8,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider, DirectionProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import { MdxProvider } from '@/components/MdxProvider';
 import { HotKeysHandler } from '@/components/HotKeysHandler';
 import { FontsStyle } from '@/fonts';
@@ -25,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <FontsStyle />
       <DirectionProvider initialDirection="ltr" detectDirection={false}>
         <MantineProvider theme={theme}>
+          <Notifications />
           <MdxProvider>
             <HotKeysHandler />
             <Component {...pageProps} />

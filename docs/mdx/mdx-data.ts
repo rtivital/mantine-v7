@@ -847,6 +847,19 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Modal.mdx',
   },
 
+  // ----------------------------------- Others --------------------------------------
+  Notifications: {
+    title: 'Notifications system',
+    package: '@mantine/notifications',
+    slug: '/others/notifications',
+    props: ['Notifications'],
+    styles: ['Notifications'],
+    description: 'Mantine notifications system',
+    source: 'mantine-notifications/src',
+    license: 'MIT',
+    docs: 'others/notifications.mdx',
+  },
+
   // ----------------------------------- Meta --------------------------------------
   Changelog700: {
     title: 'Version v7.0.0',
