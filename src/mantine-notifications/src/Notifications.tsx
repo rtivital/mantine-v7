@@ -18,7 +18,7 @@ import {
   PortalProps,
   getDefaultZIndex,
   useMantineTheme,
-  Portal,
+  OptionalPortal,
   rem,
 } from '@mantine/core';
 import {
@@ -26,6 +26,7 @@ import {
   NotificationsStore,
   notificationsStore,
   hideNotification,
+  notifications,
 } from './notifications.store';
 import { NotificationContainer } from './NotificationContainer';
 import { getNotificationStateStyles } from './get-notification-state-styles';
@@ -82,6 +83,9 @@ export interface NotificationsProps
 
   /** Store for notifications state, can be used to create multiple instances of notifications system in your application */
   store?: NotificationsStore;
+
+  /** Determines whether notifications container should be rendered inside `Portal`, `true` by default */
+  withinPortal?: boolean;
 }
 
 export type NotificationsFactory = Factory<{
@@ -90,6 +94,14 @@ export type NotificationsFactory = Factory<{
   stylesNames: NotificationsStylesNames;
   vars: NotificationsCssVariables;
   variant: NotificationsVariant;
+  staticComponents: {
+    show: typeof notifications.show;
+    hide: typeof notifications.hide;
+    update: typeof notifications.update;
+    clean: typeof notifications.clean;
+    cleanQueue: typeof notifications.cleanQueue;
+    updateState: typeof notifications.updateState;
+  };
 }>;
 
 const defaultProps: Partial<NotificationsProps> = {
@@ -101,6 +113,7 @@ const defaultProps: Partial<NotificationsProps> = {
   limit: 5,
   zIndex: getDefaultZIndex('overlay'),
   store: notificationsStore,
+  withinPortal: true,
 };
 
 const varsResolver = createVarsResolver<NotificationsFactory>(
@@ -144,11 +157,12 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
     zIndex,
     store,
     portalProps,
+    withinPortal,
     ...others
   } = props;
 
   const theme = useMantineTheme();
-  const notifications = useNotifications(store);
+  const data = useNotifications(store);
   const forceUpdate = useForceUpdate();
   const shouldReduceMotion = useReducedMotion();
   const refs = useRef<Record<string, HTMLDivElement>>({});
@@ -171,13 +185,13 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
   });
 
   useDidUpdate(() => {
-    if (notifications.notifications.length > previousLength.current) {
+    if (data.notifications.length > previousLength.current) {
       setTimeout(() => forceUpdate(), 0);
     }
-    previousLength.current = notifications.notifications.length;
+    previousLength.current = data.notifications.length;
   }, [notifications]);
 
-  const items = notifications.notifications.map((notification) => (
+  const items = data.notifications.map((notification) => (
     <Transition
       key={notification.id}
       timeout={duration}
@@ -206,20 +220,19 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
   ));
 
   return (
-    <Portal {...portalProps}>
-      <Box
-        {...getStyles('root')}
-        ref={ref}
-        // sx={{
-        //   maxWidth: containerWidth,
-        //   ...getPositionStyles(positioning, theme.spacing.md),
-        // }}
-        {...others}
-      >
+    <OptionalPortal withinPortal={withinPortal} {...portalProps}>
+      <Box {...getStyles('root')} ref={ref} {...others}>
         <TransitionGroup>{items}</TransitionGroup>
       </Box>
-    </Portal>
+    </OptionalPortal>
   );
 });
 
-Notifications.displayName = '@mantine/core/Notifications';
+Notifications.classes = classes;
+Notifications.displayName = '@mantine/notifications/Notifications';
+Notifications.show = notifications.show;
+Notifications.hide = notifications.hide;
+Notifications.update = notifications.update;
+Notifications.clean = notifications.clean;
+Notifications.cleanQueue = notifications.cleanQueue;
+Notifications.updateState = notifications.updateState;
