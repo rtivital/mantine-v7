@@ -22,7 +22,8 @@
   },
   "peerDependencies": {
     "@mantine/core": "7.0.0-alpha.12",
-    "@mantine/hooks": "7.0.0-alpha.12"
+    "@mantine/hooks": "7.0.0-alpha.12",
+    "@mantine/notifications": "7.0.0-alpha.12"
   },
   "dependencies": {
     "tslib": "^2.5.2"

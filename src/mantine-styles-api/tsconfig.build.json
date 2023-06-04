@@ -22,12 +22,14 @@
     "paths": {
       "@mantine/core": ["../mantine-core/src"],
       "@mantine/code-highlight": ["../mantine-code-highlight/src"],
+      "@mantine/notifications": ["../mantine-notifications/src"],
       "@mantine/hooks": ["../mantine-hooks/src"]
     }
   },
   "references": [
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
+    { "path": "../mantine-notifications" },
     { "path": "../mantine-code-highlight" }
   ]
 }
