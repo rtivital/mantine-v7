@@ -19,6 +19,7 @@ import {
   getDefaultZIndex,
   useMantineTheme,
   Portal,
+  rem,
 } from '@mantine/core';
 import {
   useNotifications,
@@ -35,7 +36,14 @@ const Transition: any = _Transition;
 export type NotificationsStylesNames = 'root' | 'notification';
 export type NotificationsVariant = string;
 export type NotificationsCssVariables = {
-  root: '--test';
+  root:
+    | '--notifications-z-index'
+    | '--notifications-top'
+    | '--notifications-right'
+    | '--notifications-left'
+    | '--notifications-left'
+    | '--notifications-transform'
+    | '--notifications-container-width';
 };
 
 export interface NotificationsProps
@@ -95,11 +103,28 @@ const defaultProps: Partial<NotificationsProps> = {
   store: notificationsStore,
 };
 
-const varsResolver = createVarsResolver<NotificationsFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const varsResolver = createVarsResolver<NotificationsFactory>(
+  (_, { zIndex, position, containerWidth }) => {
+    const [vertical, horizontal] = position!.split('-');
+
+    return {
+      root: {
+        '--notifications-z-index': zIndex?.toString(),
+        '--notifications-top': vertical === 'top' ? 'var(--mantine-spacing-md)' : undefined,
+        '--notifications-bottom': vertical === 'bottom' ? 'var(--mantine-spacing-md)' : undefined,
+        '--notifications-left':
+          horizontal === 'left'
+            ? 'var(--mantine-spacing-md)'
+            : horizontal === 'center'
+            ? '50%'
+            : undefined,
+        '--notifications-right': horizontal === 'right' ? 'var(--mantine-spacing-md)' : undefined,
+        '--notifications-transform': horizontal === 'center' ? 'translateX(-50%)' : undefined,
+        '--notifications-container-width': rem(containerWidth),
+      },
+    };
+  }
+);
 
 export const Notifications = factory<NotificationsFactory>((_props, ref) => {
   const props = useProps('Notifications', defaultProps, _props);
