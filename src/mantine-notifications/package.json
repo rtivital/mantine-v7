@@ -1,6 +1,6 @@
 {
   "name": "@mantine/notifications",
-  "version": "7.0.0-alpha.12",
+  "version": "7.0.0-alpha.13",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -33,13 +33,13 @@
     "notification-system"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.12",
-    "@mantine/hooks": "7.0.0-alpha.12",
+    "@mantine/core": "7.0.0-alpha.13",
+    "@mantine/hooks": "7.0.0-alpha.13",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@mantine/store": "7.0.0-alpha.12",
+    "@mantine/store": "7.0.0-alpha.13",
     "react-transition-group": "4.4.2",
     "tslib": "^2.5.2"
   },
