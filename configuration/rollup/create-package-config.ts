@@ -9,8 +9,9 @@ import alias, { Alias } from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import visualizer from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
-import typescript from '@rollup/plugin-typescript';
+// import typescript from '@rollup/plugin-typescript';
 import banner from 'rollup-plugin-banner2';
+import esbuild from 'rollup-plugin-esbuild';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
 
 interface PkgConfigInput {
@@ -39,7 +40,8 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     commonjs(),
     nodeExternals(),
     nodeResolve({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
-    typescript({
+    esbuild({
+      sourceMap: false,
       tsconfig: path.resolve(process.cwd(), 'tsconfig.json'),
     }),
     json(),

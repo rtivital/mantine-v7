@@ -11,6 +11,7 @@
     "composite": true,
     "strict": true,
     "jsx": "react-jsx",
+    "importHelpers": true,
     "paths": {
       "@mantine/hooks": ["../mantine-hooks/src"],
       "@mantine/tests": ["../mantine-tests/src"]
