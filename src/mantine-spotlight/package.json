@@ -1,5 +1,5 @@
 {
-  "name": "@mantine/notifications",
+  "name": "@mantine/spotlight",
   "version": "7.0.0-alpha.13",
   "types": "./lib/index.d.ts",
   "exports": {
@@ -28,9 +28,8 @@
     "ui-kit",
     "library",
     "frontend",
-    "notification",
-    "notification-manager",
-    "notification-system"
+    "search",
+    "command-center"
   ],
   "peerDependencies": {
     "@mantine/core": "7.0.0-alpha.13",
@@ -40,7 +39,6 @@
   },
   "dependencies": {
     "@mantine/store": "7.0.0-alpha.13",
-    "react-transition-group": "4.4.2",
     "tslib": "^2.5.2"
   },
   "devDependencies": {}
