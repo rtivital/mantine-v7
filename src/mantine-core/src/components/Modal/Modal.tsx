@@ -23,7 +23,7 @@ export interface ModalProps extends ModalRootProps {
   /** Modal title */
   title?: React.ReactNode;
 
-  /** Determines whether overlay should be rendered, `true` by default */
+  /** Determines whether the overlay should be rendered, `true` by default */
   withOverlay?: boolean;
 
   /** Props passed down to the `Overlay` component, use to configure opacity, `background-color`, styles and other properties */
@@ -32,7 +32,7 @@ export interface ModalProps extends ModalRootProps {
   /** Modal content */
   children?: React.ReactNode;
 
-  /** Determines whether close button should be rendered, `true` by default */
+  /** Determines whether the close button should be rendered, `true` by default */
   withCloseButton?: boolean;
 
   /** Props passed down to the close button */

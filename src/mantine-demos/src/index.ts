@@ -26,6 +26,7 @@ export * as ColorSwatchDemos from './demos/core/ColorSwatch';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as DividerDemos from './demos/core/Divider';
+export * as DrawerDemos from './demos/core/Drawer';
 export * as FieldsetDemos from './demos/core/Fieldset';
 export * as FileButtonDemos from './demos/core/FileButton';
 export * as FocusTrapDemos from './demos/core/FocusTrap';

@@ -101,6 +101,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Overlay,
           MDX_DATA.Affix,
           MDX_DATA.Modal,
+          MDX_DATA.Drawer,
         ],
       },
       {

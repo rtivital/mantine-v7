@@ -21,6 +21,7 @@ export * from './data/ColorPicker.styles-api';
 export * from './data/ColorSwatch.styles-api';
 export * from './data/Container.styles-api';
 export * from './data/Divider.styles-api';
+export * from './data/Drawer.styles-api';
 export * from './data/Fieldset.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Highlight.styles-api';

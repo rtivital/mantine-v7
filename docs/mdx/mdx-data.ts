@@ -847,6 +847,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/Modal.mdx',
   },
 
+  Drawer: {
+    title: 'Drawer',
+    package: '@mantine/core',
+    slug: '/core/drawer',
+    props: ['Drawer'],
+    styles: ['Drawer'],
+    description: 'Display overlay area at any side of the screen',
+    import: "import { Drawer } from '@mantine/core';",
+    source: 'mantine-core/src/components/Drawer/Drawer.tsx',
+    docs: 'core/Drawer.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',
