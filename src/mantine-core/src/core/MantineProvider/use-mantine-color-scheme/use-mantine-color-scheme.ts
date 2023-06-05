@@ -4,7 +4,7 @@ import { MantineColorScheme } from '../theme.types';
 
 function disableTransition() {
   const style = document.createElement('style');
-  style.innerHTML = '* {transition: none !important;}';
+  style.innerHTML = '*, *::before, *::after {transition: none !important;}';
   style.setAttribute('data-mantine-disable-transition', 'true');
   document.head.appendChild(style);
   const clear = () =>
