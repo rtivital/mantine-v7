@@ -11,6 +11,10 @@ body {
 
   -webkit-font-smoothing: var(--mantine-webkit-font-smoothing);
   -moz-osx-font-smoothing: var(--mantine-moz-font-smoothing);
+
+  @media screen and (max-device-width: 500px) {
+    -webkit-text-size-adjust: 100%;
+  }
 }
 
 [data-respect-reduced-motion] {
