@@ -5,3 +5,4 @@ export { scrollPosition } from './ScrollArea.demo.scrollPosition';
 export { maxHeight } from './ScrollArea.demo.maxHeight';
 export { stylesApi } from './ScrollArea.demo.stylesApi';
 export { scrollIntoView } from './ScrollArea.demo.scrollIntoView';
+export { autosizePopover } from './ScrollArea.demo.autosizePopover';
