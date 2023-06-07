@@ -6,7 +6,7 @@ export interface SpotlightState {
 
 export type SpotlightStore = MantineStore<SpotlightState>;
 
-export const createSpotlightStore = () => createStore<SpotlightState>({ opened: false });
+export const createSpotlightStore = () => createStore<SpotlightState>({ opened: true });
 export const spotlightStore = createSpotlightStore();
 export const useSpotlight = (store: SpotlightStore = spotlightStore) => useStore(store);
 

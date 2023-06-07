@@ -1,28 +1,39 @@
 import React from 'react';
 import {
-  BoxProps,
   StylesApiProps,
   factory,
-  ElementProps,
   useProps,
   useStyles,
   createVarsResolver,
   Factory,
   Modal,
+  ModalProps,
+  ModalStylesNames,
+  getDefaultZIndex,
 } from '@mantine/core';
 import { SpotlightProvider } from './Spotlight.context';
+import {
+  useSpotlight,
+  SpotlightStore,
+  spotlightStore,
+  closeSpotlight,
+  openSpotlight,
+  toggleSpotlight,
+} from './spotlight.store';
+import { SpotlightSearch } from './SpotlightSearch';
 import classes from './Spotlight.module.css';
 
-export type SpotlightStylesNames = 'root';
+export type SpotlightStylesNames = ModalStylesNames | 'search';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';
 };
 
 export interface SpotlightProps
-  extends BoxProps,
-    StylesApiProps<SpotlightFactory>,
-    ElementProps<'div'> {}
+  extends StylesApiProps<SpotlightFactory>,
+    Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'opened' | 'onClose'> {
+  store?: SpotlightStore;
+}
 
 export type SpotlightFactory = Factory<{
   props: SpotlightProps;
@@ -30,9 +41,21 @@ export type SpotlightFactory = Factory<{
   stylesNames: SpotlightStylesNames;
   vars: SpotlightCssVariables;
   variant: SpotlightVariant;
+  staticComponents: {
+    Search: typeof SpotlightSearch;
+    open: typeof openSpotlight;
+    close: typeof closeSpotlight;
+    toggle: typeof toggleSpotlight;
+  };
 }>;
 
-const defaultProps: Partial<SpotlightProps> = {};
+const defaultProps: Partial<SpotlightProps> = {
+  size: 600,
+  yOffset: 120,
+  zIndex: getDefaultZIndex('max'),
+  overlayProps: { opacity: 0.2, blur: 7 },
+  store: spotlightStore,
+};
 
 const varsResolver = createVarsResolver<SpotlightFactory>(() => ({
   root: {
@@ -42,7 +65,22 @@ const varsResolver = createVarsResolver<SpotlightFactory>(() => ({
 
 export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   const props = useProps('Spotlight', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    yOffset,
+    zIndex,
+    overlayProps,
+    store,
+    children,
+    ...others
+  } = props;
+
+  const { opened } = useSpotlight(store);
 
   const getStyles = useStyles<SpotlightFactory>({
     name: 'Spotlight',
@@ -62,15 +100,21 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
       <Modal
         ref={ref}
         {...getStyles('root')}
-        withCloseButton={false}
         {...others}
-        opened
-        onClose={() => {}}
+        withCloseButton={false}
+        opened={opened}
+        padding={0}
+        onClose={() => closeSpotlight(store)}
       >
-        Spotlight
+        {children}
       </Modal>
     </SpotlightProvider>
   );
 });
 
+Spotlight.classes = classes;
 Spotlight.displayName = '@mantine/core/Spotlight';
+Spotlight.Search = SpotlightSearch;
+Spotlight.open = openSpotlight;
+Spotlight.close = closeSpotlight;
+Spotlight.toggle = toggleSpotlight;
