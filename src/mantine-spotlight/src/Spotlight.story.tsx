@@ -13,10 +13,15 @@ export function Usage() {
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}
         />
-        <Spotlight.ActionsList>Actions list</Spotlight.ActionsList>
+        <Spotlight.ActionsList>
+          <Spotlight.Empty>No results</Spotlight.Empty>
+          <Spotlight.Action>First</Spotlight.Action>
+          <Spotlight.Action>Second</Spotlight.Action>
+          <Spotlight.Action id="third">Third</Spotlight.Action>
+        </Spotlight.ActionsList>
       </Spotlight>
 
-      <Button>Open spotlight</Button>
+      <Button onClick={() => Spotlight.open()}>Open spotlight</Button>
     </div>
   );
 }

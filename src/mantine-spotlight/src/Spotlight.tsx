@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   StylesApiProps,
   factory,
@@ -20,12 +20,15 @@ import {
   closeSpotlight,
   openSpotlight,
   toggleSpotlight,
+  updateSpotlightState,
 } from './spotlight.store';
 import { SpotlightSearch } from './SpotlightSearch';
 import { SpotlightActionsList } from './SpotlightActionsList';
+import { SpotlightAction } from './SpotlightAction';
+import { SpotlightEmpty } from './SpotlightEmpty';
 import classes from './Spotlight.module.css';
 
-export type SpotlightStylesNames = ModalStylesNames | 'search' | 'actionsList';
+export type SpotlightStylesNames = ModalStylesNames | 'search' | 'actionsList' | 'action';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';
@@ -53,9 +56,12 @@ export type SpotlightFactory = Factory<{
   staticComponents: {
     Search: typeof SpotlightSearch;
     ActionsList: typeof SpotlightActionsList;
+    Action: typeof SpotlightAction;
+    Empty: typeof SpotlightEmpty;
     open: typeof openSpotlight;
     close: typeof closeSpotlight;
     toggle: typeof toggleSpotlight;
+    updateState: typeof updateSpotlightState;
   };
 }>;
 
@@ -92,12 +98,25 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   } = props;
 
   const { opened } = useSpotlight(store);
+  const [empty, setEmpty] = useState(false);
   const [_query, setQuery] = useUncontrolled({
     value: query,
     defaultValue: '',
     finalValue: '',
     onChange: onQueryChange,
   });
+
+  const registeredActions = useRef<Set<string>>(new Set());
+  const registerAction = (id: string) => {
+    registeredActions.current.add(id);
+    return () => registeredActions.current.delete(id);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEmpty(registeredActions.current.size === 0);
+    }, 1);
+  }, [_query]);
 
   const getStyles = useStyles<SpotlightFactory>({
     name: 'Spotlight',
@@ -113,7 +132,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   });
 
   return (
-    <SpotlightProvider value={{ getStyles, query: _query, setQuery }}>
+    <SpotlightProvider value={{ getStyles, query: _query, setQuery, registerAction, empty }}>
       <Modal
         ref={ref}
         {...getStyles('root')}
@@ -133,6 +152,9 @@ Spotlight.classes = classes;
 Spotlight.displayName = '@mantine/core/Spotlight';
 Spotlight.Search = SpotlightSearch;
 Spotlight.ActionsList = SpotlightActionsList;
+Spotlight.Action = SpotlightAction;
+Spotlight.Empty = SpotlightEmpty;
 Spotlight.open = openSpotlight;
 Spotlight.close = closeSpotlight;
 Spotlight.toggle = toggleSpotlight;
+Spotlight.updateState = updateSpotlightState;

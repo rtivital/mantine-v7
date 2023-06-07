@@ -3,7 +3,9 @@ import type { SpotlightFactory } from './Spotlight';
 
 interface SpotlightContextValue {
   query: string;
+  empty: boolean;
   setQuery(query: string): void;
+  registerAction(id: string): () => void;
   getStyles: GetStylesApi<SpotlightFactory>;
 }
 
