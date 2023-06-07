@@ -19,3 +19,13 @@ function Demo() {
   );
 }
 ```
+
+```tsx
+function Demo() {
+  return (
+    <Spotlight.Action description="Action description" leftSection={node} rightSection={node}>
+      Action content
+    </Spotlight.Action>
+  );
+}
+```
