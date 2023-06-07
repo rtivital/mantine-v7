@@ -4,13 +4,19 @@ import type { _Styles } from '../get-style';
 
 export interface ResolveStylesInput {
   theme: MantineTheme;
-  styles: _Styles;
+  styles: _Styles | _Styles[];
   props: Record<string, any>;
   stylesCtx: Record<string, any> | undefined;
 }
 
-const emptyStyles: Record<string, CSSProperties> = {};
-
 export function resolveStyles({ theme, styles, props, stylesCtx }: ResolveStylesInput) {
-  return typeof styles === 'function' ? styles(theme, props, stylesCtx) : styles || emptyStyles;
+  const arrayStyles = Array.isArray(styles) ? styles : [styles];
+
+  return arrayStyles.reduce((acc, style) => {
+    if (typeof style === 'function') {
+      return { ...acc, ...style(theme, props, stylesCtx) };
+    }
+
+    return { ...acc, ...style };
+  }, {}) as CSSProperties;
 }

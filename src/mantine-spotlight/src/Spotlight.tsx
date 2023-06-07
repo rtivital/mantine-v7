@@ -11,6 +11,7 @@ import {
   ModalStylesNames,
   getDefaultZIndex,
 } from '@mantine/core';
+import { useUncontrolled } from '@mantine/hooks';
 import { SpotlightProvider } from './Spotlight.context';
 import {
   useSpotlight,
@@ -32,7 +33,14 @@ export type SpotlightCssVariables = {
 export interface SpotlightProps
   extends StylesApiProps<SpotlightFactory>,
     Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'opened' | 'onClose'> {
+  /** Spotlight store, can be used to create multiple instances of spotlight */
   store?: SpotlightStore;
+
+  /** Controlled Spotlight search query */
+  query?: string;
+
+  /** Called when query changes */
+  onQueryChange?(query: string): void;
 }
 
 export type SpotlightFactory = Factory<{
@@ -77,10 +85,18 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     overlayProps,
     store,
     children,
+    query,
+    onQueryChange,
     ...others
   } = props;
 
   const { opened } = useSpotlight(store);
+  const [_query, setQuery] = useUncontrolled({
+    value: query,
+    defaultValue: '',
+    finalValue: '',
+    onChange: onQueryChange,
+  });
 
   const getStyles = useStyles<SpotlightFactory>({
     name: 'Spotlight',
@@ -96,7 +112,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   });
 
   return (
-    <SpotlightProvider value={{ getStyles }}>
+    <SpotlightProvider value={{ getStyles, query: _query, setQuery }}>
       <Modal
         ref={ref}
         {...getStyles('root')}
