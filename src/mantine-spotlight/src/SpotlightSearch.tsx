@@ -26,3 +26,5 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
     />
   );
 });
+
+SpotlightSearch.displayName = '@mantine/spotlight/SpotlightSearch';

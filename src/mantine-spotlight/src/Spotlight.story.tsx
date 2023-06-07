@@ -13,6 +13,7 @@ export function Usage() {
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}
         />
+        <Spotlight.ActionsList>Actions list</Spotlight.ActionsList>
       </Spotlight>
 
       <Button>Open spotlight</Button>

@@ -22,9 +22,10 @@ import {
   toggleSpotlight,
 } from './spotlight.store';
 import { SpotlightSearch } from './SpotlightSearch';
+import { SpotlightActionsList } from './SpotlightActionsList';
 import classes from './Spotlight.module.css';
 
-export type SpotlightStylesNames = ModalStylesNames | 'search';
+export type SpotlightStylesNames = ModalStylesNames | 'search' | 'actionsList';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';
@@ -51,6 +52,7 @@ export type SpotlightFactory = Factory<{
   variant: SpotlightVariant;
   staticComponents: {
     Search: typeof SpotlightSearch;
+    ActionsList: typeof SpotlightActionsList;
     open: typeof openSpotlight;
     close: typeof closeSpotlight;
     toggle: typeof toggleSpotlight;
@@ -80,7 +82,6 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    yOffset,
     zIndex,
     overlayProps,
     store,
@@ -131,6 +132,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
 Spotlight.classes = classes;
 Spotlight.displayName = '@mantine/core/Spotlight';
 Spotlight.Search = SpotlightSearch;
+Spotlight.ActionsList = SpotlightActionsList;
 Spotlight.open = openSpotlight;
 Spotlight.close = closeSpotlight;
 Spotlight.toggle = toggleSpotlight;
