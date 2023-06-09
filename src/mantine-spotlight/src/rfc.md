@@ -8,6 +8,7 @@ function Demo() {
 
       <Spotlight.ActionsList>
         <Spotlight.ActionsGroup>
+          <Spotlight.Empty>Nothing found</Spotlight.Empty>
           <Spotlight.Action>1</Spotlight.Action>
           <Spotlight.Action>2</Spotlight.Action>
           <Spotlight.Action>3</Spotlight.Action>

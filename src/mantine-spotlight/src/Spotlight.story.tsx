@@ -14,8 +14,7 @@ export function Usage() {
           leftSection={<IconSearch stroke={1.5} size={20} />}
         />
         <Spotlight.ActionsList>
-          <Spotlight.Empty>No results</Spotlight.Empty>
-          <Spotlight.Empty>No results 2</Spotlight.Empty>
+          <Spotlight.Empty>Nothing found...</Spotlight.Empty>
           <Spotlight.Action description="Lorem">First</Spotlight.Action>
           <Spotlight.Action description="Dolor">Second</Spotlight.Action>
           <Spotlight.Action id="third" description="Sit ame">

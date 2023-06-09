@@ -121,7 +121,11 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   };
 
   useIsomorphicEffect(() => {
-    _query.trim().length > 0 && setEmpty(registeredActions.current.size === 0);
+    if (_query.trim().length > 0) {
+      setEmpty(registeredActions.current.size === 0);
+    } else {
+      setEmpty(false);
+    }
   }, [_query]);
 
   const getStyles = useStyles<SpotlightFactory>({

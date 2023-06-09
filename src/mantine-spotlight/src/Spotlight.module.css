@@ -19,3 +19,9 @@
   display: block;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
 }
+
+.empty {
+  color: var(--mantine-color-dimmed);
+  padding: var(--mantine-spacing-md);
+  text-align: center;
+}
