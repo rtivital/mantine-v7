@@ -1,3 +1,7 @@
+.root {
+  background-color: red;
+}
+
 .search {
   border: 0;
   background-color: transparent;
@@ -50,4 +54,8 @@
   color: var(--mantine-color-dimmed);
   padding: var(--mantine-spacing-md);
   text-align: center;
+}
+
+.footer {
+  padding: var(--mantine-spacing-xs) calc(var(--mantine-spacing-md) + rem(4px));
 }

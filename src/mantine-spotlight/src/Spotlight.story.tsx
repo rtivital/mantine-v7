@@ -30,6 +30,8 @@ export function Usage() {
           <Spotlight.Empty>Nothing found...</Spotlight.Empty>
           {largeActionsList}
         </Spotlight.ActionsList>
+
+        <Spotlight.Footer>This is footer</Spotlight.Footer>
       </Spotlight>
 
       <Button onClick={() => Spotlight.open()}>Open spotlight</Button>
