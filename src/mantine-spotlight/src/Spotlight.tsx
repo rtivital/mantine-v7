@@ -10,6 +10,9 @@ import {
   ModalProps,
   ModalStylesNames,
   getDefaultZIndex,
+  resolveClassNames,
+  useMantineTheme,
+  resolveStyles,
 } from '@mantine/core';
 import { SpotlightProvider } from './Spotlight.context';
 import {
@@ -119,6 +122,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     ...others
   } = props;
 
+  const theme = useMantineTheme();
   const { opened, query: storeQuery, empty } = useSpotlight(store);
   const _query = query || storeQuery;
   const setQuery = (q: string) => {
@@ -152,12 +156,18 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     >
       <Modal
         ref={ref}
-        {...getStyles('root')}
         {...others}
         withCloseButton={false}
         opened={opened}
         padding={0}
         onClose={() => closeSpotlight(store)}
+        classNames={resolveClassNames({
+          theme,
+          classNames: [classes, classNames],
+          props,
+          stylesCtx: undefined,
+        })}
+        styles={resolveStyles({ theme, styles, props, stylesCtx: undefined })}
         transitionProps={{
           ...transitionProps,
           onExited: () => {
