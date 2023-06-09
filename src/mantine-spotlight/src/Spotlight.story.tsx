@@ -5,6 +5,18 @@ import { Spotlight } from './Spotlight';
 
 export default { title: 'Spotlight' };
 
+const largeActionsList = Array(100)
+  .fill(0)
+  .map((_, index) => (
+    <Spotlight.Action
+      key={index}
+      onClick={() => console.log(`action ${index}`)}
+      description={`Action ${index}`}
+    >
+      {`Action ${index}`}
+    </Spotlight.Action>
+  ));
+
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
@@ -15,19 +27,7 @@ export function Usage() {
         />
         <Spotlight.ActionsList>
           <Spotlight.Empty>Nothing found...</Spotlight.Empty>
-          <Spotlight.Action onClick={() => console.log('action 1')} description="Lorem">
-            First
-          </Spotlight.Action>
-          <Spotlight.Action onClick={() => console.log('action 2')} description="Dolor">
-            Second
-          </Spotlight.Action>
-          <Spotlight.Action
-            onClick={() => console.log('action 3')}
-            id="third"
-            description="Sit ame"
-          >
-            Third
-          </Spotlight.Action>
+          {largeActionsList}
         </Spotlight.ActionsList>
       </Spotlight>
 

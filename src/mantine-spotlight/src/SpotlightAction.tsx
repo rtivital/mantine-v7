@@ -1,5 +1,4 @@
-import React, { forwardRef, useRef } from 'react';
-import { randomId } from '@mantine/hooks';
+import React, { forwardRef, useId } from 'react';
 import { UnstyledButton, BoxProps, ElementProps, useProps } from '@mantine/core';
 import { useSpotlightContext } from './Spotlight.context';
 
@@ -18,9 +17,10 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
   );
 
   const ctx = useSpotlightContext();
-  const actionIdRef = useRef(id || randomId());
+  const generatedId = useId();
+  const actionId = id || generatedId;
   const shouldRender = ctx.filter(props);
-  const removeAction = ctx.registerAction(actionIdRef.current);
+  const removeAction = ctx.registerAction(actionId);
 
   if (!shouldRender) {
     removeAction();
@@ -32,7 +32,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
       ref={ref}
       data-action
       {...ctx.getStyles('action', { className, style })}
-      id={actionIdRef.current}
+      id={actionId}
       {...others}
       tabIndex={-1}
     >

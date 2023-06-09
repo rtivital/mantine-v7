@@ -5,6 +5,7 @@
 
 .actionsList {
   border-top: rem(1px) solid var(--_actions-list-border);
+  padding: rem(4px);
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);
@@ -17,10 +18,27 @@
 
 .action {
   display: block;
+  width: 100%;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-default);
+  background-color: var(--_action-bg, transparent);
+  color: var(--_action-color, inherit);
+
+  &:not([data-selected]) {
+    @mixin hover {
+      @mixin light {
+        --_action-bg: var(--mantine-color-gray-0);
+      }
+
+      @mixin dark {
+        --_action-bg: var(--mantine-color-dark-6);
+      }
+    }
+  }
 
   &[data-selected] {
-    background-color: red;
+    --_action-bg: var(--mantine-color-primary);
+    --_action-color: var(--mantine-color-white);
   }
 }
 
