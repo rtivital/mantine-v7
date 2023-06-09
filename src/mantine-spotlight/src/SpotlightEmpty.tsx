@@ -14,7 +14,7 @@ export const SpotlightEmpty = forwardRef<HTMLDivElement, SpotlightEmptyProps>((p
     return null;
   }
 
-  return <Box ref={ref} {...others} />;
+  return <Box ref={ref} {...ctx.getStyles('empty')} {...others} />;
 });
 
 SpotlightEmpty.displayName = '@mantine/spotlight/SpotlightEmpty';

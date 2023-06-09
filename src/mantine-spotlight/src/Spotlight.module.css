@@ -14,3 +14,8 @@
     --_actions-list-border: var(--mantine-color-dark-4);
   }
 }
+
+.action {
+  display: block;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+}

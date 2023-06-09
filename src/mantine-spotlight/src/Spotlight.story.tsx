@@ -15,9 +15,12 @@ export function Usage() {
         />
         <Spotlight.ActionsList>
           <Spotlight.Empty>No results</Spotlight.Empty>
-          <Spotlight.Action>First</Spotlight.Action>
-          <Spotlight.Action>Second</Spotlight.Action>
-          <Spotlight.Action id="third">Third</Spotlight.Action>
+          <Spotlight.Empty>No results 2</Spotlight.Empty>
+          <Spotlight.Action description="Lorem">First</Spotlight.Action>
+          <Spotlight.Action description="Dolor">Second</Spotlight.Action>
+          <Spotlight.Action id="third" description="Sit ame">
+            Third
+          </Spotlight.Action>
         </Spotlight.ActionsList>
       </Spotlight>
 
