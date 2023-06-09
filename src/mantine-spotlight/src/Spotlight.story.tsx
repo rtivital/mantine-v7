@@ -20,7 +20,7 @@ const largeActionsList = Array(100)
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Spotlight>
+      <Spotlight clearQueryOnClose={false}>
         <Spotlight.Search
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}

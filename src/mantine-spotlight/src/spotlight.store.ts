@@ -100,8 +100,16 @@ export function setQuery(query: string, store: SpotlightStore = spotlightStore) 
   });
 }
 
-export function clearSpotlightState(store: SpotlightStore = spotlightStore) {
-  store.updateState((state) => ({ ...state, selected: -1, query: '', empty: false }));
+export function clearSpotlightState(
+  { clearQuery }: { clearQuery: boolean | undefined },
+  store: SpotlightStore = spotlightStore
+) {
+  store.updateState((state) => ({
+    ...state,
+    selected: -1,
+    query: clearQuery ? '' : state.query,
+    empty: clearQuery ? false : state.empty,
+  }));
 }
 
 export const spotlight = {

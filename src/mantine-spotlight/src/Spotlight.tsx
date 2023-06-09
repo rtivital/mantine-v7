@@ -57,6 +57,9 @@ export interface SpotlightProps
 
   /** Function based on which `Spotlight.Action` determines whether it should render its content. By default, actions are filtered by `children` and `description` if these values are strings. */
   filter?: SpotlightFilterFunction;
+
+  /** Determines whether the search query should be cleared when the spotlight is closed, `true` by default */
+  clearQueryOnClose?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -85,6 +88,7 @@ const defaultProps: Partial<SpotlightProps> = {
   transitionProps: { duration: 200, transition: 'pop' },
   store: spotlightStore,
   filter: defaultSpotlightFilter,
+  clearQueryOnClose: true,
 };
 
 const varsResolver = createVarsResolver<SpotlightFactory>(() => ({
@@ -108,6 +112,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     onQueryChange,
     filter,
     transitionProps,
+    clearQueryOnClose,
     ...others
   } = props;
 
@@ -153,7 +158,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         transitionProps={{
           ...transitionProps,
           onExited: () => {
-            spotlight.clearSpotlightState(store);
+            spotlight.clearSpotlightState({ clearQuery: clearQueryOnClose }, store);
             transitionProps?.onExited?.();
           },
         }}
