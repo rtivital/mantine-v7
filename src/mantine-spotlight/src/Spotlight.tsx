@@ -81,7 +81,8 @@ const defaultProps: Partial<SpotlightProps> = {
   size: 600,
   yOffset: 120,
   zIndex: getDefaultZIndex('max'),
-  overlayProps: { opacity: 0.2, blur: 7 },
+  overlayProps: { backgroundOpacity: 0.35, blur: 7 },
+  transitionProps: { duration: 200, transition: 'pop' },
   store: spotlightStore,
   filter: defaultSpotlightFilter,
 };
@@ -101,13 +102,12 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    zIndex,
-    overlayProps,
     store,
     children,
     query,
     onQueryChange,
     filter,
+    transitionProps,
     ...others
   } = props;
 
@@ -150,6 +150,13 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         opened={opened}
         padding={0}
         onClose={() => closeSpotlight(store)}
+        transitionProps={{
+          ...transitionProps,
+          onExited: () => {
+            spotlight.clearSpotlightState(store);
+            transitionProps?.onExited?.();
+          },
+        }}
       >
         {children}
       </Modal>
