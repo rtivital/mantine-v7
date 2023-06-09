@@ -41,6 +41,12 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
       event.preventDefault();
       ctx.setSelected(selectAction(ctx.selected - 1));
     }
+
+    if (event.nativeEvent.code === 'Enter') {
+      event.preventDefault();
+      const selected = document.querySelector<HTMLButtonElement>('[data-selected]');
+      selected?.click();
+    }
   };
 
   return (

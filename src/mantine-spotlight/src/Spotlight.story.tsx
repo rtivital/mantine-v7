@@ -15,9 +15,17 @@ export function Usage() {
         />
         <Spotlight.ActionsList>
           <Spotlight.Empty>Nothing found...</Spotlight.Empty>
-          <Spotlight.Action description="Lorem">First</Spotlight.Action>
-          <Spotlight.Action description="Dolor">Second</Spotlight.Action>
-          <Spotlight.Action id="third" description="Sit ame">
+          <Spotlight.Action onClick={() => console.log('action 1')} description="Lorem">
+            First
+          </Spotlight.Action>
+          <Spotlight.Action onClick={() => console.log('action 2')} description="Dolor">
+            Second
+          </Spotlight.Action>
+          <Spotlight.Action
+            onClick={() => console.log('action 3')}
+            id="third"
+            description="Sit ame"
+          >
             Third
           </Spotlight.Action>
         </Spotlight.ActionsList>
