@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { ElementProps, useProps, Input, InputProps } from '@mantine/core';
 import { clamp } from '@mantine/hooks';
 import { useSpotlightContext } from './Spotlight.context';
+import { setSelected } from './spotlight.store';
 
 export interface SpotlightSearchProps
   extends InputProps,
@@ -34,12 +35,12 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
 
     if (event.nativeEvent.code === 'ArrowDown') {
       event.preventDefault();
-      ctx.setSelected(selectAction(ctx.selected + 1));
+      setSelected(selectAction(ctx.store.getState().selected + 1));
     }
 
     if (event.nativeEvent.code === 'ArrowUp') {
       event.preventDefault();
-      ctx.setSelected(selectAction(ctx.selected - 1));
+      setSelected(selectAction(ctx.store.getState().selected - 1));
     }
 
     if (event.nativeEvent.code === 'Enter') {
@@ -57,7 +58,7 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
       value={ctx.query}
       onChange={(event) => {
         ctx.setQuery(event.currentTarget.value);
-        ctx.setSelected(selectAction(0));
+        setSelected(selectAction(0));
       }}
       {...others}
       onKeyDown={handleKeyDown}

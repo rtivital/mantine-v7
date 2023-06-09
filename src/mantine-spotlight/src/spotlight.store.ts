@@ -2,13 +2,13 @@ import { createStore, useStore, MantineStore } from '@mantine/store';
 
 export interface SpotlightState {
   opened: boolean;
-  registeredActions: Set<string>;
+  selected: number;
 }
 
 export type SpotlightStore = MantineStore<SpotlightState>;
 
 export const createSpotlightStore = () =>
-  createStore<SpotlightState>({ opened: true, registeredActions: new Set() });
+  createStore<SpotlightState>({ opened: true, selected: -1 });
 export const spotlightStore = createSpotlightStore();
 export const useSpotlight = (store: SpotlightStore = spotlightStore) => useStore(store);
 
@@ -30,6 +30,10 @@ export function closeSpotlight(store: SpotlightStore = spotlightStore) {
 
 export function toggleSpotlight(store: SpotlightStore = spotlightStore) {
   updateSpotlightState((state) => ({ opened: !state.opened }), store);
+}
+
+export function setSelected(index: number, store: SpotlightStore = spotlightStore) {
+  store.updateState((state) => ({ ...state, selected: index }));
 }
 
 export const spotlight = {
