@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useId } from 'react';
-import { Box, BoxProps, ElementProps, useProps } from '@mantine/core';
+import { BoxProps, ElementProps, useProps, ScrollArea } from '@mantine/core';
 import { useSpotlightContext } from './Spotlight.context';
 import { setListId } from './spotlight.store';
 
@@ -9,7 +9,7 @@ const defaultProps: Partial<SpotlightActionsListProps> = {};
 
 export const SpotlightActionsList = forwardRef<HTMLDivElement, SpotlightActionsListProps>(
   (props, ref) => {
-    const { className, style, id, ...others } = useProps(
+    const { className, style, id, children, ...others } = useProps(
       'SpotlightActionsList',
       defaultProps,
       props
@@ -23,7 +23,13 @@ export const SpotlightActionsList = forwardRef<HTMLDivElement, SpotlightActionsL
       return () => setListId('', ctx.store);
     }, []);
 
-    return <Box {...ctx.getStyles('actionsList')} ref={ref} id={listId} {...others} />;
+    return (
+      <ScrollArea.Autosize {...ctx.getStyles('actionsList')} ref={ref} {...others}>
+        <div id={listId} {...ctx.getStyles('actionsListInner')}>
+          {children}
+        </div>
+      </ScrollArea.Autosize>
+    );
   }
 );
 

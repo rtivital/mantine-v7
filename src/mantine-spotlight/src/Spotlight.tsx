@@ -31,7 +31,13 @@ import classes from './Spotlight.module.css';
 
 export type SpotlightFilterFunction = (query: string, action: SpotlightActionProps) => boolean;
 
-export type SpotlightStylesNames = ModalStylesNames | 'search' | 'actionsList' | 'action' | 'empty';
+export type SpotlightStylesNames =
+  | ModalStylesNames
+  | 'search'
+  | 'actionsList'
+  | 'action'
+  | 'empty'
+  | 'actionsListInner';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';

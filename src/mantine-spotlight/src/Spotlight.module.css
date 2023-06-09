@@ -5,7 +5,7 @@
 
 .actionsList {
   border-top: rem(1px) solid var(--_actions-list-border);
-  padding: rem(4px);
+  max-height: rem(400px);
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);
@@ -14,6 +14,10 @@
   @mixin dark {
     --_actions-list-border: var(--mantine-color-dark-4);
   }
+}
+
+.actionsListInner {
+  padding: rem(4px);
 }
 
 .action {

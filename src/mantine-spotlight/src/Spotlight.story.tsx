@@ -25,6 +25,7 @@ export function Usage() {
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}
         />
+
         <Spotlight.ActionsList>
           <Spotlight.Empty>Nothing found...</Spotlight.Empty>
           {largeActionsList}
