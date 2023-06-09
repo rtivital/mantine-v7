@@ -5,12 +5,22 @@ export interface SpotlightState {
   opened: boolean;
   selected: number;
   listId: string;
+  query: string;
+  empty: boolean;
+  registeredActions: Set<string>;
 }
 
 export type SpotlightStore = MantineStore<SpotlightState>;
 
 export const createSpotlightStore = () =>
-  createStore<SpotlightState>({ opened: true, selected: -1, listId: '' });
+  createStore<SpotlightState>({
+    opened: true,
+    empty: false,
+    selected: -1,
+    listId: '',
+    query: '',
+    registeredActions: new Set(),
+  });
 export const spotlightStore = createSpotlightStore();
 export const useSpotlight = (store: SpotlightStore = spotlightStore) => useStore(store);
 
@@ -71,6 +81,25 @@ export function triggerSelectedAction(store: SpotlightStore = spotlightStore) {
   selected?.click();
 }
 
+export function registerAction(id: string, store: SpotlightStore = spotlightStore) {
+  const state = store.getState();
+  state.registeredActions.add(id);
+  return () => state.registeredActions.delete(id);
+}
+
+export function setQuery(query: string, store: SpotlightStore = spotlightStore) {
+  updateSpotlightState(() => ({ query }), store);
+  Promise.resolve().then(() => {
+    selectAction(0, store);
+    updateSpotlightState(
+      (state) => ({
+        empty: (state.query.trim().length > 0 && state.registeredActions.size === 0) || false,
+      }),
+      store
+    );
+  });
+}
+
 export const spotlight = {
   open: openSpotlight,
   close: closeSpotlight,
@@ -82,4 +111,6 @@ export const spotlight = {
   selectNextAction,
   selectPreviousAction,
   triggerSelectedAction,
+  registerAction,
+  setQuery,
 };

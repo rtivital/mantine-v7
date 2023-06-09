@@ -15,7 +15,7 @@ export const SpotlightActionsList = forwardRef<HTMLDivElement, SpotlightActionsL
       props
     );
     const ctx = useSpotlightContext();
-    const generatedId = `mantine-${useId().replaceAll(':', '-')}`;
+    const generatedId = `mantine-${useId().replaceAll(':', '')}`;
     const listId = id || generatedId;
 
     useEffect(() => {

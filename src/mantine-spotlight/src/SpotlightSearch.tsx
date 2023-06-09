@@ -45,10 +45,7 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
       classNames={[{ input: inputStyles.className }, classNames] as any}
       styles={[{ input: inputStyles.style }, styles] as any}
       value={ctx.query}
-      onChange={(event) => {
-        ctx.setQuery(event.currentTarget.value);
-        spotlight.selectAction(0);
-      }}
+      onChange={(event) => ctx.setQuery(event.currentTarget.value)}
       {...others}
       onKeyDown={handleKeyDown}
     />

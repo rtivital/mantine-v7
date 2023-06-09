@@ -1,6 +1,7 @@
 import React, { forwardRef, useId } from 'react';
 import { UnstyledButton, BoxProps, ElementProps, useProps } from '@mantine/core';
 import { useSpotlightContext } from './Spotlight.context';
+import { spotlight } from './spotlight.store';
 
 export interface SpotlightActionProps extends BoxProps, ElementProps<'button'> {
   /** Action description, pass string to use in default filter */
@@ -20,7 +21,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
   const generatedId = useId();
   const actionId = id || generatedId;
   const shouldRender = ctx.filter(props);
-  const removeAction = ctx.registerAction(actionId);
+  const removeAction = spotlight.registerAction(actionId);
 
   if (!shouldRender) {
     removeAction();

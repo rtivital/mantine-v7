@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import {
   StylesApiProps,
   factory,
@@ -11,7 +11,6 @@ import {
   ModalStylesNames,
   getDefaultZIndex,
 } from '@mantine/core';
-import { useUncontrolled, useIsomorphicEffect } from '@mantine/hooks';
 import { SpotlightProvider } from './Spotlight.context';
 import {
   useSpotlight,
@@ -21,6 +20,7 @@ import {
   openSpotlight,
   toggleSpotlight,
   updateSpotlightState,
+  spotlight,
 } from './spotlight.store';
 import { SpotlightSearch } from './SpotlightSearch';
 import { SpotlightActionsList } from './SpotlightActionsList';
@@ -105,28 +105,12 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     ...others
   } = props;
 
-  const { opened } = useSpotlight(store);
-  const [_query, setQuery] = useUncontrolled({
-    value: query,
-    defaultValue: '',
-    finalValue: '',
-    onChange: onQueryChange,
-  });
-
-  const [empty, setEmpty] = useState(false);
-  const registeredActions = useRef<Set<string>>(new Set());
-  const registerAction = (id: string) => {
-    registeredActions.current.add(id);
-    return () => registeredActions.current.delete(id);
+  const { opened, query: storeQuery, empty } = useSpotlight(store);
+  const _query = query || storeQuery;
+  const setQuery = (q: string) => {
+    onQueryChange?.(q);
+    spotlight.setQuery(q, store);
   };
-
-  useIsomorphicEffect(() => {
-    if (_query.trim().length > 0) {
-      setEmpty(registeredActions.current.size === 0);
-    } else {
-      setEmpty(false);
-    }
-  }, [_query]);
 
   const getStyles = useStyles<SpotlightFactory>({
     name: 'Spotlight',
@@ -147,7 +131,6 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         getStyles,
         query: _query,
         setQuery,
-        registerAction,
         empty,
         filter: (actionProps) => filter!(_query, actionProps),
         store: store!,

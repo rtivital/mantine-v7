@@ -8,7 +8,6 @@ interface SpotlightContextValue {
   empty: boolean;
   filter(props: SpotlightActionProps): boolean;
   setQuery(query: string): void;
-  registerAction(id: string): () => void;
   getStyles: GetStylesApi<SpotlightFactory>;
   store: SpotlightStore;
 }
