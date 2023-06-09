@@ -106,6 +106,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   } = props;
 
   const { opened } = useSpotlight(store);
+  const [selected, setSelected] = useState(-1);
   const [_query, setQuery] = useUncontrolled({
     value: query,
     defaultValue: '',
@@ -149,6 +150,8 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         setQuery,
         registerAction,
         empty,
+        selected,
+        setSelected,
         filter: (actionProps) => filter!(_query, actionProps),
       }}
     >

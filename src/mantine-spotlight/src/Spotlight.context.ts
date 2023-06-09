@@ -5,7 +5,9 @@ import type { SpotlightActionProps } from './SpotlightAction';
 interface SpotlightContextValue {
   query: string;
   empty: boolean;
+  selected: number;
   filter(props: SpotlightActionProps): boolean;
+  setSelected(index: number): void;
   setQuery(query: string): void;
   registerAction(id: string): () => void;
   getStyles: GetStylesApi<SpotlightFactory>;

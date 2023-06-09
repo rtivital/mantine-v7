@@ -16,6 +16,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
     defaultProps,
     props
   );
+
   const ctx = useSpotlightContext();
   const actionIdRef = useRef(id || randomId());
   const shouldRender = ctx.filter(props);
@@ -33,6 +34,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
       {...ctx.getStyles('action', { className, style })}
       id={actionIdRef.current}
       {...others}
+      tabIndex={-1}
     >
       <span>{children}</span>
       <span>{description}</span>

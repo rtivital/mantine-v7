@@ -18,6 +18,10 @@
 .action {
   display: block;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+
+  &[data-selected] {
+    background-color: red;
+  }
 }
 
 .empty {
