@@ -2,6 +2,9 @@ import React from 'react';
 import { IconSearch } from '@tabler/icons-react';
 import { Button, Text } from '@mantine/core';
 import { Spotlight } from './Spotlight';
+import { createSpotlight } from './spotlight.store';
+
+const [store, actions] = createSpotlight();
 
 export default { title: 'Spotlight' };
 
@@ -25,7 +28,7 @@ const largeActionsList = Array(20)
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Spotlight>
+      <Spotlight store={store}>
         <Spotlight.Search
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}
@@ -39,7 +42,7 @@ export function Usage() {
         <Spotlight.Footer>This is footer</Spotlight.Footer>
       </Spotlight>
 
-      <Button onClick={() => Spotlight.open()}>Open spotlight</Button>
+      <Button onClick={actions.open}>Open spotlight</Button>
     </div>
   );
 }

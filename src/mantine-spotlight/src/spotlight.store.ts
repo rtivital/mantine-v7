@@ -14,45 +14,45 @@ export type SpotlightStore = MantineStore<SpotlightState>;
 
 export const createSpotlightStore = () =>
   createStore<SpotlightState>({
-    opened: true,
+    opened: false,
     empty: false,
     selected: -1,
     listId: '',
     query: '',
     registeredActions: new Set(),
   });
-export const spotlightStore = createSpotlightStore();
-export const useSpotlight = (store: SpotlightStore = spotlightStore) => useStore(store);
 
-export function updateSpotlightState(
+export const useSpotlight = (store: SpotlightStore) => useStore(store);
+
+export function updateSpotlightStateAction(
   update: (state: SpotlightState) => Partial<SpotlightState>,
-  store: SpotlightStore = spotlightStore
+  store: SpotlightStore
 ) {
   const state = store.getState();
-  spotlightStore.setState({ ...state, ...update(store.getState()) });
+  store.setState({ ...state, ...update(store.getState()) });
 }
 
-export function openSpotlight(store: SpotlightStore = spotlightStore) {
-  updateSpotlightState(() => ({ opened: true }), store);
+export function openSpotlightAction(store: SpotlightStore) {
+  updateSpotlightStateAction(() => ({ opened: true }), store);
 }
 
-export function closeSpotlight(store: SpotlightStore = spotlightStore) {
-  updateSpotlightState(() => ({ opened: false }), store);
+export function closeSpotlightAction(store: SpotlightStore) {
+  updateSpotlightStateAction(() => ({ opened: false }), store);
 }
 
-export function toggleSpotlight(store: SpotlightStore = spotlightStore) {
-  updateSpotlightState((state) => ({ opened: !state.opened }), store);
+export function toggleSpotlightAction(store: SpotlightStore) {
+  updateSpotlightStateAction((state) => ({ opened: !state.opened }), store);
 }
 
-export function setSelectedAction(index: number, store: SpotlightStore = spotlightStore) {
+export function setSelectedAction(index: number, store: SpotlightStore) {
   store.updateState((state) => ({ ...state, selected: index }));
 }
 
-export function setListId(id: string, store: SpotlightStore = spotlightStore) {
+export function setListId(id: string, store: SpotlightStore) {
   store.updateState((state) => ({ ...state, listId: id }));
 }
 
-export function selectAction(index: number, store: SpotlightStore = spotlightStore): number {
+export function selectAction(index: number, store: SpotlightStore): number {
   const state = store.getState();
   const actionsList = document.getElementById(state.listId)!;
   const selected = actionsList.querySelector<HTMLButtonElement>('[data-selected]');
@@ -68,31 +68,31 @@ export function selectAction(index: number, store: SpotlightStore = spotlightSto
   return selectedIndex;
 }
 
-export function selectNextAction(store: SpotlightStore = spotlightStore) {
+export function selectNextAction(store: SpotlightStore) {
   return selectAction(store.getState().selected + 1, store);
 }
 
-export function selectPreviousAction(store: SpotlightStore = spotlightStore) {
+export function selectPreviousAction(store: SpotlightStore) {
   return selectAction(store.getState().selected - 1, store);
 }
 
-export function triggerSelectedAction(store: SpotlightStore = spotlightStore) {
+export function triggerSelectedAction(store: SpotlightStore) {
   const state = store.getState();
   const selected = document.querySelector<HTMLButtonElement>(`#${state.listId} [data-selected]`);
   selected?.click();
 }
 
-export function registerAction(id: string, store: SpotlightStore = spotlightStore) {
+export function registerAction(id: string, store: SpotlightStore) {
   const state = store.getState();
   state.registeredActions.add(id);
   return () => state.registeredActions.delete(id);
 }
 
-export function setQuery(query: string, store: SpotlightStore = spotlightStore) {
-  updateSpotlightState(() => ({ query }), store);
+export function setQuery(query: string, store: SpotlightStore) {
+  updateSpotlightStateAction(() => ({ query }), store);
   Promise.resolve().then(() => {
     selectAction(0, store);
-    updateSpotlightState(
+    updateSpotlightStateAction(
       (state) => ({
         empty: (state.query.trim().length > 0 && state.registeredActions.size === 0) || false,
       }),
@@ -103,7 +103,7 @@ export function setQuery(query: string, store: SpotlightStore = spotlightStore) 
 
 export function clearSpotlightState(
   { clearQuery }: { clearQuery: boolean | undefined },
-  store: SpotlightStore = spotlightStore
+  store: SpotlightStore
 ) {
   store.updateState((state) => ({
     ...state,
@@ -114,10 +114,10 @@ export function clearSpotlightState(
 }
 
 export const spotlightActions = {
-  open: openSpotlight,
-  close: closeSpotlight,
-  toggle: toggleSpotlight,
-  updateState: updateSpotlightState,
+  open: openSpotlightAction,
+  close: closeSpotlightAction,
+  toggle: toggleSpotlightAction,
+  updateState: updateSpotlightStateAction,
   setSelectedAction,
   setListId,
   selectAction,
@@ -128,3 +128,17 @@ export const spotlightActions = {
   setQuery,
   clearSpotlightState,
 };
+
+export function createSpotlight() {
+  const store = createSpotlightStore();
+  const actions = {
+    open: () => openSpotlightAction(store),
+    close: () => closeSpotlightAction(store),
+    toggle: () => toggleSpotlightAction(store),
+  };
+
+  return [store, actions] as const;
+}
+
+export const [spotlightStore, spotlight] = createSpotlight();
+export const { open: openSpotlight, close: closeSpotlight, toggle: toggleSpotlight } = spotlight;

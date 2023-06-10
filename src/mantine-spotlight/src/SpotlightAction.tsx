@@ -45,7 +45,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
   const generatedId = useId();
   const actionId = id || generatedId;
   const shouldRender = ctx.filter(props);
-  const removeAction = spotlightActions.registerAction(actionId);
+  const removeAction = spotlightActions.registerAction(actionId, ctx.store);
 
   useEffect(
     () => () => {
@@ -66,6 +66,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
       {...ctx.getStyles('action', { className, style })}
       id={actionId}
       {...others}
+      onMouseDown={(event) => event.preventDefault()}
       tabIndex={-1}
     >
       {children || (

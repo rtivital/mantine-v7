@@ -20,11 +20,8 @@ import {
   useSpotlight,
   SpotlightStore,
   spotlightStore,
-  closeSpotlight,
-  openSpotlight,
-  toggleSpotlight,
-  updateSpotlightState,
   spotlightActions,
+  spotlight,
 } from './spotlight.store';
 import { SpotlightSearch } from './SpotlightSearch';
 import { SpotlightActionsList } from './SpotlightActionsList';
@@ -97,10 +94,9 @@ export type SpotlightFactory = Factory<{
     Action: typeof SpotlightAction;
     Empty: typeof SpotlightEmpty;
     Footer: typeof SpotlightFooter;
-    open: typeof openSpotlight;
-    close: typeof closeSpotlight;
-    toggle: typeof toggleSpotlight;
-    updateState: typeof updateSpotlightState;
+    open: typeof spotlight.open;
+    close: typeof spotlight.close;
+    toggle: typeof spotlight.toggle;
   };
 }>;
 
@@ -146,11 +142,11 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   } = props;
 
   const theme = useMantineTheme();
-  const { opened, query: storeQuery, empty } = useSpotlight(store);
+  const { opened, query: storeQuery, empty } = useSpotlight(store!);
   const _query = query || storeQuery;
   const setQuery = (q: string) => {
     onQueryChange?.(q);
-    spotlightActions.setQuery(q, store);
+    spotlightActions.setQuery(q, store!);
   };
 
   const getStyles = useStyles<SpotlightFactory>({
@@ -189,7 +185,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         withCloseButton={false}
         opened={opened}
         padding={0}
-        onClose={() => closeSpotlight(store)}
+        onClose={() => spotlightActions.close(store!)}
         classNames={resolveClassNames({
           theme,
           classNames: [classes, classNames],
@@ -200,7 +196,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         transitionProps={{
           ...transitionProps,
           onExited: () => {
-            spotlightActions.clearSpotlightState({ clearQuery: clearQueryOnClose }, store);
+            spotlightActions.clearSpotlightState({ clearQuery: clearQueryOnClose }, store!);
             transitionProps?.onExited?.();
           },
         }}
@@ -218,7 +214,6 @@ Spotlight.ActionsList = SpotlightActionsList;
 Spotlight.Action = SpotlightAction;
 Spotlight.Empty = SpotlightEmpty;
 Spotlight.Footer = SpotlightFooter;
-Spotlight.open = openSpotlight;
-Spotlight.close = closeSpotlight;
-Spotlight.toggle = toggleSpotlight;
-Spotlight.updateState = updateSpotlightState;
+Spotlight.open = spotlight.open;
+Spotlight.close = spotlight.close;
+Spotlight.toggle = spotlight.toggle;
