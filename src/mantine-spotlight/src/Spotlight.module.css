@@ -1,3 +1,13 @@
+.content {
+  overflow: hidden;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: rem(440px);
+}
+
 .search {
   border: 0;
   background-color: transparent;
@@ -5,7 +15,7 @@
 
 .actionsList {
   border-top: rem(1px) solid var(--_actions-list-border);
-  max-height: rem(400px);
+  flex: 1;
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);

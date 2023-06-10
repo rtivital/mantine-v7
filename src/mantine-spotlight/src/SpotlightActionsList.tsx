@@ -24,11 +24,11 @@ export const SpotlightActionsList = forwardRef<HTMLDivElement, SpotlightActionsL
     }, []);
 
     return (
-      <ScrollArea.Autosize {...ctx.getStyles('actionsList')} ref={ref} {...others}>
+      <ScrollArea {...ctx.getStyles('actionsList')} ref={ref} {...others}>
         <div id={listId} {...ctx.getStyles('actionsListInner')}>
           {children}
         </div>
-      </ScrollArea.Autosize>
+      </ScrollArea>
     );
   }
 );

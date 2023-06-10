@@ -102,7 +102,7 @@ export type SpotlightFactory = Factory<{
 
 const defaultProps: Partial<SpotlightProps> = {
   size: 600,
-  yOffset: 120,
+  yOffset: 80,
   zIndex: getDefaultZIndex('max'),
   overlayProps: { backgroundOpacity: 0.35, blur: 7 },
   transitionProps: { duration: 200, transition: 'pop' },
