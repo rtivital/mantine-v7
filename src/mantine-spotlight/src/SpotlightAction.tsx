@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useId } from 'react';
-import { UnstyledButton, BoxProps, ElementProps, useProps } from '@mantine/core';
+import { Box, UnstyledButton, BoxProps, ElementProps, useProps } from '@mantine/core';
 import { useSpotlightContext } from './Spotlight.context';
-import { spotlight } from './spotlight.store';
+import { spotlightActions } from './spotlight.store';
 
 export interface SpotlightActionProps extends BoxProps, ElementProps<'button'> {
   /** Action label, pass string to use in default filter */
@@ -18,9 +18,14 @@ export interface SpotlightActionProps extends BoxProps, ElementProps<'button'> {
 
   /** Children override default action elements, if passed, label, description and sections are hidden */
   children?: React.ReactNode;
+
+  /** Determines whether left and right sections should have dimmed styles, `true` by default */
+  dimmedSections?: boolean;
 }
 
-const defaultProps: Partial<SpotlightActionProps> = {};
+const defaultProps: Partial<SpotlightActionProps> = {
+  dimmedSections: true,
+};
 
 export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProps>((props, ref) => {
   const {
@@ -32,6 +37,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
     leftSection,
     rightSection,
     children,
+    dimmedSections,
     ...others
   } = useProps('SpotlightAction', defaultProps, props);
 
@@ -39,7 +45,7 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
   const generatedId = useId();
   const actionId = id || generatedId;
   const shouldRender = ctx.filter(props);
-  const removeAction = spotlight.registerAction(actionId);
+  const removeAction = spotlightActions.registerAction(actionId);
 
   useEffect(
     () => () => {
@@ -65,9 +71,13 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
       {children || (
         <>
           {leftSection && (
-            <span {...ctx.getStyles('actionSection')} data-position="left">
+            <Box
+              component="span"
+              mod={{ position: 'left', dimmed: dimmedSections }}
+              {...ctx.getStyles('actionSection')}
+            >
               {leftSection}
-            </span>
+            </Box>
           )}
 
           <span {...ctx.getStyles('actionBody')}>
@@ -76,9 +86,13 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
           </span>
 
           {rightSection && (
-            <span {...ctx.getStyles('actionSection')} data-position="right">
+            <Box
+              component="span"
+              mod={{ position: 'right', dimmed: dimmedSections }}
+              {...ctx.getStyles('actionSection')}
+            >
               {rightSection}
-            </span>
+            </Box>
           )}
         </>
       )}

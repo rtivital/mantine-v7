@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { ElementProps, useProps, Input, InputProps } from '@mantine/core';
 import { useSpotlightContext } from './Spotlight.context';
-import { spotlight } from './spotlight.store';
+import { spotlightActions } from './spotlight.store';
 
 export interface SpotlightSearchProps
   extends InputProps,
@@ -25,17 +25,17 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
 
     if (event.nativeEvent.code === 'ArrowDown') {
       event.preventDefault();
-      spotlight.selectNextAction(ctx.store);
+      spotlightActions.selectNextAction(ctx.store);
     }
 
     if (event.nativeEvent.code === 'ArrowUp') {
       event.preventDefault();
-      spotlight.selectPreviousAction(ctx.store);
+      spotlightActions.selectPreviousAction(ctx.store);
     }
 
     if (event.nativeEvent.code === 'Enter') {
       event.preventDefault();
-      spotlight.triggerSelectedAction(ctx.store);
+      spotlightActions.triggerSelectedAction(ctx.store);
     }
   };
 

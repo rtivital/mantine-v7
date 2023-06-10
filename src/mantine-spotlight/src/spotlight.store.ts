@@ -113,7 +113,7 @@ export function clearSpotlightState(
   }));
 }
 
-export const spotlight = {
+export const spotlightActions = {
   open: openSpotlight,
   close: closeSpotlight,
   toggle: toggleSpotlight,

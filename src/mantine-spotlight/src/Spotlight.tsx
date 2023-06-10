@@ -24,7 +24,7 @@ import {
   openSpotlight,
   toggleSpotlight,
   updateSpotlightState,
-  spotlight,
+  spotlightActions,
 } from './spotlight.store';
 import { SpotlightSearch } from './SpotlightSearch';
 import { SpotlightActionsList } from './SpotlightActionsList';
@@ -150,7 +150,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   const _query = query || storeQuery;
   const setQuery = (q: string) => {
     onQueryChange?.(q);
-    spotlight.setQuery(q, store);
+    spotlightActions.setQuery(q, store);
   };
 
   const getStyles = useStyles<SpotlightFactory>({
@@ -200,7 +200,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         transitionProps={{
           ...transitionProps,
           onExited: () => {
-            spotlight.clearSpotlightState({ clearQuery: clearQueryOnClose }, store);
+            spotlightActions.clearSpotlightState({ clearQuery: clearQueryOnClose }, store);
             transitionProps?.onExited?.();
           },
         }}
