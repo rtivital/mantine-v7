@@ -52,13 +52,14 @@ export function setListId(id: string, store: SpotlightStore = spotlightStore) {
   store.updateState((state) => ({ ...state, listId: id }));
 }
 
-export function selectAction(index: number, store: SpotlightStore = spotlightStore) {
+export function selectAction(index: number, store: SpotlightStore = spotlightStore): number {
   const state = store.getState();
   const actionsList = document.getElementById(state.listId)!;
   const selected = actionsList.querySelector<HTMLButtonElement>('[data-selected]');
   const actions = actionsList.querySelectorAll<HTMLButtonElement>('[data-action]');
+  const nextIndex = index === -1 ? actions.length - 1 : index === actions.length ? 0 : index;
 
-  const selectedIndex = clamp(index, 0, actions.length - 1);
+  const selectedIndex = clamp(nextIndex, 0, actions.length - 1);
   selected?.removeAttribute('data-selected');
   actions[selectedIndex]?.scrollIntoView({ block: 'nearest' });
   actions[selectedIndex]?.setAttribute('data-selected', 'true');

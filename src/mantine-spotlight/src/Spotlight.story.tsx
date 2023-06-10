@@ -5,7 +5,7 @@ import { Spotlight } from './Spotlight';
 
 export default { title: 'Spotlight' };
 
-const largeActionsList = Array(5)
+const largeActionsList = Array(20)
   .fill(0)
   .map((_, index) => (
     <Spotlight.Action
