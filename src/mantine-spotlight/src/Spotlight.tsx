@@ -14,6 +14,7 @@ import {
   useMantineTheme,
   resolveStyles,
 } from '@mantine/core';
+import { useHotkeys } from '@mantine/hooks';
 import { SpotlightProvider } from './Spotlight.context';
 import {
   useSpotlight,
@@ -30,6 +31,7 @@ import { SpotlightActionsList } from './SpotlightActionsList';
 import { SpotlightAction, SpotlightActionProps } from './SpotlightAction';
 import { SpotlightEmpty } from './SpotlightEmpty';
 import { SpotlightFooter } from './SpotlightFooter';
+import { getHotkeys } from './get-hotkeys';
 import { defaultSpotlightFilter } from './default-spotlight-filter';
 import classes from './Spotlight.module.css';
 
@@ -65,6 +67,15 @@ export interface SpotlightProps
 
   /** Determines whether the search query should be cleared when the spotlight is closed, `true` by default */
   clearQueryOnClose?: boolean;
+
+  /** Keyboard shortcut or a list of shortcuts to trigger spotlight, `'mod + K'` by default */
+  shortcut?: string | string[] | null;
+
+  /** A list of tags which when focused will be ignored by shortcut, `['input', 'textarea', 'select']` by default */
+  tagsToIgnore?: string[];
+
+  /** Determines whether shortcut should trigger based in contentEditable, `false` by default */
+  triggerOnContentEditable?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -95,6 +106,7 @@ const defaultProps: Partial<SpotlightProps> = {
   store: spotlightStore,
   filter: defaultSpotlightFilter,
   clearQueryOnClose: true,
+  shortcut: 'mod + K',
 };
 
 const varsResolver = createVarsResolver<SpotlightFactory>(() => ({
@@ -119,6 +131,9 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     filter,
     transitionProps,
     clearQueryOnClose,
+    shortcut,
+    tagsToIgnore,
+    triggerOnContentEditable,
     ...others
   } = props;
 
@@ -142,6 +157,8 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     vars,
     varsResolver,
   });
+
+  useHotkeys(getHotkeys(shortcut, store), tagsToIgnore, triggerOnContentEditable);
 
   return (
     <SpotlightProvider
