@@ -1,7 +1,3 @@
-.root {
-  background-color: red;
-}
-
 .search {
   border: 0;
   background-color: transparent;
@@ -58,4 +54,13 @@
 
 .footer {
   padding: var(--mantine-spacing-xs) calc(var(--mantine-spacing-md) + rem(4px));
+  border-top: rem(1px) solid var(--_footer-border);
+
+  @mixin light {
+    --_footer-border: var(--mantine-color-gray-2);
+  }
+
+  @mixin dark {
+    --_footer-border: var(--mantine-color-dark-4);
+  }
 }
