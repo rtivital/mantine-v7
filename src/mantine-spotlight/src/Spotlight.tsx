@@ -76,6 +76,9 @@ export interface SpotlightProps
 
   /** Determines whether shortcut should trigger based in contentEditable, `false` by default */
   triggerOnContentEditable?: boolean;
+
+  /** If set, spotlight will not be rendered */
+  disabled?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -134,6 +137,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     shortcut,
     tagsToIgnore,
     triggerOnContentEditable,
+    disabled,
     ...others
   } = props;
 
@@ -159,6 +163,10 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   });
 
   useHotkeys(getHotkeys(shortcut, store), tagsToIgnore, triggerOnContentEditable);
+
+  if (disabled) {
+    return null;
+  }
 
   return (
     <SpotlightProvider

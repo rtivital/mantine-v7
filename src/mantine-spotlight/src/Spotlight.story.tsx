@@ -20,7 +20,7 @@ const largeActionsList = Array(1)
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Spotlight shortcut={['mod + K', 'mod + P', '/']}>
+      <Spotlight>
         <Spotlight.Search
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}
