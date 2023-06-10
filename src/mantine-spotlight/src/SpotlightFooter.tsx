@@ -1,15 +1,47 @@
-import React, { forwardRef } from 'react';
-import { Box, BoxProps, ElementProps, useProps } from '@mantine/core';
+import React from 'react';
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+} from '@mantine/core';
+import classes from './Spotlight.module.css';
 import { useSpotlightContext } from './Spotlight.context';
 
-export interface SpotlightFooterProps extends BoxProps, ElementProps<'div'> {}
+export type SpotlightFooterStylesNames = 'footer';
+
+export interface SpotlightFooterProps
+  extends BoxProps,
+    StylesApiProps<SpotlightFooterFactory>,
+    ElementProps<'div'> {}
+
+export type SpotlightFooterFactory = Factory<{
+  props: SpotlightFooterProps;
+  ref: HTMLDivElement;
+  stylesNames: SpotlightFooterStylesNames;
+  compound: true;
+}>;
 
 const defaultProps: Partial<SpotlightFooterProps> = {};
 
-export const SpotlightFooter = forwardRef<HTMLDivElement, SpotlightFooterProps>((props, ref) => {
-  const { className, style, ...others } = useProps('SpotlightFooter', defaultProps, props);
+export const SpotlightFooter = factory<SpotlightFooterFactory>((props, ref) => {
+  const { className, style, classNames, styles, ...others } = useProps(
+    'SpotlightFooter',
+    defaultProps,
+    props
+  );
   const ctx = useSpotlightContext();
-  return <Box ref={ref} {...ctx.getStyles('footer')} {...others} />;
+  return (
+    <Box
+      ref={ref}
+      {...ctx.getStyles('footer', { className, classNames, style, styles })}
+      {...others}
+    />
+  );
 });
 
+SpotlightFooter.classes = classes;
 SpotlightFooter.displayName = '@mantine/spotlight/SpotlightFooter';

@@ -1,18 +1,40 @@
-import React, { forwardRef } from 'react';
-import { ElementProps, useProps, Input, InputProps } from '@mantine/core';
+import React from 'react';
+import {
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+  Input,
+  InputProps,
+  InputStylesNames,
+} from '@mantine/core';
+import classes from './Spotlight.module.css';
 import { useSpotlightContext } from './Spotlight.context';
 import { spotlightActions } from './spotlight.store';
 
+export type SpotlightSearchStylesNames = InputStylesNames;
+
 export interface SpotlightSearchProps
-  extends InputProps,
-    ElementProps<'input', 'size' | 'value' | 'onChange'> {}
+  extends BoxProps,
+    Omit<InputProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
+    StylesApiProps<SpotlightSearchFactory>,
+    ElementProps<'input', 'size'> {}
+
+export type SpotlightSearchFactory = Factory<{
+  props: SpotlightSearchProps;
+  ref: HTMLInputElement;
+  stylesNames: SpotlightSearchStylesNames;
+  compound: true;
+}>;
 
 const defaultProps: Partial<SpotlightSearchProps> = {
   size: 'lg',
 };
 
-export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps>((props, ref) => {
-  const { classNames, styles, onKeyDown, ...others } = useProps(
+export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
+  const { classNames, styles, onKeyDown, onChange, vars, ...others } = useProps(
     'SpotlightSearch',
     defaultProps,
     props
@@ -44,12 +66,13 @@ export const SpotlightSearch = forwardRef<HTMLInputElement, SpotlightSearchProps
       ref={ref}
       classNames={[{ input: inputStyles.className }, classNames] as any}
       styles={[{ input: inputStyles.style }, styles] as any}
+      {...others}
       value={ctx.query}
       onChange={(event) => ctx.setQuery(event.currentTarget.value)}
-      {...others}
       onKeyDown={handleKeyDown}
     />
   );
 });
 
-SpotlightSearch.displayName = '@mantine/spotlight/SpotlightSearch';
+SpotlightSearch.classes = classes;
+SpotlightSearch.displayName = '@mantine/core/SpotlightSearch';
