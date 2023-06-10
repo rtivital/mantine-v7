@@ -118,7 +118,7 @@
     "new-github-release-url": "^1.0.0",
     "open": "^8.2.0",
     "postcss": "^8.4.24",
-    "postcss-preset-mantine": "1.5.0",
+    "postcss-preset-mantine": "1.6.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^2.4.1",
     "react-beautiful-dnd": "^13.1.0",
