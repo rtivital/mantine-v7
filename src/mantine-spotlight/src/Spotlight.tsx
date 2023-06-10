@@ -44,7 +44,11 @@ export type SpotlightStylesNames =
   | 'action'
   | 'empty'
   | 'actionsListInner'
-  | 'footer';
+  | 'footer'
+  | 'actionBody'
+  | 'actionLabel'
+  | 'actionDescription'
+  | 'actionSection';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';

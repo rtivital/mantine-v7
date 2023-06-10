@@ -5,16 +5,15 @@ import { Spotlight } from './Spotlight';
 
 export default { title: 'Spotlight' };
 
-const largeActionsList = Array(100)
+const largeActionsList = Array(5)
   .fill(0)
   .map((_, index) => (
     <Spotlight.Action
       key={index}
       onClick={() => console.log(`action ${index}`)}
-      description={`Action ${index}`}
-    >
-      {`Action ${index}`}
-    </Spotlight.Action>
+      description={`Action ${index} description`}
+      label={`Action ${index} label`}
+    />
   ));
 
 export function Usage() {

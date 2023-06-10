@@ -24,7 +24,7 @@ export const SpotlightActionsList = forwardRef<HTMLDivElement, SpotlightActionsL
     }, []);
 
     return (
-      <ScrollArea {...ctx.getStyles('actionsList')} ref={ref} {...others}>
+      <ScrollArea {...ctx.getStyles('actionsList')} ref={ref} type="scroll" {...others}>
         <div id={listId} {...ctx.getStyles('actionsListInner')}>
           {children}
         </div>

@@ -33,7 +33,7 @@
 .action {
   display: block;
   width: 100%;
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  padding: rem(7px) var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-default);
   background-color: var(--_action-bg, transparent);
   color: var(--_action-color, inherit);
@@ -53,7 +53,20 @@
   &[data-selected] {
     --_action-bg: var(--mantine-color-primary);
     --_action-color: var(--mantine-color-white);
+    --_action-description-color: var(--mantine-color-white);
+    --_action-description-opacity: 0.7;
   }
+}
+
+.actionLabel {
+  display: block;
+}
+
+.actionDescription {
+  display: block;
+  font-size: var(--mantine-font-size-xs);
+  opacity: var(--_action-description-opacity, 1);
+  color: var(--_action-description-color, var(--mantine-color-dimmed));
 }
 
 .empty {
