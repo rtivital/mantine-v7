@@ -22,6 +22,7 @@ export type SpotlightEmptyFactory = Factory<{
   props: SpotlightEmptyProps;
   ref: HTMLDivElement;
   stylesNames: SpotlightEmptyStylesNames;
+  compound: true;
 }>;
 
 const defaultProps: Partial<SpotlightEmptyProps> = {};

@@ -85,7 +85,9 @@ export function triggerSelectedAction(store: SpotlightStore) {
 export function registerAction(id: string, store: SpotlightStore) {
   const state = store.getState();
   state.registeredActions.add(id);
-  return () => state.registeredActions.delete(id);
+  return () => {
+    state.registeredActions.delete(id);
+  };
 }
 
 export function setQuery(query: string, store: SpotlightStore) {

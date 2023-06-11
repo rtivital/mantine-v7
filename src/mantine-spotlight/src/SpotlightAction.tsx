@@ -1,9 +1,24 @@
-import React, { forwardRef, useEffect, useId } from 'react';
-import { Box, UnstyledButton, BoxProps, ElementProps, useProps } from '@mantine/core';
+import React, { useEffect, useId } from 'react';
+import {
+  Box,
+  BoxProps,
+  StylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+  UnstyledButton,
+} from '@mantine/core';
+import classes from './Spotlight.module.css';
 import { useSpotlightContext } from './Spotlight.context';
 import { spotlightActions } from './spotlight.store';
 
-export interface SpotlightActionProps extends BoxProps, ElementProps<'button'> {
+export type SpotlightActionStylesNames = 'root';
+
+export interface SpotlightActionProps
+  extends BoxProps,
+    StylesApiProps<SpotlightActionFactory>,
+    ElementProps<'button'> {
   /** Action label, pass string to use in default filter */
   label?: React.ReactNode;
 
@@ -23,14 +38,23 @@ export interface SpotlightActionProps extends BoxProps, ElementProps<'button'> {
   dimmedSections?: boolean;
 }
 
+export type SpotlightActionFactory = Factory<{
+  props: SpotlightActionProps;
+  ref: HTMLButtonElement;
+  stylesNames: SpotlightActionStylesNames;
+  compound: true;
+}>;
+
 const defaultProps: Partial<SpotlightActionProps> = {
   dimmedSections: true,
 };
 
-export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProps>((props, ref) => {
+export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
   const {
     className,
     style,
+    classNames,
+    styles,
     id,
     description,
     label,
@@ -47,23 +71,20 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
   const shouldRender = ctx.filter(props);
   const removeAction = spotlightActions.registerAction(actionId, ctx.store);
 
-  useEffect(
-    () => () => {
-      removeAction();
-    },
-    []
-  );
+  useEffect(() => removeAction, []);
 
   if (!shouldRender) {
     removeAction();
     return null;
   }
 
+  const stylesApi = { classNames, styles };
+
   return (
     <UnstyledButton
       ref={ref}
       data-action
-      {...ctx.getStyles('action', { className, style })}
+      {...ctx.getStyles('action', { className, style, ...stylesApi })}
       id={actionId}
       {...others}
       onMouseDown={(event) => event.preventDefault()}
@@ -75,22 +96,22 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
             <Box
               component="span"
               mod={{ position: 'left', dimmed: dimmedSections }}
-              {...ctx.getStyles('actionSection')}
+              {...ctx.getStyles('actionSection', stylesApi)}
             >
               {leftSection}
             </Box>
           )}
 
-          <span {...ctx.getStyles('actionBody')}>
-            <span {...ctx.getStyles('actionLabel')}>{label}</span>
-            <span {...ctx.getStyles('actionDescription')}>{description}</span>
+          <span {...ctx.getStyles('actionBody', stylesApi)}>
+            <span {...ctx.getStyles('actionLabel', stylesApi)}>{label}</span>
+            <span {...ctx.getStyles('actionDescription', stylesApi)}>{description}</span>
           </span>
 
           {rightSection && (
             <Box
               component="span"
               mod={{ position: 'right', dimmed: dimmedSections }}
-              {...ctx.getStyles('actionSection')}
+              {...ctx.getStyles('actionSection', stylesApi)}
             >
               {rightSection}
             </Box>
@@ -100,3 +121,6 @@ export const SpotlightAction = forwardRef<HTMLButtonElement, SpotlightActionProp
     </UnstyledButton>
   );
 });
+
+SpotlightAction.classes = classes;
+SpotlightAction.displayName = '@mantine/spotlight/SpotlightAction';

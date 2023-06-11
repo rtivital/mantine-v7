@@ -75,4 +75,4 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
 });
 
 SpotlightSearch.classes = classes;
-SpotlightSearch.displayName = '@mantine/core/SpotlightSearch';
+SpotlightSearch.displayName = '@mantine/spotlight/SpotlightSearch';
