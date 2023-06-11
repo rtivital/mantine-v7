@@ -4,7 +4,6 @@ import {
   factory,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   Modal,
   ModalProps,
@@ -47,14 +46,10 @@ export type SpotlightStylesNames =
   | 'actionDescription'
   | 'actionSection'
   | 'actionsGroup';
-export type SpotlightVariant = string;
-export type SpotlightCssVariables = {
-  root: '--test';
-};
 
 export interface SpotlightProps
   extends StylesApiProps<SpotlightFactory>,
-    Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'opened' | 'onClose'> {
+    Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'variant' | 'opened' | 'onClose'> {
   /** Spotlight store, can be used to create multiple instances of spotlight */
   store?: SpotlightStore;
 
@@ -96,8 +91,6 @@ export type SpotlightFactory = Factory<{
   props: SpotlightProps;
   ref: HTMLDivElement;
   stylesNames: SpotlightStylesNames;
-  vars: SpotlightCssVariables;
-  variant: SpotlightVariant;
   staticComponents: {
     Search: typeof SpotlightSearch;
     ActionsList: typeof SpotlightActionsList;
@@ -122,12 +115,6 @@ const defaultProps: Partial<SpotlightProps> = {
   clearQueryOnClose: true,
   shortcut: 'mod + K',
 };
-
-const varsResolver = createVarsResolver<SpotlightFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
 
 export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   const props = useProps('Spotlight', defaultProps, _props);
@@ -172,8 +159,6 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver,
   });
 
   useHotkeys(getHotkeys(shortcut, store!), tagsToIgnore, triggerOnContentEditable);

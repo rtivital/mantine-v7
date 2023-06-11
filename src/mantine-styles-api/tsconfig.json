@@ -12,14 +12,16 @@
     "paths": {
       "@mantine/core": ["../mantine-core/src"],
       "@mantine/code-highlight": ["../mantine-code-highlight/src"],
-      "@mantine/hooks": ["../,mantine-hooks/src"],
-      "@mantine/notifications": ["../mantine-notifications/src"]
+      "@mantine/hooks": ["../mantine-hooks/src"],
+      "@mantine/notifications": ["../mantine-notifications/src"],
+      "@mantine/spotlight": ["../mantine-spotlight/src"]
     }
   },
   "references": [
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
     { "path": "../mantine-notifications" },
+    { "path": "../mantine-spotlight" },
     { "path": "../mantine-code-highlight" }
   ]
 }
