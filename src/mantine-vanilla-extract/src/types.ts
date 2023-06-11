@@ -98,6 +98,7 @@ export interface MantineVars {
   radius: Radius;
   headings: Headings;
 
+  rtlSelector: string;
   darkSelector: string;
   lightSelector: string;
 

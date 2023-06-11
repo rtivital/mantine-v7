@@ -115,6 +115,7 @@ export function themeToVars(theme: MantineThemeOverride): MantineVars {
     spacing,
     colors,
 
+    rtlSelector: '[dir="rtl"] &',
     darkSelector: '[data-mantine-color-scheme="dark"] &',
     lightSelector: '[data-mantine-color-scheme="light"] &',
 
