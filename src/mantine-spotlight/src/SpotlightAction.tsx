@@ -8,6 +8,8 @@ import {
   useProps,
   Factory,
   UnstyledButton,
+  MantineColor,
+  Highlight,
 } from '@mantine/core';
 import classes from './Spotlight.module.css';
 import { useSpotlightContext } from './Spotlight.context';
@@ -36,6 +38,12 @@ export interface SpotlightActionProps
 
   /** Determines whether left and right sections should have dimmed styles, `true` by default */
   dimmedSections?: boolean;
+
+  /** Determines whether search query should be highlighted in action label, `false` by default */
+  highlightQuery?: boolean;
+
+  /** Key of `theme.colors` of any valid CSS color that will be used to highlight search query, `'yellow'` by default */
+  highlightColor?: MantineColor;
 }
 
 export type SpotlightActionFactory = Factory<{
@@ -47,6 +55,7 @@ export type SpotlightActionFactory = Factory<{
 
 const defaultProps: Partial<SpotlightActionProps> = {
   dimmedSections: true,
+  highlightQuery: false,
 };
 
 export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
@@ -62,6 +71,8 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
     rightSection,
     children,
     dimmedSections,
+    highlightQuery,
+    highlightColor,
     ...others
   } = useProps('SpotlightAction', defaultProps, props);
 
@@ -79,6 +90,20 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
   }
 
   const stylesApi = { classNames, styles };
+
+  const labelNode =
+    highlightQuery && typeof label === 'string' ? (
+      <Highlight
+        component="span"
+        highlight={ctx.query}
+        color={highlightColor}
+        {...ctx.getStyles('actionLabel', stylesApi)}
+      >
+        {label}
+      </Highlight>
+    ) : (
+      <span {...ctx.getStyles('actionLabel', stylesApi)}>{label}</span>
+    );
 
   return (
     <UnstyledButton
@@ -103,7 +128,7 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
           )}
 
           <span {...ctx.getStyles('actionBody', stylesApi)}>
-            <span {...ctx.getStyles('actionLabel', stylesApi)}>{label}</span>
+            {labelNode}
             <span {...ctx.getStyles('actionDescription', stylesApi)}>{description}</span>
           </span>
 

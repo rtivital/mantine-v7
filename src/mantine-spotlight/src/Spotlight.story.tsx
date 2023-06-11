@@ -17,6 +17,7 @@ const largeActionsList = Array(20)
       description={`Action ${index} description`}
       label={`Action ${index} label`}
       leftSection={<IconSearch stroke={1.5} size={20} />}
+      highlightQuery
       rightSection={
         <Text size="xs" span>
           Ctrl + L
