@@ -95,6 +95,12 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     search: 'Get started with CSS modules',
   },
 
+  VanillaExtract: {
+    title: 'Vanilla extract',
+    slug: '/styles/vanilla-extract',
+    search: 'Mantine + Vanilla extract integration',
+  },
+
   PostCSSPreset: {
     title: 'PostCSS preset',
     slug: '/styles/postcss-preset',
