@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { IconSearch } from '@tabler/icons-react';
 import { Button, Text } from '@mantine/core';
