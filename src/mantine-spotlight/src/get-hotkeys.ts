@@ -3,7 +3,7 @@ import { spotlightActions, SpotlightStore } from './spotlight.store';
 
 export function getHotkeys(
   hotkeys: string | string[] | null | undefined,
-  store: SpotlightStore | undefined
+  store: SpotlightStore
 ): HotkeyItem[] {
   if (!hotkeys) {
     return [];

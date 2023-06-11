@@ -162,7 +162,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     varsResolver,
   });
 
-  useHotkeys(getHotkeys(shortcut, store), tagsToIgnore, triggerOnContentEditable);
+  useHotkeys(getHotkeys(shortcut, store!), tagsToIgnore, triggerOnContentEditable);
 
   if (disabled) {
     return null;
