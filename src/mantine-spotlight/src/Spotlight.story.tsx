@@ -29,7 +29,11 @@ const largeActionsList = Array(20)
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Spotlight store={store}>
+      <Spotlight
+        store={store}
+        onSpotlightOpen={() => console.log('open')}
+        onSpotlightClose={() => console.log('close')}
+      >
         <Spotlight.Search
           placeholder="Search something..."
           leftSection={<IconSearch stroke={1.5} size={20} />}

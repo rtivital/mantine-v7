@@ -14,7 +14,7 @@ import {
   useMantineTheme,
   resolveStyles,
 } from '@mantine/core';
-import { useHotkeys } from '@mantine/hooks';
+import { useDidUpdate, useHotkeys } from '@mantine/hooks';
 import { SpotlightProvider } from './Spotlight.context';
 import {
   useSpotlight,
@@ -80,6 +80,12 @@ export interface SpotlightProps
 
   /** If set, spotlight will not be rendered */
   disabled?: boolean;
+
+  /** Called when spotlight opens */
+  onSpotlightOpen?(): void;
+
+  /** Called when spotlight closes */
+  onSpotlightClose?(): void;
 }
 
 export type SpotlightFactory = Factory<{
@@ -138,6 +144,8 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     tagsToIgnore,
     triggerOnContentEditable,
     disabled,
+    onSpotlightOpen,
+    onSpotlightClose,
     ...others
   } = props;
 
@@ -163,6 +171,10 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   });
 
   useHotkeys(getHotkeys(shortcut, store!), tagsToIgnore, triggerOnContentEditable);
+
+  useDidUpdate(() => {
+    opened ? onSpotlightOpen?.() : onSpotlightClose?.();
+  }, [opened]);
 
   if (disabled) {
     return null;
