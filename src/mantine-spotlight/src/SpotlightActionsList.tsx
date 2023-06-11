@@ -48,11 +48,10 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props,
       {...ctx.getStyles('actionsList', { className, style, classNames, styles })}
       ref={ref}
       type="scroll"
+      id={listId}
       {...others}
     >
-      <div id={listId} {...ctx.getStyles('actionsListInner', { classNames, styles })}>
-        {children}
-      </div>
+      {children}
     </ScrollArea>
   );
 });

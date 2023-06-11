@@ -28,6 +28,7 @@ import { SpotlightActionsList } from './SpotlightActionsList';
 import { SpotlightAction, SpotlightActionProps } from './SpotlightAction';
 import { SpotlightEmpty } from './SpotlightEmpty';
 import { SpotlightFooter } from './SpotlightFooter';
+import { SpotlightActionsGroup } from './SpotlightActionsGroup';
 import { getHotkeys } from './get-hotkeys';
 import { defaultSpotlightFilter } from './default-spotlight-filter';
 import classes from './Spotlight.module.css';
@@ -40,12 +41,12 @@ export type SpotlightStylesNames =
   | 'actionsList'
   | 'action'
   | 'empty'
-  | 'actionsListInner'
   | 'footer'
   | 'actionBody'
   | 'actionLabel'
   | 'actionDescription'
-  | 'actionSection';
+  | 'actionSection'
+  | 'actionsGroup';
 export type SpotlightVariant = string;
 export type SpotlightCssVariables = {
   root: '--test';
@@ -103,6 +104,7 @@ export type SpotlightFactory = Factory<{
     Action: typeof SpotlightAction;
     Empty: typeof SpotlightEmpty;
     Footer: typeof SpotlightFooter;
+    ActionsGroup: typeof SpotlightActionsGroup;
     open: typeof spotlight.open;
     close: typeof spotlight.close;
     toggle: typeof spotlight.toggle;
@@ -232,6 +234,7 @@ Spotlight.Search = SpotlightSearch;
 Spotlight.ActionsList = SpotlightActionsList;
 Spotlight.Action = SpotlightAction;
 Spotlight.Empty = SpotlightEmpty;
+Spotlight.ActionsGroup = SpotlightActionsGroup;
 Spotlight.Footer = SpotlightFooter;
 Spotlight.open = spotlight.open;
 Spotlight.close = spotlight.close;

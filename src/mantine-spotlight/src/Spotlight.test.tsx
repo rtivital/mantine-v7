@@ -16,13 +16,15 @@ const defaultProps: SpotlightProps = {
     <>
       <Spotlight.Search />
       <Spotlight.ActionsList>
-        <Spotlight.Action
-          label="First"
-          description="Description"
-          leftSection="L"
-          rightSection="R"
-        />
-        <Spotlight.Action label="Second" />
+        <Spotlight.ActionsGroup label="test group">
+          <Spotlight.Action
+            label="First"
+            description="Description"
+            leftSection="L"
+            rightSection="R"
+          />
+          <Spotlight.Action label="Second" />
+        </Spotlight.ActionsGroup>
         <Spotlight.Empty>Empty</Spotlight.Empty>
       </Spotlight.ActionsList>
       <Spotlight.Footer>Footer</Spotlight.Footer>
@@ -50,7 +52,7 @@ describe('@mantine/core/Spotlight', () => {
       'actionLabel',
       'actionSection',
       'actionsList',
-      'actionsListInner',
+      'actionsGroup',
       'body',
       'content',
       'footer',

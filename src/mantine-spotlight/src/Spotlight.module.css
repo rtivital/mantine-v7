@@ -16,6 +16,7 @@
 .actionsList {
   border-top: rem(1px) solid var(--_actions-list-border);
   flex: 1;
+  padding: rem(4px);
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);
@@ -24,10 +25,6 @@
   @mixin dark {
     --_actions-list-border: var(--mantine-color-dark-4);
   }
-}
-
-.actionsListInner {
-  padding: rem(4px);
 }
 
 .action {
@@ -110,5 +107,24 @@
 
   @mixin dark {
     --_footer-border: var(--mantine-color-dark-4);
+  }
+}
+
+.actionsGroup {
+  display: var(--_display, flex);
+  flex-direction: column;
+  margin-top: var(--mantine-spacing-md);
+
+  &::before {
+    content: var(--spotlight-label);
+    text-transform: uppercase;
+    font-size: var(--mantine-font-size-xs);
+    font-weight: 700;
+    color: var(--mantine-color-dimmed);
+    padding-left: var(--mantine-spacing-md);
+  }
+
+  &:empty {
+    --_display: none;
   }
 }

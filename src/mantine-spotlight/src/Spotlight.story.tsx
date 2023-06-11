@@ -9,7 +9,7 @@ const [store, actions] = createSpotlight();
 
 export default { title: 'Spotlight' };
 
-const largeActionsList = Array(20)
+const largeActionsList = Array(3)
   .fill(0)
   .map((_, index) => (
     <Spotlight.Action
@@ -17,7 +17,7 @@ const largeActionsList = Array(20)
       onClick={() => console.log(`action ${index}`)}
       description={`Action ${index} description`}
       label={`Action ${index} label`}
-      leftSection={<IconSearch stroke={1.5} size={20} />}
+      // leftSection={<IconSearch stroke={1.5} size={20} />}
       highlightQuery
       rightSection={
         <Text size="xs" span>
@@ -44,6 +44,8 @@ export function Usage() {
 
         <Spotlight.ActionsList>
           <Spotlight.Empty>Nothing found...</Spotlight.Empty>
+          {largeActionsList}
+          <Spotlight.ActionsGroup label="Actions group">{largeActionsList}</Spotlight.ActionsGroup>
           {largeActionsList}
         </Spotlight.ActionsList>
 
