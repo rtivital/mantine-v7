@@ -30,6 +30,8 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <Spotlight
+        forceOpened
+        style={{ background: 'red' }}
         store={store}
         onSpotlightOpen={() => console.log('open')}
         onSpotlightClose={() => console.log('close')}

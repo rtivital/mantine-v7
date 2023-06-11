@@ -20,6 +20,8 @@ export type ModalVariant = string;
 export type ModalCssVariables = ModalRootCssVariables;
 
 export interface ModalProps extends ModalRootProps {
+  __staticSelector?: string;
+
   /** Modal title */
   title?: React.ReactNode;
 

@@ -23,6 +23,8 @@ export type ModalRootCssVariables = {
 };
 
 export interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalBaseProps {
+  __staticSelector?: string;
+
   /** Top/bottom modal offset, `5vh` by default */
   yOffset?: React.CSSProperties['marginTop'];
 
@@ -52,6 +54,7 @@ export type ModalRootFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ModalRootProps> = {
+  __staticSelector: 'Modal',
   yOffset: '5vh',
   xOffset: '5vw',
   closeOnClickOutside: true,
@@ -94,11 +97,12 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
     fullScreen,
     centered,
     xOffset,
+    __staticSelector,
     ...others
   } = props;
 
   const getStyles = useStyles<ModalRootFactory>({
-    name: 'Modal',
+    name: __staticSelector!,
     classes,
     props,
     className,

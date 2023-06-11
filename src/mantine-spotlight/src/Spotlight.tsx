@@ -86,6 +86,9 @@ export interface SpotlightProps
 
   /** Called when spotlight closes */
   onSpotlightClose?(): void;
+
+  /** Forces opened state, useful for tests */
+  forceOpened?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -146,6 +149,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     disabled,
     onSpotlightOpen,
     onSpotlightClose,
+    forceOpened,
     ...others
   } = props;
 
@@ -195,9 +199,11 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         ref={ref}
         {...others}
         withCloseButton={false}
-        opened={opened}
+        opened={opened || !!forceOpened}
         padding={0}
         onClose={() => spotlightActions.close(store!)}
+        className={className}
+        style={style}
         classNames={resolveClassNames({
           theme,
           classNames: [classes, classNames],
@@ -212,6 +218,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
             transitionProps?.onExited?.();
           },
         }}
+        __staticSelector="Spotlight"
       >
         {children}
       </Modal>
@@ -220,7 +227,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
 });
 
 Spotlight.classes = classes;
-Spotlight.displayName = '@mantine/core/Spotlight';
+Spotlight.displayName = '@mantine/spotlight/Spotlight';
 Spotlight.Search = SpotlightSearch;
 Spotlight.ActionsList = SpotlightActionsList;
 Spotlight.Action = SpotlightAction;
