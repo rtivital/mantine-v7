@@ -17,7 +17,7 @@ const largeActionsList = Array(3)
       onClick={() => console.log(`action ${index}`)}
       description={`Action ${index} description`}
       label={`Action ${index} label`}
-      // leftSection={<IconSearch stroke={1.5} size={20} />}
+      keywords="test,react"
       highlightQuery
       rightSection={
         <Text size="xs" span>

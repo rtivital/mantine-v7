@@ -47,6 +47,9 @@ export interface SpotlightActionProps
 
   /** Determines whether the spotlight should be closed when action is triggered, overrides `closeOnActionTrigger` prop set on `Spotlight` */
   closeSpotlightOnTrigger?: boolean;
+
+  /** Keywords that are used for default filtering, not displayed anywhere, can be a string: "react,router,javascript" or an array: ['react', 'router', 'javascript'] */
+  keywords?: string | string[];
 }
 
 export type SpotlightActionFactory = Factory<{
@@ -61,7 +64,8 @@ const defaultProps: Partial<SpotlightActionProps> = {
   highlightQuery: false,
 };
 
-export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
+export const SpotlightAction = factory<SpotlightActionFactory>((_props, ref) => {
+  const props = useProps('SpotlightAction', defaultProps, _props);
   const {
     className,
     style,
@@ -79,8 +83,9 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
     closeSpotlightOnTrigger,
     onClick,
     onMouseDown,
+    keywords,
     ...others
-  } = useProps('SpotlightAction', defaultProps, props);
+  } = props;
 
   const ctx = useSpotlightContext();
   const generatedId = useId();
