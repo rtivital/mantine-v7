@@ -7,10 +7,15 @@ import classes from './MdxTemplatesList.module.css';
 
 interface MdxTemplatesListProps {
   type?: Template['type'];
+  name?: string[];
 }
 
-export function MdxTemplatesList({ type }: MdxTemplatesListProps) {
-  const data = type ? TEMPLATES_DATA.filter((template) => template.type === type) : TEMPLATES_DATA;
+export function MdxTemplatesList({ type, name }: MdxTemplatesListProps) {
+  const data = name
+    ? TEMPLATES_DATA.filter((template) => name.includes(template.name))
+    : type
+    ? TEMPLATES_DATA.filter((template) => template.type === type)
+    : TEMPLATES_DATA;
 
   const rows = data.map((template) => {
     const Icon = frameworkIcons[template.type];

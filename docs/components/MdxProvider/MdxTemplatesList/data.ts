@@ -33,6 +33,12 @@ export const TEMPLATES_DATA: Template[] = [
       'Next.js template with pages router and minimal setup – no additional tools included, only default Next.js configuration',
   },
   {
+    type: 'next',
+    name: 'next-vanilla-extract-template',
+    link: 'https://github.com/mantinedev/next-vanilla-extract-template',
+    description: 'Next.js template with Vanilla extract example',
+  },
+  {
     type: 'vite',
     name: 'vite-template',
     link: 'https://github.com/mantinedev/vite-template',
@@ -44,6 +50,12 @@ export const TEMPLATES_DATA: Template[] = [
     link: 'https://github.com/mantinedev/vite-min-template',
     description:
       'Vite template with minimal setup – no additional tools included, only default Vite configuration',
+  },
+  {
+    type: 'vite',
+    name: 'vite-vanilla-extract-template',
+    link: 'https://github.com/mantinedev/vite-vanilla-extract-template',
+    description: 'Vite template with Vanilla extract example',
   },
   {
     type: 'remix',
