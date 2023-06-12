@@ -1,5 +1,6 @@
 export {
   spotlight,
+  createSpotlight,
   createSpotlightStore,
   useSpotlight,
   openSpotlight,
