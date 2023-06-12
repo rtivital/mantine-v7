@@ -44,6 +44,9 @@ export interface SpotlightActionProps
 
   /** Key of `theme.colors` of any valid CSS color that will be used to highlight search query, `'yellow'` by default */
   highlightColor?: MantineColor;
+
+  /** Determines whether the spotlight should be closed when action is triggered, overrides `closeOnActionTrigger` prop set on `Spotlight` */
+  closeSpotlightOnTrigger?: boolean;
 }
 
 export type SpotlightActionFactory = Factory<{
@@ -73,6 +76,9 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
     dimmedSections,
     highlightQuery,
     highlightColor,
+    closeSpotlightOnTrigger,
+    onClick,
+    onMouseDown,
     ...others
   } = useProps('SpotlightAction', defaultProps, props);
 
@@ -112,7 +118,16 @@ export const SpotlightAction = factory<SpotlightActionFactory>((props, ref) => {
       {...ctx.getStyles('action', { className, style, ...stylesApi })}
       id={actionId}
       {...others}
-      onMouseDown={(event) => event.preventDefault()}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        onMouseDown?.(event);
+      }}
+      onClick={(event) => {
+        onClick?.(event);
+        if (closeSpotlightOnTrigger ?? ctx.closeOnActionTrigger) {
+          spotlightActions.close(ctx.store);
+        }
+      }}
       tabIndex={-1}
     >
       {children || (

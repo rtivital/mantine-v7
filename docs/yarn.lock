@@ -72,10 +72,14 @@
   version "0.0.0"
   uid ""
 
-"@mantine/store@7.0.0-alpha.12":
-  version "7.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.12.tgz#fd968447caf348e0f00835faa4a7c24ef489a00d"
-  integrity sha512-WkicB5klH1AyTteAn+r8bdEAzXbSHUkta1bt73AG690K3lFPxaHVfbyIYXuc9tOcUnItM6fBDGTKniQ2mVmZZA==
+"@mantine/spotlight@link:../src/mantine-spotlight":
+  version "0.0.0"
+  uid ""
+
+"@mantine/store@7.0.0-alpha.13":
+  version "7.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.13.tgz#a80e9890b677dd408b8b01c2b97b2cb33e8aeea8"
+  integrity sha512-/b+6r338YLzeDme7OGyAEBx2nR3yz4GI2rjCdenMvAB/0UI80SI6HBgZdx1xo2Oeocn6YwR16ZC8DhgWN2b8Qg==
   dependencies:
     tslib "^2.5.2"
 

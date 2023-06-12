@@ -10,6 +10,7 @@ interface SpotlightContextValue {
   setQuery(query: string): void;
   getStyles: GetStylesApi<SpotlightFactory>;
   store: SpotlightStore;
+  closeOnActionTrigger: boolean | undefined;
 }
 
 export const [SpotlightProvider, useSpotlightContext] = createSafeContext<SpotlightContextValue>(

@@ -85,6 +85,9 @@ export interface SpotlightProps
 
   /** Forces opened state, useful for tests */
   forceOpened?: boolean;
+
+  /** Determines whether spotlight should be closed when one of the actions is triggered, `true` by default */
+  closeOnActionTrigger?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -113,6 +116,7 @@ const defaultProps: Partial<SpotlightProps> = {
   store: spotlightStore,
   filter: defaultSpotlightFilter,
   clearQueryOnClose: true,
+  closeOnActionTrigger: true,
   shortcut: 'mod + K',
 };
 
@@ -139,6 +143,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     onSpotlightOpen,
     onSpotlightClose,
     forceOpened,
+    closeOnActionTrigger,
     ...others
   } = props;
 
@@ -180,6 +185,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
         empty,
         filter: (actionProps) => filter!(_query, actionProps),
         store: store!,
+        closeOnActionTrigger,
       }}
     >
       <Modal
