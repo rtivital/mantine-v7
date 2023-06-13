@@ -1,4 +1,4 @@
-import React, { useEffect, useId } from 'react';
+import React from 'react';
 import {
   Box,
   BoxProps,
@@ -88,22 +88,6 @@ export const SpotlightAction = factory<SpotlightActionFactory>((_props, ref) => 
   } = props;
 
   const ctx = useSpotlightContext();
-  const generatedId = useId();
-  const actionId = id || generatedId;
-  const shouldRender = ctx.filter(props);
-
-  useEffect(() => {
-    const removeAction = spotlightActions.registerAction(actionId, ctx.store);
-    if (!shouldRender) {
-      removeAction();
-    }
-
-    return removeAction;
-  }, [shouldRender]);
-
-  if (!shouldRender) {
-    return null;
-  }
 
   const stylesApi = { classNames, styles };
 
@@ -126,7 +110,6 @@ export const SpotlightAction = factory<SpotlightActionFactory>((_props, ref) => 
       ref={ref}
       data-action
       {...ctx.getStyles('action', { className, style, ...stylesApi })}
-      id={actionId}
       {...others}
       onMouseDown={(event) => {
         event.preventDefault();

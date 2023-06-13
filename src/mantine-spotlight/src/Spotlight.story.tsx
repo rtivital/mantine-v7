@@ -1,37 +1,41 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { IconSearch } from '@tabler/icons-react';
-import { Button, Text } from '@mantine/core';
-import { Spotlight } from './Spotlight';
+import { Button } from '@mantine/core';
+import { Spotlight } from './Spotlight2';
 import { createSpotlight } from './spotlight.store';
 
 const [store, actions] = createSpotlight();
 
 export default { title: 'Spotlight' };
 
-const largeActionsList = Array(3)
-  .fill(0)
-  .map((_, index) => (
-    <Spotlight.Action
-      key={index}
-      onClick={() => console.log(`action ${index}`)}
-      description={`Action ${index} description`}
-      label={`Action ${index} label`}
-      keywords="test,react"
-      highlightQuery
-      rightSection={
-        <Text size="xs" span>
-          Ctrl + L
-        </Text>
-      }
-    />
-  ));
+const actionsData = [
+  { label: 'Home', description: 'Home page', keyword: 'test' },
+  { label: 'About', description: 'About me', keyword: 'ng' },
+  { label: 'Contact', description: 'Contact me', keyword: 'react' },
+];
 
-export function Usage() {
+export function Compound() {
+  const [query, setQuery] = useState('');
+
+  const actionsList = actionsData
+    .filter((action) => action.label.toLowerCase().includes(query.toLowerCase().trim()))
+    .map((action) => (
+      <Spotlight.Action
+        key={action.label}
+        onClick={() => console.log(`action ${action.label}`)}
+        label={action.label}
+        description={action.description}
+        keywords={action.keyword}
+      />
+    ));
+
   return (
     <div style={{ padding: 40 }}>
-      <Spotlight
+      <Spotlight.Root
         store={store}
+        query={query}
+        onQueryChange={setQuery}
         onSpotlightOpen={() => console.log('open')}
         onSpotlightClose={() => console.log('close')}
       >
@@ -41,14 +45,12 @@ export function Usage() {
         />
 
         <Spotlight.ActionsList>
-          <Spotlight.Empty>Nothing found...</Spotlight.Empty>
-          {largeActionsList}
-          <Spotlight.ActionsGroup label="Actions group">{largeActionsList}</Spotlight.ActionsGroup>
-          {largeActionsList}
+          {actionsList}
+          {actionsList.length === 0 && <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
         </Spotlight.ActionsList>
 
         <Spotlight.Footer>This is footer</Spotlight.Footer>
-      </Spotlight>
+      </Spotlight.Root>
 
       <Button onClick={actions.open}>Open spotlight</Button>
     </div>

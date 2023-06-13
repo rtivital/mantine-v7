@@ -36,10 +36,6 @@ export const SpotlightEmpty = factory<SpotlightEmptyFactory>((props, ref) => {
 
   const ctx = useSpotlightContext();
 
-  if (!ctx.empty) {
-    return null;
-  }
-
   return (
     <Box
       ref={ref}

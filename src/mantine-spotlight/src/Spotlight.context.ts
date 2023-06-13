@@ -1,14 +1,11 @@
 import { createSafeContext, GetStylesApi } from '@mantine/core';
-import type { SpotlightFactory } from './Spotlight';
-import type { SpotlightActionProps } from './SpotlightAction';
+import type { SpotlightRootFactory } from './SpotlightRoot';
 import { SpotlightStore } from './spotlight.store';
 
 interface SpotlightContextValue {
   query: string;
-  empty: boolean;
-  filter(props: SpotlightActionProps): boolean;
   setQuery(query: string): void;
-  getStyles: GetStylesApi<SpotlightFactory>;
+  getStyles: GetStylesApi<SpotlightRootFactory>;
   store: SpotlightStore;
   closeOnActionTrigger: boolean | undefined;
 }
