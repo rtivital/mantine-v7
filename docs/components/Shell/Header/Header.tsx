@@ -4,6 +4,7 @@ import cx from 'clsx';
 import { Code, Group, Burger, RemoveScroll } from '@mantine/core';
 import { HeaderControls, ColorSchemeControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
+import { searchHandlers } from '@/components/Search';
 import packageJson from '../../../../package.json';
 import classes from './Header.module.css';
 
@@ -25,7 +26,7 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
 
         <HeaderControls
           className={classes.controls}
-          onSearch={() => {}}
+          onSearch={searchHandlers.open}
           githubLink="https://github.com/mantinedev/mantine"
         />
       </header>

@@ -91,12 +91,17 @@ export const SpotlightAction = factory<SpotlightActionFactory>((_props, ref) => 
   const generatedId = useId();
   const actionId = id || generatedId;
   const shouldRender = ctx.filter(props);
-  const removeAction = spotlightActions.registerAction(actionId, ctx.store);
 
-  useEffect(() => removeAction, []);
+  useEffect(() => {
+    const removeAction = spotlightActions.registerAction(actionId, ctx.store);
+    if (!shouldRender) {
+      removeAction();
+    }
+
+    return removeAction;
+  }, [shouldRender]);
 
   if (!shouldRender) {
-    removeAction();
     return null;
   }
 

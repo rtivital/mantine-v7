@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Spotlight, createSpotlight } from '@mantine/spotlight';
 import { IconSearch } from '@tabler/icons-react';
+import { rem } from '@mantine/core';
+import { Spotlight, createSpotlight } from '@mantine/spotlight';
 import { ALL_MDX_PAGES } from '@/mdx';
 
 export const [searchStore, searchHandlers] = createSpotlight();
@@ -21,7 +22,10 @@ export function Search() {
 
   return (
     <Spotlight store={searchStore} shortcut={['mod + K', 'mod + P', '/']}>
-      <Spotlight.Search leftSection={<IconSearch />} placeholder="Search documentation" />
+      <Spotlight.Search
+        leftSection={<IconSearch style={{ width: rem(20), height: rem(20) }} />}
+        placeholder="Search documentation"
+      />
       <Spotlight.ActionsList>
         {actions}
         <Spotlight.Empty>Nothing found...</Spotlight.Empty>
