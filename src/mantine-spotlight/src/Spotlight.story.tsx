@@ -2,31 +2,31 @@
 import React, { useState } from 'react';
 import { IconSearch } from '@tabler/icons-react';
 import { Button } from '@mantine/core';
-import { Spotlight } from './Spotlight2';
+import { Spotlight, SpotlightActionData } from './Spotlight';
 import { createSpotlight } from './spotlight.store';
 
 const [store, actions] = createSpotlight();
 
 export default { title: 'Spotlight' };
 
-const actionsData = [
-  { label: 'Home', description: 'Home page', keyword: 'test' },
-  { label: 'About', description: 'About me', keyword: 'ng' },
-  { label: 'Contact', description: 'Contact me', keyword: 'react' },
+const actionsData: SpotlightActionData[] = [
+  { id: '1', label: 'Home', description: 'Home page', keywords: 'test' },
+  { id: '2', label: 'About', description: 'About me', keywords: 'ng' },
+  { id: '3', label: 'Contact', description: 'Contact me', keywords: 'react' },
 ];
 
 export function Compound() {
   const [query, setQuery] = useState('');
 
   const actionsList = actionsData
-    .filter((action) => action.label.toLowerCase().includes(query.toLowerCase().trim()))
+    .filter((action) => (action.label as string).toLowerCase().includes(query.toLowerCase().trim()))
     .map((action) => (
       <Spotlight.Action
-        key={action.label}
+        key={action.label as string}
         onClick={() => console.log(`action ${action.label}`)}
         label={action.label}
         description={action.description}
-        keywords={action.keyword}
+        keywords={action.keywords}
       />
     ));
 
@@ -52,6 +52,23 @@ export function Compound() {
         <Spotlight.Footer>This is footer</Spotlight.Footer>
       </Spotlight.Root>
 
+      <Button onClick={actions.open}>Open spotlight</Button>
+    </div>
+  );
+}
+
+export function Default() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Spotlight
+        store={store}
+        actions={actionsData}
+        highlightQuery
+        searchProps={{
+          placeholder: 'Search actions',
+          leftSection: <IconSearch stroke={1.5} size={20} />,
+        }}
+      />
       <Button onClick={actions.open}>Open spotlight</Button>
     </div>
   );

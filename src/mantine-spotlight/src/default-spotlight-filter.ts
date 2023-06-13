@@ -1,4 +1,4 @@
-import type { SpotlightFilterFunction } from './Spotlight';
+import type { SpotlightFilterFunction, SpotlightActionData } from './Spotlight';
 
 function getKeywords(keywords: string | string[] | undefined) {
   if (Array.isArray(keywords)) {
@@ -16,20 +16,19 @@ function getKeywords(keywords: string | string[] | undefined) {
   return '';
 }
 
-export const defaultSpotlightFilter: SpotlightFilterFunction = (query, action) => {
-  const normalizedQuery = query.trim().toLowerCase();
-  const shouldFilterByDescription = typeof action.description === 'string';
-  const shouldFilterByLabel = typeof action.label === 'string';
-  const shouldFilterByKeywords =
-    Array.isArray(action.keywords) || typeof action.keywords === 'string';
-  const keywords = getKeywords(action.keywords);
+export const defaultSpotlightFilter: SpotlightFilterFunction = (_query, actions) => {
+  const query = _query.trim().toLowerCase();
+  const priorityMatrix: SpotlightActionData[][] = [[], []];
+  actions.forEach((action) => {
+    if (action.label?.toLowerCase().includes(query)) {
+      priorityMatrix[0].push(action);
+    } else if (
+      action.description?.toLowerCase().includes(query) ||
+      getKeywords(action.keywords).includes(query)
+    ) {
+      priorityMatrix[1].push(action);
+    }
+  });
 
-  const descriptionMatched =
-    shouldFilterByDescription &&
-    (action.description as string).toLowerCase().includes(normalizedQuery);
-  const labelMatched =
-    shouldFilterByLabel && (action.label as string).toLowerCase().includes(normalizedQuery);
-  const keywordsMatched = shouldFilterByKeywords && keywords.includes(normalizedQuery);
-
-  return descriptionMatched || labelMatched || keywordsMatched;
+  return priorityMatrix.flat();
 };

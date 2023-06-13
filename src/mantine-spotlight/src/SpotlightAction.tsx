@@ -15,17 +15,22 @@ import classes from './Spotlight.module.css';
 import { useSpotlightContext } from './Spotlight.context';
 import { spotlightActions } from './spotlight.store';
 
-export type SpotlightActionStylesNames = 'root';
+export type SpotlightActionStylesNames =
+  | 'action'
+  | 'actionLabel'
+  | 'actionDescription'
+  | 'actionSection'
+  | 'actionBody';
 
 export interface SpotlightActionProps
   extends BoxProps,
     StylesApiProps<SpotlightActionFactory>,
     ElementProps<'button'> {
   /** Action label, pass string to use in default filter */
-  label?: React.ReactNode;
+  label?: string;
 
   /** Action description, pass string to use in default filter */
-  description?: React.ReactNode;
+  description?: string;
 
   /** Section displayed on the left side of the label, for example, icon */
   leftSection?: React.ReactNode;
@@ -84,6 +89,7 @@ export const SpotlightAction = factory<SpotlightActionFactory>((_props, ref) => 
     onClick,
     onMouseDown,
     keywords,
+    vars,
     ...others
   } = props;
 

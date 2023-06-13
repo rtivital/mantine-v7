@@ -1,93 +1,43 @@
 import React from 'react';
-import {
-  StylesApiProps,
-  factory,
-  useProps,
-  useStyles,
-  Factory,
-  Modal,
-  ModalProps,
-  ModalStylesNames,
-  getDefaultZIndex,
-  resolveClassNames,
-  useMantineTheme,
-  resolveStyles,
-} from '@mantine/core';
-import { useDidUpdate, useHotkeys } from '@mantine/hooks';
-import { SpotlightProvider } from './Spotlight.context';
-import {
-  useSpotlight,
-  SpotlightStore,
-  spotlightStore,
-  spotlightActions,
-  spotlight,
-} from './spotlight.store';
-import { SpotlightSearch } from './SpotlightSearch';
+import { useUncontrolled } from '@mantine/hooks';
+import { factory, useProps, Factory, getDefaultZIndex } from '@mantine/core';
+import { spotlightStore, spotlight } from './spotlight.store';
+import { SpotlightSearch, SpotlightSearchProps } from './SpotlightSearch';
 import { SpotlightActionsList } from './SpotlightActionsList';
 import { SpotlightAction, SpotlightActionProps } from './SpotlightAction';
 import { SpotlightEmpty } from './SpotlightEmpty';
 import { SpotlightFooter } from './SpotlightFooter';
 import { SpotlightActionsGroup } from './SpotlightActionsGroup';
-import { getHotkeys } from './get-hotkeys';
-import { defaultSpotlightFilter } from './default-spotlight-filter';
+import { SpotlightRoot, SpotlightRootProps, SpotlightRootStylesNames } from './SpotlightRoot';
 import classes from './Spotlight.module.css';
+import { defaultSpotlightFilter } from './default-spotlight-filter';
 
-export type SpotlightFilterFunction = (query: string, action: SpotlightActionProps) => boolean;
+export type SpotlightFilterFunction = (
+  query: string,
+  actions: SpotlightActionData[]
+) => SpotlightActionData[];
 
-export type SpotlightStylesNames =
-  | ModalStylesNames
-  | 'search'
-  | 'actionsList'
-  | 'action'
-  | 'empty'
-  | 'footer'
-  | 'actionBody'
-  | 'actionLabel'
-  | 'actionDescription'
-  | 'actionSection'
-  | 'actionsGroup';
+export interface SpotlightActionData extends SpotlightActionProps {
+  id: string;
+}
 
-export interface SpotlightProps
-  extends StylesApiProps<SpotlightFactory>,
-    Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'variant' | 'opened' | 'onClose'> {
-  /** Spotlight store, can be used to create multiple instances of spotlight */
-  store?: SpotlightStore;
+export type SpotlightStylesNames = SpotlightRootStylesNames;
 
-  /** Controlled Spotlight search query */
-  query?: string;
+export interface SpotlightProps extends SpotlightRootProps {
+  /** Props passed down to the `Spotlight.Search` */
+  searchProps?: SpotlightSearchProps;
 
-  /** Called when query changes */
-  onQueryChange?(query: string): void;
+  /** Actions data, passed down to `Spotlight.Action` component */
+  actions: SpotlightActionData[];
 
-  /** Function based on which `Spotlight.Action` determines whether it should render its content. By default, actions are filtered by `children` and `description` if these values are strings. */
-  filter?: SpotlightFilterFunction;
+  /** Function to filter actions data based on search query, by default actions are filtered by title, description and keywords */
+  filter?(query: string, actions: SpotlightActionData[]): SpotlightActionData[];
 
-  /** Determines whether the search query should be cleared when the spotlight is closed, `true` by default */
-  clearQueryOnClose?: boolean;
+  /** Message displayed when none of the actions match given `filter` */
+  nothingFound?: React.ReactNode;
 
-  /** Keyboard shortcut or a list of shortcuts to trigger spotlight, `'mod + K'` by default */
-  shortcut?: string | string[] | null;
-
-  /** A list of tags which when focused will be ignored by shortcut, `['input', 'textarea', 'select']` by default */
-  tagsToIgnore?: string[];
-
-  /** Determines whether shortcut should trigger based in contentEditable, `false` by default */
-  triggerOnContentEditable?: boolean;
-
-  /** If set, spotlight will not be rendered */
-  disabled?: boolean;
-
-  /** Called when spotlight opens */
-  onSpotlightOpen?(): void;
-
-  /** Called when spotlight closes */
-  onSpotlightClose?(): void;
-
-  /** Forces opened state, useful for tests */
-  forceOpened?: boolean;
-
-  /** Determines whether spotlight should be closed when one of the actions is triggered, `true` by default */
-  closeOnActionTrigger?: boolean;
+  /** Determines whether search query should be highlighted in action label, `false` by default */
+  highlightQuery?: boolean;
 }
 
 export type SpotlightFactory = Factory<{
@@ -101,6 +51,7 @@ export type SpotlightFactory = Factory<{
     Empty: typeof SpotlightEmpty;
     Footer: typeof SpotlightFooter;
     ActionsGroup: typeof SpotlightActionsGroup;
+    Root: typeof SpotlightRoot;
     open: typeof spotlight.open;
     close: typeof spotlight.close;
     toggle: typeof spotlight.toggle;
@@ -118,104 +69,43 @@ const defaultProps: Partial<SpotlightProps> = {
   clearQueryOnClose: true,
   closeOnActionTrigger: true,
   shortcut: 'mod + K',
+  highlightQuery: false,
 };
 
 export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
   const props = useProps('Spotlight', defaultProps, _props);
   const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    store,
-    children,
+    searchProps,
+    filter,
     query,
     onQueryChange,
-    filter,
-    transitionProps,
-    clearQueryOnClose,
-    shortcut,
-    tagsToIgnore,
-    triggerOnContentEditable,
-    disabled,
-    onSpotlightOpen,
-    onSpotlightClose,
-    forceOpened,
-    closeOnActionTrigger,
+    actions,
+    nothingFound,
+    highlightQuery,
     ...others
   } = props;
 
-  const theme = useMantineTheme();
-  const { opened, query: storeQuery, empty } = useSpotlight(store!);
-  const _query = query || storeQuery;
-  const setQuery = (q: string) => {
-    onQueryChange?.(q);
-    spotlightActions.setQuery(q, store!);
-  };
-
-  const getStyles = useStyles<SpotlightFactory>({
-    name: 'Spotlight',
-    classes,
-    props,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
+  const [_query, setQuery] = useUncontrolled({
+    value: query,
+    defaultValue: '',
+    finalValue: '',
+    onChange: onQueryChange,
   });
 
-  useHotkeys(getHotkeys(shortcut, store!), tagsToIgnore, triggerOnContentEditable);
-
-  useDidUpdate(() => {
-    opened ? onSpotlightOpen?.() : onSpotlightClose?.();
-  }, [opened]);
-
-  if (disabled) {
-    return null;
-  }
+  const filteredActions = filter!(_query, actions).map(({ id, ...actionData }) => (
+    <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
+  ));
 
   return (
-    <SpotlightProvider
-      value={{
-        getStyles,
-        query: _query,
-        setQuery,
-        empty,
-        filter: (actionProps) => filter!(_query, actionProps),
-        store: store!,
-        closeOnActionTrigger,
-      }}
-    >
-      <Modal
-        ref={ref}
-        {...others}
-        withCloseButton={false}
-        opened={opened || !!forceOpened}
-        padding={0}
-        onClose={() => spotlightActions.close(store!)}
-        className={className}
-        style={style}
-        classNames={resolveClassNames({
-          theme,
-          classNames: [classes, classNames],
-          props,
-          stylesCtx: undefined,
-        })}
-        styles={resolveStyles({ theme, styles, props, stylesCtx: undefined })}
-        transitionProps={{
-          ...transitionProps,
-          onExited: () => {
-            spotlightActions.clearSpotlightState({ clearQuery: clearQueryOnClose }, store!);
-            transitionProps?.onExited?.();
-          },
-        }}
-        __staticSelector="Spotlight"
-      >
-        {children}
-      </Modal>
-    </SpotlightProvider>
+    <SpotlightRoot {...others} query={_query} onQueryChange={setQuery} ref={ref}>
+      <SpotlightSearch {...searchProps} />
+      <SpotlightActionsList>
+        {filteredActions}
+        {filteredActions.length === 0 && nothingFound && (
+          <SpotlightEmpty>{nothingFound}</SpotlightEmpty>
+        )}
+      </SpotlightActionsList>
+    </SpotlightRoot>
   );
 });
 
@@ -227,6 +117,7 @@ Spotlight.Action = SpotlightAction;
 Spotlight.Empty = SpotlightEmpty;
 Spotlight.ActionsGroup = SpotlightActionsGroup;
 Spotlight.Footer = SpotlightFooter;
+Spotlight.Root = SpotlightRoot;
 Spotlight.open = spotlight.open;
 Spotlight.close = spotlight.close;
 Spotlight.toggle = spotlight.toggle;

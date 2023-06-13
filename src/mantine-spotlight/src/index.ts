@@ -20,6 +20,7 @@ export { SpotlightSearch } from './SpotlightSearch';
 export type {
   SpotlightFactory,
   SpotlightFilterFunction,
+  SpotlightActionData,
   SpotlightProps,
   SpotlightStylesNames,
 } from './Spotlight';
@@ -35,3 +36,4 @@ export type {
 export type { SpotlightEmptyProps, SpotlightEmptyStylesNames } from './SpotlightEmpty';
 export type { SpotlightFooterProps, SpotlightFooterStylesNames } from './SpotlightFooter';
 export type { SpotlightSearchProps, SpotlightSearchStylesNames } from './SpotlightSearch';
+export type { SpotlightRootProps, SpotlightRootStylesNames } from './SpotlightRoot';
