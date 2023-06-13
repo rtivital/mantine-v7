@@ -1,4 +1,3 @@
-import React from 'react';
 import { tests } from '@mantine/tests';
 import { Spotlight, SpotlightProps, SpotlightStylesNames } from './Spotlight';
 import { SpotlightAction } from './SpotlightAction';
@@ -12,24 +11,14 @@ const defaultProps: SpotlightProps = {
   forceOpened: true,
   withinPortal: false,
   transitionProps: { duration: 0 },
-  children: (
-    <>
-      <Spotlight.Search />
-      <Spotlight.ActionsList>
-        <Spotlight.ActionsGroup label="test group">
-          <Spotlight.Action
-            label="First"
-            description="Description"
-            leftSection="L"
-            rightSection="R"
-          />
-          <Spotlight.Action label="Second" />
-        </Spotlight.ActionsGroup>
-        <Spotlight.Empty>Empty</Spotlight.Empty>
-      </Spotlight.ActionsList>
-      <Spotlight.Footer>Footer</Spotlight.Footer>
-    </>
-  ),
+  actions: [
+    { id: '1', label: 'test-1', description: 'test-1', onClick: () => {}, leftSection: 'L' },
+    { id: '2', label: 'test-2', description: 'test-2', onClick: () => {} },
+    {
+      group: 'test',
+      actions: [{ id: '3', label: 'test-3', description: 'test-3', onClick: () => {} }],
+    },
+  ],
 };
 
 describe('@mantine/core/Spotlight', () => {
@@ -37,7 +26,6 @@ describe('@mantine/core/Spotlight', () => {
     component: Spotlight,
     props: defaultProps,
     styleProps: true,
-    children: true,
     extend: true,
     variant: true,
     size: true,
@@ -55,7 +43,6 @@ describe('@mantine/core/Spotlight', () => {
       'actionsGroup',
       'body',
       'content',
-      'footer',
       'inner',
       'overlay',
       'search',

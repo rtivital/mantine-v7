@@ -62,7 +62,17 @@ export function Default() {
     <div style={{ padding: 40 }}>
       <Spotlight
         store={store}
-        actions={actionsData}
+        actions={[
+          {
+            group: 'test',
+            actions: [
+              { id: '4', label: 'Home', description: 'Home page', keywords: 'test' },
+              { id: '5', label: 'About', description: 'About me', keywords: 'ng' },
+              { id: '6', label: 'Contact', description: 'Contact me', keywords: 'react' },
+            ],
+          },
+          ...actionsData,
+        ]}
         highlightQuery
         searchProps={{
           placeholder: 'Search actions',

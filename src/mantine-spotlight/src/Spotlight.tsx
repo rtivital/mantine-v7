@@ -14,11 +14,25 @@ import { defaultSpotlightFilter } from './default-spotlight-filter';
 
 export type SpotlightFilterFunction = (
   query: string,
-  actions: SpotlightActionData[]
-) => SpotlightActionData[];
+  actions: SpotlightActions[]
+) => SpotlightActions[];
 
 export interface SpotlightActionData extends SpotlightActionProps {
   id: string;
+  group?: string;
+}
+
+export interface SpotlightActionGroupData {
+  group: string;
+  actions: SpotlightActionData[];
+}
+
+export type SpotlightActions = SpotlightActionData | SpotlightActionGroupData;
+
+function isGroup(
+  item: SpotlightActionData | SpotlightActionGroupData
+): item is SpotlightActionGroupData {
+  return (item as SpotlightActionGroupData).group !== undefined;
 }
 
 export type SpotlightStylesNames = SpotlightRootStylesNames;
@@ -28,10 +42,10 @@ export interface SpotlightProps extends SpotlightRootProps {
   searchProps?: SpotlightSearchProps;
 
   /** Actions data, passed down to `Spotlight.Action` component */
-  actions: SpotlightActionData[];
+  actions: SpotlightActions[];
 
   /** Function to filter actions data based on search query, by default actions are filtered by title, description and keywords */
-  filter?(query: string, actions: SpotlightActionData[]): SpotlightActionData[];
+  filter?: SpotlightFilterFunction;
 
   /** Message displayed when none of the actions match given `filter` */
   nothingFound?: React.ReactNode;
@@ -92,9 +106,21 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     onChange: onQueryChange,
   });
 
-  const filteredActions = filter!(_query, actions).map(({ id, ...actionData }) => (
-    <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
-  ));
+  const filteredActions = filter!(_query, actions).map((item) => {
+    if (isGroup(item)) {
+      const items = item.actions.map(({ id, ...actionData }) => (
+        <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
+      ));
+
+      return (
+        <SpotlightActionsGroup key={item.group} label={item.group}>
+          {items}
+        </SpotlightActionsGroup>
+      );
+    }
+
+    return <SpotlightAction key={item.id} highlightQuery={highlightQuery} {...item} />;
+  });
 
   return (
     <SpotlightRoot {...others} query={_query} onQueryChange={setQuery} ref={ref}>
