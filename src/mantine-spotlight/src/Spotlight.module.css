@@ -1,11 +1,13 @@
 .content {
   overflow: hidden;
+  height: 100%;
+  max-height: var(--spotlight-max-height);
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  height: rem(440px);
+  height: 100%;
 }
 
 .search {
@@ -17,6 +19,7 @@
   border-top: rem(1px) solid var(--_actions-list-border);
   flex: 1;
   padding: rem(4px);
+  max-height: calc(100% - rem(3.125rem));
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);

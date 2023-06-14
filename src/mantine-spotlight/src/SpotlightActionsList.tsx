@@ -44,7 +44,7 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props,
   }, []);
 
   return (
-    <ScrollArea
+    <ScrollArea.Autosize
       {...ctx.getStyles('actionsList', { className, style, classNames, styles })}
       ref={ref}
       type="scroll"
@@ -52,7 +52,7 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props,
       {...others}
     >
       {children}
-    </ScrollArea>
+    </ScrollArea.Autosize>
   );
 });
 

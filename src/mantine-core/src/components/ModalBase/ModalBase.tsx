@@ -88,6 +88,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
       zIndex,
       shadow,
       padding,
+      __vars,
       ...others
     },
     ref
@@ -119,6 +120,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
               ref={ref}
               {...others}
               __vars={{
+                ...__vars,
                 '--mb-z-index': (zIndex || getDefaultZIndex('modal')).toString(),
                 '--mb-shadow': getShadow(shadow),
                 '--mb-padding': getSpacing(padding),

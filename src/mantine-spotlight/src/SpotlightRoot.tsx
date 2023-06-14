@@ -12,6 +12,7 @@ import {
   resolveClassNames,
   useMantineTheme,
   resolveStyles,
+  rem,
 } from '@mantine/core';
 import { useDidUpdate, useHotkeys } from '@mantine/hooks';
 import { SpotlightProvider } from './Spotlight.context';
@@ -70,6 +71,9 @@ export interface SpotlightRootProps
 
   /** Determines whether spotlight should be closed when one of the actions is triggered, `true` by default */
   closeOnActionTrigger?: boolean;
+
+  /** Spotlight content max-height, `400` by default */
+  maxHeight?: React.CSSProperties['maxHeight'];
 }
 
 export type SpotlightRootFactory = Factory<{
@@ -89,6 +93,7 @@ const defaultProps: Partial<SpotlightRootProps> = {
   clearQueryOnClose: true,
   closeOnActionTrigger: true,
   shortcut: 'mod + K',
+  maxHeight: 400,
 };
 
 export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
@@ -114,6 +119,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
     onSpotlightClose,
     forceOpened,
     closeOnActionTrigger,
+    maxHeight,
     ...others
   } = props;
 
@@ -179,6 +185,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
             transitionProps?.onExited?.();
           },
         }}
+        __vars={{ '--spotlight-max-height': rem(maxHeight) }}
         __staticSelector="Spotlight"
       >
         {children}

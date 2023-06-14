@@ -9,11 +9,13 @@ const [store, actions] = createSpotlight();
 
 export default { title: 'Spotlight' };
 
-const actionsData: SpotlightActionData[] = [
-  { id: '1', label: 'Home', description: 'Home page', keywords: 'test' },
-  { id: '2', label: 'About', description: 'About me', keywords: 'ng' },
-  { id: '3', label: 'Contact', description: 'Contact me', keywords: 'react' },
-];
+const actionsData: SpotlightActionData[] = Array(100)
+  .fill(0)
+  .map((_, index) => ({
+    label: `Action ${index}`,
+    description: `Action ${index} description`,
+    id: `${index}`,
+  }));
 
 export function Compound() {
   const [query, setQuery] = useState('');
@@ -38,6 +40,8 @@ export function Compound() {
         onQueryChange={setQuery}
         onSpotlightOpen={() => console.log('open')}
         onSpotlightClose={() => console.log('close')}
+        // fullScreen
+        // maxHeight="100vh"
       >
         <Spotlight.Search
           placeholder="Search something..."
@@ -49,7 +53,7 @@ export function Compound() {
           {actionsList.length === 0 && <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
         </Spotlight.ActionsList>
 
-        <Spotlight.Footer>This is footer</Spotlight.Footer>
+        {/* <Spotlight.Footer>This is footer</Spotlight.Footer> */}
       </Spotlight.Root>
 
       <Button onClick={actions.open}>Open spotlight</Button>
