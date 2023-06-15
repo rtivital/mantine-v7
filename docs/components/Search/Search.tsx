@@ -10,26 +10,22 @@ export const [searchStore, searchHandlers] = createSpotlight();
 export function Search() {
   const router = useRouter();
 
-  const actions = ALL_MDX_PAGES.map((page) => (
-    <Spotlight.Action
-      key={page.title}
-      label={page.title}
-      description={page.search || page.description}
-      highlightQuery
-      onClick={() => router.push(page.slug)}
-    />
-  ));
+  const actions = ALL_MDX_PAGES.map((page) => ({
+    id: page.slug,
+    label: page.title,
+    description: page.search || page.description || page.date,
+    onClick: () => router.push(page.slug),
+  }));
 
   return (
-    <Spotlight store={searchStore} shortcut={['mod + K', 'mod + P', '/']}>
-      <Spotlight.Search
-        leftSection={<IconSearch style={{ width: rem(20), height: rem(20) }} />}
-        placeholder="Search documentation"
-      />
-      <Spotlight.ActionsList>
-        {actions}
-        <Spotlight.Empty>Nothing found...</Spotlight.Empty>
-      </Spotlight.ActionsList>
-    </Spotlight>
+    <Spotlight
+      store={searchStore}
+      shortcut={['mod + K', 'mod + P', '/']}
+      actions={actions}
+      searchProps={{
+        leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} />,
+        placeholder: 'Search documentation...',
+      }}
+    />
   );
 }
