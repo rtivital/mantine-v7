@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-interface ComboboxStore {
+export interface ComboboxStore {
   dropdownOpened: boolean;
   openDropdown(): void;
   closeDropdown(): void;

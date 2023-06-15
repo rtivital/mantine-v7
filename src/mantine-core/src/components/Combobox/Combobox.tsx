@@ -1,62 +1,63 @@
 import React from 'react';
-import {
-  BoxProps,
-  StylesApiProps,
-  ElementProps,
-  useProps,
-  useStyles,
-  createVarsResolver,
-  Factory,
-} from '../../core';
+import { StylesApiProps, useProps, useStyles, Factory } from '../../core';
+import { __PopoverProps, Popover } from '../Popover';
+import { useCombobox, ComboboxStore } from './use-combobox';
 import { ComboboxProvider } from './Combobox.context';
+import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
+import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
 import classes from './Combobox.module.css';
 
 export type ComboboxStylesNames = 'root';
-export type ComboboxVariant = string;
-export type ComboboxCssVariables = {
-  root: '--test';
-};
 
-export interface ComboboxProps
-  extends BoxProps,
-    StylesApiProps<ComboboxFactory>,
-    ElementProps<'div'> {}
+export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
+  /** Combobox content */
+  children: React.ReactNode;
+
+  /** Combobox store, can be used to control combobox state */
+  store?: ComboboxStore;
+}
 
 export type ComboboxFactory = Factory<{
   props: ComboboxProps;
   ref: HTMLDivElement;
   stylesNames: ComboboxStylesNames;
-  vars: ComboboxCssVariables;
-  variant: ComboboxVariant;
+  staticComponents: {
+    Target: typeof ComboboxTarget;
+    Dropdown: typeof ComboboxDropdown;
+  };
 }>;
 
-const defaultProps: Partial<ComboboxProps> = {};
-
-const varsResolver = createVarsResolver<ComboboxFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const defaultProps: Partial<ComboboxProps> = {
+  keepMounted: true,
+  withinPortal: true,
+  width: 'target',
+};
 
 export function Combobox(_props: ComboboxProps) {
   const props = useProps('Combobox', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, children } = props;
+  const { classNames, styles, unstyled, children, store: controlledStore, vars, ...others } = props;
+  const uncontrolledStore = useCombobox();
+  const store = controlledStore || uncontrolledStore;
 
   const getStyles = useStyles<ComboboxFactory>({
     name: 'Combobox',
     classes,
     props,
-    className,
-    style,
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver,
   });
 
-  return <ComboboxProvider value={{ getStyles }}>{children}</ComboboxProvider>;
+  return (
+    <ComboboxProvider value={{ getStyles, store }}>
+      <Popover opened={store.dropdownOpened} {...others} withRoles={false}>
+        {children}
+      </Popover>
+    </ComboboxProvider>
+  );
 }
 
 Combobox.classes = classes;
 Combobox.displayName = '@mantine/core/Combobox';
+Combobox.Target = ComboboxTarget;
+Combobox.Dropdown = ComboboxDropdown;
