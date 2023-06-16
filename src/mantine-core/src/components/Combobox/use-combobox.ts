@@ -18,8 +18,13 @@ export interface ComboboxStore {
   setListId(id: string): void;
 }
 
-export function useCombobox(): ComboboxStore {
-  const [dropdownOpened, setDropdownOpened] = useState(false);
+interface UseComboboxOptions {
+  /** Default value for `dropdownOpened`, `false` by default */
+  defaultOpened?: boolean;
+}
+
+export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}): ComboboxStore {
+  const [dropdownOpened, setDropdownOpened] = useState(defaultOpened);
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);

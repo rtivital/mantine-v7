@@ -14,7 +14,10 @@ function DefaultUsage() {
           <TextInput label="Test input" onFocus={store.openDropdown} onBlur={store.closeDropdown} />
         </Combobox.Target>
         <Combobox.Dropdown>
-          <Combobox.Options>Options</Combobox.Options>
+          <Combobox.Options>
+            <Combobox.Option value="react">React</Combobox.Option>
+            <Combobox.Option value="vue">Vue</Combobox.Option>
+          </Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
     </div>

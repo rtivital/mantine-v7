@@ -38,6 +38,7 @@ const defaultProps: Partial<ComboboxProps> = {
   keepMounted: true,
   withinPortal: true,
   width: 'target',
+  transitionProps: { transition: 'fade', duration: 0 },
 };
 
 export function Combobox(_props: ComboboxProps) {

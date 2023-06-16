@@ -49,6 +49,7 @@ export function Usage() {
             value={value}
             onChange={(event) => {
               setValue(event.currentTarget.value);
+              store.openDropdown();
             }}
           />
         </Combobox.Target>
@@ -79,6 +80,7 @@ export function WithButtonTarget() {
         }}
         width={400}
         position="bottom-start"
+        offset={10}
       >
         <Combobox.Target>
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
@@ -97,7 +99,7 @@ export function WithButtonTarget() {
 }
 
 export function WithScrollArea() {
-  const store = useCombobox();
+  const store = useCombobox({ defaultOpened: true });
   const [value, setValue] = React.useState('');
 
   return (
