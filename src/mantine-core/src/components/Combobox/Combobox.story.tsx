@@ -50,7 +50,6 @@ export function Usage() {
             onChange={(event) => {
               setValue(event.currentTarget.value);
             }}
-            onKeyDown={() => console.log('keydown')}
           />
         </Combobox.Target>
         <Combobox.Dropdown>

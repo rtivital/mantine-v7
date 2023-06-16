@@ -9,10 +9,14 @@ export interface ComboboxTargetProps {
 
   /** Key of the prop that should be used to access element ref */
   refProp?: string;
+
+  /** Determines whether component should respond to keyboard events, `true` by default */
+  withKeyboardNavigation?: boolean;
 }
 
 const defaultProps: Partial<ComboboxTargetProps> = {
   refProp: 'ref',
+  withKeyboardNavigation: true,
 };
 
 export type ComboboxTargetFactory = Factory<{
@@ -22,7 +26,11 @@ export type ComboboxTargetFactory = Factory<{
 }>;
 
 export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
-  const { children, refProp, ...others } = useProps('ComboboxTarget', defaultProps, props);
+  const { children, refProp, withKeyboardNavigation, ...others } = useProps(
+    'ComboboxTarget',
+    defaultProps,
+    props
+  );
 
   if (!isElement(children)) {
     throw new Error(
@@ -35,35 +43,39 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     children.props.onKeyDown?.(event);
 
-    if (event.nativeEvent.code === 'ArrowDown') {
-      event.preventDefault();
-
-      if (!ctx.store.dropdownOpened) {
-        ctx.store.openDropdown();
-      }
-
-      ctx.store.selectNextOption();
-    }
-
-    if (event.nativeEvent.code === 'ArrowUp') {
-      event.preventDefault();
-
-      if (!ctx.store.dropdownOpened) {
-        ctx.store.openDropdown();
-      }
-
-      ctx.store.selectPreviousOption();
-    }
-
-    if (event.nativeEvent.code === 'Enter') {
-      if (ctx.store.dropdownOpened) {
+    if (withKeyboardNavigation) {
+      if (event.nativeEvent.code === 'ArrowDown') {
         event.preventDefault();
-        ctx.store.clickSelectedOption();
-      }
-    }
 
-    if (event.nativeEvent.code === 'Escape') {
-      ctx.store.closeDropdown();
+        if (!ctx.store.dropdownOpened) {
+          ctx.store.openDropdown();
+          ctx.store.selectOption(0);
+        } else {
+          ctx.store.selectNextOption();
+        }
+      }
+
+      if (event.nativeEvent.code === 'ArrowUp') {
+        event.preventDefault();
+
+        if (!ctx.store.dropdownOpened) {
+          ctx.store.openDropdown();
+          ctx.store.selectOption(0);
+        } else {
+          ctx.store.selectPreviousOption();
+        }
+      }
+
+      if (event.nativeEvent.code === 'Enter') {
+        if (ctx.store.dropdownOpened) {
+          event.preventDefault();
+          ctx.store.clickSelectedOption();
+        }
+      }
+
+      if (event.nativeEvent.code === 'Escape') {
+        ctx.store.closeDropdown();
+      }
     }
   };
 
