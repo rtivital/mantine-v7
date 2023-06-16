@@ -27,6 +27,9 @@ export function useCombobox(): ComboboxStore {
 
   const selectItem = (index: number) => {
     selectedItemIndex.current = index;
+    const list = document.getElementById(listId.current!);
+    const items = list?.querySelectorAll('[data-combobox-option]');
+    console.log(items);
   };
 
   const selectNextItem = () => {

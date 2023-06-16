@@ -38,7 +38,7 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => 
     ctx.store.setListId(_id);
   }, [_id]);
 
-  return <Box ref={ref} {...ctx.getStyles('options')} {...others} role="listbox" />;
+  return <Box ref={ref} {...ctx.getStyles('options')} {...others} id={_id} role="listbox" />;
 });
 
 ComboboxOptions.classes = classes;

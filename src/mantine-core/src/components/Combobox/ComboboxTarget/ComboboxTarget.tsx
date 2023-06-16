@@ -32,11 +32,25 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
   const ctx = useComboboxContext();
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    children.props.onMouseDown?.(event);
+
+    if (event.nativeEvent.code === 'ArrowDown') {
+      if (!ctx.store.dropdownOpened) {
+        ctx.store.openDropdown();
+      }
+
+      ctx.store.selectNextItem();
+    }
+  };
+
   const clonedElement = cloneElement(children, {
     'aria-haspopup': 'listbox',
     'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
     'aria-controls': ctx.store.listId,
     autoComplete: 'off',
+    onKeyDown,
     ...others,
   });
 

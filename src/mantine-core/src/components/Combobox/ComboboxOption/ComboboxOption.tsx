@@ -40,6 +40,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
       ref={ref}
       {...ctx.getStyles('option', { className, classNames, styles, style })}
       {...others}
+      data-combobox-option
       onClick={(event) => {
         ctx.onItemSelect?.(props.value, props);
         onClick?.(event);
