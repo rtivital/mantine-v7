@@ -5,9 +5,10 @@ import { useCombobox, ComboboxStore } from './use-combobox';
 import { ComboboxProvider } from './Combobox.context';
 import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
+import { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
 import classes from './Combobox.module.css';
 
-export type ComboboxStylesNames = 'root';
+export type ComboboxStylesNames = 'root' | 'options' | 'dropdown';
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
   /** Combobox content */
@@ -24,6 +25,7 @@ export type ComboboxFactory = Factory<{
   staticComponents: {
     Target: typeof ComboboxTarget;
     Dropdown: typeof ComboboxDropdown;
+    Options: typeof ComboboxOptions;
   };
 }>;
 
@@ -50,7 +52,12 @@ export function Combobox(_props: ComboboxProps) {
 
   return (
     <ComboboxProvider value={{ getStyles, store }}>
-      <Popover opened={store.dropdownOpened} {...others} withRoles={false}>
+      <Popover
+        opened={store.dropdownOpened}
+        {...others}
+        onClose={store.closeDropdown}
+        withRoles={false}
+      >
         {children}
       </Popover>
     </ComboboxProvider>
@@ -61,3 +68,4 @@ Combobox.classes = classes;
 Combobox.displayName = '@mantine/core/Combobox';
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
+Combobox.Options = ComboboxOptions;

@@ -13,7 +13,9 @@ function DefaultUsage() {
         <Combobox.Target>
           <TextInput label="Test input" onFocus={store.openDropdown} onBlur={store.closeDropdown} />
         </Combobox.Target>
-        <Combobox.Dropdown id="test-id">Test dropdown</Combobox.Dropdown>
+        <Combobox.Dropdown>
+          <Combobox.Options>Options</Combobox.Options>
+        </Combobox.Dropdown>
       </Combobox>
     </div>
   );

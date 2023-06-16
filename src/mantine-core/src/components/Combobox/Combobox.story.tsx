@@ -18,7 +18,9 @@ export function Usage() {
             onBlur={store.closeDropdown}
           />
         </Combobox.Target>
-        <Combobox.Dropdown>Test dropdown</Combobox.Dropdown>
+        <Combobox.Dropdown>
+          <Combobox.Options>Options</Combobox.Options>
+        </Combobox.Dropdown>
       </Combobox>
     </div>
   );

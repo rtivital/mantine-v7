@@ -12,16 +12,12 @@ export interface ComboboxStore {
   selectPreviousItem(): void;
   resetSelectedItem(): void;
 
-  dropdownId: string | null;
-  setDropdownId(id: string): void;
-
   listId: string | null;
   setListId(id: string): void;
 }
 
 export function useCombobox(): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useState(false);
-  const dropdownId = useRef<string | null>(null);
   const listId = useRef<string | null>(null);
   const selectedItemIndex = useRef<number>(-1);
 
@@ -45,10 +41,6 @@ export function useCombobox(): ComboboxStore {
     selectedItemIndex.current = -1;
   };
 
-  const setDropdownId = (id: string) => {
-    dropdownId.current = id;
-  };
-
   const setListId = (id: string) => {
     listId.current = id;
   };
@@ -64,9 +56,6 @@ export function useCombobox(): ComboboxStore {
     selectNextItem,
     selectPreviousItem,
     resetSelectedItem,
-
-    dropdownId: dropdownId.current,
-    setDropdownId,
 
     listId: listId.current,
     setListId,

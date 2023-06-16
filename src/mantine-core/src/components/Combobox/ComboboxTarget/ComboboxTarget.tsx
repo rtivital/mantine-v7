@@ -34,8 +34,8 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
   const clonedElement = cloneElement(children, {
     'aria-haspopup': 'listbox',
-    'aria-expanded': ctx.store.dropdownId ? ctx.store.dropdownOpened : undefined,
-    'aria-controls': ctx.store.dropdownId,
+    'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
+    'aria-controls': ctx.store.listId,
     autoComplete: 'off',
     ...others,
   });
