@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import {
   Box,
   BoxProps,
@@ -32,15 +32,19 @@ const defaultProps: Partial<ComboboxOptionProps> = {};
 
 export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
   const props = useProps('ComboboxOption', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, onClick, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, onClick, id, ...others } = props;
   const ctx = useComboboxContext();
+  const uuid = useId();
+  const _id = id || uuid;
 
   return (
     <Box
       ref={ref}
       {...ctx.getStyles('option', { className, classNames, styles, style })}
       {...others}
+      id={_id}
       data-combobox-option
+      role="option"
       onClick={(event) => {
         ctx.onItemSelect?.(props.value, props);
         onClick?.(event);

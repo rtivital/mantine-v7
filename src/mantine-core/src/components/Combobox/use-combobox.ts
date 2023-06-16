@@ -6,11 +6,13 @@ export interface ComboboxStore {
   closeDropdown(): void;
   toggleDropdown(): void;
 
-  selectedItemIndex: number;
-  selectItem(index: number): void;
-  selectNextItem(): void;
-  selectPreviousItem(): void;
-  resetSelectedItem(): void;
+  selectedOptionIndex: number;
+  selectedOptionId: string | null;
+  selectOption(index: number): void;
+  selectNextOption(): void;
+  selectPreviousOption(): void;
+  resetSelectedOption(): void;
+  clickSelectedOption(): void;
 
   listId: string | null;
   setListId(id: string): void;
@@ -19,29 +21,53 @@ export interface ComboboxStore {
 export function useCombobox(): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useState(false);
   const listId = useRef<string | null>(null);
-  const selectedItemIndex = useRef<number>(-1);
+  const selectedOptionIndex = useRef<number>(-1);
+  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
 
   const openDropdown = () => setDropdownOpened(true);
   const closeDropdown = () => setDropdownOpened(false);
   const toggleDropdown = () => setDropdownOpened((o) => !o);
 
-  const selectItem = (index: number) => {
-    selectedItemIndex.current = index;
+  const clearSelectedItem = () => {
+    const selected = document.querySelector(`#${listId.current} [data-selected]`);
+    selected?.removeAttribute('data-selected');
+    selected?.removeAttribute('aria-selected');
+  };
+
+  const selectOption = (index: number) => {
     const list = document.getElementById(listId.current!);
     const items = list?.querySelectorAll('[data-combobox-option]');
-    console.log(items);
+    const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index;
+    selectedOptionIndex.current = nextIndex;
+
+    if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-disabled')) {
+      clearSelectedItem();
+      items[nextIndex].setAttribute('data-selected', 'true');
+      items[nextIndex].setAttribute('aria-selected', 'true');
+      items[nextIndex].scrollIntoView({ block: 'nearest' });
+      setSelectedOptionId(items[nextIndex].id);
+    }
   };
 
-  const selectNextItem = () => {
-    selectItem(selectedItemIndex.current + 1);
+  const selectNextOption = () => {
+    selectOption(selectedOptionIndex.current + 1);
   };
 
-  const selectPreviousItem = () => {
-    selectItem(selectedItemIndex.current - 1);
+  const selectPreviousOption = () => {
+    selectOption(selectedOptionIndex.current - 1);
   };
 
-  const resetSelectedItem = () => {
-    selectedItemIndex.current = -1;
+  const resetSelectedOption = () => {
+    selectedOptionIndex.current = -1;
+    clearSelectedItem();
+  };
+
+  const clickSelectedOption = () => {
+    const items = document.querySelectorAll<HTMLDivElement>(
+      `#${listId.current} [data-combobox-option]`
+    );
+    const item = items?.[selectedOptionIndex.current];
+    item?.click();
   };
 
   const setListId = (id: string) => {
@@ -54,13 +80,15 @@ export function useCombobox(): ComboboxStore {
     closeDropdown,
     toggleDropdown,
 
-    selectedItemIndex: selectedItemIndex.current,
-    selectItem,
-    selectNextItem,
-    selectPreviousItem,
-    resetSelectedItem,
+    selectedOptionId,
+    selectedOptionIndex: selectedOptionIndex.current,
+    selectOption,
+    selectNextOption,
+    selectPreviousOption,
+    resetSelectedOption,
 
     listId: listId.current,
     setListId,
+    clickSelectedOption,
   };
 }

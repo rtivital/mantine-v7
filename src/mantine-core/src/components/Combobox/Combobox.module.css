@@ -7,6 +7,12 @@
   border-radius: var(--mantine-radius-default);
   cursor: pointer;
   background-color: var(--_option-bg, transparent);
+  color: var(--_option-color, inherit);
+
+  &[data-selected] {
+    --_option-bg: var(--mantine-color-primary);
+    --_option-color: var(--mantine-color-white);
+  }
 
   @mixin hover {
     &:not([data-selected]) {

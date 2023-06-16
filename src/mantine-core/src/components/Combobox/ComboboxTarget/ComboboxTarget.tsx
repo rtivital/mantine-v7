@@ -33,15 +33,37 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
   const ctx = useComboboxContext();
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    children.props.onMouseDown?.(event);
+    children.props.onKeyDown?.(event);
 
     if (event.nativeEvent.code === 'ArrowDown') {
+      event.preventDefault();
+
       if (!ctx.store.dropdownOpened) {
         ctx.store.openDropdown();
       }
 
-      ctx.store.selectNextItem();
+      ctx.store.selectNextOption();
+    }
+
+    if (event.nativeEvent.code === 'ArrowUp') {
+      event.preventDefault();
+
+      if (!ctx.store.dropdownOpened) {
+        ctx.store.openDropdown();
+      }
+
+      ctx.store.selectPreviousOption();
+    }
+
+    if (event.nativeEvent.code === 'Enter') {
+      if (ctx.store.dropdownOpened) {
+        event.preventDefault();
+        ctx.store.clickSelectedOption();
+      }
+    }
+
+    if (event.nativeEvent.code === 'Escape') {
+      ctx.store.closeDropdown();
     }
   };
 
@@ -49,6 +71,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     'aria-haspopup': 'listbox',
     'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
     'aria-controls': ctx.store.listId,
+    'aria-activedescendant': ctx.store.selectedOptionId || undefined,
     autoComplete: 'off',
     onKeyDown,
     ...others,
