@@ -6,9 +6,10 @@ import { ComboboxProvider } from './Combobox.context';
 import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
 import { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
+import { ComboboxOption, ComboboxOptionProps } from './ComboboxOption/ComboboxOption';
 import classes from './Combobox.module.css';
 
-export type ComboboxStylesNames = 'root' | 'options' | 'dropdown';
+export type ComboboxStylesNames = 'root' | 'options' | 'dropdown' | 'option';
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
   /** Combobox content */
@@ -16,6 +17,9 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
 
   /** Combobox store, can be used to control combobox state */
   store?: ComboboxStore;
+
+  /** Called when item is selected with `Enter` key or by clicking it */
+  onItemSelect?(value: string, optionProps: ComboboxOptionProps): void;
 }
 
 export type ComboboxFactory = Factory<{
@@ -26,6 +30,7 @@ export type ComboboxFactory = Factory<{
     Target: typeof ComboboxTarget;
     Dropdown: typeof ComboboxDropdown;
     Options: typeof ComboboxOptions;
+    Option: typeof ComboboxOption;
   };
 }>;
 
@@ -37,7 +42,17 @@ const defaultProps: Partial<ComboboxProps> = {
 
 export function Combobox(_props: ComboboxProps) {
   const props = useProps('Combobox', defaultProps, _props);
-  const { classNames, styles, unstyled, children, store: controlledStore, vars, ...others } = props;
+  const {
+    classNames,
+    styles,
+    unstyled,
+    children,
+    store: controlledStore,
+    vars,
+    onItemSelect,
+    ...others
+  } = props;
+
   const uncontrolledStore = useCombobox();
   const store = controlledStore || uncontrolledStore;
 
@@ -51,7 +66,7 @@ export function Combobox(_props: ComboboxProps) {
   });
 
   return (
-    <ComboboxProvider value={{ getStyles, store }}>
+    <ComboboxProvider value={{ getStyles, store, onItemSelect }}>
       <Popover
         opened={store.dropdownOpened}
         {...others}
@@ -69,3 +84,4 @@ Combobox.displayName = '@mantine/core/Combobox';
 Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
 Combobox.Options = ComboboxOptions;
+Combobox.Option = ComboboxOption;

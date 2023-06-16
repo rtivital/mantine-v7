@@ -1,0 +1,22 @@
+.dropdown {
+  padding: rem(4px);
+}
+
+.option {
+  padding: rem(7px) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-default);
+  cursor: pointer;
+  background-color: var(--_option-bg, transparent);
+
+  @mixin hover {
+    &:not([data-selected]) {
+      @mixin light {
+        --_option-bg: var(--mantine-color-gray-0);
+      }
+
+      @mixin dark {
+        --_option-bg: var(--mantine-color-dark-7);
+      }
+    }
+  }
+}
