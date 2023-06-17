@@ -7,11 +7,10 @@ export interface ComboboxStore {
   toggleDropdown(): void;
 
   selectedOptionIndex: number;
-  selectedOptionId: string | null;
   selectOption(index: number): void;
-  selectActiveOption(): void;
-  selectNextOption(): void;
-  selectPreviousOption(): void;
+  selectActiveOption(): string | null;
+  selectNextOption(): string | null;
+  selectPreviousOption(): string | null;
   resetSelectedOption(): void;
   clickSelectedOption(): void;
 
@@ -28,7 +27,6 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
   const [dropdownOpened, setDropdownOpened] = useState(defaultOpened);
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
-  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
 
   const openDropdown = () => setDropdownOpened(true);
   const closeDropdown = () => setDropdownOpened(false);
@@ -51,8 +49,10 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
       items[nextIndex].setAttribute('data-selected', 'true');
       items[nextIndex].setAttribute('aria-selected', 'true');
       items[nextIndex].scrollIntoView({ block: 'nearest' });
-      setSelectedOptionId(items[nextIndex].id);
+      return items[nextIndex].id;
     }
+
+    return null;
   };
 
   const selectActiveOption = () => {
@@ -65,19 +65,14 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
         `#${listId.current} [data-combobox-option]`
       );
       const index = Array.from(items).findIndex((option) => option === activeOption);
-      selectOption(index);
-    } else {
-      selectOption(0);
+      return selectOption(index);
     }
+
+    return selectOption(0);
   };
 
-  const selectNextOption = () => {
-    selectOption(selectedOptionIndex.current + 1);
-  };
-
-  const selectPreviousOption = () => {
-    selectOption(selectedOptionIndex.current - 1);
-  };
+  const selectNextOption = () => selectOption(selectedOptionIndex.current + 1);
+  const selectPreviousOption = () => selectOption(selectedOptionIndex.current - 1);
 
   const resetSelectedOption = () => {
     selectedOptionIndex.current = -1;
@@ -102,7 +97,6 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
     closeDropdown,
     toggleDropdown,
 
-    selectedOptionId,
     selectedOptionIndex: selectedOptionIndex.current,
     selectOption,
     selectActiveOption,

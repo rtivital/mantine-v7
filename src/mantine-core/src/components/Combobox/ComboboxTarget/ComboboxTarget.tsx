@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, useState } from 'react';
 import { Popover } from '../../Popover';
 import { isElement, useProps, factory, Factory } from '../../../core';
 import { useComboboxContext } from '../Combobox.context';
@@ -39,6 +39,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
   }
 
   const ctx = useComboboxContext();
+  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     children.props.onKeyDown?.(event);
@@ -49,9 +50,9 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
         if (!ctx.store.dropdownOpened) {
           ctx.store.openDropdown();
-          ctx.store.selectActiveOption();
+          setSelectedOptionId(ctx.store.selectActiveOption());
         } else {
-          ctx.store.selectNextOption();
+          setSelectedOptionId(ctx.store.selectNextOption());
         }
       }
 
@@ -60,9 +61,9 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
         if (!ctx.store.dropdownOpened) {
           ctx.store.openDropdown();
-          ctx.store.selectActiveOption();
+          setSelectedOptionId(ctx.store.selectActiveOption());
         } else {
-          ctx.store.selectPreviousOption();
+          setSelectedOptionId(ctx.store.selectPreviousOption());
         }
       }
 
@@ -83,7 +84,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     'aria-haspopup': 'listbox',
     'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
     'aria-controls': ctx.store.listId,
-    'aria-activedescendant': ctx.store.selectedOptionId || undefined,
+    'aria-activedescendant': ctx.store.dropdownOpened ? selectedOptionId || undefined : undefined,
     autoComplete: 'off',
     onKeyDown,
     ...others,
