@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
+import { useUncontrolled } from '@mantine/hooks';
 
 export interface ComboboxStore {
   dropdownOpened: boolean;
@@ -21,16 +22,32 @@ export interface ComboboxStore {
 interface UseComboboxOptions {
   /** Default value for `dropdownOpened`, `false` by default */
   defaultOpened?: boolean;
+
+  /** Controlled `dropdownOpened` state */
+  opened?: boolean;
+
+  /** Called when `dropdownOpened` state changes */
+  onOpenedChange?(opened: boolean): void;
 }
 
-export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}): ComboboxStore {
-  const [dropdownOpened, setDropdownOpened] = useState(defaultOpened);
+export function useCombobox({
+  defaultOpened,
+  opened,
+  onOpenedChange,
+}: UseComboboxOptions = {}): ComboboxStore {
+  const [dropdownOpened, setDropdownOpened] = useUncontrolled({
+    value: opened,
+    defaultValue: defaultOpened,
+    finalValue: false,
+    onChange: onOpenedChange,
+  });
+
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
 
   const openDropdown = () => setDropdownOpened(true);
   const closeDropdown = () => setDropdownOpened(false);
-  const toggleDropdown = () => setDropdownOpened((o) => !o);
+  const toggleDropdown = () => setDropdownOpened(!dropdownOpened);
 
   const clearSelectedItem = () => {
     const selected = document.querySelector(`#${listId.current} [data-selected]`);

@@ -27,7 +27,8 @@ const scrollableContent = Array(20)
   .map((_, index) => <p key={index}>{lorem}</p>);
 
 export function Usage() {
-  const store = useCombobox();
+  const [opened, setOpened] = React.useState(false);
+  const store = useCombobox({ opened, onOpenedChange: setOpened });
   const [value, setValue] = React.useState('');
 
   return (
