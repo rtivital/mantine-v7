@@ -61,7 +61,7 @@
   }
 
   @mixin light {
-    --_search-border-color: var(--mantine-color-gray-3);
+    --_search-border-color: var(--mantine-color-gray-2);
     --_search_background: var(--mantine-color-white);
   }
 
@@ -69,4 +69,11 @@
     --_search-border-color: var(--mantine-color-dark-4);
     --_search_background: var(--mantine-color-dark-7);
   }
+}
+
+.empty {
+  font-size: var(--combobox-option-fz);
+  text-align: center;
+  padding: var(--combobox-option-padding);
+  color: var(--mantine-color-dimmed);
 }

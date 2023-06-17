@@ -5,7 +5,6 @@ import { Button } from '../Button';
 import { ScrollArea } from '../ScrollArea';
 import { Combobox } from './Combobox';
 import { useCombobox } from './use-combobox/use-combobox';
-import { Text } from '../Text';
 
 export default { title: 'Combobox' };
 
@@ -123,7 +122,7 @@ export function WithButtonTarget() {
     },
   });
 
-  const data = Array(100)
+  const data = Array(1000)
     .fill(0)
     .map((_, index) => ({
       value: `option-${index}`,
@@ -151,7 +150,6 @@ export function WithButtonTarget() {
         position="bottom-start"
         offset={10}
         withArrow
-        size="xs"
       >
         <Combobox.Target>
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
@@ -166,13 +164,7 @@ export function WithButtonTarget() {
           />
           <Combobox.Options>
             <ScrollArea.Autosize mah={200}>
-              {options.length > 0 ? (
-                options
-              ) : (
-                <Text ta="center" p="xs" c="dimmed">
-                  Nothing found
-                </Text>
-              )}
+              {options.length > 0 ? options : <Combobox.Empty>Nothing found</Combobox.Empty>}
             </ScrollArea.Autosize>
           </Combobox.Options>
         </Combobox.Dropdown>
