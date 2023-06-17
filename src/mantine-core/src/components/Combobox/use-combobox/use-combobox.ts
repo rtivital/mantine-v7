@@ -21,6 +21,9 @@ export interface ComboboxStore {
 
   searchRef: React.MutableRefObject<HTMLInputElement | null>;
   focusSearchInput(): void;
+
+  targetRef: React.MutableRefObject<HTMLElement | null>;
+  focusTarget(): void;
 }
 
 interface UseComboboxOptions {
@@ -61,16 +64,22 @@ export function useCombobox({
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
   const searchRef = useRef<HTMLInputElement | null>(null);
+  const targetRef = useRef<HTMLElement | null>(null);
   const focusSearchTimeout = useRef<number>(-1);
+  const focusTargetTimeout = useRef<number>(-1);
 
   const openDropdown = () => {
-    setDropdownOpened(true);
-    onDropdownOpen?.();
+    if (!dropdownOpened) {
+      setDropdownOpened(true);
+      onDropdownOpen?.();
+    }
   };
 
   const closeDropdown = () => {
-    setDropdownOpened(false);
-    onDropdownClose?.();
+    if (dropdownOpened) {
+      setDropdownOpened(false);
+      onDropdownClose?.();
+    }
   };
 
   const toggleDropdown = () => {
@@ -159,9 +168,14 @@ export function useCombobox({
     focusSearchTimeout.current = window.setTimeout(() => searchRef.current!.focus(), 0);
   };
 
+  const focusTarget = () => {
+    focusTargetTimeout.current = window.setTimeout(() => targetRef.current!.focus(), 0);
+  };
+
   useEffect(
     () => () => {
       window.clearTimeout(focusSearchTimeout.current);
+      window.clearTimeout(focusTargetTimeout.current);
     },
     []
   );
@@ -185,5 +199,8 @@ export function useCombobox({
 
     searchRef,
     focusSearchInput,
+
+    targetRef,
+    focusTarget,
   };
 }

@@ -113,6 +113,7 @@ export function AllItemsDisabled() {
 export function WithButtonTarget() {
   const store = useCombobox({
     onDropdownOpen: () => store.focusSearchInput(),
+    onDropdownClose: () => store.focusTarget(),
   });
 
   return (

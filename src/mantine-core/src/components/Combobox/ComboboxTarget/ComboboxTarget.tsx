@@ -1,6 +1,8 @@
 import React, { cloneElement } from 'react';
+import { useMergedRef } from '@mantine/hooks';
 import { Popover } from '../../Popover';
 import { isElement, useProps, factory, Factory } from '../../../core';
+import { useComboboxContext } from '../Combobox.context';
 import { useComboboxTargetProps } from '../use-combobox-target-props/use-combobox-target-props';
 
 export interface ComboboxTargetProps {
@@ -42,6 +44,8 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     );
   }
 
+  const ctx = useComboboxContext();
+
   const targetProps = useComboboxTargetProps({
     withAriaAttributes,
     withKeyboardNavigation,
@@ -53,7 +57,9 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     ...others,
   });
 
-  return <Popover.Target ref={ref}>{clonedElement}</Popover.Target>;
+  return (
+    <Popover.Target ref={useMergedRef(ref, ctx.store.targetRef)}>{clonedElement}</Popover.Target>
+  );
 });
 
 ComboboxTarget.displayName = '@mantine/core/ComboboxTarget';
