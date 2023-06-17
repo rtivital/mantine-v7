@@ -1,7 +1,7 @@
-import React, { cloneElement, useState } from 'react';
+import React, { cloneElement } from 'react';
 import { Popover } from '../../Popover';
 import { isElement, useProps, factory, Factory } from '../../../core';
-import { useComboboxContext } from '../Combobox.context';
+import { useComboboxTargetProps } from '../use-combobox-target-props/use-combobox-target-props';
 
 export interface ComboboxTargetProps {
   /** Target element */
@@ -12,11 +12,15 @@ export interface ComboboxTargetProps {
 
   /** Determines whether component should respond to keyboard events, `true` by default */
   withKeyboardNavigation?: boolean;
+
+  /** Determines whether the target should have `aria-` attributes, `true` by default */
+  withAriaAttributes?: boolean;
 }
 
 const defaultProps: Partial<ComboboxTargetProps> = {
   refProp: 'ref',
   withKeyboardNavigation: true,
+  withAriaAttributes: true,
 };
 
 export type ComboboxTargetFactory = Factory<{
@@ -26,7 +30,7 @@ export type ComboboxTargetFactory = Factory<{
 }>;
 
 export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
-  const { children, refProp, withKeyboardNavigation, ...others } = useProps(
+  const { children, refProp, withKeyboardNavigation, withAriaAttributes, ...others } = useProps(
     'ComboboxTarget',
     defaultProps,
     props
@@ -38,55 +42,14 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     );
   }
 
-  const ctx = useComboboxContext();
-  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-
-  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    children.props.onKeyDown?.(event);
-
-    if (withKeyboardNavigation) {
-      if (event.nativeEvent.code === 'ArrowDown') {
-        event.preventDefault();
-
-        if (!ctx.store.dropdownOpened) {
-          ctx.store.openDropdown();
-          setSelectedOptionId(ctx.store.selectActiveOption());
-        } else {
-          setSelectedOptionId(ctx.store.selectNextOption());
-        }
-      }
-
-      if (event.nativeEvent.code === 'ArrowUp') {
-        event.preventDefault();
-
-        if (!ctx.store.dropdownOpened) {
-          ctx.store.openDropdown();
-          setSelectedOptionId(ctx.store.selectActiveOption());
-        } else {
-          setSelectedOptionId(ctx.store.selectPreviousOption());
-        }
-      }
-
-      if (event.nativeEvent.code === 'Enter') {
-        if (ctx.store.dropdownOpened) {
-          event.preventDefault();
-          ctx.store.clickSelectedOption();
-        }
-      }
-
-      if (event.nativeEvent.code === 'Escape') {
-        ctx.store.closeDropdown();
-      }
-    }
-  };
+  const targetProps = useComboboxTargetProps({
+    withAriaAttributes,
+    withKeyboardNavigation,
+    onKeyDown: children.props.onKeyDown,
+  });
 
   const clonedElement = cloneElement(children, {
-    'aria-haspopup': 'listbox',
-    'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
-    'aria-controls': ctx.store.listId,
-    'aria-activedescendant': ctx.store.dropdownOpened ? selectedOptionId || undefined : undefined,
-    autoComplete: 'off',
-    onKeyDown,
+    ...targetProps,
     ...others,
   });
 

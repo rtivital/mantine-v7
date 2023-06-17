@@ -6,6 +6,7 @@ export { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
 export { ComboboxOption } from './ComboboxOption/ComboboxOption';
 export { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 export { useCombobox } from './use-combobox/use-combobox';
+export { useComboboxTargetProps } from './use-combobox-target-props/use-combobox-target-props';
 
 export type {
   ComboboxItem,
