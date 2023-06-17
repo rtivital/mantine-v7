@@ -2,7 +2,7 @@ import React from 'react';
 import { tests } from '@mantine/tests';
 import { TextInput } from '../TextInput';
 import { Combobox } from './Combobox';
-import { useCombobox } from './use-combobox';
+import { useCombobox } from './use-combobox/use-combobox';
 
 function DefaultUsage() {
   const store = useCombobox();

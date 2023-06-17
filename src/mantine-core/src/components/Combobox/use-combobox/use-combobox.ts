@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
+import { getPreviousIndex, getNextIndex } from './get-index';
 
 export interface ComboboxStore {
   dropdownOpened: boolean;
@@ -28,12 +29,16 @@ interface UseComboboxOptions {
 
   /** Called when `dropdownOpened` state changes */
   onOpenedChange?(opened: boolean): void;
+
+  /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
+  loop?: boolean;
 }
 
 export function useCombobox({
   defaultOpened,
   opened,
   onOpenedChange,
+  loop = true,
 }: UseComboboxOptions = {}): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: opened,
@@ -88,8 +93,23 @@ export function useCombobox({
     return selectOption(0);
   };
 
-  const selectNextOption = () => selectOption(selectedOptionIndex.current + 1);
-  const selectPreviousOption = () => selectOption(selectedOptionIndex.current - 1);
+  const selectNextOption = () =>
+    selectOption(
+      getNextIndex(
+        selectedOptionIndex.current,
+        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
+        loop
+      )
+    );
+
+  const selectPreviousOption = () =>
+    selectOption(
+      getPreviousIndex(
+        selectedOptionIndex.current,
+        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
+        loop
+      )
+    );
 
   const resetSelectedOption = () => {
     selectedOptionIndex.current = -1;

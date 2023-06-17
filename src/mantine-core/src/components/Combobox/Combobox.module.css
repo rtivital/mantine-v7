@@ -5,17 +5,23 @@
 .option {
   padding: rem(7px) var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-default);
-  cursor: pointer;
   background-color: var(--_option-bg, transparent);
   color: var(--_option-color, inherit);
+  opacity: var(--_option-opacity, 1);
+  cursor: var(--_option-cursor, pointer);
 
   &[data-combobox-selected] {
     --_option-bg: var(--mantine-color-primary);
     --_option-color: var(--mantine-color-white);
   }
 
+  &[data-combobox-disabled] {
+    --_option-cursor: not-allowed;
+    --_option-opacity: 0.35;
+  }
+
   @mixin hover {
-    &:not([data-combobox-selected]) {
+    &:not([data-combobox-selected], [data-combobox-disabled]) {
       @mixin light {
         --_option-bg: var(--mantine-color-gray-0);
       }

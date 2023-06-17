@@ -22,6 +22,9 @@ export interface ComboboxOptionProps
 
   /** Determines whether the option is selected */
   active?: boolean;
+
+  /** Determines whether the option can be selected */
+  disabled?: boolean;
 }
 
 export type ComboboxOptionFactory = Factory<{
@@ -47,6 +50,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     active,
     onMouseDown,
     onMouseOver,
+    disabled,
     ...others
   } = props;
 
@@ -60,11 +64,15 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
       {...ctx.getStyles('option', { className, classNames, styles, style })}
       {...others}
       id={_id}
-      mod={['combobox-option', { 'combobox-active': active }]}
+      mod={['combobox-option', { 'combobox-active': active, 'combobox-disabled': disabled }]}
       role="option"
       onClick={(event) => {
-        ctx.onItemSelect?.(props.value, props);
-        onClick?.(event);
+        if (!disabled) {
+          ctx.onItemSelect?.(props.value, props);
+          onClick?.(event);
+        } else {
+          event.preventDefault();
+        }
       }}
       onMouseDown={(event) => {
         event.preventDefault();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StylesApiProps, useProps, useStyles, Factory } from '../../core';
 import { __PopoverProps, Popover } from '../Popover';
-import { useCombobox, ComboboxStore } from './use-combobox';
+import { useCombobox, ComboboxStore } from './use-combobox/use-combobox';
 import { ComboboxProvider } from './Combobox.context';
 import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';

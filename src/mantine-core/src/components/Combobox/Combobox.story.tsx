@@ -4,7 +4,7 @@ import { TextInput } from '../TextInput';
 import { Button } from '../Button';
 import { ScrollArea } from '../ScrollArea';
 import { Combobox } from './Combobox';
-import { useCombobox } from './use-combobox';
+import { useCombobox } from './use-combobox/use-combobox';
 
 export default { title: 'Combobox' };
 
@@ -26,7 +26,7 @@ const scrollableContent = Array(20)
   .fill(0)
   .map((_, index) => <p key={index}>{lorem}</p>);
 
-export function Usage() {
+function StoryBase({ children }: { children: React.ReactNode }) {
   const [opened, setOpened] = React.useState(false);
   const store = useCombobox({ opened, onOpenedChange: setOpened });
   const [value, setValue] = React.useState('');
@@ -56,15 +56,57 @@ export function Usage() {
           />
         </Combobox.Target>
         <Combobox.Dropdown>
-          <Combobox.Options>
-            <Combobox.Option value="react">React</Combobox.Option>
-            <Combobox.Option value="vue">Vue</Combobox.Option>
-            <Combobox.Option value="svelte">Svelte</Combobox.Option>
-            <Combobox.Option value="angular">Angular</Combobox.Option>
-          </Combobox.Options>
+          <Combobox.Options>{children}</Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
     </div>
+  );
+}
+
+export function Usage() {
+  return (
+    <StoryBase>
+      <Combobox.Option value="react">React</Combobox.Option>
+      <Combobox.Option value="vue" disabled>
+        Vue
+      </Combobox.Option>
+      <Combobox.Option value="svelte">Svelte</Combobox.Option>
+      <Combobox.Option value="angular">Angular</Combobox.Option>
+    </StoryBase>
+  );
+}
+
+export function DisabledFirstItem() {
+  return (
+    <StoryBase>
+      <Combobox.Option value="react" disabled>
+        React
+      </Combobox.Option>
+      <Combobox.Option value="vue" disabled>
+        Vue
+      </Combobox.Option>
+      <Combobox.Option value="svelte">Svelte</Combobox.Option>
+      <Combobox.Option value="angular">Angular</Combobox.Option>
+    </StoryBase>
+  );
+}
+
+export function AllItemsDisabled() {
+  return (
+    <StoryBase>
+      <Combobox.Option value="react" disabled>
+        React
+      </Combobox.Option>
+      <Combobox.Option value="vue" disabled>
+        Vue
+      </Combobox.Option>
+      <Combobox.Option value="svelte" disabled>
+        Svelte
+      </Combobox.Option>
+      <Combobox.Option value="angular" disabled>
+        Angular
+      </Combobox.Option>
+    </StoryBase>
   );
 }
 
