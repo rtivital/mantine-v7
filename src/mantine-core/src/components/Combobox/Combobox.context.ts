@@ -6,7 +6,7 @@ import type { ComboboxStore } from './use-combobox/use-combobox';
 export interface ComboboxContextValue {
   getStyles: GetStylesApi<ComboboxFactory>;
   store: ComboboxStore;
-  onItemSelect?(value: string, optionProps: ComboboxOptionProps): void;
+  onOptionSelect?(value: string, optionProps: ComboboxOptionProps): void;
 }
 
 export const [ComboboxProvider, useComboboxContext] = createSafeContext<ComboboxContextValue>(

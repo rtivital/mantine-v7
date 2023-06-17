@@ -23,6 +23,7 @@ export * as CodeDemos from './demos/core/Code';
 export * as CollapseDemos from './demos/core/Collapse';
 export * as ColorPickerDemos from './demos/core/ColorPicker';
 export * as ColorSwatchDemos from './demos/core/ColorSwatch';
+export * as ComboboxDemos from './demos/core/Combobox';
 export * as ContainerDemos from './demos/core/Container';
 export * as CopyButtonDemos from './demos/core/CopyButton';
 export * as DividerDemos from './demos/core/Divider';

@@ -17,6 +17,7 @@ export * from './Code';
 export * from './Collapse';
 export * from './ColorPicker';
 export * from './ColorSwatch';
+export * from './Combobox';
 export * from './Container';
 export * from './CopyButton';
 export * from './Divider';

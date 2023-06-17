@@ -68,7 +68,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
       role="option"
       onClick={(event) => {
         if (!disabled) {
-          ctx.onItemSelect?.(props.value, props);
+          ctx.onOptionSelect?.(props.value, props);
           onClick?.(event);
         } else {
           event.preventDefault();

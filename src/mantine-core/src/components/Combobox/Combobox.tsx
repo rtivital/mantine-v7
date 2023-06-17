@@ -19,7 +19,7 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
   store?: ComboboxStore;
 
   /** Called when item is selected with `Enter` key or by clicking it */
-  onItemSelect?(value: string, optionProps: ComboboxOptionProps): void;
+  onOptionSelect?(value: string, optionProps: ComboboxOptionProps): void;
 }
 
 export type ComboboxFactory = Factory<{
@@ -50,7 +50,7 @@ export function Combobox(_props: ComboboxProps) {
     children,
     store: controlledStore,
     vars,
-    onItemSelect,
+    onOptionSelect,
     ...others
   } = props;
 
@@ -67,7 +67,7 @@ export function Combobox(_props: ComboboxProps) {
   });
 
   return (
-    <ComboboxProvider value={{ getStyles, store, onItemSelect }}>
+    <ComboboxProvider value={{ getStyles, store, onOptionSelect }}>
       <Popover
         opened={store.dropdownOpened}
         {...others}
