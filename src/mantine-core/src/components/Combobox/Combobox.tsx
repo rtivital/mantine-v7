@@ -7,9 +7,10 @@ import { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
 import { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
 import { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
 import { ComboboxOption, ComboboxOptionProps } from './ComboboxOption/ComboboxOption';
+import { ComboboxSearch } from './ComboboxSearch/ComboboxSearch';
 import classes from './Combobox.module.css';
 
-export type ComboboxStylesNames = 'root' | 'options' | 'dropdown' | 'option';
+export type ComboboxStylesNames = 'root' | 'options' | 'dropdown' | 'option' | 'search';
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
   /** Combobox content */
@@ -31,6 +32,7 @@ export type ComboboxFactory = Factory<{
     Dropdown: typeof ComboboxDropdown;
     Options: typeof ComboboxOptions;
     Option: typeof ComboboxOption;
+    Search: typeof ComboboxSearch;
   };
 }>;
 
@@ -86,3 +88,4 @@ Combobox.Target = ComboboxTarget;
 Combobox.Dropdown = ComboboxDropdown;
 Combobox.Options = ComboboxOptions;
 Combobox.Option = ComboboxOption;
+Combobox.Search = ComboboxSearch;

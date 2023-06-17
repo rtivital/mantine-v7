@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import { getPreviousIndex, getNextIndex } from './get-index/get-index';
 
@@ -18,6 +18,9 @@ export interface ComboboxStore {
 
   listId: string | null;
   setListId(id: string): void;
+
+  searchRef: React.MutableRefObject<HTMLInputElement | null>;
+  focusSearchInput(): void;
 }
 
 interface UseComboboxOptions {
@@ -57,6 +60,8 @@ export function useCombobox({
 
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
+  const searchRef = useRef<HTMLInputElement | null>(null);
+  const focusSearchTimeout = useRef<number>(-1);
 
   const openDropdown = () => {
     setDropdownOpened(true);
@@ -150,6 +155,17 @@ export function useCombobox({
     listId.current = id;
   };
 
+  const focusSearchInput = () => {
+    focusSearchTimeout.current = window.setTimeout(() => searchRef.current!.focus(), 0);
+  };
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(focusSearchTimeout.current);
+    },
+    []
+  );
+
   return {
     dropdownOpened,
     openDropdown,
@@ -166,5 +182,8 @@ export function useCombobox({
     listId: listId.current,
     setListId,
     clickSelectedOption,
+
+    searchRef,
+    focusSearchInput,
   };
 }

@@ -36,7 +36,7 @@ function StoryBase({ children }: { children: React.ReactNode }) {
       <Combobox
         store={store}
         withinPortal={false}
-        onItemSelect={(val) => {
+        onOptionSelect={(val) => {
           setValue(val);
           store.closeDropdown();
           store.resetSelectedOption();
@@ -111,14 +111,16 @@ export function AllItemsDisabled() {
 }
 
 export function WithButtonTarget() {
-  const store = useCombobox();
+  const store = useCombobox({
+    onDropdownOpen: () => store.focusSearchInput(),
+  });
 
   return (
     <div style={{ padding: 40 }}>
       <Combobox
         store={store}
         withinPortal={false}
-        onItemSelect={(value) => {
+        onOptionSelect={(value) => {
           console.log(value);
           store.closeDropdown();
         }}
@@ -130,6 +132,7 @@ export function WithButtonTarget() {
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
         </Combobox.Target>
         <Combobox.Dropdown>
+          <Combobox.Search placeholder="Search options" />
           <Combobox.Options>
             <Combobox.Option value="react">React</Combobox.Option>
             <Combobox.Option value="vue">Vue</Combobox.Option>
@@ -149,7 +152,7 @@ export function WithScrollArea() {
   return (
     <div style={{ padding: 40 }}>
       {scrollableContent}
-      <Combobox store={store} withinPortal={false} onItemSelect={setValue}>
+      <Combobox store={store} withinPortal={false} onOptionSelect={setValue}>
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
@@ -197,7 +200,7 @@ export function WithActive() {
       <Combobox
         store={store}
         withinPortal={false}
-        onItemSelect={(val) => {
+        onOptionSelect={(val) => {
           setActive(val);
           setValue(fruitsData.find((fruit) => fruit.value === val)!.label);
         }}
