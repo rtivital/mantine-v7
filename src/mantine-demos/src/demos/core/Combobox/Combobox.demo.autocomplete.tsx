@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { Combobox, Text, TextInput, useCombobox } from '@mantine/core';
+import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
 const code = `
 `;
@@ -31,7 +31,8 @@ function Demo() {
     >
       <Combobox.Target>
         <TextInput
-          placeholder="Pick a value"
+          label="Pick value or type anything"
+          placeholder="Pick value or type anything"
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
@@ -45,13 +46,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length === 0 ? (
-            <Text size="sm" c="dimmed" ta="center" py="xs">
-              Nothing found
-            </Text>
-          ) : (
-            options
-          )}
+          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
