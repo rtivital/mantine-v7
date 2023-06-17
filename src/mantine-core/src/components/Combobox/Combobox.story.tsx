@@ -251,3 +251,7 @@ export function WithActive() {
     </div>
   );
 }
+
+export function Chevron() {
+  return <Combobox.Chevron size="xl" style={{ color: 'red' }}></Combobox.Chevron>;
+}

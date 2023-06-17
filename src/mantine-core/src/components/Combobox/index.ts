@@ -5,9 +5,12 @@ export { ComboboxDropdown } from './ComboboxDropdown/ComboboxDropdown';
 export { ComboboxOptions } from './ComboboxOptions/ComboboxOptions';
 export { ComboboxOption } from './ComboboxOption/ComboboxOption';
 export { ComboboxTarget } from './ComboboxTarget/ComboboxTarget';
+export { ComboboxSearch } from './ComboboxSearch/ComboboxSearch';
+export { ComboboxEmpty } from './ComboboxEmpty/ComboboxEmpty';
 export { useCombobox } from './use-combobox/use-combobox';
 export { useComboboxTargetProps } from './use-combobox-target-props/use-combobox-target-props';
 
+export type { ComboboxStore } from './use-combobox/use-combobox';
 export type {
   ComboboxItem,
   ComboboxData,
@@ -20,4 +23,6 @@ export type { ComboboxDropdownProps } from './ComboboxDropdown/ComboboxDropdown'
 export type { ComboboxOptionsProps } from './ComboboxOptions/ComboboxOptions';
 export type { ComboboxOptionProps } from './ComboboxOption/ComboboxOption';
 export type { ComboboxTargetProps } from './ComboboxTarget/ComboboxTarget';
-export type { ComboboxStore } from './use-combobox/use-combobox';
+export type { ComboboxChevronProps } from './ComboboxChevron/ComboboxChevron';
+export type { ComboboxEmptyProps } from './ComboboxEmpty/ComboboxEmpty';
+export type { ComboboxSearchProps } from './ComboboxSearch/ComboboxSearch';
