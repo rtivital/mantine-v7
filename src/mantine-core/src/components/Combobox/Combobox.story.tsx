@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { ScrollArea } from '../ScrollArea';
 import { Combobox } from './Combobox';
 import { useCombobox } from './use-combobox/use-combobox';
+import { Text } from '../Text';
 
 export default { title: 'Combobox' };
 
@@ -111,10 +112,31 @@ export function AllItemsDisabled() {
 }
 
 export function WithButtonTarget() {
+  const [search, setSearch] = React.useState('');
+
   const store = useCombobox({
     onDropdownOpen: () => store.focusSearchInput(),
-    onDropdownClose: () => store.focusTarget(),
+    onDropdownClose: () => {
+      store.focusTarget();
+      store.resetSelectedOption();
+      setSearch('');
+    },
   });
+
+  const data = Array(100)
+    .fill(0)
+    .map((_, index) => ({
+      value: `option-${index}`,
+      label: `Option ${index}`,
+    }));
+
+  const options = data
+    .filter((option) => option.label.toLowerCase().includes(search.toLowerCase().trim()))
+    .map((option) => (
+      <Combobox.Option key={option.value} value={option.value}>
+        {option.label}
+      </Combobox.Option>
+    ));
 
   return (
     <div style={{ padding: 40 }}>
@@ -128,17 +150,30 @@ export function WithButtonTarget() {
         width={400}
         position="bottom-start"
         offset={10}
+        withArrow
       >
         <Combobox.Target>
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
         </Combobox.Target>
         <Combobox.Dropdown>
-          <Combobox.Search placeholder="Search options" />
+          <Combobox.Search
+            placeholder="Search options"
+            size="md"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.currentTarget.value);
+            }}
+          />
           <Combobox.Options>
-            <Combobox.Option value="react">React</Combobox.Option>
-            <Combobox.Option value="vue">Vue</Combobox.Option>
-            <Combobox.Option value="svelte">Svelte</Combobox.Option>
-            <Combobox.Option value="angular">Angular</Combobox.Option>
+            <ScrollArea.Autosize mah={200}>
+              {options.length > 0 ? (
+                options
+              ) : (
+                <Text ta="center" p="xs" c="dimmed">
+                  Nothing found
+                </Text>
+              )}
+            </ScrollArea.Autosize>
           </Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
