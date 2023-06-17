@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
-import { getPreviousIndex, getNextIndex } from './get-index';
+import { getPreviousIndex, getNextIndex } from './get-index/get-index';
 
 export interface ComboboxStore {
   dropdownOpened: boolean;
@@ -30,6 +30,12 @@ interface UseComboboxOptions {
   /** Called when `dropdownOpened` state changes */
   onOpenedChange?(opened: boolean): void;
 
+  /** Called when dropdown closes */
+  onDropdownClose?(): void;
+
+  /** Called when dropdown opens */
+  onDropdownOpen?(): void;
+
   /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
   loop?: boolean;
 }
@@ -38,6 +44,8 @@ export function useCombobox({
   defaultOpened,
   opened,
   onOpenedChange,
+  onDropdownClose,
+  onDropdownOpen,
   loop = true,
 }: UseComboboxOptions = {}): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
@@ -50,9 +58,23 @@ export function useCombobox({
   const listId = useRef<string | null>(null);
   const selectedOptionIndex = useRef<number>(-1);
 
-  const openDropdown = () => setDropdownOpened(true);
-  const closeDropdown = () => setDropdownOpened(false);
-  const toggleDropdown = () => setDropdownOpened(!dropdownOpened);
+  const openDropdown = () => {
+    setDropdownOpened(true);
+    onDropdownOpen?.();
+  };
+
+  const closeDropdown = () => {
+    setDropdownOpened(false);
+    onDropdownClose?.();
+  };
+
+  const toggleDropdown = () => {
+    if (dropdownOpened) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+  };
 
   const clearSelectedItem = () => {
     const selected = document.querySelector(`#${listId.current} [data-combobox-selected]`);
