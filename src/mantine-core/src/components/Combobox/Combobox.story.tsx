@@ -151,6 +151,7 @@ export function WithButtonTarget() {
         position="bottom-start"
         offset={10}
         withArrow
+        size="xs"
       >
         <Combobox.Target>
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
@@ -158,7 +159,6 @@ export function WithButtonTarget() {
         <Combobox.Dropdown>
           <Combobox.Search
             placeholder="Search options"
-            size="md"
             value={search}
             onChange={(event) => {
               setSearch(event.currentTarget.value);

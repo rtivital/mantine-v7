@@ -1,5 +1,15 @@
 import React from 'react';
-import { StylesApiProps, useProps, useStyles, Factory } from '../../core';
+import {
+  StylesApiProps,
+  useProps,
+  useStyles,
+  Factory,
+  createVarsResolver,
+  MantineSize,
+  getFontSize,
+  rem,
+  getSize,
+} from '../../core';
 import { __PopoverProps, Popover } from '../Popover';
 import { useCombobox, ComboboxStore } from './use-combobox/use-combobox';
 import { ComboboxProvider } from './Combobox.context';
@@ -11,6 +21,9 @@ import { ComboboxSearch } from './ComboboxSearch/ComboboxSearch';
 import classes from './Combobox.module.css';
 
 export type ComboboxStylesNames = 'root' | 'options' | 'dropdown' | 'option' | 'search';
+export type ComboboxCSSVariables = {
+  dropdown: '--combobox-option-fz' | '--combobox-padding' | '--combobox-option-padding';
+};
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
   /** Combobox content */
@@ -21,12 +34,19 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
 
   /** Called when item is selected with `Enter` key or by clicking it */
   onOptionSelect?(value: string, optionProps: ComboboxOptionProps): void;
+
+  /** Controls items `font-size` and `padding`, `'sm'` by default */
+  size?: MantineSize | (string & {});
+
+  /** Controls `padding` of the dropdown, `4` by default */
+  dropdownPadding?: React.CSSProperties['padding'];
 }
 
 export type ComboboxFactory = Factory<{
   props: ComboboxProps;
   ref: HTMLDivElement;
   stylesNames: ComboboxStylesNames;
+  vars: ComboboxCSSVariables;
   staticComponents: {
     Target: typeof ComboboxTarget;
     Dropdown: typeof ComboboxDropdown;
@@ -41,7 +61,17 @@ const defaultProps: Partial<ComboboxProps> = {
   withinPortal: true,
   width: 'target',
   transitionProps: { transition: 'fade', duration: 0 },
+  size: 'sm',
+  dropdownPadding: 4,
 };
+
+const varsResolver = createVarsResolver<ComboboxFactory>((_, { size, dropdownPadding }) => ({
+  dropdown: {
+    '--combobox-option-fz': getFontSize(size),
+    '--combobox-padding': rem(dropdownPadding),
+    '--combobox-option-padding': getSize(size, 'combobox-option-padding'),
+  },
+}));
 
 export function Combobox(_props: ComboboxProps) {
   const props = useProps('Combobox', defaultProps, _props);
@@ -53,6 +83,8 @@ export function Combobox(_props: ComboboxProps) {
     store: controlledStore,
     vars,
     onOptionSelect,
+    size,
+    dropdownPadding,
     ...others
   } = props;
 
@@ -66,10 +98,12 @@ export function Combobox(_props: ComboboxProps) {
     classNames,
     styles,
     unstyled,
+    vars,
+    varsResolver,
   });
 
   return (
-    <ComboboxProvider value={{ getStyles, store, onOptionSelect }}>
+    <ComboboxProvider value={{ getStyles, store, onOptionSelect, size: size! }}>
       <Popover
         opened={store.dropdownOpened}
         {...others}

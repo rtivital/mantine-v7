@@ -37,6 +37,7 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
     withAriaAttributes,
     onKeyDown,
     withKeyboardNavigation,
+    size,
     ...others
   } = props;
 
@@ -54,6 +55,7 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
       ref={useMergedRef(ref, ctx.store.searchRef)}
       classNames={[{ input: _styles.className }, classNames] as any}
       styles={[{ input: _styles.style }, styles] as any}
+      size={size || ctx.size}
       {...targetProps}
       {...others}
     />
