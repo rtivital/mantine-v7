@@ -50,8 +50,8 @@ export function useCombobox({
   const toggleDropdown = () => setDropdownOpened(!dropdownOpened);
 
   const clearSelectedItem = () => {
-    const selected = document.querySelector(`#${listId.current} [data-selected]`);
-    selected?.removeAttribute('data-selected');
+    const selected = document.querySelector(`#${listId.current} [data-combobox-selected]`);
+    selected?.removeAttribute('data-combobox-selected');
     selected?.removeAttribute('aria-selected');
   };
 
@@ -61,9 +61,9 @@ export function useCombobox({
     const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index;
     selectedOptionIndex.current = nextIndex;
 
-    if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-disabled')) {
+    if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-combobox-disabled')) {
       clearSelectedItem();
-      items[nextIndex].setAttribute('data-selected', 'true');
+      items[nextIndex].setAttribute('data-combobox-selected', 'true');
       items[nextIndex].setAttribute('aria-selected', 'true');
       items[nextIndex].scrollIntoView({ block: 'nearest' });
       return items[nextIndex].id;

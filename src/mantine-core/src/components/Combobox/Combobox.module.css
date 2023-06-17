@@ -9,13 +9,13 @@
   background-color: var(--_option-bg, transparent);
   color: var(--_option-color, inherit);
 
-  &[data-selected] {
+  &[data-combobox-selected] {
     --_option-bg: var(--mantine-color-primary);
     --_option-color: var(--mantine-color-white);
   }
 
   @mixin hover {
-    &:not([data-selected]) {
+    &:not([data-combobox-selected]) {
       @mixin light {
         --_option-bg: var(--mantine-color-gray-0);
       }
