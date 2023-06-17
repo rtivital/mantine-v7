@@ -19,6 +19,9 @@ export interface ComboboxOptionProps
     ElementProps<'div'> {
   /** Option value */
   value: string;
+
+  /** Determines whether the option is selected */
+  active?: boolean;
 }
 
 export type ComboboxOptionFactory = Factory<{
@@ -32,7 +35,21 @@ const defaultProps: Partial<ComboboxOptionProps> = {};
 
 export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
   const props = useProps('ComboboxOption', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, onClick, id, ...others } = props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    onClick,
+    id,
+    active,
+    onMouseDown,
+    onMouseOver,
+    ...others
+  } = props;
+
   const ctx = useComboboxContext();
   const uuid = useId();
   const _id = id || uuid;
@@ -43,11 +60,19 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
       {...ctx.getStyles('option', { className, classNames, styles, style })}
       {...others}
       id={_id}
-      data-combobox-option
+      mod={['combobox-option', { 'combobox-active': active }]}
       role="option"
       onClick={(event) => {
         ctx.onItemSelect?.(props.value, props);
         onClick?.(event);
+      }}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        onMouseDown?.(event);
+      }}
+      onMouseOver={(event) => {
+        ctx.store.resetSelectedOption();
+        onMouseOver?.(event);
       }}
     />
   );

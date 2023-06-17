@@ -51,6 +51,7 @@ export function Usage() {
               setValue(event.currentTarget.value);
               store.openDropdown();
             }}
+            onClick={() => store.openDropdown()}
           />
         </Combobox.Target>
         <Combobox.Dropdown>
@@ -124,6 +125,55 @@ export function WithScrollArea() {
         </Combobox.Dropdown>
       </Combobox>
       {scrollableContent}
+    </div>
+  );
+}
+
+const fruitsData = [
+  { label: 'Apple', value: 'apple' },
+  { label: 'Banana', value: 'banana' },
+  { label: 'Orange', value: 'orange' },
+  { label: 'Grape', value: 'grape' },
+  { label: 'Mango', value: 'mango' },
+  { label: 'Pineapple', value: 'pineapple' },
+];
+
+export function WithActive() {
+  const store = useCombobox();
+  const [active, setActive] = React.useState<string | null>(null);
+  const [value, setValue] = React.useState('');
+
+  const options = fruitsData.map((fruit) => (
+    <Combobox.Option value={fruit.value} key={fruit.value} active={active === fruit.value}>
+      {active === fruit.value && '✓'} {fruit.label}
+    </Combobox.Option>
+  ));
+
+  return (
+    <div style={{ padding: 40 }}>
+      <Combobox
+        store={store}
+        withinPortal={false}
+        onItemSelect={(val) => {
+          setActive(val);
+          setValue(fruitsData.find((fruit) => fruit.value === val)!.label);
+        }}
+      >
+        <Combobox.Target>
+          <TextInput
+            placeholder="Pick a value"
+            onFocus={store.openDropdown}
+            onBlur={store.closeDropdown}
+            value={value}
+            onChange={(event) => {
+              setValue(event.currentTarget.value);
+            }}
+          />
+        </Combobox.Target>
+        <Combobox.Dropdown>
+          <Combobox.Options>{options}</Combobox.Options>
+        </Combobox.Dropdown>
+      </Combobox>
     </div>
   );
 }

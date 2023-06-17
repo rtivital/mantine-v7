@@ -49,7 +49,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
         if (!ctx.store.dropdownOpened) {
           ctx.store.openDropdown();
-          ctx.store.selectOption(0);
+          ctx.store.selectActiveOption();
         } else {
           ctx.store.selectNextOption();
         }
@@ -60,7 +60,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
         if (!ctx.store.dropdownOpened) {
           ctx.store.openDropdown();
-          ctx.store.selectOption(0);
+          ctx.store.selectActiveOption();
         } else {
           ctx.store.selectPreviousOption();
         }

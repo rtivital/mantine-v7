@@ -9,6 +9,7 @@ export interface ComboboxStore {
   selectedOptionIndex: number;
   selectedOptionId: string | null;
   selectOption(index: number): void;
+  selectActiveOption(): void;
   selectNextOption(): void;
   selectPreviousOption(): void;
   resetSelectedOption(): void;
@@ -54,6 +55,22 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
     }
   };
 
+  const selectActiveOption = () => {
+    const activeOption = document.querySelector<HTMLDivElement>(
+      `#${listId.current} [data-combobox-active]`
+    );
+
+    if (activeOption) {
+      const items = document.querySelectorAll<HTMLDivElement>(
+        `#${listId.current} [data-combobox-option]`
+      );
+      const index = Array.from(items).findIndex((option) => option === activeOption);
+      selectOption(index);
+    } else {
+      selectOption(0);
+    }
+  };
+
   const selectNextOption = () => {
     selectOption(selectedOptionIndex.current + 1);
   };
@@ -88,6 +105,7 @@ export function useCombobox({ defaultOpened = false }: UseComboboxOptions = {}):
     selectedOptionId,
     selectedOptionIndex: selectedOptionIndex.current,
     selectOption,
+    selectActiveOption,
     selectNextOption,
     selectPreviousOption,
     resetSelectedOption,
