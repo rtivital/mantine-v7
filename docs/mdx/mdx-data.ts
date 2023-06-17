@@ -470,7 +470,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Pick colors',
     import: "import { ColorPicker } from '@mantine/core';",
     source: 'mantine-core/src/components/ColorPicker/ColorPicker.tsx',
-    docs: 'core/color-iicker.mdx',
+    docs: 'core/color-picker.mdx',
   },
   ColorSwatch: {
     title: 'ColorSwatch',
@@ -722,7 +722,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     package: '@mantine/core',
     slug: '/core/transition',
     props: ['Transition'],
-    description: 'Animate presence of component with premade animations',
+    description: 'Animate presence of component with pre-made animations',
     import: "import { Transition } from '@mantine/core';",
     source: 'mantine-core/src/components/Transition/Transition.tsx',
     docs: 'core/transition.mdx',
