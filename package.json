@@ -28,6 +28,7 @@
     "prettier:test": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "exports": "esno scripts/check-exports",
+    "generate-combobox-code": "esno scripts/generate-combobox-code",
     "conflicts": "esno scripts/check-conflicts",
     "clean:tsbuildinfo": "rimraf src/**/*.tsbuildinfo",
     "clean": "rimraf src/*/{esm,cjs,lib,dist} src/**/*.tsbuildinfo",

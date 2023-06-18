@@ -1,0 +1,7 @@
+[
+  {
+    "fileName": "BasicSelect.tsx",
+    "language": "tsx",
+    "code": "\nexport function BasicSelect() {\n  return <div>Basic select</div>;\n}\n"
+  }
+]
