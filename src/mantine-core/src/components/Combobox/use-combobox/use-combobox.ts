@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
-import { getPreviousIndex, getNextIndex } from './get-index/get-index';
+import { getPreviousIndex, getNextIndex, getFirstIndex } from './get-index/get-index';
 
 export interface ComboboxStore {
   dropdownOpened: boolean;
@@ -11,6 +11,7 @@ export interface ComboboxStore {
   selectedOptionIndex: number;
   selectOption(index: number): void;
   selectActiveOption(): string | null;
+  selectFirstOption(): string | null;
   selectNextOption(): string | null;
   selectPreviousOption(): string | null;
   resetSelectedOption(): void;
@@ -147,6 +148,13 @@ export function useCombobox({
       )
     );
 
+  const selectFirstOption = () =>
+    selectOption(
+      getFirstIndex(
+        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`)
+      )
+    );
+
   const resetSelectedOption = () => {
     selectedOptionIndex.current = -1;
     clearSelectedItem();
@@ -188,6 +196,7 @@ export function useCombobox({
 
     selectedOptionIndex: selectedOptionIndex.current,
     selectOption,
+    selectFirstOption,
     selectActiveOption,
     selectNextOption,
     selectPreviousOption,

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
-import { getPreviousIndex, getNextIndex } from './get-index/get-virtualized-index';
+import { getPreviousIndex, getNextIndex, getFirstIndex } from './get-index/get-virtualized-index';
 import { ComboboxStore } from './use-combobox';
 
 interface UseComboboxOptions {
@@ -119,6 +119,9 @@ export function useVirtualizedCombobox(
       })
     );
 
+  const selectFirstOption = () =>
+    selectOption(getFirstIndex({ isOptionDisabled, totalOptionsCount }));
+
   const resetSelectedOption = () => {
     setSelectedOptionIndex(-1);
   };
@@ -155,6 +158,7 @@ export function useVirtualizedCombobox(
 
     selectedOptionIndex,
     selectOption,
+    selectFirstOption,
     selectActiveOption,
     selectNextOption,
     selectPreviousOption,
