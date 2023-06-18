@@ -124,6 +124,7 @@
     "react-beautiful-dnd": "^13.1.0",
     "react-docgen-typescript": "2.1.0",
     "react-dom": "18.2.0",
+    "react-virtuoso": "^4.3.10",
     "rimraf": "^3.0.2",
     "rollup": "^2.50.5",
     "rollup-plugin-banner2": "^1.2.2",

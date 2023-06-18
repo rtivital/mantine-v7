@@ -42,6 +42,9 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
 
   /** Controls `padding` of the dropdown, `4` by default */
   dropdownPadding?: React.CSSProperties['padding'];
+
+  /** Determines whether selection should be reset when option is hovered, `true` by default */
+  resetSelectionOnOptionHover?: boolean;
 }
 
 export type ComboboxFactory = Factory<{
@@ -63,6 +66,7 @@ export type ComboboxFactory = Factory<{
 const defaultProps: Partial<ComboboxProps> = {
   keepMounted: true,
   withinPortal: true,
+  resetSelectionOnOptionHover: true,
   width: 'target',
   transitionProps: { transition: 'fade', duration: 0 },
   size: 'sm',
@@ -89,6 +93,7 @@ export function Combobox(_props: ComboboxProps) {
     onOptionSelect,
     size,
     dropdownPadding,
+    resetSelectionOnOptionHover,
     ...others
   } = props;
 
@@ -107,7 +112,9 @@ export function Combobox(_props: ComboboxProps) {
   });
 
   return (
-    <ComboboxProvider value={{ getStyles, store, onOptionSelect, size: size! }}>
+    <ComboboxProvider
+      value={{ getStyles, store, onOptionSelect, size: size!, resetSelectionOnOptionHover }}
+    >
       <Popover
         opened={store.dropdownOpened}
         {...others}
