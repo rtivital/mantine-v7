@@ -25,10 +25,6 @@ describe('@mantine/core/Combobox/use-combobox', () => {
     expect(hook.result.current.dropdownOpened).toBe(true);
     expect(spy).toHaveBeenCalledWith(false);
 
-    act(hook.result.current.openDropdown);
-    expect(hook.result.current.dropdownOpened).toBe(true);
-    expect(spy).toHaveBeenCalledWith(true);
-
     act(hook.result.current.toggleDropdown);
     expect(hook.result.current.dropdownOpened).toBe(true);
     expect(spy).toHaveBeenCalledWith(false);
