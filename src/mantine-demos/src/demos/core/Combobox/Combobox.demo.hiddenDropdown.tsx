@@ -94,16 +94,14 @@ function Demo() {
         />
       </Combobox.Target>
 
-      <Combobox.Dropdown>
-        <Combobox.Options>
-          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
-        </Combobox.Options>
+      <Combobox.Dropdown hidden={options.length === 0}>
+        <Combobox.Options>{options}</Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const autocomplete: MantineDemo = {
+export const hiddenDropdown: MantineDemo = {
   type: 'code',
   component: Demo,
   centered: true,

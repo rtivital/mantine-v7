@@ -6,7 +6,10 @@ import classes from '../Combobox.module.css';
 
 export type ComboboxDropdownStylesNames = 'dropdown';
 
-export interface ComboboxDropdownProps extends PopoverDropdownProps {}
+export interface ComboboxDropdownProps extends PopoverDropdownProps {
+  /** Determines whether the dropdown should be hidden, for example, when there are no options to display */
+  hidden?: boolean;
+}
 
 export type ComboboxDropdownFactory = Factory<{
   props: ComboboxDropdownProps;
@@ -19,7 +22,7 @@ const defaultProps: Partial<ComboboxDropdownProps> = {};
 
 export const ComboboxDropdown = factory<ComboboxDropdownFactory>((props, ref) => {
   const ctx = useComboboxContext();
-  const { classNames, styles, className, style, ...others } = useProps(
+  const { classNames, styles, className, style, hidden, ...others } = useProps(
     'ComboboxDropdown',
     defaultProps,
     props
@@ -32,6 +35,7 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((props, ref) =>
       {...others}
       role="presentation"
       tabIndex={-1}
+      data-hidden={hidden || undefined}
       {...ctx.getStyles('dropdown', { className, style, classNames, styles })}
     />
   );

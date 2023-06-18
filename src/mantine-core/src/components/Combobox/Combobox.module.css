@@ -6,6 +6,10 @@
   --combobox-option-padding-xl: rem(14px) rem(20px);
 
   padding: var(--combobox-padding);
+
+  &[data-hidden] {
+    display: none;
+  }
 }
 
 .option {

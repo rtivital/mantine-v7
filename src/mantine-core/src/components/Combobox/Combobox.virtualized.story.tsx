@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { Virtuoso } from 'react-virtuoso';
 import { Combobox } from './Combobox';
@@ -22,6 +23,7 @@ export function Virtualized() {
   const [value, setValue] = React.useState('');
   const virtuoso = React.useRef<any>(null);
   const viewportRef = React.useRef<HTMLDivElement>(null);
+
   const store = useVirtualizedCombobox({
     opened,
     onOpenedChange: setOpened,
@@ -35,13 +37,15 @@ export function Virtualized() {
         virtuoso.current.scrollToIndex({ index, align: 'end' });
       }
     },
-    onSelectedOptionSubmit: (index) => {
-      const option = largeData[index];
-      setValue(option.value);
-      store.closeDropdown();
-      store.resetSelectedOption();
-    },
+    onSelectedOptionSubmit: onOptionSelect,
   });
+
+  function onOptionSelect(index: number) {
+    const option = largeData[index];
+    setValue(option.value);
+    store.closeDropdown();
+    store.resetSelectedOption();
+  }
 
   return (
     <div style={{ padding: 40 }}>
@@ -77,6 +81,7 @@ export function Virtualized() {
                     value={item.value}
                     key={item.value}
                     selected={index === selectedOptionIndex}
+                    onClick={() => onOptionSelect(index)}
                   >
                     {item.label}
                   </Combobox.Option>
