@@ -108,5 +108,6 @@ export const autocomplete: MantineDemo = {
   component: Demo,
   centered: true,
   maxWidth: 340,
+  defaultExpanded: false,
   code,
 };

@@ -45,10 +45,8 @@ function Demo() {
         />
       </Combobox.Target>
 
-      <Combobox.Dropdown>
-        <Combobox.Options>
-          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
-        </Combobox.Options>
+      <Combobox.Dropdown hidden={options.length === 0}>
+        <Combobox.Options>{options}</Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
@@ -106,5 +104,6 @@ export const hiddenDropdown: MantineDemo = {
   component: Demo,
   centered: true,
   maxWidth: 340,
+  defaultExpanded: false,
   code,
 };
