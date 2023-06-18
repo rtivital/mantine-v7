@@ -22,7 +22,7 @@ import { ComboboxEmpty } from './ComboboxEmpty/ComboboxEmpty';
 import { ComboboxChevron } from './ComboboxChevron/ComboboxChevron';
 import classes from './Combobox.module.css';
 
-export type ComboboxStylesNames = 'root' | 'options' | 'dropdown' | 'option' | 'search' | 'empty';
+export type ComboboxStylesNames = 'options' | 'dropdown' | 'option' | 'search' | 'empty';
 export type ComboboxCSSVariables = {
   dropdown: '--combobox-option-fz' | '--combobox-padding' | '--combobox-option-padding';
 };

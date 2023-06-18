@@ -63,6 +63,7 @@ export function useComboboxTargetProps({
           ? selectedOptionId || undefined
           : undefined,
         autoComplete: 'off',
+        'data-expanded': ctx.store.dropdownOpened ? true : undefined,
       }
     : {};
 

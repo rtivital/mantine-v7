@@ -19,6 +19,7 @@ export * from './data/Code.styles-api';
 export * from './data/CodeHighlight.styles-api';
 export * from './data/ColorPicker.styles-api';
 export * from './data/ColorSwatch.styles-api';
+export * from './data/Combobox.styles-api';
 export * from './data/Container.styles-api';
 export * from './data/Divider.styles-api';
 export * from './data/Drawer.styles-api';
