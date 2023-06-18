@@ -269,7 +269,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     styles: ['Button', 'ButtonGroup'],
     import: "import { Button } from '@mantine/core';",
     source: 'mantine-core/src/components/Button/Button.tsx',
-    docs: 'core/Button.mdx',
+    docs: 'core/button.mdx',
   },
   Loader: {
     title: 'Loader',
@@ -280,7 +280,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     styles: ['Loader'],
     import: "import { Loader } from '@mantine/core';",
     source: 'mantine-core/src/components/Loader/Loader.tsx',
-    docs: 'core/Loader.mdx',
+    docs: 'core/loader.mdx',
   },
   Container: {
     title: 'Container',
@@ -291,7 +291,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     styles: ['Container'],
     import: "import { Container } from '@mantine/core';",
     source: 'mantine-core/src/components/Container/Container.tsx',
-    docs: 'core/Container.mdx',
+    docs: 'core/container.mdx',
   },
   Anchor: {
     title: 'Anchor',
@@ -302,7 +302,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     styles: ['Anchor'],
     import: "import { Anchor } from '@mantine/core';",
     source: 'mantine-core/src/components/Anchor/Anchor.tsx',
-    docs: 'core/Anchor.mdx',
+    docs: 'core/anchor.mdx',
   },
   Input: {
     title: 'Input',
@@ -315,7 +315,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     polymorphic: true,
     import: "import { Input } from '@mantine/core';",
     source: 'mantine-core/src/components/Input/Input.tsx',
-    docs: 'core/Input.mdx',
+    docs: 'core/input.mdx',
   },
   ActionIcon: {
     title: 'ActionIcon',
@@ -328,7 +328,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     polymorphic: true,
     import: "import { ActionIcon } from '@mantine/core';",
     source: 'mantine-core/src/components/ActionIcon/ActionIcon.tsx',
-    docs: 'core/ActionIcon.mdx',
+    docs: 'core/action-icon.mdx',
   },
   CloseButton: {
     title: 'CloseButton',
@@ -340,7 +340,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     polymorphic: true,
     import: "import { CloseButton } from '@mantine/core';",
     source: 'mantine-core/src/components/CloseButton/CloseButton.tsx',
-    docs: 'core/CloseButton.mdx',
+    docs: 'core/close-button.mdx',
   },
   CopyButton: {
     title: 'CopyButton',
@@ -350,7 +350,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     props: ['CopyButton'],
     import: "import { CopyButton } from '@mantine/core';",
     source: 'mantine-core/src/components/CopyButton/CopyButton.tsx',
-    docs: 'core/CopyButton.mdx',
+    docs: 'core/copy-button.mdx',
   },
   FileButton: {
     title: 'FileButton',
@@ -360,7 +360,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     props: ['FileButton'],
     import: "import { FileButton } from '@mantine/core';",
     source: 'mantine-core/src/components/FileButton/FileButton.tsx',
-    docs: 'core/FileButton.mdx',
+    docs: 'core/file-button.mdx',
   },
   UnstyledButton: {
     title: 'UnstyledButton',
@@ -370,7 +370,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     polymorphic: true,
     import: "import { UnstyledButton } from '@mantine/core';",
     source: 'mantine-core/src/components/UnstyledButton/UnstyledButton.tsx',
-    docs: 'core/UnstyledButton.mdx',
+    docs: 'core/unstyled-button.mdx',
   },
   Tabs: {
     title: 'Tabs',
@@ -381,7 +381,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Switch between different views',
     import: "import { Tabs } from '@mantine/core';",
     source: 'mantine-core/src/components/Tabs/Tabs.tsx',
-    docs: 'core/Tabs.mdx',
+    docs: 'core/tabs.mdx',
   },
   BackgroundImage: {
     title: 'BackgroundImage',
@@ -393,7 +393,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     styles: ['BackgroundImage'],
     import: "import { BackgroundImage } from '@mantine/core';",
     source: 'mantine-core/src/components/BackgroundImage/BackgroundImage.tsx',
-    docs: 'core/BackgroundImage.mdx',
+    docs: 'core/background-image.mdx',
   },
   Blockquote: {
     title: 'Blockquote',
@@ -404,7 +404,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Blockquote with optional cite',
     import: "import { Blockquote } from '@mantine/core';",
     source: 'mantine-core/src/components/Blockquote/Blockquote.tsx',
-    docs: 'core/Blockquote.mdx',
+    docs: 'core/blockquote.mdx',
   },
   Breadcrumbs: {
     title: 'Breadcrumbs',
@@ -415,7 +415,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Separates list of react nodes with given separator',
     import: "import { Breadcrumbs } from '@mantine/core';",
     source: 'mantine-core/src/components/Breadcrumbs/Breadcrumbs.tsx',
-    docs: 'core/Breadcrumbs.mdx',
+    docs: 'core/breadcrumbs.mdx',
   },
   Burger: {
     title: 'Burger',
@@ -426,7 +426,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Open/close navigation button',
     import: "import { Burger } from '@mantine/core';",
     source: 'mantine-core/src/components/Burger/Burger.tsx',
-    docs: 'core/Burger.mdx',
+    docs: 'core/burger.mdx',
   },
   Center: {
     title: 'Center',
@@ -438,7 +438,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Centers content vertically and horizontally',
     import: "import { Center } from '@mantine/core';",
     source: 'mantine-core/src/components/Center/Center.tsx',
-    docs: 'core/Center.mdx',
+    docs: 'core/center.mdx',
   },
   Code: {
     title: 'Code',
@@ -449,7 +449,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Inline and block code',
     import: "import { Code } from '@mantine/core';",
     source: 'mantine-core/src/components/Code/Code.tsx',
-    docs: 'core/Code.mdx',
+    docs: 'core/code.mdx',
   },
   Collapse: {
     title: 'Collapse',
@@ -459,7 +459,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Animate presence with slide down/up transition',
     import: "import { Collapse } from '@mantine/core';",
     source: 'mantine-core/src/components/Collapse/Collapse.tsx',
-    docs: 'core/Collapse.mdx',
+    docs: 'core/collapse.mdx',
   },
   ColorPicker: {
     title: 'ColorPicker',
@@ -470,7 +470,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Pick colors',
     import: "import { ColorPicker } from '@mantine/core';",
     source: 'mantine-core/src/components/ColorPicker/ColorPicker.tsx',
-    docs: 'core/ColorPicker.mdx',
+    docs: 'core/color-picker.mdx',
   },
   ColorSwatch: {
     title: 'ColorSwatch',
@@ -482,7 +482,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Displays color',
     import: "import { ColorSwatch } from '@mantine/core';",
     source: 'mantine-core/src/components/ColorSwatch/ColorSwatch.tsx',
-    docs: 'core/ColorSwatch.mdx',
+    docs: 'core/color-swatch.mdx',
   },
   FocusTrap: {
     title: 'FocusTrap',
@@ -492,7 +492,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Trap focus at child node',
     import: "import { FocusTrap } from '@mantine/core';",
     source: 'mantine-core/src/components/FocusTrap/FocusTrap.tsx',
-    docs: 'core/FocusTrap.mdx',
+    docs: 'core/focus-trap.mdx',
   },
   Group: {
     title: 'Group',
@@ -503,7 +503,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Compose elements and components in a horizontal flex container',
     import: "import { Group } from '@mantine/core';",
     source: 'mantine-core/src/components/Group/Group.tsx',
-    docs: 'core/Group.mdx',
+    docs: 'core/group.mdx',
   },
   Highlight: {
     title: 'Highlight',
@@ -515,7 +515,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Highlight given part of a string with mark',
     import: "import { Highlight } from '@mantine/core';",
     source: 'mantine-core/src/components/Highlight/Highlight.tsx',
-    docs: 'core/Highlight.mdx',
+    docs: 'core/highlight.mdx',
   },
   Kbd: {
     title: 'Kbd',
@@ -526,7 +526,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display keyboard key',
     import: "import { Kbd } from '@mantine/core';",
     source: 'mantine-core/src/components/Kbd/Kbd.tsx',
-    docs: 'core/Kbd.mdx',
+    docs: 'core/kbd.mdx',
   },
   Mark: {
     title: 'Mark',
@@ -537,7 +537,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Highlight part of the text',
     import: "import { Mark } from '@mantine/core';",
     source: 'mantine-core/src/components/Mark/Mark.tsx',
-    docs: 'core/Mark.mdx',
+    docs: 'core/mark.mdx',
   },
   NativeSelect: {
     title: 'NativeSelect',
@@ -548,7 +548,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Native select element based on Input',
     import: "import { NativeSelect } from '@mantine/core';",
     source: 'mantine-core/src/components/NativeSelect/NativeSelect.tsx',
-    docs: 'core/NativeSelect.mdx',
+    docs: 'core/native-select.mdx',
   },
   Notification: {
     title: 'Notification',
@@ -559,7 +559,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Show dynamic notifications and alerts to user, part of notifications system',
     import: "import { Notification } from '@mantine/core';",
     source: 'mantine-core/src/components/Notification/Notification.tsx',
-    docs: 'core/Notification.mdx',
+    docs: 'core/notification.mdx',
   },
   Paper: {
     title: 'Paper',
@@ -571,7 +571,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     polymorphic: true,
     import: "import { Paper } from '@mantine/core';",
     source: 'mantine-core/src/components/Paper/Paper.tsx',
-    docs: 'core/Paper.mdx',
+    docs: 'core/paper.mdx',
   },
   Popover: {
     title: 'Popover',
@@ -583,7 +583,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display popover section relative to given target element',
     import: "import { Popover } from '@mantine/core';",
     source: 'mantine-core/src/components/Popover/Popover.tsx',
-    docs: 'core/Popover.mdx',
+    docs: 'core/popover.mdx',
   },
   Portal: {
     title: 'Portal',
@@ -593,7 +593,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Renders component outside of parent element tree',
     import: "import { Portal } from '@mantine/core';",
     source: 'mantine-core/src/components/Portal/Portal.tsx',
-    docs: 'core/Portal.mdx',
+    docs: 'core/portal.mdx',
   },
   ScrollArea: {
     title: 'ScrollArea',
@@ -604,7 +604,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Area with custom scrollbars',
     import: "import { ScrollArea } from '@mantine/core';",
     source: 'mantine-core/src/components/ScrollArea/ScrollArea.tsx',
-    docs: 'core/ScrollArea.mdx',
+    docs: 'core/scroll-area.mdx',
   },
   SegmentedControl: {
     title: 'SegmentedControl',
@@ -615,7 +615,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'A linear set of two or more segments',
     import: "import { SegmentedControl } from '@mantine/core';",
     source: 'mantine-core/src/components/SegmentedControl/SegmentedControl.tsx',
-    docs: 'core/SegmentedControl.mdx',
+    docs: 'core/segmented-control.mdx',
   },
   Slider: {
     title: 'Slider',
@@ -626,7 +626,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Slider and RangeSlider components',
     import: "import { Slider } from '@mantine/core';",
     source: 'mantine-core/src/components/Slider/Slider.tsx',
-    docs: 'core/Slider.mdx',
+    docs: 'core/slider.mdx',
   },
   Stack: {
     title: 'Stack',
@@ -637,7 +637,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Compose elements and components in a vertical flex container',
     import: "import { Stack } from '@mantine/core';",
     source: 'mantine-core/src/components/Stack/Stack.tsx',
-    docs: 'core/Stack.mdx',
+    docs: 'core/stack.mdx',
   },
   Switch: {
     title: 'Switch',
@@ -648,7 +648,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Capture boolean input from user',
     import: "import { Switch } from '@mantine/core';",
     source: 'mantine-core/src/components/Switch/Switch.tsx',
-    docs: 'core/Switch.mdx',
+    docs: 'core/switch.mdx',
   },
   Table: {
     title: 'Table',
@@ -659,7 +659,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Render table with theme styles',
     import: "import { Table } from '@mantine/core';",
     source: 'mantine-core/src/components/Table/Table.tsx',
-    docs: 'core/Table.mdx',
+    docs: 'core/table.mdx',
   },
   Text: {
     title: 'Text',
@@ -670,7 +670,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display text',
     import: "import { Text } from '@mantine/core';",
     source: 'mantine-core/src/components/Text/Text.tsx',
-    docs: 'core/Text.mdx',
+    docs: 'core/text.mdx',
   },
   TextInput: {
     title: 'TextInput',
@@ -681,7 +681,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Capture string input from user',
     import: "import { TextInput } from '@mantine/core';",
     source: 'mantine-core/src/components/TextInput/TextInput.tsx',
-    docs: 'core/TextInput.mdx',
+    docs: 'core/text-input.mdx',
   },
   Title: {
     title: 'Title',
@@ -692,7 +692,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'h1-h6 heading',
     import: "import { Title } from '@mantine/core';",
     source: 'mantine-core/src/components/Title/Title.tsx',
-    docs: 'core/Title.mdx',
+    docs: 'core/title.mdx',
   },
   Badge: {
     title: 'Badge',
@@ -704,7 +704,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display badge, pill or tag',
     import: "import { Badge } from '@mantine/core';",
     source: 'mantine-core/src/components/Badge/Badge.tsx',
-    docs: 'core/Badge.mdx',
+    docs: 'core/badge.mdx',
   },
   Tooltip: {
     title: 'Tooltip',
@@ -715,17 +715,17 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Renders tooltip at given element on mouse over or other event',
     import: "import { Tooltip } from '@mantine/core';",
     source: 'mantine-core/src/components/Tooltip/Tooltip.tsx',
-    docs: 'core/Tooltip.mdx',
+    docs: 'core/tooltip.mdx',
   },
   Transition: {
     title: 'Transition',
     package: '@mantine/core',
     slug: '/core/transition',
     props: ['Transition'],
-    description: 'Animate presence of component with premade animations',
+    description: 'Animate presence of component with pre-made animations',
     import: "import { Transition } from '@mantine/core';",
     source: 'mantine-core/src/components/Transition/Transition.tsx',
-    docs: 'core/Transition.mdx',
+    docs: 'core/transition.mdx',
   },
   TypographyStylesProvider: {
     title: 'TypographyStylesProvider',
@@ -734,7 +734,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Styles provider for html content',
     import: "import { TypographyStylesProvider } from '@mantine/core';",
     source: 'mantine-core/src/components/TypographyStylesProvider/TypographyStylesProvider.tsx',
-    docs: 'core/TypographyStylesProvider.mdx',
+    docs: 'core/typography-styles-provider.mdx',
   },
   VisuallyHidden: {
     title: 'VisuallyHidden',
@@ -743,7 +743,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Hide element visually but keep it accessible for screen readers',
     import: "import { VisuallyHidden } from '@mantine/core';",
     source: 'mantine-core/src/components/VisuallyHidden/VisuallyHidden.tsx',
-    docs: 'core/VisuallyHidden.mdx',
+    docs: 'core/visually-hidden.mdx',
   },
   Divider: {
     title: 'Divider',
@@ -754,7 +754,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Horizontal line with optional label or vertical divider',
     import: "import { Divider } from '@mantine/core';",
     source: 'mantine-core/src/components/Divider/Divider.tsx',
-    docs: 'core/Divider.mdx',
+    docs: 'core/divider.mdx',
   },
   AspectRatio: {
     title: 'AspectRatio',
@@ -765,7 +765,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Maintain responsive consistent width/height ratio',
     import: "import { AspectRatio } from '@mantine/core';",
     source: 'mantine-core/src/components/AspectRatio/AspectRatio.tsx',
-    docs: 'core/AspectRatio.mdx',
+    docs: 'core/aspect-ratio.mdx',
   },
   Overlay: {
     title: 'Overlay',
@@ -777,7 +777,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Overlays parent element with div element with any color and opacity',
     import: "import { Overlay } from '@mantine/core';",
     source: 'mantine-core/src/components/Overlay/Overlay.tsx',
-    docs: 'core/Overlay.mdx',
+    docs: 'core/overlay.mdx',
   },
   Avatar: {
     title: 'Avatar',
@@ -789,7 +789,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display user profile image, initials or fallback icon',
     import: "import { Avatar } from '@mantine/core';",
     source: 'mantine-core/src/components/Avatar/Avatar.tsx',
-    docs: 'core/Avatar.mdx',
+    docs: 'core/avatar.mdx',
   },
 
   Alert: {
@@ -801,7 +801,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Attract user attention with important static message',
     import: "import { Alert } from '@mantine/core';",
     source: 'mantine-core/src/components/Alert/Alert.tsx',
-    docs: 'core/Alert.mdx',
+    docs: 'core/alert.mdx',
   },
 
   Affix: {
@@ -813,7 +813,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Renders children inside portal at fixed position',
     import: "import { Affix } from '@mantine/core';",
     source: 'mantine-core/src/components/Affix/Affix.tsx',
-    docs: 'core/Affix.mdx',
+    docs: 'core/affix.mdx',
   },
 
   Fieldset: {
@@ -825,7 +825,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Group related elements in a form',
     import: "import { Fieldset } from '@mantine/core';",
     source: 'mantine-core/src/components/Fieldset/Fieldset.tsx',
-    docs: 'core/Fieldset.mdx',
+    docs: 'core/fieldset.mdx',
   },
 
   Checkbox: {
@@ -838,7 +838,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Capture boolean input from user',
     import: "import { Checkbox } from '@mantine/core';",
     source: 'mantine-core/src/components/Checkbox/Checkbox.tsx',
-    docs: 'core/Checkbox.mdx',
+    docs: 'core/checkbox.mdx',
   },
 
   Modal: {
@@ -850,7 +850,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'An accessible overlay dialog',
     import: "import { Modal } from '@mantine/core';",
     source: 'mantine-core/src/components/Modal/Modal.tsx',
-    docs: 'core/Modal.mdx',
+    docs: 'core/modal.mdx',
   },
 
   Drawer: {
@@ -862,7 +862,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     description: 'Display overlay area at any side of the screen',
     import: "import { Drawer } from '@mantine/core';",
     source: 'mantine-core/src/components/Drawer/Drawer.tsx',
-    docs: 'core/Drawer.mdx',
+    docs: 'core/drawer.mdx',
   },
 
   // ----------------------------------- Others --------------------------------------
