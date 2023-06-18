@@ -1,7 +1,7 @@
 {
   "name": "@mantine/code-highlight",
   "description": "Code highlight with Mantine theme",
-  "version": "7.0.0-alpha.13",
+  "version": "7.0.0-alpha.14",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -37,8 +37,8 @@
     "syntax-highlight"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.13",
-    "@mantine/hooks": "7.0.0-alpha.13",
+    "@mantine/core": "7.0.0-alpha.14",
+    "@mantine/hooks": "7.0.0-alpha.14",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
