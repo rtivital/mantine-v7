@@ -26,7 +26,7 @@ function Demo() {
   ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={setValue}>
+    <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>
       <Combobox.Target>
         <InputBase
           component="button"
@@ -66,7 +66,7 @@ function Demo() {
   ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={setValue}>
+    <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>
       <Combobox.Target>
         <InputBase
           component="button"

@@ -4,7 +4,7 @@ import { Input, InputBase, Combobox, useCombobox, ScrollArea } from '@mantine/co
 
 const code = `
 import { useState } from 'react';
-import { Input, InputBase, Combobox, useCombobox } from '@mantine/core';
+import { Input, InputBase, Combobox, useCombobox, ScrollArea } from '@mantine/core';
 
 const groceries = [
   '🍎 Apples',
@@ -71,8 +71,10 @@ function Demo() {
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Options mah={200} style={{ overflowY: 'auto' }}>
-          {options}
+        <Combobox.Options>
+          <ScrollArea.Autosize type="scroll" mah={200}>
+            {options}
+          </ScrollArea.Autosize>
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>

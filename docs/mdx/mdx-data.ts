@@ -841,6 +841,19 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/checkbox.mdx',
   },
 
+  Combobox: {
+    title: 'Combobox',
+    package: '@mantine/core',
+    slug: '/core/combobox',
+    componentPrefix: 'Combobox',
+    props: ['Combobox', 'ComboboxOption', 'ComboboxTarget'],
+    styles: ['Combobox'],
+    description: 'Create custom select, autocomplete or multiselect inputs',
+    import: "import { Combobox } from '@mantine/core';",
+    source: 'mantine-core/src/components/Combobox/Combobox.tsx',
+    docs: 'core/combobox.mdx',
+  },
+
   Modal: {
     title: 'Modal',
     package: '@mantine/core',

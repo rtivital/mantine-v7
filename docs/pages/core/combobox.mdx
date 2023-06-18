@@ -1,0 +1,92 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { ComboboxDemos } from '@mantine/demos';
+
+export default Layout(MDX_DATA.Combobox);
+
+## Select example
+
+<Demo data={ComboboxDemos.select} />
+
+## Autocomplete example
+
+<Demo data={ComboboxDemos.autocomplete} />
+
+## Searchable select example
+
+<Demo data={ComboboxDemos.searchableSelect} />
+
+> **Different between searchable select and autocomplete**
+>
+> Autocomplete suggests options based on the user input, but does not enforce
+> any of of options to be picked – user can type anything and submit it.
+> Searchable select only allows to pick one of the options, it does not allow
+> to submit any other value – if the value is not in the list, it will be automatically
+> replaced with the previously selected option.
+
+## Target element
+
+You can use any element as target for combobox, it will be used to position
+the dropdown. To make component accessible, use focusable element as target:
+`input`, `textarea` or `button`.
+
+Example of using [Button](/core/button) as a target:
+
+<Demo data={ComboboxDemos.button} />
+
+## Search input
+
+If you prefer to have search input inside the dropdown, use `Combobox.Search` component.
+To focus the search input, call `combobox.focusSearchInput`, usually it is done
+when the dropdown is opened. To prevent focus loss after the dropdown is closed,
+call `combobox.focusTarget`:
+
+<Demo data={ComboboxDemos.buttonSearch} />
+
+## Select first option
+
+Use `combobox.selectFirstOption` function to select first option. It is useful
+if you want to select first option when user searching for options in the list.
+If there are not options available, it will do nothing.
+
+<Demo data={ComboboxDemos.selectFirstOption} />
+
+## Active option
+
+Set `active` prop on `Combobox.Option` component to mark it as active.
+By default, active option does not have any styles, you can use `data-combobox-active`
+[data attribute](/styles/data-attributes) to style it.
+
+`combobox.selectActiveOption` function selects active option. Usually, it is called
+when the dropdown is opened:
+
+<Demo data={ComboboxDemos.activeOption} />
+
+## Scrollable list
+
+Set `max-height` style on either `Combobox.Dropdown` or `Combobox.Options` to make
+options list scrollable. You can use `mah` [style prop](/styles/style-props) to set
+`max-height`.
+
+<Demo data={ComboboxDemos.nativeScroll} />
+
+## Scrollable list with ScrollArea
+
+You can also use [ScrollArea or ScrollArea.Autosize](/core/scroll-area) components
+instead of native scrollbars:
+
+<Demo data={ComboboxDemos.scrollArea} />
+
+## Hide dropdown
+
+Set `hidden` prop on `Combobox.Dropdown` to hide the dropdown. For example,
+it can be useful when you want to show the dropdown only when there is at least
+one option available:
+
+<Demo data={ComboboxDemos.hiddenDropdown} />
+
+## Control dropdown opened state
+
+To control dropdown opened state, pass `opened` to `useCombobox` hook:
+
+<Demo data={ComboboxDemos.controlledDropdown} />

@@ -67,6 +67,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       {
         category: 'inputs',
         pages: [
+          MDX_DATA.Combobox,
           MDX_DATA.Input,
           MDX_DATA.ColorPicker,
           MDX_DATA.NativeSelect,
