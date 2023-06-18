@@ -100,6 +100,11 @@ export function useCombobox({
   const selectOption = (index: number) => {
     const list = document.getElementById(listId.current!);
     const items = list?.querySelectorAll('[data-combobox-option]');
+
+    if (!items) {
+      return null;
+    }
+
     const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index;
     selectedOptionIndex.current = nextIndex;
 
