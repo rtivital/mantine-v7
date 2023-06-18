@@ -7,3 +7,4 @@ export { buttonSearch } from './Combobox.demo.buttonSearch';
 export { selectFirstOption } from './Combobox.demo.selectFirstOption';
 export { controlledDropdown } from './Combobox.demo.controlledDropdown';
 export { activeOption } from './Combobox.demo.activeOption';
+export { nativeScroll } from './Combobox.demo.nativeScroll';

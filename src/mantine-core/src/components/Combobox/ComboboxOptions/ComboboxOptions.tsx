@@ -30,7 +30,7 @@ const defaultProps: Partial<ComboboxOptionsProps> = {};
 
 export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => {
   const props = useProps('ComboboxOptions', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, id, ...others } = props;
+  const { classNames, className, style, styles, unstyled, id, onMouseDown, ...others } = props;
   const ctx = useComboboxContext();
   const _id = useId(id);
 
@@ -38,7 +38,19 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => 
     ctx.store.setListId(_id);
   }, [_id]);
 
-  return <Box ref={ref} {...ctx.getStyles('options')} {...others} id={_id} role="listbox" />;
+  return (
+    <Box
+      ref={ref}
+      {...ctx.getStyles('options', { className, style, classNames, styles })}
+      {...others}
+      id={_id}
+      role="listbox"
+      onMouseDown={(event) => {
+        event.preventDefault();
+        onMouseDown?.(event);
+      }}
+    />
+  );
 });
 
 ComboboxOptions.classes = classes;

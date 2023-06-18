@@ -43,7 +43,7 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
   /** Controls `padding` of the dropdown, `4` by default */
   dropdownPadding?: React.CSSProperties['padding'];
 
-  /** Determines whether selection should be reset when option is hovered, `true` by default */
+  /** Determines whether selection should be reset when option is hovered, `false` by default */
   resetSelectionOnOptionHover?: boolean;
 }
 
@@ -66,7 +66,7 @@ export type ComboboxFactory = Factory<{
 const defaultProps: Partial<ComboboxProps> = {
   keepMounted: true,
   withinPortal: true,
-  resetSelectionOnOptionHover: true,
+  resetSelectionOnOptionHover: false,
   width: 'target',
   transitionProps: { transition: 'fade', duration: 0 },
   size: 'sm',
