@@ -8,3 +8,4 @@ export { selectFirstOption } from './Combobox.demo.selectFirstOption';
 export { controlledDropdown } from './Combobox.demo.controlledDropdown';
 export { activeOption } from './Combobox.demo.activeOption';
 export { nativeScroll } from './Combobox.demo.nativeScroll';
+export { scrollArea } from './Combobox.demo.scrollArea';
