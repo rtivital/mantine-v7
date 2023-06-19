@@ -17,3 +17,5 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
     code: BasicSelectCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
+
+export type ComboboxExampleId = keyof typeof COMBOBOX_EXAMPLES_COMPONENTS;

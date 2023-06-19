@@ -1,0 +1,7 @@
+.root {
+  --combobox-shell-navbar-width: rem(300px);
+}
+
+.main {
+  padding-left: var(--combobox-shell-navbar-width);
+}

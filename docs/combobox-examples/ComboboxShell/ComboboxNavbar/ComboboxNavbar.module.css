@@ -2,7 +2,7 @@
   position: fixed;
   top: var(--docs-header-height);
   bottom: 0;
-  width: rem(300px);
+  width: var(--combobox-shell-navbar-width);
   background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
   border-right: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
 }
