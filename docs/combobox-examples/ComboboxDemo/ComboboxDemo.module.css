@@ -1,5 +1,5 @@
 .root {
-  --preview-size: rem(500px);
+  --preview-size: rem(600px);
   padding-top: var(--preview-size);
 }
 
