@@ -1,0 +1,27 @@
+.navbar {
+  position: fixed;
+  top: var(--docs-header-height);
+  bottom: 0;
+  width: rem(300px);
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+  border-right: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
+}
+
+.backLink {
+  width: 100%;
+  justify-content: flex-start;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-anchor);
+  text-decoration: none;
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  }
+}
+
+.backIcon {
+  width: rem(16px);
+  height: rem(16px);
+  margin-right: rem(5px);
+}

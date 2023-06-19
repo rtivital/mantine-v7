@@ -6,16 +6,24 @@ import classes from './Shell.module.css';
 
 interface ShellProps {
   children: React.ReactNode;
+  withNavbar?: boolean;
 }
 
-export function Shell({ children }: ShellProps) {
+export function Shell({ children, withNavbar = true }: ShellProps) {
   const [navbarOpened, navbarHandlers] = useDisclosure(false);
 
   return (
     <>
       <Header navbarOpened={navbarOpened} onNavbarToggle={navbarHandlers.toggle} />
-      <Navbar navbarOpened={navbarOpened} onNavbarClose={navbarHandlers.close} />
-      <main className={classes.main} id="mdx">
+      {withNavbar && <Navbar navbarOpened={navbarOpened} onNavbarClose={navbarHandlers.close} />}
+      <main
+        className={classes.main}
+        id="mdx"
+        style={{
+          paddingLeft: withNavbar ? undefined : 0,
+          paddingRight: withNavbar ? undefined : 0,
+        }}
+      >
         {children}
       </main>
     </>
