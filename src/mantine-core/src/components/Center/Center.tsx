@@ -42,7 +42,7 @@ const varsResolver = createVarsResolver<CenterFactory>((_, { inline }) => ({
 
 export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
   const props = useProps('Center', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, inline, ...others } = props;
 
   const getStyles = useStyles<CenterFactory>({
     name: 'Center',
