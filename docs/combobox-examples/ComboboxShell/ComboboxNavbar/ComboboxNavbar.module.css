@@ -59,16 +59,16 @@
   &[data-active] {
     &,
     &:hover {
-      background-color: var(--mantine-color-blue-filled);
-      border-top-color: var(--mantine-color-blue-filled) !important;
+      background-color: var(--mantine-color-blue-light);
+      border-top-color: transparent !important;
     }
 
     & .itemName {
-      color: var(--mantine-color-white);
+      color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-2));
     }
 
     & .itemDescription {
-      color: var(--mantine-color-white);
+      color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
       opacity: 0.7;
     }
   }
@@ -83,6 +83,7 @@
 .itemDescription {
   color: var(--mantine-color-dimmed);
   font-size: var(--mantine-font-size-xs);
+  margin-top: rem(2px);
 }
 
 .empty {

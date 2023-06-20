@@ -21,4 +21,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Primitive select component',
     type: 'select',
   },
+  {
+    id: 'BasicAutocomplete',
+    name: 'Basic autocomplete',
+    description: 'Primitive autocomplete component',
+    type: 'autocomplete',
+  },
 ];

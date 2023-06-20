@@ -47,7 +47,7 @@ export function ComboboxNavbar() {
           {item.name}
         </Highlight>
 
-        <Badge variant={router.query.e === item.id ? 'white' : 'light'} size="xs">
+        <Badge variant={router.query.e === item.id ? 'light' : 'light'} size="xs">
           {item.type}
         </Badge>
       </Group>
