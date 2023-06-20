@@ -6,9 +6,12 @@ export function HotKeysHandler() {
   const { setColorScheme } = useMantineColorScheme();
   const { toggleDirection } = useDirection();
   const computedColorScheme = useComputedColorScheme('light');
-  useHotkeys([
-    ['mod + J', () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')],
-    ['mod + shift + L', () => toggleDirection()],
-  ]);
+  useHotkeys(
+    [
+      ['mod + J', () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')],
+      ['mod + shift + L', () => toggleDirection()],
+    ],
+    []
+  );
   return <>{null}</>;
 }

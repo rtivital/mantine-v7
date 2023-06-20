@@ -22,6 +22,7 @@ export function Search() {
       store={searchStore}
       shortcut={['mod + K', 'mod + P', '/']}
       actions={actions}
+      tagsToIgnore={[]}
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} />,
         placeholder: 'Search documentation...',

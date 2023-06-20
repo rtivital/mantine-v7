@@ -30,6 +30,7 @@ export function BasicAutocomplete() {
         setValue(optionValue);
         combobox.closeDropdown();
       }}
+      withinPortal={false}
       store={combobox}
     >
       <Combobox.Target>

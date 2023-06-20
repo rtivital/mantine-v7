@@ -58,7 +58,7 @@ export function ComboboxNavbar() {
     </UnstyledButton>
   ));
 
-  useHotkeys([['mod + shift + k', () => searchInputRef.current?.focus()]]);
+  useHotkeys([['mod + shift + k', () => searchInputRef.current?.focus()]], []);
 
   return (
     <div className={classes.navbar}>
