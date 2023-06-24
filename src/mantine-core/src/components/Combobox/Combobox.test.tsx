@@ -11,7 +11,11 @@ function DefaultUsage() {
     <div style={{ padding: 40 }}>
       <Combobox store={store} withinPortal={false}>
         <Combobox.Target>
-          <TextInput label="Test input" onFocus={store.openDropdown} onBlur={store.closeDropdown} />
+          <TextInput
+            label="Test input"
+            onFocus={() => store.openDropdown()}
+            onBlur={() => store.closeDropdown()}
+          />
         </Combobox.Target>
         <Combobox.Dropdown>
           <Combobox.Options>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useComboboxContext } from '../Combobox.context';
 
 interface UseComboboxTargetPropsInput {
+  targetType: 'input' | 'button' | undefined;
   withAriaAttributes: boolean | undefined;
   withKeyboardNavigation: boolean | undefined;
   onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
@@ -11,6 +12,7 @@ export function useComboboxTargetProps({
   onKeyDown,
   withKeyboardNavigation,
   withAriaAttributes,
+  targetType,
 }: UseComboboxTargetPropsInput) {
   const ctx = useComboboxContext();
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -45,11 +47,21 @@ export function useComboboxTargetProps({
         if (ctx.store.dropdownOpened) {
           event.preventDefault();
           ctx.store.clickSelectedOption();
+        } else if (targetType === 'button') {
+          event.preventDefault();
+          ctx.store.openDropdown('keyboard');
         }
       }
 
       if (event.nativeEvent.code === 'Escape') {
         ctx.store.closeDropdown('keyboard');
+      }
+
+      if (event.nativeEvent.code === 'Space') {
+        if (targetType === 'button') {
+          event.preventDefault();
+          ctx.store.toggleDropdown('keyboard');
+        }
       }
     }
   };

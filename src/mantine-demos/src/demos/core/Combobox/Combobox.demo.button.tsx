@@ -43,7 +43,7 @@ function Demo() {
         }}
       >
         <Combobox.Target>
-          <Button onClick={combobox.toggleDropdown}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>
@@ -92,7 +92,7 @@ function Demo() {
         }}
       >
         <Combobox.Target>
-          <Button onClick={combobox.toggleDropdown}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>

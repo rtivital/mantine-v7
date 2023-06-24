@@ -17,10 +17,17 @@ export interface ComboboxTargetProps {
 
   /** Determines whether the target should have `aria-` attributes, `true` by default */
   withAriaAttributes?: boolean;
+
+  /** Determines which events should be handled by the target element.
+   * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
+   * `input` by default.
+   * */
+  targetType?: 'button' | 'input';
 }
 
 const defaultProps: Partial<ComboboxTargetProps> = {
   refProp: 'ref',
+  targetType: 'input',
   withKeyboardNavigation: true,
   withAriaAttributes: true,
 };
@@ -32,11 +39,8 @@ export type ComboboxTargetFactory = Factory<{
 }>;
 
 export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
-  const { children, refProp, withKeyboardNavigation, withAriaAttributes, ...others } = useProps(
-    'ComboboxTarget',
-    defaultProps,
-    props
-  );
+  const { children, refProp, withKeyboardNavigation, withAriaAttributes, targetType, ...others } =
+    useProps('ComboboxTarget', defaultProps, props);
 
   if (!isElement(children)) {
     throw new Error(
@@ -47,6 +51,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
   const ctx = useComboboxContext();
 
   const targetProps = useComboboxTargetProps({
+    targetType,
     withAriaAttributes,
     withKeyboardNavigation,
     onKeyDown: children.props.onKeyDown,

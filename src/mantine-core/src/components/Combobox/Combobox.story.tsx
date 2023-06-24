@@ -45,8 +45,8 @@ function StoryBase({ children }: { children: React.ReactNode }) {
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
-            onFocus={store.openDropdown}
-            onBlur={store.closeDropdown}
+            onFocus={() => store.openDropdown()}
+            onBlur={() => store.closeDropdown()}
             value={value}
             onChange={(event) => {
               setValue(event.currentTarget.value);
@@ -151,7 +151,7 @@ export function WithButtonTarget() {
         offset={10}
         withArrow
       >
-        <Combobox.Target>
+        <Combobox.Target targetType="button">
           <Button onClick={() => store.toggleDropdown()}>Toggle Popover</Button>
         </Combobox.Target>
         <Combobox.Dropdown>
@@ -184,8 +184,8 @@ export function WithScrollArea() {
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
-            onFocus={store.openDropdown}
-            onBlur={store.closeDropdown}
+            onFocus={() => store.openDropdown()}
+            onBlur={() => store.closeDropdown()}
             value={value}
             onChange={(event) => setValue(event.currentTarget.value)}
           />
@@ -236,8 +236,8 @@ export function WithActive() {
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
-            onFocus={store.openDropdown}
-            onBlur={store.closeDropdown}
+            onFocus={() => store.openDropdown()}
+            onBlur={() => store.closeDropdown()}
             value={value}
             onChange={(event) => {
               setValue(event.currentTarget.value);

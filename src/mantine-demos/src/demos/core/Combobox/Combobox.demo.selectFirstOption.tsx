@@ -47,9 +47,9 @@ function Demo() {
             setValue(event.currentTarget.value);
             combobox.openDropdown();
           }}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
-          onBlur={combobox.closeDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
+          onBlur={() => combobox.closeDropdown()}
         />
       </Combobox.Target>
 
@@ -104,9 +104,9 @@ function Demo() {
             setValue(event.currentTarget.value);
             combobox.openDropdown();
           }}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
-          onBlur={combobox.closeDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
+          onBlur={() => combobox.closeDropdown()}
         />
       </Combobox.Target>
 

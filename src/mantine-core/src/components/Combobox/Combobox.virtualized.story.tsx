@@ -53,8 +53,8 @@ export function Virtualized() {
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
-            onFocus={store.openDropdown}
-            onBlur={store.closeDropdown}
+            onFocus={() => store.openDropdown()}
+            onBlur={() => store.closeDropdown()}
             value={value}
             onChange={(event) => {
               setValue(event.currentTarget.value);

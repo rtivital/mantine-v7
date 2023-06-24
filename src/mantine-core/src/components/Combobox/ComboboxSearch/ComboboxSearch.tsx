@@ -45,6 +45,7 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
   const _styles = ctx.getStyles('search');
 
   const targetProps = useComboboxTargetProps({
+    targetType: 'input',
     withAriaAttributes,
     withKeyboardNavigation,
     onKeyDown,

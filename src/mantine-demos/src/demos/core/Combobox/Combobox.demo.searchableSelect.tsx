@@ -39,8 +39,8 @@ function Demo() {
       <Combobox.Target>
         <InputBase
           rightSection={<Combobox.Chevron />}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
           onBlur={() => {
             combobox.closeDropdown();
             setSearch(value || '');
@@ -94,8 +94,8 @@ function Demo() {
       <Combobox.Target>
         <InputBase
           rightSection={<Combobox.Chevron />}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
           onBlur={() => {
             combobox.closeDropdown();
             setSearch(value || '');
