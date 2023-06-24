@@ -57,8 +57,8 @@
   border-left: rem(1px) solid;
   padding-left: rem(23px);
   padding-right: var(--mantine-spacing-md);
-  padding-top: rem(5px);
-  padding-bottom: rem(5px);
+  padding-top: rem(7px);
+  padding-bottom: rem(7px);
   margin-left: rem(7px);
   border-top-right-radius: var(--mantine-radius-sm);
   border-bottom-right-radius: var(--mantine-radius-sm);

@@ -1,30 +1,42 @@
 import React from 'react';
 import cx from 'clsx';
-import { RemoveScroll } from '@mantine/core';
+import { RemoveScroll, Text, Badge } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { getCodeFileIcon } from '@mantine/ds';
 import { CodeHighlightTabs } from '@mantine/code-highlight';
 import { COMBOBOX_EXAMPLES_COMPONENTS, ComboboxExampleId } from '../examples';
+import { COMBOBOX_EXAMPLES_DATA } from '../combobox-examples-data';
 import classes from './ComboboxDemo.module.css';
 
 export function ComboboxDemo() {
   const router = useRouter();
   const id = router.query.e as ComboboxExampleId;
-  const data = COMBOBOX_EXAMPLES_COMPONENTS[id];
+  const codeData = COMBOBOX_EXAMPLES_COMPONENTS[id];
+  const metaData = COMBOBOX_EXAMPLES_DATA.find((item) => item.id === id);
 
-  if (!data) {
+  if (!codeData || !metaData) {
     return null;
   }
 
   return (
     <div className={classes.root}>
       <div className={cx(classes.preview, RemoveScroll.classNames.zeroRight)}>
-        <div className={classes.wrapper}>
-          <data.component />
+        <div className={classes.header}>
+          <div className={classes.headerBody}>
+            <Text className={classes.title}>{metaData.name}</Text>
+            <Text className={classes.description}>{metaData.description}</Text>
+          </div>
+
+          <Badge variant="light">{metaData.type}</Badge>
+        </div>
+        <div className={classes.inner}>
+          <div className={classes.wrapper}>
+            <codeData.component />
+          </div>
         </div>
       </div>
       <div className={classes.code}>
-        <CodeHighlightTabs code={data.code} getFileIcon={getCodeFileIcon} />
+        <CodeHighlightTabs code={codeData.code} getFileIcon={getCodeFileIcon} />
       </div>
     </div>
   );

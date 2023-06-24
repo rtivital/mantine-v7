@@ -71,4 +71,8 @@
   text-align: center;
   color: var(--mantine-color-dimmed);
   font-size: var(--mantine-font-size-sm);
+
+  &:not(:only-child) {
+    display: none;
+  }
 }

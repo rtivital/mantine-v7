@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useHotkeys } from '@mantine/hooks';
-import { TextInput } from '@mantine/core';
+import { Text, TextInput } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { COMBOBOX_EXAMPLES_DATA } from '../../combobox-examples-data';
 import { ComboboxLinksGroup } from './ComboboxLinksGroup/ComboboxLinksGroup';
@@ -54,7 +54,10 @@ export function ComboboxNavbar() {
         ref={searchInputRef}
       />
 
-      {groups}
+      <div>
+        {groups}
+        <Text className={classes.empty}>Nothing found...</Text>
+      </div>
     </div>
   );
 }

@@ -11,9 +11,32 @@
   left: var(--combobox-shell-navbar-width);
   right: 0;
   z-index: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
+  background-color: var(--mantine-color-white);
+  border-bottom: rem(1px) solid var(--mantine-color-gray-2);
+}
+
+.title {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+}
+
+.description {
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-gray-6);
+}
+
+.inner {
   display: flex;
   justify-content: center;
-  align-items: center;
+  height: 100%;
+  padding-top: rem(180px);
 }
 
 .wrapper {
