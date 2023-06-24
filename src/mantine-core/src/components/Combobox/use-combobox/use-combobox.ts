@@ -2,11 +2,13 @@ import { useEffect, useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import { getPreviousIndex, getNextIndex, getFirstIndex } from './get-index/get-index';
 
+export type ComboboxDropdownEventSource = 'keyboard' | 'mouse' | 'unknown';
+
 export interface ComboboxStore {
   dropdownOpened: boolean;
-  openDropdown(): void;
-  closeDropdown(): void;
-  toggleDropdown(): void;
+  openDropdown(eventSource?: ComboboxDropdownEventSource): void;
+  closeDropdown(eventSource?: ComboboxDropdownEventSource): void;
+  toggleDropdown(eventSource?: ComboboxDropdownEventSource): void;
 
   selectedOptionIndex: number;
   selectOption(index: number): void;
@@ -37,11 +39,11 @@ interface UseComboboxOptions {
   /** Called when `dropdownOpened` state changes */
   onOpenedChange?(opened: boolean): void;
 
-  /** Called when dropdown closes */
-  onDropdownClose?(): void;
+  /** Called when dropdown closes with event source: keyboard, mouse or unknown */
+  onDropdownClose?(eventSource: ComboboxDropdownEventSource): void;
 
-  /** Called when dropdown opens */
-  onDropdownOpen?(): void;
+  /** Called when dropdown opens with event source: keyboard, mouse or unknown */
+  onDropdownOpen?(eventSource: ComboboxDropdownEventSource): void;
 
   /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
   loop?: boolean;
@@ -69,25 +71,25 @@ export function useCombobox({
   const focusSearchTimeout = useRef<number>(-1);
   const focusTargetTimeout = useRef<number>(-1);
 
-  const openDropdown = () => {
+  const openDropdown: ComboboxStore['openDropdown'] = (eventSource = 'unknown') => {
     if (!dropdownOpened) {
       setDropdownOpened(true);
-      onDropdownOpen?.();
+      onDropdownOpen?.(eventSource);
     }
   };
 
-  const closeDropdown = () => {
+  const closeDropdown: ComboboxStore['closeDropdown'] = (eventSource = 'unknown') => {
     if (dropdownOpened) {
       setDropdownOpened(false);
-      onDropdownClose?.();
+      onDropdownClose?.(eventSource);
     }
   };
 
-  const toggleDropdown = () => {
+  const toggleDropdown: ComboboxStore['toggleDropdown'] = (eventSource = 'unknown') => {
     if (dropdownOpened) {
-      closeDropdown();
+      closeDropdown(eventSource);
     } else {
-      openDropdown();
+      openDropdown(eventSource);
     }
   };
 
