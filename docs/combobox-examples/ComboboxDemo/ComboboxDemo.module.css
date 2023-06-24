@@ -28,6 +28,11 @@
   }
 }
 
+.headerBody {
+  flex: 1;
+  margin-right: var(--mantine-spacing-md);
+}
+
 .title {
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
@@ -36,6 +41,7 @@
 .description {
   font-size: var(--mantine-font-size-xs);
   color: var(--mantine-color-gray-6);
+  margin-top: rem(3px);
 }
 
 .inner {

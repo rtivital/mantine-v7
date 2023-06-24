@@ -1,10 +1,12 @@
 import { BasicSelect } from './BasicSelect/BasicSelect';
 import { BasicAutocomplete } from './BasicAutocomplete/BasicAutocomplete';
 import { SearchableSelect } from './SearchableSelect/SearchableSelect';
+import { AutocompleteLimit } from './AutocompleteLimit/AutocompleteLimit';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
 import SearchableSelectCode from './SearchableSelect/code.json';
+import AutocompleteLimitCode from './AutocompleteLimit/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -24,6 +26,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   BasicAutocomplete: {
     component: BasicAutocomplete,
     code: BasicAutocompleteCode,
+  },
+
+  AutocompleteLimit: {
+    component: AutocompleteLimit,
+    code: AutocompleteLimitCode,
   },
 
   SearchableSelect: {

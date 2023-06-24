@@ -24,7 +24,9 @@ export function ComboboxDemo() {
         <div className={classes.header}>
           <div className={classes.headerBody}>
             <Text className={classes.title}>{metaData.name}</Text>
-            <Text className={classes.description}>{metaData.description}</Text>
+            <Text className={classes.description}>
+              {metaData.fullDescription || metaData.description}
+            </Text>
           </div>
 
           <Badge variant="light">{metaData.type}</Badge>
