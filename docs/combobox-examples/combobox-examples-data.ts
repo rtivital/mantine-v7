@@ -44,4 +44,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
       'Limiting the number of options rendered at a time is the most efficient way to deal with large data sets. The example below shows how to use the limit prop to only render 7 options at a time while performing a search in a data set of 100,000 options.',
     type: 'autocomplete',
   },
+  {
+    id: 'AsyncAutocomplete',
+    name: 'Async autocomplete',
+    description: 'Autocomplete with async data',
+    type: 'autocomplete',
+  },
 ];

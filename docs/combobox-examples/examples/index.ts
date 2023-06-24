@@ -2,11 +2,13 @@ import { BasicSelect } from './BasicSelect/BasicSelect';
 import { BasicAutocomplete } from './BasicAutocomplete/BasicAutocomplete';
 import { SearchableSelect } from './SearchableSelect/SearchableSelect';
 import { AutocompleteLimit } from './AutocompleteLimit/AutocompleteLimit';
+import { AsyncAutocomplete } from './AsyncAutocomplete/AsyncAutocomplete';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
 import SearchableSelectCode from './SearchableSelect/code.json';
 import AutocompleteLimitCode from './AutocompleteLimit/code.json';
+import AsyncAutocompleteCode from './AsyncAutocomplete/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -23,6 +25,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
     code: BasicSelectCode,
   },
 
+  SearchableSelect: {
+    component: SearchableSelect,
+    code: SearchableSelectCode,
+  },
+
   BasicAutocomplete: {
     component: BasicAutocomplete,
     code: BasicAutocompleteCode,
@@ -33,9 +40,9 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
     code: AutocompleteLimitCode,
   },
 
-  SearchableSelect: {
-    component: SearchableSelect,
-    code: SearchableSelectCode,
+  AsyncAutocomplete: {
+    component: AsyncAutocomplete,
+    code: AsyncAutocompleteCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 

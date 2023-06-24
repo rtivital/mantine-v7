@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
-const DATA = Array(100000)
+const MOCKDATA = Array(100000)
   .fill(0)
   .map((_, index) => `Item ${index}`);
 
@@ -24,7 +24,7 @@ function getFilteredOptions(data: string[], searchQuery: string, limit: number) 
 export function AutocompleteLimit() {
   const combobox = useCombobox();
   const [value, setValue] = useState('');
-  const filteredOptions = getFilteredOptions(DATA, value, 7);
+  const filteredOptions = getFilteredOptions(MOCKDATA, value, 7);
 
   const options = filteredOptions.map((item) => (
     <Combobox.Option value={item} key={item}>
