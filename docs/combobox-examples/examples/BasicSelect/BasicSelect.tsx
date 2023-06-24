@@ -38,6 +38,7 @@ export function BasicSelect() {
           pointer
           rightSection={<Combobox.Chevron />}
           onClick={() => combobox.toggleDropdown()}
+          rightSectionPointerEvents="none"
         >
           {value || <Input.Placeholder>Pick value</Input.Placeholder>}
         </InputBase>
