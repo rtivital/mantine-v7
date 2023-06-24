@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Shell } from '@/components/Shell';
 import { ComboboxNavbar } from './ComboboxNavbar/ComboboxNavbar';
 import classes from './ComboboxShell.module.css';
@@ -8,10 +8,12 @@ interface ComboboxShellProps {
 }
 
 export function ComboboxShell({ children }: ComboboxShellProps) {
+  const [opened, setNavbarOpened] = useState(false);
+
   return (
     <div className={classes.root}>
-      <Shell withNavbar={false}>
-        <ComboboxNavbar />
+      <Shell withNavbar={false} navbarOpened={opened} onNavbarOpenedChange={setNavbarOpened}>
+        <ComboboxNavbar opened={opened} />
         <main className={classes.main}>{children}</main>
       </Shell>
     </div>

@@ -5,6 +5,19 @@
   width: var(--combobox-shell-navbar-width);
   background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
   border-right: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
+
+  @media (max-width: $docs-navbar-breakpoint) {
+    width: unset;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &[data-hidden] {
+    @media (max-width: $docs-navbar-breakpoint) {
+      display: none;
+    }
+  }
 }
 
 .search {

@@ -7,7 +7,11 @@ import { ComboboxLinksGroup } from './ComboboxLinksGroup/ComboboxLinksGroup';
 import { getGroupedData } from './get-grouped-data';
 import classes from './ComboboxNavbar.module.css';
 
-export function ComboboxNavbar() {
+interface ComboboxNavbarProps {
+  opened: boolean;
+}
+
+export function ComboboxNavbar({ opened }: ComboboxNavbarProps) {
   const [search, setSearch] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const splittedSearch = search
@@ -42,7 +46,7 @@ export function ComboboxNavbar() {
   useHotkeys([['mod + shift + k', () => searchInputRef.current?.focus()]], []);
 
   return (
-    <div className={classes.navbar}>
+    <nav className={classes.navbar} data-hidden={!opened || undefined}>
       <TextInput
         placeholder="Ctrl + Shift + K to search"
         classNames={{ root: classes.search, input: classes.searchInput }}
@@ -58,6 +62,6 @@ export function ComboboxNavbar() {
         {groups}
         <Text className={classes.empty}>Nothing found...</Text>
       </div>
-    </div>
+    </nav>
   );
 }
