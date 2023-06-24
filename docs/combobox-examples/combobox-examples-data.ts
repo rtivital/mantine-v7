@@ -50,4 +50,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Autocomplete with async data',
     type: 'autocomplete',
   },
+  {
+    id: 'AutocompleteHighlight',
+    name: 'Autocomplete with highlight',
+    description: 'Autocomplete with highlighted search query in options',
+    type: 'autocomplete',
+  },
 ];

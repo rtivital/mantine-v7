@@ -57,8 +57,8 @@
   border-left: rem(1px) solid;
   padding-left: rem(23px);
   padding-right: var(--mantine-spacing-md);
-  padding-top: rem(7px);
-  padding-bottom: rem(7px);
+  padding-top: rem(8px);
+  padding-bottom: rem(8px);
   margin-left: rem(7px);
   border-top-right-radius: var(--mantine-radius-sm);
   border-bottom-right-radius: var(--mantine-radius-sm);
@@ -122,4 +122,6 @@
 .linkDescription {
   font-size: var(--mantine-font-size-xs);
   opacity: 0.6;
+  margin-top: rem(4px);
+  line-height: 1.4;
 }
