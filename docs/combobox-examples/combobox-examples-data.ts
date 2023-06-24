@@ -25,6 +25,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectActive',
+    name: 'Select with active option',
+    description: 'Active option is marked in dropdown',
+    type: 'select',
+  },
+  {
     id: 'SearchableSelect',
     name: 'Searchable select',
     description: 'Select with search',

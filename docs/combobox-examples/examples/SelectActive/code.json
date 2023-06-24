@@ -1,0 +1,7 @@
+[
+  {
+    "fileName": "SelectActive.tsx",
+    "language": "tsx",
+    "code": "\nimport { Combobox, InputBase, Input, Group, CheckIcon, rem, useCombobox } from '@mantine/core';\n\nconst groceries = [\n  '🍎 Apples',\n  '🍌 Bananas',\n  '🥦 Broccoli',\n  '🥕 Carrots',\n  '🍫 Chocolate',\n  '🍇 Grapes',\n];\n\nexport function SelectActive() {\n  const combobox = useCombobox({\n    onDropdownClose: () => combobox.resetSelectedOption(),\n    onDropdownOpen: (eventSource) => eventSource === 'keyboard' && combobox.selectActiveOption(),\n  });\n\n  const [value, setValue] = useState<string | null>('🥦 Broccoli');\n\n  const options = groceries.map((item) => (\n    <Combobox.Option value={item} key={item} active={item === value}>\n      <Group gap=\"xs\">\n        {item === value && <CheckIcon style={{ width: rem(12), height: rem(12) }} />}\n        <span>{item}</span>\n      </Group>\n    </Combobox.Option>\n  ));\n\n  return (\n    <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>\n      <Combobox.Target targetType=\"button\">\n        <InputBase\n          component=\"button\"\n          pointer\n          rightSection={<Combobox.Chevron />}\n          onClick={() => combobox.toggleDropdown()}\n        >\n          {value || <Input.Placeholder>Pick value</Input.Placeholder>}\n        </InputBase>\n      </Combobox.Target>\n\n      <Combobox.Dropdown>\n        <Combobox.Options>{options}</Combobox.Options>\n      </Combobox.Dropdown>\n    </Combobox>\n  );\n}\n"
+  }
+]
