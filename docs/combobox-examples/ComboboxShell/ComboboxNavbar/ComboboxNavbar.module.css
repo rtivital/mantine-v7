@@ -7,41 +7,21 @@
   border-right: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
 }
 
-.backLink {
-  width: 100%;
-  justify-content: flex-start;
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
-  font-size: var(--mantine-font-size-sm);
-  color: var(--mantine-color-anchor);
-  text-decoration: none;
-
-  @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-  }
-}
-
-.backIcon {
-  width: rem(16px);
-  height: rem(16px);
-  margin-right: rem(5px);
-}
-
 .search {
-  border-left-width: 0;
-  border-right-width: 0;
-  padding-left: rem(50px);
-  font-size: var(--mantine-font-size-sm);
+  margin-left: var(--mantine-spacing-xs);
+  margin-right: var(--mantine-spacing-xs);
+  width: auto;
+  margin-bottom: var(--mantine-spacing-md);
+  margin-top: var(--mantine-spacing-md);
+}
 
-  &,
-  &:focus {
-    border-color: light-dark(var(--mantine-color-gray-2), transparent);
-  }
+.searchInput {
+  font-size: var(--mantine-font-size-sm);
 }
 
 .searchIcon {
-  margin-left: rem(4px);
-  width: rem(20px);
-  height: rem(20px);
+  width: rem(18px);
+  height: rem(18px);
 }
 
 .item {
