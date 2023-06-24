@@ -11,7 +11,7 @@ const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots
 function Demo() {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
-    onDropdownOpen: () => combobox.selectActiveOption(),
+    onDropdownOpen: (eventSource) => eventSource === 'keyboard' && combobox.selectActiveOption(),
   });
 
   const [value, setValue] = useState<string | null>('🥦 Broccoli');
@@ -27,7 +27,7 @@ function Demo() {
 
   return (
     <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>
-      <Combobox.Target>
+      <Combobox.Target targetType="button">
         <InputBase
           component="button"
           pointer
@@ -51,7 +51,7 @@ const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots
 function Demo() {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
-    onDropdownOpen: () => combobox.selectActiveOption(),
+    onDropdownOpen: (eventSource) => eventSource === 'keyboard' && combobox.selectActiveOption(),
   });
 
   const [value, setValue] = useState<string | null>('🥦 Broccoli');
@@ -67,7 +67,7 @@ function Demo() {
 
   return (
     <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>
-      <Combobox.Target>
+      <Combobox.Target targetType="button">
         <InputBase
           component="button"
           pointer
