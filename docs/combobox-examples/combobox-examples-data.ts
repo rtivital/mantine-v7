@@ -112,4 +112,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Dropdown with ScrollArea.Autosize scrollbars',
     type: 'dropdown',
   },
+  {
+    id: 'DropdownAnimation',
+    name: 'Dropdown animation',
+    description: 'Dropdown with open/close animation',
+    type: 'dropdown',
+  },
 ];
