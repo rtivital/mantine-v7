@@ -15,6 +15,7 @@ import { DropdownScrollArea } from './DropdownScrollArea/DropdownScrollArea';
 import { AutocompleteDynamic } from './AutocompleteDynamic/AutocompleteDynamic';
 import { DropdownAnimation } from './DropdownAnimation/DropdownAnimation';
 import { DropdownPositionStyles } from './DropdownPositionStyles/DropdownPositionStyles';
+import { SelectDropdownSearch } from './SelectDropdownSearch/SelectDropdownSearch';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -33,6 +34,7 @@ import DropdownScrollAreaCode from './DropdownScrollArea/code.json';
 import AutocompleteDynamicCode from './AutocompleteDynamic/code.json';
 import DropdownAnimationCode from './DropdownAnimation/code.json';
 import DropdownPositionStylesCode from './DropdownPositionStyles/code.json';
+import SelectDropdownSearchCode from './SelectDropdownSearch/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -127,6 +129,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   DropdownPositionStyles: {
     component: DropdownPositionStyles,
     code: DropdownPositionStylesCode,
+  },
+
+  SelectDropdownSearch: {
+    component: SelectDropdownSearch,
+    code: SelectDropdownSearchCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 

@@ -63,6 +63,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectDropdownSearch',
+    name: 'Select with search in dropdown',
+    description: 'Select with search input in the dropdown',
+    type: 'select',
+  },
+  {
     id: 'BasicAutocomplete',
     name: 'Basic autocomplete',
     description: 'Primitive autocomplete component',
