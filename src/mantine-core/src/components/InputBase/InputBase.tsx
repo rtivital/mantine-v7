@@ -10,6 +10,9 @@ export interface InputBaseProps
 
   /** Props passed to the root element (`Input.Wrapper` component) */
   wrapperProps?: Record<string, any>;
+
+  /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
+  multiline?: boolean;
 }
 
 export type InputBaseFactory = PolymorphicFactory<{

@@ -5,6 +5,7 @@ import { AutocompleteLimit } from './AutocompleteLimit/AutocompleteLimit';
 import { AsyncAutocomplete } from './AsyncAutocomplete/AsyncAutocomplete';
 import { AutocompleteHighlight } from './AutocompleteHighlight/AutocompleteHighlight';
 import { SelectActive } from './SelectActive/SelectActive';
+import { SelectOptionComponent } from './SelectOptionComponent/SelectOptionComponent';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -13,6 +14,7 @@ import AutocompleteLimitCode from './AutocompleteLimit/code.json';
 import AsyncAutocompleteCode from './AsyncAutocomplete/code.json';
 import AutocompleteHighlightCode from './AutocompleteHighlight/code.json';
 import SelectActiveCode from './SelectActive/code.json';
+import SelectOptionComponentCode from './SelectOptionComponent/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -57,6 +59,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   SelectActive: {
     component: SelectActive,
     code: SelectActiveCode,
+  },
+
+  SelectOptionComponent: {
+    component: SelectOptionComponent,
+    code: SelectOptionComponentCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
