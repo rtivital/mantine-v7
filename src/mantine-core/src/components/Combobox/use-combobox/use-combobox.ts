@@ -47,6 +47,9 @@ interface UseComboboxOptions {
 
   /** Determines whether arrow key presses should loop though items (first to last and last to first), `true` by default */
   loop?: boolean;
+
+  /** `behavior` passed down to `element.scrollIntoView`, `'instant'` by default */
+  scrollBehavior?: 'smooth' | 'instant' | 'auto';
 }
 
 export function useCombobox({
@@ -56,6 +59,7 @@ export function useCombobox({
   onDropdownClose,
   onDropdownOpen,
   loop = true,
+  scrollBehavior = 'instant',
 }: UseComboboxOptions = {}): ComboboxStore {
   const [dropdownOpened, setDropdownOpened] = useUncontrolled({
     value: opened,
@@ -114,7 +118,7 @@ export function useCombobox({
       clearSelectedItem();
       items[nextIndex].setAttribute('data-combobox-selected', 'true');
       items[nextIndex].setAttribute('aria-selected', 'true');
-      items[nextIndex].scrollIntoView({ block: 'nearest' });
+      items[nextIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior });
       return items[nextIndex].id;
     }
 
