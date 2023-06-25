@@ -14,7 +14,7 @@ export interface ComboboxExample {
   fullDescription?: string;
 
   /** Type based on which components are ordered in the navbar, also used for filtering */
-  type: 'select' | 'autocomplete' | 'multiselect';
+  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown';
 }
 
 export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
@@ -93,5 +93,11 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     name: 'Select first option on type',
     description: 'Autocomplete with first option selected when user types',
     type: 'autocomplete',
+  },
+  {
+    id: 'DropdownScroll',
+    name: 'Dropdown scroll',
+    description: 'Dropdown with native scrollbars',
+    type: 'dropdown',
   },
 ];

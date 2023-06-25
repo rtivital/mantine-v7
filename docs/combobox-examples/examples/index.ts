@@ -10,6 +10,7 @@ import { SelectLimit } from './SelectLimit/SelectLimit';
 import { SelectAsync } from './SelectAsync/SelectAsync';
 import { AutocompleteSelectFirstOption } from './AutocompleteSelectFirstOption/AutocompleteSelectFirstOption';
 import { SelectClearable } from './SelectClearable/SelectClearable';
+import { DropdownScroll } from './DropdownScroll/DropdownScroll';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -23,6 +24,7 @@ import SelectLimitCode from './SelectLimit/code.json';
 import SelectAsyncCode from './SelectAsync/code.json';
 import AutocompleteSelectFirstOptionCode from './AutocompleteSelectFirstOption/code.json';
 import SelectClearableCode from './SelectClearable/code.json';
+import DropdownScrollCode from './DropdownScroll/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -92,6 +94,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   SelectClearable: {
     component: SelectClearable,
     code: SelectClearableCode,
+  },
+
+  DropdownScroll: {
+    component: DropdownScroll,
+    code: DropdownScrollCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
