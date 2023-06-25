@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { Input, InputBase, Combobox, useCombobox, CheckIcon, rem, Group } from '@mantine/core';
+import { Input, InputBase, Combobox, useCombobox, CheckIcon, Group } from '@mantine/core';
 
 const code = `
 import { useState } from 'react';
-import { Input, InputBase, Combobox, useCombobox, CheckIcon, rem, Group } from '@mantine/core';
+import { Input, InputBase, Combobox, useCombobox, CheckIcon, Group } from '@mantine/core';
 
 const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
 
@@ -19,7 +19,7 @@ function Demo() {
   const options = groceries.map((item) => (
     <Combobox.Option value={item} key={item} active={item === value}>
       <Group gap="xs">
-        {item === value && <CheckIcon style={{ width: rem(12), height: rem(12) }} />}
+        {item === value && <CheckIcon size={12} />}
         <span>{item}</span>
       </Group>
     </Combobox.Option>
@@ -59,7 +59,7 @@ function Demo() {
   const options = groceries.map((item) => (
     <Combobox.Option value={item} key={item} active={item === value}>
       <Group gap="xs">
-        {item === value && <CheckIcon style={{ width: rem(12), height: rem(12) }} />}
+        {item === value && <CheckIcon size={12} />}
         <span>{item}</span>
       </Group>
     </Combobox.Option>

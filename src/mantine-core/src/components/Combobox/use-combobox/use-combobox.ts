@@ -49,7 +49,7 @@ interface UseComboboxOptions {
   loop?: boolean;
 
   /** `behavior` passed down to `element.scrollIntoView`, `'instant'` by default */
-  scrollBehavior?: 'smooth' | 'instant' | 'auto';
+  scrollBehavior?: ScrollBehavior;
 }
 
 export function useCombobox({

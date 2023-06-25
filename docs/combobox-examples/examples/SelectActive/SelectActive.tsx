@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Combobox, InputBase, Input, Group, CheckIcon, rem, useCombobox } from '@mantine/core';
+import { Combobox, InputBase, Input, Group, CheckIcon, useCombobox } from '@mantine/core';
 
 const groceries = [
   '🍎 Apples',
@@ -21,7 +21,7 @@ export function SelectActive() {
   const options = groceries.map((item) => (
     <Combobox.Option value={item} key={item} active={item === value}>
       <Group gap="xs">
-        {item === value && <CheckIcon style={{ width: rem(12), height: rem(12) }} />}
+        {item === value && <CheckIcon size={12} />}
         <span>{item}</span>
       </Group>
     </Combobox.Option>
