@@ -156,4 +156,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Play options animation on dropdown open',
     type: 'dropdown',
   },
+  {
+    id: 'SelectedStyles',
+    name: 'Custom selected styles',
+    description: 'Customize selected option styles',
+    type: 'dropdown',
+  },
 ];

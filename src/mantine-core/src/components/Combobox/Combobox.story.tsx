@@ -66,7 +66,9 @@ function StoryBase({ children }: { children: React.ReactNode }) {
 export function Usage() {
   return (
     <StoryBase>
-      <Combobox.Option value="react">React</Combobox.Option>
+      <Combobox.Option value="react" className="test">
+        React
+      </Combobox.Option>
       <Combobox.Option value="vue" disabled>
         Vue
       </Combobox.Option>
