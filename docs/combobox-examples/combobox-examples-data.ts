@@ -69,6 +69,14 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectOptionOnHover',
+    name: 'Select option on hover',
+    description: 'Move selection to hovered option',
+    fullDescription:
+      'Moving selection to hovered option can be useful when you want to combine mouse and keyboard interactions.',
+    type: 'select',
+  },
+  {
     id: 'BasicAutocomplete',
     name: 'Basic autocomplete',
     description: 'Primitive autocomplete component',

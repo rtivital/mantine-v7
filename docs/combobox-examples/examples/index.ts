@@ -19,6 +19,7 @@ import { SelectDropdownSearch } from './SelectDropdownSearch/SelectDropdownSearc
 import { BasicButton } from './BasicButton/BasicButton';
 import { ButtonSearch } from './ButtonSearch/ButtonSearch';
 import { DropdownOptionsAnimation } from './DropdownOptionsAnimation/DropdownOptionsAnimation';
+import { SelectOptionOnHover } from './SelectOptionOnHover/SelectOptionOnHover';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -41,6 +42,7 @@ import SelectDropdownSearchCode from './SelectDropdownSearch/code.json';
 import BasicButtonCode from './BasicButton/code.json';
 import ButtonSearchCode from './ButtonSearch/code.json';
 import DropdownOptionsAnimationCode from './DropdownOptionsAnimation/code.json';
+import SelectOptionOnHoverCode from './SelectOptionOnHover/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -155,6 +157,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   DropdownOptionsAnimation: {
     component: DropdownOptionsAnimation,
     code: DropdownOptionsAnimationCode,
+  },
+
+  SelectOptionOnHover: {
+    component: SelectOptionOnHover,
+    code: SelectOptionOnHoverCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
