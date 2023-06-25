@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import { getPreviousIndex, getNextIndex, getFirstIndex } from './get-index/get-index';
 
@@ -75,57 +75,69 @@ export function useCombobox({
   const focusSearchTimeout = useRef<number>(-1);
   const focusTargetTimeout = useRef<number>(-1);
 
-  const openDropdown: ComboboxStore['openDropdown'] = (eventSource = 'unknown') => {
-    if (!dropdownOpened) {
-      setDropdownOpened(true);
-      onDropdownOpen?.(eventSource);
-    }
-  };
+  const openDropdown: ComboboxStore['openDropdown'] = useCallback(
+    (eventSource = 'unknown') => {
+      if (!dropdownOpened) {
+        setDropdownOpened(true);
+        onDropdownOpen?.(eventSource);
+      }
+    },
+    [setDropdownOpened, onDropdownOpen, dropdownOpened]
+  );
 
-  const closeDropdown: ComboboxStore['closeDropdown'] = (eventSource = 'unknown') => {
-    if (dropdownOpened) {
-      setDropdownOpened(false);
-      onDropdownClose?.(eventSource);
-    }
-  };
+  const closeDropdown: ComboboxStore['closeDropdown'] = useCallback(
+    (eventSource = 'unknown') => {
+      if (dropdownOpened) {
+        setDropdownOpened(false);
+        onDropdownClose?.(eventSource);
+      }
+    },
+    [setDropdownOpened, onDropdownClose, dropdownOpened]
+  );
 
-  const toggleDropdown: ComboboxStore['toggleDropdown'] = (eventSource = 'unknown') => {
-    if (dropdownOpened) {
-      closeDropdown(eventSource);
-    } else {
-      openDropdown(eventSource);
-    }
-  };
+  const toggleDropdown: ComboboxStore['toggleDropdown'] = useCallback(
+    (eventSource = 'unknown') => {
+      if (dropdownOpened) {
+        closeDropdown(eventSource);
+      } else {
+        openDropdown(eventSource);
+      }
+    },
+    [closeDropdown, openDropdown, dropdownOpened]
+  );
 
-  const clearSelectedItem = () => {
+  const clearSelectedItem = useCallback(() => {
     const selected = document.querySelector(`#${listId.current} [data-combobox-selected]`);
     selected?.removeAttribute('data-combobox-selected');
     selected?.removeAttribute('aria-selected');
-  };
+  }, []);
 
-  const selectOption = (index: number) => {
-    const list = document.getElementById(listId.current!);
-    const items = list?.querySelectorAll('[data-combobox-option]');
+  const selectOption = useCallback(
+    (index: number) => {
+      const list = document.getElementById(listId.current!);
+      const items = list?.querySelectorAll('[data-combobox-option]');
 
-    if (!items) {
+      if (!items) {
+        return null;
+      }
+
+      const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index;
+      selectedOptionIndex.current = nextIndex;
+
+      if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-combobox-disabled')) {
+        clearSelectedItem();
+        items[nextIndex].setAttribute('data-combobox-selected', 'true');
+        items[nextIndex].setAttribute('aria-selected', 'true');
+        items[nextIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior });
+        return items[nextIndex].id;
+      }
+
       return null;
-    }
+    },
+    [scrollBehavior, clearSelectedItem]
+  );
 
-    const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index;
-    selectedOptionIndex.current = nextIndex;
-
-    if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-combobox-disabled')) {
-      clearSelectedItem();
-      items[nextIndex].setAttribute('data-combobox-selected', 'true');
-      items[nextIndex].setAttribute('aria-selected', 'true');
-      items[nextIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior });
-      return items[nextIndex].id;
-    }
-
-    return null;
-  };
-
-  const selectActiveOption = () => {
+  const selectActiveOption = useCallback(() => {
     const activeOption = document.querySelector<HTMLDivElement>(
       `#${listId.current} [data-combobox-active]`
     );
@@ -139,57 +151,66 @@ export function useCombobox({
     }
 
     return selectOption(0);
-  };
+  }, [selectOption]);
 
-  const selectNextOption = () =>
-    selectOption(
-      getNextIndex(
-        selectedOptionIndex.current,
-        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
-        loop
-      )
-    );
+  const selectNextOption = useCallback(
+    () =>
+      selectOption(
+        getNextIndex(
+          selectedOptionIndex.current,
+          document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
+          loop
+        )
+      ),
+    [selectOption, loop]
+  );
 
-  const selectPreviousOption = () =>
-    selectOption(
-      getPreviousIndex(
-        selectedOptionIndex.current,
-        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
-        loop
-      )
-    );
+  const selectPreviousOption = useCallback(
+    () =>
+      selectOption(
+        getPreviousIndex(
+          selectedOptionIndex.current,
+          document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`),
+          loop
+        )
+      ),
+    [selectOption, loop]
+  );
 
-  const selectFirstOption = () =>
-    selectOption(
-      getFirstIndex(
-        document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`)
-      )
-    );
+  const selectFirstOption = useCallback(
+    () =>
+      selectOption(
+        getFirstIndex(
+          document.querySelectorAll<HTMLDivElement>(`#${listId.current} [data-combobox-option]`)
+        )
+      ),
+    [selectOption]
+  );
 
   const resetSelectedOption = () => {
     selectedOptionIndex.current = -1;
     clearSelectedItem();
   };
 
-  const clickSelectedOption = () => {
+  const clickSelectedOption = useCallback(() => {
     const items = document.querySelectorAll<HTMLDivElement>(
       `#${listId.current} [data-combobox-option]`
     );
     const item = items?.[selectedOptionIndex.current];
     item?.click();
-  };
+  }, []);
 
-  const setListId = (id: string) => {
+  const setListId = useCallback((id: string) => {
     listId.current = id;
-  };
+  }, []);
 
-  const focusSearchInput = () => {
+  const focusSearchInput = useCallback(() => {
     focusSearchTimeout.current = window.setTimeout(() => searchRef.current!.focus(), 0);
-  };
+  }, []);
 
-  const focusTarget = () => {
+  const focusTarget = useCallback(() => {
     focusTargetTimeout.current = window.setTimeout(() => targetRef.current!.focus(), 0);
-  };
+  }, []);
 
   useEffect(
     () => () => {
