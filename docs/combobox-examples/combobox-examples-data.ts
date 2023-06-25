@@ -82,4 +82,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Autocomplete with highlighted search query in options',
     type: 'autocomplete',
   },
+  {
+    id: 'AutocompleteSelectFirstOption',
+    name: 'Select first option on type',
+    description: 'Autocomplete with first option selected when user types',
+    type: 'autocomplete',
+  },
 ];
