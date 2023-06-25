@@ -27,7 +27,7 @@ const scrollableContent = Array(20)
   .map((_, index) => <p key={index}>{lorem}</p>);
 
 function StoryBase({ children }: { children: React.ReactNode }) {
-  const [opened, setOpened] = React.useState(false);
+  const [opened, setOpened] = React.useState(true);
   const store = useCombobox({ opened, onOpenedChange: setOpened });
   const [value, setValue] = React.useState('');
 
@@ -56,7 +56,9 @@ function StoryBase({ children }: { children: React.ReactNode }) {
           />
         </Combobox.Target>
         <Combobox.Dropdown>
+          <Combobox.Header>Header</Combobox.Header>
           <Combobox.Options>{children}</Combobox.Options>
+          <Combobox.Footer>Footer</Combobox.Footer>
         </Combobox.Dropdown>
       </Combobox>
     </div>

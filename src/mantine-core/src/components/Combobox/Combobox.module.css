@@ -81,3 +81,30 @@
   padding: var(--combobox-option-padding);
   color: var(--mantine-color-dimmed);
 }
+
+.header,
+.footer {
+  font-size: var(--combobox-option-fz);
+  border: 0 solid var(--_footer-border-color);
+  margin-left: calc(var(--combobox-padding) * -1);
+  margin-right: calc(var(--combobox-padding) * -1);
+  padding: var(--combobox-option-padding);
+
+  @mixin light {
+    --_footer-border-color: var(--mantine-color-gray-2);
+  }
+
+  @mixin dark {
+    --_footer-border-color: var(--mantine-color-dark-4);
+  }
+}
+
+.footer {
+  border-top-width: rem(1px);
+  margin-top: var(--combobox-padding);
+}
+
+.header {
+  border-bottom-width: rem(1px);
+  margin-bottom: var(--combobox-padding);
+}

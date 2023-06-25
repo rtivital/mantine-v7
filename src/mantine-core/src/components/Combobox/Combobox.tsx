@@ -20,9 +20,18 @@ import { ComboboxOption, ComboboxOptionProps } from './ComboboxOption/ComboboxOp
 import { ComboboxSearch } from './ComboboxSearch/ComboboxSearch';
 import { ComboboxEmpty } from './ComboboxEmpty/ComboboxEmpty';
 import { ComboboxChevron } from './ComboboxChevron/ComboboxChevron';
+import { ComboboxFooter } from './ComboboxFooter/ComboboxFooter';
+import { ComboboxHeader } from './ComboboxHeader/ComboboxHeader';
 import classes from './Combobox.module.css';
 
-export type ComboboxStylesNames = 'options' | 'dropdown' | 'option' | 'search' | 'empty';
+export type ComboboxStylesNames =
+  | 'options'
+  | 'dropdown'
+  | 'option'
+  | 'search'
+  | 'empty'
+  | 'footer'
+  | 'header';
 export type ComboboxCSSVariables = {
   dropdown: '--combobox-option-fz' | '--combobox-padding' | '--combobox-option-padding';
 };
@@ -60,6 +69,8 @@ export type ComboboxFactory = Factory<{
     Search: typeof ComboboxSearch;
     Empty: typeof ComboboxEmpty;
     Chevron: typeof ComboboxChevron;
+    Footer: typeof ComboboxFooter;
+    Header: typeof ComboboxHeader;
   };
 }>;
 
@@ -136,3 +147,5 @@ Combobox.Option = ComboboxOption;
 Combobox.Search = ComboboxSearch;
 Combobox.Empty = ComboboxEmpty;
 Combobox.Chevron = ComboboxChevron;
+Combobox.Footer = ComboboxFooter;
+Combobox.Header = ComboboxHeader;
