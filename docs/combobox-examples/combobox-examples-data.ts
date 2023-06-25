@@ -14,7 +14,7 @@ export interface ComboboxExample {
   fullDescription?: string;
 
   /** Type based on which components are ordered in the navbar, also used for filtering */
-  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown' | 'button';
+  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown' | 'button' | 'animations';
 }
 
 export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
@@ -151,21 +151,9 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'dropdown',
   },
   {
-    id: 'DropdownAnimation',
-    name: 'Dropdown animation',
-    description: 'Dropdown with open/close animation',
-    type: 'dropdown',
-  },
-  {
     id: 'DropdownPositionStyles',
     name: 'Dropdown with custom styles',
     description: 'Change dropdown styles with Styles API',
-    type: 'dropdown',
-  },
-  {
-    id: 'DropdownOptionsAnimation',
-    name: 'Dropdown with option animation',
-    description: 'Play options animation on dropdown open',
     type: 'dropdown',
   },
   {
@@ -173,5 +161,17 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     name: 'Custom selected styles',
     description: 'Customize selected option styles',
     type: 'dropdown',
+  },
+  {
+    id: 'DropdownAnimation',
+    name: 'Dropdown animation',
+    description: 'Dropdown with open/close animation',
+    type: 'animations',
+  },
+  {
+    id: 'DropdownOptionsAnimation',
+    name: 'Dropdown with option animation',
+    description: 'Play options animation on dropdown open',
+    type: 'animations',
   },
 ];
