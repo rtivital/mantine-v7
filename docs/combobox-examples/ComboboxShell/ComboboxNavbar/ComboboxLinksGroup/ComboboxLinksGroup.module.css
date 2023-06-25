@@ -11,7 +11,7 @@
 .header {
   display: flex;
   align-items: center;
-  width: calc(100% + var(--mantine-spacing-md));
+  width: 100%;
   height: rem(32px);
   cursor: pointer;
 
@@ -96,7 +96,7 @@
     }
   }
 
-  &[data-active] {
+  &[data-navbar-link-active] {
     border-color: var(--mantine-color-blue-5) !important;
 
     @mixin light {

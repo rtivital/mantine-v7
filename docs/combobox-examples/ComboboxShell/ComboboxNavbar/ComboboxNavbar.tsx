@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useHotkeys } from '@mantine/hooks';
-import { Text, TextInput } from '@mantine/core';
+import { Text, TextInput, ScrollArea } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { COMBOBOX_EXAMPLES_DATA } from '../../combobox-examples-data';
 import { ComboboxLinksGroup } from './ComboboxLinksGroup/ComboboxLinksGroup';
@@ -45,6 +45,14 @@ export function ComboboxNavbar({ opened }: ComboboxNavbarProps) {
 
   useHotkeys([['mod + shift + k', () => searchInputRef.current?.focus()]], []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      document
+        .querySelector('[data-navbar-link-active]')
+        ?.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }, 500);
+  }, []);
+
   return (
     <nav className={classes.navbar} data-hidden={!opened || undefined}>
       <TextInput
@@ -58,10 +66,10 @@ export function ComboboxNavbar({ opened }: ComboboxNavbarProps) {
         ref={searchInputRef}
       />
 
-      <div>
+      <ScrollArea className={classes.scroll} type="scroll" scrollbarSize={6}>
         {groups}
         <Text className={classes.empty}>Nothing found...</Text>
-      </div>
+      </ScrollArea>
     </nav>
   );
 }

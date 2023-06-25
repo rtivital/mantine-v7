@@ -27,7 +27,7 @@ export function ComboboxLinksGroup({ data, searchQuery }: ComboboxLinksGroupProp
       href={`/combobox?e=${item.id}`}
       key={item.id}
       className={classes.link}
-      data-active={router.query.e === item.id || undefined}
+      data-navbar-link-active={router.query.e === item.id || undefined}
     >
       <Highlight className={classes.linkTitle} highlight={searchQuery}>
         {item.name}

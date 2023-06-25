@@ -20,6 +20,10 @@
   }
 }
 
+.scroll {
+  height: calc(100vh - rem(134px));
+}
+
 .search {
   margin-left: var(--mantine-spacing-xs);
   margin-right: var(--mantine-spacing-xs);
@@ -38,7 +42,6 @@
 }
 
 .item {
-  width: 100%;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
 
   @mixin hover {
