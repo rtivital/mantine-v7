@@ -14,7 +14,7 @@ export interface ComboboxExample {
   fullDescription?: string;
 
   /** Type based on which components are ordered in the navbar, also used for filtering */
-  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown';
+  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown' | 'button';
 }
 
 export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
@@ -105,6 +105,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     name: 'Dynamic options',
     description: 'Autocomplete with options that depend on the user input',
     type: 'autocomplete',
+  },
+  {
+    id: 'BasicButton',
+    name: 'Basic button',
+    description: 'Primitive combobox with button target',
+    type: 'button',
   },
   {
     id: 'DropdownScroll',

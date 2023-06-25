@@ -11,6 +11,7 @@ export function getGroupedData(data: ComboboxExample[]): ComboboxExamplesGroup[]
     autocomplete: [],
     multiselect: [],
     dropdown: [],
+    button: [],
   };
 
   data.forEach((item) => {
@@ -21,6 +22,7 @@ export function getGroupedData(data: ComboboxExample[]): ComboboxExamplesGroup[]
     { group: 'Select', items: items.select },
     { group: 'Autocomplete', items: items.autocomplete },
     { group: 'Multiselect', items: items.multiselect },
+    { group: 'Button', items: items.button },
     { group: 'Dropdown', items: items.dropdown },
   ];
 }
