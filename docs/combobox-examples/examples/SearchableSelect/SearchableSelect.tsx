@@ -44,10 +44,11 @@ export function SearchableSelect() {
           value={search}
           onChange={(event) => {
             combobox.openDropdown();
+            combobox.updateSelectedOptionIndex();
             setSearch(event.currentTarget.value);
           }}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
           onBlur={() => {
             combobox.closeDropdown();
             setSearch(value || '');

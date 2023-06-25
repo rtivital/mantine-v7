@@ -18,6 +18,7 @@ export interface ComboboxStore {
   selectPreviousOption(): string | null;
   resetSelectedOption(): void;
   clickSelectedOption(): void;
+  updateSelectedOptionIndex(target?: 'active' | 'selected'): void;
 
   listId: string | null;
   setListId(id: string): void;
@@ -74,6 +75,7 @@ export function useCombobox({
   const targetRef = useRef<HTMLElement | null>(null);
   const focusSearchTimeout = useRef<number>(-1);
   const focusTargetTimeout = useRef<number>(-1);
+  const selectedIndexUpdateTimeout = useRef<number>(-1);
 
   const openDropdown: ComboboxStore['openDropdown'] = useCallback(
     (eventSource = 'unknown') => {
@@ -187,10 +189,22 @@ export function useCombobox({
     [selectOption]
   );
 
-  const resetSelectedOption = () => {
+  const updateSelectedOptionIndex = useCallback((target: 'active' | 'selected' = 'selected') => {
+    selectedIndexUpdateTimeout.current = window.setTimeout(() => {
+      const items = document.querySelectorAll<HTMLDivElement>(
+        `#${listId.current} [data-combobox-option]`
+      );
+      const index = Array.from(items).findIndex((option) =>
+        option.hasAttribute(`data-combobox-${target}`)
+      );
+      selectedOptionIndex.current = index;
+    }, 0);
+  }, []);
+
+  const resetSelectedOption = useCallback(() => {
     selectedOptionIndex.current = -1;
     clearSelectedItem();
-  };
+  }, [clearSelectedItem]);
 
   const clickSelectedOption = useCallback(() => {
     const items = document.querySelectorAll<HTMLDivElement>(
@@ -216,6 +230,7 @@ export function useCombobox({
     () => () => {
       window.clearTimeout(focusSearchTimeout.current);
       window.clearTimeout(focusTargetTimeout.current);
+      window.clearTimeout(selectedIndexUpdateTimeout.current);
     },
     []
   );
@@ -233,6 +248,7 @@ export function useCombobox({
     selectNextOption,
     selectPreviousOption,
     resetSelectedOption,
+    updateSelectedOptionIndex,
 
     listId: listId.current,
     setListId,

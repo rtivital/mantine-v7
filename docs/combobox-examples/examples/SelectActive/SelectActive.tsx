@@ -13,7 +13,13 @@ const groceries = [
 export function SelectActive() {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
-    onDropdownOpen: (eventSource) => eventSource === 'keyboard' && combobox.selectActiveOption(),
+    onDropdownOpen: (eventSource) => {
+      if (eventSource === 'keyboard') {
+        combobox.selectActiveOption();
+      } else {
+        combobox.updateSelectedOptionIndex('active');
+      }
+    },
   });
 
   const [value, setValue] = useState<string | null>('🥦 Broccoli');
@@ -28,7 +34,14 @@ export function SelectActive() {
   ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={setValue} resetSelectionOnOptionHover>
+    <Combobox
+      store={combobox}
+      resetSelectionOnOptionHover
+      onOptionSelect={(val) => {
+        setValue(val);
+        combobox.updateSelectedOptionIndex('active');
+      }}
+    >
       <Combobox.Target targetType="button">
         <InputBase
           component="button"

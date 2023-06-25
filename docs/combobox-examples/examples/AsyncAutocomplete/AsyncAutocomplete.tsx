@@ -102,14 +102,14 @@ export function AsyncAutocomplete() {
             combobox.resetSelectedOption();
             combobox.openDropdown();
           }}
-          onClick={combobox.openDropdown}
+          onClick={() => combobox.openDropdown()}
           onFocus={() => {
             combobox.openDropdown();
             if (data === null) {
               fetchOptions(value);
             }
           }}
-          onBlur={combobox.closeDropdown}
+          onBlur={() => combobox.closeDropdown()}
           rightSection={loading && <Loader size={18} />}
         />
       </Combobox.Target>

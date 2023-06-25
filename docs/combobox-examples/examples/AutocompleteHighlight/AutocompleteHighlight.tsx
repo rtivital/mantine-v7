@@ -11,7 +11,9 @@ const groceries = [
 ];
 
 export function AutocompleteHighlight() {
-  const combobox = useCombobox();
+  const combobox = useCombobox({
+    onDropdownClose: () => combobox.resetSelectedOption(),
+  });
   const [value, setValue] = useState('');
   const shouldFilterOptions = !groceries.some((item) => item === value);
   const filteredOptions = shouldFilterOptions
@@ -42,11 +44,12 @@ export function AutocompleteHighlight() {
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
+            combobox.updateSelectedOptionIndex();
             combobox.openDropdown();
           }}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
-          onBlur={combobox.closeDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
+          onBlur={() => combobox.closeDropdown()}
         />
       </Combobox.Target>
 

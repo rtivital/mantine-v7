@@ -30,7 +30,6 @@ export function BasicAutocomplete() {
         setValue(optionValue);
         combobox.closeDropdown();
       }}
-      withinPortal={false}
       store={combobox}
     >
       <Combobox.Target>
@@ -41,10 +40,11 @@ export function BasicAutocomplete() {
           onChange={(event) => {
             setValue(event.currentTarget.value);
             combobox.openDropdown();
+            combobox.updateSelectedOptionIndex();
           }}
-          onClick={combobox.openDropdown}
-          onFocus={combobox.openDropdown}
-          onBlur={combobox.closeDropdown}
+          onClick={() => combobox.openDropdown()}
+          onFocus={() => combobox.openDropdown()}
+          onBlur={() => combobox.closeDropdown()}
         />
       </Combobox.Target>
 

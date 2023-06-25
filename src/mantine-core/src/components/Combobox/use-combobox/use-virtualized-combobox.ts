@@ -163,6 +163,7 @@ export function useVirtualizedCombobox(
     selectNextOption,
     selectPreviousOption,
     resetSelectedOption,
+    updateSelectedOptionIndex: () => {},
 
     listId: listId.current,
     setListId,

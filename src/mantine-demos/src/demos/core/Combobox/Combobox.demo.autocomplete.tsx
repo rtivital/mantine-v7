@@ -38,6 +38,7 @@ function Demo() {
           onChange={(event) => {
             setValue(event.currentTarget.value);
             combobox.openDropdown();
+            combobox.updateSelectedOptionIndex();
           }}
           onClick={() => combobox.openDropdown()}
           onFocus={() => combobox.openDropdown()}
@@ -87,6 +88,7 @@ function Demo() {
           onChange={(event) => {
             setValue(event.currentTarget.value);
             combobox.openDropdown();
+            combobox.updateSelectedOptionIndex();
           }}
           onClick={() => combobox.openDropdown()}
           onFocus={() => combobox.openDropdown()}
