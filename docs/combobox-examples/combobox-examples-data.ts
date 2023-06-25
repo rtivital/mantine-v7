@@ -27,7 +27,7 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
   {
     id: 'SelectActive',
     name: 'Select with active option',
-    description: 'Active option is marked in dropdown',
+    description: 'Active option is marked in the dropdown',
     type: 'select',
   },
   {
@@ -48,6 +48,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     id: 'SelectOptionComponent',
     name: 'Select with custom option',
     description: 'Select with custom option and value component',
+    type: 'select',
+  },
+  {
+    id: 'SelectAsync',
+    name: 'Select with async data',
+    description: 'Data is requested only when the dropdown is opened',
     type: 'select',
   },
   {
