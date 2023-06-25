@@ -95,6 +95,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'autocomplete',
   },
   {
+    id: 'AutocompleteDynamic',
+    name: 'Dynamic options',
+    description: 'Autocomplete with options that depend on the user input',
+    type: 'autocomplete',
+  },
+  {
     id: 'DropdownScroll',
     name: 'Dropdown scroll',
     description: 'Dropdown with native scrollbars',

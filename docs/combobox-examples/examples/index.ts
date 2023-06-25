@@ -12,6 +12,7 @@ import { AutocompleteSelectFirstOption } from './AutocompleteSelectFirstOption/A
 import { SelectClearable } from './SelectClearable/SelectClearable';
 import { DropdownScroll } from './DropdownScroll/DropdownScroll';
 import { DropdownScrollArea } from './DropdownScrollArea/DropdownScrollArea';
+import { AutocompleteDynamic } from './AutocompleteDynamic/AutocompleteDynamic';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -27,6 +28,7 @@ import AutocompleteSelectFirstOptionCode from './AutocompleteSelectFirstOption/c
 import SelectClearableCode from './SelectClearable/code.json';
 import DropdownScrollCode from './DropdownScroll/code.json';
 import DropdownScrollAreaCode from './DropdownScrollArea/code.json';
+import AutocompleteDynamicCode from './AutocompleteDynamic/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -106,6 +108,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   DropdownScrollArea: {
     component: DropdownScrollArea,
     code: DropdownScrollAreaCode,
+  },
+
+  AutocompleteDynamic: {
+    component: AutocompleteDynamic,
+    code: AutocompleteDynamicCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
