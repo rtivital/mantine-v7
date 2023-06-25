@@ -139,6 +139,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'dropdown',
   },
   {
+    id: 'DropdownHeader',
+    name: 'Dropdown with header',
+    description: 'Dropdown with ScrollArea and header',
+    type: 'dropdown',
+  },
+  {
     id: 'DropdownFooter',
     name: 'Dropdown with footer',
     description: 'Dropdown with ScrollArea and footer',

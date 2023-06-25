@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Combobox, TextInput, ScrollArea, Anchor, useCombobox, Text } from '@mantine/core';
+import { Combobox, TextInput, ScrollArea, useCombobox, Text } from '@mantine/core';
 
 const groceries = [
   '🍎 Apples',
@@ -33,7 +33,7 @@ const groceries = [
   '🍓 Strawberries',
 ];
 
-export function DropdownFooter() {
+export function DropdownHeader() {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
   });
@@ -45,7 +45,7 @@ export function DropdownFooter() {
     : groceries;
 
   const options = filteredOptions.map((item) => (
-    <Combobox.Option value={item} key={item}>
+    <Combobox.Option value={item} key={item} disabled={item === '🥕 Carrots'}>
       {item}
     </Combobox.Option>
   ));
@@ -77,18 +77,13 @@ export function DropdownFooter() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
+          <Combobox.Header>
+            <Text fz="xs">Note: Carrots are not currently available</Text>
+          </Combobox.Header>
           <ScrollArea.Autosize mah={200} type="scroll">
             {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
           </ScrollArea.Autosize>
         </Combobox.Options>
-        <Combobox.Footer>
-          <Text fz="xs" c="dimmed">
-            Search powered by{' '}
-            <Anchor fz="xs" href="https://mantine.dev" target="_blank">
-              Mantine
-            </Anchor>
-          </Text>
-        </Combobox.Footer>
       </Combobox.Dropdown>
     </Combobox>
   );
