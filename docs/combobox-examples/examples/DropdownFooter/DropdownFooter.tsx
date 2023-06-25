@@ -57,6 +57,7 @@ export function DropdownFooter() {
         combobox.closeDropdown();
       }}
       store={combobox}
+      withinPortal={false}
     >
       <Combobox.Target>
         <TextInput
@@ -80,12 +81,14 @@ export function DropdownFooter() {
             {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
           </ScrollArea.Autosize>
         </Combobox.Options>
-        <Text fz="xs" c="dimmed">
-          Search powered by{' '}
-          <Anchor fz="xs" href="https://mantine.dev" target="_blank">
-            Mantine
-          </Anchor>
-        </Text>
+        <Combobox.Footer mb={-4}>
+          <Text fz="xs" c="dimmed">
+            Search powered by{' '}
+            <Anchor fz="xs" href="https://mantine.dev" target="_blank">
+              Mantine
+            </Anchor>
+          </Text>
+        </Combobox.Footer>
       </Combobox.Dropdown>
     </Combobox>
   );

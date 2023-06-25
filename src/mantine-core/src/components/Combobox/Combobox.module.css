@@ -102,9 +102,11 @@
 .footer {
   border-top-width: rem(1px);
   margin-top: var(--combobox-padding);
+  margin-bottom: calc(var(--combobox-padding) * -1);
 }
 
 .header {
   border-bottom-width: rem(1px);
   margin-bottom: var(--combobox-padding);
+  margin-top: calc(var(--combobox-padding) * -1);
 }
