@@ -142,4 +142,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Change dropdown styles with Styles API',
     type: 'dropdown',
   },
+  {
+    id: 'DropdownOptionsAnimation',
+    name: 'Dropdown with option animation',
+    description: 'Play options animation on dropdown open',
+    type: 'dropdown',
+  },
 ];

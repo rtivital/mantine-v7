@@ -18,6 +18,7 @@ import { DropdownPositionStyles } from './DropdownPositionStyles/DropdownPositio
 import { SelectDropdownSearch } from './SelectDropdownSearch/SelectDropdownSearch';
 import { BasicButton } from './BasicButton/BasicButton';
 import { ButtonSearch } from './ButtonSearch/ButtonSearch';
+import { DropdownOptionsAnimation } from './DropdownOptionsAnimation/DropdownOptionsAnimation';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -39,6 +40,7 @@ import DropdownPositionStylesCode from './DropdownPositionStyles/code.json';
 import SelectDropdownSearchCode from './SelectDropdownSearch/code.json';
 import BasicButtonCode from './BasicButton/code.json';
 import ButtonSearchCode from './ButtonSearch/code.json';
+import DropdownOptionsAnimationCode from './DropdownOptionsAnimation/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -148,6 +150,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   ButtonSearch: {
     component: ButtonSearch,
     code: ButtonSearchCode,
+  },
+
+  DropdownOptionsAnimation: {
+    component: DropdownOptionsAnimation,
+    code: DropdownOptionsAnimationCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
