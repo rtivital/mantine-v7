@@ -37,6 +37,14 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectLimit',
+    name: 'Select with options limit',
+    description: '100 000 options searchable select',
+    fullDescription:
+      'Limiting the number of options rendered at a time is the most efficient way to deal with large data sets. The example below shows how to use the limit prop to only render 7 options at a time while performing a search in a data set of 100,000 options.',
+    type: 'select',
+  },
+  {
     id: 'SelectOptionComponent',
     name: 'Select with custom option',
     description: 'Select with custom option and value component',
