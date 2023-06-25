@@ -2,5 +2,12 @@
   "dev": true,
   "peer": false,
   "prod": true,
-  "source": ["package.json", "src/*/package.json", "docs/package.json"]
+  "source": ["package.json", "src/*/package.json", "docs/package.json"],
+  "versionGroups": [
+    {
+      "packages": ["docs"],
+      "dependencies": ["@mantine/store"],
+      "isIgnored": true
+    }
+  ]
 }

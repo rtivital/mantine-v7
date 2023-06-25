@@ -76,10 +76,10 @@
   version "0.0.0"
   uid ""
 
-"@mantine/store@7.0.0-alpha.13":
-  version "7.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.13.tgz#a80e9890b677dd408b8b01c2b97b2cb33e8aeea8"
-  integrity sha512-/b+6r338YLzeDme7OGyAEBx2nR3yz4GI2rjCdenMvAB/0UI80SI6HBgZdx1xo2Oeocn6YwR16ZC8DhgWN2b8Qg==
+"@mantine/store@7.0.0-alpha.14":
+  version "7.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.14.tgz#ca713054abcdc0b272037d7517bdf97b134fb77a"
+  integrity sha512-2bswldDSYLgkeMy47EQjLwr+7LdYorFYIfRxBjNrI6gUUOBCY0W32vQ5eljdHNEcQylSFAs/t6P7SqPMi/fBvA==
   dependencies:
     tslib "^2.5.2"
 
@@ -1315,10 +1315,10 @@ type-fest@^3.6.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.10.0.tgz#d75f17a22be8816aea6315ab2739fe1c0c211863"
   integrity sha512-hmAPf1datm+gt3c2mvu0sJyhFy6lTkIGf0GzyaZWxRLnabQfPUqg6tF95RPg6sLxKI7nFLGdFxBcf2/7+GXI+A==
 
-typescript@4.9.5:
-  version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
-  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
+typescript@5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.3.tgz#8d84219244a6b40b6fb2b33cc1c062f715b9e826"
+  integrity sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==
 
 unified@^10.0.0:
   version "10.1.2"
