@@ -1,0 +1,8 @@
+.panel {
+  word-break: break-word;
+}
+
+.content {
+  padding: var(--mantine-spacing-md);
+  padding-top: calc(var(--mantine-spacing-xs) / 2);
+}
