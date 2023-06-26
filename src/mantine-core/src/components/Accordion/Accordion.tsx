@@ -11,7 +11,10 @@ import {
   Factory,
   MantineRadius,
   getSafeId,
+  ExtendComponent,
+  MantineThemeComponent,
 } from '../../core';
+import { AccordionChevron } from './AccordionChevron';
 import { AccordionItem } from './AccordionItem/AccordionItem';
 import { AccordionPanel } from './AccordionPanel/AccordionPanel';
 import { AccordionControl } from './AccordionControl/AccordionControl';
@@ -177,15 +180,19 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
         getStyles,
       }}
     >
-      <Box {...getStyles('root')} {...others} data-accordion>
+      <Box {...getStyles('root')} {...others} variant={variant} data-accordion>
         {children}
       </Box>
     </AccordionProvider>
   );
 }
 
+const extendAccordion = (c: ExtendComponent<AccordionFactory>): MantineThemeComponent => c;
+
+Accordion.extend = extendAccordion;
 Accordion.classes = classes;
 Accordion.displayName = '@mantine/core/Accordion';
 Accordion.Item = AccordionItem;
 Accordion.Panel = AccordionPanel;
 Accordion.Control = AccordionControl;
+Accordion.Chevron = AccordionChevron;
