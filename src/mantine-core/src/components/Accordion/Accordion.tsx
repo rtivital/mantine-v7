@@ -95,7 +95,7 @@ const defaultProps: Partial<AccordionProps> = {
   transitionDuration: 200,
   chevronPosition: 'right',
   variant: 'default',
-  chevronSize: 24,
+  chevronSize: 15,
   chevron: <AccordionChevron />,
 };
 

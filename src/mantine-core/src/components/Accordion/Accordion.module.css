@@ -18,7 +18,7 @@
   align-items: center;
   flex-direction: var(--_control-flex-direction, row-reverse);
   padding-right: var(--_control-padding-right, var(--mantine-spacing-md));
-  padding-left: var(--_control-padding-left, calc(var(--mantine-spacing-md) + rem(4px)));
+  padding-left: var(--_control-padding-left, var(--mantine-spacing-md));
   text-align: left;
   color: var(--_control-color);
   opacity: var(--_control-opacity, 1);
@@ -27,7 +27,7 @@
 
   &[data-chevron-position='left'] {
     --_control-flex-direction: row;
-    --_control-padding-left: var(--mantine-spacing-md);
+    --_control-padding-left: 0;
   }
 
   @mixin light {
@@ -47,13 +47,15 @@
 
 .control--default,
 .control--contained {
-  @mixin hover {
-    @mixin light {
-      --_control-background-color: var(--mantine-color-gray-0);
-    }
+  &:not(:disabled, [data-disabled]) {
+    @mixin hover {
+      @mixin light {
+        --_control-background-color: var(--mantine-color-gray-0);
+      }
 
-    @mixin dark {
-      --_control-background-color: var(--mantine-color-dark-6);
+      @mixin dark {
+        --_control-background-color: var(--mantine-color-dark-6);
+      }
     }
   }
 }
@@ -64,23 +66,28 @@
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: var(--mantine-spacing-md);
-  padding-bottom: var(--mantine-spacing-md);
+  padding-top: var(--mantine-spacing-sm);
+  padding-bottom: var(--mantine-spacing-sm);
 }
 
 .chevron {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transition: transform var(--accordion-transition-duration) ease;
   margin-right: var(--_chevron-margin-right, 0);
-  margin-left: var(--_chevron-margin-left, var(--mantine-spacing-lg));
+  margin-left: var(--_chevron-margin-left, var(--mantine-spacing-md));
   width: var(--accordion-chevron-size);
   min-width: var(--accordion-chevron-size);
   transform: var(--_chevron-transform, rotate(0deg));
 
   &[data-rotate] {
     --_chevron-transform: rotate(180deg);
+  }
+
+  &[data-position='left'] {
+    --_chevron-margin-right: var(--mantine-spacing-md);
+    --_chevron-margin-left: var(--mantine-spacing-md);
   }
 }
 

@@ -79,6 +79,7 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
         ctx.onChange(value);
       }}
       type="button"
+      disabled={disabled}
       aria-expanded={isActive}
       aria-controls={ctx.getRegionId(value)}
       id={ctx.getControlId(value)}

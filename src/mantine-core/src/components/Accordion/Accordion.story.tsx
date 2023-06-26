@@ -79,6 +79,33 @@ export const Variants = () => (
   </>
 );
 
+export const ChevronPositions = () => (
+  <>
+    <Accordion
+      defaultValue="flex"
+      style={{ maxWidth: 400 }}
+      mx="auto"
+      mt="xl"
+      variant="default"
+      radius="md"
+    >
+      {_items}
+    </Accordion>
+
+    <Accordion
+      defaultValue="flex"
+      style={{ maxWidth: 400 }}
+      mx="auto"
+      mt="xl"
+      variant="default"
+      radius="md"
+      chevronPosition="left"
+    >
+      {_items}
+    </Accordion>
+  </>
+);
+
 export const Multiple = () => (
   <Accordion multiple defaultValue={['flex']} style={{ maxWidth: 400 }} mx="auto">
     {_items}
