@@ -7,7 +7,6 @@ interface AccordionContext {
   transitionDuration: number | undefined;
   disableChevronRotation: boolean | undefined;
   chevronPosition: AccordionChevronPosition | undefined;
-  // chevronSize: number | string;
   order: AccordionHeadingOrder | undefined;
   chevron: React.ReactNode;
   onChange(value: string): void;
@@ -15,6 +14,7 @@ interface AccordionContext {
   getControlId(value: string): string;
   getRegionId(value: string): string;
   getStyles: GetStylesApi<AccordionFactory>;
+  variant: string | undefined;
 }
 
 export const [AccordionProvider, useAccordionContext] = createSafeContext<AccordionContext>(

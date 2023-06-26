@@ -55,6 +55,7 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     onClick,
     onKeyDown,
     children,
+    disabled,
     ...others
   } = useProps('AccordionControl', defaultProps, props);
 
@@ -67,15 +68,17 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
   const content = (
     <UnstyledButton<'button'>
       {...others}
-      {...ctx.getStyles('control', { className, classNames, style, styles })}
+      {...ctx.getStyles('control', { className, classNames, style, styles, variant: ctx.variant })}
+      mod={[
+        'accordion-control',
+        { active: isActive, 'chevron-position': ctx.chevronPosition, disabled },
+      ]}
       ref={ref}
-      data-accordion-control
       onClick={(event) => {
         onClick?.(event);
         ctx.onChange(value);
       }}
       type="button"
-      data-active={isActive || undefined}
       aria-expanded={isActive}
       aria-controls={ctx.getRegionId(value)}
       id={ctx.getControlId(value)}
@@ -90,13 +93,21 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     >
       <Box
         component="span"
-        mod={{ rotate: !ctx.disableChevronRotation && isActive }}
+        mod={{ rotate: !ctx.disableChevronRotation && isActive, position: ctx.chevronPosition }}
         {...ctx.getStyles('chevron', { classNames, styles })}
       >
         {chevron || ctx.chevron}
       </Box>
       <span {...ctx.getStyles('label', { classNames, styles })}>{children}</span>
-      {icon && <span {...ctx.getStyles('icon', { classNames, styles })}>{icon}</span>}
+      {icon && (
+        <Box
+          component="span"
+          mod={{ 'chevron-position': ctx.chevronPosition }}
+          {...ctx.getStyles('icon', { classNames, styles })}
+        >
+          {icon}
+        </Box>
+      )}
     </UnstyledButton>
   );
 

@@ -6,3 +6,176 @@
   padding: var(--mantine-spacing-md);
   padding-top: calc(var(--mantine-spacing-xs) / 2);
 }
+
+.itemTitle {
+  margin: 0;
+  padding: 0;
+}
+
+.control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: var(--_control-flex-direction, row-reverse);
+  padding-right: var(--_control-padding-right, var(--mantine-spacing-md));
+  padding-left: var(--_control-padding-left, calc(var(--mantine-spacing-md) + rem(4px)));
+  text-align: left;
+  color: var(--_control-color);
+  opacity: var(--_control-opacity, 1);
+  cursor: var(--_control-cursor, pointer);
+  background-color: var(--_control-background-color, transparent);
+
+  &[data-chevron-position='left'] {
+    --_control-flex-direction: row;
+    --_control-padding-left: var(--mantine-spacing-md);
+  }
+
+  @mixin light {
+    --_control-color: var(--mantine-color-black);
+  }
+
+  @mixin dark {
+    --_control-color: var(--mantine-color-dark-0);
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    --_control-opacity: 0.4;
+    --_control-cursor: not-allowed;
+  }
+}
+
+.control--default,
+.control--contained {
+  @mixin hover {
+    @mixin light {
+      --_control-background-color: var(--mantine-color-gray-0);
+    }
+
+    @mixin dark {
+      --_control-background-color: var(--mantine-color-dark-6);
+    }
+  }
+}
+
+.label {
+  color: inherit;
+  font-weight: 400;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: var(--mantine-spacing-md);
+  padding-bottom: var(--mantine-spacing-md);
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--accordion-transition-duration) ease;
+  margin-right: var(--_chevron-margin-right, 0);
+  margin-left: var(--_chevron-margin-left, var(--mantine-spacing-lg));
+  width: var(--accordion-chevron-size);
+  min-width: var(--accordion-chevron-size);
+  transform: var(--_chevron-transform, rotate(0deg));
+
+  &[data-rotate] {
+    --_chevron-transform: rotate(180deg);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--_icon-margin-right, var(--mantine-spacing-sm));
+  margin-left: var(--_icon-margin-left, 0);
+
+  &[data-chevron-position='left'] {
+    --_icon-margin-right: 0;
+    --_icon-margin-left: var(--mantine-spacing-lg);
+  }
+}
+
+.item {
+  background-color: var(--_item-bg);
+
+  @mixin light {
+    --_item-border-color: var(--mantine-color-gray-3);
+    --_item-filled-color: var(--mantine-color-gray-0);
+  }
+
+  @mixin dark {
+    --_item-border-color: var(--mantine-color-dark-4);
+    --_item-filled-color: var(--mantine-color-dark-6);
+  }
+}
+
+.item--default {
+  border-bottom: rem(1px) solid var(--_item-border-color);
+}
+
+.item--contained {
+  border: rem(1px) solid var(--_item-border-color);
+  transition: background-color 150ms ease;
+
+  &[data-active] {
+    --_item-bg: var(--_item-filled-color);
+  }
+
+  &:first-of-type {
+    border-top-left-radius: var(--accordion-radius);
+    border-top-right-radius: var(--accordion-radius);
+
+    & > [data-accordion-control] {
+      border-top-left-radius: var(--accordion-radius);
+      border-top-right-radius: var(--accordion-radius);
+    }
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--accordion-radius);
+    border-bottom-right-radius: var(--accordion-radius);
+
+    & > [data-accordion-control] {
+      border-bottom-left-radius: var(--accordion-radius);
+      border-bottom-right-radius: var(--accordion-radius);
+    }
+  }
+
+  & + & {
+    border-top: 0;
+  }
+}
+
+.item--filled {
+  border-radius: var(--accordion-radius);
+
+  &[data-active] {
+    --_item-bg: var(--_item-filled-color);
+  }
+}
+
+.item--separated {
+  --_item-bg: var(--_item-filled-color);
+
+  border-radius: var(--accordion-radius);
+  border: rem(1px) solid var(--__item-border-color, transparent);
+  transition: background-color 150ms ease;
+
+  &[data-active] {
+    --__item-border-color: var(--_item-border-color);
+
+    @mixin light {
+      --_item-bg: var(--mantine-color-white);
+    }
+
+    @mixin dark {
+      --_item-bg: var(--mantine-color-dark-7);
+    }
+  }
+
+  & + & {
+    margin-top: var(--mantine-spacing-md);
+  }
+}

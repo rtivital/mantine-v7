@@ -44,7 +44,7 @@ export const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
       <Box
         ref={ref}
         mod={{ active: ctx.isItemActive(value) }}
-        {...ctx.getStyles('item', { className, classNames, styles, style })}
+        {...ctx.getStyles('item', { className, classNames, styles, style, variant: ctx.variant })}
         {...others}
       />
     </AccordionItemProvider>

@@ -13,6 +13,8 @@ import {
   getSafeId,
   ExtendComponent,
   MantineThemeComponent,
+  rem,
+  getRadius,
 } from '../../core';
 import { AccordionChevron } from './AccordionChevron';
 import { AccordionItem } from './AccordionItem/AccordionItem';
@@ -35,7 +37,7 @@ export type AccordionStylesNames =
 
 export type AccordionVariant = 'default' | 'contained' | 'filled' | 'separated';
 export type AccordionCssVariables = {
-  root: '--test';
+  root: '--accordion-transition-duration' | '--accordion-chevron-size' | '--accordion-radius';
 };
 
 export interface AccordionProps<Multiple extends boolean = false>
@@ -87,13 +89,25 @@ export type AccordionFactory = Factory<{
   variant: AccordionVariant;
 }>;
 
-const defaultProps: Partial<AccordionProps> = {};
+const defaultProps: Partial<AccordionProps> = {
+  multiple: false,
+  disableChevronRotation: false,
+  transitionDuration: 200,
+  chevronPosition: 'right',
+  variant: 'default',
+  chevronSize: 24,
+  chevron: <AccordionChevron />,
+};
 
-const varsResolver = createVarsResolver<AccordionFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const varsResolver = createVarsResolver<AccordionFactory>(
+  (_, { transitionDuration, chevronSize, radius }) => ({
+    root: {
+      '--accordion-transition-duration': `${transitionDuration}ms`,
+      '--accordion-chevron-size': rem(chevronSize),
+      '--accordion-radius': getRadius(radius),
+    },
+  })
+);
 
 export function Accordion<Multiple extends boolean = false>(_props: AccordionProps<Multiple>) {
   const props = useProps('Accordion', defaultProps as AccordionProps<Multiple>, _props);
@@ -178,6 +192,7 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
         chevron,
         loop,
         getStyles,
+        variant,
       }}
     >
       <Box {...getStyles('root')} {...others} variant={variant} data-accordion>
