@@ -115,6 +115,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'autocomplete',
   },
   {
+    id: 'AutocompleteClearable',
+    name: 'Clearable autocomplete',
+    description: 'Autocomplete with clear button',
+    type: 'autocomplete',
+  },
+  {
     id: 'BasicButton',
     name: 'Basic button',
     description: 'Primitive combobox with button target',
