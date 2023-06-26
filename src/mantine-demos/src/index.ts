@@ -4,6 +4,7 @@ export * as StylesDemos from './demos/styles';
 export * as GuidesDemos from './demos/guides';
 
 // Core demos
+export * as AccordionDemos from './demos/core/Accordion';
 export * as ActionIconDemos from './demos/core/ActionIcon';
 export * as AffixDemos from './demos/core/Affix';
 export * as AlertDemos from './demos/core/Alert';
