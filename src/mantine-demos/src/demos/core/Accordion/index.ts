@@ -7,3 +7,4 @@ export { sideControls } from './Accordion.demo.sideControls';
 export { customize } from './Accordion.demo.customize';
 export { disableTransitions, customTransitions } from './Accordion.demo.transitions';
 export { unstyled } from './Accordion.demo.unstyled';
+export { stylesApi } from './Accordion.demo.stylesApi';
