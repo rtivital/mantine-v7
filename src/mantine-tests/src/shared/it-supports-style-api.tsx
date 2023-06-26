@@ -23,6 +23,7 @@ interface Options<Props extends Record<string, any> = any, Selectors extends str
   selectors: Selectors[];
   providerName: string;
   providerStylesApi?: boolean;
+  compound?: boolean;
 }
 
 export function itSupportsStylesApi<
@@ -38,19 +39,21 @@ export function itSupportsStylesApi<
     });
   });
 
-  it(`${name}: classNames (inline function)`, () => {
-    const classNames = getTestFunctionClassNames(options.selectors);
-    const { container } = render(
-      <options.component {...options.props} data-test="__test" classNames={classNames} />
-    );
-    options.selectors.forEach((selector) => {
-      expect(
-        container.querySelector(
-          `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
-        )
-      ).toBeInTheDocument();
+  if (!options.compound) {
+    it(`${name}: classNames (inline function)`, () => {
+      const classNames = getTestFunctionClassNames(options.selectors);
+      const { container } = render(
+        <options.component {...options.props} data-test="__test" classNames={classNames} />
+      );
+      options.selectors.forEach((selector) => {
+        expect(
+          container.querySelector(
+            `.${classNames(DEFAULT_THEME, { 'data-test': '__test' })[selector]}`
+          )
+        ).toBeInTheDocument();
+      });
     });
-  });
+  }
 
   it(`${name}: styles (inline object)`, () => {
     const classNames = getTestObjectClassNames(options.selectors);
@@ -73,32 +76,34 @@ export function itSupportsStylesApi<
     });
   });
 
-  it(`${name}: styles (inline function)`, () => {
-    const classNames = getTestObjectClassNames(options.selectors);
-    const styles = (theme: MantineTheme, props: any) =>
-      options.selectors.reduce<Record<string, React.CSSProperties>>((acc, selector) => {
-        acc[selector] = {
-          outlineColor: props['data-test'],
-          boxShadow: theme.shadows.xl,
-        };
-        return acc;
-      }, {});
+  if (!options.compound) {
+    it(`${name}: styles (inline function)`, () => {
+      const classNames = getTestObjectClassNames(options.selectors);
+      const styles = (theme: MantineTheme, props: any) =>
+        options.selectors.reduce<Record<string, React.CSSProperties>>((acc, selector) => {
+          acc[selector] = {
+            outlineColor: props['data-test'],
+            boxShadow: theme.shadows.xl,
+          };
+          return acc;
+        }, {});
 
-    const { container } = render(
-      <options.component
-        {...options.props}
-        data-test="orange"
-        classNames={classNames}
-        styles={styles}
-      />
-    );
+      const { container } = render(
+        <options.component
+          {...options.props}
+          data-test="orange"
+          classNames={classNames}
+          styles={styles}
+        />
+      );
 
-    options.selectors.forEach((selector) => {
-      expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-        ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+      options.selectors.forEach((selector) => {
+        expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
+          ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+        });
       });
     });
-  });
+  }
 
   it(`${name}: static classNames (default)`, () => {
     const { container } = render(<options.component {...options.props} />);

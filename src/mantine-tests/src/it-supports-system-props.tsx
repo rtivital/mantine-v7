@@ -40,6 +40,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
   variantSelector?: string;
   sizeSelector?: string;
   providerStylesApi?: boolean;
+  compound?: boolean;
 }
 
 export function itSupportsSystemProps<
@@ -76,11 +77,11 @@ export function itSupportsSystemProps<
     }
 
     if (options.variant) {
-      itSupportsVariant({ ...options, selector: options.variantSelector });
+      itSupportsVariant({ ...options, selector: options.variantSelector || options.selector });
     }
 
     if (options.size) {
-      itSupportsSize({ ...options, selector: options.sizeSelector });
+      itSupportsSize({ ...options, selector: options.sizeSelector || options.selector });
     }
 
     if (Array.isArray(options.stylesApiSelectors) && stylesApiName) {
