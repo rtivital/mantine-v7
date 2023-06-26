@@ -1,5 +1,6 @@
 export * from './types';
 
+export * from './data/Accordion.styles-api';
 export * from './data/ActionIcon.styles-api';
 export * from './data/Affix.styles-api';
 export * from './data/Alert.styles-api';
