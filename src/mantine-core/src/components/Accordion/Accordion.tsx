@@ -13,6 +13,7 @@ import {
   getSafeId,
 } from '../../core';
 import { AccordionItem } from './AccordionItem/AccordionItem';
+import { AccordionPanel } from './AccordionPanel/AccordionPanel';
 import { AccordionChevronPosition, AccordionHeadingOrder, AccordionValue } from './Accordion.types';
 import classes from './Accordion.module.css';
 import { AccordionProvider } from './Accordion.context';
@@ -187,3 +188,4 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
 Accordion.classes = classes;
 Accordion.displayName = '@mantine/core/Accordion';
 Accordion.Item = AccordionItem;
+Accordion.Panel = AccordionPanel;
