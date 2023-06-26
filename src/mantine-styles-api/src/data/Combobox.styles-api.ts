@@ -8,6 +8,8 @@ export const ComboboxStylesApi: StylesApiData<ComboboxFactory> = {
     option: '`Combobox.Option` component',
     search: '`Combobox.Search` input',
     empty: '`Combobox.Empty` component',
+    header: '`Combobox.Header` component',
+    footer: '`Combobox.Footer` component',
   },
 
   vars: {
