@@ -5,7 +5,7 @@ import type { AccordionFactory } from './Accordion';
 interface AccordionContext {
   loop: boolean | undefined;
   transitionDuration: number | undefined;
-  // disableChevronRotation: boolean;
+  disableChevronRotation: boolean | undefined;
   chevronPosition: AccordionChevronPosition | undefined;
   // chevronSize: number | string;
   order: AccordionHeadingOrder | undefined;

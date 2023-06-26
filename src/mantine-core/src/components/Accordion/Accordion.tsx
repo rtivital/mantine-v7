@@ -14,6 +14,7 @@ import {
 } from '../../core';
 import { AccordionItem } from './AccordionItem/AccordionItem';
 import { AccordionPanel } from './AccordionPanel/AccordionPanel';
+import { AccordionControl } from './AccordionControl/AccordionControl';
 import { AccordionChevronPosition, AccordionHeadingOrder, AccordionValue } from './Accordion.types';
 import classes from './Accordion.module.css';
 import { AccordionProvider } from './Accordion.context';
@@ -168,13 +169,11 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
           'Accordion.Item component was rendered with invalid value or without value'
         ),
         transitionDuration,
-        // disableChevronRotation,
+        disableChevronRotation,
         chevronPosition,
-        // chevronSize,
         order,
         chevron,
         loop,
-        // radius,
         getStyles,
       }}
     >
@@ -189,3 +188,4 @@ Accordion.classes = classes;
 Accordion.displayName = '@mantine/core/Accordion';
 Accordion.Item = AccordionItem;
 Accordion.Panel = AccordionPanel;
+Accordion.Control = AccordionControl;
