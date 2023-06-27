@@ -1,3 +1,8 @@
+// utils – styles of these components must be imported before all other components
+export * from './UnstyledButton';
+export * from './VisuallyHidden';
+
+// regular components
 export * from './Accordion';
 export * from './ActionIcon';
 export * from './Affix';
@@ -55,5 +60,3 @@ export * from './Title';
 export * from './Tooltip';
 export * from './Transition';
 export * from './TypographyStylesProvider';
-export * from './UnstyledButton';
-export * from './VisuallyHidden';
