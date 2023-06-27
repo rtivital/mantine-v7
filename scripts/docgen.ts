@@ -34,6 +34,10 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-core/src/components/Tabs/TabsTab/TabsTab.tsx',
   '../src/mantine-core/src/components/Tabs/TabsList/TabsList.tsx',
   '../src/mantine-core/src/components/Tabs/TabsPanel/TabsPanel.tsx',
+
+  // Accordion
+  '../src/mantine-core/src/components/Accordion/AccordionItem/AccordionItem.tsx',
+  '../src/mantine-core/src/components/Accordion/AccordionControl/AccordionControl.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

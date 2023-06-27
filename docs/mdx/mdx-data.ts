@@ -878,6 +878,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/drawer.mdx',
   },
 
+  Accordion: {
+    title: 'Accordion',
+    package: '@mantine/core',
+    slug: '/core/accordion',
+    props: ['Accordion', 'AccordionItem', 'AccordionControl'],
+    styles: ['Accordion'],
+    description: 'Divide content into collapsible sections',
+    import: "import { Accordion } from '@mantine/core';",
+    source: 'mantine-core/src/components/Accordion/Accordion.tsx',
+    docs: 'core/accordion.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',

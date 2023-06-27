@@ -114,6 +114,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Kbd,
           MDX_DATA.Badge,
           MDX_DATA.Avatar,
+          MDX_DATA.Accordion,
         ],
       },
       {
