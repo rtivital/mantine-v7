@@ -42,6 +42,7 @@ export * as ModalDemos from './demos/core/Modal';
 export * as NativeSelectDemos from './demos/core/NativeSelect';
 export * as OverlayDemos from './demos/core/Overlay';
 export * as PaperDemos from './demos/core/Paper';
+export * as PillDemos from './demos/core/Pill';
 export * as PopoverDemos from './demos/core/Popover';
 export * as ScrollAreaDemos from './demos/core/ScrollArea';
 export * as SegmentedControlDemos from './demos/core/SegmentedControl';

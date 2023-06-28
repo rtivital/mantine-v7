@@ -37,7 +37,9 @@ export type PillGroupFactory = Factory<{
   vars: PillGroupCssVariables;
 }>;
 
-const defaultProps: Partial<PillGroupProps> = {};
+const defaultProps: Partial<PillGroupProps> = {
+  size: 'sm',
+};
 
 const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => ({
   root: {
