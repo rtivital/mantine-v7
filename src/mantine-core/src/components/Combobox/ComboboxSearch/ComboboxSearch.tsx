@@ -59,6 +59,7 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
       size={size || ctx.size}
       {...targetProps}
       {...others}
+      __staticSelector="Combobox"
     />
   );
 });

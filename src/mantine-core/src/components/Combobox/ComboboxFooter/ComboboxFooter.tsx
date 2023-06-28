@@ -33,6 +33,7 @@ export const ComboboxFooter = factory<ComboboxFooterFactory>((props, ref) => {
     defaultProps,
     props
   );
+
   const ctx = useComboboxContext();
 
   return (

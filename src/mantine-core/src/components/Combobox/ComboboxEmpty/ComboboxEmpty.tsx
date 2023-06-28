@@ -33,6 +33,7 @@ export const ComboboxEmpty = factory<ComboboxEmptyFactory>((props, ref) => {
     defaultProps,
     props
   );
+
   const ctx = useComboboxContext();
 
   return (

@@ -33,6 +33,7 @@ export const ComboboxHeader = factory<ComboboxHeaderFactory>((props, ref) => {
     defaultProps,
     props
   );
+
   const ctx = useComboboxContext();
 
   return (

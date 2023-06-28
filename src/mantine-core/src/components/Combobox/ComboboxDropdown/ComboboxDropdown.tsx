@@ -21,12 +21,13 @@ export type ComboboxDropdownFactory = Factory<{
 const defaultProps: Partial<ComboboxDropdownProps> = {};
 
 export const ComboboxDropdown = factory<ComboboxDropdownFactory>((props, ref) => {
-  const ctx = useComboboxContext();
   const { classNames, styles, className, style, hidden, ...others } = useProps(
     'ComboboxDropdown',
     defaultProps,
     props
   );
+
+  const ctx = useComboboxContext();
 
   return (
     <Popover.Dropdown

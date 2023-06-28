@@ -64,9 +64,9 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
 
   return (
     <Box
-      ref={ref}
       {...ctx.getStyles('option', { className, classNames, styles, style })}
       {...others}
+      ref={ref}
       id={_id}
       mod={[
         'combobox-option',
