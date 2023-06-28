@@ -45,6 +45,7 @@ export * from './NativeSelect';
 export * from './Notification';
 export * from './Overlay';
 export * from './Paper';
+export * from './Pill';
 export * from './Popover';
 export * from './Portal';
 export * from './ScrollArea';

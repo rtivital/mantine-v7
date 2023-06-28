@@ -1,0 +1,55 @@
+.root {
+  --pill-fz-xs: rem(10px);
+  --pill-fz-sm: rem(12px);
+  --pill-fz-md: rem(14px);
+  --pill-fz-lg: rem(16px);
+  --pill-fz-xl: rem(18px);
+
+  font-size: var(--pill-fz);
+  height: 2em;
+  padding-left: 0.8em;
+  padding-right: var(--_pill-padding-right, 0.8em);
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--pill-radius);
+  background-color: var(--_pill-bg);
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+
+  @mixin dark {
+    --_pill-bg: var(--mantine-color-dark-7);
+  }
+
+  &[data-with-remove] {
+    --_pill-padding-right: 0;
+  }
+}
+
+.root--default {
+  @mixin light {
+    --_pill-bg: var(--mantine-color-gray-1);
+  }
+}
+
+.root--contrast {
+  @mixin light {
+    --_pill-bg: var(--mantine-color-white);
+  }
+}
+
+.label {
+  cursor: default;
+}
+
+.remove {
+  color: inherit;
+  font-size: inherit;
+  height: 100%;
+  min-height: unset;
+  min-width: unset;
+  width: unset;
+  border-radius: 0;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
