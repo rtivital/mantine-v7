@@ -22,6 +22,8 @@ const replace = {
     'React.ComponentPropsWithoutRef<"div">',
   'Omit<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>, "ref"> | undefined':
     'React.ComponentPropsWithoutRef<"img">',
+  'Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> | undefined':
+    'React.ComponentPropsWithoutRef<"button">',
 };
 
 export function prepareDeclaration(declaration: ComponentDoc) {

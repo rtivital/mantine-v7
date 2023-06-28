@@ -884,10 +884,23 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     slug: '/core/accordion',
     props: ['Accordion', 'AccordionItem', 'AccordionControl'],
     styles: ['Accordion'],
+    componentPrefix: 'Accordion',
     description: 'Divide content into collapsible sections',
     import: "import { Accordion } from '@mantine/core';",
     source: 'mantine-core/src/components/Accordion/Accordion.tsx',
     docs: 'core/accordion.mdx',
+  },
+
+  Pill: {
+    title: 'Pill',
+    package: '@mantine/core',
+    slug: '/core/pill',
+    props: ['Pill', 'PillGroup'],
+    styles: ['Pill', 'PillGroup'],
+    description: 'Removable and non-removable tags',
+    import: "import { Pill } from '@mantine/core';",
+    source: 'mantine-core/src/components/Pill/Pill.tsx',
+    docs: 'core/pill.mdx',
   },
 
   // ----------------------------------- Others --------------------------------------

@@ -38,6 +38,9 @@ const EXTRA_FILES_PATHS = [
   // Accordion
   '../src/mantine-core/src/components/Accordion/AccordionItem/AccordionItem.tsx',
   '../src/mantine-core/src/components/Accordion/AccordionControl/AccordionControl.tsx',
+
+  // Pill
+  '../src/mantine-core/src/components/Pill/PillGroup/PillGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
