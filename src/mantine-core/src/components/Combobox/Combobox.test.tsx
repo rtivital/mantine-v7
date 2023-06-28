@@ -4,8 +4,10 @@ import { TextInput } from '../TextInput';
 import { Combobox } from './Combobox';
 import { useCombobox } from './use-combobox/use-combobox';
 
-function DefaultUsage() {
-  const store = useCombobox();
+function AxeTest() {
+  const store = useCombobox({
+    defaultOpened: true,
+  });
 
   return (
     <div style={{ padding: 40 }}>
@@ -18,7 +20,7 @@ function DefaultUsage() {
           />
         </Combobox.Target>
         <Combobox.Dropdown>
-          <Combobox.Options>
+          <Combobox.Options aria-label="test">
             <Combobox.Option value="react">React</Combobox.Option>
             <Combobox.Option value="vue">Vue</Combobox.Option>
           </Combobox.Options>
@@ -29,5 +31,5 @@ function DefaultUsage() {
 }
 
 describe('@mantine/core/Combobox', () => {
-  tests.axe([<DefaultUsage />]);
+  tests.axe([<AxeTest />]);
 });

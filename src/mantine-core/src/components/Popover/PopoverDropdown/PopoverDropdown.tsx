@@ -60,6 +60,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
         'aria-labelledby': ctx.getTargetId(),
         id: ctx.getDropdownId(),
         role: 'dialog',
+        tabIndex: -1,
       }
     : {};
 
@@ -89,7 +90,6 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
               {...accessibleProps}
               {...others}
               variant={variant}
-              tabIndex={-1}
               ref={mergedRef}
               onKeyDownCapture={closeOnEscape(ctx.onClose, {
                 active: ctx.closeOnEscape,

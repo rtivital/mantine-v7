@@ -34,7 +34,6 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((props, ref) =>
       {...others}
       ref={ref}
       role="presentation"
-      tabIndex={-1}
       data-hidden={hidden || undefined}
       {...ctx.getStyles('dropdown', { className, style, classNames, styles })}
     />
