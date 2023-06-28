@@ -32,7 +32,6 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((props, ref) =>
     <Popover.Dropdown
       {...others}
       ref={ref}
-      {...others}
       role="presentation"
       tabIndex={-1}
       data-hidden={hidden || undefined}
