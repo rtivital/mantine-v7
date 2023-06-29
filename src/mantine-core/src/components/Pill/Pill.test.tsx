@@ -33,7 +33,9 @@ describe('@mantine/core/Pill', () => {
   });
 
   it('supports removeButtonProps', () => {
-    const { container } = render(<Pill removeButtonProps={{ 'data-test': true } as any} />);
+    const { container } = render(
+      <Pill removeButtonProps={{ 'data-test': true } as any} withRemoveButton />
+    );
     expect(container.querySelector('[data-test="true"]')).toBeInTheDocument();
   });
 

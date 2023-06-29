@@ -90,6 +90,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
   } = props;
 
   const ctx = usePillGroupContext();
+  const _size = size || ctx?.size || 'sm';
 
   const getStyles = useStyles<PillFactory>({
     name: 'Pill',
@@ -102,7 +103,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
-    stylesCtx: { size: size || ctx?.size || 'sm' },
+    stylesCtx: { size: _size },
   });
 
   return (
@@ -110,6 +111,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
       component="span"
       ref={ref}
       variant={variant}
+      size={_size}
       {...getStyles('root', { variant })}
       mod={{ 'with-remove': withRemoveButton, disabled: disabled || ctx?.disabled }}
       {...others}
