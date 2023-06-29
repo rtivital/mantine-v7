@@ -1,0 +1,23 @@
+.inner {
+  /* display: flex;
+  align-items: center;
+  flex-wrap: wrap; */
+}
+
+.innerInput {
+  background-color: transparent;
+  appearance: none;
+  width: rem(100px);
+  border: 0;
+  height: rem(1px);
+  position: absolute;
+  opacity: 0;
+
+  &:focus {
+    height: 1.6em;
+    visibility: visible;
+    outline: none;
+    opacity: 1;
+    position: static;
+  }
+}
