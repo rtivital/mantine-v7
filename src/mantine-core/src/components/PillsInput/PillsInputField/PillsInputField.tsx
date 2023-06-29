@@ -82,4 +82,5 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
   );
 });
 
+PillsInputField.classes = classes;
 PillsInputField.displayName = '@mantine/core/PillsInputField';

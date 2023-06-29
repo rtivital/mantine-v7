@@ -1,0 +1,34 @@
+import React from 'react';
+import { render, screen, tests, createContextContainer } from '@mantine/tests';
+import {
+  PillsInputField,
+  PillsInputFieldProps,
+  PillsInputFieldStylesNames,
+} from './PillsInputField';
+import { PillsInputProvider } from '../PillsInput.context';
+
+const TestContainer = createContextContainer(PillsInputField, PillsInputProvider, {
+  value: { size: 'sm', fieldRef: { current: null } },
+});
+
+const defaultProps: PillsInputFieldProps = {};
+
+describe('@mantine/core/PillsInputField', () => {
+  tests.itSupportsSystemProps<PillsInputFieldProps, PillsInputFieldStylesNames>({
+    component: TestContainer,
+    props: defaultProps,
+    styleProps: true,
+    extend: true,
+    variant: true,
+    size: true,
+    classes: true,
+    refType: HTMLInputElement,
+    displayName: '@mantine/core/PillsInputField',
+    stylesApiSelectors: ['root'],
+  });
+
+  it('sets data-type attribute based on type prop', () => {
+    render(<TestContainer type="auto" />);
+    expect(screen.getByRole('textbox')).toHaveAttribute('data-type', 'auto');
+  });
+});
