@@ -55,4 +55,16 @@
   border-radius: 0;
   padding-left: 0.3em;
   padding-right: 0.3em;
+
+  &:disabled {
+    background-color: transparent;
+    width: 0.8em;
+    min-width: 0.8em;
+    padding: 0;
+    cursor: default;
+
+    & > svg {
+      display: none;
+    }
+  }
 }

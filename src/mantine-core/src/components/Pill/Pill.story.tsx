@@ -220,3 +220,12 @@ export function Overflow() {
     </div>
   );
 }
+
+export function WithinDisabledFieldset() {
+  return (
+    <fieldset disabled style={{ padding: 40 }}>
+      <Pill>Disabled without remove</Pill>
+      <Pill withRemoveButton>Disabled with remove</Pill>
+    </fieldset>
+  );
+}
