@@ -22,12 +22,12 @@ const defaultProps: Partial<PillsInputProps> = {
 
 export const PillsInput = factory<PillsInputFactory>((_props, ref) => {
   const props = useProps('PillsInput', defaultProps, _props);
-  const { children, onMouseDown, size, __staticSelector, ...others } = props;
+  const { children, onMouseDown, size, disabled, __staticSelector, ...others } = props;
 
   const fieldRef = useRef<HTMLInputElement>();
 
   return (
-    <PillsInputProvider value={{ fieldRef, size: size! }}>
+    <PillsInputProvider value={{ fieldRef, size: size!, disabled }}>
       <InputBase
         size={size}
         component="div"
@@ -39,6 +39,7 @@ export const PillsInput = factory<PillsInputFactory>((_props, ref) => {
         }}
         {...others}
         multiline
+        disabled={disabled}
         __staticSelector={__staticSelector || 'PillsInput'}
       >
         {children}

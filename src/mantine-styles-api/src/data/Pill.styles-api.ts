@@ -16,7 +16,8 @@ export const PillStylesApi: StylesApiData<PillFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-with-remove', selector: 'root', condition: '`withRemoveButton` is set' },
+    { modifier: 'data-with-remove', selector: 'root', condition: '`withRemoveButton` prop is set' },
+    { modifier: 'data-disabled', selector: 'root', condition: '`disabled` prop is set' },
   ],
 };
 

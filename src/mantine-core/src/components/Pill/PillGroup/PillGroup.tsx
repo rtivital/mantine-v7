@@ -29,6 +29,9 @@ export interface PillGroupProps
 
   /** Controls height of the group, `'sm'` by default */
   size?: MantineSize | (string & {});
+
+  /** Determines whether child `Pill` components should be disabled */
+  disabled?: boolean;
 }
 
 export type PillGroupFactory = Factory<{
@@ -51,7 +54,7 @@ const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => 
 
 export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
   const props = useProps('PillGroup', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, size, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, size, disabled, ...others } = props;
 
   const getStyles = useStyles<PillGroupFactory>({
     name: 'PillGroup',
@@ -67,7 +70,7 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
   });
 
   return (
-    <PillGroupProvider value={{ size }}>
+    <PillGroupProvider value={{ size, disabled }}>
       <Box ref={ref} size={size} {...getStyles('root')} {...others} />
     </PillGroupProvider>
   );

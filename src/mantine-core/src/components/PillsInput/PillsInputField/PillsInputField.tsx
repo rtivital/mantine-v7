@@ -39,7 +39,7 @@ const defaultProps: Partial<PillsInputFieldProps> = {
 
 export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => {
   const props = useProps('PillsInputField', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, type, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, type, disabled, ...others } = props;
   const ctx = usePillsInputContext();
 
   const getStyles = useStyles<PillsInputFieldFactory>({
@@ -58,6 +58,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
       component="input"
       ref={useMergedRef(ref, ctx.fieldRef)}
       data-type={type}
+      disabled={disabled || ctx.disabled}
       {...getStyles('root')}
       {...others}
     />

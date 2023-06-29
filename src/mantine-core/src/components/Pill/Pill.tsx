@@ -40,6 +40,9 @@ export interface PillProps extends BoxProps, StylesApiProps<PillFactory>, Elemen
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `'xl'` by default. */
   radius?: MantineRadius | (string & {}) | number;
+
+  /** If pill is disabled it has higher contrast to be visible on the disabled input background and the remove button is hidden */
+  disabled?: boolean;
 }
 
 export type PillFactory = Factory<{
@@ -82,6 +85,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
     removeButtonProps,
     radius,
     size,
+    disabled,
     ...others
   } = props;
 
@@ -107,7 +111,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
       ref={ref}
       variant={variant}
       {...getStyles('root', { variant })}
-      mod={{ 'with-remove': withRemoveButton }}
+      mod={{ 'with-remove': withRemoveButton, disabled: disabled || ctx?.disabled }}
       {...others}
     >
       <span {...getStyles('label')}>{children}</span>

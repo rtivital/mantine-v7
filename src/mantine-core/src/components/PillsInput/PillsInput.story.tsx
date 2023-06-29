@@ -73,6 +73,19 @@ export function AutoType() {
   );
 }
 
+export function Disabled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 460 }}>
+      <PillsInput disabled>
+        <Pill.Group disabled>
+          {getPills({})}
+          <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+    </div>
+  );
+}
+
 export function WithinDisabledFieldset() {
   return (
     <div style={{ padding: 40, maxWidth: 600 }}>
