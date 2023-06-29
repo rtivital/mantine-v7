@@ -47,9 +47,22 @@ export function Usage() {
   );
 }
 
+export function Sizes() {
+  const items = ['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+    <PillsInput size={size} key={size} mt="xl">
+      <Pill.Group size={size}>
+        {getPills({})}
+        <PillsInput.Field placeholder="Pills input" />
+      </Pill.Group>
+    </PillsInput>
+  ));
+
+  return <div style={{ padding: 40, maxWidth: 600 }}>{items}</div>;
+}
+
 export function AutoType() {
   return (
-    <div style={{ padding: 40, maxWidth: 400 }}>
+    <div style={{ padding: 40, maxWidth: 600 }}>
       <PillsInput>
         <Pill.Group>
           {getPills({})}

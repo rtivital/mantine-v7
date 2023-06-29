@@ -16,6 +16,7 @@ import {
 } from '../../core';
 import { CloseButton } from '../CloseButton';
 import { PillGroup } from './PillGroup/PillGroup';
+import { usePillGroupContext } from './PillGroup.context';
 import classes from './Pill.module.css';
 
 export type PillStylesNames = 'root' | 'label' | 'remove';
@@ -47,18 +48,18 @@ export type PillFactory = Factory<{
   stylesNames: PillStylesNames;
   vars: PillCssVariables;
   variant: PillVariant;
+  ctx: { size: MantineSize | (string & {}) };
   staticComponents: {
     Group: typeof PillGroup;
   };
 }>;
 
 const defaultProps: Partial<PillProps> = {
-  size: 'sm',
   radius: 'xl',
   variant: 'default',
 };
 
-const varsResolver = createVarsResolver<PillFactory>((_, { size, radius }) => ({
+const varsResolver = createVarsResolver<PillFactory>((_, { radius }, { size }) => ({
   root: {
     '--pill-fz': getSize(size, 'pill-fz'),
     '--pill-radius': getRadius(radius),
@@ -80,8 +81,11 @@ export const Pill = factory<PillFactory>((_props, ref) => {
     onRemove,
     removeButtonProps,
     radius,
+    size,
     ...others
   } = props;
+
+  const ctx = usePillGroupContext();
 
   const getStyles = useStyles<PillFactory>({
     name: 'Pill',
@@ -94,6 +98,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    stylesCtx: { size: size || ctx?.size || 'sm' },
   });
 
   return (

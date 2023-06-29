@@ -12,6 +12,7 @@ import {
   MantineSize,
   getSize,
 } from '../../../core';
+import { PillGroupProvider } from '../PillGroup.context';
 import classes from './PillGroup.module.css';
 
 export type PillGroupStylesNames = 'root';
@@ -27,7 +28,7 @@ export interface PillGroupProps
   gap?: MantineSize | (string & {}) | number;
 
   /** Controls height of the group, `'sm'` by default */
-  size?: MantineSize;
+  size?: MantineSize | (string & {});
 }
 
 export type PillGroupFactory = Factory<{
@@ -50,7 +51,7 @@ const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => 
 
 export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
   const props = useProps('PillGroup', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, size, ...others } = props;
 
   const getStyles = useStyles<PillGroupFactory>({
     name: 'PillGroup',
@@ -65,7 +66,11 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
     varsResolver,
   });
 
-  return <Box ref={ref} {...getStyles('root')} {...others} />;
+  return (
+    <PillGroupProvider value={{ size }}>
+      <Box ref={ref} size={size} {...getStyles('root')} {...others} />
+    </PillGroupProvider>
+  );
 });
 
 PillGroup.classes = classes;
