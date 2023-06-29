@@ -25,23 +25,37 @@
   &[data-with-remove] {
     --_pill-padding-right: 0;
   }
+
+  &:has(button:disabled) {
+    --_pill-cursor: not-allowed;
+  }
 }
 
 .root--default {
   @mixin light {
     --_pill-bg: var(--mantine-color-gray-1);
+
+    &:has(button:disabled) {
+      --_pill-bg: var(--mantine-color-gray-3);
+    }
   }
 }
 
 .root--contrast {
   @mixin light {
     --_pill-bg: var(--mantine-color-white);
+
+    &:has(button:disabled) {
+      --_pill-bg: var(--mantine-color-gray-3);
+    }
   }
 }
 
 .label {
-  cursor: default;
+  cursor: var(--_pill-cursor, default);
   overflow: hidden;
+  height: 100%;
+  line-height: 1.95em;
   text-overflow: ellipsis;
 }
 
@@ -61,7 +75,7 @@
     width: 0.8em;
     min-width: 0.8em;
     padding: 0;
-    cursor: default;
+    cursor: not-allowed;
 
     & > svg {
       display: none;

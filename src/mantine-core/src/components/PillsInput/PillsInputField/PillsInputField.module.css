@@ -25,4 +25,8 @@
     opacity: 1;
     position: static;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

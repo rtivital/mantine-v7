@@ -181,6 +181,7 @@
     -moz-appearance: textfield;
   }
 
+  &:has(input:disabled),
   &:disabled,
   &[data-disabled] {
     cursor: not-allowed;
