@@ -46,6 +46,7 @@ export * from './Notification';
 export * from './Overlay';
 export * from './Paper';
 export * from './Pill';
+export * from './PillsInput';
 export * from './Popover';
 export * from './Portal';
 export * from './ScrollArea';
