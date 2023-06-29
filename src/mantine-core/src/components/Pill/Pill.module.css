@@ -16,6 +16,7 @@
   line-height: 1;
   white-space: nowrap;
   user-select: none;
+  max-width: 100%;
 
   @mixin dark {
     --_pill-bg: var(--mantine-color-dark-7);
@@ -40,6 +41,8 @@
 
 .label {
   cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .remove {
@@ -47,7 +50,7 @@
   font-size: inherit;
   height: 100%;
   min-height: unset;
-  min-width: unset;
+  min-width: 2em;
   width: unset;
   border-radius: 0;
   padding-left: 0.3em;

@@ -203,3 +203,20 @@ export function WithoutRemove() {
     </div>
   );
 }
+
+export function Overflow() {
+  return (
+    <div style={{ padding: 40, width: 200, background: 'pink' }}>
+      <Pill>Test pill with container overflow</Pill>
+      <Pill withRemoveButton>Test pill with container overflow</Pill>
+      <Pill withRemoveButton>Test</Pill>
+      <Input component="div" mt="xl" multiline>
+        <Pill.Group>
+          <Pill>Test pill with container overflow</Pill>
+          <Pill>Test pill with container overflow</Pill>
+          <Pill withRemoveButton>Test pill with container overflow</Pill>
+        </Pill.Group>
+      </Input>
+    </div>
+  );
+}
