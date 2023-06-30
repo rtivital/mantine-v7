@@ -17,6 +17,7 @@ import {
 import { CloseButton } from '../CloseButton';
 import { PillGroup } from './PillGroup/PillGroup';
 import { usePillGroupContext } from './PillGroup.context';
+import { usePillsInputContext } from '../PillsInput/PillsInput.context';
 import classes from './Pill.module.css';
 
 export type PillStylesNames = 'root' | 'label' | 'remove';
@@ -91,7 +92,9 @@ export const Pill = factory<PillFactory>((_props, ref) => {
   } = props;
 
   const ctx = usePillGroupContext();
+  const pillsInputCtx = usePillsInputContext();
   const _size = size || ctx?.size || 'sm';
+  const _variant = pillsInputCtx?.variant === 'filled' ? 'contrast' : variant || 'default';
 
   const getStyles = useStyles<PillFactory>({
     name: 'Pill',
@@ -111,9 +114,9 @@ export const Pill = factory<PillFactory>((_props, ref) => {
     <Box
       component="span"
       ref={ref}
-      variant={variant}
+      variant={_variant}
       size={_size}
-      {...getStyles('root', { variant })}
+      {...getStyles('root', { variant: _variant })}
       mod={{ 'with-remove': withRemoveButton, disabled: disabled || ctx?.disabled }}
       {...others}
     >

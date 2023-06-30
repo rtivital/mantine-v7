@@ -56,19 +56,19 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
     unstyled,
   });
 
-  const _disabled = disabled || ctx.disabled;
+  const _disabled = disabled || ctx?.disabled;
 
   return (
     <Box
       component="input"
-      ref={useMergedRef(ref, ctx.fieldRef)}
+      ref={useMergedRef(ref, ctx?.fieldRef)}
       data-type={type}
       disabled={_disabled}
       mod={{ disabled: _disabled }}
       {...getStyles('root')}
       {...others}
       id={inputWrapperCtx?.inputId || id}
-      aria-invalid={ctx.hasError}
+      aria-invalid={ctx?.hasError}
       aria-describedby={inputWrapperCtx?.describedBy}
     />
   );
