@@ -5,6 +5,7 @@ export interface PillsInputContextValue {
   fieldRef: React.MutableRefObject<HTMLInputElement | undefined>;
   size: MantineSize | (string & {});
   disabled: boolean | undefined;
+  hasError: boolean | undefined;
 }
 
 export const [PillsInputProvider, usePillsInputContext] = createSafeContext<PillsInputContextValue>(

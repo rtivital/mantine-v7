@@ -215,6 +215,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
         disabled,
         'aria-invalid': !!error,
         'aria-describedby': ctx?.describedBy,
+        id: ctx?.inputId || id,
       }
     : {};
 
@@ -251,7 +252,6 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
         component="input"
         {...rest}
         {...ariaAttributes}
-        id={ctx?.inputId || id}
         ref={ref}
         required={required}
         mod={{ disabled, error: !!error }}

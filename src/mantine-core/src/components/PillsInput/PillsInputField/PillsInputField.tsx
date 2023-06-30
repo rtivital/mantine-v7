@@ -11,6 +11,7 @@ import {
   Factory,
   MantineSize,
 } from '../../../core';
+import { useInputWrapperContext } from '../../Input';
 import { usePillsInputContext } from '../PillsInput.context';
 import classes from './PillsInputField.module.css';
 
@@ -39,8 +40,10 @@ const defaultProps: Partial<PillsInputFieldProps> = {
 
 export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => {
   const props = useProps('PillsInputField', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, type, disabled, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, type, disabled, id, ...others } =
+    props;
   const ctx = usePillsInputContext();
+  const inputWrapperCtx = useInputWrapperContext();
 
   const getStyles = useStyles<PillsInputFieldFactory>({
     name: 'PillsInputField',
@@ -53,6 +56,9 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
     unstyled,
   });
 
+  // 'aria-invalid': !!error,
+  //       'aria-describedby': ctx?.describedBy,
+
   return (
     <Box
       component="input"
@@ -61,6 +67,9 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
       disabled={disabled || ctx.disabled}
       {...getStyles('root')}
       {...others}
+      id={inputWrapperCtx?.inputId || id}
+      aria-invalid={ctx.hasError}
+      aria-describedby={inputWrapperCtx?.describedBy}
     />
   );
 });

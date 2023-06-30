@@ -13,6 +13,9 @@ export interface InputBaseProps
 
   /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
   multiline?: boolean;
+
+  /** Determines whether `aria-` and other accessibility attributes should be added to the input, `true` by default */
+  withAria?: boolean;
 }
 
 export type InputBaseFactory = PolymorphicFactory<{
@@ -26,6 +29,7 @@ export type InputBaseFactory = PolymorphicFactory<{
 const defaultProps: Partial<InputBaseProps> = {
   size: 'sm',
   __staticSelector: 'InputBase',
+  withAria: true,
 };
 
 export const InputBase = polymorphicFactory<InputBaseFactory>((props, ref) => {

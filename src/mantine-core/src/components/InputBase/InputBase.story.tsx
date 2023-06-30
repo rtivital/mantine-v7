@@ -25,3 +25,11 @@ export function Usage() {
     </div>
   );
 }
+
+export function WithoutAria() {
+  return (
+    <div style={{ padding: 40 }}>
+      <InputBase label="This is input base" placeholder="test-placeholder" withAria={false} />
+    </div>
+  );
+}
