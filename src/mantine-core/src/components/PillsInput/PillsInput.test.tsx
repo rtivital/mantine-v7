@@ -1,3 +1,4 @@
+import React from 'react';
 import { tests, inputStylesApiSelectors, inputDefaultProps } from '@mantine/tests';
 import { PillsInput, PillsInputProps } from './PillsInput';
 import { __InputStylesNames } from '../Input';
@@ -7,6 +8,15 @@ const defaultProps: PillsInputProps = {
 };
 
 describe('@mantine/core/PillsInput', () => {
+  tests.axe([
+    <PillsInput label="test-label">
+      <PillsInput.Field />
+    </PillsInput>,
+    <PillsInput>
+      <PillsInput.Field aria-label="test-label" />
+    </PillsInput>,
+  ]);
+
   tests.itSupportsSystemProps<PillsInputProps, __InputStylesNames>({
     component: PillsInput,
     props: defaultProps,

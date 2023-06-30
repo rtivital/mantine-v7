@@ -56,9 +56,6 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
     unstyled,
   });
 
-  // 'aria-invalid': !!error,
-  //       'aria-describedby': ctx?.describedBy,
-
   return (
     <Box
       component="input"
