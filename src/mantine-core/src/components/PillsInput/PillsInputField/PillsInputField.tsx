@@ -56,12 +56,15 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
     unstyled,
   });
 
+  const _disabled = disabled || ctx.disabled;
+
   return (
     <Box
       component="input"
       ref={useMergedRef(ref, ctx.fieldRef)}
       data-type={type}
-      disabled={disabled || ctx.disabled}
+      disabled={_disabled}
+      mod={{ disabled: _disabled }}
       {...getStyles('root')}
       {...others}
       id={inputWrapperCtx?.inputId || id}

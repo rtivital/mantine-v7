@@ -27,6 +27,7 @@
     position: static;
   }
 
+  &[data-disabled],
   &:disabled {
     cursor: not-allowed;
   }
