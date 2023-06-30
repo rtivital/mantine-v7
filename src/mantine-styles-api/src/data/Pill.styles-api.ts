@@ -10,6 +10,7 @@ export const PillStylesApi: StylesApiData<PillFactory> = {
 
   vars: {
     root: {
+      '--pill-height': 'Controls `height` of the pill',
       '--pill-fz': 'Controls `font-size`',
       '--pill-radius': 'Controls `border-radius`',
     },
@@ -29,7 +30,6 @@ export const PillGroupStylesApi: StylesApiData<PillGroupFactory> = {
   vars: {
     root: {
       '--pg-gap': 'Controls `gap` between pills',
-      '--pg-height': 'Controls `height` of the group',
     },
   },
 };

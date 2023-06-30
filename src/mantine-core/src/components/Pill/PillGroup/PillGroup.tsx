@@ -13,6 +13,7 @@ import {
   getSize,
 } from '../../../core';
 import { PillGroupProvider } from '../PillGroup.context';
+import { usePillsInputContext } from '../../PillsInput/PillsInput.context';
 import classes from './PillGroup.module.css';
 
 export type PillGroupStylesNames = 'root';
@@ -39,13 +40,12 @@ export type PillGroupFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: PillGroupStylesNames;
   vars: PillGroupCssVariables;
+  ctx: { size: MantineSize | (string & {}) };
 }>;
 
-const defaultProps: Partial<PillGroupProps> = {
-  size: 'sm',
-};
+const defaultProps: Partial<PillGroupProps> = {};
 
-const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => ({
+const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap }, { size }) => ({
   root: {
     '--pg-gap': typeof gap !== 'undefined' ? getSize(gap) : getSize(size, 'pg-gap'),
   },
@@ -54,6 +54,8 @@ const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => 
 export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
   const props = useProps('PillGroup', defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, size, disabled, ...others } = props;
+  const pillsInputCtx = usePillsInputContext();
+  const _size = pillsInputCtx?.size || size || 'sm';
 
   const getStyles = useStyles<PillGroupFactory>({
     name: 'PillGroup',
@@ -66,11 +68,12 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    stylesCtx: { size: _size },
   });
 
   return (
-    <PillGroupProvider value={{ size, disabled }}>
-      <Box ref={ref} size={size} {...getStyles('root')} {...others} />
+    <PillGroupProvider value={{ size: _size, disabled }}>
+      <Box ref={ref} size={_size} {...getStyles('root')} {...others} />
     </PillGroupProvider>
   );
 });
