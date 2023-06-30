@@ -41,6 +41,9 @@ const EXTRA_FILES_PATHS = [
 
   // Pill
   '../src/mantine-core/src/components/Pill/PillGroup/PillGroup.tsx',
+
+  // PillsInput
+  '../src/mantine-core/src/components/PillsInput/PillsInputField/PillsInputField.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
