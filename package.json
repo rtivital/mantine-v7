@@ -119,6 +119,7 @@
     "new-github-release-url": "^1.0.0",
     "open": "^8.2.0",
     "postcss": "^8.4.24",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-mantine": "1.7.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^2.4.1",
