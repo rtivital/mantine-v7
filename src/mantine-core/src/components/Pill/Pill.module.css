@@ -6,6 +6,7 @@
   --pill-fz-xl: rem(18px);
 
   font-size: var(--pill-fz);
+  flex: 0;
   height: 2em;
   padding-left: 0.8em;
   padding-right: var(--_pill-padding-right, 0.8em);
@@ -16,6 +17,7 @@
   line-height: 1;
   white-space: nowrap;
   user-select: none;
+  -webkit-user-select: none;
   max-width: 100%;
   color: var(--_pill-color);
 
@@ -78,6 +80,8 @@
   border-radius: 0;
   padding-left: 0.3em;
   padding-right: 0.3em;
+  flex: 0;
+  /* background-color: red; */
 
   .root[data-disabled] > &,
   &:disabled {
