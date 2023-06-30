@@ -1,19 +1,12 @@
 .root {
-  --pg-height-xs: rem(28px);
-  --pg-height-sm: rem(34px);
-  --pg-height-md: rem(40px);
-  --pg-height-lg: rem(48px);
-  --pg-height-xl: rem(58px);
-
   --pg-gap-xs: rem(6px);
   --pg-gap-sm: rem(8px);
   --pg-gap-md: rem(10px);
   --pg-gap-lg: rem(12px);
-  --pg-gap-xl: rem(16px);
+  --pg-gap-xl: rem(12px);
 
   display: flex;
   align-items: center;
   gap: var(--pg-gap);
-  min-height: var(--pg-height);
   flex-wrap: wrap;
 }

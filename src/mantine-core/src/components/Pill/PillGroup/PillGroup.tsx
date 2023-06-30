@@ -17,7 +17,7 @@ import classes from './PillGroup.module.css';
 
 export type PillGroupStylesNames = 'root';
 export type PillGroupCssVariables = {
-  root: '--pg-gap' | '--pg-height';
+  root: '--pg-gap';
 };
 
 export interface PillGroupProps
@@ -27,7 +27,7 @@ export interface PillGroupProps
   /** Controls spacing between pills, by default controlled by `size` */
   gap?: MantineSize | (string & {}) | number;
 
-  /** Controls height of the group, `'sm'` by default */
+  /** Controls size of the child `Pill` components and gap between them, `'sm'` by default */
   size?: MantineSize | (string & {});
 
   /** Determines whether child `Pill` components should be disabled */
@@ -48,7 +48,6 @@ const defaultProps: Partial<PillGroupProps> = {
 const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap, size }) => ({
   root: {
     '--pg-gap': typeof gap !== 'undefined' ? getSize(gap) : getSize(size, 'pg-gap'),
-    '--pg-height': getSize(size, 'pg-height'),
   },
 }));
 

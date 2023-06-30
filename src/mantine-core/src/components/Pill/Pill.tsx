@@ -22,7 +22,7 @@ import classes from './Pill.module.css';
 export type PillStylesNames = 'root' | 'label' | 'remove';
 export type PillVariant = 'default' | 'contrast';
 export type PillCssVariables = {
-  root: '--pill-fz' | '--pill-radius';
+  root: '--pill-fz' | '--pill-radius' | '--pill-height';
 };
 
 export interface PillProps extends BoxProps, StylesApiProps<PillFactory>, ElementProps<'div'> {
@@ -65,6 +65,7 @@ const defaultProps: Partial<PillProps> = {
 const varsResolver = createVarsResolver<PillFactory>((_, { radius }, { size }) => ({
   root: {
     '--pill-fz': getSize(size, 'pill-fz'),
+    '--pill-height': getSize(size, 'pill-height'),
     '--pill-radius': getRadius(radius),
   },
 }));
@@ -131,6 +132,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
           })}
           onMouseDown={(event) => {
             event.preventDefault();
+            event.stopPropagation();
             removeButtonProps?.onMouseDown?.(event);
           }}
           onClick={(event) => {

@@ -1,4 +1,6 @@
 import React from 'react';
+import { TextInput } from '../TextInput';
+import { Group } from '../Group';
 import { PillsInput } from './PillsInput';
 import { Pill } from '../Pill';
 
@@ -125,4 +127,26 @@ export function WithError() {
       </PillsInput>
     </div>
   );
+}
+
+export function Alignment() {
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
+    <Group align="flex-start" key={size} mt="xl">
+      <PillsInput size={size}>
+        <Pill.Group size={size}>
+          <Pill withRemoveButton>First</Pill>
+          <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+
+      <PillsInput size={size}>
+        <Pill.Group>
+          <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+
+      <TextInput size={size} placeholder="Regular input" />
+    </Group>
+  ));
+  return <div style={{ padding: 40 }}>{sizes}</div>;
 }
