@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 
-export function createOptionalContext<ContextValue>() {
-  const Context = createContext<ContextValue | null>(null);
+export function createOptionalContext<ContextValue>(initialValue: ContextValue | null = null) {
+  const Context = createContext<ContextValue | null>(initialValue);
 
   const useOptionalContext = () => useContext(Context);
 

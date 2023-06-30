@@ -5,6 +5,7 @@ export { InputError } from './InputError/InputError';
 export { InputLabel } from './InputLabel/InputLabel';
 export { InputPlaceholder } from './InputPlaceholder/InputPlaceholder';
 export { useInputProps } from './use-input-props';
+export { useInputWrapperContext } from './InputWrapper.context';
 export type {
   __InputProps,
   __BaseInputProps,

@@ -48,8 +48,8 @@ export type InputCssVariables = {
 };
 
 export interface InputStylesCtx {
-  offsetTop: boolean;
-  offsetBottom: boolean;
+  offsetTop: boolean | undefined;
+  offsetBottom: boolean | undefined;
 }
 
 export interface __InputProps {
@@ -107,6 +107,12 @@ export interface InputProps extends BoxProps, __InputProps, StylesApiProps<Input
 
   /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */
   multiline?: boolean;
+
+  /** Input element id */
+  id?: string;
+
+  /** Determines whether `aria-` and other accessibility attributes should be added to the input, `true` by default */
+  withAria?: boolean;
 }
 
 export type InputFactory = PolymorphicFactory<{
@@ -131,6 +137,7 @@ const defaultProps: Partial<InputProps> = {
   variant: 'default',
   leftSectionPointerEvents: 'none',
   rightSectionPointerEvents: 'none',
+  withAria: true,
 };
 
 const varsResolver = createVarsResolver<InputFactory>((_, props, ctx) => ({
@@ -178,12 +185,14 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     pointer,
     multiline,
     radius,
+    id,
+    withAria,
     ...others
   } = props;
 
   const { styleProps, rest } = extractStyleProps(others);
   const ctx = useInputWrapperContext();
-  const stylesCtx: InputStylesCtx = { offsetBottom: ctx.offsetBottom, offsetTop: ctx.offsetTop };
+  const stylesCtx: InputStylesCtx = { offsetBottom: ctx?.offsetBottom, offsetTop: ctx?.offsetTop };
 
   const getStyles = useStyles<InputFactory>({
     name: ['Input', __staticSelector],
@@ -199,6 +208,15 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     vars,
     varsResolver,
   });
+
+  const ariaAttributes = withAria
+    ? {
+        required,
+        disabled,
+        'aria-invalid': !!error,
+        'aria-describedby': ctx?.describedBy,
+      }
+    : {};
 
   return (
     <Box
@@ -232,13 +250,12 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       <Box
         component="input"
         {...rest}
+        {...ariaAttributes}
+        id={ctx?.inputId || id}
         ref={ref}
         required={required}
         mod={{ disabled, error: !!error }}
-        aria-invalid={!!error}
         variant={variant}
-        aria-describedby={ctx.describedBy}
-        disabled={disabled}
         {...getStyles('input')}
       />
 

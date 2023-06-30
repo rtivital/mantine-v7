@@ -80,7 +80,7 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
   });
 
   const ctx = useInputWrapperContext();
-  const getStyles = ctx.getStyles || _getStyles;
+  const getStyles = ctx?.getStyles || _getStyles;
 
   return (
     <Box

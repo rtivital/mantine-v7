@@ -100,3 +100,16 @@ export function WithinDisabledFieldset() {
     </div>
   );
 }
+
+export function WithLabel() {
+  return (
+    <div style={{ padding: 40, maxWidth: 600 }}>
+      <PillsInput label="Pills input label">
+        <Pill.Group>
+          {getPills({})}
+          <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+    </div>
+  );
+}

@@ -80,7 +80,7 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
     varsResolver,
   });
 
-  const getStyles = ctx.getStyles || _getStyles;
+  const getStyles = ctx?.getStyles || _getStyles;
 
   return (
     <Box

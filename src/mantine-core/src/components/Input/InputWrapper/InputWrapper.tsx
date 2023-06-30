@@ -1,4 +1,5 @@
 import React from 'react';
+import { useId } from '@mantine/hooks';
 import {
   Box,
   BoxProps,
@@ -171,9 +172,11 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     __staticSelector,
   };
 
+  const idBase = useId(id);
   const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
-  const errorId = id ? `${id}-error` : errorProps?.id;
-  const descriptionId = id ? `${id}-description` : descriptionProps?.id;
+  const errorId = errorProps?.id || `${idBase}-error`;
+  const descriptionId = descriptionProps?.id || `${idBase}-description`;
+  const inputId = `${idBase}-input`;
   const hasError = !!error && typeof error !== 'boolean';
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ''} ${hasDescription ? descriptionId : ''}`;
@@ -183,8 +186,8 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     <InputLabel
       key="label"
       labelElement={labelElement}
-      id={id ? `${id}-label` : undefined}
-      htmlFor={id}
+      id={`${idBase}-label`}
+      htmlFor={inputId}
       required={isRequired}
       {...sharedProps}
       {...labelProps}
@@ -239,6 +242,7 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
       value={{
         getStyles,
         describedBy,
+        inputId,
         ...getInputOffsets(inputWrapperOrder!, { hasDescription, hasError }),
       }}
     >

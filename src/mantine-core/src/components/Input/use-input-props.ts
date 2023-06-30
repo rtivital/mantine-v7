@@ -1,4 +1,3 @@
-import { useId } from '@mantine/hooks';
 import { extractStyleProps, useProps, BoxProps, StylesApiProps } from '../../core';
 import { __BaseInputProps } from './Input';
 
@@ -43,8 +42,6 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     ...others
   } = props;
 
-  const uid = useId(id);
-
   const { styleProps, rest } = extractStyleProps(others);
 
   const wrapperProps = {
@@ -61,7 +58,6 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     descriptionProps,
     unstyled,
     styles,
-    id: uid,
     size,
     style,
     inputContainer,
@@ -82,7 +78,6 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
       classNames,
       styles,
       unstyled,
-      id: uid,
       size,
       __staticSelector,
       __stylesApiProps: __stylesApiProps || props,
