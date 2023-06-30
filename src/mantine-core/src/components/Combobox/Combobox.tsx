@@ -22,6 +22,8 @@ import { ComboboxEmpty } from './ComboboxEmpty/ComboboxEmpty';
 import { ComboboxChevron } from './ComboboxChevron/ComboboxChevron';
 import { ComboboxFooter } from './ComboboxFooter/ComboboxFooter';
 import { ComboboxHeader } from './ComboboxHeader/ComboboxHeader';
+import { ComboboxEventsTarget } from './ComboboxEventsTarget/ComboboxEventsTarget';
+import { ComboboxDropdownTarget } from './ComboboxDropdownTarget/ComboboxDropdownTarget';
 import classes from './Combobox.module.css';
 
 export type ComboboxStylesNames =
@@ -71,6 +73,8 @@ export type ComboboxFactory = Factory<{
     Chevron: typeof ComboboxChevron;
     Footer: typeof ComboboxFooter;
     Header: typeof ComboboxHeader;
+    EventsTarget: typeof ComboboxEventsTarget;
+    DropdownTarget: typeof ComboboxDropdownTarget;
   };
 }>;
 
@@ -149,3 +153,5 @@ Combobox.Empty = ComboboxEmpty;
 Combobox.Chevron = ComboboxChevron;
 Combobox.Footer = ComboboxFooter;
 Combobox.Header = ComboboxHeader;
+Combobox.EventsTarget = ComboboxEventsTarget;
+Combobox.DropdownTarget = ComboboxDropdownTarget;

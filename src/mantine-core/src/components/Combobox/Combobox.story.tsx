@@ -259,3 +259,38 @@ export function WithActive() {
 export function Chevron() {
   return <Combobox.Chevron size="xl" style={{ color: 'red' }}></Combobox.Chevron>;
 }
+
+export function DifferentTargets() {
+  const combobox = useCombobox();
+
+  return (
+    <div style={{ padding: 40, display: 'flex', gap: 20 }}>
+      <Combobox store={combobox}>
+        <Combobox.EventsTarget>
+          <TextInput
+            placeholder="Focus me"
+            onFocus={() => combobox.openDropdown()}
+            onBlur={() => combobox.closeDropdown()}
+          />
+        </Combobox.EventsTarget>
+
+        <Combobox.Target>
+          <Button>Dropdown target</Button>
+        </Combobox.Target>
+
+        <Combobox.Dropdown>
+          <Combobox.Options>
+            <Combobox.Option value="react" className="test">
+              React
+            </Combobox.Option>
+            <Combobox.Option value="vue" disabled>
+              Vue
+            </Combobox.Option>
+            <Combobox.Option value="svelte">Svelte</Combobox.Option>
+            <Combobox.Option value="angular">Angular</Combobox.Option>
+          </Combobox.Options>
+        </Combobox.Dropdown>
+      </Combobox>
+    </div>
+  );
+}
