@@ -11,6 +11,7 @@ import {
   IconLetterCase,
   IconSpeakerphone,
   IconComponents,
+  IconSelector,
 } from '@tabler/icons-react';
 
 export const CATEGORY_ICONS: Record<string, typeof IconBox> = {
@@ -27,4 +28,5 @@ export const CATEGORY_ICONS: Record<string, typeof IconBox> = {
   typography: IconLetterCase,
   layout: IconLayout2,
   buttons: IconClick,
+  combobox: IconSelector,
 };

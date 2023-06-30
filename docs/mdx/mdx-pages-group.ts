@@ -67,7 +67,6 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       {
         category: 'inputs',
         pages: [
-          MDX_DATA.Combobox,
           MDX_DATA.Input,
           MDX_DATA.ColorPicker,
           MDX_DATA.NativeSelect,
@@ -78,6 +77,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Checkbox,
           MDX_DATA.Fieldset,
         ],
+      },
+      {
+        category: 'combobox',
+        pages: [MDX_DATA.Combobox, MDX_DATA.Pill, MDX_DATA.PillsInput],
       },
       {
         category: 'buttons',
@@ -115,7 +118,6 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Badge,
           MDX_DATA.Avatar,
           MDX_DATA.Accordion,
-          MDX_DATA.Pill,
         ],
       },
       {

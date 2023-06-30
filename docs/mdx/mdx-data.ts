@@ -903,6 +903,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/pill.mdx',
   },
 
+  PillsInput: {
+    title: 'PillsInput',
+    package: '@mantine/core',
+    slug: '/core/pills-input',
+    props: ['PillsInput', 'PillsInputField'],
+    styles: ['PillsInput', 'PillsInputField'],
+    description: 'Base component for custom tags inputs and multi selects',
+    import: "import { PillsInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/PillsInput/PillsInput.tsx',
+    docs: 'core/pills-input.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',
