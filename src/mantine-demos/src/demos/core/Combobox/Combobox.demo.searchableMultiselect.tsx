@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { PillsInput, Pill, Input, Combobox, CheckIcon, Group, useCombobox } from '@mantine/core';
+import { PillsInput, Pill, Combobox, CheckIcon, Group, useCombobox } from '@mantine/core';
 
 const code = `
 import { useState } from 'react';
-import { PillsInput, Pill, Input, Combobox, CheckIcon, Group, useCombobox } from '@mantine/core';
+import { PillsInput, Pill, Combobox, CheckIcon, Group, useCombobox } from '@mantine/core';
 
 const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
 
@@ -14,6 +14,7 @@ function Demo() {
     onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
   });
 
+  const [search, setSearch] = useState('');
   const [value, setValue] = useState<string[]>([]);
 
   const handleValueSelect = (val: string) =>
@@ -30,32 +31,36 @@ function Demo() {
     </Pill>
   ));
 
-  const options = groceries.map((item) => (
-    <Combobox.Option value={item} key={item} active={value.includes(item)}>
-      <Group gap="sm">
-        {value.includes(item) ? <CheckIcon size={12} /> : null}
-        <span>{item}</span>
-      </Group>
-    </Combobox.Option>
-  ));
+  const options = groceries
+    .filter((item) => item.toLowerCase().includes(search.trim().toLowerCase()))
+    .map((item) => (
+      <Combobox.Option value={item} key={item} active={value.includes(item)}>
+        <Group gap="sm">
+          {value.includes(item) ? <CheckIcon size={12} /> : null}
+          <span>{item}</span>
+        </Group>
+      </Combobox.Option>
+    ));
 
   return (
     <Combobox store={combobox} onOptionSelect={handleValueSelect}>
       <Combobox.DropdownTarget>
-        <PillsInput pointer onClick={() => combobox.toggleDropdown()}>
+        <PillsInput onClick={() => combobox.openDropdown()}>
           <Pill.Group>
-            {values.length > 0 ? (
-              values
-            ) : (
-              <Input.Placeholder>Pick one or more values</Input.Placeholder>
-            )}
+            {values}
 
             <Combobox.EventsTarget>
               <PillsInput.Field
-                type="hidden"
+                onFocus={() => combobox.openDropdown()}
                 onBlur={() => combobox.closeDropdown()}
+                value={search}
+                placeholder="Search values"
+                onChange={(event) => {
+                  combobox.updateSelectedOptionIndex();
+                  setSearch(event.currentTarget.value);
+                }}
                 onKeyDown={(event) => {
-                  if (event.key === 'Backspace') {
+                  if (event.key === 'Backspace' && search.length === 0) {
                     event.preventDefault();
                     handleValueRemove(value[value.length - 1]);
                   }
@@ -67,7 +72,9 @@ function Demo() {
       </Combobox.DropdownTarget>
 
       <Combobox.Dropdown>
-        <Combobox.Options>{options}</Combobox.Options>
+        <Combobox.Options>
+          {options.length > 0 ? options : <Combobox.Empty>Nothing found...</Combobox.Empty>}
+        </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
@@ -82,6 +89,7 @@ function Demo() {
     onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
   });
 
+  const [search, setSearch] = useState('');
   const [value, setValue] = useState<string[]>([]);
 
   const handleValueSelect = (val: string) =>
@@ -98,32 +106,36 @@ function Demo() {
     </Pill>
   ));
 
-  const options = groceries.map((item) => (
-    <Combobox.Option value={item} key={item} active={value.includes(item)}>
-      <Group gap="sm">
-        {value.includes(item) ? <CheckIcon size={12} /> : null}
-        <span>{item}</span>
-      </Group>
-    </Combobox.Option>
-  ));
+  const options = groceries
+    .filter((item) => item.toLowerCase().includes(search.trim().toLowerCase()))
+    .map((item) => (
+      <Combobox.Option value={item} key={item} active={value.includes(item)}>
+        <Group gap="sm">
+          {value.includes(item) ? <CheckIcon size={12} /> : null}
+          <span>{item}</span>
+        </Group>
+      </Combobox.Option>
+    ));
 
   return (
     <Combobox store={combobox} onOptionSelect={handleValueSelect}>
       <Combobox.DropdownTarget>
-        <PillsInput pointer onClick={() => combobox.toggleDropdown()}>
+        <PillsInput onClick={() => combobox.openDropdown()}>
           <Pill.Group>
-            {values.length > 0 ? (
-              values
-            ) : (
-              <Input.Placeholder>Pick one or more values</Input.Placeholder>
-            )}
+            {values}
 
             <Combobox.EventsTarget>
               <PillsInput.Field
-                type="hidden"
+                onFocus={() => combobox.openDropdown()}
                 onBlur={() => combobox.closeDropdown()}
+                value={search}
+                placeholder="Search values"
+                onChange={(event) => {
+                  combobox.updateSelectedOptionIndex();
+                  setSearch(event.currentTarget.value);
+                }}
                 onKeyDown={(event) => {
-                  if (event.key === 'Backspace') {
+                  if (event.key === 'Backspace' && search.length === 0) {
                     event.preventDefault();
                     handleValueRemove(value[value.length - 1]);
                   }
@@ -135,13 +147,15 @@ function Demo() {
       </Combobox.DropdownTarget>
 
       <Combobox.Dropdown>
-        <Combobox.Options>{options}</Combobox.Options>
+        <Combobox.Options>
+          {options.length > 0 ? options : <Combobox.Empty>Nothing found...</Combobox.Empty>}
+        </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const multiselect: MantineDemo = {
+export const searchableMultiselect: MantineDemo = {
   type: 'code',
   component: Demo,
   code,

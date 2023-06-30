@@ -47,7 +47,10 @@ function Demo() {
           }}
           placeholder="Search value"
           value={search}
-          onChange={(event) => setSearch(event.currentTarget.value)}
+          onChange={(event) => {
+            combobox.updateSelectedOptionIndex();
+            setSearch(event.currentTarget.value);
+          }}
         />
       </Combobox.Target>
 
@@ -102,7 +105,10 @@ function Demo() {
           }}
           placeholder="Search value"
           value={search}
-          onChange={(event) => setSearch(event.currentTarget.value)}
+          onChange={(event) => {
+            combobox.updateSelectedOptionIndex();
+            setSearch(event.currentTarget.value);
+          }}
         />
       </Combobox.Target>
 
