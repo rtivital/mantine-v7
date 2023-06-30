@@ -17,9 +17,15 @@
   white-space: nowrap;
   user-select: none;
   max-width: 100%;
+  color: var(--_pill-color);
 
   @mixin dark {
     --_pill-bg: var(--mantine-color-dark-7);
+    --_pill-color: var(--mantine-color-dark-0);
+  }
+
+  @mixin light {
+    --_pill-color: var(--mantine-color-black);
   }
 
   &[data-with-remove] {

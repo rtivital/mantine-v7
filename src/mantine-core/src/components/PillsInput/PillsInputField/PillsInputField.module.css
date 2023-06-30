@@ -6,6 +6,7 @@
   border: 0;
   font-size: inherit;
   height: 1.6em;
+  color: inherit;
 
   &::placeholder {
     color: var(--_input-placeholder-color);

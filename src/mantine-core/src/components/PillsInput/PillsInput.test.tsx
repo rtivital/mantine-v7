@@ -12,6 +12,15 @@ describe('@mantine/core/PillsInput', () => {
     <PillsInput label="test-label">
       <PillsInput.Field />
     </PillsInput>,
+
+    <PillsInput label="test-label" description="test-description">
+      <PillsInput.Field />
+    </PillsInput>,
+
+    <PillsInput label="test-label" error="test-error">
+      <PillsInput.Field />
+    </PillsInput>,
+
     <PillsInput>
       <PillsInput.Field aria-label="test-label" />
     </PillsInput>,

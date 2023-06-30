@@ -104,7 +104,20 @@ export function WithinDisabledFieldset() {
 export function WithLabel() {
   return (
     <div style={{ padding: 40, maxWidth: 600 }}>
-      <PillsInput label="Pills input label">
+      <PillsInput label="Pills input label" description="Pills input description">
+        <Pill.Group>
+          {getPills({})}
+          <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+    </div>
+  );
+}
+
+export function WithError() {
+  return (
+    <div style={{ padding: 40, maxWidth: 600 }}>
+      <PillsInput label="Pills input label" error="test-error">
         <Pill.Group>
           {getPills({})}
           <PillsInput.Field placeholder="Pills input" />
