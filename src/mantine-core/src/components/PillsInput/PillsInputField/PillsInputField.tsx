@@ -22,7 +22,7 @@ export interface PillsInputFieldProps
     StylesApiProps<PillsInputFieldFactory>,
     ElementProps<'input', 'type'> {
   /** Controls input styles when focused. If `auto` the input is hidden when not focused. If `visible` the input will always remain visible. `'visible'` by default  */
-  type?: 'auto' | 'visible';
+  type?: 'auto' | 'visible' | 'hidden';
 }
 
 export type PillsInputFieldFactory = Factory<{
