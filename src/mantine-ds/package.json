@@ -1,7 +1,7 @@
 {
   "name": "@mantine/ds",
   "description": "Internal Mantine components used on *.mantine.dev websites",
-  "version": "7.0.0-alpha.15",
+  "version": "7.0.0-alpha.16",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -26,9 +26,9 @@
     "react"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.15",
-    "@mantine/hooks": "7.0.0-alpha.15",
-    "@mantine/code-highlight": "7.0.0-alpha.15",
+    "@mantine/core": "7.0.0-alpha.16",
+    "@mantine/hooks": "7.0.0-alpha.16",
+    "@mantine/code-highlight": "7.0.0-alpha.16",
     "@tabler/icons-react": "*",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
