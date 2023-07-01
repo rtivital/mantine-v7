@@ -31,6 +31,7 @@ export function AutocompleteClearable() {
         combobox.closeDropdown();
       }}
       store={combobox}
+      withinPortal={false}
     >
       <Combobox.Target>
         <TextInput
