@@ -11,3 +11,4 @@ export { nativeScroll } from './Combobox.demo.nativeScroll';
 export { scrollArea } from './Combobox.demo.scrollArea';
 export { multiselect } from './Combobox.demo.multiselect';
 export { searchableMultiselect } from './Combobox.demo.searchableMultiselect';
+export { noDropdown } from './Combobox.demo.noDropdown';
