@@ -13,12 +13,6 @@ function Demo() {
 
   const [value, setValue] = useState<string | null>(null);
 
-  const options = groceries.map((item) => (
-    <Combobox.Option value={item} key={item}>
-      {item}
-    </Combobox.Option>
-  ));
-
   return (
     <Combobox
       store={combobox}
@@ -39,7 +33,19 @@ function Demo() {
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Options>{options}</Combobox.Options>
+        <Combobox.Options>
+          <Combobox.Group label="Fruits">
+            <Combobox.Option value="🍎 Apples">🍎 Apples</Combobox.Option>
+            <Combobox.Option value="🍌 Bananas">🍌 Bananas</Combobox.Option>
+            <Combobox.Option value="🍇 Grape">🍇 Grape</Combobox.Option>
+          </Combobox.Group>
+
+          <Combobox.Group label="Vegetables">
+            <Combobox.Option value="🥦 Broccoli">🥦 Broccoli</Combobox.Option>
+            <Combobox.Option value="🥕 Carrots">🥕 Carrots</Combobox.Option>
+            <Combobox.Option value="🥬 Lettuce">🥬 Lettuce</Combobox.Option>
+          </Combobox.Group>
+        </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
