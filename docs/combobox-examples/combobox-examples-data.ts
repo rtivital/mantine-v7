@@ -222,4 +222,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Multiselect options with checkboxes',
     type: 'multiselect',
   },
+  {
+    id: 'ActiveOptionsFilter',
+    name: 'Hide active options',
+    description: 'Remove active options from the dropdown',
+    type: 'multiselect',
+  },
 ];

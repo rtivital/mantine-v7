@@ -31,6 +31,7 @@ import { DropdownSmoothScroll } from './DropdownSmoothScroll/DropdownSmoothScrol
 import { ButtonMultiSelect } from './ButtonMultiSelect/ButtonMultiSelect';
 import { MaxSelectedItems } from './MaxSelectedItems/MaxSelectedItems';
 import { MultiSelectCheckbox } from './MultiSelectCheckbox/MultiSelectCheckbox';
+import { ActiveOptionsFilter } from './ActiveOptionsFilter/ActiveOptionsFilter';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -65,6 +66,7 @@ import DropdownSmoothScrollCode from './DropdownSmoothScroll/code.json';
 import ButtonMultiSelectCode from './ButtonMultiSelect/code.json';
 import MaxSelectedItemsCode from './MaxSelectedItems/code.json';
 import MultiSelectCheckboxCode from './MultiSelectCheckbox/code.json';
+import ActiveOptionsFilterCode from './ActiveOptionsFilter/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -239,6 +241,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   MultiSelectCheckbox: {
     component: MultiSelectCheckbox,
     code: MultiSelectCheckboxCode,
+  },
+
+  ActiveOptionsFilter: {
+    component: ActiveOptionsFilter,
+    code: ActiveOptionsFilterCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
