@@ -260,6 +260,14 @@ when the dropdown is opened:
 
 <Demo data={ComboboxDemos.activeOption} />
 
+## Options groups
+
+Render `Combobox.Option` components inside `Combobox.Group` to create options group.
+`Combobox.Group` label will be automatically hidden if the group does not have any
+children.
+
+<Demo data={ComboboxDemos.groups} />
+
 ## Scrollable list
 
 Set `max-height` style on either `Combobox.Dropdown` or `Combobox.Options` to make
@@ -295,3 +303,7 @@ You can use `Combobox` without dropdown. To do so, use `Combobox.EventsTarget` i
 of `Combobox.Target`:
 
 <Demo data={ComboboxDemos.noDropdown} />
+
+<StylesApiSelectors component="Combobox" />
+
+<Demo data={ComboboxDemos.stylesApi} />
