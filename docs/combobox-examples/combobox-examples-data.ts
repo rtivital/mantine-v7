@@ -187,6 +187,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'animations',
   },
   {
+    id: 'DropdownSmoothScroll',
+    name: 'Smooth scroll',
+    description: 'Smooth scroll of the options with keyboard navigation',
+    type: 'animations',
+  },
+  {
     id: 'BasicMultiSelect',
     name: 'Basic multiselect',
     description: 'Primitive multiselect component',

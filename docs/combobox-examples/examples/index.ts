@@ -27,6 +27,7 @@ import { SelectedAnimation } from './SelectedAnimation/SelectedAnimation';
 import { AutocompleteClearable } from './AutocompleteClearable/AutocompleteClearable';
 import { BasicMultiSelect } from './BasicMultiSelect/BasicMultiSelect';
 import { SearchableMultiSelect } from './SearchableMultiSelect/SearchableMultiSelect';
+import { DropdownSmoothScroll } from './DropdownSmoothScroll/DropdownSmoothScroll';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -57,6 +58,7 @@ import SelectedAnimationCode from './SelectedAnimation/code.json';
 import AutocompleteClearableCode from './AutocompleteClearable/code.json';
 import BasicMultiSelectCode from './BasicMultiSelect/code.json';
 import SearchableMultiSelectCode from './SearchableMultiSelect/code.json';
+import DropdownSmoothScrollCode from './DropdownSmoothScroll/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -211,6 +213,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   SearchableMultiSelect: {
     component: SearchableMultiSelect,
     code: SearchableMultiSelectCode,
+  },
+
+  DropdownSmoothScroll: {
+    component: DropdownSmoothScroll,
+    code: DropdownSmoothScrollCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
