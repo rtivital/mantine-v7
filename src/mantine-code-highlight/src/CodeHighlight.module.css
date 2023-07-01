@@ -114,6 +114,7 @@
 
   &::before {
     content: '';
+    z-index: 100;
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -139,6 +140,7 @@
   color: var(--mantine-color-anchor);
   width: 100%;
   text-align: center;
+  z-index: 101;
   padding-top: var(--mantine-spacing-xs);
   padding-bottom: var(--mantine-spacing-xs);
 
