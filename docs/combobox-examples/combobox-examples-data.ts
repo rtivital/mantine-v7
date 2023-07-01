@@ -216,4 +216,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Limit max number of options that can be selected',
     type: 'multiselect',
   },
+  {
+    id: 'MultiSelectCheckbox',
+    name: 'Multiselect with checkboxes',
+    description: 'Multiselect options with checkboxes',
+    type: 'multiselect',
+  },
 ];
