@@ -186,4 +186,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Play options animation on when option is selected',
     type: 'animations',
   },
+  {
+    id: 'BasicMultiSelect',
+    name: 'Basic multiselect',
+    description: 'Primitive multiselect component',
+    type: 'multiselect',
+  },
 ];
