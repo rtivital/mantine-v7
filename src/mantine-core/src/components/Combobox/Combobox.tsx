@@ -34,8 +34,10 @@ export type ComboboxStylesNames =
   | 'empty'
   | 'footer'
   | 'header';
+
 export type ComboboxCSSVariables = {
-  dropdown: '--combobox-option-fz' | '--combobox-padding' | '--combobox-option-padding';
+  options: '--combobox-option-fz' | '--combobox-option-padding';
+  dropdown: '--combobox-padding';
 };
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
@@ -89,9 +91,14 @@ const defaultProps: Partial<ComboboxProps> = {
 };
 
 const varsResolver = createVarsResolver<ComboboxFactory>((_, { size, dropdownPadding }) => ({
-  dropdown: {
+  options: {
     '--combobox-option-fz': getFontSize(size),
+    '--combobox-option-padding': getSize(size, 'combobox-option-padding'),
+  },
+
+  dropdown: {
     '--combobox-padding': rem(dropdownPadding),
+    '--combobox-option-fz': getFontSize(size),
     '--combobox-option-padding': getSize(size, 'combobox-option-padding'),
   },
 }));

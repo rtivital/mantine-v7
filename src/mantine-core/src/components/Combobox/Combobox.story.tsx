@@ -280,16 +280,33 @@ export function DifferentTargets() {
 
         <Combobox.Dropdown>
           <Combobox.Options>
-            <Combobox.Option value="react" className="test">
-              React
-            </Combobox.Option>
-            <Combobox.Option value="vue" disabled>
-              Vue
-            </Combobox.Option>
+            <Combobox.Option value="react">React</Combobox.Option>
+            <Combobox.Option value="vue">Vue</Combobox.Option>
             <Combobox.Option value="svelte">Svelte</Combobox.Option>
             <Combobox.Option value="angular">Angular</Combobox.Option>
           </Combobox.Options>
         </Combobox.Dropdown>
+      </Combobox>
+    </div>
+  );
+}
+
+export function WithoutDropdown() {
+  const combobox = useCombobox();
+
+  return (
+    <div style={{ padding: 40, display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <Combobox store={combobox}>
+        <Combobox.EventsTarget>
+          <TextInput placeholder="Without dropdown" />
+        </Combobox.EventsTarget>
+
+        <Combobox.Options>
+          <Combobox.Option value="react">React</Combobox.Option>
+          <Combobox.Option value="vue">Vue</Combobox.Option>
+          <Combobox.Option value="svelte">Svelte</Combobox.Option>
+          <Combobox.Option value="angular">Angular</Combobox.Option>
+        </Combobox.Options>
       </Combobox>
     </div>
   );

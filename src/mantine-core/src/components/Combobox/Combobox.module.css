@@ -1,15 +1,19 @@
 .dropdown {
-  --combobox-option-padding-xs: rem(4px) rem(8px);
-  --combobox-option-padding-sm: rem(6px) rem(10px);
-  --combobox-option-padding-md: rem(8px) rem(12px);
-  --combobox-option-padding-lg: rem(10px) rem(16px);
-  --combobox-option-padding-xl: rem(14px) rem(20px);
-
   padding: var(--combobox-padding);
 
   &[data-hidden] {
     display: none;
   }
+}
+
+/* Variables must be both on dropdown and options to support usage of Combobox.Options without Combobox.Dropdown */
+.dropdown,
+.options {
+  --combobox-option-padding-xs: rem(4px) rem(8px);
+  --combobox-option-padding-sm: rem(6px) rem(10px);
+  --combobox-option-padding-md: rem(8px) rem(12px);
+  --combobox-option-padding-lg: rem(10px) rem(16px);
+  --combobox-option-padding-xl: rem(14px) rem(20px);
 }
 
 .option {
