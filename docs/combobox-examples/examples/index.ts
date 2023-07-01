@@ -32,6 +32,7 @@ import { ButtonMultiSelect } from './ButtonMultiSelect/ButtonMultiSelect';
 import { MaxSelectedItems } from './MaxSelectedItems/MaxSelectedItems';
 import { MultiSelectCheckbox } from './MultiSelectCheckbox/MultiSelectCheckbox';
 import { ActiveOptionsFilter } from './ActiveOptionsFilter/ActiveOptionsFilter';
+import { MaxDisplayedItems } from './MaxDisplayedItems/MaxDisplayedItems';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -67,6 +68,7 @@ import ButtonMultiSelectCode from './ButtonMultiSelect/code.json';
 import MaxSelectedItemsCode from './MaxSelectedItems/code.json';
 import MultiSelectCheckboxCode from './MultiSelectCheckbox/code.json';
 import ActiveOptionsFilterCode from './ActiveOptionsFilter/code.json';
+import MaxDisplayedItemsCode from './MaxDisplayedItems/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -246,6 +248,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   ActiveOptionsFilter: {
     component: ActiveOptionsFilter,
     code: ActiveOptionsFilterCode,
+  },
+
+  MaxDisplayedItems: {
+    component: MaxDisplayedItems,
+    code: MaxDisplayedItemsCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 

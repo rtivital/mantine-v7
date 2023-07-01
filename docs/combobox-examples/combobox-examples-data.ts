@@ -212,7 +212,7 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
   },
   {
     id: 'MaxSelectedItems',
-    name: 'Max selected items',
+    name: 'Max selected options',
     description: 'Limit max number of options that can be selected',
     type: 'multiselect',
   },
@@ -226,6 +226,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     id: 'ActiveOptionsFilter',
     name: 'Hide active options',
     description: 'Remove active options from the dropdown',
+    type: 'multiselect',
+  },
+  {
+    id: 'MaxDisplayedItems',
+    name: 'Max displayed values',
+    description: 'Limit max number of values that can be displayed',
     type: 'multiselect',
   },
 ];
