@@ -189,39 +189,48 @@ function Demo() {
 }
 ```
 
-## Autocomplete example
+## Combobox.Target
+
+`Combobox.Target` should be used as a wrapper for the target element or component.
+`Combobox.Target` marks its child as a target for dropdown and sets `aria-*` attributes
+and adds keyboard event listeners to it.
+
+`Combobox.Target` requires a single child element or component. The child component
+must accept `ref` and `...others` props. You can use any Mantine component as a target without
+any additional configuration, for example, [Button](/components/button/), [TextInput](/core/text-input/)
+or [InputBase](/core/input/#inputbase-component).
+
+Example of using `Combobox.Target` with [TextInput](/core/text-input/) component:
 
 <Demo data={ComboboxDemos.autocomplete} />
 
-## Searchable select example
+Example of using `Combobox.Target` with [Button](/core/button) component:
 
-<Demo data={ComboboxDemos.searchableSelect} />
+<Demo data={ComboboxDemos.button} />
 
-> **Different between searchable select and autocomplete**
->
-> Autocomplete suggests options based on the user input, but does not enforce
-> any of of options to be picked – user can type anything and submit it.
-> Searchable select only allows to pick one of the options, it does not allow
-> to submit any other value – if the value is not in the list, it will be automatically
-> replaced with the previously selected option.
+## Split events and dropdown targets
 
-## Multiselect example
+In some cases, you might need to use different elements as an events target and as a dropdown.
+Use `Combobox.EventsTarget` to add `aria-*` attributes and keyboard event handlers, and
+`Combobox.DropdownTarget` to position dropdown relative to the target.
 
-<Demo data={ComboboxDemos.multiselect} />
+You can have as many `Combobox.EventsTarget` as you need, but only one `Combobox.DropdownTarget`
+per `Combobox`.
 
-## Searchable multiselect example
+Example of using `Combobox.EventsTarget` and `Combobox.DropdownTarget` with [PillsInput](/core/pills-input) component
+to create searchable multiselect component:
 
 <Demo data={ComboboxDemos.searchableMultiselect} />
 
-## Target element
+## Update selected option index
 
-You can use any element as target for combobox, it will be used to position
-the dropdown. To make component accessible, use focusable element as target:
-`input`, `textarea` or `button`.
+`updateSelectedOptionIndex` handler is required to be called when options list changes.
+Usually, the options list changes when options are filtered based on the search query. In this case,
+you need to call `updateSelectedOptionIndex` in `onChange` handler of the search input.
 
-Example of using [Button](/core/button) as a target:
+Example of using `updateSelectedOptionIndex` handler in searchable select component:
 
-<Demo data={ComboboxDemos.button} />
+<Demo data={ComboboxDemos.searchableSelect} />
 
 ## Search input
 
