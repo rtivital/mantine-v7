@@ -10,6 +10,8 @@ export const ComboboxStylesApi: StylesApiData<ComboboxFactory> = {
     empty: '`Combobox.Empty` component',
     header: '`Combobox.Header` component',
     footer: '`Combobox.Footer` component',
+    group: '`Combobox.Group` component',
+    groupLabel: 'Label of `Combobox.Group` component',
   },
 
   vars: {

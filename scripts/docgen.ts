@@ -52,6 +52,7 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-core/src/components/Combobox/ComboboxDropdownTarget/ComboboxDropdownTarget.tsx',
   '../src/mantine-core/src/components/Combobox/ComboboxEventsTarget/ComboboxEventsTarget.tsx',
   '../src/mantine-core/src/components/Combobox/ComboboxDropdown/ComboboxDropdown.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxGroup/ComboboxGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

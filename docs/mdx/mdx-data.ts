@@ -853,6 +853,7 @@ export const MDX_DATA: Record<string, Frontmatter> = {
       'ComboboxDropdownTarget',
       'ComboboxEventsTarget',
       'ComboboxDropdown',
+      'ComboboxGroup',
     ],
     styles: ['Combobox'],
     description: 'Create custom select, autocomplete or multiselect inputs',

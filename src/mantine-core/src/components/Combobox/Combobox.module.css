@@ -114,3 +114,41 @@
   margin-bottom: var(--combobox-padding);
   margin-top: calc(var(--combobox-padding) * -1);
 }
+
+.group {
+  &:has(.groupLabel:only-child) {
+    display: none;
+  }
+}
+
+.groupLabel {
+  color: var(--mantine-color-dimmed);
+  font-size: calc(var(--combobox-option-fz) * 0.85);
+  padding: var(--combobox-option-padding);
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    flex: 1;
+    left: 0;
+    right: 0;
+    height: rem(1px);
+    margin-left: var(--mantine-spacing-xs);
+    background-color: var(--_divider-bg);
+
+    @mixin light {
+      --_divider-bg: var(--mantine-color-gray-2);
+    }
+
+    @mixin dark {
+      --_divider-bg: var(--mantine-color-dark-4);
+    }
+  }
+
+  &:only-child {
+    display: none;
+  }
+}

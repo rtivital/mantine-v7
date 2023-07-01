@@ -311,3 +311,25 @@ export function WithoutDropdown() {
     </div>
   );
 }
+
+export function WithGroups() {
+  return (
+    <StoryBase>
+      <Combobox.Group label="First group">
+        <Combobox.Option value="react" className="test">
+          React
+        </Combobox.Option>
+        <Combobox.Option value="vue" disabled>
+          Vue
+        </Combobox.Option>
+      </Combobox.Group>
+
+      <Combobox.Group label="Empty group" />
+
+      <Combobox.Group label="Second group">
+        <Combobox.Option value="svelte">Svelte</Combobox.Option>
+        <Combobox.Option value="angular">Angular</Combobox.Option>
+      </Combobox.Group>
+    </StoryBase>
+  );
+}

@@ -1,3 +1,4 @@
+// WIP, not planned to be released in 7.0, maybe in 7.x
 import { useEffect, useRef } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import { getPreviousIndex, getNextIndex, getFirstIndex } from './get-index/get-virtualized-index';

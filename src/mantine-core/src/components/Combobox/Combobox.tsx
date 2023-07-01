@@ -24,6 +24,7 @@ import { ComboboxFooter } from './ComboboxFooter/ComboboxFooter';
 import { ComboboxHeader } from './ComboboxHeader/ComboboxHeader';
 import { ComboboxEventsTarget } from './ComboboxEventsTarget/ComboboxEventsTarget';
 import { ComboboxDropdownTarget } from './ComboboxDropdownTarget/ComboboxDropdownTarget';
+import { ComboboxGroup } from './ComboboxGroup/ComboboxGroup';
 import classes from './Combobox.module.css';
 
 export type ComboboxStylesNames =
@@ -33,7 +34,9 @@ export type ComboboxStylesNames =
   | 'search'
   | 'empty'
   | 'footer'
-  | 'header';
+  | 'header'
+  | 'group'
+  | 'groupLabel';
 
 export type ComboboxCSSVariables = {
   options: '--combobox-option-fz' | '--combobox-option-padding';
@@ -77,6 +80,7 @@ export type ComboboxFactory = Factory<{
     Header: typeof ComboboxHeader;
     EventsTarget: typeof ComboboxEventsTarget;
     DropdownTarget: typeof ComboboxDropdownTarget;
+    Group: typeof ComboboxGroup;
   };
 }>;
 
@@ -162,3 +166,4 @@ Combobox.Footer = ComboboxFooter;
 Combobox.Header = ComboboxHeader;
 Combobox.EventsTarget = ComboboxEventsTarget;
 Combobox.DropdownTarget = ComboboxDropdownTarget;
+Combobox.Group = ComboboxGroup;
