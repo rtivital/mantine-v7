@@ -192,4 +192,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Primitive multiselect component',
     type: 'multiselect',
   },
+  {
+    id: 'SearchableMultiSelect',
+    name: 'Searchable multiselect',
+    description: 'Multiselect with search',
+    type: 'multiselect',
+  },
 ];

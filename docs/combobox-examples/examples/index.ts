@@ -26,6 +26,7 @@ import { DropdownHeader } from './DropdownHeader/DropdownHeader';
 import { SelectedAnimation } from './SelectedAnimation/SelectedAnimation';
 import { AutocompleteClearable } from './AutocompleteClearable/AutocompleteClearable';
 import { BasicMultiSelect } from './BasicMultiSelect/BasicMultiSelect';
+import { SearchableMultiSelect } from './SearchableMultiSelect/SearchableMultiSelect';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -55,6 +56,7 @@ import DropdownHeaderCode from './DropdownHeader/code.json';
 import SelectedAnimationCode from './SelectedAnimation/code.json';
 import AutocompleteClearableCode from './AutocompleteClearable/code.json';
 import BasicMultiSelectCode from './BasicMultiSelect/code.json';
+import SearchableMultiSelectCode from './SearchableMultiSelect/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -204,6 +206,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   BasicMultiSelect: {
     component: BasicMultiSelect,
     code: BasicMultiSelectCode,
+  },
+
+  SearchableMultiSelect: {
+    component: SearchableMultiSelect,
+    code: SearchableMultiSelectCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
