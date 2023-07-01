@@ -133,6 +133,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'button',
   },
   {
+    id: 'ButtonMultiSelect',
+    name: 'Button multi select',
+    description: 'Button with multiple items selection',
+    type: 'button',
+  },
+  {
     id: 'DropdownScroll',
     name: 'Dropdown scroll',
     description: 'Dropdown with native scrollbars',
