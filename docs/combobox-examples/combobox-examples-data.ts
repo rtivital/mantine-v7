@@ -210,4 +210,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Multiselect with search',
     type: 'multiselect',
   },
+  {
+    id: 'MaxSelectedItems',
+    name: 'Max selected items',
+    description: 'Limit max number of options that can be selected',
+    type: 'multiselect',
+  },
 ];
