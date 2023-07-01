@@ -37,7 +37,7 @@ export type ComboboxStylesNames =
 
 export type ComboboxCSSVariables = {
   options: '--combobox-option-fz' | '--combobox-option-padding';
-  dropdown: '--combobox-padding';
+  dropdown: '--combobox-padding' | '--combobox-option-fz' | '--combobox-option-padding';
 };
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {

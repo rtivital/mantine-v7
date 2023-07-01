@@ -18,6 +18,11 @@ export const ComboboxStylesApi: StylesApiData<ComboboxFactory> = {
       '--combobox-option-padding': 'Controls option `padding`',
       '--combobox-padding': 'Controls dropdown `padding`',
     },
+
+    options: {
+      '--combobox-option-fz': 'Controls option `font-size`',
+      '--combobox-option-padding': 'Controls option `padding`',
+    },
   },
 
   modifiers: [

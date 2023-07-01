@@ -44,6 +44,14 @@ const EXTRA_FILES_PATHS = [
 
   // PillsInput
   '../src/mantine-core/src/components/PillsInput/PillsInputField/PillsInputField.tsx',
+
+  // Combobox
+  '../src/mantine-core/src/components/Combobox/ComboboxOption/ComboboxOption.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxDropdown/ComboboxDropdown.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxTarget/ComboboxTarget.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxDropdownTarget/ComboboxDropdownTarget.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxEventsTarget/ComboboxEventsTarget.tsx',
+  '../src/mantine-core/src/components/Combobox/ComboboxDropdown/ComboboxDropdown.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
