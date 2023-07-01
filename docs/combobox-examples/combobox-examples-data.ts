@@ -234,4 +234,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Limit max number of values that can be displayed',
     type: 'multiselect',
   },
+  {
+    id: 'MultiSelectValueRenderer',
+    name: 'Custom value pills',
+    description: 'Use a custom component to render selected values',
+    type: 'multiselect',
+  },
 ];
