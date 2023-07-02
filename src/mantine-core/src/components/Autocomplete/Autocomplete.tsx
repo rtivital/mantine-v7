@@ -81,8 +81,6 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   const props = useProps('Autocomplete', defaultProps, _props);
   const {
     classNames,
-    className,
-    style,
     styles,
     unstyled,
     vars,
@@ -148,6 +146,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         <InputBase
           ref={ref}
           {...others}
+          __staticSelector="Autocomplete"
           disabled={disabled}
           readOnly={readOnly}
           value={_value}
@@ -178,4 +177,5 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   );
 });
 
+Autocomplete.classes = { ...InputBase.classes, ...Combobox.classes };
 Autocomplete.displayName = '@mantine/core/Autocomplete';
