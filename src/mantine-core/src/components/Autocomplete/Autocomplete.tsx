@@ -55,6 +55,12 @@ interface ComboboxLikeProps {
 
   /** Maximum number of options displayed at a time, `Infinity` by default */
   limit?: number;
+
+  /** Determines whether the options should be wrapped with `ScrollArea.AutoSize`, `true` by default */
+  withScrollArea?: boolean;
+
+  /** `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default */
+  maxDropdownHeight?: number | string;
 }
 
 export interface AutocompleteProps
@@ -107,6 +113,8 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     disabled,
     filter,
     limit,
+    withScrollArea,
+    maxDropdownHeight,
     ...others
   } = props;
 
@@ -192,6 +200,8 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         search={_value}
         limit={limit}
         hiddenWhenEmpty
+        withScrollArea={withScrollArea}
+        maxDropdownHeight={maxDropdownHeight}
       />
     </Combobox>
   );

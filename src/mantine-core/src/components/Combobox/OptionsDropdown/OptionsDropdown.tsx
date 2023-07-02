@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollArea } from '../../ScrollArea/ScrollArea';
 import { Combobox } from '../Combobox';
 import { ComboboxItem, ComboboxParsedItem } from '../Combobox.types';
 import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filter';
@@ -39,6 +40,8 @@ export interface OptionsDropdownProps {
   filter: OptionsFilter | undefined;
   search: string | undefined;
   limit: number | undefined;
+  withScrollArea: boolean | undefined;
+  maxDropdownHeight: number | string | undefined;
   hidden?: boolean;
   hiddenWhenEmpty?: boolean;
 }
@@ -50,6 +53,8 @@ export function OptionsDropdown({
   filter,
   search,
   limit,
+  maxDropdownHeight,
+  withScrollArea = true,
 }: OptionsDropdownProps) {
   const shouldFilter = typeof search === 'string';
   const filteredData = shouldFilter
@@ -63,7 +68,21 @@ export function OptionsDropdown({
 
   return (
     <Combobox.Dropdown hidden={hidden || (hiddenWhenEmpty && isEmpty)}>
-      <Combobox.Options>{options}</Combobox.Options>
+      <Combobox.Options>
+        {withScrollArea ? (
+          <ScrollArea.Autosize
+            mah={maxDropdownHeight ?? 220}
+            type="scroll"
+            scrollbarSize="var(--combobox-padding)"
+            offsetScrollbars
+            style={{ marginRight: 'calc(var(--combobox-padding) * -1)' }}
+          >
+            {options}
+          </ScrollArea.Autosize>
+        ) : (
+          options
+        )}
+      </Combobox.Options>
     </Combobox.Dropdown>
   );
 }
