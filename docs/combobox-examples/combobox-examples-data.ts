@@ -95,6 +95,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectCreatable',
+    name: 'Creatable select',
+    description: 'Select with option to create new options',
+    type: 'select',
+  },
+  {
     id: 'BasicAutocomplete',
     name: 'Basic autocomplete',
     description: 'Primitive autocomplete component',
