@@ -34,6 +34,7 @@ import { MultiSelectCheckbox } from './MultiSelectCheckbox/MultiSelectCheckbox';
 import { ActiveOptionsFilter } from './ActiveOptionsFilter/ActiveOptionsFilter';
 import { MaxDisplayedItems } from './MaxDisplayedItems/MaxDisplayedItems';
 import { MultiSelectValueRenderer } from './MultiSelectValueRenderer/MultiSelectValueRenderer';
+import { SelectGroups } from './SelectGroups/SelectGroups';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -71,6 +72,7 @@ import MultiSelectCheckboxCode from './MultiSelectCheckbox/code.json';
 import ActiveOptionsFilterCode from './ActiveOptionsFilter/code.json';
 import MaxDisplayedItemsCode from './MaxDisplayedItems/code.json';
 import MultiSelectValueRendererCode from './MultiSelectValueRenderer/code.json';
+import SelectGroupsCode from './SelectGroups/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -260,6 +262,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   MultiSelectValueRenderer: {
     component: MultiSelectValueRenderer,
     code: MultiSelectValueRendererCode,
+  },
+
+  SelectGroups: {
+    component: SelectGroups,
+    code: SelectGroupsCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
