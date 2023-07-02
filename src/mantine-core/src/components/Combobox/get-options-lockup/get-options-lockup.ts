@@ -8,6 +8,18 @@ export function getOptionsLockup(options: ComboboxParsedItem[]): Record<string, 
 
     acc[(item as any).value] = item;
 
-    return { ...acc, [item.value]: item };
+    return acc;
+  }, {});
+}
+
+export function getLabelsLockup(options: ComboboxParsedItem[]): Record<string, string> {
+  return options.reduce<Record<string, string>>((acc, item) => {
+    if ('group' in item) {
+      return { ...acc, ...getLabelsLockup(item.items) };
+    }
+
+    acc[(item as any).label] = item as any;
+
+    return acc;
   }, {});
 }
