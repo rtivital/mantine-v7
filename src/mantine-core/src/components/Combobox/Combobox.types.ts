@@ -1,7 +1,7 @@
 export interface ComboboxItem {
   value: string;
-  label?: string;
-  [key: string]: any;
+  label: string;
+  disabled?: boolean;
 }
 
 export interface ComboboxItemGroup {
