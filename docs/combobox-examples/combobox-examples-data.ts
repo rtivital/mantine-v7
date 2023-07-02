@@ -264,4 +264,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Use a custom component to render selected values',
     type: 'multiselect',
   },
+  {
+    id: 'MultiSelectCreatable',
+    name: 'Creatable multiselect',
+    description: 'Multiselect with option to create new options',
+    type: 'multiselect',
+  },
 ];

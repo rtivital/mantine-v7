@@ -38,6 +38,7 @@ import { SelectGroups } from './SelectGroups/SelectGroups';
 import { SelectGroupsSearchable } from './SelectGroupsSearchable/SelectGroupsSearchable';
 import { SelectGroupsStyles } from './SelectGroupsStyles/SelectGroupsStyles';
 import { SelectCreatable } from './SelectCreatable/SelectCreatable';
+import { MultiSelectCreatable } from './MultiSelectCreatable/MultiSelectCreatable';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -79,6 +80,7 @@ import SelectGroupsCode from './SelectGroups/code.json';
 import SelectGroupsSearchableCode from './SelectGroupsSearchable/code.json';
 import SelectGroupsStylesCode from './SelectGroupsStyles/code.json';
 import SelectCreatableCode from './SelectCreatable/code.json';
+import MultiSelectCreatableCode from './MultiSelectCreatable/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -288,6 +290,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   SelectCreatable: {
     component: SelectCreatable,
     code: SelectCreatableCode,
+  },
+
+  MultiSelectCreatable: {
+    component: MultiSelectCreatable,
+    code: MultiSelectCreatableCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
