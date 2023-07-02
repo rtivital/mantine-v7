@@ -83,6 +83,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectGroupsSearchable',
+    name: 'Searchable select with groups',
+    description: 'Options filtering with grouped data',
+    type: 'select',
+  },
+  {
     id: 'BasicAutocomplete',
     name: 'Basic autocomplete',
     description: 'Primitive autocomplete component',

@@ -35,6 +35,7 @@ import { ActiveOptionsFilter } from './ActiveOptionsFilter/ActiveOptionsFilter';
 import { MaxDisplayedItems } from './MaxDisplayedItems/MaxDisplayedItems';
 import { MultiSelectValueRenderer } from './MultiSelectValueRenderer/MultiSelectValueRenderer';
 import { SelectGroups } from './SelectGroups/SelectGroups';
+import { SelectGroupsSearchable } from './SelectGroupsSearchable/SelectGroupsSearchable';
 
 import BasicSelectCode from './BasicSelect/code.json';
 import BasicAutocompleteCode from './BasicAutocomplete/code.json';
@@ -73,6 +74,7 @@ import ActiveOptionsFilterCode from './ActiveOptionsFilter/code.json';
 import MaxDisplayedItemsCode from './MaxDisplayedItems/code.json';
 import MultiSelectValueRendererCode from './MultiSelectValueRenderer/code.json';
 import SelectGroupsCode from './SelectGroups/code.json';
+import SelectGroupsSearchableCode from './SelectGroupsSearchable/code.json';
 
 interface ComboboxExampleComponent {
   component: () => JSX.Element;
@@ -267,6 +269,11 @@ export const COMBOBOX_EXAMPLES_COMPONENTS = {
   SelectGroups: {
     component: SelectGroups,
     code: SelectGroupsCode,
+  },
+
+  SelectGroupsSearchable: {
+    component: SelectGroupsSearchable,
+    code: SelectGroupsSearchableCode,
   },
 } satisfies Record<string, ComboboxExampleComponent>;
 
