@@ -18,6 +18,7 @@ import {
   useCombobox,
   ComboboxData,
   getParsedComboboxData,
+  getOptionsLockup,
 } from '../Combobox';
 
 export type AutocompleteStylesNames = __InputStylesNames | ComboboxStylesNames;
@@ -98,6 +99,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   } = props;
 
   const parsedData = getParsedComboboxData(data);
+  const optionsLockup = getOptionsLockup(parsedData);
 
   const [_value, setValue] = useUncontrolled({
     value,
@@ -130,7 +132,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
       unstyled={unstyled}
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
-        setValue(val);
+        setValue(optionsLockup[val].label);
         combobox.closeDropdown();
       }}
     >
