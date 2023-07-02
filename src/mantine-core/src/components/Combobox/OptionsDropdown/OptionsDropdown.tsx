@@ -1,6 +1,9 @@
 import React from 'react';
 import { Combobox } from '../Combobox';
-import { ComboboxItem } from '../Combobox.types';
+import { ComboboxItem, ComboboxParsedItem } from '../Combobox.types';
+import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filter';
+
+export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 
 export interface OptionsGroup {
   group: string;
@@ -32,11 +35,19 @@ function Option({ data }: OptionProps) {
 
 export interface OptionsDropdownProps {
   data: OptionsData;
+  filter: OptionsFilter | undefined;
+  search: string | undefined;
+  limit: number | undefined;
   hidden?: boolean;
 }
 
-export function OptionsDropdown({ data, hidden }: OptionsDropdownProps) {
-  const options = data.map((item) => (
+export function OptionsDropdown({ data, hidden, filter, search, limit }: OptionsDropdownProps) {
+  const shouldFilter = typeof search === 'string';
+  const filteredData = shouldFilter
+    ? (filter || defaultOptionsFilter)({ options: data, search, limit: limit ?? Infinity })
+    : data;
+
+  const options = filteredData.map((item) => (
     <Option data={item} key={isGroup(item) ? item.group : item.value} />
   ));
 

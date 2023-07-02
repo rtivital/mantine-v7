@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import {
   BoxProps,
@@ -20,6 +20,7 @@ import {
   ComboboxData,
   getParsedComboboxData,
   getOptionsLockup,
+  OptionsFilter,
 } from '../Combobox';
 
 export type AutocompleteStylesNames = __InputStylesNames | ComboboxStylesNames;
@@ -40,7 +41,7 @@ interface ComboboxLikeProps {
   /** Called when dropdown closes */
   onDropdownClose?(): void;
 
-  /** Determines whether the first option should be selected when value changes, `true` by default */
+  /** Determines whether the first option should be selected when value changes, `false` by default */
   selectFirstOptionOnChange?: boolean;
 
   /** Called when option is submitted with mouse click or `Enter` key */
@@ -48,6 +49,12 @@ interface ComboboxLikeProps {
 
   /** Props passed down to `Combobox` component */
   comboboxProps?: ComboboxProps;
+
+  /** Function based on which items are filtered and sorted */
+  filter?: OptionsFilter;
+
+  /** Maximum number of options displayed at a time, `Infinity` by default */
+  limit?: number;
 }
 
 export interface AutocompleteProps
@@ -73,9 +80,7 @@ export type AutocompleteFactory = Factory<{
   variant: InputVariant;
 }>;
 
-const defaultProps: Partial<AutocompleteProps> = {
-  selectFirstOptionOnChange: true,
-};
+const defaultProps: Partial<AutocompleteProps> = {};
 
 export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   const props = useProps('Autocomplete', defaultProps, _props);
@@ -100,6 +105,8 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     comboboxProps,
     readOnly,
     disabled,
+    filter,
+    limit,
     ...others
   } = props;
 
@@ -128,6 +135,12 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     styles,
     classNames,
   });
+
+  useEffect(() => {
+    if (selectFirstOptionOnChange) {
+      combobox.selectFirstOption();
+    }
+  }, [selectFirstOptionOnChange, _value]);
 
   return (
     <Combobox
@@ -172,7 +185,13 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
           unstyled={unstyled}
         />
       </Combobox.Target>
-      <OptionsDropdown data={parsedData} hidden={readOnly || disabled} />
+      <OptionsDropdown
+        data={parsedData}
+        hidden={readOnly || disabled}
+        filter={filter}
+        search={_value}
+        limit={limit}
+      />
     </Combobox>
   );
 });

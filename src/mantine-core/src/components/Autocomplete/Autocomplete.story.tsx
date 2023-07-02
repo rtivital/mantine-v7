@@ -9,6 +9,7 @@ export function Usage() {
       <Autocomplete
         label="Test"
         placeholder="Test autocomplete"
+        limit={1}
         data={[
           { value: 're', label: 'React' },
           { value: 'ng', label: 'Angular' },

@@ -43,4 +43,8 @@ export type { ComboboxHeaderProps } from './ComboboxHeader/ComboboxHeader';
 export type { ComboboxDropdownTargetProps } from './ComboboxDropdownTarget/ComboboxDropdownTarget';
 export type { ComboboxEventsTargetProps } from './ComboboxEventsTarget/ComboboxEventsTarget';
 export type { ComboboxGroupProps } from './ComboboxGroup/ComboboxGroup';
-export type { OptionsDropdownProps, OptionsData } from './OptionsDropdown/OptionsDropdown';
+export type {
+  OptionsDropdownProps,
+  OptionsData,
+  OptionsFilter,
+} from './OptionsDropdown/OptionsDropdown';
