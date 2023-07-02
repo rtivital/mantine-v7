@@ -24,7 +24,7 @@ function Demo() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}
@@ -71,7 +71,7 @@ function Demo() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}

@@ -41,7 +41,7 @@ export function MultiSelectValueRenderer() {
   });
 
   return (
-    <Combobox store={combobox} onOptionSelect={handleValueSelect} withinPortal={false}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect} withinPortal={false}>
       <Combobox.DropdownTarget>
         <PillsInput pointer onClick={() => combobox.toggleDropdown()}>
           <Pill.Group>

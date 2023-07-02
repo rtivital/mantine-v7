@@ -10,7 +10,7 @@ function Demo() {
   const [value, setValue] = useState('');
 
   return (
-    <Combobox onOptionSelect={setValue}>
+    <Combobox onOptionSubmit={setValue}>
       <Combobox.EventsTarget>
         <TextInput
           placeholder="Pick value"
@@ -33,7 +33,7 @@ function Demo() {
   const [value, setValue] = useState('');
 
   return (
-    <Combobox onOptionSelect={setValue}>
+    <Combobox onOptionSubmit={setValue}>
       <Combobox.EventsTarget>
         <TextInput
           placeholder="Pick value"

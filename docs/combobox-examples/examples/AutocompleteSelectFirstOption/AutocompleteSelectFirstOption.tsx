@@ -34,7 +34,7 @@ export function AutocompleteSelectFirstOption() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}

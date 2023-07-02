@@ -30,7 +30,7 @@ function Demo() {
   return (
     <Combobox
       store={combobox}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         setSearch(val);
         combobox.closeDropdown();
@@ -88,7 +88,7 @@ function Demo() {
   return (
     <Combobox
       store={combobox}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         setSearch(val);
         combobox.closeDropdown();

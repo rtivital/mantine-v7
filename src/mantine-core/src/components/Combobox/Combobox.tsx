@@ -51,7 +51,7 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
   store?: ComboboxStore;
 
   /** Called when item is selected with `Enter` key or by clicking it */
-  onOptionSelect?(value: string, optionProps: ComboboxOptionProps): void;
+  onOptionSubmit?(value: string, optionProps: ComboboxOptionProps): void;
 
   /** Controls items `font-size` and `padding`, `'sm'` by default */
   size?: MantineSize | (string & {});
@@ -116,7 +116,7 @@ export function Combobox(_props: ComboboxProps) {
     children,
     store: controlledStore,
     vars,
-    onOptionSelect,
+    onOptionSubmit,
     size,
     dropdownPadding,
     resetSelectionOnOptionHover,
@@ -139,7 +139,7 @@ export function Combobox(_props: ComboboxProps) {
 
   return (
     <ComboboxProvider
-      value={{ getStyles, store, onOptionSelect, size: size!, resetSelectionOnOptionHover }}
+      value={{ getStyles, store, onOptionSubmit, size: size!, resetSelectionOnOptionHover }}
     >
       <Popover
         opened={store.dropdownOpened}

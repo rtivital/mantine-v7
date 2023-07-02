@@ -45,7 +45,7 @@ export function SelectGroupsSearchable() {
     <Combobox
       store={combobox}
       withinPortal={false}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         setSearch(val);
         combobox.closeDropdown();

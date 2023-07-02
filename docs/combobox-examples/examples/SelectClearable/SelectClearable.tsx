@@ -27,7 +27,7 @@ export function SelectClearable() {
     <Combobox
       store={combobox}
       withinPortal={false}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
       }}

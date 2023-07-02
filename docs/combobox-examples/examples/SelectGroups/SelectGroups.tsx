@@ -12,7 +12,7 @@ export function SelectGroups() {
     <Combobox
       store={combobox}
       withinPortal={false}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
       }}

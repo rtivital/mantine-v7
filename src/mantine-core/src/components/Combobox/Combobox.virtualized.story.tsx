@@ -37,10 +37,10 @@ export function Virtualized() {
         virtuoso.current.scrollToIndex({ index, align: 'end' });
       }
     },
-    onSelectedOptionSubmit: onOptionSelect,
+    onSelectedOptionSubmit: onOptionSubmit,
   });
 
-  function onOptionSelect(index: number) {
+  function onOptionSubmit(index: number) {
     const option = largeData[index];
     setValue(option.value);
     store.closeDropdown();
@@ -81,7 +81,7 @@ export function Virtualized() {
                     value={item.value}
                     key={item.value}
                     selected={index === selectedOptionIndex}
-                    onClick={() => onOptionSelect(index)}
+                    onClick={() => onOptionSubmit(index)}
                   >
                     {item.label}
                   </Combobox.Option>

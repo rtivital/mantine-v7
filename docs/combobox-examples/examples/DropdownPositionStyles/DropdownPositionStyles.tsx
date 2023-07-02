@@ -29,7 +29,7 @@ export function DropdownPositionStyles() {
       store={combobox}
       withinPortal={false}
       offset={0}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
       }}

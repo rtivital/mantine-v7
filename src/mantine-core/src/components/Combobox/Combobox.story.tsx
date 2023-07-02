@@ -36,7 +36,7 @@ function StoryBase({ children }: { children: React.ReactNode }) {
       <Combobox
         store={store}
         withinPortal={false}
-        onOptionSelect={(val) => {
+        onOptionSubmit={(val) => {
           setValue(val);
           store.closeDropdown();
           store.resetSelectedOption();
@@ -146,7 +146,7 @@ export function WithButtonTarget() {
       <Combobox
         store={store}
         withinPortal={false}
-        onOptionSelect={(value) => {
+        onOptionSubmit={(value) => {
           console.log(value);
           store.closeDropdown();
         }}
@@ -184,7 +184,7 @@ export function WithScrollArea() {
   return (
     <div style={{ padding: 40 }}>
       {scrollableContent}
-      <Combobox store={store} withinPortal={false} onOptionSelect={setValue}>
+      <Combobox store={store} withinPortal={false} onOptionSubmit={setValue}>
         <Combobox.Target>
           <TextInput
             placeholder="Pick a value"
@@ -232,7 +232,7 @@ export function WithActive() {
       <Combobox
         store={store}
         withinPortal={false}
-        onOptionSelect={(val) => {
+        onOptionSubmit={(val) => {
           setActive(val);
           setValue(fruitsData.find((fruit) => fruit.value === val)!.label);
         }}

@@ -16,7 +16,7 @@ function parseItem(
   if ('group' in item) {
     return {
       group: item.group,
-      items: item.items.map(parseItem),
+      items: item.items.map((i) => parseItem(i) as ComboboxItem),
     };
   }
 

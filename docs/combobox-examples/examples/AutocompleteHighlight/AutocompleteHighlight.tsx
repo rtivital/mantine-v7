@@ -30,7 +30,7 @@ export function AutocompleteHighlight() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}

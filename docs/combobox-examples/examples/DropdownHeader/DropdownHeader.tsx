@@ -52,7 +52,7 @@ export function DropdownHeader() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}

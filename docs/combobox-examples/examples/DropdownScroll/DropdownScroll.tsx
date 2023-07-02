@@ -52,7 +52,7 @@ export function DropdownScroll() {
 
   return (
     <Combobox
-      onOptionSelect={(optionValue) => {
+      onOptionSubmit={(optionValue) => {
         setValue(optionValue);
         combobox.closeDropdown();
       }}

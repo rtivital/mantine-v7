@@ -40,7 +40,7 @@ function Demo() {
   ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={handleValueSelect}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
       <Combobox.DropdownTarget>
         <PillsInput pointer onClick={() => combobox.toggleDropdown()}>
           <Pill.Group>
@@ -108,7 +108,7 @@ function Demo() {
   ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={handleValueSelect}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
       <Combobox.DropdownTarget>
         <PillsInput pointer onClick={() => combobox.toggleDropdown()}>
           <Pill.Group>

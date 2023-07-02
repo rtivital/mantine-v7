@@ -43,7 +43,7 @@ function Demo() {
     ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={handleValueSelect}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
       <Combobox.DropdownTarget>
         <PillsInput onClick={() => combobox.openDropdown()}>
           <Pill.Group>
@@ -118,7 +118,7 @@ function Demo() {
     ));
 
   return (
-    <Combobox store={combobox} onOptionSelect={handleValueSelect}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
       <Combobox.DropdownTarget>
         <PillsInput onClick={() => combobox.openDropdown()}>
           <Pill.Group>

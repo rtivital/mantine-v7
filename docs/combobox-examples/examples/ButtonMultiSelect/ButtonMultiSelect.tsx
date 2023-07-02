@@ -45,7 +45,7 @@ export function ButtonMultiSelect() {
         withArrow
         withinPortal={false}
         positionDependencies={[selectedItems]}
-        onOptionSelect={(val) => {
+        onOptionSubmit={(val) => {
           setSelectedItems((current) =>
             current.includes(val) ? current.filter((item) => item !== val) : [...current, val]
           );

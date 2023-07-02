@@ -28,7 +28,7 @@ export function DropdownAnimation() {
       store={combobox}
       withinPortal={false}
       transitionProps={{ duration: 200, transition: 'pop' }}
-      onOptionSelect={(val) => {
+      onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
       }}
