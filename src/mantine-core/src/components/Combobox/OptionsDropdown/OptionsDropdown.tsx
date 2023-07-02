@@ -32,15 +32,16 @@ function Option({ data }: OptionProps) {
 
 export interface OptionsDropdownProps {
   data: OptionsData;
+  hidden?: boolean;
 }
 
-export function OptionsDropdown({ data }: OptionsDropdownProps) {
+export function OptionsDropdown({ data, hidden }: OptionsDropdownProps) {
   const options = data.map((item) => (
     <Option data={item} key={isGroup(item) ? item.group : item.value} />
   ));
 
   return (
-    <Combobox.Dropdown>
+    <Combobox.Dropdown hidden={hidden}>
       <Combobox.Options>{options}</Combobox.Options>
     </Combobox.Dropdown>
   );

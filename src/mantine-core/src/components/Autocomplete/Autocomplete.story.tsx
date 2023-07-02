@@ -34,3 +34,38 @@ export function Usage() {
     </div>
   );
 }
+
+export function ReadOnly() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="React only autocomplete"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        readOnly
+      />
+    </div>
+  );
+}
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="Disabled autocomplete"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        disabled
+      />
+
+      <fieldset disabled>
+        <Autocomplete
+          label="Test"
+          placeholder="Disabled within fieldset"
+          data={['React', 'Angular', 'Vue', 'Svelte']}
+          disabled
+        />
+      </fieldset>
+    </div>
+  );
+}

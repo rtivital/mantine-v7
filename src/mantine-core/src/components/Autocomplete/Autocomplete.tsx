@@ -13,6 +13,7 @@ import { InputBase } from '../InputBase';
 import { __InputStylesNames, __BaseInputProps, InputVariant } from '../Input';
 import {
   Combobox,
+  ComboboxProps,
   OptionsDropdown,
   ComboboxStylesNames,
   useCombobox,
@@ -44,6 +45,9 @@ interface ComboboxLikeProps {
 
   /** Called when option is submitted with mouse click or `Enter` key */
   onOptionSubmit?(value: string): void;
+
+  /** Props passed down to `Combobox` component */
+  comboboxProps?: ComboboxProps;
 }
 
 export interface AutocompleteProps
@@ -95,6 +99,9 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     defaultValue,
     selectFirstOptionOnChange,
     onOptionSubmit,
+    comboboxProps,
+    readOnly,
+    disabled,
     ...others
   } = props;
 
@@ -135,11 +142,14 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         setValue(optionsLockup[val].label);
         combobox.closeDropdown();
       }}
+      {...comboboxProps}
     >
       <Combobox.Target>
         <InputBase
           ref={ref}
           {...others}
+          disabled={disabled}
+          readOnly={readOnly}
           value={_value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
@@ -163,7 +173,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
           unstyled={unstyled}
         />
       </Combobox.Target>
-      <OptionsDropdown data={parsedData} />
+      <OptionsDropdown data={parsedData} hidden={readOnly || disabled} />
     </Combobox>
   );
 });
