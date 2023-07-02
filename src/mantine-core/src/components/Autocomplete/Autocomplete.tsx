@@ -191,6 +191,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         filter={filter}
         search={_value}
         limit={limit}
+        hiddenWhenEmpty
       />
     </Combobox>
   );

@@ -12,6 +12,7 @@ module.exports = {
     'react/self-closing-comp': 'off',
     'react/jsx-closing-bracket-location': 'off',
     '@typescript-eslint/no-loop-func': 'off',
+    'no-restricted-syntax': 'off',
   },
   parserOptions: {
     project: './tsconfig.eslint.json',
