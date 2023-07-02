@@ -89,6 +89,12 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'select',
   },
   {
+    id: 'SelectGroupsStyles',
+    name: 'Custom group styles',
+    description: 'Customize groups styles with Styles API',
+    type: 'select',
+  },
+  {
     id: 'BasicAutocomplete',
     name: 'Basic autocomplete',
     description: 'Primitive autocomplete component',
