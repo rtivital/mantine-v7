@@ -33,6 +33,24 @@ export function Usage() {
   );
 }
 
+export function StylesBasedOnProps() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="Test autocomplete"
+        data={options}
+        dropdownOpened
+        styles={(_, { label }) => ({
+          dropdown: {
+            backgroundColor: !label ? 'pink' : 'orange',
+          },
+        })}
+      />
+    </div>
+  );
+}
+
 export function OptionWithOverflow() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
