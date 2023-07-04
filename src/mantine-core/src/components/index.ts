@@ -9,6 +9,7 @@ export * from './Affix';
 export * from './Alert';
 export * from './Anchor';
 export * from './AspectRatio';
+export * from './Autocomplete';
 export * from './Avatar';
 export * from './BackgroundImage';
 export * from './Badge';

@@ -29,6 +29,7 @@ export type {
   ComboboxParsedItem,
   ComboboxItemGroup,
   ComboboxParsedItemGroup,
+  ComboboxLikeProps,
 } from './Combobox.types';
 export type { ComboboxFactory, ComboboxProps, ComboboxStylesNames } from './Combobox';
 export type { ComboboxDropdownProps } from './ComboboxDropdown/ComboboxDropdown';
