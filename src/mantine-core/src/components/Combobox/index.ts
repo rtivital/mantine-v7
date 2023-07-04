@@ -30,6 +30,7 @@ export type {
   ComboboxItemGroup,
   ComboboxParsedItemGroup,
   ComboboxLikeProps,
+  ComboboxLikeStylesNames,
 } from './Combobox.types';
 export type { ComboboxFactory, ComboboxProps, ComboboxStylesNames } from './Combobox';
 export type { ComboboxDropdownProps } from './ComboboxDropdown/ComboboxDropdown';

@@ -1,4 +1,4 @@
-import type { ComboboxProps } from './Combobox';
+import type { ComboboxProps, ComboboxStylesNames } from './Combobox';
 import type { OptionsFilter } from './OptionsDropdown/OptionsDropdown';
 
 export interface ComboboxItem {
@@ -19,6 +19,8 @@ export interface ComboboxParsedItemGroup {
 
 export type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[];
 export type ComboboxParsedItem = ComboboxItem | ComboboxParsedItemGroup;
+
+export type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, 'header' | 'footer' | 'search'>;
 
 export interface ComboboxLikeProps {
   /** Data used to generate options */

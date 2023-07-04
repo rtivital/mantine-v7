@@ -1,4 +1,4 @@
-import type { ComboboxFactory } from '@mantine/core';
+import type { ComboboxFactory, ComboboxLikeStylesNames } from '@mantine/core';
 import type { StylesApiData } from '../types';
 
 export const ComboboxStylesApi: StylesApiData<ComboboxFactory> = {
@@ -33,4 +33,13 @@ export const ComboboxStylesApi: StylesApiData<ComboboxFactory> = {
     { modifier: 'data-combobox-disabled', selector: 'option', condition: '`disabled` prop is set' },
     { modifier: 'data-hidden', selector: 'dropdown', condition: '`hidden` prop is set' },
   ],
+};
+
+export const ComboboxLikeSelectors: Record<ComboboxLikeStylesNames, string> = {
+  dropdown: 'Dropdown root element',
+  options: 'Options wrapper',
+  option: 'Option',
+  empty: 'Nothing found message',
+  group: 'Options group wrapper',
+  groupLabel: 'Options group label',
 };

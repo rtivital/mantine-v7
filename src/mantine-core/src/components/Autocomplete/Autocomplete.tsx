@@ -14,14 +14,14 @@ import { __InputStylesNames, __BaseInputProps, InputVariant } from '../Input';
 import {
   Combobox,
   OptionsDropdown,
-  ComboboxStylesNames,
   useCombobox,
   getParsedComboboxData,
   getOptionsLockup,
   ComboboxLikeProps,
+  ComboboxLikeStylesNames,
 } from '../Combobox';
 
-export type AutocompleteStylesNames = __InputStylesNames | ComboboxStylesNames;
+export type AutocompleteStylesNames = __InputStylesNames | ComboboxLikeStylesNames;
 
 export interface AutocompleteProps
   extends BoxProps,
