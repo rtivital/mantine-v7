@@ -1,13 +1,10 @@
-import { ComboboxItem, ComboboxParsedItem, ComboboxParsedItemGroup } from '../Combobox.types';
+import { ComboboxItem, ComboboxParsedItem } from '../Combobox.types';
+import { isOptionsGroup } from './is-options-group';
 
 export interface FilterOptionsInput {
   options: ComboboxParsedItem[];
   search: string;
   limit: number;
-}
-
-function isGroup(item: ComboboxParsedItem): item is ComboboxParsedItemGroup {
-  return 'group' in item;
 }
 
 export function defaultOptionsFilter({
@@ -25,7 +22,7 @@ export function defaultOptionsFilter({
       return result;
     }
 
-    if (isGroup(item)) {
+    if (isOptionsGroup(item)) {
       result.push({
         group: item.group,
         items: defaultOptionsFilter({
@@ -36,7 +33,7 @@ export function defaultOptionsFilter({
       });
     }
 
-    if (!isGroup(item)) {
+    if (!isOptionsGroup(item)) {
       if (item.label.toLowerCase().includes(parsedSearch)) {
         result.push(item);
       }

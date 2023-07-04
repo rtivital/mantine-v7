@@ -33,6 +33,14 @@ export function Usage() {
   );
 }
 
+export function EmptyData() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete label="Test" placeholder="Test autocomplete" data={[]} dropdownOpened />
+    </div>
+  );
+}
+
 export function StylesBasedOnProps() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>

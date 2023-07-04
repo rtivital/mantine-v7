@@ -10,6 +10,7 @@ export * as AffixDemos from './demos/core/Affix';
 export * as AlertDemos from './demos/core/Alert';
 export * as AnchorDemos from './demos/core/Anchor';
 export * as AspectRatioDemos from './demos/core/AspectRatio';
+export * as AutocompleteDemos from './demos/core/Autocomplete';
 export * as AvatarDemos from './demos/core/Avatar';
 export * as BackgroundImageDemos from './demos/core/BackgroundImage';
 export * as BadgeDemos from './demos/core/Badge';

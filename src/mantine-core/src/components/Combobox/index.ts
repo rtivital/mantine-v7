@@ -17,6 +17,8 @@ export { OptionsDropdown } from './OptionsDropdown/OptionsDropdown';
 export { useCombobox } from './use-combobox/use-combobox';
 export { useVirtualizedCombobox } from './use-combobox/use-virtualized-combobox';
 export { useComboboxTargetProps } from './use-combobox-target-props/use-combobox-target-props';
+export { isOptionsGroup } from './OptionsDropdown/is-options-group';
+export { defaultOptionsFilter } from './OptionsDropdown/default-options-filter';
 
 export type {
   ComboboxStore,

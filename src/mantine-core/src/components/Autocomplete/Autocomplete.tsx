@@ -75,6 +75,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     limit,
     withScrollArea,
     maxDropdownHeight,
+    size,
     ...others
   } = props;
 
@@ -121,12 +122,14 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         setValue(optionsLockup[val].label);
         combobox.closeDropdown();
       }}
+      size={size}
       {...comboboxProps}
     >
       <Combobox.Target>
         <InputBase
           ref={ref}
           {...others}
+          size={size}
           __staticSelector="Autocomplete"
           disabled={disabled}
           readOnly={readOnly}
