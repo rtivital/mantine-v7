@@ -24,6 +24,7 @@
   color: var(--_option-color, inherit);
   opacity: var(--_option-opacity, 1);
   cursor: var(--_option-cursor, pointer);
+  word-break: break-word;
 
   &[data-combobox-selected] {
     --_option-bg: var(--mantine-color-primary);

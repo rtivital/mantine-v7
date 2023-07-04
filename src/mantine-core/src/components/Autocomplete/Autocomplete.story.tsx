@@ -33,6 +33,22 @@ export function Usage() {
   );
 }
 
+export function OptionWithOverflow() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="Test autocomplete"
+        data={[
+          'Large option that will overflow its container and should have a line break',
+          'LargeOptionsWithoutLineBreaksThatWillOverflowItsContainerAndShouldHaveALineBreak',
+        ]}
+        dropdownOpened
+      />
+    </div>
+  );
+}
+
 export function WithoutScrollArea() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
