@@ -923,6 +923,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/pills-input.mdx',
   },
 
+  Autocomplete: {
+    title: 'Autocomplete',
+    package: '@mantine/core',
+    slug: '/core/autocomplete',
+    props: ['Autocomplete'],
+    styles: ['Autocomplete'],
+    description: 'Autocomplete user input with any list of options',
+    import: "import { Autocomplete } from '@mantine/core';",
+    source: 'mantine-core/src/components/Autocomplete/Autocomplete.tsx',
+    docs: 'core/autocomplete.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',

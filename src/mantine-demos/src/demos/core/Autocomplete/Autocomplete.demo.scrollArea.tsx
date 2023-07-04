@@ -16,6 +16,7 @@ function Demo() {
         label="With scroll area (default)"
         placeholder="Pick value or enter anything"
         data={data}
+        maxDropdownHeight={200}
       />
 
       <Autocomplete
