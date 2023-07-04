@@ -4,6 +4,7 @@ import { Combobox } from '../Combobox';
 import { ComboboxItem, ComboboxParsedItem } from '../Combobox.types';
 import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filter';
 import { isEmptyComboboxData } from './is-empty-combobox-data';
+import classes from './OptionsDropdown.module.css';
 
 export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 
@@ -74,8 +75,8 @@ export function OptionsDropdown({
             mah={maxDropdownHeight ?? 220}
             type="scroll"
             scrollbarSize="var(--combobox-padding)"
-            offsetScrollbars
-            style={{ marginRight: 'calc(var(--combobox-padding) * -1)' }}
+            offsetScrollbars="y"
+            className={classes.scrollArea}
           >
             {options}
           </ScrollArea.Autosize>

@@ -1,0 +1,8 @@
+.scrollArea {
+  margin-right: calc(var(--combobox-padding) * -1);
+
+  @mixin rtl {
+    margin-left: calc(var(--combobox-padding) * -1);
+    margin-right: 0;
+  }
+}

@@ -17,15 +17,20 @@
     display: none;
   }
 
-  &[data-offset-scrollbars] {
+  &[data-offset-scrollbars='xy'],
+  &[data-offset-scrollbars='y'] {
     --_viewport-padding-right: var(--scrollarea-scrollbar-size);
-    --_viewport-padding-bottom: var(--scrollarea-scrollbar-size);
     --_viewport-padding-left: unset;
 
     @mixin rtl {
       --_viewport-padding-right: unset;
       --_viewport-padding-left: var(--scrollarea-scrollbar-size);
     }
+  }
+
+  &[data-offset-scrollbars='xy'],
+  &[data-offset-scrollbars='x'] {
+    --_viewport-padding-bottom: var(--scrollarea-scrollbar-size);
   }
 }
 

@@ -44,8 +44,8 @@ export interface ScrollAreaProps
   /** Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`, `1000` by default */
   scrollHideDelay?: number;
 
-  /** Determines whether scrollbars should be offset with padding, `false` by default */
-  offsetScrollbars?: boolean;
+  /** Determines whether scrollbars should be offset with padding on given axis, `false` by default */
+  offsetScrollbars?: boolean | 'x' | 'y';
 
   /** Assigns viewport element (scrollable container) ref */
   viewportRef?: React.ForwardedRef<HTMLDivElement>;
@@ -128,7 +128,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, ref) => {
         {...viewportProps}
         {...getStyles('viewport')}
         ref={viewportRef}
-        data-offset-scrollbars={offsetScrollbars || undefined}
+        data-offset-scrollbars={offsetScrollbars === true ? 'xy' : offsetScrollbars || undefined}
         onScroll={
           typeof onScrollPositionChange === 'function'
             ? ({ currentTarget }) =>

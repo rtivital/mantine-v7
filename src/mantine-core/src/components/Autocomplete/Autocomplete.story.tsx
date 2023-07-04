@@ -28,7 +28,7 @@ const options = [
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
-      <Autocomplete label="Test" placeholder="Test autocomplete" data={options} />
+      <Autocomplete label="Test" placeholder="Test autocomplete" data={options} dropdownOpened />
     </div>
   );
 }
