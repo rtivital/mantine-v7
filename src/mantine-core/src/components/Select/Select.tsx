@@ -169,6 +169,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           }}
           onBlur={(event) => {
             searchable && combobox.closeDropdown();
+            setSearch(_value ? optionsLockup[_value].label : '');
             onBlur?.(event);
           }}
           onClick={(event) => {
@@ -190,7 +191,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         hiddenWhenEmpty
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
-        filterOptions={searchable}
+        filterOptions={searchable && selectedOption?.label !== search}
         value={_value}
         checkIconPosition={checkIconPosition}
         withCheckIcon={withCheckIcon}
