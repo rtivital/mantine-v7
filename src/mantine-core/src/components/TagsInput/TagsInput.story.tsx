@@ -10,3 +10,19 @@ export function Usage() {
     </div>
   );
 }
+
+export function MaxTags() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" maxTags={3} />
+    </div>
+  );
+}
+
+export function AllowDuplicates() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" allowDuplicates />
+    </div>
+  );
+}

@@ -35,6 +35,15 @@ export interface TagsInputProps
 
   /** Called whe value changes */
   onChange?(value: string[]): void;
+
+  /** Maximum number of tags, `Infinity` by default */
+  maxTags?: number;
+
+  /** Determines whether duplicate tags are allowed, `false` by default */
+  allowDuplicates?: boolean;
+
+  /** Called when user tries to submit a duplicated tag */
+  onDuplicate?(value: string): void;
 }
 
 export type TagsInputFactory = Factory<{
@@ -45,7 +54,10 @@ export type TagsInputFactory = Factory<{
   variant: TagsInputVariant;
 }>;
 
-const defaultProps: Partial<TagsInputProps> = {};
+const defaultProps: Partial<TagsInputProps> = {
+  maxTags: Infinity,
+  allowDuplicates: false,
+};
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   const props = useProps('TagsInput', defaultProps, _props);
@@ -61,6 +73,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     defaultValue,
     onChange,
     onKeyDown,
+    maxTags,
+    allowDuplicates,
+    onDuplicate,
     ...others
   } = props;
 
@@ -97,14 +112,22 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     onKeyDown?.(event);
 
     const { length } = event.currentTarget.value.trim();
+    const inputValue = event.currentTarget.value.trim();
 
     if (event.key === 'Enter' && length > 0) {
       event.preventDefault();
-      const inputValue = event.currentTarget.value.trim();
-      event.currentTarget.value = '';
+      const isDuplicate = _value.some((tag) => tag.toLowerCase() === inputValue.toLowerCase());
 
-      if (inputValue.length > 0 && !_value.includes(inputValue)) {
-        setValue([..._value, inputValue]);
+      if (isDuplicate) {
+        onDuplicate?.(inputValue);
+      }
+
+      if ((!isDuplicate || (isDuplicate && allowDuplicates)) && _value.length < maxTags!) {
+        event.currentTarget.value = '';
+
+        if (inputValue.length > 0) {
+          setValue([..._value, inputValue]);
+        }
       }
     }
 
