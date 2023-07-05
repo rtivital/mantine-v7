@@ -20,11 +20,11 @@ export type OptionsData = (ComboboxItem | OptionsGroup)[];
 interface OptionProps {
   data: ComboboxItem | OptionsGroup;
   withCheckIcon?: boolean;
-  value?: string | string[];
+  value?: string | string[] | null;
   checkIconPosition?: 'left' | 'right';
 }
 
-function isValueChecked(value: string | string[] | undefined, optionValue: string) {
+function isValueChecked(value: string | string[] | undefined | null, optionValue: string) {
   return Array.isArray(value) ? value.includes(optionValue) : value === optionValue;
 }
 
@@ -63,7 +63,7 @@ export interface OptionsDropdownProps {
   hiddenWhenEmpty?: boolean;
   filterOptions?: boolean;
   withCheckIcon?: boolean;
-  value?: string | string[];
+  value?: string | string[] | null;
   checkIconPosition?: 'left' | 'right';
 }
 

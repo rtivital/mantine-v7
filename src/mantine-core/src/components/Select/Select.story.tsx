@@ -6,12 +6,7 @@ export default { title: 'Select' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Select
-        data={['React', 'Angular', 'Svelte']}
-        placeholder="Select something"
-        dropdownOpened
-        checkIconPosition="right"
-      />
+      <Select data={['React', 'Angular', 'Svelte']} placeholder="Select something" />
     </div>
   );
 }

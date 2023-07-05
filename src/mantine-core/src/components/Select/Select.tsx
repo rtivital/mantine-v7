@@ -28,15 +28,15 @@ export interface SelectProps
     __BaseInputProps,
     ComboboxLikeProps,
     StylesApiProps<SelectFactory>,
-    ElementProps<'input', 'onChange' | 'size'> {
+    ElementProps<'input', 'onChange' | 'size' | 'value' | 'defaultValue'> {
   /** Controlled component value */
-  value?: string;
+  value?: string | null;
 
   /** Uncontrolled component default value */
-  defaultValue?: string;
+  defaultValue?: string | null;
 
   /** Called when value changes */
-  onChange?(value: string): void;
+  onChange?(value: string | null): void;
 
   /** Determines whether the select should be searchable, `false` by default */
   searchable?: boolean;
@@ -102,11 +102,11 @@ export const Select = factory<SelectFactory>((_props, ref) => {
   const [_value, setValue] = useUncontrolled({
     value,
     defaultValue,
-    finalValue: '',
+    finalValue: null,
     onChange,
   });
 
-  const selectedOption = optionsLockup[_value];
+  const selectedOption = _value ? optionsLockup[_value] : undefined;
   const [search, setSearch] = useState(selectedOption ? selectedOption.label : '');
 
   const combobox = useCombobox({
@@ -140,8 +140,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       unstyled={unstyled}
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
-        setValue(optionsLockup[val].value);
-        setSearch(optionsLockup[val].label);
+        const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
+        setValue(nextValue);
+        setSearch(nextValue ? optionsLockup[val].label : '');
         combobox.closeDropdown();
       }}
       size={size}
@@ -184,7 +185,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         data={parsedData}
         hidden={readOnly || disabled}
         filter={filter}
-        search={_value}
+        search={search}
         limit={limit}
         hiddenWhenEmpty
         withScrollArea={withScrollArea}
