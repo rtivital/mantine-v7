@@ -49,6 +49,7 @@ export * from './data/Spotlight.styles-api';
 export * from './data/Stack.styles-api';
 export * from './data/Switch.styles-api';
 export * from './data/Tabs.styles-api';
+export * from './data/TagsInput.styles-api';
 export * from './data/Table.styles-api';
 export * from './data/Text.styles-api';
 export * from './data/TextInput.styles-api';
