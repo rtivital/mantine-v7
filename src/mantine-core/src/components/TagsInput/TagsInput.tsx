@@ -275,7 +275,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
         setSearchValue('');
-        setValue([..._value, optionsLockup[val].label]);
+        _value.length < maxTags! && setValue([..._value, optionsLockup[val].label]);
       }}
       {...comboboxProps}
     >

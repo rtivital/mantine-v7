@@ -80,7 +80,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       {
         category: 'combobox',
-        pages: [MDX_DATA.Combobox, MDX_DATA.Pill, MDX_DATA.PillsInput, MDX_DATA.Autocomplete],
+        pages: [
+          MDX_DATA.Combobox,
+          MDX_DATA.Pill,
+          MDX_DATA.PillsInput,
+          MDX_DATA.Autocomplete,
+          MDX_DATA.TagsInput,
+        ],
       },
       {
         category: 'buttons',

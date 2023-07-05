@@ -35,7 +35,12 @@ export function Usage() {
 export function MaxTags() {
   return (
     <div style={{ padding: 40 }}>
-      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" maxTags={3} />
+      <TagsInput
+        defaultValue={['React', 'Angular']}
+        placeholder="Enter tags"
+        maxTags={3}
+        data={['First', 'Second', 'Third']}
+      />
     </div>
   );
 }

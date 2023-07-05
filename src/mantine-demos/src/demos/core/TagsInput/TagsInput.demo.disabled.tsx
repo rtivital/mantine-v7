@@ -6,7 +6,14 @@ const code = `
 import { TagsInput } from '@mantine/core';
 
 function Demo() {
-  return <TagsInput label="Disabled" placeholder="Enter tag" disabled />;
+  return (
+    <TagsInput
+      label="Disabled"
+      placeholder="Enter tag"
+      disabled
+      defaultValue={['First', 'Second']}
+    />
+  );
 }
 `;
 

@@ -20,6 +20,7 @@ however user is not limited to suggestions and can type anything.
 
 ```tsx
 import { useState } from 'react';
+import { Autocomplete } from '@mantine/core';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -84,7 +85,7 @@ Set `readOnly` to make the input read only. When `readOnly` is set,
 Set `disabled` to disable the input. When `disabled` is set,
 user cannot interact with the input and `Autocomplete` will not show suggestions.
 
-<Demo data={AutocompleteDemos.readOnly} />
+<Demo data={AutocompleteDemos.disabled} />
 
 ## Error state
 

@@ -935,6 +935,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/autocomplete.mdx',
   },
 
+  TagsInput: {
+    title: 'TagsInput',
+    package: '@mantine/core',
+    slug: '/core/tags-input',
+    props: ['TagsInput'],
+    styles: ['TagsInput'],
+    description: 'Capture a list of values from user with free input and suggestions',
+    import: "import { TagsInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/TagsInput/TagsInput.tsx',
+    docs: 'core/tags-input.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',
