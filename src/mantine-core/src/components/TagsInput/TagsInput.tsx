@@ -23,6 +23,7 @@ import {
 import { __BaseInputProps, __InputStylesNames } from '../Input';
 import { PillsInput } from '../PillsInput';
 import { Pill } from '../Pill';
+import { InputBase } from '../InputBase';
 import { getSplittedTags } from './get-splitted-tags';
 
 export type TagsInputStylesNames =
@@ -79,6 +80,7 @@ const defaultProps: Partial<TagsInputProps> = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [','],
+  size: 'sm',
 };
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
@@ -120,6 +122,25 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     onFocus,
     onBlur,
     onPaste,
+    radius,
+    rightSection,
+    rightSectionWidth,
+    rightSectionPointerEvents,
+    rightSectionProps,
+    leftSection,
+    leftSectionWidth,
+    leftSectionPointerEvents,
+    leftSectionProps,
+    inputContainer,
+    inputWrapperOrder,
+    withAsterisk,
+    labelProps,
+    descriptionProps,
+    errorProps,
+    wrapperProps,
+    description,
+    label,
+    error,
     ...others
   } = props;
 
@@ -159,8 +180,6 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     name: 'TagsInput',
     classes: {} as any,
     props,
-    className,
-    style,
     classNames,
     styles,
     unstyled,
@@ -251,6 +270,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       styles={resolvedStyles}
       unstyled={unstyled}
       size={size}
+      __staticSelector="TagsInput"
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
         setValue([..._value, optionsLockup[val].label]);
@@ -269,6 +289,27 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           style={style}
           variant={variant}
           disabled={disabled}
+          radius={radius}
+          rightSection={rightSection}
+          rightSectionWidth={rightSectionWidth}
+          rightSectionPointerEvents={rightSectionPointerEvents}
+          rightSectionProps={rightSectionProps}
+          leftSection={leftSection}
+          leftSectionWidth={leftSectionWidth}
+          leftSectionPointerEvents={leftSectionPointerEvents}
+          leftSectionProps={leftSectionProps}
+          inputContainer={inputContainer}
+          inputWrapperOrder={inputWrapperOrder}
+          withAsterisk={withAsterisk}
+          labelProps={labelProps}
+          descriptionProps={descriptionProps}
+          errorProps={errorProps}
+          wrapperProps={wrapperProps}
+          description={description}
+          label={label}
+          error={error}
+          multiline
+          __stylesApiProps={{ ...props, multiline: true }}
         >
           <Pill.Group {...getStyles('pillsList')}>
             {values}
@@ -312,4 +353,5 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   );
 });
 
+TagsInput.classes = { ...InputBase.classes, ...Combobox.classes };
 TagsInput.displayName = '@mantine/core/TagsInput';

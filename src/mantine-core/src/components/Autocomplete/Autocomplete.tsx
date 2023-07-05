@@ -114,6 +114,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   return (
     <Combobox
       store={combobox}
+      __staticSelector="Autocomplete"
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       unstyled={unstyled}

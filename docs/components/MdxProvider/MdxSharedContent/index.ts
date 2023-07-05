@@ -11,3 +11,4 @@ export { MdxComboboxDisclaimer } from './MdxComboboxDisclaimer';
 export { MdxComboboxData } from './MdxComboboxData';
 export { MdxComboboxLargeData } from './MdxComboboxLargeData';
 export { MdxComboboxFiltering } from './MdxComboboxFiltering';
+export { MdxComboboxProps } from './MdxComboboxProps';

@@ -5,7 +5,6 @@ import { Autocomplete, AutocompleteProps, AutocompleteStylesNames } from './Auto
 const defaultProps: AutocompleteProps = {
   ...inputDefaultProps,
   data: ['test-1', 'test-2'],
-  dropdownOpened: true,
 };
 
 describe('@mantine/core/Autocomplete', () => {

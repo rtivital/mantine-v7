@@ -44,8 +44,10 @@ export type ComboboxCSSVariables = {
 };
 
 export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFactory> {
+  __staticSelector?: string;
+
   /** Combobox content */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /** Combobox store, can be used to control combobox state */
   store?: ComboboxStore;
@@ -120,6 +122,7 @@ export function Combobox(_props: ComboboxProps) {
     size,
     dropdownPadding,
     resetSelectionOnOptionHover,
+    __staticSelector,
     ...others
   } = props;
 
@@ -127,7 +130,7 @@ export function Combobox(_props: ComboboxProps) {
   const store = controlledStore || uncontrolledStore;
 
   const getStyles = useStyles<ComboboxFactory>({
-    name: 'Combobox',
+    name: __staticSelector || 'Combobox',
     classes,
     props,
     classNames,

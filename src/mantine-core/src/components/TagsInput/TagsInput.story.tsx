@@ -1,12 +1,33 @@
 import React from 'react';
 import { TagsInput } from './TagsInput';
+import { MantineThemeProvider } from '../../core';
 
 export default { title: 'TagsInput' };
 
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" variant="filled" />
+      <MantineThemeProvider
+        theme={{
+          components: {
+            TagsInput: TagsInput.extend({
+              styles: (_, props) => ({
+                root: { outline: `2px solid ${(props as any)['data-test']}` },
+                pill: { border: '1px solid red' },
+              }),
+            }),
+          },
+        }}
+      >
+        <TagsInput
+          defaultValue={['React', 'Angular']}
+          placeholder="Enter tags"
+          variant="filled"
+          leftSection="$$"
+          rightSection="kg"
+          data-test="orange"
+        />
+      </MantineThemeProvider>
     </div>
   );
 }

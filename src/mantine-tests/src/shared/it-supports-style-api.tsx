@@ -201,9 +201,13 @@ export function itSupportsStylesApi<
       });
 
       options.selectors.forEach((selector) => {
-        expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
-          ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
-        });
+        try {
+          expect(container.querySelector(`.${classNames[selector]}`)).toHaveStyle({
+            ...styles(DEFAULT_THEME, { 'data-test': 'orange' })[selector],
+          });
+        } catch (e) {
+          throw new Error(`Missing selector: .test-${options.providerName}-${selector}`);
+        }
       });
     });
 

@@ -7,6 +7,7 @@ export interface InputBaseProps
     __BaseInputProps,
     StylesApiProps<InputBaseFactory> {
   __staticSelector?: string;
+  __stylesApiProps?: Record<string, any>;
 
   /** Props passed to the root element (`Input.Wrapper` component) */
   wrapperProps?: Record<string, any>;
