@@ -117,6 +117,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     readOnly,
     disabled,
     splitChars,
+    onFocus,
+    onBlur,
+    onPaste,
     ...others
   } = props;
 
@@ -211,6 +214,25 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     }
   };
 
+  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    onPaste?.(event);
+    event.preventDefault();
+
+    if (event.clipboardData) {
+      const pastedText = event.clipboardData.getData('text/plain');
+      setValue(
+        getSplittedTags({
+          splitChars,
+          allowDuplicates,
+          maxTags,
+          value: pastedText,
+          currentTags: _value,
+        })
+      );
+      setSearchValue('');
+    }
+  };
+
   const values = _value.map((item, index) => (
     <Pill
       key={`${item}-${index}`}
@@ -257,8 +279,15 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                 {...getStyles('inputField')}
                 unstyled={unstyled}
                 onKeyDown={handleInputKeydown}
-                onFocus={() => combobox.openDropdown()}
-                onBlur={() => combobox.closeDropdown()}
+                onFocus={(event) => {
+                  onFocus?.(event);
+                  combobox.openDropdown();
+                }}
+                onBlur={(event) => {
+                  onBlur?.(event);
+                  combobox.closeDropdown();
+                }}
+                onPaste={handlePaste}
                 value={_searchValue}
                 onChange={(event) => setSearchValue(event.currentTarget.value)}
                 disabled={disabled}
