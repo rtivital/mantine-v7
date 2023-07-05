@@ -6,7 +6,7 @@ export default { title: 'TagsInput' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" />
+      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" variant="filled" />
     </div>
   );
 }

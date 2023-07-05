@@ -17,10 +17,6 @@ import { PillsInput } from '../PillsInput';
 import { Pill } from '../Pill';
 
 export type TagsInputStylesNames = __InputStylesNames | 'pill' | 'pillsList' | 'inputField';
-export type TagsInputVariant = string;
-export type TagsInputCssVariables = {
-  root: '--test';
-};
 
 export interface TagsInputProps
   extends BoxProps,
@@ -50,8 +46,6 @@ export type TagsInputFactory = Factory<{
   props: TagsInputProps;
   ref: HTMLInputElement;
   stylesNames: TagsInputStylesNames;
-  vars: TagsInputCssVariables;
-  variant: TagsInputVariant;
 }>;
 
 const defaultProps: Partial<TagsInputProps> = {
@@ -76,6 +70,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     maxTags,
     allowDuplicates,
     onDuplicate,
+    variant,
     ...others
   } = props;
 
@@ -157,6 +152,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       size={size}
       className={className}
       style={style}
+      variant={variant}
     >
       <Pill.Group {...getStyles('pillsList')}>
         {values}
