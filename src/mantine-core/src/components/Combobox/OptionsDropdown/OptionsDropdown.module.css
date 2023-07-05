@@ -6,3 +6,25 @@
     margin-right: 0;
   }
 }
+
+.option {
+  display: flex;
+  align-items: center;
+  flex-direction: var(--_flex-direction, row);
+  gap: rem(8px);
+
+  &[data-reverse] {
+    /* --_flex-direction: row-reverse; */
+    justify-content: space-between;
+  }
+}
+
+.checkIcon {
+  opacity: 0.4;
+  width: 0.8em;
+  height: 0.8em;
+
+  [data-combobox-selected] & {
+    opacity: 1;
+  }
+}
