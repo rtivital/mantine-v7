@@ -19,6 +19,18 @@ export function MaxTags() {
   );
 }
 
+export function SplitChars() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput
+        defaultValue={['React', 'Angular']}
+        placeholder="Enter tags"
+        splitChars={[' ', ',']}
+      />
+    </div>
+  );
+}
+
 export function AllowDuplicates() {
   return (
     <div style={{ padding: 40 }}>

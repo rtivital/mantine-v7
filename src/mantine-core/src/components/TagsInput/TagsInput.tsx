@@ -23,6 +23,7 @@ import {
 import { __BaseInputProps, __InputStylesNames } from '../Input';
 import { PillsInput } from '../PillsInput';
 import { Pill } from '../Pill';
+import { getSplittedTags } from './get-splitted-tags';
 
 export type TagsInputStylesNames =
   | __InputStylesNames
@@ -63,6 +64,9 @@ export interface TagsInputProps
 
   /** Called when user tries to submit a duplicated tag */
   onDuplicate?(value: string): void;
+
+  /** Characters that should trigger tags split, `[',']` by default */
+  splitChars?: string[];
 }
 
 export type TagsInputFactory = Factory<{
@@ -74,6 +78,7 @@ export type TagsInputFactory = Factory<{
 const defaultProps: Partial<TagsInputProps> = {
   maxTags: Infinity,
   allowDuplicates: false,
+  splitChars: [','],
 };
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
@@ -111,6 +116,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     onSearchChange,
     readOnly,
     disabled,
+    splitChars,
     ...others
   } = props;
 
@@ -168,6 +174,20 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
 
     const inputValue = _searchValue.trim();
     const { length } = inputValue;
+
+    if (splitChars!.includes(event.key) && length > 0) {
+      setValue(
+        getSplittedTags({
+          splitChars,
+          allowDuplicates,
+          maxTags,
+          value: _searchValue,
+          currentTags: _value,
+        })
+      );
+      setSearchValue('');
+      event.preventDefault();
+    }
 
     if (event.key === 'Enter' && length > 0) {
       event.preventDefault();
