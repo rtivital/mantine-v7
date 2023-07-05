@@ -25,6 +25,7 @@ import { PillsInput } from '../PillsInput';
 import { Pill } from '../Pill';
 import { InputBase } from '../InputBase';
 import { getSplittedTags } from './get-splitted-tags';
+import { filterPickedTags } from './filter-picked-tags';
 
 export type TagsInputStylesNames =
   | __InputStylesNames
@@ -255,7 +256,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   const values = _value.map((item, index) => (
     <Pill
       key={`${item}-${index}`}
-      withRemoveButton
+      withRemoveButton={!readOnly}
       onRemove={() => setValue(_value.filter((i) => item !== i))}
       {...getStyles('pill')}
     >
@@ -273,6 +274,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       __staticSelector="TagsInput"
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
+        setSearchValue('');
         setValue([..._value, optionsLockup[val].label]);
       }}
       {...comboboxProps}
@@ -311,7 +313,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           multiline
           __stylesApiProps={{ ...props, multiline: true }}
         >
-          <Pill.Group {...getStyles('pillsList')}>
+          <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
             {values}
             <Combobox.EventsTarget>
               <PillsInput.Field
@@ -340,7 +342,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       </Combobox.DropdownTarget>
 
       <OptionsDropdown
-        data={parsedData}
+        data={filterPickedTags({ data: parsedData, value: _value })}
         hidden={readOnly || disabled}
         filter={filter}
         search={_searchValue}
