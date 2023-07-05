@@ -26,3 +26,15 @@ export function AllowDuplicates() {
     </div>
   );
 }
+
+export function WithData() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput
+        defaultValue={['React', 'Angular']}
+        placeholder="Enter tags"
+        data={['test-1', 'test-2']}
+      />
+    </div>
+  );
+}

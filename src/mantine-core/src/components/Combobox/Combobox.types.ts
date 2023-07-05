@@ -24,7 +24,7 @@ export type ComboboxLikeStylesNames = Exclude<ComboboxStylesNames, 'header' | 'f
 
 export interface ComboboxLikeProps {
   /** Data used to generate options */
-  data: ComboboxData;
+  data?: ComboboxData;
 
   /** Controlled dropdown opened state */
   dropdownOpened?: boolean;
@@ -41,7 +41,7 @@ export interface ComboboxLikeProps {
   /** Determines whether the first option should be selected when value changes, `false` by default */
   selectFirstOptionOnChange?: boolean;
 
-  /** Called when option is submitted with mouse click or `Enter` key */
+  /** Called when option is submitted from dropdown with mouse click or `Enter` key */
   onOptionSubmit?(value: string): void;
 
   /** Props passed down to `Combobox` component */

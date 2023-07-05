@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import {
@@ -12,15 +11,30 @@ import {
   useStyles,
   useResolvedStylesApi,
 } from '../../core';
+import {
+  Combobox,
+  OptionsDropdown,
+  useCombobox,
+  getParsedComboboxData,
+  getOptionsLockup,
+  ComboboxLikeProps,
+  ComboboxLikeStylesNames,
+} from '../Combobox';
 import { __BaseInputProps, __InputStylesNames } from '../Input';
 import { PillsInput } from '../PillsInput';
 import { Pill } from '../Pill';
 
-export type TagsInputStylesNames = __InputStylesNames | 'pill' | 'pillsList' | 'inputField';
+export type TagsInputStylesNames =
+  | __InputStylesNames
+  | ComboboxLikeStylesNames
+  | 'pill'
+  | 'pillsList'
+  | 'inputField';
 
 export interface TagsInputProps
   extends BoxProps,
     __BaseInputProps,
+    ComboboxLikeProps,
     StylesApiProps<TagsInputFactory>,
     ElementProps<'input', 'size' | 'value' | 'defaultValue' | 'onChange'> {
   /** Controlled component value */
@@ -31,6 +45,15 @@ export interface TagsInputProps
 
   /** Called whe value changes */
   onChange?(value: string[]): void;
+
+  /** Controlled search value */
+  searchValue?: string;
+
+  /** Default search value */
+  defaultSearchValue?: string;
+
+  /** Called when search changes */
+  onSearchChange?(value: string): void;
 
   /** Maximum number of tags, `Infinity` by default */
   maxTags?: number;
@@ -71,8 +94,38 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     allowDuplicates,
     onDuplicate,
     variant,
+    data,
+    dropdownOpened,
+    defaultDropdownOpened,
+    onDropdownOpen,
+    onDropdownClose,
+    selectFirstOptionOnChange,
+    onOptionSubmit,
+    comboboxProps,
+    filter,
+    limit,
+    withScrollArea,
+    maxDropdownHeight,
+    searchValue,
+    defaultSearchValue,
+    onSearchChange,
+    readOnly,
+    disabled,
     ...others
   } = props;
+
+  const parsedData = getParsedComboboxData(data);
+  const optionsLockup = getOptionsLockup(parsedData);
+
+  const combobox = useCombobox({
+    opened: dropdownOpened,
+    defaultOpened: defaultDropdownOpened,
+    onDropdownOpen,
+    onDropdownClose: () => {
+      onDropdownClose?.();
+      combobox.resetSelectedOption();
+    },
+  });
 
   const {
     styleProps,
@@ -84,6 +137,13 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     defaultValue,
     finalValue: [],
     onChange,
+  });
+
+  const [_searchValue, setSearchValue] = useUncontrolled({
+    value: searchValue,
+    defaultValue: defaultSearchValue,
+    finalValue: '',
+    onChange: onSearchChange,
   });
 
   const getStyles = useStyles<TagsInputFactory>({
@@ -106,8 +166,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   const handleInputKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
-    const { length } = event.currentTarget.value.trim();
-    const inputValue = event.currentTarget.value.trim();
+    const inputValue = _searchValue.trim();
+    const { length } = inputValue;
 
     if (event.key === 'Enter' && length > 0) {
       event.preventDefault();
@@ -118,7 +178,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       }
 
       if ((!isDuplicate || (isDuplicate && allowDuplicates)) && _value.length < maxTags!) {
-        event.currentTarget.value = '';
+        setSearchValue('');
 
         if (inputValue.length > 0) {
           setValue([..._value, inputValue]);
@@ -143,28 +203,63 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   ));
 
   return (
-    <PillsInput
-      {...styleProps}
-      __staticSelector="TagsInput"
+    <Combobox
+      store={combobox}
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       unstyled={unstyled}
       size={size}
-      className={className}
-      style={style}
-      variant={variant}
+      onOptionSubmit={(val) => {
+        onOptionSubmit?.(val);
+        setValue([..._value, optionsLockup[val].label]);
+      }}
+      {...comboboxProps}
     >
-      <Pill.Group {...getStyles('pillsList')}>
-        {values}
-        <PillsInput.Field
-          {...rest}
-          ref={ref}
-          {...getStyles('inputField')}
+      <Combobox.DropdownTarget>
+        <PillsInput
+          {...styleProps}
+          __staticSelector="TagsInput"
+          classNames={resolvedClassNames}
+          styles={resolvedStyles}
           unstyled={unstyled}
-          onKeyDown={handleInputKeydown}
-        />
-      </Pill.Group>
-    </PillsInput>
+          size={size}
+          className={className}
+          style={style}
+          variant={variant}
+          disabled={disabled}
+        >
+          <Pill.Group {...getStyles('pillsList')}>
+            {values}
+            <Combobox.EventsTarget>
+              <PillsInput.Field
+                {...rest}
+                ref={ref}
+                {...getStyles('inputField')}
+                unstyled={unstyled}
+                onKeyDown={handleInputKeydown}
+                onFocus={() => combobox.openDropdown()}
+                onBlur={() => combobox.closeDropdown()}
+                value={_searchValue}
+                onChange={(event) => setSearchValue(event.currentTarget.value)}
+                disabled={disabled}
+                readOnly={readOnly}
+              />
+            </Combobox.EventsTarget>
+          </Pill.Group>
+        </PillsInput>
+      </Combobox.DropdownTarget>
+
+      <OptionsDropdown
+        data={parsedData}
+        hidden={readOnly || disabled}
+        filter={filter}
+        search={_searchValue}
+        limit={limit}
+        hiddenWhenEmpty
+        withScrollArea={withScrollArea}
+        maxDropdownHeight={maxDropdownHeight}
+      />
+    </Combobox>
   );
 });
 
