@@ -82,10 +82,13 @@ export function OptionsDropdown({
   checkIconPosition,
 }: OptionsDropdownProps) {
   const shouldFilter = typeof search === 'string';
-  const filteredData =
-    shouldFilter && filterOptions
-      ? (filter || defaultOptionsFilter)({ options: data, search, limit: limit ?? Infinity })
-      : data;
+  const filteredData = shouldFilter
+    ? (filter || defaultOptionsFilter)({
+        options: data,
+        search: filterOptions ? search : '',
+        limit: limit ?? Infinity,
+      })
+    : data;
   const isEmpty = isEmptyComboboxData(filteredData);
 
   const options = filteredData.map((item) => (
