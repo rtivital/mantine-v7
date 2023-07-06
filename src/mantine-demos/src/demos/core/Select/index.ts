@@ -1,5 +1,6 @@
 export { usage } from './Select.demo.usage';
 export { searchable } from './Select.demo.searchable';
+export { nothingFound } from './Select.demo.nothingFound';
 export { checkIcon } from './Select.demo.checkIcon';
 export { configurator } from './Select.demo.configurator';
 export { disabled } from './Select.demo.disabled';

@@ -14,7 +14,12 @@ export function Usage() {
 export function Searchable() {
   return (
     <div style={{ padding: 40 }}>
-      <Select data={['React', 'Angular', 'Svelte']} placeholder="Select something" searchable />
+      <Select
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="Select something"
+        searchable
+        nothingFoundMessage="Nothing found..."
+      />
     </div>
   );
 }

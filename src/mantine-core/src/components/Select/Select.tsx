@@ -46,6 +46,9 @@ export interface SelectProps
 
   /** Position of the check icon relative to the option label, `'left'` by default */
   checkIconPosition?: 'left' | 'right';
+
+  /** Message displayed when no option matched current search query, only applicable when `searchable` prop is set */
+  nothingFoundMessage?: React.ReactNode;
 }
 
 export type SelectFactory = Factory<{
@@ -93,6 +96,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     rightSection,
     checkIconPosition,
     withCheckIcon,
+    nothingFoundMessage,
     ...others
   } = props;
 
@@ -188,13 +192,14 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         filter={filter}
         search={search}
         limit={limit}
-        hiddenWhenEmpty
+        hiddenWhenEmpty={!searchable && !!nothingFoundMessage && search.trim().length !== 0}
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
         filterOptions={searchable && selectedOption?.label !== search}
         value={_value}
         checkIconPosition={checkIconPosition}
         withCheckIcon={withCheckIcon}
+        nothingFoundMessage={nothingFoundMessage}
       />
     </Combobox>
   );

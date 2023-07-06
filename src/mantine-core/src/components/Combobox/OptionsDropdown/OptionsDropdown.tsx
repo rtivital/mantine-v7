@@ -65,6 +65,7 @@ export interface OptionsDropdownProps {
   withCheckIcon?: boolean;
   value?: string | string[] | null;
   checkIconPosition?: 'left' | 'right';
+  nothingFoundMessage?: React.ReactNode;
 }
 
 export function OptionsDropdown({
@@ -80,6 +81,7 @@ export function OptionsDropdown({
   withCheckIcon = false,
   value,
   checkIconPosition,
+  nothingFoundMessage,
 }: OptionsDropdownProps) {
   const shouldFilter = typeof search === 'string';
   const filteredData = shouldFilter
@@ -117,6 +119,7 @@ export function OptionsDropdown({
         ) : (
           options
         )}
+        {isEmpty && nothingFoundMessage && <Combobox.Empty>{nothingFoundMessage}</Combobox.Empty>}
       </Combobox.Options>
     </Combobox.Dropdown>
   );
