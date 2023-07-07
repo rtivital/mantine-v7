@@ -318,7 +318,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         limit={limit}
         hiddenWhenEmpty={
           hidePickedOptions ||
-          (!searchable && !!nothingFoundMessage && _searchValue.trim().length !== 0)
+          !nothingFoundMessage ||
+          (!searchable && _searchValue.trim().length !== 0)
         }
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}

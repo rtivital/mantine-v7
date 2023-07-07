@@ -1,9 +1,9 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { Select, ComboboxItem, OptionsFilter } from '@mantine/core';
+import { MultiSelect, ComboboxItem, OptionsFilter } from '@mantine/core';
 
 const code = `
-import { Select, ComboboxItem, OptionsFilter } from '@mantine/core';
+import { MultiSelect, ComboboxItem, OptionsFilter } from '@mantine/core';
 
 const optionsFilter: OptionsFilter = ({ options, search }) => {
   const filtered = (options as ComboboxItem[]).filter((option) =>
@@ -16,9 +16,9 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 
 function Demo() {
   return (
-    <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick values"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
       searchable
@@ -38,9 +38,9 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 
 function Demo() {
   return (
-    <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+    <MultiSelect
+      label="Your favorite libraries"
+      placeholder="Pick values"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
       searchable

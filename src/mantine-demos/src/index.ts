@@ -40,6 +40,7 @@ export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
 export * as MarkDemos from './demos/core/Mark';
 export * as ModalDemos from './demos/core/Modal';
+export * as MultiSelectDemos from './demos/core/MultiSelect';
 export * as NativeSelectDemos from './demos/core/NativeSelect';
 export * as OverlayDemos from './demos/core/Overlay';
 export * as PaperDemos from './demos/core/Paper';
