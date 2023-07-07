@@ -947,6 +947,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/tags-input.mdx',
   },
 
+  Select: {
+    title: 'Select',
+    package: '@mantine/core',
+    slug: '/core/select',
+    props: ['Select'],
+    styles: ['Select'],
+    description: 'Custom searchable select',
+    import: "import { Select } from '@mantine/core';",
+    source: 'mantine-core/src/components/Select/Select.tsx',
+    docs: 'core/select.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',

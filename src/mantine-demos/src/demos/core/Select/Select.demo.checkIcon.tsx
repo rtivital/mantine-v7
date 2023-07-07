@@ -12,7 +12,7 @@ function Demo() {
       {{props}}
       data={['React', 'Angular', 'Svelte', 'Vue']}
       dropdownOpened
-      py={150}
+      pb={150}
       label="Control check icon"
       placeholder="Pick value"
       defaultValue="React"
@@ -27,7 +27,7 @@ function Wrapper(props: any) {
       {...props}
       data={['React', 'Angular', 'Svelte', 'Vue']}
       dropdownOpened
-      py={150}
+      pb={150}
       label="Control check icon"
       placeholder="Pick value"
       defaultValue="React"

@@ -8,7 +8,7 @@ const getCode = (component: string) => `
 import { ${component} } from '@mantine/core';
 
 function Demo() {
-  return <${component} comboboxProps={{ withinPortal: true }} data={[]} />;
+  return <${component} comboboxProps={{ withinPortal: false }} data={[]} />;
 }
 `;
 
