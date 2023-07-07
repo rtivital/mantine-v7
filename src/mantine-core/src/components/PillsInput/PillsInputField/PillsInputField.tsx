@@ -9,7 +9,6 @@ import {
   useProps,
   useStyles,
   Factory,
-  MantineSize,
 } from '../../../core';
 import { useInputWrapperContext } from '../../Input';
 import { usePillsInputContext } from '../PillsInput.context';
@@ -23,15 +22,15 @@ export interface PillsInputFieldProps
     ElementProps<'input', 'type'> {
   /** Controls input styles when focused. If `auto` the input is hidden when not focused. If `visible` the input will always remain visible. `'visible'` by default  */
   type?: 'auto' | 'visible' | 'hidden';
+
+  /** If set, cursor is changed to pointer */
+  pointer?: boolean;
 }
 
 export type PillsInputFieldFactory = Factory<{
   props: PillsInputFieldProps;
   ref: HTMLInputElement;
   stylesNames: PillsInputFieldStylesNames;
-  ctx: {
-    size: MantineSize | (string & {});
-  };
 }>;
 
 const defaultProps: Partial<PillsInputFieldProps> = {
@@ -40,8 +39,19 @@ const defaultProps: Partial<PillsInputFieldProps> = {
 
 export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => {
   const props = useProps('PillsInputField', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, type, disabled, id, ...others } =
-    props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    type,
+    disabled,
+    id,
+    pointer,
+    ...others
+  } = props;
   const ctx = usePillsInputContext();
   const inputWrapperCtx = useInputWrapperContext();
 
@@ -64,7 +74,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
       ref={useMergedRef(ref, ctx?.fieldRef)}
       data-type={type}
       disabled={_disabled}
-      mod={{ disabled: _disabled }}
+      mod={{ disabled: _disabled, pointer }}
       {...getStyles('root')}
       {...others}
       id={inputWrapperCtx?.inputId || id}

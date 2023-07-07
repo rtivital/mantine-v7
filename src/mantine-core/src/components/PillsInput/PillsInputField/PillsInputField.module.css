@@ -36,6 +36,10 @@
     position: static;
   }
 
+  &[data-pointer]:not([data-disabled], :disabled) {
+    cursor: pointer;
+  }
+
   &[data-disabled],
   &:disabled {
     cursor: not-allowed;
