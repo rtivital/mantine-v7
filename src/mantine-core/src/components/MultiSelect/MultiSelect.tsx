@@ -85,6 +85,8 @@ export type MultiSelectFactory = Factory<{
 const defaultProps: Partial<MultiSelectProps> = {
   maxValues: Infinity,
   size: 'sm',
+  withCheckIcon: true,
+  checkIconPosition: 'left',
 };
 
 export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
@@ -197,7 +199,13 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     classNames,
   });
 
-  // const selectedOption = _value ? optionsLockup[_value] : undefined;
+  const handleInputKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(event);
+
+    if (event.key === 'Backspace' && _searchValue.length === 0 && _value.length > 0) {
+      setValue(_value.slice(0, _value.length - 1));
+    }
+  };
 
   const values = _value.map((item, index) => (
     <Pill
@@ -221,7 +229,13 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
         setSearchValue('');
-        _value.length < maxValues! && setValue([..._value, optionsLockup[val].value]);
+        combobox.updateSelectedOptionIndex('selected');
+
+        if (_value.includes(optionsLockup[val].value)) {
+          setValue(_value.filter((v) => v !== optionsLockup[val].value));
+        } else if (_value.length < maxValues!) {
+          setValue([..._value, optionsLockup[val].value]);
+        }
       }}
       {...comboboxProps}
     >
@@ -259,6 +273,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           multiline
           __stylesApiProps={{ ...props, multiline: true }}
           pointer={!searchable}
+          onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}
         >
           <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
             {values}
@@ -270,14 +285,20 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                 unstyled={unstyled}
                 onFocus={(event) => {
                   onFocus?.(event);
-                  combobox.openDropdown();
+                  searchable && combobox.openDropdown();
                 }}
                 onBlur={(event) => {
                   onBlur?.(event);
                   combobox.closeDropdown();
+                  searchable && combobox.closeDropdown();
+                  setSearchValue('');
                 }}
+                onKeyDown={handleInputKeydown}
                 value={_searchValue}
-                onChange={(event) => setSearchValue(event.currentTarget.value)}
+                onChange={(event) => {
+                  setSearchValue(event.currentTarget.value);
+                  searchable && combobox.openDropdown();
+                }}
                 disabled={disabled}
                 readOnly={readOnly || !searchable}
                 pointer={!searchable}

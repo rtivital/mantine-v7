@@ -35,3 +35,17 @@ export function Searchable() {
     </div>
   );
 }
+
+export function SearchableHidePicked() {
+  return (
+    <div style={{ padding: 40 }}>
+      <MultiSelect
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="MultiSelect something"
+        searchable
+        hidePickedOptions
+        nothingFoundMessage="Nothing found..."
+      />
+    </div>
+  );
+}
