@@ -42,6 +42,7 @@ export * from './Loader';
 export * from './Mark';
 export * from './Modal';
 export * from './ModalBase';
+export * from './MultiSelect';
 export * from './NativeSelect';
 export * from './Notification';
 export * from './Overlay';
