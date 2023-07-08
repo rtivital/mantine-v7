@@ -39,6 +39,13 @@
   --_right-section-right: rem(1px);
   --_right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
 
+  &[data-variant='unstyled'] {
+    --input-padding: 0;
+    --input-padding-y: 0;
+    --_input-padding-left: 0;
+    --_input-padding-right: 0;
+  }
+
   &[data-pointer] {
     --_input-cursor: pointer;
   }
@@ -46,11 +53,6 @@
   &[data-multiline] {
     --_input-size: auto;
     --_input-line-height: var(--mantine-line-height);
-  }
-
-  &[data-variant='unstyled'] {
-    --input-padding: 0;
-    --input-padding-y: 0;
   }
 
   &[data-with-left-section] {

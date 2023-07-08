@@ -112,3 +112,13 @@ export function CompoundComponents() {
     </div>
   );
 }
+
+export function UnstyledInput() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300, background: 'pink' }}>
+      <Input variant="unstyled" placeholder="Unstyled input" />
+      <Input variant="unstyled" placeholder="With right section" rightSection="$$" />
+      <Input variant="unstyled" placeholder="With left section" leftSection="$$" />
+    </div>
+  );
+}
