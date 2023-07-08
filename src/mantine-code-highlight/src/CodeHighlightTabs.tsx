@@ -37,7 +37,8 @@ export type CodeHighlightTabsStylesNames =
   | 'control'
   | 'header'
   | 'file'
-  | 'files';
+  | 'files'
+  | 'fileIcon';
 
 export type CodeHighlightTabsVariant = string;
 export type CodeHighlightTabsCssVariables = {
@@ -189,7 +190,12 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
       mod={{ active: index === value }}
       onClick={() => setValue(index)}
     >
-      <FileIcon fileIcon={node.icon} getFileIcon={getFileIcon} fileName={node.fileName} />
+      <FileIcon
+        fileIcon={node.icon}
+        getFileIcon={getFileIcon}
+        fileName={node.fileName}
+        {...getStyles('fileIcon')}
+      />
       <span>{node.fileName}</span>
     </UnstyledButton>
   ));

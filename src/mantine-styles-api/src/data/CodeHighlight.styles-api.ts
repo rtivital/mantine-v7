@@ -16,6 +16,7 @@ export const CodeHighlightTabsStylesApi: StylesApiData<CodeHighlightTabsFactory>
     control: 'Control button, copy/collapse, etc.',
     files: 'Files names list',
     file: 'File name',
+    fileIcon: 'File icon',
     showCodeButton: 'Button that reveals full code when it is collapsed',
   },
 
