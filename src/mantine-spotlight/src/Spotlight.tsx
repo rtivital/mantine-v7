@@ -9,8 +9,10 @@ import { SpotlightEmpty } from './SpotlightEmpty';
 import { SpotlightFooter } from './SpotlightFooter';
 import { SpotlightActionsGroup } from './SpotlightActionsGroup';
 import { SpotlightRoot, SpotlightRootProps, SpotlightRootStylesNames } from './SpotlightRoot';
-import classes from './Spotlight.module.css';
 import { defaultSpotlightFilter } from './default-spotlight-filter';
+import { isActionsGroup } from './is-actions-group';
+import { limitActions } from './limit-actions';
+import classes from './Spotlight.module.css';
 
 export type SpotlightFilterFunction = (
   query: string,
@@ -29,12 +31,6 @@ export interface SpotlightActionGroupData {
 
 export type SpotlightActions = SpotlightActionData | SpotlightActionGroupData;
 
-function isGroup(
-  item: SpotlightActionData | SpotlightActionGroupData
-): item is SpotlightActionGroupData {
-  return (item as SpotlightActionGroupData).group !== undefined;
-}
-
 export type SpotlightStylesNames = SpotlightRootStylesNames;
 
 export interface SpotlightProps extends SpotlightRootProps {
@@ -52,6 +48,9 @@ export interface SpotlightProps extends SpotlightRootProps {
 
   /** Determines whether search query should be highlighted in action label, `false` by default */
   highlightQuery?: boolean;
+
+  /** Maximum number of actions displayed at a time, `Infinity` by default */
+  limit?: number;
 }
 
 export type SpotlightFactory = Factory<{
@@ -75,6 +74,7 @@ export type SpotlightFactory = Factory<{
 const defaultProps: Partial<SpotlightProps> = {
   size: 600,
   yOffset: 80,
+  limit: Infinity,
   zIndex: getDefaultZIndex('max'),
   overlayProps: { backgroundOpacity: 0.35, blur: 7 },
   transitionProps: { duration: 200, transition: 'pop' },
@@ -96,6 +96,7 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     actions,
     nothingFound,
     highlightQuery,
+    limit,
     ...others
   } = props;
 
@@ -106,8 +107,8 @@ export const Spotlight = factory<SpotlightFactory>((_props, ref) => {
     onChange: onQueryChange,
   });
 
-  const filteredActions = filter!(_query, actions).map((item) => {
-    if (isGroup(item)) {
+  const filteredActions = limitActions(filter!(_query, actions), limit!).map((item) => {
+    if (isActionsGroup(item)) {
       const items = item.actions.map(({ id, ...actionData }) => (
         <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
       ));
