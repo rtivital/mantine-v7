@@ -8,6 +8,7 @@ import {
   GroupDemos,
   StylesDemos,
   FieldsetDemos,
+  ComboboxDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -352,6 +353,20 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 New [Fieldset](/core/fieldset) component:
 
 <Demo data={FieldsetDemos.usage} />
+
+## Combobox component
+
+New [Combobox](/core/combobox) component allows building custom select, autocomplete, tags input, multiselect and other
+similar components. It is used as a base for updated [Autocomplete](/core/autocomplete), [Select](/core/select),
+[TagsInput](/core/tags-input) and [MultiSelect](/core/multi-select) components.
+
+[Combobox](/core/combobox) is very flexible and allows you to have full control over the component rendering and logic.
+Advanced features that were previously implemented in [Autocomplete](/core/autocomplete), [Select](/core/select)
+and [MultiSelect](/core/multi-select) are now supposed to be implemented with [Combobox](/core/combobox) instead.
+
+You can find 50+ `Combobox` examples on [this page](/combobox)
+
+<Demo data={ComboboxDemos.select} />
 
 ## Other changes
 
