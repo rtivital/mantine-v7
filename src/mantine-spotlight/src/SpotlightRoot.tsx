@@ -181,6 +181,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
         transitionProps={{
           ...transitionProps,
           onExited: () => {
+            clearQueryOnClose && setQuery('');
             spotlightActions.clearSpotlightState({ clearQuery: clearQueryOnClose }, store!);
             transitionProps?.onExited?.();
           },

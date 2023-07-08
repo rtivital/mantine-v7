@@ -23,6 +23,8 @@ export function Search() {
       shortcut={['mod + K', 'mod + P', '/']}
       actions={actions}
       tagsToIgnore={[]}
+      highlightQuery
+      clearQueryOnClose
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} />,
         placeholder: 'Search documentation...',

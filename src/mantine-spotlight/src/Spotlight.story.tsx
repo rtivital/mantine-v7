@@ -40,6 +40,7 @@ export function Compound() {
         onQueryChange={setQuery}
         onSpotlightOpen={() => console.log('open')}
         onSpotlightClose={() => console.log('close')}
+        clearQueryOnClose
         // fullScreen
         // maxHeight="100vh"
       >
@@ -78,6 +79,7 @@ export function Default() {
           ...actionsData,
         ]}
         highlightQuery
+        clearQueryOnClose
         searchProps={{
           placeholder: 'Search actions',
           leftSection: <IconSearch stroke={1.5} size={20} />,
