@@ -14,7 +14,7 @@ export interface ComboboxExample {
   fullDescription?: string;
 
   /** Type based on which components are ordered in the navbar, also used for filtering */
-  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown' | 'button' | 'animations';
+  type: 'select' | 'autocomplete' | 'multiselect' | 'dropdown' | 'button' | 'animations' | 'other';
 }
 
 export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
@@ -269,5 +269,11 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     name: 'Creatable multiselect',
     description: 'Multiselect with option to create new options',
     type: 'multiselect',
+  },
+  {
+    id: 'SelectList',
+    name: 'Inline options list',
+    description: 'Inline list with checkboxes',
+    type: 'other',
   },
 ];
