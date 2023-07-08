@@ -23,15 +23,15 @@ import { useState } from 'react';
 import { TagsInput } from '@mantine/core';
 
 function Demo() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string[]>([]);
   return <TagsInput data={[]} value={value} onChange={setValue} />;
 }
 ```
 
 ## Max selected values
 
-You can limit number of selected values with `maxTags` prop, it will not allow to add more values
-once limit is reached.
+You can limit the number of selected values with `maxTags` prop. This will not allow adding more values
+once the limit is reached.
 
 <Demo data={TagsInputDemos.maxTags} />
 

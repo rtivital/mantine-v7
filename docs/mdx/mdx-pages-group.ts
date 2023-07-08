@@ -87,6 +87,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Autocomplete,
           MDX_DATA.TagsInput,
           MDX_DATA.Select,
+          MDX_DATA.MultiSelect,
         ],
       },
       {

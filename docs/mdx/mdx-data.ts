@@ -959,6 +959,18 @@ export const MDX_DATA: Record<string, Frontmatter> = {
     docs: 'core/select.mdx',
   },
 
+  MultiSelect: {
+    title: 'MultiSelect',
+    package: '@mantine/core',
+    slug: '/core/multi-select',
+    props: ['MultiSelect'],
+    styles: ['MultiSelect'],
+    description: 'Custom searchable multi select',
+    import: "import { MultiSelect } from '@mantine/core';",
+    source: 'mantine-core/src/components/MultiSelect/MultiSelect.tsx',
+    docs: 'core/multi-select.mdx',
+  },
+
   // ----------------------------------- Others --------------------------------------
   Notifications: {
     title: 'Notifications system',
