@@ -13,6 +13,10 @@ function parseItem(
     return { value: item, label: item };
   }
 
+  if (typeof item === 'number') {
+    return { value: (item as number).toString(), label: (item as number).toString() };
+  }
+
   if ('group' in item) {
     return {
       group: item.group,

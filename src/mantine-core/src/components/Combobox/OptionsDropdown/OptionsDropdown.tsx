@@ -6,6 +6,7 @@ import { ComboboxItem, ComboboxParsedItem } from '../Combobox.types';
 import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filter';
 import { isEmptyComboboxData } from './is-empty-combobox-data';
 import { isOptionsGroup } from './is-options-group';
+import { validateOptions } from './validate-options';
 import classes from './OptionsDropdown.module.css';
 
 export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
@@ -83,6 +84,8 @@ export function OptionsDropdown({
   checkIconPosition,
   nothingFoundMessage,
 }: OptionsDropdownProps) {
+  validateOptions(data);
+
   const shouldFilter = typeof search === 'string';
   const filteredData = shouldFilter
     ? (filter || defaultOptionsFilter)({
