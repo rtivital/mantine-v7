@@ -2,7 +2,7 @@
   "name": "@mantine/demos",
   "description": "Demos used in documentation",
   "private": true,
-  "version": "7.0.0-alpha.16",
+  "version": "7.0.0-alpha.17",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -27,11 +27,11 @@
     "react": "*",
     "clsx": "*",
     "react-imask": "*",
-    "@mantine/core": "7.0.0-alpha.16",
-    "@mantine/hooks": "7.0.0-alpha.16",
-    "@mantine/styles-api": "7.0.0-alpha.16",
-    "@mantine/ds": "7.0.0-alpha.16",
-    "@mantine/notifications": "7.0.0-alpha.16",
+    "@mantine/core": "7.0.0-alpha.17",
+    "@mantine/hooks": "7.0.0-alpha.17",
+    "@mantine/styles-api": "7.0.0-alpha.17",
+    "@mantine/ds": "7.0.0-alpha.17",
+    "@mantine/notifications": "7.0.0-alpha.17",
     "@tabler/icons-react": "*"
   },
   "dependencies": {
