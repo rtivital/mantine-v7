@@ -216,7 +216,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         valueRef.current = nextValue;
       }
     },
-    [disabled, min, max, step, precision]
+    [disabled, min, max, step, precision, setValue]
   );
 
   const { ref: container, active } = useMove(
