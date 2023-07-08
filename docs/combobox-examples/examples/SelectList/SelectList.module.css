@@ -5,6 +5,7 @@
   border-top: 0;
   border-bottom-left-radius: var(--mantine-radius-md);
   border-bottom-right-radius: var(--mantine-radius-md);
+  min-height: rem(190px);
 }
 
 .input {

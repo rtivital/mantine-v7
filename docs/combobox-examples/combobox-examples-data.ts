@@ -276,4 +276,10 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     description: 'Inline list with checkboxes',
     type: 'other',
   },
+  {
+    id: 'TransferList',
+    name: 'Transfer list',
+    description: 'Transfer list with search',
+    type: 'other',
+  },
 ];
