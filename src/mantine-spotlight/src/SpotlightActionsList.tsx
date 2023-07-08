@@ -48,6 +48,8 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props,
       {...ctx.getStyles('actionsList', { className, style, classNames, styles })}
       ref={ref}
       type="scroll"
+      scrollbarSize="var(--spotlight-actions-list-padding)"
+      offsetScrollbars="y"
       id={listId}
       {...others}
     >

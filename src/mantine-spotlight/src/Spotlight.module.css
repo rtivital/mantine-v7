@@ -16,10 +16,14 @@
 }
 
 .actionsList {
+  /* Used in child ScrollArea */
+  --spotlight-actions-list-padding: rem(4px);
+
   border-top: rem(1px) solid var(--_actions-list-border);
   flex: 1;
-  padding: rem(4px);
+  padding: var(--spotlight-actions-list-padding);
   max-height: calc(100% - rem(3.125rem));
+  margin-right: calc(var(--spotlight-actions-list-padding) * -1);
 
   @mixin light {
     --_actions-list-border: var(--mantine-color-gray-2);

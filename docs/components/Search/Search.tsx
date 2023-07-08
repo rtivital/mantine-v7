@@ -25,6 +25,7 @@ export function Search() {
       tagsToIgnore={[]}
       highlightQuery
       clearQueryOnClose
+      limit={20}
       nothingFound="Nothing found..."
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} />,
