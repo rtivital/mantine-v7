@@ -52,6 +52,48 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     ],
   },
   {
+    group: 'mantine-hooks',
+    pages: [
+      {
+        category: 'UI and Dom',
+        pages: [
+          MDX_DATA.useClickOutside,
+          MDX_DATA.useColorScheme,
+          MDX_DATA.useElementSize,
+          MDX_DATA.useEventListener,
+          MDX_DATA.useFocusReturn,
+          MDX_DATA.useFocusTrap,
+        ],
+      },
+
+      {
+        category: 'State management',
+        pages: [
+          MDX_DATA.useCounter,
+          MDX_DATA.useDebouncedState,
+          MDX_DATA.useDebouncedValue,
+          MDX_DATA.useDisclosure,
+        ],
+      },
+
+      {
+        category: 'Utilities',
+        pages: [
+          MDX_DATA.useClipboard,
+          MDX_DATA.useDocumentTitle,
+          MDX_DATA.useDocumentVisibility,
+          MDX_DATA.useEyeDropper,
+          MDX_DATA.useFavicon,
+        ],
+      },
+
+      {
+        category: 'Lifecycle',
+        pages: [MDX_DATA.useDidUpdate],
+      },
+    ],
+  },
+  {
     group: 'mantine-core',
     pages: [
       {

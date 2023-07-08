@@ -50,6 +50,7 @@ function Demo() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              zIndex: 1,
             }}
           >
             <span>Click outside to close</span>

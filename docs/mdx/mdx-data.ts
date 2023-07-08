@@ -5,6 +5,7 @@ import { MDX_STYLES_DATA } from './data/mdx-styles-data';
 import { MDX_GUIDES_DATA } from './data/mdx-guides-data';
 import { MDX_CORE_DATA } from './data/mdx-core-data';
 import { MDX_OTHERS_DATA } from './data/mdx-others-data';
+import { MDX_HOOKS_DATA } from './data/mdx-hooks-data';
 
 export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_META_DATA,
@@ -12,5 +13,6 @@ export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_STYLES_DATA,
   ...MDX_GUIDES_DATA,
   ...MDX_CORE_DATA,
+  ...MDX_HOOKS_DATA,
   ...MDX_OTHERS_DATA,
 };
