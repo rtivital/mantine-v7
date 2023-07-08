@@ -22,7 +22,7 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
   handlers?: useMoveHandlers,
   dir: 'ltr' | 'rtl' = 'ltr'
 ) {
-  const ref = useRef<T>();
+  const ref = useRef<T>(null);
   const mounted = useRef<boolean>(false);
   const isSliding = useRef(false);
   const frame = useRef(0);

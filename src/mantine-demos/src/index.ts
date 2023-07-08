@@ -67,3 +67,4 @@ export * as NotificationDemos from './demos/core/Notification';
 
 // Other demos
 export * as NotificationsDemos from './demos/notifications';
+export * as HooksDemos from './demos/hooks';
