@@ -21,3 +21,4 @@ export {
   getFontSize,
   getLineHeight,
 } from './get-size/get-size';
+export { createEventHandler } from './create-event-handler/create-event-handler';

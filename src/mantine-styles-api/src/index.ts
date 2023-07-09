@@ -39,6 +39,7 @@ export * from './data/NativeSelect.styles-api';
 export * from './data/Notification.styles-api';
 export * from './data/Notifications.styles-api';
 export * from './data/Overlay.styles-api';
+export * from './data/Pagination.styles-api';
 export * from './data/Paper.styles-api';
 export * from './data/Pill.styles-api';
 export * from './data/PillsInput.styles-api';

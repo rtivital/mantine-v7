@@ -46,6 +46,7 @@ export * from './MultiSelect';
 export * from './NativeSelect';
 export * from './Notification';
 export * from './Overlay';
+export * from './Pagination';
 export * from './Paper';
 export * from './Pill';
 export * from './PillsInput';
