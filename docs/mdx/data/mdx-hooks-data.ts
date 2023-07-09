@@ -99,4 +99,32 @@ export const MDX_HOOKS_DATA: Record<string, Frontmatter> = {
   usePageLeave: hDocs('usePageLeave', 'Calls given function when mouse leaves the page'),
   usePrevious: hDocs('usePrevious', 'Returns previous value of given state'),
   useQueue: hDocs('useQueue', 'Manages queue of values'),
+  useReducedMotion: hDocs('useReducedMotion', 'Detects if user prefers reduced motion'),
+  useResizeObserver: hDocs('useResizeObserver', 'Tracks element size and position changes'),
+  useScrollIntoView: hDocs('useScrollIntoView', 'Scrolls element into view'),
+  useSetState: hDocs('useSetState', 'Manages state with setState-like API'),
+
+  useShallowEffect: hDocs(
+    'useShallowEffect',
+    'useEffect drop in replacement with dependencies shallow comparison'
+  ),
+
+  useTextSelection: hDocs('useTextSelection', 'Returns current selected text on the page'),
+  useTimeout: hDocs('useTimeout', 'Calls function in given timeout'),
+  useToggle: hDocs('useToggle', 'Switch between given values'),
+
+  useUncontrolled: hDocs(
+    'useUncontrolled',
+    'Manage state of both controlled and uncontrolled components'
+  ),
+
+  useValidatedState: hDocs('useValidatedState', 'Manages state with validation'),
+  useViewportSize: hDocs('useViewportSize', 'Returns current viewport size'),
+
+  useWindowEvent: hDocs(
+    'useWindowEvent',
+    'Adds event listener to window on component mount and removes it on unmount'
+  ),
+
+  useWindowScroll: hDocs('useWindowScroll', 'Tracks window scroll position'),
 };
