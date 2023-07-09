@@ -1,164 +1,102 @@
 import { Frontmatter } from '@/types';
 
+function hDocs(hook: string, description: string): Frontmatter {
+  const name = hook.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+  return {
+    title: name,
+    package: '@mantine/hooks',
+    slug: `/hooks/${name}`,
+    description,
+    import: `import { ${hook} } from '@mantine/hooks';`,
+    source: `mantine-hooks/src/${name}/${name}.ts`,
+    docs: `hooks/${name}.mdx`,
+  };
+}
+
 export const MDX_HOOKS_DATA: Record<string, Frontmatter> = {
-  useClickOutside: {
-    title: 'use-click-outside',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-click-outside',
-    description: 'Detects click and touch events outside of given element',
-    import: "import { useClickOutside } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-click-outside/use-click-outside.ts',
-    docs: 'hooks/use-click-outside.mdx',
-  },
+  useClickOutside: hDocs(
+    'useClickOutside',
+    'Detects click and touch events outside of given element'
+  ),
 
-  useClipboard: {
-    title: 'use-clipboard',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-clipboard',
-    description: 'Wrapper around navigator.clipboard with feedback timeout',
-    import: "import { useClipboard } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-clipboard/use-clipboard.ts',
-    docs: 'hooks/use-clipboard.mdx',
-  },
+  useClipboard: hDocs('useClipboard', 'Wrapper around navigator.clipboard with feedback timeout'),
 
-  useColorScheme: {
-    title: 'use-color-scheme',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-color-scheme',
-    description: 'Detects user system color scheme with window.matchMedia API',
-    import: "import { useColorScheme } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-color-scheme/use-color-scheme.ts',
-    docs: 'hooks/use-color-scheme.mdx',
-  },
+  useColorScheme: hDocs(
+    'useColorScheme',
+    'Detects user system color scheme with window.matchMedia API'
+  ),
 
-  useCounter: {
-    title: 'use-counter',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-counter',
-    description: 'Increments/decrements state within given boundaries',
-    import: "import { useCounter } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-counter/use-counter.ts',
-    docs: 'hooks/use-counter.mdx',
-  },
+  useCounter: hDocs('useCounter', 'Increments/decrements state within given boundaries'),
+  useDebouncedState: hDocs('useDebouncedState', 'Debounces value changes'),
+  useDebouncedValue: hDocs('useDebouncedValue', 'Debounces value changes'),
 
-  useDebouncedState: {
-    title: 'use-debounced-state',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-debounced-state',
-    description: 'Debounces value changes',
-    import: "import { useDebouncedState } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-debounced-state/use-debounced-state.ts',
-    docs: 'hooks/use-debounced-state.mdx',
-  },
+  useDidUpdate: hDocs(
+    'useDidUpdate',
+    'Calls function in useEffect when value changes, but not when component mounts'
+  ),
 
-  useDebouncedValue: {
-    title: 'use-debounced-value',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-debounced-value',
-    description: 'Debounces value changes',
-    import: "import { useDebouncedValue } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-debounced-value/use-debounced-value.ts',
-    docs: 'hooks/use-debounced-value.mdx',
-  },
+  useDisclosure: hDocs('useDisclosure', 'Manages boolean state and provides controls to toggle it'),
+  useDocumentTitle: hDocs('useDocumentTitle', 'Sets document.title to given string'),
+  useDocumentVisibility: hDocs('useDocumentVisibility', 'Detects if current tab is active'),
 
-  useDidUpdate: {
-    title: 'use-did-update',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-did-update',
-    description: 'Calls function in useEffect when value changes, but not when component mounts',
-    import: "import { useDidUpdate } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-did-update/use-did-update.ts',
-    docs: 'hooks/use-did-update.mdx',
-  },
+  useElementSize: hDocs(
+    'useElementSize',
+    'Returns element width and height and subscribe to changes'
+  ),
 
-  useDisclosure: {
-    title: 'use-disclosure',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-disclosure',
-    description: 'Manages boolean state',
-    import: "import { useDisclosure } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-disclosure/use-disclosure.ts',
-    docs: 'hooks/use-disclosure.mdx',
-  },
+  useEventListener: hDocs('useEventListener', 'Subscribes to events with a ref'),
+  useEyeDropper: hDocs('useEyeDropper', 'Pick color from any pixel on the screen'),
+  useFavicon: hDocs('useFavicon', 'Changes favicon'),
 
-  useDocumentTitle: {
-    title: 'use-document-title',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-document-title',
-    description: 'Sets document.title to given string',
-    import: "import { useDocumentTitle } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-document-title/use-document-title.ts',
-    docs: 'hooks/use-document-title.mdx',
-  },
+  useFocusReturn: hDocs(
+    'useFocusReturn',
+    'Captures last focused element on the page and returns focus to it once the condition is met'
+  ),
 
-  useDocumentVisibility: {
-    title: 'use-document-visibility',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-document-visibility',
-    description: 'Detects if current tab is active',
-    import: "import { useDocumentVisibility } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-document-visibility/use-document-visibility.ts',
-    docs: 'hooks/use-document-visibility.mdx',
-  },
+  useFocusTrap: hDocs('useFocusTrap', 'Traps focus inside given node'),
+  useFocusWithin: hDocs('useFocusWithin', 'Detects if any element within other element has focus'),
+  useForceUpdate: hDocs('useForceUpdate', 'Force component to rerender without state change'),
+  useFullscreen: hDocs('useFullscreen', 'Enter/exit fullscreen mode'),
+  useHash: hDocs('useHash', 'Get and set hash value in url'),
 
-  useElementSize: {
-    title: 'use-element-size',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-element-size',
-    description: 'Returns element width and height and subscribe to changes',
-    import: "import { useElementSize } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-element-size/use-element-size.ts',
-    docs: 'hooks/use-element-size.mdx',
-  },
+  useHeadroom: hDocs(
+    'useHeadroom',
+    'Create headers that are hidden after user scrolls past given distance'
+  ),
 
-  useEventListener: {
-    title: 'use-event-listener',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-event-listener',
-    description: 'Subscribes to events with a ref',
-    import: "import { useEventListener } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-event-listener/use-event-listener.ts',
-    docs: 'hooks/use-event-listener.mdx',
-  },
+  useHotkeys: hDocs('useHotkeys', 'Listen for keys combinations on document element'),
+  useHover: hDocs('useHover', 'Detects if element is hovered'),
+  useId: hDocs('useId', 'Generates memoized random id'),
+  useIdle: hDocs('useIdle', 'Detects if user does nothing on page'),
+  useInputState: hDocs('useInputState', 'Manages input state'),
+  useIntersection: hDocs('useIntersection', 'Detects if element is visible in viewport'),
+  useInterval: hDocs('useInterval', 'Calls function in given interval'),
 
-  useEyeDropper: {
-    title: 'use-eye-dropper',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-eye-dropper',
-    description: 'Pick color from any pixel on the screen',
-    import: "import { useEyeDropper } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-eye-dropper/use-eye-dropper.ts',
-    docs: 'hooks/use-eye-dropper.mdx',
-  },
+  useIsomorphicEffect: hDocs(
+    'useIsomorphicEffect',
+    'useLayoutEffect that does not show warning when used in SSR'
+  ),
 
-  useFavicon: {
-    title: 'use-favicon',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-favicon',
-    description: 'Changes favicon',
-    import: "import { useFavicon } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-favicon/use-favicon.ts',
-    docs: 'hooks/use-favicon.mdx',
-  },
+  useListState: hDocs('useListState', 'Manages array state'),
 
-  useFocusReturn: {
-    title: 'use-focus-return',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-focus-return',
-    description:
-      'Captures last focused element on the page and returns focus to it once the condition is met',
-    import: "import { useFocusReturn } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-focus-return/use-focus-return.ts',
-    docs: 'hooks/use-focus-return.mdx',
-  },
+  useLocalStorage: hDocs(
+    'useLocalStorage',
+    'Use localStorage value as react state, sync state across opened tabs'
+  ),
 
-  useFocusTrap: {
-    title: 'use-focus-trap',
-    package: '@mantine/hooks',
-    slug: '/hooks/use-focus-trap',
-    description: 'Traps focus inside given node',
-    import: "import { useFocusTrap } from '@mantine/hooks';",
-    source: 'mantine-hooks/src/use-focus-trap/use-focus-trap.ts',
-    docs: 'hooks/use-focus-trap.mdx',
-  },
+  useLogger: hDocs('useLogger', 'Log given values to console when component renders'),
+  useMediaQuery: hDocs('useMediaQuery', 'Subscribes to media queries with window.matchMedia'),
+  useMergedRef: hDocs('useMergedRef', 'Merges multiple refs into one'),
+  useMouse: hDocs('useMouse', 'Tracks mouse position over the viewport or given element'),
+
+  useMove: hDocs(
+    'useMove',
+    'Handles move behavior over any element, use to build custom sliders, color pickers, etc.'
+  ),
+
+  useNetwork: hDocs('useNetwork', 'Returns current connection status'),
+  useOs: hDocs('useOs', 'Detects user operating system'),
+  usePageLeave: hDocs('usePageLeave', 'Calls given function when mouse leaves the page'),
+  usePrevious: hDocs('usePrevious', 'Returns previous value of given state'),
+  useQueue: hDocs('useQueue', 'Manages queue of values'),
 };
