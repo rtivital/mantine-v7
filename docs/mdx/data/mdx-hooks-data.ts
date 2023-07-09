@@ -127,4 +127,5 @@ export const MDX_HOOKS_DATA: Record<string, Frontmatter> = {
   ),
 
   useWindowScroll: hDocs('useWindowScroll', 'Tracks window scroll position'),
+  usePagination: hDocs('usePagination', 'Manages pagination state'),
 };
