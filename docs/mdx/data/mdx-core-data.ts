@@ -712,4 +712,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/MultiSelect/MultiSelect.tsx',
     docs: 'core/multi-select.mdx',
   },
+
+  Pagination: {
+    title: 'Pagination',
+    package: '@mantine/core',
+    slug: '/core/pagination',
+    props: ['Pagination'],
+    styles: ['Pagination'],
+    description: 'Display active page and navigate between multiple pages',
+    import: "import { Pagination } from '@mantine/core';",
+    source: 'mantine-core/src/components/Pagination/Pagination.tsx',
+    docs: 'core/pagination.mdx',
+  },
 };

@@ -185,7 +185,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       {
         category: 'navigation',
-        pages: [MDX_DATA.Anchor, MDX_DATA.Tabs, MDX_DATA.Breadcrumbs, MDX_DATA.Burger],
+        pages: [
+          MDX_DATA.Anchor,
+          MDX_DATA.Tabs,
+          MDX_DATA.Breadcrumbs,
+          MDX_DATA.Burger,
+          MDX_DATA.Pagination,
+        ],
       },
       { category: 'feedback', pages: [MDX_DATA.Loader, MDX_DATA.Alert, MDX_DATA.Notification] },
       {

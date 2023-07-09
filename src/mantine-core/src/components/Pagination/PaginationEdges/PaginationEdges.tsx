@@ -38,7 +38,12 @@ export function createEdgeComponent({ icon, name, action, type }: CreateEdgeComp
         withPadding={false}
         {...others}
       >
-        <Icon />
+        <Icon
+          style={{
+            width: 'calc(var(--pagination-control-size) / 1.8)',
+            height: 'calc(var(--pagination-control-size) / 1.8)',
+          }}
+        />
       </PaginationControl>
     );
   });

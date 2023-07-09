@@ -41,7 +41,12 @@ export const PaginationDots = factory<PaginationDotsFactory>((_props, ref) => {
 
   return (
     <Box ref={ref} {...ctx.getStyles('dots', { className, style, styles, classNames })} {...others}>
-      <Icon />
+      <Icon
+        style={{
+          width: 'calc(var(--pagination-control-size) / 1.8)',
+          height: 'calc(var(--pagination-control-size) / 1.8)',
+        }}
+      />
     </Box>
   );
 });
