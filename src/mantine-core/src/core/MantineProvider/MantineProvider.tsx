@@ -1,6 +1,4 @@
-import './styles/css-reset.css';
-import './styles/global-styles.css';
-import './styles/default-css-variables.css';
+import './global.css';
 import React from 'react';
 import { suppressNextjsWarning } from './suppress-nextjs-warning';
 import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';

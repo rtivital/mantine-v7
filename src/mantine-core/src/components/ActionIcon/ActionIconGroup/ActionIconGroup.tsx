@@ -10,12 +10,12 @@ import {
   createVarsResolver,
   Factory,
 } from '../../../core';
-import classes from './ActionIconGroup.module.css';
+import classes from '../ActionIcon.module.css';
 
-export type ActionIconGroupStylesNames = 'root';
+export type ActionIconGroupStylesNames = 'group';
 export type ActionIconGroupVariant = string;
 export type ActionIconGroupCssVariables = {
-  root: '--ai-border-width';
+  group: '--ai-border-width';
 };
 
 export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIconGroupFactory> {
@@ -43,7 +43,7 @@ const defaultProps: Partial<ActionIconGroupProps> = {
 };
 
 const varsResolver = createVarsResolver<ActionIconGroupFactory>((_, { borderWidth }) => ({
-  root: { '--ai-border-width': rem(borderWidth) },
+  group: { '--ai-border-width': rem(borderWidth) },
 }));
 
 export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => {
@@ -72,11 +72,12 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'group',
   });
 
   return (
     <Box
-      {...getStyles('root')}
+      {...getStyles('group')}
       ref={ref}
       variant={variant}
       mod={{ 'data-orientation': orientation }}

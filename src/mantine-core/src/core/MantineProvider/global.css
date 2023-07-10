@@ -1,4 +1,90 @@
+/* ----- CSS reset ----- */
+html,
+body {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+/* ----- Global styles ----- */
+body {
+  margin: 0;
+  font-family: var(--mantine-font-family);
+  font-size: var(--mantine-font-size-md);
+  line-height: var(--mantine-line-height);
+  background-color: var(--mantine-color-body);
+  color: var(--mantine-color-text);
+
+  -webkit-font-smoothing: var(--mantine-webkit-font-smoothing);
+  -moz-osx-font-smoothing: var(--mantine-moz-font-smoothing);
+
+  @media screen and (max-device-width: 500px) {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+[data-respect-reduced-motion] {
+  @media (prefers-reduced-motion: reduce) {
+    [data-reduce-motion] {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+.mantine-focus-auto {
+  &:focus-visible {
+    outline: rem(2px) solid var(--mantine-color-primary);
+    outline-offset: rem(2px);
+  }
+}
+
+.mantine-focus-always {
+  &:focus {
+    outline: rem(2px) solid var(--mantine-color-primary);
+    outline-offset: rem(2px);
+  }
+}
+
+.mantine-focus-never {
+  &:focus {
+    outline: none;
+  }
+}
+
+.mantine-active {
+  &:active {
+    transform: translateY(rem(1px));
+  }
+}
+
+.mantine-rotate-rtl {
+  @mixin rtl {
+    transform: rotate(180deg);
+  }
+}
+
+/* ----- Default CSS variables ----- */
+
 :root {
+  color-scheme: var(--mantine-color-scheme);
+
   --mantine-scale: 1;
   --mantine-cursor-type: default;
   --mantine-webkit-font-smoothing: antialiased;

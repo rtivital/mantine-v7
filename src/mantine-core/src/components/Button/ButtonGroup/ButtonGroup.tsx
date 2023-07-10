@@ -10,12 +10,12 @@ import {
   createVarsResolver,
   Factory,
 } from '../../../core';
-import classes from './ButtonGroup.module.css';
+import classes from '../Button.module.css';
 
-export type ButtonGroupStylesNames = 'root';
+export type ButtonGroupStylesNames = 'group';
 export type ButtonGroupVariant = string;
 export type ButtonGroupCssVariables = {
-  root: '--button-border-width';
+  group: '--button-border-width';
 };
 
 export interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFactory> {
@@ -43,7 +43,7 @@ const defaultProps: Partial<ButtonGroupProps> = {
 };
 
 const varsResolver = createVarsResolver<ButtonGroupFactory>((_, { borderWidth }) => ({
-  root: { '--button-border-width': rem(borderWidth) },
+  group: { '--button-border-width': rem(borderWidth) },
 }));
 
 export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
@@ -72,11 +72,12 @@ export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'group',
   });
 
   return (
     <Box
-      {...getStyles('root')}
+      {...getStyles('group')}
       ref={ref}
       variant={variant}
       mod={{ 'data-orientation': orientation }}

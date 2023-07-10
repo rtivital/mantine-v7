@@ -12,11 +12,11 @@ import {
   StylesApiProps,
   useStyles,
 } from '../../../core';
-import classes from './ComboboxChevron.module.css';
+import classes from '../Combobox.module.css';
 
-export type ComboboxChevronStylesNames = 'root';
+export type ComboboxChevronStylesNames = 'chevron';
 export type ComboboxChevronCSSVariables = {
-  root: '--combobox-chevron-size';
+  chevron: '--combobox-chevron-size';
 };
 
 export interface ComboboxChevronProps
@@ -40,7 +40,7 @@ const defaultProps: Partial<ComboboxChevronProps> = {
 };
 
 const varsResolver = createVarsResolver<ComboboxChevronFactory>((_, { size }) => ({
-  root: {
+  chevron: {
     '--combobox-chevron-size': getSize(size, 'combobox-chevron-size'),
   },
 }));
@@ -60,13 +60,14 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>((_props, ref) => 
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'chevron',
   });
 
   return (
     <Box
       component="svg"
       {...others}
-      {...getStyles('root')}
+      {...getStyles('chevron')}
       size={size}
       viewBox="0 0 15 15"
       fill="none"

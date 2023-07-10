@@ -224,3 +224,46 @@
     --_section-border-radius: var(--_left-section-border-radius);
   }
 }
+
+/* ----- Input.Placeholder ----- */
+.placeholder {
+  color: var(--mantine-color-placeholder);
+}
+
+/* ----- Input.Wrapper ----- */
+.root {
+  line-height: var(--mantine-line-height);
+}
+
+.label {
+  display: inline-block;
+  font-weight: 500;
+  word-break: break-word;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+
+  font-size: var(--input-label-size);
+}
+
+.required {
+  color: var(--input-asterisk-color);
+}
+
+.error,
+.description {
+  word-wrap: break-word;
+  line-height: 1.2;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.error {
+  color: var(--mantine-color-error);
+  font-size: var(--input-error-size);
+}
+
+.description {
+  color: var(--mantine-color-dimmed);
+  font-size: var(--input-description-size);
+}

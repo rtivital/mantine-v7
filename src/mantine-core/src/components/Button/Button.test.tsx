@@ -59,11 +59,6 @@ describe('@mantine/core/Button', () => {
     expect(container.querySelector('[data-disabled]')).not.toBeInTheDocument();
   });
 
-  it('has data-button attribute', () => {
-    const { container } = render(<Button />);
-    expect(container.querySelector('[data-button]')).toBeInTheDocument();
-  });
-
   it('sets disabled attribute when disabled prop is set to true', () => {
     const { container, rerender } = render(<Button disabled />);
     expect(container.querySelector('button')).toHaveAttribute('disabled');

@@ -47,10 +47,6 @@ describe('@mantine/core/ActionIcon', () => {
     rerender(<ActionIcon disabled={false} />);
     expect(container.querySelector('[data-disabled]')).not.toBeInTheDocument();
   });
-  it('has data-action-icon attribute', () => {
-    const { container } = render(<ActionIcon />);
-    expect(container.querySelector('[data-action-icon]')).toBeInTheDocument();
-  });
 
   it('sets disabled attribute when disabled prop is set to true', () => {
     const { container, rerender } = render(<ActionIcon disabled />);

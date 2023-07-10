@@ -31,7 +31,7 @@ import {
 } from '../InputError/InputError';
 import { InputWrapperProvider } from '../InputWrapper.context';
 import { getInputOffsets } from './get-input-offsets/get-input-offsets';
-import classes from './InputWrapper.module.css';
+import classes from '../Input.module.css';
 
 export type InputWrapperCssVariables = InputLabelCssVariables &
   InputErrorCssVariables &

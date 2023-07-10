@@ -50,7 +50,7 @@ export function Usage() {
 export function WithinInput() {
   return (
     <div style={{ padding: 40 }}>
-      <Input size="xs" component="div">
+      <Input size="xs" component="div" multiline>
         <Pill.Group size="xs">
           <Pill withRemoveButton size="xs">
             First
@@ -64,7 +64,7 @@ export function WithinInput() {
         </Pill.Group>
       </Input>
 
-      <Input size="sm" component="div" mt="xl">
+      <Input size="sm" component="div" mt="xl" multiline>
         <Pill.Group size="sm">
           <Pill withRemoveButton size="sm">
             First
@@ -78,7 +78,7 @@ export function WithinInput() {
         </Pill.Group>
       </Input>
 
-      <Input size="md" component="div" mt="xl">
+      <Input size="md" component="div" mt="xl" multiline>
         <Pill.Group size="md">
           <Pill withRemoveButton size="md">
             First
@@ -92,7 +92,7 @@ export function WithinInput() {
         </Pill.Group>
       </Input>
 
-      <Input size="lg" component="div" mt="xl">
+      <Input size="lg" component="div" mt="xl" multiline>
         <Pill.Group size="lg">
           <Pill withRemoveButton size="lg">
             First
@@ -106,7 +106,7 @@ export function WithinInput() {
         </Pill.Group>
       </Input>
 
-      <Input size="xl" component="div" mt="xl">
+      <Input size="xl" component="div" mt="xl" multiline>
         <Pill.Group size="xl">
           <Pill withRemoveButton size="xl">
             First
@@ -161,7 +161,7 @@ export function InputWithOverflow() {
 export function WithoutRemove() {
   return (
     <div style={{ padding: 40 }}>
-      <Input size="xs" component="div">
+      <Input size="xs" component="div" multiline>
         <Pill.Group size="xs">
           <Pill size="xs">First</Pill>
           <Pill size="xs">Second</Pill>
@@ -169,7 +169,7 @@ export function WithoutRemove() {
         </Pill.Group>
       </Input>
 
-      <Input size="sm" component="div" mt="xl">
+      <Input size="sm" component="div" mt="xl" multiline>
         <Pill.Group size="sm">
           <Pill size="sm">First</Pill>
           <Pill size="sm">Second</Pill>
@@ -177,7 +177,7 @@ export function WithoutRemove() {
         </Pill.Group>
       </Input>
 
-      <Input size="md" component="div" mt="xl">
+      <Input size="md" component="div" mt="xl" multiline>
         <Pill.Group size="md">
           <Pill size="md">First</Pill>
           <Pill size="md">Second</Pill>
@@ -185,7 +185,7 @@ export function WithoutRemove() {
         </Pill.Group>
       </Input>
 
-      <Input size="lg" component="div" mt="xl">
+      <Input size="lg" component="div" mt="xl" multiline>
         <Pill.Group size="lg">
           <Pill size="lg">First</Pill>
           <Pill size="lg">Second</Pill>
@@ -193,7 +193,7 @@ export function WithoutRemove() {
         </Pill.Group>
       </Input>
 
-      <Input size="xl" component="div" mt="xl">
+      <Input size="xl" component="div" mt="xl" multiline>
         <Pill.Group size="xl">
           <Pill size="xl">First</Pill>
           <Pill size="xl">Second</Pill>

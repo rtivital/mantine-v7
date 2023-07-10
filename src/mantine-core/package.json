@@ -9,7 +9,8 @@
       "require": "./cjs/index.js",
       "types": "./lib/index.d.ts"
     },
-    "./styles.css": "./esm/index.css"
+    "./styles.css": "./esm/index.css",
+    "./styles/*": "./esm/styles/*"
   },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",

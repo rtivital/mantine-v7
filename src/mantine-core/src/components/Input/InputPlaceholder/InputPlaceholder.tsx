@@ -9,7 +9,7 @@ import {
   useStyles,
   Factory,
 } from '../../../core';
-import classes from './InputPlaceholder.module.css';
+import classes from '../Input.module.css';
 
 export type InputPlaceholderStylesNames = 'placeholder';
 export type InputPlaceholderVariant = string;

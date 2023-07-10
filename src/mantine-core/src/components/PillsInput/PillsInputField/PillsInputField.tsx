@@ -12,9 +12,9 @@ import {
 } from '../../../core';
 import { useInputWrapperContext } from '../../Input';
 import { usePillsInputContext } from '../PillsInput.context';
-import classes from './PillsInputField.module.css';
+import classes from '../PillsInput.module.css';
 
-export type PillsInputFieldStylesNames = 'root';
+export type PillsInputFieldStylesNames = 'field';
 
 export interface PillsInputFieldProps
   extends BoxProps,
@@ -64,6 +64,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
     classNames,
     styles,
     unstyled,
+    rootSelector: 'field',
   });
 
   const _disabled = disabled || ctx?.disabled;
@@ -75,7 +76,7 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
       data-type={type}
       disabled={_disabled}
       mod={{ disabled: _disabled, pointer }}
-      {...getStyles('root')}
+      {...getStyles('field')}
       {...others}
       id={inputWrapperCtx?.inputId || id}
       aria-invalid={ctx?.hasError}

@@ -14,11 +14,11 @@ import {
 } from '../../../core';
 import { PillGroupProvider } from '../PillGroup.context';
 import { usePillsInputContext } from '../../PillsInput/PillsInput.context';
-import classes from './PillGroup.module.css';
+import classes from '../Pill.module.css';
 
-export type PillGroupStylesNames = 'root';
+export type PillGroupStylesNames = 'group';
 export type PillGroupCssVariables = {
-  root: '--pg-gap';
+  group: '--pg-gap';
 };
 
 export interface PillGroupProps
@@ -46,7 +46,7 @@ export type PillGroupFactory = Factory<{
 const defaultProps: Partial<PillGroupProps> = {};
 
 const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap }, { size }) => ({
-  root: {
+  group: {
     '--pg-gap': typeof gap !== 'undefined' ? getSize(gap) : getSize(size, 'pg-gap'),
   },
 }));
@@ -69,11 +69,12 @@ export const PillGroup = factory<PillGroupFactory>((_props, ref) => {
     vars,
     varsResolver,
     stylesCtx: { size: _size },
+    rootSelector: 'group',
   });
 
   return (
     <PillGroupProvider value={{ size: _size, disabled }}>
-      <Box ref={ref} size={_size} {...getStyles('root')} {...others} />
+      <Box ref={ref} size={_size} {...getStyles('group')} {...others} />
     </PillGroupProvider>
   );
 });

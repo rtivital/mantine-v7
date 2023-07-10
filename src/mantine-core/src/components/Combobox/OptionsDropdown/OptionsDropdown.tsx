@@ -7,7 +7,7 @@ import { defaultOptionsFilter, FilterOptionsInput } from './default-options-filt
 import { isEmptyComboboxData } from './is-empty-combobox-data';
 import { isOptionsGroup } from './is-options-group';
 import { validateOptions } from './validate-options';
-import classes from './OptionsDropdown.module.css';
+import classes from '../Combobox.module.css';
 
 export type OptionsFilter = (input: FilterOptionsInput) => ComboboxParsedItem[];
 
@@ -32,13 +32,13 @@ function isValueChecked(value: string | string[] | undefined | null, optionValue
 function Option({ data, withCheckIcon, value, checkIconPosition }: OptionProps) {
   if (!isOptionsGroup(data)) {
     const check = withCheckIcon && isValueChecked(value, data.value) && (
-      <CheckIcon className={classes.checkIcon} />
+      <CheckIcon className={classes.optionsDropdownCheckIcon} />
     );
     return (
       <Combobox.Option
         value={data.value}
         disabled={data.disabled}
-        className={classes.option}
+        className={classes.optionsDropdownOption}
         data-reverse={checkIconPosition === 'right' || undefined}
         data-checked={isValueChecked(value, data.value) || undefined}
       >
@@ -115,7 +115,7 @@ export function OptionsDropdown({
             type="scroll"
             scrollbarSize="var(--combobox-padding)"
             offsetScrollbars="y"
-            className={classes.scrollArea}
+            className={classes.optionsDropdownScrollArea}
           >
             {options}
           </ScrollArea.Autosize>

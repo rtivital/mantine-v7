@@ -153,3 +153,59 @@
     display: none;
   }
 }
+
+/* ------- Combobox.Chevron ------- */
+.chevron {
+  --combobox-chevron-size-xs: rem(14px);
+  --combobox-chevron-size-sm: rem(18px);
+  --combobox-chevron-size-md: rem(20px);
+  --combobox-chevron-size-lg: rem(24px);
+  --combobox-chevron-size-xl: rem(28px);
+
+  width: var(--combobox-chevron-size);
+  height: var(--combobox-chevron-size);
+  color: var(--_color);
+
+  @mixin light {
+    --_color: var(--mantine-color-gray-6);
+  }
+
+  @mixin dark {
+    --_color: var(--mantine-color-dark-3);
+  }
+
+  &[data-error] {
+    --_color: var(--mantine-color-error);
+  }
+}
+
+/* ------- OptionsDropdown ------- */
+.optionsDropdownScrollArea {
+  margin-right: calc(var(--combobox-padding) * -1);
+
+  @mixin rtl {
+    margin-left: calc(var(--combobox-padding) * -1);
+    margin-right: 0;
+  }
+}
+
+.optionsDropdownOption {
+  display: flex;
+  align-items: center;
+  flex-direction: var(--_flex-direction, row);
+  gap: rem(8px);
+
+  &[data-reverse] {
+    justify-content: space-between;
+  }
+}
+
+.optionsDropdownCheckIcon {
+  opacity: 0.4;
+  width: 0.8em;
+  height: 0.8em;
+
+  [data-combobox-selected] & {
+    opacity: 1;
+  }
+}

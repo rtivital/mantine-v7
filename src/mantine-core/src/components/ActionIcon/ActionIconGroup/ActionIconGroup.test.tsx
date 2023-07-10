@@ -20,7 +20,7 @@ describe('@mantine/core/ActionIconGroup', () => {
     classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/ActionIconGroup',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['group'],
   });
 
   it('adds data-orientation attribute to root element based on orientation prop', () => {

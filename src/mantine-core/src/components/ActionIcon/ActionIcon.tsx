@@ -147,7 +147,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
       size={size}
       disabled={disabled || loading}
       ref={ref}
-      mod={['action-icon', { loading, disabled: disabled || dataDisabled }]}
+      mod={{ loading, disabled: disabled || dataDisabled }}
     >
       {loading ? (
         <Loader

@@ -13,7 +13,7 @@ import {
   Factory,
 } from '../../../core';
 import { useInputWrapperContext } from '../InputWrapper.context';
-import classes from '../InputWrapper/InputWrapper.module.css';
+import classes from '../Input.module.css';
 
 export type InputLabelStylesNames = 'label' | 'required';
 export type InputLabelVariant = string;

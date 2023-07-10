@@ -59,3 +59,13 @@
     height: 70%;
   }
 }
+
+.group {
+  display: flex;
+  padding-left: var(--ag-spacing);
+
+  @mixin rtl {
+    padding-left: 0;
+    padding-right: var(--ag-spacing);
+  }
+}
