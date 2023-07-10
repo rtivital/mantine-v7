@@ -13,6 +13,7 @@ import postcss from 'rollup-plugin-postcss';
 import banner from 'rollup-plugin-banner2';
 import esbuild from 'rollup-plugin-esbuild';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
+import { generateScopedName } from './hash-css-name';
 
 interface PkgConfigInput {
   basePath: string;
@@ -49,9 +50,7 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     replace({ preventAssignment: true }),
     postcss({
       extract: true,
-      modules: {
-        generateScopedName: 'mantine-[hash:base64:7]',
-      },
+      modules: { generateScopedName },
     }),
     banner((chunk) => {
       if (chunk.fileName === 'index.js') {
