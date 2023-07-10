@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import { Group } from '../Group';
+import { Button } from '../Button';
 import { Pagination } from './Pagination';
 
 export default { title: 'Pagination' };
+
+export function DynamicTotal() {
+  const [total, setTotal] = useState(20);
+  return (
+    <div style={{ padding: 40 }}>
+      <Pagination total={total} mb="xl" />
+      <Group>
+        <Button onClick={() => setTotal(30)}>Set 30</Button>
+        <Button onClick={() => setTotal(10)}>Set 10</Button>
+      </Group>
+    </div>
+  );
+}
 
 export function Controlled() {
   const [value, setValue] = useState(1);
