@@ -258,7 +258,9 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
 export const ALL_MDX_PAGES: Frontmatter[] = MDX_PAGES_GROUPS.reduce<Frontmatter[]>((acc, group) => {
   group.pages.forEach((item) => {
     if (item.category) {
-      acc.push(...(item as MdxPagesCategory).pages);
+      const categoryPages = [...(item as MdxPagesCategory).pages];
+      categoryPages.sort((a, b) => a.title.localeCompare(b.title));
+      acc.push(...categoryPages);
     } else {
       acc.push(item as Frontmatter);
     }
