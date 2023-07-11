@@ -34,7 +34,13 @@ export const MDX_STYLES_DATA: Record<string, Frontmatter> = {
   CSSVariablesList: {
     title: 'CSS variables list',
     slug: '/styles/css-variables-list',
-    search: 'List of all default CSS variables',
+    hideSiblings: true,
+  },
+
+  CSSFilesList: {
+    title: 'CSS files list',
+    slug: '/styles/css-files-list',
+    hideSiblings: true,
   },
 
   Rem: {

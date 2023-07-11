@@ -77,6 +77,18 @@ import '@mantine/core/styles.css';
 
 By adding this import, you will have all styles of `@mantine/core` components in your application.
 
+## Import styles per component
+
+If you want to reduce CSS bundle size, you can import styles per component. Note that some components
+have dependencies, for example, [Button](/components/button) component uses [UnstyledButton](/components/unstyled-button)
+component internally, so you need to import styles for both components. You can find a full list of
+exported styles from `@mantine/core` package and additional instructions on [this page](/styles/css-files-list).
+
+```tsx
+import '@mantine/core/styles/UnstyledButton.css';
+import '@mantine/core/styles/Button.css';
+```
+
 ## Adding styles to Mantine components
 
 You can add styles to most of Mantine components using `className` prop
