@@ -11,6 +11,7 @@
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prepare": "npm run docs:docgen && npm run generate-css && cd docs && yarn",
     "cmb": "esno scripts/generate-combobox-code",
     "dev": "cd dev && npm run dev",
     "demos": "esno scripts/demo-import",
