@@ -12,5 +12,4 @@ export type {
   AvatarGroupFactory,
   AvatarGroupProps,
   AvatarGroupStylesNames,
-  AvatarGroupVariant,
 } from './AvatarGroup/AvatarGroup';

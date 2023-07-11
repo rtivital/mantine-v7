@@ -19,12 +19,7 @@ import {
   useStyles,
 } from '../../../core';
 import { TransitionOverride } from '../../Transition';
-import {
-  SliderStylesNames,
-  SliderProvider,
-  SliderCssVariables,
-  SliderVariant,
-} from '../Slider.context';
+import { SliderStylesNames, SliderProvider, SliderCssVariables } from '../Slider.context';
 import { SliderRoot } from '../SliderRoot/SliderRoot';
 import { Track } from '../Track/Track';
 import { Thumb } from '../Thumb/Thumb';
@@ -123,7 +118,6 @@ export type RangeSliderFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
-  variant: SliderVariant;
 }>;
 
 const varsResolver = createVarsResolver<RangeSliderFactory>(

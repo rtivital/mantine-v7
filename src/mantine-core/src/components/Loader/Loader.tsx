@@ -20,7 +20,6 @@ import type { MantineLoader, MantineLoadersRecord } from './Loader.types';
 import classes from './Loader.module.css';
 
 export type LoaderStylesNames = 'root';
-export type LoaderVariant = string;
 export type LoaderCssVariables = {
   root: '--loader-size' | '--loader-color';
 };

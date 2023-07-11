@@ -16,7 +16,6 @@ import { useInputWrapperContext } from '../InputWrapper.context';
 import classes from '../Input.module.css';
 
 export type InputLabelStylesNames = 'label' | 'required';
-export type InputLabelVariant = string;
 export type InputLabelCssVariables = {
   label: '--input-asterisk-color' | '--input-label-size';
 };
@@ -42,7 +41,6 @@ export type InputLabelFactory = Factory<{
   ref: HTMLLabelElement;
   stylesNames: InputLabelStylesNames;
   vars: InputLabelCssVariables;
-  variant: InputLabelVariant;
 }>;
 
 const defaultProps: Partial<InputLabelProps> = {

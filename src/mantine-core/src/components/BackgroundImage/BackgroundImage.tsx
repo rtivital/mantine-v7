@@ -14,7 +14,6 @@ import {
 import classes from './BackgroundImage.module.css';
 
 export type BackgroundImageStylesNames = 'root';
-export type BackgroundImageVariant = string;
 export type BackgroundImageCssVariables = {
   root: '--bi-radius';
 };
@@ -31,7 +30,6 @@ export type BackgroundImageFactory = PolymorphicFactory<{
   props: BackgroundImageProps;
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
-  variant: BackgroundImageVariant;
   stylesNames: BackgroundImageStylesNames;
   vars: BackgroundImageCssVariables;
 }>;

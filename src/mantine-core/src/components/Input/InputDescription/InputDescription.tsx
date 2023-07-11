@@ -17,7 +17,6 @@ import { useInputWrapperContext } from '../InputWrapper.context';
 import classes from '../Input.module.css';
 
 export type InputDescriptionStylesNames = 'description';
-export type InputDescriptionVariant = string;
 export type InputDescriptionCssVariables = {
   description: '--input-description-size';
 };
@@ -37,7 +36,6 @@ export type InputDescriptionFactory = Factory<{
   ref: HTMLParagraphElement;
   stylesNames: InputDescriptionStylesNames;
   vars: InputDescriptionCssVariables;
-  variant: InputDescriptionVariant;
 }>;
 
 const defaultProps: Partial<InputDescriptionProps> = {

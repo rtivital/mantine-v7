@@ -4,5 +4,4 @@ export type {
   OverlayFactory,
   OverlayProps,
   OverlayStylesNames,
-  OverlayVariant,
 } from './Overlay';

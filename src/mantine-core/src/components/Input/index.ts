@@ -27,25 +27,21 @@ export type {
   InputDescriptionFactory,
   InputDescriptionProps,
   InputDescriptionStylesNames,
-  InputDescriptionVariant,
 } from './InputDescription/InputDescription';
 export type {
   InputErrorCssVariables,
   InputErrorFactory,
   InputErrorProps,
   InputErrorStylesNames,
-  InputErrorVariant,
 } from './InputError/InputError';
 export type {
   InputLabelCssVariables,
   InputLabelFactory,
   InputLabelProps,
   InputLabelStylesNames,
-  InputLabelVariant,
 } from './InputLabel/InputLabel';
 export type {
   InputPlaceholderFactory,
   InputPlaceholderProps,
   InputPlaceholderStylesNames,
-  InputPlaceholderVariant,
 } from './InputPlaceholder/InputPlaceholder';

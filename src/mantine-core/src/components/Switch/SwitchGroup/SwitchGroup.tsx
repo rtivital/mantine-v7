@@ -5,7 +5,6 @@ import { InputWrapperStylesNames, Input, InputWrapperProps } from '../../Input';
 import { SwitchGroupProvider } from '../SwitchGroup.context';
 
 export type SwitchGroupStylesNames = InputWrapperStylesNames;
-export type SwitchGroupVariant = string;
 
 export interface SwitchGroupProps extends Omit<InputWrapperProps, 'onChange'> {
   /** `Switch` components */

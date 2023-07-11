@@ -7,13 +7,7 @@ export { DrawerHeader } from './DrawerHeader';
 export { DrawerOverlay } from './DrawerOverlay';
 export { DrawerTitle } from './DrawerTitle';
 
-export type {
-  DrawerCssVariables,
-  DrawerFactory,
-  DrawerProps,
-  DrawerStylesNames,
-  DrawerVariant,
-} from './Drawer';
+export type { DrawerCssVariables, DrawerFactory, DrawerProps, DrawerStylesNames } from './Drawer';
 export type { DrawerRootProps } from './DrawerRoot';
 export type { DrawerBodyProps } from './DrawerBody';
 export type { DrawerCloseButtonProps } from './DrawerCloseButton';

@@ -25,7 +25,6 @@ import { CheckboxIcon } from './CheckIcon';
 import classes from './Checkbox.module.css';
 
 export type CheckboxStylesNames = 'icon' | 'inner' | 'input' | InlineInputStylesNames;
-export type CheckboxVariant = string;
 export type CheckboxCssVariables = {
   root: '--checkbox-size' | '--checkbox-radius' | '--checkbox-color';
 };
@@ -73,7 +72,6 @@ export type CheckboxFactory = Factory<{
   ref: HTMLInputElement;
   stylesNames: CheckboxStylesNames;
   vars: CheckboxCssVariables;
-  variant: CheckboxVariant;
   staticComponents: {
     Group: typeof CheckboxGroup;
   };

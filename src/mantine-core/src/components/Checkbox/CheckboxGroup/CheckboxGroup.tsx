@@ -5,7 +5,6 @@ import { InputWrapperStylesNames, Input, InputWrapperProps } from '../../Input';
 import { CheckboxGroupProvider } from '../CheckboxGroup.context';
 
 export type CheckboxGroupStylesNames = InputWrapperStylesNames;
-export type CheckboxGroupVariant = string;
 
 export interface CheckboxGroupProps extends Omit<InputWrapperProps, 'onChange'> {
   /** `Checkbox` components */

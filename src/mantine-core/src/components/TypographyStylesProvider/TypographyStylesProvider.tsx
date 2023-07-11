@@ -12,7 +12,6 @@ import {
 import classes from './TypographyStylesProvider.module.css';
 
 export type TypographyStylesProviderStylesNames = 'root';
-export type TypographyStylesProviderVariant = string;
 
 export interface TypographyStylesProviderProps
   extends BoxProps,
@@ -23,7 +22,6 @@ export type TypographyStylesProviderFactory = Factory<{
   props: TypographyStylesProviderProps;
   ref: HTMLDivElement;
   stylesNames: TypographyStylesProviderStylesNames;
-  variant: TypographyStylesProviderVariant;
 }>;
 
 const defaultProps: Partial<TypographyStylesProviderProps> = {};

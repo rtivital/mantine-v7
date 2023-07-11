@@ -16,7 +16,6 @@ import { DrawerHeader } from './DrawerHeader';
 import classes from './Drawer.module.css';
 
 export type DrawerStylesNames = DrawerRootStylesNames;
-export type DrawerVariant = string;
 export type DrawerCssVariables = DrawerRootCssVariables;
 
 export interface DrawerProps extends DrawerRootProps {
@@ -44,7 +43,6 @@ export type DrawerFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: DrawerStylesNames;
   vars: DrawerCssVariables;
-  variant: DrawerVariant;
   staticComponents: {
     Root: typeof DrawerRoot;
     Overlay: typeof DrawerOverlay;

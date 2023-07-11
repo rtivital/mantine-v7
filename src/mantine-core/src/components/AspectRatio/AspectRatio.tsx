@@ -13,7 +13,6 @@ import {
 import classes from './AspectRatio.module.css';
 
 export type AspectRatioStylesNames = 'root';
-export type AspectRatioVariant = string;
 export type AspectRatioCssVariables = {
   root: '--ar-ratio';
 };
@@ -31,7 +30,6 @@ export type AspectRatioFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: AspectRatioStylesNames;
   vars: AspectRatioCssVariables;
-  variant: AspectRatioVariant;
 }>;
 
 const defaultProps: Partial<AspectRatioProps> = {};

@@ -18,7 +18,6 @@ import classes from './Burger.module.css';
 import { UnstyledButton } from '../UnstyledButton';
 
 export type BurgerStylesNames = 'root' | 'burger';
-export type BurgerVariant = string;
 export type BurgerCssVariables = {
   root:
     | '--burger-color'
@@ -52,7 +51,6 @@ export type BurgerFactory = Factory<{
   ref: HTMLButtonElement;
   stylesNames: BurgerStylesNames;
   vars: BurgerCssVariables;
-  variant: BurgerVariant;
 }>;
 
 const defaultProps: Partial<BurgerProps> = {

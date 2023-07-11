@@ -13,7 +13,6 @@ import {
 import classes from '../Button.module.css';
 
 export type ButtonGroupStylesNames = 'group';
-export type ButtonGroupVariant = string;
 export type ButtonGroupCssVariables = {
   group: '--button-border-width';
 };
@@ -32,7 +31,6 @@ export interface ButtonGroupProps extends BoxProps, StylesApiProps<ButtonGroupFa
 export type ButtonGroupFactory = Factory<{
   props: ButtonGroupProps;
   ref: HTMLDivElement;
-  variant: ButtonGroupVariant;
   stylesNames: ButtonGroupStylesNames;
   vars: ButtonGroupCssVariables;
 }>;

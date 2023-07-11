@@ -4,5 +4,4 @@ export type {
   ContainerCssVariables,
   ContainerFactory,
   ContainerStylesNames,
-  ContainerVariant,
 } from './Container';

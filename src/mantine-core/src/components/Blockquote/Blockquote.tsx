@@ -20,7 +20,6 @@ import {
 import classes from './Blockquote.module.css';
 
 export type BlockquoteStylesNames = 'root' | 'icon' | 'cite';
-export type BlockquoteVariant = string;
 export type BlockquoteCssVariables = {
   root: '--bq-bg-light' | '--bq-bg-dark' | '--bq-bd' | '--bq-icon-size' | '--bq-radius';
 };
@@ -50,7 +49,6 @@ export type BlockquoteFactory = Factory<{
   ref: HTMLQuoteElement;
   stylesNames: BlockquoteStylesNames;
   vars: BlockquoteCssVariables;
-  variant: BlockquoteVariant;
 }>;
 
 const defaultProps: Partial<BlockquoteProps> = {

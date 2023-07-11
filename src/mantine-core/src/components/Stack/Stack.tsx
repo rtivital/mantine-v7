@@ -15,7 +15,6 @@ import {
 import classes from './Stack.module.css';
 
 export type StackStylesNames = 'root';
-export type StackVariant = string;
 export type StackCssVariables = {
   root: '--stack-gap' | '--stack-align' | '--stack-justify';
 };
@@ -36,7 +35,6 @@ export type StackFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: StackStylesNames;
   vars: StackCssVariables;
-  variant: StackVariant;
 }>;
 
 const defaultProps: Partial<StackProps> = {

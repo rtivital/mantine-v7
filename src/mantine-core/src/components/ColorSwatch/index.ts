@@ -4,5 +4,4 @@ export type {
   ColorSwatchFactory,
   ColorSwatchProps,
   ColorSwatchStylesNames,
-  ColorSwatchVariant,
 } from './ColorSwatch';

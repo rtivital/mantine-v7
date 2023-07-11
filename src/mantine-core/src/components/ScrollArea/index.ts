@@ -5,5 +5,4 @@ export type {
   ScrollAreaStylesNames,
   ScrollAreaCssVariables,
   ScrollAreaFactory,
-  ScrollAreaVariant,
 } from './ScrollArea';

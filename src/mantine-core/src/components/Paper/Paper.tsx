@@ -16,7 +16,6 @@ import {
 import classes from './Paper.module.css';
 
 export type PaperStylesNames = 'root';
-export type PaperVariant = string;
 export type PaperCssVariables = {
   root: '--paper-radius' | '--paper-shadow';
 };

@@ -15,8 +15,6 @@ export type SliderCssVariables = {
   root: '--slider-size' | '--slider-color' | '--slider-thumb-size' | '--slider-radius';
 };
 
-export type SliderVariant = string;
-
 interface SliderContextValue {
   getStyles: GetStylesApi<{
     stylesNames: SliderStylesNames;

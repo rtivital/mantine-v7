@@ -22,5 +22,4 @@ export type {
   NotificationsFactory,
   NotificationsProps,
   NotificationsStylesNames,
-  NotificationsVariant,
 } from './Notifications';

@@ -16,7 +16,6 @@ import {
 import classes from './Breadcrumbs.module.css';
 
 export type BreadcrumbsStylesNames = 'root' | 'separator' | 'breadcrumb';
-export type BreadcrumbsVariant = string;
 export type BreadcrumbsCssVariables = {
   root: '--bc-separator-margin';
 };
@@ -40,7 +39,6 @@ export type BreadcrumbsFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: BreadcrumbsStylesNames;
   vars: BreadcrumbsCssVariables;
-  variant: BreadcrumbsVariant;
 }>;
 
 const defaultProps: Partial<BreadcrumbsProps> = {

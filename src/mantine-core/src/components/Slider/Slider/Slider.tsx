@@ -24,12 +24,7 @@ import { Track } from '../Track/Track';
 import { Thumb } from '../Thumb/Thumb';
 import { getPosition } from '../utils/get-position/get-position';
 import { getChangeValue } from '../utils/get-change-value/get-change-value';
-import {
-  SliderCssVariables,
-  SliderProvider,
-  SliderStylesNames,
-  SliderVariant,
-} from '../Slider.context';
+import { SliderCssVariables, SliderProvider, SliderStylesNames } from '../Slider.context';
 import classes from '../Slider.module.css';
 
 export interface SliderProps
@@ -111,7 +106,6 @@ export type SliderFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: SliderStylesNames;
   vars: SliderCssVariables;
-  variant: SliderVariant;
 }>;
 
 const defaultProps: Partial<SliderProps> = {

@@ -40,7 +40,6 @@ export type CodeHighlightTabsStylesNames =
   | 'files'
   | 'fileIcon';
 
-export type CodeHighlightTabsVariant = string;
 export type CodeHighlightTabsCssVariables = {
   root: '--ch-max-collapsed-height';
 };

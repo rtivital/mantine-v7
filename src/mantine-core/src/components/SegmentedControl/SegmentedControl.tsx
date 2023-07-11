@@ -25,7 +25,6 @@ import classes from './SegmentedControl.module.css';
 const WRAPPER_PADDING = 4;
 
 export type SegmentedControlStylesNames = 'root' | 'input' | 'label' | 'control' | 'indicator';
-export type SegmentedControlVariant = string;
 export type SegmentedControlCssVariables = {
   root:
     | '--sc-radius'

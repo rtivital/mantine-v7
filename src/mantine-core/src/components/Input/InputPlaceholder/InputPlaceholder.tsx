@@ -12,7 +12,6 @@ import {
 import classes from '../Input.module.css';
 
 export type InputPlaceholderStylesNames = 'placeholder';
-export type InputPlaceholderVariant = string;
 
 export interface InputPlaceholderProps
   extends BoxProps,
@@ -25,7 +24,6 @@ export type InputPlaceholderFactory = Factory<{
   props: InputPlaceholderProps;
   ref: HTMLSpanElement;
   stylesNames: InputPlaceholderStylesNames;
-  variant: InputPlaceholderVariant;
 }>;
 
 const defaultProps: Partial<InputPlaceholderProps> = {};

@@ -4,7 +4,6 @@ import { PortalProps } from '../Portal';
 import type { TooltipFactory } from './Tooltip';
 
 export type TooltipStylesNames = 'tooltip' | 'arrow';
-export type TooltipVariant = string;
 export type TooltipCssVariables = {
   tooltip: '--tooltip-radius' | '--tooltip-bg';
 };

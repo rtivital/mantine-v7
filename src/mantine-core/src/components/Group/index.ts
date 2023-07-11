@@ -4,6 +4,5 @@ export type {
   GroupFactory,
   GroupStylesNames,
   GroupStylesCtx,
-  GroupVariant,
   GroupProps,
 } from './Group';

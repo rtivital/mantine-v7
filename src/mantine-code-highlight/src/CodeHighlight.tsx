@@ -22,7 +22,6 @@ import themeClasses from './CodeHighlight.theme.module.css';
 const classes = { ..._classes, root: cx(_classes.root, themeClasses.theme) };
 
 export type CodeHighlightStylesNames = 'root' | 'code' | 'pre' | 'copy';
-export type CodeHighlightVariant = string;
 
 export interface CodeHighlightProps
   extends BoxProps,
@@ -51,7 +50,6 @@ export type CodeHighlightFactory = Factory<{
   props: CodeHighlightProps;
   ref: HTMLDivElement;
   stylesNames: CodeHighlightStylesNames;
-  variant: CodeHighlightVariant;
 }>;
 
 const defaultProps: Partial<CodeHighlightProps> = {

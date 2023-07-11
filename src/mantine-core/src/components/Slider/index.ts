@@ -7,4 +7,4 @@ export type {
   RangeSliderProps,
   RangeSliderValue,
 } from './RangeSlider/RangeSlider';
-export type { SliderStylesNames, SliderCssVariables, SliderVariant } from './Slider.context';
+export type { SliderStylesNames, SliderCssVariables } from './Slider.context';

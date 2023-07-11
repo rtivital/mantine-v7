@@ -16,7 +16,6 @@ import { AvatarGroupProvider } from './AvatarGroup.context';
 import classes from '../Avatar.module.css';
 
 export type AvatarGroupStylesNames = 'group';
-export type AvatarGroupVariant = string;
 export type AvatarGroupCssVariables = {
   group: '--ag-spacing';
 };
@@ -34,7 +33,6 @@ export type AvatarGroupFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: AvatarGroupStylesNames;
   vars: AvatarGroupCssVariables;
-  variant: AvatarGroupVariant;
 }>;
 
 const defaultProps: Partial<AvatarGroupProps> = {

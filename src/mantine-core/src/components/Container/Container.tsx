@@ -15,7 +15,6 @@ import {
 import classes from './Container.module.css';
 
 export type ContainerStylesNames = 'root';
-export type ContainerVariant = string;
 export type ContainerCssVariables = {
   root: '--container-size';
 };
@@ -36,7 +35,6 @@ export type ContainerFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ContainerStylesNames;
   vars: ContainerCssVariables;
-  variant: ContainerVariant;
 }>;
 
 const defaultProps: Partial<ContainerProps> = {};

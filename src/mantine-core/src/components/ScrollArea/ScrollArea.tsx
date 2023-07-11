@@ -19,7 +19,6 @@ import classes from './ScrollArea.module.css';
 import { ScrollAreaThumb } from './ScrollAreaThumb/ScrollAreaThumb';
 
 export type ScrollAreaStylesNames = 'root' | 'viewport' | 'scrollbar' | 'thumb' | 'corner';
-export type ScrollAreaVariant = string;
 export type ScrollAreaCssVariables = {
   root: '--scrollarea-scrollbar-size';
 };

@@ -4,5 +4,4 @@ export type {
   NotificationFactory,
   NotificationProps,
   NotificationStylesNames,
-  NotificationVariant,
 } from './Notification';

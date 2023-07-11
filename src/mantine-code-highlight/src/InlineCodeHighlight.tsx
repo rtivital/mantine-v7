@@ -17,7 +17,6 @@ import themeClasses from './CodeHighlight.theme.module.css';
 const classes = { ..._classes, code: cx(_classes.code, themeClasses.theme) };
 
 export type InlineCodeHighlightStylesNames = 'code';
-export type InlineCodeHighlightVariant = string;
 
 export interface InlineCodeHighlightProps
   extends BoxProps,

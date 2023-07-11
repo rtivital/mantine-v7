@@ -16,7 +16,6 @@ import { OptionalPortal, PortalProps } from '../Portal';
 import classes from './Affix.module.css';
 
 export type AffixStylesNames = 'root';
-export type AffixVariant = string;
 export type AffixCssVariables = {
   root: '--affix-z-index' | '--affix-top' | '--affix-left' | '--affix-bottom' | '--affix-right';
 };
@@ -45,7 +44,6 @@ export type AffixFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: AffixStylesNames;
   vars: AffixCssVariables;
-  variant: AffixVariant;
 }>;
 
 const defaultProps: Partial<AffixProps> = {

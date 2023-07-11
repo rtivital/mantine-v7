@@ -8,13 +8,7 @@ export {
   TableTh,
   TableThead,
 } from './Table.components';
-export type {
-  TableProps,
-  TableStylesNames,
-  TableCssVariables,
-  TableFactory,
-  TableVariant,
-} from './Table';
+export type { TableProps, TableStylesNames, TableCssVariables, TableFactory } from './Table';
 
 export type {
   TableTbodyProps,

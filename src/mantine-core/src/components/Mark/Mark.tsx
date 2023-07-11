@@ -15,7 +15,6 @@ import { getMarkColor } from './get-mark-color';
 import classes from './Mark.module.css';
 
 export type MarkStylesNames = 'root';
-export type MarkVariant = string;
 export type MarkCssVariables = {
   root: '--mark-bg-dark' | '--mark-bg-light';
 };

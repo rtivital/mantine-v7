@@ -5,5 +5,4 @@ export type {
   ColorPickerFactory,
   ColorPickerProps,
   ColorPickerStylesNames,
-  ColorPickerVariant,
 } from './ColorPicker';

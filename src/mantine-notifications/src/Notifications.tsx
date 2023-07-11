@@ -35,7 +35,6 @@ import classes from './Notifications.module.css';
 const Transition: any = _Transition;
 
 export type NotificationsStylesNames = 'root' | 'notification';
-export type NotificationsVariant = string;
 export type NotificationsCssVariables = {
   root:
     | '--notifications-z-index'
@@ -93,7 +92,6 @@ export type NotificationsFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: NotificationsStylesNames;
   vars: NotificationsCssVariables;
-  variant: NotificationsVariant;
   staticComponents: {
     show: typeof notifications.show;
     hide: typeof notifications.hide;

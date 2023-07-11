@@ -3,5 +3,4 @@ export type {
   TypographyStylesProviderFactory,
   TypographyStylesProviderProps,
   TypographyStylesProviderStylesNames,
-  TypographyStylesProviderVariant,
 } from './TypographyStylesProvider';

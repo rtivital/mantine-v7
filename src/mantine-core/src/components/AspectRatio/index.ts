@@ -4,5 +4,4 @@ export type {
   AspectRatioFactory,
   AspectRatioProps,
   AspectRatioStylesNames,
-  AspectRatioVariant,
 } from './AspectRatio';

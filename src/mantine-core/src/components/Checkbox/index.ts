@@ -7,11 +7,9 @@ export type {
   CheckboxFactory,
   CheckboxProps,
   CheckboxStylesNames,
-  CheckboxVariant,
 } from './Checkbox';
 export type {
   CheckboxGroupFactory,
   CheckboxGroupProps,
   CheckboxGroupStylesNames,
-  CheckboxGroupVariant,
 } from './CheckboxGroup/CheckboxGroup';

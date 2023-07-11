@@ -12,7 +12,6 @@ import {
 import classes from './Center.module.css';
 
 export type CenterStylesNames = 'root';
-export type CenterVariant = string;
 export type CenterCssVariables = {
   root: '--center-display';
 };
@@ -31,7 +30,6 @@ export type CenterFactory = PolymorphicFactory<{
   defaultComponent: 'div';
   stylesNames: CenterStylesNames;
   vars: CenterCssVariables;
-  variant: CenterVariant;
 }>;
 
 const defaultProps: Partial<CenterProps> = {};

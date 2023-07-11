@@ -6,18 +6,15 @@ export type {
   CodeHighlightTabsStylesNames,
   CodeHighlightTabsProps,
   CodeHighlightTabsCode,
-  CodeHighlightTabsVariant,
   CodeHighlightTabsCssVariables,
 } from './CodeHighlightTabs';
 export type {
   CodeHighlightFactory,
   CodeHighlightProps,
   CodeHighlightStylesNames,
-  CodeHighlightVariant,
 } from './CodeHighlight';
 export type {
   InlineCodeHighlightFactory,
   InlineCodeHighlightProps,
   InlineCodeHighlightStylesNames,
-  InlineCodeHighlightVariant,
 } from './InlineCodeHighlight';

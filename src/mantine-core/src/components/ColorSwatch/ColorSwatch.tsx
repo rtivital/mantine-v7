@@ -20,7 +20,6 @@ export type ColorSwatchStylesNames =
   | 'shadowOverlay'
   | 'colorOverlay'
   | 'childrenOverlay';
-export type ColorSwatchVariant = string;
 export type ColorSwatchCssVariables = {
   root: '--cs-radius' | '--cs-size';
 };
@@ -48,7 +47,6 @@ export type ColorSwatchFactory = PolymorphicFactory<{
   defaultComponent: 'div';
   stylesNames: ColorSwatchStylesNames;
   vars: ColorSwatchCssVariables;
-  variant: ColorSwatchVariant;
 }>;
 
 const defaultProps: Partial<ColorSwatchProps> = {

@@ -17,7 +17,6 @@ import { ModalProvider, ScrollAreaComponent } from './Modal.context';
 import classes from './Modal.module.css';
 
 export type ModalRootStylesNames = ModalBaseStylesNames;
-export type ModalRootVariant = string;
 export type ModalRootCssVariables = {
   root: '--modal-radius' | '--modal-size' | '--modal-y-offset' | '--modal-x-offset';
 };
@@ -49,7 +48,6 @@ export type ModalRootFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ModalRootStylesNames;
   vars: ModalRootCssVariables;
-  variant: ModalRootVariant;
   compound: true;
 }>;
 

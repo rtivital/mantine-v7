@@ -39,7 +39,6 @@ export type ColorPickerStylesNames =
   | 'swatches'
   | 'swatch';
 
-export type ColorPickerVariant = string;
 export type ColorPickerCssVariables = {
   wrapper:
     | '--cp-preview-size'
@@ -110,7 +109,6 @@ export type ColorPickerFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ColorPickerStylesNames;
   vars: ColorPickerCssVariables;
-  variant: ColorPickerVariant;
 }>;
 
 const defaultProps: Partial<ColorPickerProps> = {

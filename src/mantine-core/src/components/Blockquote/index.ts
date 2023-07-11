@@ -4,5 +4,4 @@ export type {
   BlockquoteFactory,
   BlockquoteProps,
   BlockquoteStylesNames,
-  BlockquoteVariant,
 } from './Blockquote';

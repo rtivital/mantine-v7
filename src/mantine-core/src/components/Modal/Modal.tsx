@@ -16,7 +16,6 @@ import { ModalHeader } from './ModalHeader';
 import classes from './Modal.module.css';
 
 export type ModalStylesNames = ModalRootStylesNames;
-export type ModalVariant = string;
 export type ModalCssVariables = ModalRootCssVariables;
 
 export interface ModalProps extends ModalRootProps {
@@ -46,7 +45,6 @@ export type ModalFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: ModalStylesNames;
   vars: ModalCssVariables;
-  variant: ModalVariant;
   staticComponents: {
     Root: typeof ModalRoot;
     Overlay: typeof ModalOverlay;

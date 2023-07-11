@@ -36,7 +36,6 @@ export type TableStylesNames =
   | 'td'
   | 'caption';
 
-export type TableVariant = string;
 export type TableCssVariables = {
   table:
     | '--table-layout'

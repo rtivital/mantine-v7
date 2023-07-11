@@ -11,8 +11,6 @@ export type ScrollAreaRootStylesNames =
   | 'thumb'
   | 'corner';
 
-export type ScrollAreaRootVariant = string;
-
 export type ScrollAreaRootCssVariables = {
   root: '--sa-corner-width' | '--sa-corner-height';
 };

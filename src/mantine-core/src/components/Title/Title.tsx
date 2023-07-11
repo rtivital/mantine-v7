@@ -17,7 +17,6 @@ export type TitleOrder = 1 | 2 | 3 | 4 | 5 | 6;
 export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'];
 
 export type TitleStylesNames = 'root';
-export type TitleVariant = string;
 export type TitleCssVariables = {
   root: '--title-fw' | '--title-lh' | '--title-fz';
 };
@@ -35,7 +34,6 @@ export type TitleFactory = Factory<{
   ref: HTMLHeadingElement;
   stylesNames: TitleStylesNames;
   vars: TitleCssVariables;
-  variant: TitleVariant;
 }>;
 
 const defaultProps: Partial<TitleProps> = {

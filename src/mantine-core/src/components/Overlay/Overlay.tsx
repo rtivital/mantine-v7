@@ -17,7 +17,6 @@ import {
 import classes from './Overlay.module.css';
 
 export type OverlayStylesNames = 'root';
-export type OverlayVariant = string;
 export type OverlayCssVariables = {
   root: '--overlay-bg' | '--overlay-filter' | '--overlay-radius' | '--overlay-z-index';
 };
@@ -57,7 +56,6 @@ export type OverlayFactory = PolymorphicFactory<{
   defaultComponent: 'div';
   stylesNames: OverlayStylesNames;
   vars: OverlayCssVariables;
-  variant: OverlayVariant;
 }>;
 
 const defaultProps: Partial<OverlayProps> = {

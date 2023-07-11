@@ -4,5 +4,4 @@ export type {
   BreadcrumbsFactory,
   BreadcrumbsProps,
   BreadcrumbsStylesNames,
-  BreadcrumbsVariant,
 } from './Breadcrumbs';

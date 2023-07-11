@@ -13,7 +13,6 @@ import {
 import classes from '../ActionIcon.module.css';
 
 export type ActionIconGroupStylesNames = 'group';
-export type ActionIconGroupVariant = string;
 export type ActionIconGroupCssVariables = {
   group: '--ai-border-width';
 };
@@ -32,7 +31,6 @@ export interface ActionIconGroupProps extends BoxProps, StylesApiProps<ActionIco
 export type ActionIconGroupFactory = Factory<{
   props: ActionIconGroupProps;
   ref: HTMLDivElement;
-  variant: ActionIconGroupVariant;
   stylesNames: ActionIconGroupStylesNames;
   vars: ActionIconGroupCssVariables;
 }>;
