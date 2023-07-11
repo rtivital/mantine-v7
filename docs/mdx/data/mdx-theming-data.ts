@@ -42,4 +42,9 @@ export const MDX_THEMING_DATA: Record<string, Frontmatter> = {
     slug: '/theming/default-props',
     search: 'Default props for components',
   },
+
+  DefaultTheme: {
+    title: 'Default theme',
+    slug: '/theming/default-theme',
+  },
 };
