@@ -34,8 +34,6 @@
     "@mantine/notifications": "7.0.0-alpha.17",
     "@tabler/icons-react": "*"
   },
-  "dependencies": {
-    "tslib": "^2.5.2"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

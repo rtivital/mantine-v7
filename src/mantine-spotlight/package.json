@@ -38,8 +38,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@mantine/store": "7.0.0-alpha.17",
-    "tslib": "^2.5.2"
+    "@mantine/store": "7.0.0-alpha.17"
   },
   "devDependencies": {}
 }
