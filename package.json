@@ -50,7 +50,8 @@
     "release:minor": "npm run _release minor && npm run docs:deploy",
     "release:major": "npm run _release major && npm run docs:deploy",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "generate-css": "esno scripts/generate-css"
   },
   "resolutions": {
     "@types/react": "18.0.28",
@@ -96,6 +97,7 @@
     "@typescript-eslint/parser": "^5.50.0",
     "babel-loader": "^8.3.0",
     "chalk": "^4.1.1",
+    "cssnano": "^6.0.1",
     "esbuild": "^0.17.19",
     "esbuild-jest": "^0.5.0",
     "eslint": "^8.33.0",

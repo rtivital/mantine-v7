@@ -9,7 +9,6 @@ import alias, { Alias } from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import visualizer from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
-// import typescript from '@rollup/plugin-typescript';
 import banner from 'rollup-plugin-banner2';
 import esbuild from 'rollup-plugin-esbuild';
 import { getPackagesList } from '../../scripts/utils/get-packages-list';
