@@ -142,6 +142,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     description,
     label,
     error,
+    withErrorStyles,
     ...others
   } = props;
 
@@ -311,6 +312,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           label={label}
           error={error}
           multiline
+          withErrorStyles={withErrorStyles}
           __stylesApiProps={{ ...props, multiline: true }}
         >
           <Pill.Group disabled={disabled} {...getStyles('pillsList')}>

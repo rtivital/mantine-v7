@@ -26,17 +26,17 @@ export const ActionIconStylesApi: StylesApiData<ActionIconFactory> = {
 
 export const ActionIconGroupStylesApi: StylesApiData<ActionIconGroupFactory> = {
   selectors: {
-    root: 'Root element',
+    group: 'Root element',
   },
 
   vars: {
-    root: {
+    group: {
       '--ai-border-width':
         'Controls `border-width` of child ActionIcon components that are placed beside one another',
     },
   },
 
   modifiers: [
-    { modifier: 'data-orientation', selector: 'root', value: 'Value of `orientation` prop' },
+    { modifier: 'data-orientation', selector: 'group', value: 'Value of `orientation` prop' },
   ],
 };

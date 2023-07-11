@@ -24,11 +24,11 @@ export const PillStylesApi: StylesApiData<PillFactory> = {
 
 export const PillGroupStylesApi: StylesApiData<PillGroupFactory> = {
   selectors: {
-    root: 'Root element',
+    group: 'Root element',
   },
 
   vars: {
-    root: {
+    group: {
       '--pg-gap': 'Controls `gap` between pills',
     },
   },

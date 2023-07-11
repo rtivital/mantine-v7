@@ -24,7 +24,7 @@ describe('@mantine/core/PillsInputField', () => {
     classes: true,
     refType: HTMLInputElement,
     displayName: '@mantine/core/PillsInputField',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['field'],
   });
 
   it('sets data-type attribute based on type prop', () => {

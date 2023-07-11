@@ -94,6 +94,9 @@ export interface __InputProps {
 
   /** Determines whether the input should have `cursor: pointer` style, `false` by default */
   pointer?: boolean;
+
+  /** Determines whether the input should have red border and text color when `error` prop is set, `true` by default */
+  withErrorStyles?: boolean;
 }
 
 export interface InputProps extends BoxProps, __InputProps, StylesApiProps<InputFactory> {
@@ -138,6 +141,7 @@ const defaultProps: Partial<InputProps> = {
   leftSectionPointerEvents: 'none',
   rightSectionPointerEvents: 'none',
   withAria: true,
+  withErrorStyles: true,
 };
 
 const varsResolver = createVarsResolver<InputFactory>((_, props, ctx) => ({
@@ -187,6 +191,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     radius,
     id,
     withAria,
+    withErrorStyles,
     ...others
   } = props;
 
@@ -225,7 +230,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
       {...styleProps}
       {...wrapperProps}
       mod={{
-        error: !!error,
+        error: !!error && withErrorStyles,
         pointer,
         disabled,
         multiline,
@@ -254,7 +259,7 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
         {...ariaAttributes}
         ref={ref}
         required={required}
-        mod={{ disabled, error: !!error }}
+        mod={{ disabled, error: !!error && withErrorStyles }}
         variant={variant}
         {...getStyles('input')}
       />

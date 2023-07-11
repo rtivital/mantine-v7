@@ -149,6 +149,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     withCheckIcon,
     checkIconPosition,
     hidePickedOptions,
+    withErrorStyles,
     ...others
   } = props;
 
@@ -271,6 +272,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           label={label}
           error={error}
           multiline
+          withErrorStyles={withErrorStyles}
           __stylesApiProps={{ ...props, multiline: true }}
           pointer={!searchable}
           onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}

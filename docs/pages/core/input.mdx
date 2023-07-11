@@ -107,6 +107,15 @@ function AsteriskDemo() {
 }
 ```
 
+## error prop
+
+All inputs that use `Input.Wrapper` under the hood support `error` prop.
+When set to `true`, it will add a red border to the input. You can also pass a React node to display
+an error message below the input. To only display error message without a red border, set `error` prop
+to React node and `withErrorStyles={false}`:
+
+<Demo data={InputDemos.error} />
+
 ## Input.Label, Input.Description and Input.Error components
 
 `Input.Label`, `Input.Error` and `Input.Description` components can be used to create custom

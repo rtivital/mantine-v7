@@ -18,6 +18,6 @@ describe('@mantine/core/ComboboxChevron', () => {
     classes: true,
     refType: SVGSVGElement,
     displayName: '@mantine/core/ComboboxChevron',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['chevron'],
   });
 });

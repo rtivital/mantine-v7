@@ -36,16 +36,16 @@ export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
 
 export const ButtonGroupStylesApi: StylesApiData<ButtonGroupFactory> = {
   selectors: {
-    root: 'Root element',
+    group: 'Root element',
   },
 
   vars: {
-    root: {
+    group: {
       '--button-border-width': '`border-width` of child `Button` components',
     },
   },
 
   modifiers: [
-    { modifier: 'data-orientation', selector: 'root', value: 'Value of `orientation` prop' },
+    { modifier: 'data-orientation', selector: 'group', value: 'Value of `orientation` prop' },
   ],
 };

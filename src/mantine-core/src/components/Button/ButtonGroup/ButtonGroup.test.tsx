@@ -16,7 +16,7 @@ describe('@mantine/core/ButtonGroup', () => {
     classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/ButtonGroup',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['group'],
   });
 
   it('adds data-orientation attribute to root element based on orientation prop', () => {

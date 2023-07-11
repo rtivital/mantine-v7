@@ -21,11 +21,11 @@ export const AvatarStylesApi: StylesApiData<AvatarFactory> = {
 
 export const AvatarGroupStylesApi: StylesApiData<AvatarGroupFactory> = {
   selectors: {
-    root: 'Root element',
+    group: 'Root element',
   },
 
   vars: {
-    root: {
+    group: {
       '--ag-spacing': 'Controls negative spacing between avatars',
     },
   },

@@ -10,6 +10,7 @@ import {
   FieldsetDemos,
   ComboboxDemos,
   TagsInputDemos,
+  InputDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -375,6 +376,14 @@ New [TagsInput](/core/tags-input) component based on [Combobox](/core/combobox) 
 The component is similar to [MultiSelect](/core/multi-select) but allows entering custom values.
 
 <Demo data={TagsInputDemos.data} />
+
+## withErrorStyles prop
+
+All inputs now support `withErrorStyles` prop which allows removing error styles from the input.
+It can be used to apply custom error styles without override or use other techniques to
+indicate error state. For example, it can be used to render icon in the right section:
+
+<Demo data={InputDemos.error} />
 
 ## Other changes
 

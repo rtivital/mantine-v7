@@ -15,6 +15,6 @@ describe('@mantine/core/PillGroup', () => {
     classes: true,
     refType: HTMLDivElement,
     displayName: '@mantine/core/PillGroup',
-    stylesApiSelectors: ['root'],
+    stylesApiSelectors: ['group'],
   });
 });
