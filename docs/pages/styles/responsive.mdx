@@ -1,6 +1,6 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { DEFAULT_THEME } from '@mantine/core';
+import { DEFAULT_THEME, px } from '@mantine/core';
 import { StylesDemos } from '@mantine/demos';
 
 export default Layout(MDX_DATA.ResponsiveStyles);
@@ -41,10 +41,11 @@ function Demo() {
 Default `theme.breakpoints` values:
 
 <DataTable
-  head={['Breakpoint', 'Viewport width']}
+  head={['Breakpoint', 'Viewport width', 'Value in px']}
   data={Object.keys(DEFAULT_THEME.breakpoints).map((size) => [
     size,
     `${DEFAULT_THEME.breakpoints[size]}`,
+    `${px(DEFAULT_THEME.breakpoints[size])}px`,
   ])}
 />
 
