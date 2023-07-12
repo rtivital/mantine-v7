@@ -1,0 +1,11 @@
+.navbar {
+  background-color: pink;
+  position: fixed;
+  top: 0;
+  height: 100dvh;
+  width: var(--app-shell-navbar-width);
+}
+
+.root {
+  background-color: red;
+}

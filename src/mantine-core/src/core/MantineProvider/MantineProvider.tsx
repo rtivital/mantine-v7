@@ -77,6 +77,7 @@ export function MantineProvider({
         classNamesPrefix,
         getStyleNonce,
         cssVariablesResolver,
+        cssVariablesSelector,
       }}
     >
       <MantineThemeProvider theme={theme}>

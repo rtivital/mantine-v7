@@ -12,6 +12,7 @@ interface MantineContextValue {
   classNamesPrefix: string;
   getStyleNonce?(): string | undefined;
   cssVariablesResolver?(theme: MantineTheme): ConvertCSSVariablesInput;
+  cssVariablesSelector: string;
 }
 
 export const MantineContext = createContext<MantineContextValue | null>(null);
