@@ -13,6 +13,13 @@ Features:
 - `disabled` prop to hide all components
 - option to configure z-index for every component on app shell and individually
 
+Navbar cases:
+
+- collapsed on desktop – no main offset
+- visible on desktop – main offset
+- collapse on mobile – no main offset
+- visible on mobile – no main offset
+
 ```tsx
 <AppShell>
   <AppShell.Header>Header</AppShell.Header>

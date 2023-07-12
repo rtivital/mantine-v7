@@ -1,57 +1,11 @@
 import React from 'react';
-import {
-  rem,
-  em,
-  keys,
-  MantineTheme,
-  px,
-  MantineBreakpoint,
-  useMantineTheme,
-  useMantineContext,
-  InlineStyles,
-  getSpacing,
-} from '../../../core';
-import type { AppShellProps, AppShellSize, AppShellResponsiveSize } from '../AppShell';
-
-function getPaddingValue(padding: string | number | undefined) {
-  return Number(padding) === 0 ? '0px' : getSpacing(padding);
-}
-
-function getBreakpointValue(breakpoint: number | string, theme: MantineTheme) {
-  if (breakpoint in theme.breakpoints) {
-    return px(theme.breakpoints[breakpoint as MantineBreakpoint]) as number;
-  }
-
-  const convertedValue = px(breakpoint);
-
-  if (typeof convertedValue !== 'number') {
-    throw new Error(`[@mantine/core] AppShell: failed to parse breakpoint value ${breakpoint}`);
-  }
-
-  return convertedValue;
-}
-
-function isResponsiveSize(
-  size: AppShellSize | AppShellResponsiveSize | undefined
-): size is AppShellResponsiveSize {
-  return typeof size === 'object' && size !== null;
-}
-
-function isPrimitiveSize(
-  size: AppShellSize | AppShellResponsiveSize | undefined
-): size is AppShellSize {
-  return typeof size === 'number' || typeof size === 'string';
-}
-
-function getSortedBreakpoints(breakpoints: string[], theme: MantineTheme) {
-  const convertedBreakpoints = breakpoints.map((breakpoint) => ({
-    value: breakpoint,
-    px: getBreakpointValue(breakpoint, theme),
-  }));
-
-  convertedBreakpoints.sort((a, b) => a.px - b.px);
-  return convertedBreakpoints;
-}
+import { rem, em, keys, useMantineTheme, useMantineContext, InlineStyles } from '../../../core';
+import type { AppShellProps } from '../AppShell';
+import { getPaddingValue } from './get-padding-value';
+import { getBreakpointValue } from './get-breakpoint-value';
+import { getSortedBreakpoints } from './get-sorted-breakpoints';
+import { isPrimitiveSize } from './is-primitive-size';
+import { isResponsiveSize } from './is-responsive-size';
 
 interface AppShellMediaStylesProps {
   navbar: AppShellProps['navbar'] | undefined;
