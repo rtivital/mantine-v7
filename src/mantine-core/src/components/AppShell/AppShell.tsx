@@ -16,11 +16,12 @@ import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
 import { AppShellMain } from './AppShellMain/AppShellMain';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellProvider } from './AppShell.context';
+import { useResizing } from './use-resizing/use-resizing';
 import classes from './AppShell.module.css';
 
 export type AppShellStylesNames = 'root' | 'navbar' | 'main';
 export type AppShellCssVariables = {
-  root: '--test';
+  root: '--app-shell-transition-duration' | '--app-shell-transition-timing-function';
 };
 
 export type AppShellSize = number | (string & {});
@@ -51,6 +52,12 @@ export interface AppShellProps
     offsetBreakpoint?: MantineBreakpoint | (string & {}) | number;
     collapsed?: boolean;
   };
+
+  /** Duration of all transitions in ms, `200` by default */
+  transitionDuration?: number;
+
+  /** Timing function of all transitions, `ease` by default */
+  transitionTimingFunction?: React.CSSProperties['transitionTimingFunction'];
 }
 
 export type AppShellFactory = Factory<{
@@ -67,13 +74,18 @@ export type AppShellFactory = Factory<{
 const defaultProps: Partial<AppShellProps> = {
   withBorder: true,
   padding: 0,
+  transitionDuration: 200,
+  transitionTimingFunction: 'ease',
 };
 
-const varsResolver = createVarsResolver<AppShellFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const varsResolver = createVarsResolver<AppShellFactory>(
+  (_, { transitionDuration, transitionTimingFunction }) => ({
+    root: {
+      '--app-shell-transition-duration': `${transitionDuration}ms`,
+      '--app-shell-transition-timing-function': transitionTimingFunction,
+    },
+  })
+);
 
 export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const props = useProps('AppShell', defaultProps, _props);
@@ -87,6 +99,8 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     navbar,
     withBorder,
     padding,
+    transitionDuration,
+    transitionTimingFunction,
     ...others
   } = props;
 
@@ -103,13 +117,15 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const resizing = useResizing();
+
   return (
     <AppShellProvider value={{ getStyles, withBorder, navbarCollapsed: navbar?.collapsed }}>
       <AppShellMediaStyles navbar={navbar} padding={padding} />
       <Box
         ref={ref}
         {...getStyles('root')}
-        mod={{ 'navbar-collapsed': navbar?.collapsed ?? true }}
+        mod={{ 'navbar-collapsed': navbar?.collapsed ?? true, resizing }}
         {...others}
       />
     </AppShellProvider>

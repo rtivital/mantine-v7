@@ -5,6 +5,10 @@
     --navbar-offset: 0px;
   }
 
+  &[data-resizing] {
+    --app-shell-transition-duration: 0ms !important;
+  }
+
   @mixin light {
     --_app-shell-border-color: var(--mantine-color-gray-3);
   }
@@ -22,7 +26,8 @@
   background-color: var(--mantine-color-body);
   border-right: var(--_navbar-border-right);
   border-left: var(--_navbar-border-left);
-  transition: transform 150ms ease;
+  transition: transform var(--app-shell-transition-duration)
+    var(--app-shell-transition-timing-function);
 
   &[data-collapsed] {
     transform: translateX(calc(var(--app-shell-navbar-width) * -1));
@@ -42,4 +47,6 @@
   padding: var(--app-shell-padding);
   padding-left: calc(var(--navbar-offset) + var(--app-shell-padding));
   min-height: 100dvh;
+  transition: padding var(--app-shell-transition-duration)
+    var(--app-shell-transition-timing-function);
 }
