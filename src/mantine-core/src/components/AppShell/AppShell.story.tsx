@@ -11,6 +11,7 @@ export function Usage() {
       }}
     >
       <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Main>Main</AppShell.Main>
     </AppShell>
   );
 }

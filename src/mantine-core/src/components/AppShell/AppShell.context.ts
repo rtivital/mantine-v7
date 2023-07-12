@@ -3,6 +3,7 @@ import type { AppShellFactory } from './AppShell';
 
 export interface AppShellContext {
   getStyles: GetStylesApi<AppShellFactory>;
+  withBorder: boolean | undefined;
 }
 
 export const [AppShellProvider, useAppShellContext] = createSafeContext<AppShellContext>(

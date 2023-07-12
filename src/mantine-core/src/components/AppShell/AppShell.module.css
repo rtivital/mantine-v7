@@ -1,11 +1,34 @@
+.root {
+  @mixin light {
+    --_app-shell-border-color: var(--mantine-color-gray-3);
+  }
+
+  @mixin dark {
+    --_app-shell-border-color: var(--mantine-color-dark-4);
+  }
+}
+
 .navbar {
-  background-color: pink;
   position: fixed;
   top: 0;
   height: 100dvh;
   width: var(--app-shell-navbar-width);
+  background-color: var(--mantine-color-body);
+  border-right: var(--_navbar-border-right);
+  border-left: var(--_navbar-border-left);
+
+  &[data-with-border] {
+    --_navbar-border-right: rem(1px) solid var(--_app-shell-border-color);
+
+    @mixin rtl {
+      --_navbar-border-right: none;
+      --_navbar-border-left: rem(1px) solid var(--_app-shell-border-color);
+    }
+  }
 }
 
-.root {
-  background-color: red;
+.main {
+  padding: rem(30px);
+  padding-left: var(--app-shell-navbar-width);
+  min-height: 100dvh;
 }

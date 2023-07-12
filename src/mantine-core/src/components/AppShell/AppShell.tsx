@@ -12,11 +12,12 @@ import {
   MantineBreakpoint,
 } from '../../core';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
+import { AppShellMain } from './AppShellMain/AppShellMain';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellProvider } from './AppShell.context';
 import classes from './AppShell.module.css';
 
-export type AppShellStylesNames = 'root' | 'navbar';
+export type AppShellStylesNames = 'root' | 'navbar' | 'main';
 export type AppShellCssVariables = {
   root: '--test';
 };
@@ -37,6 +38,9 @@ export interface AppShellProps
   extends BoxProps,
     StylesApiProps<AppShellFactory>,
     ElementProps<'div'> {
+  /** Determines whether associated components should have a border, `true` by default */
+  withBorder?: boolean;
+
   navbar?: {
     width: AppShellSize | AppShellResponsiveSize;
     offsetBreakpoint?: MantineBreakpoint | (string & {}) | number;
@@ -51,10 +55,13 @@ export type AppShellFactory = Factory<{
   vars: AppShellCssVariables;
   staticComponents: {
     Navbar: typeof AppShellNavbar;
+    Main: typeof AppShellMain;
   };
 }>;
 
-const defaultProps: Partial<AppShellProps> = {};
+const defaultProps: Partial<AppShellProps> = {
+  withBorder: true,
+};
 
 const varsResolver = createVarsResolver<AppShellFactory>(() => ({
   root: {
@@ -64,7 +71,8 @@ const varsResolver = createVarsResolver<AppShellFactory>(() => ({
 
 export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const props = useProps('AppShell', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, navbar, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, navbar, withBorder, ...others } =
+    props;
 
   const getStyles = useStyles<AppShellFactory>({
     name: 'AppShell',
@@ -80,7 +88,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   });
 
   return (
-    <AppShellProvider value={{ getStyles }}>
+    <AppShellProvider value={{ getStyles, withBorder }}>
       <AppShellMediaStyles navbar={navbar} />
       <Box ref={ref} {...getStyles('root')} {...others} />
     </AppShellProvider>
@@ -90,3 +98,4 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 AppShell.classes = classes;
 AppShell.displayName = '@mantine/core/AppShell';
 AppShell.Navbar = AppShellNavbar;
+AppShell.Main = AppShellMain;
