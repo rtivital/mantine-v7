@@ -109,7 +109,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
       <Box
         ref={ref}
         {...getStyles('root')}
-        mod={{ 'navbar-collapsed': navbar?.collapsed }}
+        mod={{ 'navbar-collapsed': navbar?.collapsed ?? true }}
         {...others}
       />
     </AppShellProvider>

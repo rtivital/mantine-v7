@@ -1,5 +1,5 @@
 .root {
-  --navbar-offset: var(--app-shell-navbar-width, 0px);
+  --navbar-offset: var(--app-shell-navbar-offset, 0px);
 
   &[data-navbar-collapsed] {
     --navbar-offset: 0px;

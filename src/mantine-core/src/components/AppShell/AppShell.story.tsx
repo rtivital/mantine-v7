@@ -11,7 +11,8 @@ export function Usage() {
     <AppShell
       padding={{ base: 'sm', md: 'lg' }}
       navbar={{
-        width: { base: 200, lg: 100, md: 300 },
+        width: { md: 300 },
+        offsetBreakpoint: 'md',
         collapsed: !opened,
       }}
       styles={{

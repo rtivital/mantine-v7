@@ -17,6 +17,20 @@ function getPaddingValue(padding: string | number | undefined) {
   return Number(padding) === 0 ? '0px' : getSpacing(padding);
 }
 
+function getBreakpointValue(breakpoint: number | string, theme: MantineTheme) {
+  if (breakpoint in theme.breakpoints) {
+    return px(theme.breakpoints[breakpoint as MantineBreakpoint]) as number;
+  }
+
+  const convertedValue = px(breakpoint);
+
+  if (typeof convertedValue !== 'number') {
+    throw new Error(`[@mantine/core] AppShell: failed to parse breakpoint value ${breakpoint}`);
+  }
+
+  return convertedValue;
+}
+
 function isResponsiveSize(
   size: AppShellSize | AppShellResponsiveSize | undefined
 ): size is AppShellResponsiveSize {
@@ -30,22 +44,10 @@ function isPrimitiveSize(
 }
 
 function getSortedBreakpoints(breakpoints: string[], theme: MantineTheme) {
-  const convertedBreakpoints = breakpoints.map((breakpoint) => {
-    const realValue =
-      breakpoint in theme.breakpoints
-        ? theme.breakpoints[breakpoint as MantineBreakpoint]
-        : breakpoint;
-    const convertedValue = px(realValue);
-
-    if (typeof convertedValue !== 'number') {
-      throw new Error(`[@mantine/core] AppShell: failed to parse breakpoint value ${breakpoint}`);
-    }
-
-    return {
-      value: breakpoint,
-      px: convertedValue,
-    };
-  });
+  const convertedBreakpoints = breakpoints.map((breakpoint) => ({
+    value: breakpoint,
+    px: getBreakpointValue(breakpoint, theme),
+  }));
 
   convertedBreakpoints.sort((a, b) => a.px - b.px);
   return convertedBreakpoints;
@@ -57,7 +59,8 @@ interface AppShellMediaStylesProps {
 }
 
 export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProps) {
-  const mediaStyles: Record<string, Record<`--${string}`, string>> = {};
+  const minMediaStyles: Record<string, Record<`--${string}`, string>> = {};
+  const maxMediaStyles: Record<string, Record<`--${string}`, string>> = {};
   const baseStyles: Record<`--${string}`, string> = {};
   const navbarWidth = navbar?.width;
   const theme = useMantineTheme();
@@ -68,16 +71,23 @@ export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProp
   }
 
   if (isResponsiveSize(navbarWidth)) {
-    if (navbarWidth.base) {
-      baseStyles['--app-shell-navbar-width'] = rem(navbarWidth.base);
-    }
+    baseStyles['--app-shell-navbar-width'] =
+      typeof navbarWidth.base !== 'undefined' ? rem(navbarWidth.base) : '100%';
 
     keys(navbarWidth).forEach((key) => {
       if (key !== 'base') {
-        mediaStyles[key] = mediaStyles[key] || {};
-        mediaStyles[key]['--app-shell-navbar-width'] = rem(navbarWidth![key]);
+        minMediaStyles[key] = minMediaStyles[key] || {};
+        minMediaStyles[key]['--app-shell-navbar-width'] = rem(navbarWidth![key]);
+        minMediaStyles[key]['--app-shell-navbar-offset'] = rem(navbarWidth![key]);
       }
     });
+  }
+
+  if (navbar?.offsetBreakpoint) {
+    const breakpointValue = getBreakpointValue(navbar!.offsetBreakpoint!, theme) - 0.1;
+    maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
+    maxMediaStyles[breakpointValue]['--app-shell-navbar-width'] = '100%';
+    maxMediaStyles[breakpointValue]['--app-shell-navbar-offset'] = '0px';
   }
 
   if (isPrimitiveSize(padding)) {
@@ -91,16 +101,23 @@ export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProp
 
     keys(padding).forEach((key) => {
       if (key !== 'base') {
-        mediaStyles[key] = mediaStyles[key] || {};
-        mediaStyles[key]['--app-shell-padding'] = getPaddingValue(padding![key]);
+        minMediaStyles[key] = minMediaStyles[key] || {};
+        minMediaStyles[key]['--app-shell-padding'] = getPaddingValue(padding![key]);
       }
     });
   }
 
-  const media = getSortedBreakpoints(keys(mediaStyles), theme).map((breakpoint) => ({
+  const minMedia = getSortedBreakpoints(keys(minMediaStyles), theme).map((breakpoint) => ({
     query: `(min-width: ${em(breakpoint.px)})`,
-    styles: mediaStyles[breakpoint.value],
+    styles: minMediaStyles[breakpoint.value],
   }));
+
+  const maxMedia = getSortedBreakpoints(keys(maxMediaStyles), theme).map((breakpoint) => ({
+    query: `(max-width: ${em(breakpoint.px)})`,
+    styles: maxMediaStyles[breakpoint.value],
+  }));
+
+  const media = [...minMedia, ...maxMedia];
 
   return <InlineStyles media={media} styles={baseStyles} selector={ctx.cssVariablesSelector} />;
 }
