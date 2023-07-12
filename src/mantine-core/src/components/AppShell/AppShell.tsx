@@ -104,9 +104,14 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   });
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder }}>
+    <AppShellProvider value={{ getStyles, withBorder, navbarCollapsed: navbar?.collapsed }}>
       <AppShellMediaStyles navbar={navbar} padding={padding} />
-      <Box ref={ref} {...getStyles('root')} {...others} />
+      <Box
+        ref={ref}
+        {...getStyles('root')}
+        mod={{ 'navbar-collapsed': navbar?.collapsed }}
+        {...others}
+      />
     </AppShellProvider>
   );
 });
