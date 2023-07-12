@@ -10,6 +10,7 @@ import {
   createVarsResolver,
   Factory,
   MantineBreakpoint,
+  MantineSpacing,
 } from '../../core';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
 import { AppShellMain } from './AppShellMain/AppShellMain';
@@ -22,7 +23,7 @@ export type AppShellCssVariables = {
   root: '--test';
 };
 
-export type AppShellSize = number | string;
+export type AppShellSize = number | (string & {});
 
 export interface AppShellResponsiveSize {
   base?: AppShellSize;
@@ -41,6 +42,10 @@ export interface AppShellProps
   /** Determines whether associated components should have a border, `true` by default */
   withBorder?: boolean;
 
+  /** Main content section padding, `0` by default */
+  padding?: MantineSpacing | AppShellSize | AppShellResponsiveSize;
+
+  /** Navbar configuration */
   navbar?: {
     width: AppShellSize | AppShellResponsiveSize;
     offsetBreakpoint?: MantineBreakpoint | (string & {}) | number;
@@ -61,6 +66,7 @@ export type AppShellFactory = Factory<{
 
 const defaultProps: Partial<AppShellProps> = {
   withBorder: true,
+  padding: 0,
 };
 
 const varsResolver = createVarsResolver<AppShellFactory>(() => ({
@@ -71,8 +77,18 @@ const varsResolver = createVarsResolver<AppShellFactory>(() => ({
 
 export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const props = useProps('AppShell', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, navbar, withBorder, ...others } =
-    props;
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    navbar,
+    withBorder,
+    padding,
+    ...others
+  } = props;
 
   const getStyles = useStyles<AppShellFactory>({
     name: 'AppShell',
@@ -89,7 +105,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 
   return (
     <AppShellProvider value={{ getStyles, withBorder }}>
-      <AppShellMediaStyles navbar={navbar} />
+      <AppShellMediaStyles navbar={navbar} padding={padding} />
       <Box ref={ref} {...getStyles('root')} {...others} />
     </AppShellProvider>
   );

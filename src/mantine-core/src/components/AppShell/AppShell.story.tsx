@@ -6,6 +6,7 @@ export default { title: 'AppShell' };
 export function Usage() {
   return (
     <AppShell
+      padding={{ base: 'sm', md: 50 }}
       navbar={{
         width: { base: 200, lg: 100, md: 300 },
       }}

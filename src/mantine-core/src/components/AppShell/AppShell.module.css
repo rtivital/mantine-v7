@@ -28,7 +28,7 @@
 }
 
 .main {
-  padding: rem(30px);
-  padding-left: var(--app-shell-navbar-width);
+  padding: var(--app-shell-padding);
+  padding-left: calc(var(--app-shell-navbar-width, 0) + var(--app-shell-padding));
   min-height: 100dvh;
 }

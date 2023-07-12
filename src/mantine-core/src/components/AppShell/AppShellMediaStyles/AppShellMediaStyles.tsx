@@ -9,8 +9,13 @@ import {
   useMantineTheme,
   useMantineContext,
   InlineStyles,
+  getSpacing,
 } from '../../../core';
 import type { AppShellProps, AppShellSize, AppShellResponsiveSize } from '../AppShell';
+
+function getPaddingValue(padding: string | number | undefined) {
+  return Number(padding) === 0 ? '0px' : getSpacing(padding);
+}
 
 function isResponsiveSize(
   size: AppShellSize | AppShellResponsiveSize | undefined
@@ -48,9 +53,10 @@ function getSortedBreakpoints(breakpoints: string[], theme: MantineTheme) {
 
 interface AppShellMediaStylesProps {
   navbar: AppShellProps['navbar'] | undefined;
+  padding: AppShellProps['padding'] | undefined;
 }
 
-export function AppShellMediaStyles({ navbar }: AppShellMediaStylesProps) {
+export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProps) {
   const mediaStyles: Record<string, Record<`--${string}`, string>> = {};
   const baseStyles: Record<`--${string}`, string> = {};
   const navbarWidth = navbar?.width;
@@ -70,6 +76,23 @@ export function AppShellMediaStyles({ navbar }: AppShellMediaStylesProps) {
       if (key !== 'base') {
         mediaStyles[key] = mediaStyles[key] || {};
         mediaStyles[key]['--app-shell-navbar-width'] = rem(navbarWidth![key]);
+      }
+    });
+  }
+
+  if (isPrimitiveSize(padding)) {
+    baseStyles['--app-shell-padding'] = getPaddingValue(padding);
+  }
+
+  if (isResponsiveSize(padding)) {
+    if (padding.base) {
+      baseStyles['--app-shell-padding'] = getPaddingValue(padding.base);
+    }
+
+    keys(padding).forEach((key) => {
+      if (key !== 'base') {
+        mediaStyles[key] = mediaStyles[key] || {};
+        mediaStyles[key]['--app-shell-padding'] = getPaddingValue(padding![key]);
       }
     });
   }
