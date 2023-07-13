@@ -49,7 +49,7 @@ export interface AppShellProps
   /** Navbar configuration */
   navbar?: {
     width: AppShellSize | AppShellResponsiveSize;
-    offsetBreakpoint?: MantineBreakpoint | (string & {}) | number;
+    breakpoint: MantineBreakpoint | (string & {}) | number;
     collapsed?: { desktop?: boolean; mobile?: boolean };
   };
 

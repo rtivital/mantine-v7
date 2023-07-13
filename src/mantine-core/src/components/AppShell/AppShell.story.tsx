@@ -13,8 +13,8 @@ export function Usage() {
     <AppShell
       padding="md"
       navbar={{
-        width: { md: 300 },
-        offsetBreakpoint: 'md',
+        width: { base: 200, lg: 400 },
+        breakpoint: 'md',
         collapsed: { desktop: !opened, mobile: !mobileOpened },
       }}
     >
