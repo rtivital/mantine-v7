@@ -5,6 +5,7 @@ export interface AppShellContext {
   getStyles: GetStylesApi<AppShellFactory>;
   withBorder: boolean | undefined;
   zIndex: React.CSSProperties['zIndex'];
+  layout: 'alt' | 'default' | undefined;
 }
 
 export const [AppShellProvider, useAppShellContext] = createSafeContext<AppShellContext>(

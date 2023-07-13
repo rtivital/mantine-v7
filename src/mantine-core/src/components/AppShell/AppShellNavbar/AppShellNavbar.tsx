@@ -45,7 +45,10 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
       mod={{ 'with-border': withBorder ?? ctx.withBorder }}
       {...ctx.getStyles('navbar', { className, classNames, styles, style })}
       {...others}
-      __vars={{ '--app-shell-navbar-z-index': (zIndex ?? ctx.zIndex)?.toString() }}
+      __vars={{
+        '--app-shell-navbar-z-index':
+          ctx.layout === 'alt' ? `calc(${zIndex ?? ctx.zIndex} + 1)` : `${zIndex ?? ctx.zIndex}`,
+      }}
     />
   );
 });

@@ -19,7 +19,7 @@ export type Mod = Record<string, any> | string;
 export type BoxMod = Mod | Mod[] | BoxMod[];
 
 export interface BoxProps extends MantineStyleProps {
-  /** Class added to root element, if applicable */
+  /** Class added to the root element, if applicable */
   className?: string;
 
   /** Inline style added to root component element, can subscribe to theme defined on MantineProvider */
