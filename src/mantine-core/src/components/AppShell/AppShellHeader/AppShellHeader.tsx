@@ -53,7 +53,7 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
       component="header"
       ref={ref}
       mod={{ 'with-border': withBorder ?? ctx.withBorder }}
-      {...ctx.getStyles('header')}
+      {...ctx.getStyles('header', { className, classNames, styles, style })}
       {...others}
       __vars={{ '--app-shell-header-z-index': (zIndex ?? ctx.zIndex)?.toString() }}
     />

@@ -143,7 +143,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const resizing = useResizing({ disabled, transitionDuration });
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder, zIndex, layout, disabled }}>
+    <AppShellProvider value={{ getStyles, withBorder, zIndex, disabled }}>
       <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
       <Box ref={ref} {...getStyles('root')} mod={{ resizing, layout, disabled }} {...others} />
     </AppShellProvider>

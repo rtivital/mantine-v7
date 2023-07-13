@@ -8,8 +8,8 @@ import {
   useProps,
   Factory,
 } from '../../../core';
-import classes from '../AppShell.module.css';
 import { useAppShellContext } from '../AppShell.context';
+import classes from '../AppShell.module.css';
 
 export type AppShellNavbarStylesNames = 'navbar';
 
@@ -50,8 +50,7 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
       {...ctx.getStyles('navbar', { className, classNames, styles, style })}
       {...others}
       __vars={{
-        '--app-shell-navbar-z-index':
-          ctx.layout === 'alt' ? `calc(${zIndex ?? ctx.zIndex} + 1)` : `${zIndex ?? ctx.zIndex}`,
+        '--app-shell-navbar-z-index': `calc(${zIndex ?? ctx.zIndex} + 1)`,
       }}
     />
   );

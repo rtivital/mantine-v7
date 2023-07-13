@@ -5,7 +5,6 @@ export interface AppShellContext {
   getStyles: GetStylesApi<AppShellFactory>;
   withBorder: boolean | undefined;
   zIndex: React.CSSProperties['zIndex'];
-  layout: 'alt' | 'default' | undefined;
   disabled: boolean | undefined;
 }
 
