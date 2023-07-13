@@ -26,6 +26,11 @@
   transform: var(--app-shell-navbar-transform);
   z-index: var(--app-shell-navbar-z-index);
 
+  [data-layout='alt'] & {
+    --_navbar-top: 0px;
+    --_navbar-height: 100dvh;
+  }
+
   &[data-with-border] {
     --_navbar-border-right: rem(1px) solid var(--_app-shell-border-color);
 
@@ -56,16 +61,25 @@
 .header {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  left: var(--_header-left, 0px);
+  right: var(--_header-right, 0px);
   height: var(--app-shell-header-height);
   background-color: var(--mantine-color-body);
   border-bottom: var(--_header-border-bottom);
   transform: var(--app-shell-header-transform);
-  transition-property: transform;
+  transition-property: transform, left, right;
   transition-duration: var(--app-shell-transition-duration);
   transition-timing-function: var(--app-shell-transition-timing-function);
   z-index: var(--app-shell-header-z-index);
+
+  [data-layout='alt'] & {
+    --_header-left: var(--app-shell-navbar-offset, 0px);
+
+    @mixin rtl {
+      --_header-right: var(--app-shell-navbar-offset, 0px);
+      --_header-left: 0px;
+    }
+  }
 
   &[data-with-border] {
     --_header-border-bottom: rem(1px) solid var(--_app-shell-border-color);

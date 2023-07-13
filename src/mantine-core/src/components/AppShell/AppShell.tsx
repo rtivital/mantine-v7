@@ -69,6 +69,9 @@ export interface AppShellProps
 
   /** `z-index` of all associated elements, `200` by default */
   zIndex?: React.CSSProperties['zIndex'];
+
+  /** Determines how Navbar/Aside are arranged relative to Header/Footer, `default` by default */
+  layout?: 'default' | 'alt';
 }
 
 export type AppShellFactory = Factory<{
@@ -116,6 +119,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     transitionTimingFunction,
     header,
     zIndex,
+    layout,
     ...others
   } = props;
 
@@ -137,7 +141,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   return (
     <AppShellProvider value={{ getStyles, withBorder, zIndex }}>
       <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
-      <Box ref={ref} {...getStyles('root')} mod={{ resizing }} {...others} />
+      <Box ref={ref} {...getStyles('root')} mod={{ resizing, layout }} {...others} />
     </AppShellProvider>
   );
 });

@@ -39,3 +39,38 @@ export function Usage() {
     </AppShell>
   );
 }
+
+export function AltLayout() {
+  const [opened, { toggle }] = useDisclosure(true);
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
+  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  return (
+    <AppShell
+      padding="md"
+      layout="alt"
+      navbar={{
+        width: { base: 200, md: 300 },
+        breakpoint: 'sm',
+        collapsed: { desktop: !opened, mobile: !mobileOpened },
+      }}
+      header={{
+        height: 50,
+        collapsed: !headerOpened,
+      }}
+    >
+      <AppShell.Navbar>
+        <Button>Focusable element 1</Button>
+        <Button>Focusable element 2</Button>
+      </AppShell.Navbar>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>
+        <Group>
+          <Button onClick={toggleHeader}>Toggle header</Button>
+          <Button onClick={toggle}>Toggle navbar</Button>
+          <Button onClick={toggleMobile}>Toggle navbar mobile</Button>
+        </Group>
+        <p>Other content</p>
+      </AppShell.Main>
+    </AppShell>
+  );
+}
