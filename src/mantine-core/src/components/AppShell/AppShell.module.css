@@ -1,10 +1,4 @@
 .root {
-  --navbar-offset: var(--app-shell-navbar-offset, 0px);
-
-  &[data-navbar-collapsed] {
-    --navbar-offset: 0px;
-  }
-
   &[data-resizing] {
     --app-shell-transition-duration: 0ms !important;
   }
@@ -28,10 +22,11 @@
   border-left: var(--_navbar-border-left);
   transition: transform var(--app-shell-transition-duration)
     var(--app-shell-transition-timing-function);
+  transform: var(--app-shell-navbar-transform);
 
-  &[data-collapsed] {
+  /* &[data-collapsed] {
     transform: translateX(calc(var(--app-shell-navbar-width) * -1));
-  }
+  } */
 
   &[data-with-border] {
     --_navbar-border-right: rem(1px) solid var(--_app-shell-border-color);
@@ -45,7 +40,7 @@
 
 .main {
   padding: var(--app-shell-padding);
-  padding-left: calc(var(--navbar-offset) + var(--app-shell-padding));
+  padding-left: calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding));
   min-height: 100dvh;
   transition: padding var(--app-shell-transition-duration)
     var(--app-shell-transition-timing-function);

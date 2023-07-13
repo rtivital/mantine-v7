@@ -38,7 +38,7 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
     <Box
       component="nav"
       ref={ref}
-      mod={{ 'with-border': withBorder ?? ctx.withBorder, collapsed: ctx.navbarCollapsed }}
+      mod={{ 'with-border': withBorder ?? ctx.withBorder }}
       {...ctx.getStyles('navbar', { className, classNames, styles, style })}
       {...others}
     />

@@ -19,6 +19,21 @@ Navbar cases:
 - visible on desktop – main offset
 - collapse on mobile – no main offset
 - visible on mobile – no main offset
+- closed on mobile by default, always visible on desktop
+
+Navbar default behavior:
+
+- Desktop state:
+  - visible by default
+  - can be closed – controlled by `collapsed` prop
+  - offsets main content
+  - Switches to mobile state when viewport is less than `offsetBreakpoint`, maybe rename to just breakpoint
+- Mobile state:
+  - closed by default
+  - can be opened
+  - never offsets main content
+
+collapsed prop – `boolean | { mobile: boolean; desktop: boolean }`
 
 ```tsx
 <AppShell>

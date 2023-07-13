@@ -7,14 +7,15 @@ import { AppShell } from './AppShell';
 export default { title: 'AppShell' };
 
 export function Usage() {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle }] = useDisclosure(true);
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
   return (
     <AppShell
       padding="md"
       navbar={{
         width: { md: 300 },
         offsetBreakpoint: 'md',
-        collapsed: !opened,
+        collapsed: { desktop: !opened, mobile: !mobileOpened },
       }}
     >
       <AppShell.Navbar>
@@ -22,6 +23,7 @@ export function Usage() {
         <Button>Focusable element 2</Button>
       </AppShell.Navbar>
       <AppShell.Main>
+        <Burger onClick={toggleMobile} opened={mobileOpened} />
         <Burger onClick={toggle} opened={opened} />
         <p>Other content</p>
       </AppShell.Main>

@@ -1,11 +1,14 @@
 import React from 'react';
-import { rem, em, keys, useMantineTheme, useMantineContext, InlineStyles } from '../../../core';
+import { em, keys, useMantineTheme, useMantineContext, InlineStyles } from '../../../core';
 import type { AppShellProps } from '../AppShell';
 import { getPaddingValue } from './get-padding-value';
-import { getBreakpointValue } from './get-breakpoint-value';
 import { getSortedBreakpoints } from './get-sorted-breakpoints';
 import { isPrimitiveSize } from './is-primitive-size';
 import { isResponsiveSize } from './is-responsive-size';
+import { assignNavbarVariables } from './assign-navbar-variables';
+
+export type CSSVariables = Record<`--${string}`, string>;
+export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
 
 interface AppShellMediaStylesProps {
   navbar: AppShellProps['navbar'] | undefined;
@@ -13,36 +16,19 @@ interface AppShellMediaStylesProps {
 }
 
 export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProps) {
-  const minMediaStyles: Record<string, Record<`--${string}`, string>> = {};
-  const maxMediaStyles: Record<string, Record<`--${string}`, string>> = {};
-  const baseStyles: Record<`--${string}`, string> = {};
-  const navbarWidth = navbar?.width;
+  const minMediaStyles: MediaQueryVariables = {};
+  const maxMediaStyles: MediaQueryVariables = {};
+  const baseStyles: CSSVariables = {};
   const theme = useMantineTheme();
   const ctx = useMantineContext();
 
-  if (isPrimitiveSize(navbarWidth)) {
-    baseStyles['--app-shell-navbar-width'] = rem(navbarWidth);
-  }
-
-  if (isResponsiveSize(navbarWidth)) {
-    baseStyles['--app-shell-navbar-width'] =
-      typeof navbarWidth.base !== 'undefined' ? rem(navbarWidth.base) : '100%';
-
-    keys(navbarWidth).forEach((key) => {
-      if (key !== 'base') {
-        minMediaStyles[key] = minMediaStyles[key] || {};
-        minMediaStyles[key]['--app-shell-navbar-width'] = rem(navbarWidth![key]);
-        minMediaStyles[key]['--app-shell-navbar-offset'] = rem(navbarWidth![key]);
-      }
-    });
-  }
-
-  if (navbar?.offsetBreakpoint) {
-    const breakpointValue = getBreakpointValue(navbar!.offsetBreakpoint!, theme) - 0.1;
-    maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
-    maxMediaStyles[breakpointValue]['--app-shell-navbar-width'] = '100%';
-    maxMediaStyles[breakpointValue]['--app-shell-navbar-offset'] = '0px';
-  }
+  assignNavbarVariables({
+    baseStyles,
+    minMediaStyles,
+    maxMediaStyles,
+    navbar,
+    theme,
+  });
 
   if (isPrimitiveSize(padding)) {
     baseStyles['--app-shell-padding'] = getPaddingValue(padding);

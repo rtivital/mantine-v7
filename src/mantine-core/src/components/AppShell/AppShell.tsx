@@ -50,7 +50,7 @@ export interface AppShellProps
   navbar?: {
     width: AppShellSize | AppShellResponsiveSize;
     offsetBreakpoint?: MantineBreakpoint | (string & {}) | number;
-    collapsed?: boolean;
+    collapsed?: { desktop?: boolean; mobile?: boolean };
   };
 
   /** Duration of all transitions in ms, `200` by default */
@@ -120,14 +120,9 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const resizing = useResizing();
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder, navbarCollapsed: navbar?.collapsed }}>
+    <AppShellProvider value={{ getStyles, withBorder }}>
       <AppShellMediaStyles navbar={navbar} padding={padding} />
-      <Box
-        ref={ref}
-        {...getStyles('root')}
-        mod={{ 'navbar-collapsed': navbar?.collapsed ?? true, resizing }}
-        {...others}
-      />
+      <Box ref={ref} {...getStyles('root')} mod={{ resizing }} {...others} />
     </AppShellProvider>
   );
 });
