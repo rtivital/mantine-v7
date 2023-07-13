@@ -72,6 +72,9 @@ export interface AppShellProps
 
   /** Determines how Navbar/Aside are arranged relative to Header/Footer, `default` by default */
   layout?: 'default' | 'alt';
+
+  /** If set, Navbar, Aside, Header and Footer components will not be rendered */
+  disabled?: boolean;
 }
 
 export type AppShellFactory = Factory<{
@@ -120,6 +123,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     header,
     zIndex,
     layout,
+    disabled,
     ...others
   } = props;
 
@@ -136,12 +140,12 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     varsResolver,
   });
 
-  const resizing = useResizing();
+  const resizing = useResizing({ disabled, transitionDuration });
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder, zIndex, layout }}>
+    <AppShellProvider value={{ getStyles, withBorder, zIndex, layout, disabled }}>
       <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
-      <Box ref={ref} {...getStyles('root')} mod={{ resizing, layout }} {...others} />
+      <Box ref={ref} {...getStyles('root')} mod={{ resizing, layout, disabled }} {...others} />
     </AppShellProvider>
   );
 });

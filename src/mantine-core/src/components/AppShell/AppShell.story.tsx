@@ -74,3 +74,52 @@ export function AltLayout() {
     </AppShell>
   );
 }
+
+export function HeaderOnly() {
+  const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  return (
+    <AppShell
+      padding="md"
+      header={{
+        height: 50,
+        collapsed: !headerOpened,
+      }}
+    >
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>
+        <Group>
+          <Button onClick={toggleHeader}>Toggle header</Button>
+        </Group>
+        <p>Other content</p>
+      </AppShell.Main>
+    </AppShell>
+  );
+}
+
+export function Disabled() {
+  const [disabled, { toggle }] = useDisclosure(true);
+  return (
+    <AppShell
+      padding="md"
+      disabled={disabled}
+      navbar={{
+        width: { base: 200, md: 300 },
+        breakpoint: 'sm',
+        collapsed: { desktop: false, mobile: false },
+      }}
+      header={{
+        height: 50,
+        collapsed: false,
+      }}
+    >
+      <AppShell.Navbar>
+        <Button>Focusable element 1</Button>
+        <Button>Focusable element 2</Button>
+      </AppShell.Navbar>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>
+        <Button onClick={toggle}>Toggle disabled</Button>
+      </AppShell.Main>
+    </AppShell>
+  );
+}

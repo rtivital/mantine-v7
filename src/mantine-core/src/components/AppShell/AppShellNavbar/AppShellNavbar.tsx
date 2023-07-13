@@ -38,6 +38,10 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
     props;
   const ctx = useAppShellContext();
 
+  if (ctx.disabled) {
+    return null;
+  }
+
   return (
     <Box
       component="nav"

@@ -44,6 +44,10 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
     props;
   const ctx = useAppShellContext();
 
+  if (ctx.disabled) {
+    return null;
+  }
+
   return (
     <Box
       component="header"

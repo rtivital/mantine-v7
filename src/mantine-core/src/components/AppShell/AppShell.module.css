@@ -3,6 +3,11 @@
     --app-shell-transition-duration: 0ms !important;
   }
 
+  &[data-disabled] {
+    --app-shell-header-offset: 0px !important;
+    --app-shell-navbar-offset: 0px !important;
+  }
+
   @mixin light {
     --_app-shell-border-color: var(--mantine-color-gray-3);
   }
@@ -49,8 +54,9 @@
   padding-right: var(--_main-padding-right, var(--app-shell-padding));
   padding-top: calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding));
   min-height: 100dvh;
-  transition: padding var(--app-shell-transition-duration)
-    var(--app-shell-transition-timing-function);
+  transition-property: padding;
+  transition-duration: var(--app-shell-transition-duration);
+  transition-timing-function: var(--app-shell-transition-timing-function);
 
   @mixin rtl {
     --_main-padding-left: var(--app-shell-padding);
