@@ -2,20 +2,23 @@ import React from 'react';
 import { em, keys, useMantineTheme, useMantineContext, InlineStyles } from '../../../core';
 import type { AppShellProps } from '../AppShell';
 import { getPaddingValue } from './get-padding-value';
+import { getBaseSize } from './get-base-size';
 import { getSortedBreakpoints } from './get-sorted-breakpoints';
 import { isPrimitiveSize } from './is-primitive-size';
 import { isResponsiveSize } from './is-responsive-size';
 import { assignNavbarVariables } from './assign-navbar-variables';
+import { assignHeaderVariables } from './assign-header-variables';
 
 export type CSSVariables = Record<`--${string}`, string>;
 export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
 
 interface AppShellMediaStylesProps {
   navbar: AppShellProps['navbar'] | undefined;
+  header: AppShellProps['header'] | undefined;
   padding: AppShellProps['padding'] | undefined;
 }
 
-export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProps) {
+export function AppShellMediaStyles({ navbar, header, padding }: AppShellMediaStylesProps) {
   const minMediaStyles: MediaQueryVariables = {};
   const maxMediaStyles: MediaQueryVariables = {};
   const baseStyles: CSSVariables = {};
@@ -30,8 +33,16 @@ export function AppShellMediaStyles({ navbar, padding }: AppShellMediaStylesProp
     theme,
   });
 
+  assignHeaderVariables({
+    baseStyles,
+    minMediaStyles,
+    maxMediaStyles,
+    header,
+    theme,
+  });
+
   if (isPrimitiveSize(padding)) {
-    baseStyles['--app-shell-padding'] = getPaddingValue(padding);
+    baseStyles['--app-shell-padding'] = getPaddingValue(getBaseSize(padding));
   }
 
   if (isResponsiveSize(padding)) {

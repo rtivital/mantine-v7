@@ -13,13 +13,14 @@ import {
   MantineSpacing,
 } from '../../core';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
+import { AppShellHeader } from './AppShellHeader/AppShellHeader';
 import { AppShellMain } from './AppShellMain/AppShellMain';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellProvider } from './AppShell.context';
 import { useResizing } from './use-resizing/use-resizing';
 import classes from './AppShell.module.css';
 
-export type AppShellStylesNames = 'root' | 'navbar' | 'main';
+export type AppShellStylesNames = 'root' | 'navbar' | 'main' | 'header';
 export type AppShellCssVariables = {
   root: '--app-shell-transition-duration' | '--app-shell-transition-timing-function';
 };
@@ -53,6 +54,12 @@ export interface AppShellProps
     collapsed?: { desktop?: boolean; mobile?: boolean };
   };
 
+  /** Header configuration */
+  header?: {
+    height: AppShellSize | AppShellResponsiveSize;
+    collapsed?: boolean;
+  };
+
   /** Duration of all transitions in ms, `200` by default */
   transitionDuration?: number;
 
@@ -67,6 +74,7 @@ export type AppShellFactory = Factory<{
   vars: AppShellCssVariables;
   staticComponents: {
     Navbar: typeof AppShellNavbar;
+    Header: typeof AppShellHeader;
     Main: typeof AppShellMain;
   };
 }>;
@@ -101,6 +109,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     padding,
     transitionDuration,
     transitionTimingFunction,
+    header,
     ...others
   } = props;
 
@@ -121,7 +130,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 
   return (
     <AppShellProvider value={{ getStyles, withBorder }}>
-      <AppShellMediaStyles navbar={navbar} padding={padding} />
+      <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
       <Box ref={ref} {...getStyles('root')} mod={{ resizing }} {...others} />
     </AppShellProvider>
   );
@@ -130,4 +139,5 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 AppShell.classes = classes;
 AppShell.displayName = '@mantine/core/AppShell';
 AppShell.Navbar = AppShellNavbar;
+AppShell.Header = AppShellHeader;
 AppShell.Main = AppShellMain;

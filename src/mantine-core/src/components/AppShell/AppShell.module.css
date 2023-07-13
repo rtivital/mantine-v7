@@ -14,19 +14,16 @@
 
 .navbar {
   position: fixed;
-  top: 0;
-  height: 100dvh;
+  top: var(--_navbar-top, var(--app-shell-header-offset, 0px));
+  height: var(--_navbar-height, calc(100dvh - var(--app-shell-header-offset, 0px)));
   width: var(--app-shell-navbar-width);
   background-color: var(--mantine-color-body);
   border-right: var(--_navbar-border-right);
   border-left: var(--_navbar-border-left);
-  transition: transform var(--app-shell-transition-duration)
-    var(--app-shell-transition-timing-function);
+  transition-property: transform, top;
+  transition-duration: var(--app-shell-transition-duration);
+  transition-timing-function: var(--app-shell-transition-timing-function);
   transform: var(--app-shell-navbar-transform);
-
-  /* &[data-collapsed] {
-    transform: translateX(calc(var(--app-shell-navbar-width) * -1));
-  } */
 
   &[data-with-border] {
     --_navbar-border-right: rem(1px) solid var(--_app-shell-border-color);
@@ -39,9 +36,27 @@
 }
 
 .main {
-  padding: var(--app-shell-padding);
   padding-left: calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding));
+  padding-top: calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding));
   min-height: 100dvh;
   transition: padding var(--app-shell-transition-duration)
     var(--app-shell-transition-timing-function);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--app-shell-header-height);
+  background-color: var(--mantine-color-body);
+  border-bottom: var(--_header-border-bottom);
+  transform: var(--app-shell-header-transform);
+  transition-property: transform;
+  transition-duration: var(--app-shell-transition-duration);
+  transition-timing-function: var(--app-shell-transition-timing-function);
+
+  &[data-with-border] {
+    --_header-border-bottom: rem(1px) solid var(--_app-shell-border-color);
+  }
 }
