@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import cx from 'clsx';
-import { useMantineTheme } from '../MantineProvider';
+import { useMantineTheme, MantineBreakpoint } from '../MantineProvider';
 import { InlineStyles } from '../InlineStyles';
 import { createPolymorphicComponent } from '../factory';
 import type { MantineStyleProp, CssVarsProp } from './Box.types';
@@ -27,6 +27,12 @@ export interface BoxProps extends MantineStyleProps {
 
   /** CSS variables defined on root component element */
   __vars?: CssVarsProp;
+
+  /** Breakpoint above which the component is hidden with `display: none` */
+  hiddenFrom?: MantineBreakpoint;
+
+  /** Breakpoint below which the component is hidden with `display: none` */
+  visibleFrom?: MantineBreakpoint;
 }
 
 export type ElementProps<
@@ -46,7 +52,10 @@ export interface BoxComponentProps extends BoxProps {
 }
 
 const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; className: string }>(
-  ({ component, style, __vars, className, variant, mod, size, ...others }, ref) => {
+  (
+    { component, style, __vars, className, variant, mod, size, hiddenFrom, visibleFrom, ...others },
+    ref
+  ) => {
     const theme = useMantineTheme();
     const Element = component || 'div';
     const { styleProps, rest } = extractStyleProps(others);
@@ -74,7 +83,11 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
             vars: __vars,
             styleProps: parsedStyleProps.inlineStyles,
           })}
-          className={cx(className, { [responsiveClassName]: parsedStyleProps.hasResponsiveStyles })}
+          className={cx(className, {
+            [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
+            [`mantine-hidden-from-${hiddenFrom}`]: hiddenFrom,
+            [`mantine-visible-from-${visibleFrom}`]: visibleFrom,
+          })}
           data-variant={variant}
           data-size={isNumberLike(size) ? undefined : size || undefined}
           {...getBoxMod(mod)}

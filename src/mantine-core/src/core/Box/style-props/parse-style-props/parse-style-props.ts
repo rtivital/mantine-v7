@@ -74,6 +74,10 @@ export function parseStyleProps({
       media: Record<string, Record<string, unknown>>;
     }>(
       (acc, styleProp) => {
+        if ((styleProp as string) === 'hiddenFrom' || (styleProp as string) === 'visibleFrom') {
+          return acc;
+        }
+
         const propertyData = data[styleProp];
         const properties = Array.isArray(propertyData.property)
           ? propertyData.property

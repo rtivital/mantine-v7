@@ -38,3 +38,12 @@ export function WithoutErrorStyles() {
     </div>
   );
 }
+
+export function Breakpoints() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput label="Text input without error styles" bg="red" hiddenFrom="sm" />
+      <TextInput label="Text input without error styles" bg="blue" visibleFrom="md" />
+    </div>
+  );
+}

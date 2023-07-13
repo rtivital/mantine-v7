@@ -48,6 +48,8 @@ export function extractStyleProps<T extends Record<string, any>>(
     right,
     inset,
     display,
+    hiddenFrom,
+    visibleFrom,
     ...rest
   } = others;
   const styleProps = filterProps({
@@ -94,6 +96,8 @@ export function extractStyleProps<T extends Record<string, any>>(
     right,
     inset,
     display,
+    hiddenFrom,
+    visibleFrom,
   });
 
   return { styleProps, rest: rest as unknown as T };

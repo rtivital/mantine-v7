@@ -25,11 +25,11 @@ describe('@mantine/core/Pagination', () => {
 
   it('renders nothing if total value is negative', () => {
     const { container } = render(<Pagination total={-10} />);
-    expect(container.firstChild).toBe(null);
+    expect(container.querySelectorAll('*:not(style)')).toHaveLength(0);
   });
 
   it('renders nothing if total value is zero', () => {
     const { container } = render(<Pagination total={0} />);
-    expect(container.firstChild).toBe(null);
+    expect(container.querySelectorAll('*:not(style)')).toHaveLength(0);
   });
 });

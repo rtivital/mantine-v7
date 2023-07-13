@@ -10,6 +10,7 @@ import { itSupportsVariant } from './shared/it-supports-variant';
 import { itSupportsSize } from './shared/it-supports-size';
 import { itHasExtend } from './shared/it-has-extend';
 import { itHasClasses } from './shared/it-has-classes';
+import { itSupportsHiddenVisible } from './shared/it-supports-hidden-visible';
 
 import { itSupportsMarginsProps } from './style-props/it-supports-margins-props';
 import { itSupportsPaddingsProps } from './style-props/it-supports-paddings-props';
@@ -56,6 +57,7 @@ export function itSupportsSystemProps<
     const stylesApiName = options.stylesApiName || providerName;
 
     itSupportsClassName(options);
+    itSupportsHiddenVisible(options);
     itSupportsStyle(options);
     itSupportsOthers(options);
     options.refType && itSupportsRef({ ...options, refType: options.refType });

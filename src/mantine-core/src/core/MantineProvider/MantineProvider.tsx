@@ -4,6 +4,7 @@ import { suppressNextjsWarning } from './suppress-nextjs-warning';
 import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';
 import { MantineThemeProvider } from './MantineThemeProvider';
 import type { MantineColorScheme, MantineThemeOverride } from './theme.types';
+import { MantineClasses } from './MantineClasses';
 import { localStorageColorSchemeManager, MantineColorSchemeManager } from './color-scheme-managers';
 import { MantineContext } from './Mantine.context';
 import { useProviderColorScheme } from './use-mantine-color-scheme';
@@ -82,6 +83,7 @@ export function MantineProvider({
     >
       <MantineThemeProvider theme={theme}>
         {withCssVariables && <MantineCssVariables cssVariablesSelector={cssVariablesSelector} />}
+        <MantineClasses />
         {children}
       </MantineThemeProvider>
     </MantineContext.Provider>
