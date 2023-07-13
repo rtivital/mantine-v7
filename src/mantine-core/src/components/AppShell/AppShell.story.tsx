@@ -14,8 +14,8 @@ export function Usage() {
     <AppShell
       padding="md"
       navbar={{
-        width: { base: 200, lg: 400 },
-        breakpoint: 'md',
+        width: { base: 200, md: 300 },
+        breakpoint: 'sm',
         collapsed: { desktop: !opened, mobile: !mobileOpened },
       }}
       header={{

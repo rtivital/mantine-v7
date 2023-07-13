@@ -36,11 +36,20 @@
 }
 
 .main {
-  padding-left: calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding));
+  padding-left: var(
+    --_main-padding-left,
+    calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding))
+  );
+  padding-right: var(--_main-padding-right, var(--app-shell-padding));
   padding-top: calc(var(--app-shell-header-offset, 0px) + var(--app-shell-padding));
   min-height: 100dvh;
   transition: padding var(--app-shell-transition-duration)
     var(--app-shell-transition-timing-function);
+
+  @mixin rtl {
+    --_main-padding-left: var(--app-shell-padding);
+    --_main-padding-right: calc(var(--app-shell-navbar-offset, 0px) + var(--app-shell-padding));
+  }
 }
 
 .header {
