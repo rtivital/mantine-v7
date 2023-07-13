@@ -11,6 +11,7 @@ import {
   Factory,
   MantineBreakpoint,
   MantineSpacing,
+  getDefaultZIndex,
 } from '../../core';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
 import { AppShellHeader } from './AppShellHeader/AppShellHeader';
@@ -65,6 +66,9 @@ export interface AppShellProps
 
   /** Timing function of all transitions, `ease` by default */
   transitionTimingFunction?: React.CSSProperties['transitionTimingFunction'];
+
+  /** `z-index` of all associated elements, `200` by default */
+  zIndex?: React.CSSProperties['zIndex'];
 }
 
 export type AppShellFactory = Factory<{
@@ -84,6 +88,7 @@ const defaultProps: Partial<AppShellProps> = {
   padding: 0,
   transitionDuration: 200,
   transitionTimingFunction: 'ease',
+  zIndex: getDefaultZIndex('app'),
 };
 
 const varsResolver = createVarsResolver<AppShellFactory>(
@@ -110,6 +115,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     transitionDuration,
     transitionTimingFunction,
     header,
+    zIndex,
     ...others
   } = props;
 
@@ -129,7 +135,7 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
   const resizing = useResizing();
 
   return (
-    <AppShellProvider value={{ getStyles, withBorder }}>
+    <AppShellProvider value={{ getStyles, withBorder, zIndex }}>
       <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
       <Box ref={ref} {...getStyles('root')} mod={{ resizing }} {...others} />
     </AppShellProvider>

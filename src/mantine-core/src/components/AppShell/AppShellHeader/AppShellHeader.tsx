@@ -23,6 +23,9 @@ export interface AppShellHeaderProps
     ElementProps<'header'> {
   /** Determines whether component should have a border, overrides `withBorder` prop on `AppShell` component */
   withBorder?: boolean;
+
+  /** Component `z-index`, by default inherited from the `AppShell` */
+  zIndex?: React.CSSProperties['zIndex'];
 }
 
 export type AppShellHeaderFactory = Factory<{
@@ -37,7 +40,8 @@ const defaultProps: Partial<AppShellHeaderProps> = {};
 
 export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
   const props = useProps('AppShellHeader', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, withBorder, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, withBorder, zIndex, ...others } =
+    props;
   const ctx = useAppShellContext();
 
   return (
@@ -47,6 +51,7 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
       mod={{ 'with-border': withBorder ?? ctx.withBorder }}
       {...ctx.getStyles('header')}
       {...others}
+      __vars={{ '--app-shell-header-z-index': (zIndex ?? ctx.zIndex)?.toString() }}
     />
   );
 });

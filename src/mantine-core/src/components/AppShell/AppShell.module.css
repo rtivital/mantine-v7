@@ -24,6 +24,7 @@
   transition-duration: var(--app-shell-transition-duration);
   transition-timing-function: var(--app-shell-transition-timing-function);
   transform: var(--app-shell-navbar-transform);
+  z-index: var(--app-shell-navbar-z-index);
 
   &[data-with-border] {
     --_navbar-border-right: rem(1px) solid var(--_app-shell-border-color);
@@ -64,6 +65,7 @@
   transition-property: transform;
   transition-duration: var(--app-shell-transition-duration);
   transition-timing-function: var(--app-shell-transition-timing-function);
+  z-index: var(--app-shell-header-z-index);
 
   &[data-with-border] {
     --_header-border-bottom: rem(1px) solid var(--_app-shell-border-color);
