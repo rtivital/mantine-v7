@@ -15,3 +15,4 @@ export { customVariant } from './Styles.demo.customVariant';
 export { dataSize } from './Styles.demo.dataSize';
 export { classNamesProps } from './Styles.demo.classNamesProps';
 export { remSlider } from './Styles.demo.remSlider';
+export { hiddenVisible } from './Styles.demo.hiddenVisible';

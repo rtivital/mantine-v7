@@ -385,6 +385,14 @@ indicate error state. For example, it can be used to render icon in the right se
 
 <Demo data={InputDemos.error} />
 
+## hiddenFrom and visibleFrom props
+
+All Mantine components now support `hiddenFrom` and `visibleFrom` props.
+These props accept breakpoint (`xs`, `sm`, `md`, `lg`, `xl`) and hide the component when
+viewport width is less than or greater than the specified breakpoint:
+
+<Demo data={StylesDemos.hiddenVisible} />
+
 ## Other changes
 
 - New [VisuallyHidden](/core/visually-hidden) component
