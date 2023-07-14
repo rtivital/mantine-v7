@@ -15,13 +15,15 @@ import {
 } from '../../core';
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar';
 import { AppShellHeader } from './AppShellHeader/AppShellHeader';
+import { AppShellFooter } from './AppShellFooter/AppShellFooter';
+import { AppShellAside } from './AppShellAside/AppShellAside';
 import { AppShellMain } from './AppShellMain/AppShellMain';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellProvider } from './AppShell.context';
 import { useResizing } from './use-resizing/use-resizing';
 import classes from './AppShell.module.css';
 
-export type AppShellStylesNames = 'root' | 'navbar' | 'main' | 'header';
+export type AppShellStylesNames = 'root' | 'navbar' | 'main' | 'header' | 'footer' | 'aside';
 export type AppShellCssVariables = {
   root: '--app-shell-transition-duration' | '--app-shell-transition-timing-function';
 };
@@ -55,8 +57,21 @@ export interface AppShellProps
     collapsed?: { desktop?: boolean; mobile?: boolean };
   };
 
+  /** Aside configuration */
+  aside?: {
+    width: AppShellSize | AppShellResponsiveSize;
+    breakpoint: MantineBreakpoint | (string & {}) | number;
+    collapsed?: { desktop?: boolean; mobile?: boolean };
+  };
+
   /** Header configuration */
   header?: {
+    height: AppShellSize | AppShellResponsiveSize;
+    collapsed?: boolean;
+  };
+
+  /** Footer configuration */
+  footer?: {
     height: AppShellSize | AppShellResponsiveSize;
     collapsed?: boolean;
   };
@@ -86,6 +101,8 @@ export type AppShellFactory = Factory<{
     Navbar: typeof AppShellNavbar;
     Header: typeof AppShellHeader;
     Main: typeof AppShellMain;
+    Aside: typeof AppShellAside;
+    Footer: typeof AppShellFooter;
   };
 }>;
 
@@ -124,6 +141,8 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
     zIndex,
     layout,
     disabled,
+    aside,
+    footer,
     ...others
   } = props;
 
@@ -144,7 +163,13 @@ export const AppShell = factory<AppShellFactory>((_props, ref) => {
 
   return (
     <AppShellProvider value={{ getStyles, withBorder, zIndex, disabled }}>
-      <AppShellMediaStyles navbar={navbar} header={header} padding={padding} />
+      <AppShellMediaStyles
+        navbar={navbar}
+        header={header}
+        aside={aside}
+        footer={footer}
+        padding={padding}
+      />
       <Box ref={ref} {...getStyles('root')} mod={{ resizing, layout, disabled }} {...others} />
     </AppShellProvider>
   );
@@ -155,3 +180,5 @@ AppShell.displayName = '@mantine/core/AppShell';
 AppShell.Navbar = AppShellNavbar;
 AppShell.Header = AppShellHeader;
 AppShell.Main = AppShellMain;
+AppShell.Aside = AppShellAside;
+AppShell.Footer = AppShellFooter;

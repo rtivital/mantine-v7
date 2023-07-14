@@ -6,8 +6,8 @@ import { getBaseSize } from './get-base-size';
 import { getSortedBreakpoints } from './get-sorted-breakpoints';
 import { isPrimitiveSize } from './is-primitive-size';
 import { isResponsiveSize } from './is-responsive-size';
-import { assignNavbarVariables } from './assign-navbar-variables';
-import { assignHeaderVariables } from './assign-header-variables';
+import { assignNavbarVariables, assignAsideVariables } from './assign-navbar-variables';
+import { assignHeaderVariables, assignFooterVariables } from './assign-header-variables';
 
 export type CSSVariables = Record<`--${string}`, string>;
 export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
@@ -15,10 +15,18 @@ export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
 interface AppShellMediaStylesProps {
   navbar: AppShellProps['navbar'] | undefined;
   header: AppShellProps['header'] | undefined;
+  aside: AppShellProps['aside'] | undefined;
+  footer: AppShellProps['footer'] | undefined;
   padding: AppShellProps['padding'] | undefined;
 }
 
-export function AppShellMediaStyles({ navbar, header, padding }: AppShellMediaStylesProps) {
+export function AppShellMediaStyles({
+  navbar,
+  header,
+  aside,
+  footer,
+  padding,
+}: AppShellMediaStylesProps) {
   const minMediaStyles: MediaQueryVariables = {};
   const maxMediaStyles: MediaQueryVariables = {};
   const baseStyles: CSSVariables = {};
@@ -33,11 +41,27 @@ export function AppShellMediaStyles({ navbar, header, padding }: AppShellMediaSt
     theme,
   });
 
+  assignAsideVariables({
+    baseStyles,
+    minMediaStyles,
+    maxMediaStyles,
+    aside,
+    theme,
+  });
+
   assignHeaderVariables({
     baseStyles,
     minMediaStyles,
     maxMediaStyles,
     header,
+    theme,
+  });
+
+  assignFooterVariables({
+    baseStyles,
+    minMediaStyles,
+    maxMediaStyles,
+    footer,
     theme,
   });
 

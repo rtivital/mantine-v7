@@ -10,6 +10,10 @@ export function Usage() {
   const [opened, { toggle }] = useDisclosure(true);
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
   const [headerOpened, { toggle: toggleHeader }] = useDisclosure(true);
+  const [footerOpened, { toggle: toggleFooter }] = useDisclosure(true);
+
+  <Button>Hello</Button>;
+
   return (
     <AppShell
       padding="md"
@@ -22,6 +26,10 @@ export function Usage() {
         height: 50,
         collapsed: !headerOpened,
       }}
+      footer={{
+        height: 50,
+        collapsed: !footerOpened,
+      }}
     >
       <AppShell.Navbar>
         <Button>Focusable element 1</Button>
@@ -31,11 +39,14 @@ export function Usage() {
       <AppShell.Main>
         <Group>
           <Button onClick={toggleHeader}>Toggle header</Button>
+          <Button onClick={toggleFooter}>Toggle footer</Button>
           <Button onClick={toggle}>Toggle navbar</Button>
           <Button onClick={toggleMobile}>Toggle navbar mobile</Button>
         </Group>
         <p>Other content</p>
       </AppShell.Main>
+
+      <AppShell.Footer>Footer</AppShell.Footer>
     </AppShell>
   );
 }
@@ -57,6 +68,10 @@ export function AltLayout() {
         height: 50,
         collapsed: !headerOpened,
       }}
+      footer={{
+        height: 50,
+        collapsed: !headerOpened,
+      }}
     >
       <AppShell.Navbar>
         <Button>Focusable element 1</Button>
@@ -71,6 +86,8 @@ export function AltLayout() {
         </Group>
         <p>Other content</p>
       </AppShell.Main>
+
+      <AppShell.Footer>Footer</AppShell.Footer>
     </AppShell>
   );
 }

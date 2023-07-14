@@ -66,3 +66,63 @@ export function assignNavbarVariables({
     maxMediaStyles[breakpointValue]['--app-shell-navbar-transform'] = collapsedNavbarTransform;
   }
 }
+
+interface AssignAsideVariablesInput {
+  baseStyles: CSSVariables;
+  minMediaStyles: MediaQueryVariables;
+  maxMediaStyles: MediaQueryVariables;
+  aside: AppShellProps['aside'] | undefined;
+  theme: MantineTheme;
+}
+
+export function assignAsideVariables({
+  baseStyles,
+  minMediaStyles,
+  maxMediaStyles,
+  aside,
+  theme,
+}: AssignAsideVariablesInput) {
+  const asideWidth = aside?.width;
+  const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-aside-width) * -1))';
+
+  if (aside?.breakpoint) {
+    maxMediaStyles[aside?.breakpoint] = maxMediaStyles[aside?.breakpoint] || {};
+    maxMediaStyles[aside?.breakpoint]['--app-shell-aside-width'] = '100%';
+    maxMediaStyles[aside?.breakpoint]['--app-shell-aside-offset'] = '0px';
+  }
+
+  if (isPrimitiveSize(asideWidth)) {
+    const baseSize = rem(getBaseSize(asideWidth));
+    baseStyles['--app-shell-aside-width'] = baseSize;
+    baseStyles['--app-shell-aside-offset'] = baseSize;
+  }
+
+  if (isResponsiveSize(asideWidth)) {
+    if (typeof asideWidth.base !== 'undefined') {
+      baseStyles['--app-shell-aside-width'] = rem(asideWidth.base);
+      baseStyles['--app-shell-aside-offset'] = rem(asideWidth.base);
+    }
+
+    keys(asideWidth).forEach((key) => {
+      if (key !== 'base') {
+        minMediaStyles[key] = minMediaStyles[key] || {};
+        minMediaStyles[key]['--app-shell-aside-width'] = rem(asideWidth![key]);
+        minMediaStyles[key]['--app-shell-aside-offset'] = rem(asideWidth![key]);
+      }
+    });
+  }
+
+  if (aside?.collapsed?.desktop) {
+    const breakpointValue = aside!.breakpoint;
+    minMediaStyles[breakpointValue] = minMediaStyles[breakpointValue] || {};
+    minMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedNavbarTransform;
+    minMediaStyles[breakpointValue]['--app-shell-aside-offset'] = '0px !important';
+  }
+
+  if (aside?.collapsed?.mobile) {
+    const breakpointValue = getBreakpointValue(aside!.breakpoint, theme) - 0.1;
+    maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
+    maxMediaStyles[breakpointValue]['--app-shell-aside-offset'] = '0px !important';
+    maxMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedNavbarTransform;
+  }
+}

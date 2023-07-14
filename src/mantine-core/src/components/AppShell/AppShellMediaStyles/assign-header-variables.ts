@@ -48,3 +48,46 @@ export function assignHeaderVariables({
     baseStyles['--app-shell-header-offset'] = '0px !important';
   }
 }
+
+interface AssignFooterVariablesInput {
+  baseStyles: CSSVariables;
+  minMediaStyles: MediaQueryVariables;
+  maxMediaStyles: MediaQueryVariables;
+  footer: AppShellProps['footer'] | undefined;
+  theme: MantineTheme;
+}
+
+export function assignFooterVariables({
+  baseStyles,
+  minMediaStyles,
+  footer,
+}: AssignFooterVariablesInput) {
+  const footerHeight = footer?.height;
+  const collapsedHeaderTransform = 'translateY(var(--app-shell-footer-height))';
+
+  if (isPrimitiveSize(footerHeight)) {
+    const baseSize = rem(getBaseSize(footerHeight));
+    baseStyles['--app-shell-footer-height'] = baseSize;
+    baseStyles['--app-shell-footer-offset'] = baseSize;
+  }
+
+  if (isResponsiveSize(footerHeight)) {
+    if (typeof footerHeight.base !== 'undefined') {
+      baseStyles['--app-shell-footer-height'] = rem(footerHeight.base);
+      baseStyles['--app-shell-footer-offset'] = rem(footerHeight.base);
+    }
+
+    keys(footerHeight).forEach((key) => {
+      if (key !== 'base') {
+        minMediaStyles[key] = minMediaStyles[key] || {};
+        minMediaStyles[key]['--app-shell-footer-height'] = rem(footerHeight[key]);
+        minMediaStyles[key]['--app-shell-footer-offset'] = rem(footerHeight[key]);
+      }
+    });
+  }
+
+  if (footer?.collapsed) {
+    baseStyles['--app-shell-footer-transform'] = collapsedHeaderTransform;
+    baseStyles['--app-shell-footer-offset'] = '0px !important';
+  }
+}
