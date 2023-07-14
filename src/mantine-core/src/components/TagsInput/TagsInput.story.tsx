@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TagsInput } from './TagsInput';
 import { MantineThemeProvider } from '../../core';
+import { Button } from '../Button';
 
 export default { title: 'TagsInput' };
 
@@ -28,6 +29,23 @@ export function Usage() {
           data-test="orange"
         />
       </MantineThemeProvider>
+    </div>
+  );
+}
+
+export function Controlled() {
+  const [value, setValue] = useState<string[]>(['React']);
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <TagsInput
+        value={value}
+        onChange={setValue}
+        label="Test"
+        placeholder="Test autocomplete"
+        data={['React', 'Angular', 'Svelte']}
+      />
+      <Button onClick={() => setValue(['angular'])}>Angular</Button>
+      <Button onClick={() => setValue([])}>Empty</Button>
     </div>
   );
 }

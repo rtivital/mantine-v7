@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from './Autocomplete';
+import { Button } from '../Button';
 
 export default { title: 'Autocomplete' };
 
@@ -29,6 +30,23 @@ export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>
       <Autocomplete label="Test" placeholder="Test autocomplete" data={options} dropdownOpened />
+    </div>
+  );
+}
+
+export function Controlled() {
+  const [value, setValue] = useState<string>('React');
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        value={value}
+        onChange={setValue}
+        label="Test"
+        placeholder="Test autocomplete"
+        data={options}
+      />
+      <Button onClick={() => setValue('Angular')}>Angular</Button>
+      <Button onClick={() => setValue('')}>Empty</Button>
     </div>
   );
 }

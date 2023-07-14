@@ -90,7 +90,7 @@
   @mixin rtl {
     --_aside-left: 0px;
     --_aside-right: auto;
-    --_aside-transform: var(--app-shell-navbar-transform-rtl);
+    --_aside-transform: var(--app-shell-aside-transform-rtl);
   }
 }
 
