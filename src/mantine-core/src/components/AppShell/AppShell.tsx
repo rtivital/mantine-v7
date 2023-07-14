@@ -68,12 +68,14 @@ export interface AppShellProps
   header?: {
     height: AppShellSize | AppShellResponsiveSize;
     collapsed?: boolean;
+    offset?: boolean;
   };
 
   /** Footer configuration */
   footer?: {
     height: AppShellSize | AppShellResponsiveSize;
     collapsed?: boolean;
+    offset?: boolean;
   };
 
   /** Duration of all transitions in ms, `200` by default */

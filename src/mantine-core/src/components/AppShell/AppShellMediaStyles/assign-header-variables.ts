@@ -21,24 +21,33 @@ export function assignHeaderVariables({
 }: AssignHeaderVariablesInput) {
   const headerHeight = header?.height;
   const collapsedHeaderTransform = 'translateY(calc(var(--app-shell-header-height) * -1))';
+  const shouldOffset = header?.offset ?? true;
 
   if (isPrimitiveSize(headerHeight)) {
     const baseSize = rem(getBaseSize(headerHeight));
     baseStyles['--app-shell-header-height'] = baseSize;
-    baseStyles['--app-shell-header-offset'] = baseSize;
+    if (shouldOffset) {
+      baseStyles['--app-shell-header-offset'] = baseSize;
+    }
   }
 
   if (isResponsiveSize(headerHeight)) {
     if (typeof headerHeight.base !== 'undefined') {
       baseStyles['--app-shell-header-height'] = rem(headerHeight.base);
-      baseStyles['--app-shell-header-offset'] = rem(headerHeight.base);
+
+      if (shouldOffset) {
+        baseStyles['--app-shell-header-offset'] = rem(headerHeight.base);
+      }
     }
 
     keys(headerHeight).forEach((key) => {
       if (key !== 'base') {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]['--app-shell-header-height'] = rem(headerHeight[key]);
-        minMediaStyles[key]['--app-shell-header-offset'] = rem(headerHeight[key]);
+
+        if (shouldOffset) {
+          minMediaStyles[key]['--app-shell-header-offset'] = rem(headerHeight[key]);
+        }
       }
     });
   }
@@ -64,24 +73,33 @@ export function assignFooterVariables({
 }: AssignFooterVariablesInput) {
   const footerHeight = footer?.height;
   const collapsedHeaderTransform = 'translateY(var(--app-shell-footer-height))';
+  const shouldOffset = footer?.offset ?? true;
 
   if (isPrimitiveSize(footerHeight)) {
     const baseSize = rem(getBaseSize(footerHeight));
     baseStyles['--app-shell-footer-height'] = baseSize;
-    baseStyles['--app-shell-footer-offset'] = baseSize;
+    if (shouldOffset) {
+      baseStyles['--app-shell-footer-offset'] = baseSize;
+    }
   }
 
   if (isResponsiveSize(footerHeight)) {
     if (typeof footerHeight.base !== 'undefined') {
       baseStyles['--app-shell-footer-height'] = rem(footerHeight.base);
-      baseStyles['--app-shell-footer-offset'] = rem(footerHeight.base);
+
+      if (shouldOffset) {
+        baseStyles['--app-shell-footer-offset'] = rem(footerHeight.base);
+      }
     }
 
     keys(footerHeight).forEach((key) => {
       if (key !== 'base') {
         minMediaStyles[key] = minMediaStyles[key] || {};
         minMediaStyles[key]['--app-shell-footer-height'] = rem(footerHeight[key]);
-        minMediaStyles[key]['--app-shell-footer-offset'] = rem(footerHeight[key]);
+
+        if (shouldOffset) {
+          minMediaStyles[key]['--app-shell-footer-offset'] = rem(footerHeight[key]);
+        }
       }
     });
   }
