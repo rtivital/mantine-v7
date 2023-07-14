@@ -38,7 +38,7 @@
   border-right: var(--_navbar-border-right);
   border-left: var(--_navbar-border-left);
   transition-property: transform, top, height;
-  transform: var(--app-shell-navbar-transform);
+  transform: var(--_navbar-transform, var(--app-shell-navbar-transform));
   z-index: var(--app-shell-navbar-z-index);
 
   [data-layout='alt'] & {
@@ -53,6 +53,10 @@
       --_navbar-border-right: none;
       --_navbar-border-left: rem(1px) solid var(--_app-shell-border-color);
     }
+  }
+
+  @mixin rtl {
+    --_navbar-transform: var(--app-shell-navbar-transform-rtl);
   }
 }
 

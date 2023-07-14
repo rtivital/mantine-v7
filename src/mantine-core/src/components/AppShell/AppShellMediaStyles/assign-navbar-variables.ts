@@ -24,6 +24,7 @@ export function assignNavbarVariables({
 }: AssignNavbarVariablesInput) {
   const navbarWidth = navbar?.width;
   const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-navbar-width) * -1))';
+  const collapsedNavbarTransformRtl = 'translateX(var(--app-shell-navbar-width))';
 
   if (navbar?.breakpoint) {
     maxMediaStyles[navbar?.breakpoint] = maxMediaStyles[navbar?.breakpoint] || {};
@@ -56,6 +57,8 @@ export function assignNavbarVariables({
     const breakpointValue = navbar!.breakpoint;
     minMediaStyles[breakpointValue] = minMediaStyles[breakpointValue] || {};
     minMediaStyles[breakpointValue]['--app-shell-navbar-transform'] = collapsedNavbarTransform;
+    minMediaStyles[breakpointValue]['--app-shell-navbar-transform-rtl'] =
+      collapsedNavbarTransformRtl;
     minMediaStyles[breakpointValue]['--app-shell-navbar-offset'] = '0px !important';
   }
 
@@ -64,6 +67,8 @@ export function assignNavbarVariables({
     maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
     maxMediaStyles[breakpointValue]['--app-shell-navbar-offset'] = '0px !important';
     maxMediaStyles[breakpointValue]['--app-shell-navbar-transform'] = collapsedNavbarTransform;
+    maxMediaStyles[breakpointValue]['--app-shell-navbar-transform-rtl'] =
+      collapsedNavbarTransformRtl;
   }
 }
 
@@ -83,7 +88,8 @@ export function assignAsideVariables({
   theme,
 }: AssignAsideVariablesInput) {
   const asideWidth = aside?.width;
-  const collapsedNavbarTransform = 'translateX(calc(var(--app-shell-aside-width) * -1))';
+  const collapsedAsideTransform = 'translateX(var(--app-shell-aside-width))';
+  const collapsedAsideTransformRtl = 'translateX(calc(var(--app-shell-aside-width) * -1))';
 
   if (aside?.breakpoint) {
     maxMediaStyles[aside?.breakpoint] = maxMediaStyles[aside?.breakpoint] || {};
@@ -115,7 +121,8 @@ export function assignAsideVariables({
   if (aside?.collapsed?.desktop) {
     const breakpointValue = aside!.breakpoint;
     minMediaStyles[breakpointValue] = minMediaStyles[breakpointValue] || {};
-    minMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedNavbarTransform;
+    minMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedAsideTransform;
+    minMediaStyles[breakpointValue]['--app-shell-aside-transform-rtl'] = collapsedAsideTransformRtl;
     minMediaStyles[breakpointValue]['--app-shell-aside-offset'] = '0px !important';
   }
 
@@ -123,6 +130,7 @@ export function assignAsideVariables({
     const breakpointValue = getBreakpointValue(aside!.breakpoint, theme) - 0.1;
     maxMediaStyles[breakpointValue] = maxMediaStyles[breakpointValue] || {};
     maxMediaStyles[breakpointValue]['--app-shell-aside-offset'] = '0px !important';
-    maxMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedNavbarTransform;
+    maxMediaStyles[breakpointValue]['--app-shell-aside-transform'] = collapsedAsideTransform;
+    maxMediaStyles[breakpointValue]['--app-shell-aside-transform-rtl'] = collapsedAsideTransformRtl;
   }
 }
