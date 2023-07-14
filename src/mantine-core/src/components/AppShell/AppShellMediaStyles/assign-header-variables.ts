@@ -2,9 +2,9 @@
 import { MantineTheme, keys, rem } from '../../../core';
 import type { CSSVariables, MediaQueryVariables } from './AppShellMediaStyles';
 import type { AppShellProps } from '../AppShell';
-import { isResponsiveSize } from './is-responsive-size';
-import { isPrimitiveSize } from './is-primitive-size';
-import { getBaseSize } from './get-base-size';
+import { isResponsiveSize } from './is-responsive-size/is-responsive-size';
+import { isPrimitiveSize } from './is-primitive-size/is-primitive-size';
+import { getBaseSize } from './get-base-size/get-base-size';
 
 interface AssignHeaderVariablesInput {
   baseStyles: CSSVariables;

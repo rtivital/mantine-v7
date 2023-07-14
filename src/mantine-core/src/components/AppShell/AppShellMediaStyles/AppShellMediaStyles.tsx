@@ -1,11 +1,11 @@
 import React from 'react';
 import { em, keys, useMantineTheme, useMantineContext, InlineStyles } from '../../../core';
 import type { AppShellProps } from '../AppShell';
-import { getPaddingValue } from './get-padding-value';
-import { getBaseSize } from './get-base-size';
-import { getSortedBreakpoints } from './get-sorted-breakpoints';
-import { isPrimitiveSize } from './is-primitive-size';
-import { isResponsiveSize } from './is-responsive-size';
+import { getPaddingValue } from './get-padding-value/get-padding-value';
+import { getBaseSize } from './get-base-size/get-base-size';
+import { getSortedBreakpoints } from './get-sorted-breakpoints/get-sorted-breakpoints';
+import { isPrimitiveSize } from './is-primitive-size/is-primitive-size';
+import { isResponsiveSize } from './is-responsive-size/is-responsive-size';
 import { assignNavbarVariables, assignAsideVariables } from './assign-navbar-variables';
 import { assignHeaderVariables, assignFooterVariables } from './assign-header-variables';
 

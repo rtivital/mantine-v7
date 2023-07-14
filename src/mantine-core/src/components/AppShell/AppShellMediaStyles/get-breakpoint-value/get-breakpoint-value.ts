@@ -1,4 +1,4 @@
-import { MantineTheme, px, MantineBreakpoint } from '../../../core';
+import { MantineTheme, px, MantineBreakpoint } from '../../../../core';
 
 export function getBreakpointValue(breakpoint: number | string, theme: MantineTheme) {
   if (breakpoint in theme.breakpoints) {
@@ -7,8 +7,8 @@ export function getBreakpointValue(breakpoint: number | string, theme: MantineTh
 
   const convertedValue = px(breakpoint);
 
-  if (typeof convertedValue !== 'number') {
-    throw new Error(`[@mantine/core] AppShell: failed to parse breakpoint value ${breakpoint}`);
+  if (typeof convertedValue !== 'number' || Number.isNaN(convertedValue)) {
+    throw new Error(`[@mantine/core] AppShell: failed to parse breakpoint value "${breakpoint}"`);
   }
 
   return convertedValue;

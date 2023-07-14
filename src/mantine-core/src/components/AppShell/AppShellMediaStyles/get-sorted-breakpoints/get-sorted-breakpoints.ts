@@ -1,5 +1,5 @@
-import { MantineTheme } from '../../../core';
-import { getBreakpointValue } from './get-breakpoint-value';
+import { MantineTheme } from '../../../../core';
+import { getBreakpointValue } from '../get-breakpoint-value/get-breakpoint-value';
 
 export function getSortedBreakpoints(breakpoints: string[], theme: MantineTheme) {
   const convertedBreakpoints = breakpoints.map((breakpoint) => ({

@@ -1,4 +1,4 @@
-import type { AppShellSize, AppShellResponsiveSize } from '../AppShell';
+import type { AppShellSize, AppShellResponsiveSize } from '../../AppShell';
 
 export function isPrimitiveSize(
   size: AppShellSize | AppShellResponsiveSize | undefined
