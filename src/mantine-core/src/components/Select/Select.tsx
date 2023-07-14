@@ -135,6 +135,16 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     }
   }, [selectFirstOptionOnChange, _value]);
 
+  useEffect(() => {
+    if (value === null) {
+      setSearch('');
+    }
+
+    if (typeof value === 'string' && optionsLockup[value]) {
+      setSearch(optionsLockup[value].label);
+    }
+  }, [value]);
+
   return (
     <Combobox
       store={combobox}
