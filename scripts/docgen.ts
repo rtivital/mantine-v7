@@ -53,6 +53,13 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-core/src/components/Combobox/ComboboxEventsTarget/ComboboxEventsTarget.tsx',
   '../src/mantine-core/src/components/Combobox/ComboboxDropdown/ComboboxDropdown.tsx',
   '../src/mantine-core/src/components/Combobox/ComboboxGroup/ComboboxGroup.tsx',
+
+  // AppShell
+  '../src/mantine-core/src/components/AppShell/AppShellAside/AppShellAside.tsx',
+  '../src/mantine-core/src/components/AppShell/AppShellNavbar/AppShellNavbar.tsx',
+  '../src/mantine-core/src/components/AppShell/AppShellHeader/AppShellHeader.tsx',
+  '../src/mantine-core/src/components/AppShell/AppShellFooter/AppShellFooter.tsx',
+  '../src/mantine-core/src/components/AppShell/AppShellSection/AppShellSection.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
