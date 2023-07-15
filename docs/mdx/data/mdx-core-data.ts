@@ -724,4 +724,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Pagination/Pagination.tsx',
     docs: 'core/pagination.mdx',
   },
+
+  AppShell: {
+    title: 'AppShell',
+    package: '@mantine/core',
+    slug: '/core/app-shell',
+    props: ['AppShell'],
+    styles: ['AppShell'],
+    description: 'Responsive shell for your application with header, navbar, aside and footer',
+    import: "import { AppShell } from '@mantine/core';",
+    source: 'mantine-core/src/components/AppShell/AppShell.tsx',
+    docs: 'core/app-shell.mdx',
+  },
 };

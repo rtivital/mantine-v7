@@ -145,6 +145,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Group,
           MDX_DATA.Stack,
           MDX_DATA.AspectRatio,
+          MDX_DATA.AppShell,
         ],
       },
       {
