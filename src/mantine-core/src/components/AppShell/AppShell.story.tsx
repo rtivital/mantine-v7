@@ -36,7 +36,12 @@ export function Usage() {
         collapsed: !footerOpened,
       }}
     >
-      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Navbar>
+        <AppShell.Section>First section</AppShell.Section>
+        <AppShell.Section>Second section</AppShell.Section>
+        <AppShell.Section grow>Grow section</AppShell.Section>
+        <AppShell.Section>Last section</AppShell.Section>
+      </AppShell.Navbar>
       <AppShell.Header>Header</AppShell.Header>
       <AppShell.Main>
         <Group>

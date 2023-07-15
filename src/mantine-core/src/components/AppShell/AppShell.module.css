@@ -29,6 +29,8 @@
 .navbar,
 .aside {
   position: fixed;
+  display: flex;
+  flex-direction: column;
   top: var(--_section-top, var(--app-shell-header-offset, 0px));
   height: var(
     --_section-height,
@@ -156,5 +158,13 @@
 
   &[data-with-border] {
     --_footer-border-top: rem(1px) solid var(--_app-shell-border-color);
+  }
+}
+
+.section {
+  flex-grow: var(--_section-grow, 0);
+
+  &[data-grow] {
+    --_section-grow: 1;
   }
 }

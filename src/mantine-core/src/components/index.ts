@@ -8,6 +8,7 @@ export * from './ActionIcon';
 export * from './Affix';
 export * from './Alert';
 export * from './Anchor';
+export * from './AppShell';
 export * from './AspectRatio';
 export * from './Autocomplete';
 export * from './Avatar';

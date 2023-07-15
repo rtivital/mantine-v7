@@ -18,12 +18,20 @@ import { AppShellHeader } from './AppShellHeader/AppShellHeader';
 import { AppShellFooter } from './AppShellFooter/AppShellFooter';
 import { AppShellAside } from './AppShellAside/AppShellAside';
 import { AppShellMain } from './AppShellMain/AppShellMain';
+import { AppShellSection } from './AppShellSection/AppShellSection';
 import { AppShellMediaStyles } from './AppShellMediaStyles/AppShellMediaStyles';
 import { AppShellProvider } from './AppShell.context';
 import { useResizing } from './use-resizing/use-resizing';
 import classes from './AppShell.module.css';
 
-export type AppShellStylesNames = 'root' | 'navbar' | 'main' | 'header' | 'footer' | 'aside';
+export type AppShellStylesNames =
+  | 'root'
+  | 'navbar'
+  | 'main'
+  | 'header'
+  | 'footer'
+  | 'aside'
+  | 'section';
 export type AppShellCssVariables = {
   root: '--app-shell-transition-duration' | '--app-shell-transition-timing-function';
 };
@@ -105,6 +113,7 @@ export type AppShellFactory = Factory<{
     Main: typeof AppShellMain;
     Aside: typeof AppShellAside;
     Footer: typeof AppShellFooter;
+    Section: typeof AppShellSection;
   };
 }>;
 
@@ -184,3 +193,4 @@ AppShell.Header = AppShellHeader;
 AppShell.Main = AppShellMain;
 AppShell.Aside = AppShellAside;
 AppShell.Footer = AppShellFooter;
+AppShell.Section = AppShellSection;
