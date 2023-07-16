@@ -195,7 +195,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Pagination,
         ],
       },
-      { category: 'feedback', pages: [MDX_DATA.Loader, MDX_DATA.Alert, MDX_DATA.Notification] },
+      {
+        category: 'feedback',
+        pages: [MDX_DATA.Loader, MDX_DATA.Alert, MDX_DATA.Notification, MDX_DATA.Skeleton],
+      },
       {
         category: 'overlays',
         pages: [

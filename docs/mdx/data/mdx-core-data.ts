@@ -737,4 +737,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/AppShell/AppShell.tsx',
     docs: 'core/app-shell.mdx',
   },
+
+  Skeleton: {
+    title: 'Skeleton',
+    package: '@mantine/core',
+    slug: '/core/skeleton',
+    props: ['Skeleton'],
+    styles: ['Skeleton'],
+    description: 'Indicate content loading state',
+    import: "import { Skeleton } from '@mantine/core';",
+    source: 'mantine-core/src/components/Skeleton/Skeleton.tsx',
+    docs: 'core/skeleton.mdx',
+  },
 };
