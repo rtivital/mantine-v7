@@ -22,7 +22,7 @@ Navbar is hidden on mobile by default and toggled with the burger button.
 import { useDisclosure } from '@mantine/hooks';
 import { AppShell, Burger } from '@mantine/core';
 
-export function BasicAppShell() {
+function Demo() {
   const [opened, { toggle }] = useDisclosure();
 
   return (
@@ -88,6 +88,14 @@ interface Configuration {
   collapsed?: { desktop?: boolean; mobile?: boolean };
 }
 ```
+
+## layout prop
+
+`layout` prop controls how `AppShell.Header`/`AppShell.Footer` and `AppShell.Navbar`/`AppShell.Aside`
+are positioned relative to each other. It accepts `alt` and `default` values:
+
+- `alt` – `AppShell.Navbar`/`AppShell.Aside` height is equal to viewport height, `AppShell.Header`/`AppShell.Footer` width is equal to viewport width - `AppShell.Navbar` and `AppShell.Aside` width ([example](/app-shell?e=AltLayout))
+- `default` – `AppShell.Navbar`/`AppShell.Aside` height is equal to viewport height - `AppShell.Header`/`AppShell.Footer` height, `AppShell.Header`/`AppShell.Footer` width is equal to viewport width ([example](/app-shell?e=FullLayout))
 
 ## Height configuration
 
@@ -203,6 +211,65 @@ function Demo() {
 }
 ```
 
+## Header offset configuration
+
+`header` prop has `offset` property which allows removing `AppShell.Header` offset from `AppShell.Main` component.
+It is useful when you want to collapse `AppShell.Header` based on the scroll position. For example, you can use
+[use-headroom](/hooks/use-headroom) hook to collapse header when user scrolls down and expand it when user scrolls up ([example](/app-shell?e=Headroom)).
+
+```tsx
+import { useHeadroom } from '@mantine/hooks';
+import { AppShell } from '@mantine/core';
+
+function Demo() {
+  const pinned = useHeadroom({ fixedAt: 120 });
+
+  return (
+    <AppShell header={{ height: 60, collapsed: !pinned, offset: false }} padding="md">
+      <AppShell.Header>Header</AppShell.Header>
+
+      <AppShell.Main pt={`calc(${rem(60)} + var(--mantine-spacing-md))`}>
+        {/* Content */}
+      </AppShell.Main>
+    </AppShell>
+  );
+}
+```
+
+## Collapsed navbar/aside configuration
+
+`navbar` and `aside` props have `collapsed` property. The property accepts an object
+`{ mobile: boolean; desktop: boolean }` which allows to configure collapsed state
+depending on the viewport width.
+
+[Example](/app-shell?e=CollapseDesktop) with separate collapsed state for mobile and desktop:
+
+```tsx
+import { useDisclosure } from '@mantine/hooks';
+import { AppShell } from '@mantine/core';
+
+export function CollapseDesktop() {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  return (
+    <AppShell
+      padding="md"
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
+    >
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
+  );
+}
+```
+
 ## withBorder prop
 
 `withBorder` prop is available on `AppShell` and associated sections: `AppShell.Header`, `AppShell.Navbar`, `AppShell.Aside` and `AppShell.Footer`.
@@ -272,3 +339,40 @@ function Demo() {
   );
 }
 ```
+
+## Control transitions
+
+Set `transitionDuration` and `transitionTimingFunction` props on the `AppShell` to control transitions:
+
+```tsx
+import { AppShell } from '@mantine/core';
+
+function Demo() {
+  return (
+    <AppShell transitionDuration={500} transitionTimingFunction="ease">
+      {/* AppShell content */}
+    </AppShell>
+  );
+}
+```
+
+## disabled prop
+
+Set `disabled` prop on the `AppShell` to prevent all sections except `AppShell.Main` from rendering.
+It is useful when you want to hide the shell on some pages of your application.
+
+```tsx
+import { AppShell } from '@mantine/core';
+
+function Demo() {
+  return <AppShell disabled>{/* AppShell content */}</AppShell>;
+}
+```
+
+## Semantic elements
+
+- `AppShell.Header` root element is `header`
+- `AppShell.Navbar` root element is `nav`
+- `AppShell.Aside` root element is `aside`
+- `AppShell.Footer` root element is `footer`
+- `AppShell.Main` root element is `main` – **!important:** do not use `main` element inside `AppShell.Main` component
