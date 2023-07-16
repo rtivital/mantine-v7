@@ -346,6 +346,17 @@ Specified [Loader](/core/loader) will be used in all components that use it unde
 - `loaderPosition` prop was removed, [Loader](/core/loader) is now always rendered on the center to prevent layout shifts
 - Styles API selectors were changed, see [Button Styles API](/core/button?t=styles-api) documentation for more details
 
+## AppShell changes
+
+[AppShell](/core/app-shell) component was completely rewritten, it now supports more features:
+
+- `AppShell` now uses compound components pattern: `Navbar`, `Aside`, `Header` and `Footer` are no longer exported from `@mantine/core` package. Instead, use `AppShell.Navbar`, `AppShell.Aside`, etc.
+- `AppShell` now supports animations when navbar/aside are opened/closed
+- Navbar/aside can now be collapsed on desktop – state is handled separately for mobile and desktop
+- Header/footer can now be collapsed the same way as navbar/aside. For example, header can be collapsed based on scroll position or direction.
+- `AppShell` no longer supports `fixed` prop – all components have `position: fixed` styles, static positioning is no longer supported
+- The documentation was updated, it now includes [10+ examples on a separate page](/app-shell?e=BasicAppShell)
+
 ## @mantine/prism deprecation
 
 `@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
