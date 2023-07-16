@@ -20,4 +20,14 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     name: 'Basic app shell',
     description: 'App shell with Header and Navbar',
   },
+  {
+    id: 'ResponsiveSizes',
+    name: 'Responsive width and height',
+    description: 'App shell with responsive navbar width and header height',
+  },
+  {
+    id: 'MobileNavbar',
+    name: 'Mobile only navbar',
+    description: 'Navbar visible only on mobile',
+  },
 ];
