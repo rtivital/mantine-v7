@@ -60,4 +60,9 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     name: 'Usage with use-headroom',
     description: 'Hide header on scroll down and show on scroll up',
   },
+  {
+    id: 'NavbarSection',
+    name: 'Navbar with sections',
+    description: 'AppShell.Section component usage',
+  },
 ];

@@ -7,14 +7,15 @@ import {
 } from './AppShellSection';
 import { AppShell } from '../AppShell';
 
-const TestContainer = createContextContainer(AppShellSection, AppShell, {});
+const TestContainer = createContextContainer<any>(AppShellSection, AppShell, {});
 
 const defaultProps: AppShellSectionProps = {};
 
 describe('@mantine/core/AppShellSection', () => {
-  tests.itSupportsSystemProps<AppShellSectionProps, AppShellSectionStylesNames>({
+  tests.itSupportsSystemProps<any, AppShellSectionStylesNames>({
     component: TestContainer,
     props: defaultProps,
+    polymorphic: true,
     styleProps: true,
     children: true,
     extend: true,
@@ -30,7 +31,7 @@ describe('@mantine/core/AppShellSection', () => {
     providerStylesApi: false,
   });
 
-  tests.itThrowsContextError({
+  tests.itThrowsContextError<any>({
     component: AppShellSection,
     props: defaultProps,
     error: 'AppShell was not found in tree',
