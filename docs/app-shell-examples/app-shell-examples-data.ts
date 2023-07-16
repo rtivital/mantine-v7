@@ -45,4 +45,14 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     name: 'Alt layout',
     description: 'Navbar and Aside are rendered on top on Header and Footer',
   },
+  {
+    id: 'NoTransitions',
+    name: 'Without transitions',
+    description: 'Disable all collapse/expand animations',
+  },
+  {
+    id: 'Disabled',
+    name: 'Disabled app shell',
+    description: 'Hide all app shell elements with disabled prop',
+  },
 ];
