@@ -1,6 +1,6 @@
 import { APP_SHELL_EXAMPLES_COMPONENTS } from './examples';
 
-export interface ComboboxExample {
+export interface AppShellExample {
   /** Demo id, based on it component will render component on the page */
   id: keyof typeof APP_SHELL_EXAMPLES_COMPONENTS;
 
@@ -14,7 +14,7 @@ export interface ComboboxExample {
   fullDescription?: string;
 }
 
-export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
+export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
   {
     id: 'BasicAppShell',
     name: 'Basic app shell',

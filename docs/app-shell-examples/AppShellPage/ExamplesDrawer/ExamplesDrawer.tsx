@@ -1,11 +1,32 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useDisclosure } from '@mantine/hooks';
-import { Button, Affix, Drawer, Group, rem } from '@mantine/core';
+import { Button, Affix, Drawer, Group, rem, UnstyledButton, Text } from '@mantine/core';
 import { IconMenu2, IconArrowLeft } from '@tabler/icons-react';
+import { APP_SHELL_EXAMPLES_DATA } from '../../app-shell-examples-data';
+import classes from './ExamplesDrawer.module.css';
 
 export function ExamplesDrawer() {
   const [opened, { open, close }] = useDisclosure();
+  const router = useRouter();
+
+  const examples = APP_SHELL_EXAMPLES_DATA.map((example) => (
+    <UnstyledButton
+      component={Link}
+      href={`/app-shell?e=${example.id}`}
+      key={example.id}
+      mod={{ active: router.query.e === example.id }}
+      className={classes.control}
+    >
+      <Text span className={classes.name}>
+        {example.name}
+      </Text>
+      <Text span className={classes.description}>
+        {example.description}
+      </Text>
+    </UnstyledButton>
+  ));
 
   return (
     <>
@@ -46,7 +67,7 @@ export function ExamplesDrawer() {
         zIndex={2000}
         position="right"
       >
-        Examples here
+        {examples}
       </Drawer>
     </>
   );
