@@ -21,6 +21,7 @@ export function ExamplesDrawer() {
       key={example.id}
       mod={{ active: router.query.e === example.id }}
       className={classes.control}
+      onClick={close}
     >
       <Text span className={classes.name}>
         {example.name}
@@ -72,8 +73,8 @@ export function ExamplesDrawer() {
             leftSection={<IconMenu2 style={{ width: rem(20), height: rem(20) }} />}
             w="var(--button-height)"
             style={{ boxShadow: 'var(--mantine-shadow-sm)' }}
-            pr={5}
             aria-label="Other examples"
+            className={classes.menuButton}
           />
         </Group>
       </Affix>

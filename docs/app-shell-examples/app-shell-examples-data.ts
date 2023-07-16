@@ -30,4 +30,19 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     name: 'Mobile only navbar',
     description: 'Navbar visible only on mobile',
   },
+  {
+    id: 'CollapseDesktop',
+    name: 'Collapsible navbar',
+    description: 'Collapsible navbar both on desktop and mobile',
+  },
+  {
+    id: 'FullLayout',
+    name: 'AppShell with all elements',
+    description: 'Navbar, header, aside and footer used together',
+  },
+  {
+    id: 'AltLayout',
+    name: 'Alt layout',
+    description: 'Navbar and Aside are rendered on top on Header and Footer',
+  },
 ];
