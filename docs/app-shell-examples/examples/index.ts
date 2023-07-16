@@ -6,6 +6,7 @@ import { AltLayout } from './AltLayout/AltLayout';
 import { CollapseDesktop } from './CollapseDesktop/CollapseDesktop';
 import { NoTransitions } from './NoTransitions/NoTransitions';
 import { Disabled } from './Disabled/Disabled';
+import { Headroom } from './Headroom/Headroom';
 
 import BasicAppShellCode from './BasicAppShell/code.json';
 import ResponsiveSizesCode from './ResponsiveSizes/code.json';
@@ -15,6 +16,7 @@ import AltLayoutCode from './AltLayout/code.json';
 import CollapseDesktopCode from './CollapseDesktop/code.json';
 import NoTransitionsCode from './NoTransitions/code.json';
 import DisabledCode from './Disabled/code.json';
+import HeadroomCode from './Headroom/code.json';
 
 interface AppShellExampleComponent {
   component: () => JSX.Element;
@@ -57,6 +59,10 @@ export const APP_SHELL_EXAMPLES_COMPONENTS = {
   Disabled: {
     component: Disabled,
     code: DisabledCode,
+  },
+  Headroom: {
+    component: Headroom,
+    code: HeadroomCode,
   },
 } satisfies Record<string, AppShellExampleComponent>;
 

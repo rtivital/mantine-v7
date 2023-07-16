@@ -55,4 +55,9 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     name: 'Disabled app shell',
     description: 'Hide all app shell elements with disabled prop',
   },
+  {
+    id: 'Headroom',
+    name: 'Usage with use-headroom',
+    description: 'Hide header on scroll down and show on scroll up',
+  },
 ];
