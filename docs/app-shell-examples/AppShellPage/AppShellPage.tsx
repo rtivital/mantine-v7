@@ -12,7 +12,7 @@ export function AppShellPage() {
   const state = router.query.s as string;
 
   useEffect(() => {
-    if (!(exampleId in APP_SHELL_EXAMPLES_COMPONENTS)) {
+    if (exampleId && !(exampleId in APP_SHELL_EXAMPLES_COMPONENTS)) {
       router.replace('/app-shell?e=BasicAppShell');
     }
   }, [exampleId]);
@@ -20,7 +20,6 @@ export function AppShellPage() {
   if (!(exampleId in APP_SHELL_EXAMPLES_COMPONENTS)) {
     return <ExamplesDrawer />;
   }
-
   const data =
     APP_SHELL_EXAMPLES_COMPONENTS[exampleId as keyof typeof APP_SHELL_EXAMPLES_COMPONENTS];
 
