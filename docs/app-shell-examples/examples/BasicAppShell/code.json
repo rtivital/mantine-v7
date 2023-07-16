@@ -1,0 +1,7 @@
+[
+  {
+    "fileName": "BasicAppShell.tsx",
+    "language": "tsx",
+    "code": "\nexport function BasicAppShell() {\n  return <div>Basic app shell</div>;\n}\n"
+  }
+]

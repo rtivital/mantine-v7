@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "npm run docs:docgen && npm run generate-css && cd docs && yarn",
-    "cmb": "esno scripts/generate-combobox-code",
+    "codegen": "esno scripts/codegen",
     "dev": "cd dev && npm run dev",
     "demos": "esno scripts/demo-import",
     "sync-branches": "sh scripts/sync-branches.sh",
