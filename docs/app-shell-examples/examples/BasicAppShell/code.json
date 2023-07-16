@@ -2,6 +2,6 @@
   {
     "fileName": "BasicAppShell.tsx",
     "language": "tsx",
-    "code": "\nexport function BasicAppShell() {\n  return <div>Basic app shell</div>;\n}\n"
+    "code": "import { useDisclosure } from '@mantine/hooks';\nimport { AppShell, Burger, Group } from '@mantine/core';\n\nexport function BasicAppShell() {\n  const [opened, { toggle }] = useDisclosure();\n\n  return (\n    <AppShell\n      header={{ height: 60 }}\n      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}\n      padding=\"md\"\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" />\n          <div>Header</div>\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar>Navbar</AppShell.Navbar>\n      <AppShell.Main>Main</AppShell.Main>\n    </AppShell>\n  );\n}\n"
   }
 ]
