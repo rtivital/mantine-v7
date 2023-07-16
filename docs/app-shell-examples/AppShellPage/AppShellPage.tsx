@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { CodeHighlightTabs } from '@mantine/code-highlight';
 import { getCodeFileIcon } from '@mantine/ds';
+import Head from 'next/head';
 import { ExamplesDrawer } from './ExamplesDrawer/ExamplesDrawer';
 import { APP_SHELL_EXAMPLES_COMPONENTS } from '../examples';
 
@@ -24,13 +25,19 @@ export function AppShellPage() {
     APP_SHELL_EXAMPLES_COMPONENTS[exampleId as keyof typeof APP_SHELL_EXAMPLES_COMPONENTS];
 
   return (
-    <div>
-      {state === 'code' ? (
-        <CodeHighlightTabs code={data.code} getFileIcon={getCodeFileIcon} />
-      ) : (
-        <data.component />
-      )}
-      <ExamplesDrawer />
-    </div>
+    <>
+      <Head>
+        <title>AppShell examples | Mantine</title>
+      </Head>
+
+      <div>
+        {state === 'code' ? (
+          <CodeHighlightTabs code={data.code} getFileIcon={getCodeFileIcon} />
+        ) : (
+          <data.component />
+        )}
+        <ExamplesDrawer />
+      </div>
+    </>
   );
 }

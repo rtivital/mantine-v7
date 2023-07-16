@@ -1,8 +1,18 @@
 import React from 'react';
+import cx from 'clsx';
 import { rem } from '@mantine/core';
 import { useMantineLogoColors, LogoProps } from './use-mantine-logo-colors';
+import classes from './MantineLogo.module.css';
 
-export function MantineLogoText({ size, color, variant, inverted, style, ...others }: LogoProps) {
+export function MantineLogoText({
+  size,
+  color,
+  variant,
+  inverted,
+  style,
+  className,
+  ...others
+}: LogoProps) {
   const colors = useMantineLogoColors({ color, inverted });
 
   return (
@@ -11,6 +21,7 @@ export function MantineLogoText({ size, color, variant, inverted, style, ...othe
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 623 163"
       style={{ height: rem(size), ...style }}
+      className={cx(classes.logo, className)}
     >
       <g fill="none" fillRule="evenodd">
         <path
