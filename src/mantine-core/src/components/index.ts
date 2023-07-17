@@ -1,6 +1,7 @@
 // utils – styles of these components must be imported before all other components
 export * from './UnstyledButton';
 export * from './VisuallyHidden';
+export * from './Popover';
 
 // regular components
 export * from './Accordion';
@@ -51,7 +52,6 @@ export * from './Pagination';
 export * from './Paper';
 export * from './Pill';
 export * from './PillsInput';
-export * from './Popover';
 export * from './Portal';
 export * from './ScrollArea';
 export * from './SegmentedControl';
