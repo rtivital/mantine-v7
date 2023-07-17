@@ -14,11 +14,16 @@ import { MdxProvider } from '@/components/MdxProvider';
 import { HotKeysHandler } from '@/components/HotKeysHandler';
 import { Search } from '@/components/Search';
 import { FontsStyle } from '@/fonts';
+import { Shell } from '@/components/Shell';
 import { theme } from '../theme';
 import '../styles/variables.css';
 import '../styles/global.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+const excludeShell = ['/', '/combobox', '/app-shell'];
+
+export default function App({ Component, pageProps, router }: AppProps) {
+  const shouldRenderShell = !excludeShell.includes(router.pathname);
+
   return (
     <>
       <Head>
@@ -33,7 +38,13 @@ export default function App({ Component, pageProps }: AppProps) {
           <Notifications />
           <MdxProvider>
             <HotKeysHandler />
-            <Component {...pageProps} />
+            {shouldRenderShell ? (
+              <Shell>
+                <Component {...pageProps} />
+              </Shell>
+            ) : (
+              <Component {...pageProps} />
+            )}
           </MdxProvider>
         </MantineProvider>
       </DirectionProvider>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { Shell } from '@/components/Shell';
 import { PageBase } from '@/components/PageBase';
 import { PageContentContainer } from '../PageContentContainer';
 
@@ -14,11 +13,9 @@ export function ContentPageBase({ title, ...others }: ContentPageBaseProps) {
       <Head>
         <title>{`${title} | Mantine`}</title>
       </Head>
-      <Shell>
-        <PageBase>
-          <PageContentContainer {...others} />
-        </PageBase>
-      </Shell>
+      <PageBase>
+        <PageContentContainer {...others} />
+      </PageBase>
     </>
   );
 }
