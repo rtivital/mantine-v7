@@ -60,6 +60,10 @@
 
     @mixin rtl {
       --_input-padding-right: var(--_input-left-section-size);
+
+      &:not([data-with-right-section]) {
+        --_input-padding-left: var(--_input-padding);
+      }
     }
   }
 
@@ -68,6 +72,10 @@
 
     @mixin rtl {
       --_input-padding-left: var(--_input-right-section-size);
+
+      &:not([data-with-left-section]) {
+        --_input-padding-right: var(--_input-padding);
+      }
     }
   }
 

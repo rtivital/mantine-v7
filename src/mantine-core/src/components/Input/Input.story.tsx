@@ -46,16 +46,38 @@ export function Sizes() {
   return <div style={{ padding: 40 }}>{sizes}</div>;
 }
 
-export function RightSection() {
+export function WithSections() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>
       <Input
         placeholder="Input with right section"
         rightSection="$"
+        leftSection="$"
         defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
         rightSectionWidth={40}
+        leftSectionWidth={100}
         styles={{
-          section: { backgroundColor: 'pink' },
+          section: { border: '1px solid pink' },
+        }}
+      />
+      <Input
+        placeholder="Input with right section"
+        rightSection="$"
+        defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        rightSectionWidth={40}
+        leftSectionWidth={100}
+        styles={{
+          section: { border: '1px solid pink' },
+        }}
+      />
+      <Input
+        placeholder="Input with right section"
+        leftSection="$"
+        defaultValue="asdasdnjknwebdkjwbjrbfkjberfhjbrefhberjfbjherbfjherbfjhb"
+        rightSectionWidth={40}
+        leftSectionWidth={100}
+        styles={{
+          section: { border: '1px solid pink' },
         }}
       />
     </div>
