@@ -50,4 +50,9 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
     release: 'https://github.com/mantinedev/mantine/releases/tag/7.0.0',
     date: 'Some time this year',
   },
+
+  PreviousChangelogs: {
+    title: 'Previous versions',
+    slug: '/changelog/previous-versions',
+  },
 };
