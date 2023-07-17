@@ -7,7 +7,7 @@ export default Layout(MDX_DATA.Combobox);
 ## Usage
 
 `Combobox` provides a set of components and hooks to custom select, multiselect or autocomplete components.
-The component is very flexible – you have full control the rendering and logic.
+The component is very flexible – you have full control of the rendering and logic.
 
 <Demo data={ComboboxDemos.select} />
 
@@ -18,7 +18,7 @@ You can find all 50+ examples on a [separate page](/combobox?e=BasicSelect).
 
 ## useCombobox hook
 
-`useCombobox` hook provides combobox store. The store contains current state of the component
+`useCombobox` hook provides combobox store. The store contains the current state of the component
 and handlers to update it. Created store must be passed to the `store` prop of `Combobox`:
 
 ```tsx
@@ -152,7 +152,7 @@ import type { ComboboxStore } from '@mantine/core';
 ## useCombobox handlers
 
 Combobox store handlers can be used to control `Combobox` state.
-For example, to open dropdown, call `openDropdown` handler:
+For example, to open the dropdown, call `openDropdown` handler:
 
 ```tsx
 import { useCombobox, Combobox, Button } from '@mantine/core';
@@ -212,13 +212,13 @@ Example of using `Combobox.Target` with [Button](/core/button) component:
 
 In some cases, you might need to use different elements as an events target and as a dropdown.
 Use `Combobox.EventsTarget` to add `aria-*` attributes and keyboard event handlers, and
-`Combobox.DropdownTarget` to position dropdown relative to the target.
+`Combobox.DropdownTarget` to position the dropdown relative to the target.
 
 You can have as many `Combobox.EventsTarget` as you need, but only one `Combobox.DropdownTarget`
 per `Combobox`.
 
 Example of using `Combobox.EventsTarget` and `Combobox.DropdownTarget` with [PillsInput](/core/pills-input) component
-to create searchable multiselect component:
+to create a searchable multiselect component:
 
 <Demo data={ComboboxDemos.searchableMultiselect} />
 
@@ -234,7 +234,7 @@ Example of using `updateSelectedOptionIndex` handler in searchable select compon
 
 ## Search input
 
-If you prefer to have search input inside the dropdown, use `Combobox.Search` component.
+If you prefer search input inside the dropdown, use `Combobox.Search` component.
 To focus the search input, call `combobox.focusSearchInput`, usually it is done
 when the dropdown is opened. To prevent focus loss after the dropdown is closed,
 call `combobox.focusTarget`:
@@ -243,16 +243,16 @@ call `combobox.focusTarget`:
 
 ## Select first option
 
-Use `combobox.selectFirstOption` function to select first option. It is useful
-if you want to select first option when user searching for options in the list.
-If there are not options available, it will do nothing.
+Use `combobox.selectFirstOption` function to select the first option. It is useful
+if you want to select the first option when user searching for options in the list.
+If there are no options available, it will do nothing.
 
 <Demo data={ComboboxDemos.selectFirstOption} />
 
 ## Active option
 
 Set `active` prop on `Combobox.Option` component to mark it as active.
-By default, active option does not have any styles, you can use `data-combobox-active`
+By default, an active option does not have any styles, you can use `data-combobox-active`
 [data attribute](/styles/data-attributes) to style it.
 
 `combobox.selectActiveOption` function selects active option. Usually, it is called
@@ -270,7 +270,7 @@ children.
 
 ## Scrollable list
 
-Set `max-height` style on either `Combobox.Dropdown` or `Combobox.Options` to make
+Set `max-height` style on either `Combobox.Dropdown` or `Combobox.Options` to make the
 options list scrollable. You can use `mah` [style prop](/styles/style-props) to set
 `max-height`.
 
@@ -293,7 +293,7 @@ one option available:
 
 ## Control dropdown opened state
 
-To control dropdown opened state, pass `opened` to `useCombobox` hook:
+To control the dropdown opened state, pass `opened` to `useCombobox` hook:
 
 <Demo data={ComboboxDemos.controlledDropdown} />
 

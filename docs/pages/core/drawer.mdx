@@ -31,7 +31,11 @@ for example, `size="55%"` or `size={200}`:
 import { Drawer } from '@mantine/core';
 
 function Demo() {
-  return <Drawer position="right" size="xl" />;
+  return (
+    <Drawer position="right" size="xl" opened onClose={() => {}}>
+      {/* Drawer content */}
+    </Drawer>
+  );
 }
 ```
 

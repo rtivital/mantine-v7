@@ -5,7 +5,7 @@ import { MantineDemo } from '@mantine/ds';
 
 const code = `
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button } from '@mantine/core';
+import { Drawer, Button, ScrollArea } from '@mantine/core';
 
 function Demo() {
   const [opened, { open, close }] = useDisclosure(false);

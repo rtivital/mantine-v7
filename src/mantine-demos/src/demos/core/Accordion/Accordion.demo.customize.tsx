@@ -18,7 +18,7 @@ function Demo() {
   ));
 
   return (
-    <Accordion maw={400} defaultValue="Apples">
+    <Accordion maw={400} defaultValue="Apples" classNames={classes}>
       {items}
     </Accordion>
   );

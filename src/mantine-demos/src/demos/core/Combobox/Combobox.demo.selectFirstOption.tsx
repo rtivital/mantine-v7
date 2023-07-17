@@ -3,7 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
 const code = `
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Combobox, TextInput, useCombobox } from '@mantine/core';
 
 const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];

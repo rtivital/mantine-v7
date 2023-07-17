@@ -219,7 +219,7 @@ It is useful when you want to collapse `AppShell.Header` based on the scroll pos
 
 ```tsx
 import { useHeadroom } from '@mantine/hooks';
-import { AppShell } from '@mantine/core';
+import { AppShell, rem } from '@mantine/core';
 
 function Demo() {
   const pinned = useHeadroom({ fixedAt: 120 });
@@ -246,7 +246,7 @@ depending on the viewport width.
 
 ```tsx
 import { useDisclosure } from '@mantine/hooks';
-import { AppShell } from '@mantine/core';
+import { AppShell, Button } from '@mantine/core';
 
 export function CollapseDesktop() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -264,7 +264,14 @@ export function CollapseDesktop() {
     >
       <AppShell.Header>Header</AppShell.Header>
       <AppShell.Navbar>Navbar</AppShell.Navbar>
-      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Main>
+        <Button onClick={toggleDesktop} visibleFrom="sm">
+          Toggle navbar
+        </Button>
+        <Button onClick={toggleMobile} hiddenFrom="sm">
+          Toggle navbar
+        </Button>
+      </AppShell.Main>
     </AppShell>
   );
 }
