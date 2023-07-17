@@ -11,6 +11,11 @@
   left: var(--combobox-shell-navbar-width);
   right: 0;
   z-index: 1;
+
+  @mixin rtl {
+    left: 0;
+    right: var(--combobox-shell-navbar-width);
+  }
 }
 
 .header {

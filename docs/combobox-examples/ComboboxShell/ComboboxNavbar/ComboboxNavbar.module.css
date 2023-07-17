@@ -1,10 +1,17 @@
 .navbar {
+  --border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
+
   position: fixed;
   top: var(--docs-header-height);
   bottom: 0;
   width: var(--combobox-shell-navbar-width);
   background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
-  border-right: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
+  border-right: rem(1px) solid var(--border-color);
+
+  @mixin rtl {
+    border-right: none;
+    border-left: rem(1px) solid var(--border-color);
+  }
 
   @media (max-width: $docs-navbar-breakpoint) {
     width: unset;
