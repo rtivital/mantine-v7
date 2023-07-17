@@ -8,6 +8,7 @@ export {
   TableTh,
   TableThead,
 } from './Table.components';
+export { TableScrollContainer } from './TableScrollContainer';
 export type { TableProps, TableStylesNames, TableCssVariables, TableFactory } from './Table';
 
 export type {

@@ -99,3 +99,11 @@
     --_margin-top: var(--mantine-spacing-xs);
   }
 }
+
+.scrollContainer {
+  overflow-x: var(--table-overflow);
+}
+
+.scrollContainerInner {
+  min-width: var(--table-min-width);
+}

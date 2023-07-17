@@ -39,6 +39,27 @@ export function Usage() {
   );
 }
 
+export function WithScrollContainer() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Table.ScrollContainer minWidth={500}>
+        <Table>
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Element position</Table.Th>
+              <Table.Th>Element name</Table.Th>
+              <Table.Th>Symbol</Table.Th>
+              <Table.Th>Atomic mass</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{rows}</Table.Tbody>
+          <Table.Caption>Test caption</Table.Caption>
+        </Table>
+      </Table.ScrollContainer>
+    </div>
+  );
+}
+
 export function FixedLayout() {
   return (
     <div style={{ padding: 40 }}>
