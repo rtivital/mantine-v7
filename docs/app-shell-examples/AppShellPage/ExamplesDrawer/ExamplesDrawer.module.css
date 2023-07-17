@@ -4,6 +4,12 @@
   padding: var(--mantine-spacing-sm) var(--mantine-spacing-lg);
   border-radius: var(--mantine-radius-md);
 
+  @mixin hover {
+    &:not([data-active]) {
+      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    }
+  }
+
   &[data-active] {
     @mixin light {
       color: var(--mantine-color-blue-8);

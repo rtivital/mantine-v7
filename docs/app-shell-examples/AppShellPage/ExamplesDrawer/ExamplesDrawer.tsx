@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@mantine/hooks';
-import { Button, Affix, Drawer, Group, rem, UnstyledButton, Text } from '@mantine/core';
+import { Button, Affix, Drawer, Group, rem, UnstyledButton, Text, ScrollArea } from '@mantine/core';
 import { IconMenu2, IconArrowLeft, IconCode, IconLayoutBoard } from '@tabler/icons-react';
 import { APP_SHELL_EXAMPLES_DATA } from '../../app-shell-examples-data';
 import classes from './ExamplesDrawer.module.css';
@@ -82,11 +82,14 @@ export function ExamplesDrawer() {
       <Drawer
         opened={opened}
         onClose={close}
-        title="AppShell component examples"
         zIndex={2000}
         position="right"
+        withCloseButton={false}
+        padding={0}
       >
-        {examples}
+        <ScrollArea h="100dvh" type="hover" p="md">
+          {examples}
+        </ScrollArea>
       </Drawer>
     </>
   );
