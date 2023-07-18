@@ -22,3 +22,5 @@ export {
   getLineHeight,
 } from './get-size/get-size';
 export { createEventHandler } from './create-event-handler/create-event-handler';
+export { getBreakpointValue } from './get-breakpoint-value/get-breakpoint-value';
+export { getSortedBreakpoints } from './get-sorted-breakpoints/get-sorted-breakpoints';

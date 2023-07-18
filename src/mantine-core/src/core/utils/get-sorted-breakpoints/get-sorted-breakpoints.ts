@@ -1,4 +1,4 @@
-import { MantineTheme } from '../../../../core';
+import type { MantineTheme } from '../../MantineProvider';
 import { getBreakpointValue } from '../get-breakpoint-value/get-breakpoint-value';
 
 export function getSortedBreakpoints(breakpoints: string[], theme: MantineTheme) {

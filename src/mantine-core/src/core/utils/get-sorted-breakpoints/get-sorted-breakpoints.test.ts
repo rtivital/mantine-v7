@@ -1,4 +1,5 @@
-import { DEFAULT_THEME, px } from '../../../../core';
+import { DEFAULT_THEME } from '../../MantineProvider';
+import { px } from '../units-converters';
 import { getSortedBreakpoints } from './get-sorted-breakpoints';
 
 describe('@mantine/core/AppShell/get-sorted-breakpoints', () => {
