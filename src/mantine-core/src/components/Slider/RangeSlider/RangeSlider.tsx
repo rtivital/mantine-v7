@@ -25,6 +25,8 @@ import { Track } from '../Track/Track';
 import { Thumb } from '../Thumb/Thumb';
 import { getPosition } from '../utils/get-position/get-position';
 import { getChangeValue } from '../utils/get-change-value/get-change-value';
+import { getPrecision } from '../utils/get-precision/get-precision';
+import { getFloatingValue } from '../utils/get-floating-value/get-gloating-value';
 import { getClientPosition } from '../utils/get-client-position/get-client-position';
 import classes from '../Slider.module.css';
 
@@ -162,7 +164,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     minRange,
     maxRange,
     step,
-    precision,
+    precision: _precision,
     defaultValue,
     name,
     marks,
@@ -211,6 +213,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     getPosition({ value: _value[0], min: min!, max: max! }),
     getPosition({ value: _value[1], min: min!, max: max! }),
   ];
+
+  const precision = _precision ?? getPrecision(step!);
 
   const _setValue = (val: RangeSliderValue) => {
     setValue(val);
@@ -326,7 +330,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           const focusedIndex = getFocusedThumbIndex();
           thumbs.current[focusedIndex].focus();
           setRangedValue(
-            Math.min(Math.max(valueRef.current[focusedIndex] + step!, min!), max!),
+            getFloatingValue(
+              Math.min(Math.max(valueRef.current[focusedIndex] + step!, min!), max!),
+              precision
+            ),
             focusedIndex,
             true
           );
@@ -337,14 +344,17 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           const focusedIndex = getFocusedThumbIndex();
           thumbs.current[focusedIndex].focus();
           setRangedValue(
-            Math.min(
-              Math.max(
-                dir === 'rtl'
-                  ? valueRef.current[focusedIndex] - step!
-                  : valueRef.current[focusedIndex] + step!,
-                min!
+            getFloatingValue(
+              Math.min(
+                Math.max(
+                  dir === 'rtl'
+                    ? valueRef.current[focusedIndex] - step!
+                    : valueRef.current[focusedIndex] + step!,
+                  min!
+                ),
+                max!
               ),
-              max!
+              precision
             ),
             focusedIndex,
             true
@@ -357,7 +367,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           const focusedIndex = getFocusedThumbIndex();
           thumbs.current[focusedIndex].focus();
           setRangedValue(
-            Math.min(Math.max(valueRef.current[focusedIndex] - step!, min!), max!),
+            getFloatingValue(
+              Math.min(Math.max(valueRef.current[focusedIndex] - step!, min!), max!),
+              precision
+            ),
             focusedIndex,
             true
           );
@@ -368,14 +381,17 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
           const focusedIndex = getFocusedThumbIndex();
           thumbs.current[focusedIndex].focus();
           setRangedValue(
-            Math.min(
-              Math.max(
-                dir === 'rtl'
-                  ? valueRef.current[focusedIndex] + step!
-                  : valueRef.current[focusedIndex] - step!,
-                min!
+            getFloatingValue(
+              Math.min(
+                Math.max(
+                  dir === 'rtl'
+                    ? valueRef.current[focusedIndex] + step!
+                    : valueRef.current[focusedIndex] - step!,
+                  min!
+                ),
+                max!
               ),
-              max!
+              precision
             ),
             focusedIndex,
             true
