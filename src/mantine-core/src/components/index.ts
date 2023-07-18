@@ -56,6 +56,7 @@ export * from './Portal';
 export * from './ScrollArea';
 export * from './SegmentedControl';
 export * from './Select';
+export * from './SimpleGrid';
 export * from './Skeleton';
 export * from './Slider';
 export * from './Stack';

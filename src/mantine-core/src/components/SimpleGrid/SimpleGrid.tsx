@@ -7,42 +7,56 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   useRandomClassName,
-  InlineStyles,
+  StyleProp,
+  MantineSpacing,
 } from '../../core';
+import { SimpleGridVariables } from './SimpleGridVariables';
 import classes from './SimpleGrid.module.css';
 
 export type SimpleGridStylesNames = 'root';
-export type SimpleGridCssVariables = {
-  root: '--test';
-};
 
 export interface SimpleGridProps
   extends BoxProps,
     StylesApiProps<SimpleGridFactory>,
-    ElementProps<'div'> {}
+    ElementProps<'div'> {
+  /** Number of columns, `1` by default */
+  cols?: StyleProp<number>;
+
+  /** Spacing between columns, `'md'` by default */
+  spacing?: StyleProp<MantineSpacing | (string & {}) | number>;
+
+  /** Spacing between rows, `'md'` by default */
+  verticalSpacing?: StyleProp<MantineSpacing | (string & {}) | number>;
+}
 
 export type SimpleGridFactory = Factory<{
   props: SimpleGridProps;
   ref: HTMLDivElement;
   stylesNames: SimpleGridStylesNames;
-  vars: SimpleGridCssVariables;
 }>;
 
-const defaultProps: Partial<SimpleGridProps> = {};
-
-const varsResolver = createVarsResolver<SimpleGridFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const defaultProps: Partial<SimpleGridProps> = {
+  cols: 1,
+  spacing: 'md',
+  verticalSpacing: 'md',
+};
 
 export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
   const props = useProps('SimpleGrid', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
-  const responsiveClassName = useRandomClassName();
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    cols,
+    verticalSpacing,
+    spacing,
+    ...others
+  } = props;
 
   const getStyles = useStyles<SimpleGridFactory>({
     name: 'SimpleGrid',
@@ -54,13 +68,14 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
   });
+
+  const responsiveClassName = useRandomClassName();
 
   return (
     <>
-      <InlineStyles selector={`.${responsiveClassName}`} styles={{}} media={[]} />
-      <Box ref={ref} {...getStyles('root')} {...others} />
+      <SimpleGridVariables {...props} selector={`.${responsiveClassName}`} />
+      <Box ref={ref} {...getStyles('root', { className: responsiveClassName })} {...others} />
     </>
   );
 });
