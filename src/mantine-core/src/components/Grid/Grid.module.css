@@ -3,4 +3,5 @@
   flex-wrap: wrap;
   justify-content: var(--grid-justify);
   align-items: var(--grid-align);
+  gap: var(--grid-gutter);
 }

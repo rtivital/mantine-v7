@@ -5,19 +5,11 @@ import {
   keys,
   getSpacing,
   MantineBreakpoint,
-  StyleProp,
   filterProps,
   InlineStyles,
+  getBaseValue,
 } from '../../core';
 import type { SimpleGridProps } from './SimpleGrid';
-
-function getBaseValue(value: StyleProp<any>) {
-  if (typeof value === 'object' && value !== null) {
-    return value.base;
-  }
-
-  return value;
-}
 
 interface SimpleGridVariablesProps extends SimpleGridProps {
   selector: string;
@@ -31,10 +23,10 @@ export function SimpleGridVariables({
 }: SimpleGridVariablesProps) {
   const theme = useMantineTheme();
 
-  const baseStyles: Record<string, string> = filterProps({
+  const baseStyles: Record<string, string | undefined> = filterProps({
     '--sg-spacing-x': getSpacing(getBaseValue(spacing)),
     '--sg-spacing-y': getSpacing(getBaseValue(verticalSpacing)),
-    '--sg-cols': getBaseValue(cols),
+    '--sg-cols': getBaseValue(cols)?.toString(),
   });
 
   const queries = keys(theme.breakpoints).reduce<Record<string, Record<string, any>>>(

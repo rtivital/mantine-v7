@@ -24,3 +24,4 @@ export {
 export { createEventHandler } from './create-event-handler/create-event-handler';
 export { getBreakpointValue } from './get-breakpoint-value/get-breakpoint-value';
 export { getSortedBreakpoints } from './get-sorted-breakpoints/get-sorted-breakpoints';
+export { getBaseValue } from './get-base-value/get-base-value';

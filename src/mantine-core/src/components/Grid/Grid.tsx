@@ -11,9 +11,11 @@ import {
   Factory,
   StyleProp,
   MantineSpacing,
+  useRandomClassName,
 } from '../../core';
 import { GridCol } from './GridCol/GridCol';
 import { GridProvider } from './Grid.context';
+import { GridVariables } from './GridVariables';
 import classes from './Grid.module.css';
 
 export type GridStylesNames = 'root' | 'col';
@@ -91,9 +93,12 @@ export const Grid = factory<GridFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const responsiveClassName = useRandomClassName();
+
   return (
     <GridProvider value={{ getStyles, grow, columns: columns! }}>
-      <Box ref={ref} {...getStyles('root')} {...others} />
+      <GridVariables selector={`.${responsiveClassName}`} {...props} />
+      <Box ref={ref} {...getStyles('root', { className: responsiveClassName })} {...others} />
     </GridProvider>
   );
 });
