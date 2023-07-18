@@ -18,7 +18,7 @@ import { GridProvider } from './Grid.context';
 import { GridVariables } from './GridVariables';
 import classes from './Grid.module.css';
 
-export type GridStylesNames = 'root' | 'col';
+export type GridStylesNames = 'root' | 'col' | 'inner';
 export type GridCssVariables = {
   root: '--grid-justify' | '--grid-align';
 };
@@ -77,6 +77,7 @@ export const Grid = factory<GridFactory>((_props, ref) => {
     columns,
     align,
     justify,
+    children,
     ...others
   } = props;
 
@@ -98,7 +99,9 @@ export const Grid = factory<GridFactory>((_props, ref) => {
   return (
     <GridProvider value={{ getStyles, grow, columns: columns! }}>
       <GridVariables selector={`.${responsiveClassName}`} {...props} />
-      <Box ref={ref} {...getStyles('root', { className: responsiveClassName })} {...others} />
+      <Box ref={ref} {...getStyles('root', { className: responsiveClassName })} {...others}>
+        <div {...getStyles('inner')}>{children}</div>
+      </Box>
     </GridProvider>
   );
 });

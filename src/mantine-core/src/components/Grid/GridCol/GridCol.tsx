@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import {
   Box,
   BoxProps,
@@ -8,18 +9,21 @@ import {
   useProps,
   Factory,
   StyleProp,
+  useRandomClassName,
 } from '../../../core';
-import classes from '../Grid.module.css';
 import { useGridContext } from '../Grid.context';
+import { GridColVariables } from './GridColVariables';
+import classes from '../Grid.module.css';
 
 export type GridColStylesNames = 'col';
+export type ColSpan = number | 'auto' | 'content';
 
 export interface GridColProps
   extends BoxProps,
     StylesApiProps<GridColFactory>,
     ElementProps<'div'> {
   /** Column span, `12` by default */
-  span?: StyleProp<number>;
+  span?: StyleProp<ColSpan>;
 
   /** Column order, can be used to reorder columns at different viewport sizes */
   order?: StyleProp<number>;
@@ -43,12 +47,21 @@ export const GridCol = factory<GridColFactory>((_props, ref) => {
   const props = useProps('GridCol', defaultProps, _props);
   const { classNames, className, style, styles, unstyled, vars, ...others } = props;
   const ctx = useGridContext();
+  const responsiveClassName = useRandomClassName();
   return (
-    <Box
-      ref={ref}
-      {...ctx.getStyles('col', { className, style, classNames, styles })}
-      {...others}
-    />
+    <>
+      <GridColVariables selector={`.${responsiveClassName}`} {...props} />
+      <Box
+        ref={ref}
+        {...ctx.getStyles('col', {
+          className: cx(className, responsiveClassName),
+          style,
+          classNames,
+          styles,
+        })}
+        {...others}
+      />
+    </>
   );
 });
 
