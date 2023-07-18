@@ -9,7 +9,7 @@ import { SimpleGrid } from '@mantine/core';
 function Demo() {
   return (
     <SimpleGrid
-      cols={{ sm: 2, lg: 5 }}
+      cols={{ base: 1, sm: 2, lg: 5 }}
       spacing={{ base: 10, sm: 'xl' }}
       verticalSpacing={{ base: 'md', sm: 'xl' }}
     >
@@ -26,7 +26,7 @@ function Demo() {
 function Demo() {
   return (
     <SimpleGrid
-      cols={{ sm: 2, lg: 5 }}
+      cols={{ base: 1, sm: 2, lg: 5 }}
       spacing={{ base: 10, sm: 'xl' }}
       verticalSpacing={{ base: 'md', sm: 'xl' }}
     >

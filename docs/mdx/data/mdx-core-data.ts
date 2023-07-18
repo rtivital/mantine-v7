@@ -749,4 +749,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Skeleton/Skeleton.tsx',
     docs: 'core/skeleton.mdx',
   },
+
+  SimpleGrid: {
+    title: 'SimpleGrid',
+    package: '@mantine/core',
+    slug: '/core/simple-grid',
+    props: ['SimpleGrid'],
+    styles: ['SimpleGrid'],
+    description: 'Responsive grid in which each item takes equal amount of space',
+    import: "import { SimpleGrid } from '@mantine/core';",
+    source: 'mantine-core/src/components/SimpleGrid/SimpleGrid.tsx',
+    docs: 'core/simple-grid.mdx',
+  },
 };
