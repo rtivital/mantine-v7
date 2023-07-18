@@ -6,7 +6,6 @@ import {
   mergeMantineTheme,
 } from '@mantine/core';
 import {
-  Breakpoints,
   Colors,
   FontSizes,
   Heading,
@@ -31,8 +30,6 @@ function getBreakpointValue(value: string | number, theme: MantineTheme) {
 
 export function themeToVars(theme: MantineThemeOverride): MantineVars {
   const mergedTheme = mergeMantineTheme(DEFAULT_THEME, theme);
-
-  const breakpoints = getSizesVariables<Breakpoints>(mergedTheme, 'breakpoints', 'breakpoint');
 
   const fontSizes = getSizesVariables<FontSizes>(mergedTheme, 'fontSizes', 'font-size');
 
@@ -106,7 +103,7 @@ export function themeToVars(theme: MantineThemeOverride): MantineVars {
     fontFamilyHeadings: 'var(--mantine-font-family-headings)',
     headingFontWeight: 'var(--mantine-heading-font-weight)',
     radiusDefault: 'var(--mantine-radius-default)',
-    breakpoints,
+    breakpoints: mergedTheme.breakpoints,
     fontSizes,
     lineHeights,
     shadows,
