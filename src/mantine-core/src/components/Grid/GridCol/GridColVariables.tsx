@@ -75,6 +75,21 @@ export function GridColVariables({ span, order, offset, selector }: GridColVaria
         acc[breakpoint]['--col-order'] = order[breakpoint]?.toString();
       }
 
+      if (typeof span === 'object' && span[breakpoint] !== undefined) {
+        acc[breakpoint]['--col-flex-grow'] = getColumnFlexGrow(span[breakpoint], ctx.grow);
+        acc[breakpoint]['--col-flex-basis'] = getColumnFlexBasis(span[breakpoint], ctx.columns);
+        acc[breakpoint]['--col-width'] = span[breakpoint] === 'content' ? 'auto' : undefined;
+        acc[breakpoint]['--col-max-width'] = getColumnMaxWidth(
+          span[breakpoint],
+          ctx.columns,
+          ctx.grow
+        );
+      }
+
+      if (typeof offset === 'object' && offset[breakpoint] !== undefined) {
+        acc[breakpoint]['--col-offset'] = getColumnOffset(offset[breakpoint], ctx.columns);
+      }
+
       return acc;
     },
     {}
