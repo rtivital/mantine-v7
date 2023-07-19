@@ -71,3 +71,4 @@ export * from './Title';
 export * from './Tooltip';
 export * from './Transition';
 export * from './TypographyStylesProvider';
+export * from './HoverCard';

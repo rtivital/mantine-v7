@@ -107,7 +107,7 @@ export interface PopoverProps extends __PopoverProps, StylesApiProps<PopoverFact
   __staticSelector?: string;
 
   /** `Popover.Target` and `Popover.Dropdown` components */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /** Initial opened state for uncontrolled component */
   defaultOpened?: boolean;
