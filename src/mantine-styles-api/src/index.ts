@@ -27,6 +27,7 @@ export * from './data/Container.styles-api';
 export * from './data/Divider.styles-api';
 export * from './data/Drawer.styles-api';
 export * from './data/Fieldset.styles-api';
+export * from './data/Grid.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Highlight.styles-api';
 export * from './data/Input.styles-api';
