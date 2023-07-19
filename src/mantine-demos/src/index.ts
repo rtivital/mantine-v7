@@ -33,6 +33,7 @@ export * as DrawerDemos from './demos/core/Drawer';
 export * as FieldsetDemos from './demos/core/Fieldset';
 export * as FileButtonDemos from './demos/core/FileButton';
 export * as FocusTrapDemos from './demos/core/FocusTrap';
+export * as GridDemos from './demos/core/Grid';
 export * as GroupDemos from './demos/core/Group';
 export * as HighlightDemos from './demos/core/Highlight';
 export * as InputDemos from './demos/core/Input';
