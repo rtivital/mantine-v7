@@ -35,6 +35,7 @@ export * from './Fieldset';
 export * from './FileButton';
 export * from './Floating';
 export * from './FocusTrap';
+export * from './Grid';
 export * from './Group';
 export * from './Highlight';
 export * from './Input';
