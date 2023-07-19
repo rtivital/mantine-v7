@@ -6,7 +6,7 @@ describe('@mantine/core/InlineStyles', () => {
   it('renders styles', () => {
     const { container } = render(<InlineStyles selector="body" styles={{ color: 'red' }} />);
     expect(container.querySelector('[data-mantine-styles="inline"]')).toHaveTextContent(
-      'body { color: red; }'
+      'body{color:red;}'
     );
   });
 
@@ -15,11 +15,11 @@ describe('@mantine/core/InlineStyles', () => {
       <InlineStyles
         selector="body"
         styles={{ color: 'red' }}
-        media={[{ query: '(min-width: 500px)', styles: { color: 'blue' } }]}
+        media={[{ query: '(min-width:500px)', styles: { color: 'blue' } }]}
       />
     );
     expect(container.querySelector('[data-mantine-styles="inline"]')).toHaveTextContent(
-      'body { color: red; } @media (min-width: 500px) { body { color: blue; } }'
+      'body{color:red;}@media(min-width:500px){body{color:blue;}}'
     );
   });
 });
