@@ -761,4 +761,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/SimpleGrid/SimpleGrid.tsx',
     docs: 'core/simple-grid.mdx',
   },
+
+  Grid: {
+    title: 'Grid',
+    package: '@mantine/core',
+    slug: '/core/grid',
+    props: ['Grid', 'GridCol'],
+    styles: ['Grid'],
+    componentPrefix: 'Grid',
+    description: 'Responsive grid system',
+    import: "import { Grid } from '@mantine/core';",
+    source: 'mantine-core/src/components/Grid/Grid.tsx',
+    docs: 'core/grid.mdx',
+  },
 };
