@@ -774,4 +774,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Grid/Grid.tsx',
     docs: 'core/grid.mdx',
   },
+
+  HoverCard: {
+    title: 'HoverCard',
+    package: '@mantine/core',
+    slug: '/core/hover-card',
+    props: ['HoverCard', 'HoverCardTarget'],
+    styles: ['HoverCard'],
+    componentPrefix: 'HoverCard',
+    description: 'Display popover section when target element is hovered',
+    import: "import { HoverCard } from '@mantine/core';",
+    source: 'mantine-core/src/components/HoverCard/HoverCard.tsx',
+    docs: 'core/hover-card.mdx',
+  },
 };

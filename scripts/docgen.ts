@@ -63,6 +63,9 @@ const EXTRA_FILES_PATHS = [
 
   // Grid
   '../src/mantine-core/src/components/Grid/GridCol/GridCol.tsx',
+
+  // HoverCard
+  '../src/mantine-core/src/components/HoverCard/HoverCardTarget/HoverCardTarget.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
