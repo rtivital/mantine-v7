@@ -56,6 +56,7 @@ export * from './Paper';
 export * from './Pill';
 export * from './PillsInput';
 export * from './Portal';
+export * from './Progress';
 export * from './ScrollArea';
 export * from './SegmentedControl';
 export * from './Select';
