@@ -184,10 +184,10 @@ It means that components will render both on the server and client.
 Entry points of all `@mantine/*` packages (`index.js` files) have `'use client';` directive at the
 top of the file – you do not need to add `'use client';` to your pages/layouts/components.
 
-## Composite components in server components
+## Compound components in server components
 
-Some components like [Popover](/core/popover) have associated composite components (`Component.XXX`),
-where `XXX` is a composite component name. Composite components cannot be used in server components.
+Some components like [Popover](/core/popover) have associated compound components (`Component.XXX`),
+where `XXX` is a compound component name. Compound components cannot be used in server components.
 Instead, use `ComponentXXX` syntax or add `'use client';` directive to the top of the file.
 
 Example that will not work in server components:
