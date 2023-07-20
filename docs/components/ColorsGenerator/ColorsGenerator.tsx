@@ -6,6 +6,7 @@ import { MdxTitle } from '@/components/MdxProvider';
 import { ColorsList } from './ColorsList/ColorsList';
 import { ColorsInput } from './ColorsInput/ColorsInput';
 import { ComponentsPreview } from './ComponentsPreview/ComponentsPreview';
+import { ColorsOutput } from './ColorsOutput/ColorsOutput';
 
 export function ColorsGenerator() {
   const router = useRouter();
@@ -39,6 +40,8 @@ export function ColorsGenerator() {
       />
 
       <ComponentsPreview colors={colors.map((c) => c.hex()) as any} />
+
+      <ColorsOutput colors={colors.map((c) => c.hex())} />
     </div>
   );
 }
