@@ -107,7 +107,6 @@ export function Menu(_props: MenuProps) {
     classNames,
     styles,
     unstyled,
-    radius,
     variant,
     vars,
     ...others
@@ -176,7 +175,6 @@ export function Menu(_props: MenuProps) {
     >
       <Popover
         {...others}
-        radius={radius}
         opened={_opened}
         onChange={toggleDropdown}
         defaultOpened={defaultOpened}

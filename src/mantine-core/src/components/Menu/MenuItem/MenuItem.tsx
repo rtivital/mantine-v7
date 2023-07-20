@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useMergedRef } from '@mantine/hooks';
 import {
-  Box,
   BoxProps,
   StylesApiProps,
   polymorphicFactory,
@@ -11,7 +10,9 @@ import {
   createEventHandler,
   createScopedKeydownHandler,
   useDirection,
+  useMantineTheme,
 } from '../../../core';
+import { UnstyledButton } from '../../UnstyledButton';
 import { useMenuContext } from '../Menu.context';
 import classes from '../Menu.module.css';
 
@@ -61,6 +62,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
   } = useProps('MenuItem', defaultProps, props);
 
   const ctx = useMenuContext();
+  const theme = useMantineTheme();
   const { dir } = useDirection();
   const itemRef = useRef<HTMLButtonElement>();
   const itemIndex = ctx.getItemIndex(itemRef.current!);
@@ -83,10 +85,10 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
     ctx.setHovered(ctx.getItemIndex(itemRef.current!))
   );
 
+  const colors = color ? theme.variantColorResolver({ color, theme, variant: 'light' }) : undefined;
+
   return (
-    <Box
-      component="button"
-      type="button"
+    <UnstyledButton
       {...others}
       tabIndex={-1}
       onFocus={handleFocus}
@@ -107,6 +109,10 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
         orientation: 'vertical',
         onKeyDown: _others.onKeydown,
       })}
+      __vars={{
+        '--menu-item-color': colors?.color,
+        '--menu-item-hover': colors?.hover,
+      }}
     >
       {leftSection && (
         <div {...ctx.getStyles('itemSection', { styles, classNames })} data-position="left">
@@ -119,7 +125,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
           {rightSection}
         </div>
       )}
-    </Box>
+    </UnstyledButton>
   );
 });
 
