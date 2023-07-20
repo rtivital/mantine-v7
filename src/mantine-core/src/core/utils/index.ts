@@ -25,3 +25,5 @@ export { createEventHandler } from './create-event-handler/create-event-handler'
 export { getBreakpointValue } from './get-breakpoint-value/get-breakpoint-value';
 export { getSortedBreakpoints } from './get-sorted-breakpoints/get-sorted-breakpoints';
 export { getBaseValue } from './get-base-value/get-base-value';
+export { getContextItemIndex } from './get-context-item-index/get-context-item-index';
+export { useHovered } from './use-hovered/use-hovered';
