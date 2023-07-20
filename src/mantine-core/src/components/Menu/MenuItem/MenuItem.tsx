@@ -33,6 +33,9 @@ export interface MenuItemProps extends BoxProps, StylesApiProps<MenuItemFactory>
 
   /** Section displayed on the right side of the label */
   rightSection?: React.ReactNode;
+
+  /** Disables item */
+  disabled?: boolean;
 }
 
 export type MenuItemFactory = PolymorphicFactory<{
@@ -58,6 +61,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
     leftSection,
     rightSection,
     children,
+    disabled,
     ...others
   } = useProps('MenuItem', defaultProps, props);
 
@@ -95,7 +99,9 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
       {...ctx.getStyles('item', { className, style, styles, classNames })}
       ref={useMergedRef(itemRef, ref)}
       role="menuitem"
+      disabled={disabled}
       data-menu-item
+      data-disabled={disabled || undefined}
       data-hovered={ctx.hovered === itemIndex ? true : undefined}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

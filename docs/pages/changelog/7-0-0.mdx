@@ -296,6 +296,23 @@ Starting from version 7.0 Mantine no longer supports older React versions. Minim
 It is required because Mantine components now use [useId](https://react.dev/reference/react/useId) and [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore)
 hooks which are available only in React 18.
 
+## left and right section
+
+Components that previously had `rightSection` and `icon` props, now use `leftSection` instead of `icon`.
+Example of [Button](/core/button) sections:
+
+```tsx
+import { Button } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Button leftSection="left" rightSection="right">
+      Label
+    </Button>
+  );
+}
+```
+
 ## Loader changes
 
 [Loader](/core/loader) component is now built with CSS only. This change improves performance and reduces

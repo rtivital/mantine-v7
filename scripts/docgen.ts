@@ -66,6 +66,10 @@ const EXTRA_FILES_PATHS = [
 
   // HoverCard
   '../src/mantine-core/src/components/HoverCard/HoverCardTarget/HoverCardTarget.tsx',
+
+  // Menu
+  '../src/mantine-core/src/components/Menu/MenuItem/MenuItem.tsx',
+  '../src/mantine-core/src/components/Menu/MenuTarget/MenuTarget.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

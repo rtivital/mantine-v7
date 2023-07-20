@@ -787,4 +787,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/HoverCard/HoverCard.tsx',
     docs: 'core/hover-card.mdx',
   },
+
+  Menu: {
+    title: 'Menu',
+    package: '@mantine/core',
+    slug: '/core/menu',
+    props: ['Menu', 'MenuTarget', 'MenuItem'],
+    styles: ['Menu'],
+    componentPrefix: 'Menu',
+    description: 'Combine a list of secondary actions into single interactive area',
+    import: "import { Menu } from '@mantine/core';",
+    source: 'mantine-core/src/components/Menu/Menu.tsx',
+    docs: 'core/menu.mdx',
+  },
 };

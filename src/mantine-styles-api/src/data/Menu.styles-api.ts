@@ -13,4 +13,17 @@ export const MenuStylesApi: StylesApiData<MenuFactory> = {
   },
 
   vars: {},
+
+  modifiers: [
+    {
+      modifier: 'data-disabled',
+      selector: 'item',
+      condition: '`disabled` prop is set on `Menu.Item`',
+    },
+    {
+      modifier: 'data-hovered',
+      selector: 'item',
+      condition: '`Menu.Item` is hovered or selected with keyboard',
+    },
+  ],
 };

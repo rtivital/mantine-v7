@@ -211,6 +211,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Modal,
           MDX_DATA.Drawer,
           MDX_DATA.HoverCard,
+          MDX_DATA.Menu,
         ],
       },
       {
