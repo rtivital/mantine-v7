@@ -137,6 +137,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     disabled,
     children,
     size,
+    variant,
     ...others
   } = props;
 
@@ -188,11 +189,12 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
         {...contextProps}
         {...rest}
       />
+
       <label
         htmlFor={uuid}
         data-checked={_checked || undefined}
         data-disabled={disabled || undefined}
-        {...getStyles('label')}
+        {...getStyles('label', { variant })}
       >
         {_checked && (
           <span {...getStyles('iconWrapper')}>

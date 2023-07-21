@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Chip } from './Chip';
 
 export default { title: 'Chip' };
@@ -6,64 +6,37 @@ export default { title: 'Chip' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Chip type="radio">Single</Chip>
-      <Chip disabled mt="xl">
-        Disabled
+      <Chip type="checkbox" variant="light">
+        Light
       </Chip>
-      <Chip disabled checked mt="xl">
-        Disabled checked
+      <Chip type="checkbox" variant="filled">
+        Filled
       </Chip>
-      <Chip type="checkbox" mt="xl">
-        Multiple
+      <Chip type="checkbox" variant="outline">
+        Outline
       </Chip>
     </div>
   );
 }
 
-export function ChipGroup() {
+export function Sizes() {
   return (
     <div style={{ padding: 40 }}>
-      <Chip.Group defaultValue="react">
-        <Chip value="react">React</Chip>
-        <Chip value="ng">Angular</Chip>
-      </Chip.Group>
-    </div>
-  );
-}
-
-export function ChipGroupControlled() {
-  const [value, setValue] = useState('react');
-  return (
-    <div style={{ padding: 40 }}>
-      <Chip.Group multiple={false} value={value} onChange={setValue}>
-        <Chip value="react">React</Chip>
-        <Chip value="ng">Angular</Chip>
-      </Chip.Group>
-      {value}
-    </div>
-  );
-}
-
-export function ChipGroupMultiple() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Chip.Group multiple defaultValue={['react']}>
-        <Chip value="react">React</Chip>
-        <Chip value="ng">Angular</Chip>
-      </Chip.Group>
-    </div>
-  );
-}
-
-export function ChipGroupMultipleControlled() {
-  const [value, setValue] = useState(['react']);
-  return (
-    <div style={{ padding: 40 }}>
-      <Chip.Group multiple value={value} onChange={setValue}>
-        <Chip value="react">React</Chip>
-        <Chip value="ng">Angular</Chip>
-      </Chip.Group>
-      {value.toString()}
+      <Chip type="checkbox" size="xs">
+        XS chip
+      </Chip>
+      <Chip type="checkbox" size="sm">
+        SM chip
+      </Chip>
+      <Chip type="checkbox" size="md">
+        MD chip
+      </Chip>
+      <Chip type="checkbox" size="lg">
+        LG chip
+      </Chip>
+      <Chip type="checkbox" size="xl">
+        XL chip
+      </Chip>
     </div>
   );
 }
