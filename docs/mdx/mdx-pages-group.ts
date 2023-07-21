@@ -199,7 +199,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       },
       {
         category: 'feedback',
-        pages: [MDX_DATA.Loader, MDX_DATA.Alert, MDX_DATA.Notification, MDX_DATA.Skeleton],
+        pages: [
+          MDX_DATA.Loader,
+          MDX_DATA.Alert,
+          MDX_DATA.Notification,
+          MDX_DATA.Skeleton,
+          MDX_DATA.Progress,
+        ],
       },
       {
         category: 'overlays',

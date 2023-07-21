@@ -800,4 +800,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Menu/Menu.tsx',
     docs: 'core/menu.mdx',
   },
+
+  Progress: {
+    title: 'Progress',
+    package: '@mantine/core',
+    slug: '/core/progress',
+    props: ['Progress', 'ProgressRoot', 'ProgressSection'],
+    styles: ['Progress'],
+    componentPrefix: 'Progress',
+    description: 'Give user feedback for status of the task',
+    import: "import { Progress } from '@mantine/core';",
+    source: 'mantine-core/src/components/Progress/Progress.tsx',
+    docs: 'core/progress.mdx',
+  },
 };

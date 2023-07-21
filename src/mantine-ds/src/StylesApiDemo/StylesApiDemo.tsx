@@ -14,7 +14,7 @@ export interface StylesApiDemoProps extends DemoAreaProps {
 function getCss(hovered: string | null) {
   return hovered
     ? `.${hovered} {\n  outline: 2px solid #fe0d45;\n  outline-offset: -2px; \n}\n`
-    : '/*\n * Hover over selectors to apply outline styles\n */';
+    : '/*\n * Hover over selectors to apply outline styles\n *\n */';
 }
 
 export function StylesApiDemo({
