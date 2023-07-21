@@ -18,7 +18,7 @@ describe('@mantine/core/RingProgress/get-curve-props', () => {
       strokeDasharray: '511.9539388289927, 402.2495233656371',
       strokeDashoffset: 20,
       strokeWidth: 12,
-      transform: null,
+      transform: undefined,
     });
 
     expect(
