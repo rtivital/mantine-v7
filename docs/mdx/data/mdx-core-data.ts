@@ -813,4 +813,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Progress/Progress.tsx',
     docs: 'core/progress.mdx',
   },
+
+  RingProgress: {
+    title: 'RingProgress',
+    package: '@mantine/core',
+    slug: '/core/ring-progress',
+    props: ['RingProgress'],
+    styles: ['RingProgress'],
+    description: 'Give user feedback for status of the task with circle diagram',
+    import: "import { RingProgress } from '@mantine/core';",
+    source: 'mantine-core/src/components/RingProgress/RingProgress.tsx',
+    docs: 'core/ring-progress.mdx',
+  },
 };
