@@ -74,6 +74,9 @@ const EXTRA_FILES_PATHS = [
   // Progress
   '../src/mantine-core/src/components/Progress/ProgressSection/ProgressSection.tsx',
   '../src/mantine-core/src/components/Progress/ProgressRoot/ProgressRoot.tsx',
+
+  // Chip
+  '../src/mantine-core/src/components/Chip/ChipGroup/ChipGroup.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

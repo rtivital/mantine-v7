@@ -825,4 +825,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/RingProgress/RingProgress.tsx',
     docs: 'core/ring-progress.mdx',
   },
+
+  Chip: {
+    title: 'Chip',
+    package: '@mantine/core',
+    slug: '/core/chip',
+    props: ['Chip', 'ChipGroup'],
+    styles: ['Chip'],
+    componentPrefix: 'Chip',
+    description: 'Pick one or multiple values with inline controls',
+    import: "import { Chip } from '@mantine/core';",
+    source: 'mantine-core/src/components/Chip/Chip.tsx',
+    docs: 'core/chip.mdx',
+  },
 };

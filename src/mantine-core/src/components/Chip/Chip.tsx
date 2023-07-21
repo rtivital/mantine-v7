@@ -17,7 +17,6 @@ import {
   getSize,
   getRadius,
   getFontSize,
-  getSpacing,
 } from '../../core';
 import { CheckIcon } from '../Checkbox';
 import { useChipGroupContext } from './ChipGroup.context';
@@ -116,7 +115,7 @@ const varsResolver = createVarsResolver<ChipFactory>((theme, { size, radius, var
       '--chip-hover': colors.hover,
       '--chip-color': colors.color,
       '--chip-bd': colors.border,
-      '--chip-spacing': getSpacing(size),
+      '--chip-spacing': getSize(size, 'chip-spacing'),
     },
   };
 });
