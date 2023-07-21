@@ -43,7 +43,9 @@ export type ProgressSectionFactory = Factory<{
   compound: true;
 }>;
 
-const defaultProps: Partial<ProgressSectionProps> = {};
+const defaultProps: Partial<ProgressSectionProps> = {
+  withAria: true,
+};
 
 export const ProgressSection = factory<ProgressSectionFactory>((props, ref) => {
   const {
