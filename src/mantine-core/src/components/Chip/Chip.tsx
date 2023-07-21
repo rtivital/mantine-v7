@@ -74,6 +74,9 @@ export interface ChipProps
 
   /** Props passed down to the wrapper element */
   wrapperProps?: Record<string, any>;
+
+  /** Replaces default icon */
+  icon?: React.ReactNode;
 }
 
 export type ChipFactory = Factory<{
@@ -138,6 +141,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     children,
     size,
     variant,
+    icon,
     ...others
   } = props;
 
@@ -198,7 +202,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
       >
         {_checked && (
           <span {...getStyles('iconWrapper')}>
-            <CheckIcon {...getStyles('checkIcon')} />
+            {icon || <CheckIcon {...getStyles('checkIcon')} />}
           </span>
         )}
         {children}

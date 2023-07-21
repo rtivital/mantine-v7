@@ -118,8 +118,8 @@
   width: calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5));
   max-width: calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5));
   height: var(--chip-icon-size);
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
