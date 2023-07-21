@@ -108,9 +108,13 @@ export function itSupportsStylesApi<
   it(`${name}: static classNames (default)`, () => {
     const { container } = render(<options.component {...options.props} />);
     options.selectors.forEach((selector) => {
-      expect(
-        container.querySelector(`.mantine-${options.providerName}-${selector}`)
-      ).toBeInTheDocument();
+      try {
+        expect(
+          container.querySelector(`.mantine-${options.providerName}-${selector}`)
+        ).toBeInTheDocument();
+      } catch (e) {
+        throw new Error(`Missing selector: .mantine-${options.providerName}-${selector}`);
+      }
     });
   });
 

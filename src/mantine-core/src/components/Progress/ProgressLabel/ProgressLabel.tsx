@@ -36,7 +36,13 @@ export const ProgressLabel = factory<ProgressLabelFactory>((props, ref) => {
 
   const ctx = useProgressContext();
 
-  return <Box ref={ref} {...ctx.getStyles('label')} {...others} />;
+  return (
+    <Box
+      ref={ref}
+      {...ctx.getStyles('label', { className, style, classNames, styles })}
+      {...others}
+    />
+  );
 });
 
 ProgressLabel.classes = classes;

@@ -55,7 +55,7 @@ export const ProgressRoot = factory<ProgressRootFactory>((_props, ref) => {
   const { classNames, className, style, styles, unstyled, vars, ...others } = props;
 
   const getStyles = useStyles<ProgressRootFactory>({
-    name: 'ProgressRoot',
+    name: 'Progress',
     classes,
     props,
     className,

@@ -72,6 +72,7 @@ export const ProgressSection = factory<ProgressSectionFactory>((props, ref) => {
         'aria-valuemax': 100,
         'aria-valuemin': 0,
         'aria-valuenow': value,
+        'aria-valuetext': `${value}%`,
       }
     : {};
 

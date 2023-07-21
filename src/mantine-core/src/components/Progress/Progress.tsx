@@ -51,7 +51,17 @@ const defaultProps: Partial<ProgressProps> = {
 
 export const Progress = factory<ProgressFactory>((_props, ref) => {
   const props = useProps('Progress', defaultProps, _props);
-  const { value, classNames, styles, vars, color, striped, animated, ...others } = props;
+  const {
+    value,
+    classNames,
+    styles,
+    vars,
+    color,
+    striped,
+    animated,
+    'aria-label': label,
+    ...others
+  } = props;
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<ProgressFactory>({
     classNames,
@@ -67,7 +77,13 @@ export const Progress = factory<ProgressFactory>((_props, ref) => {
       vars={vars as any}
       {...others}
     >
-      <ProgressSection value={value} color={color} striped={striped} animated={animated} />
+      <ProgressSection
+        value={value}
+        color={color}
+        striped={striped}
+        animated={animated}
+        aria-label={label}
+      />
     </ProgressRoot>
   );
 });
