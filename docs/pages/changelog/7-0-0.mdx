@@ -13,6 +13,7 @@ import {
   InputDemos,
   SimpleGridDemos,
   GridDemos,
+  ProgressDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -325,6 +326,14 @@ it is also now possible to add custom loaders on [theme](/theming/theme-object) 
 Specified [Loader](/core/loader) will be used in all components that use it under the hood ([LoadingOverlay](/core/loading-overlay), [Button](/core/button), [ActionIcon](/core/action-icon), [Stepper](/core/stepper), etc.).
 
 <Demo data={LoaderDemos.cssLoader} />
+
+## Progress changes
+
+[Progress](/core/progress) component now supports compound components pattern.
+Advanced features that were previously implemented in [Progress](/core/progress) are now supposed to be implemented with
+compound components instead.
+
+<Demo data={ProgressDemos.compound} />
 
 ## Table changes
 
