@@ -1,0 +1,70 @@
+.root {
+  --chip-size-xs: rem(24px);
+  --chip-size-sm: rem(28px);
+  --chip-size-md: rem(32px);
+  --chip-size-lg: rem(36px);
+  --chip-size-xl: rem(40px);
+
+  --chip-icon-size-xs: rem(10px);
+  --chip-icon-size-sm: rem(12px);
+  --chip-icon-size-md: rem(14px);
+  --chip-icon-size-lg: rem(16px);
+  --chip-icon-size-xl: rem(18px);
+
+  --chip-padding-xs: rem(16px);
+  --chip-padding-sm: rem(20px);
+  --chip-padding-md: rem(24px);
+  --chip-padding-lg: rem(28px);
+  --chip-padding-xl: rem(32px);
+
+  --chip-checked-padding-xs: rem(7.5px);
+  --chip-checked-padding-sm: rem(10px);
+  --chip-checked-padding-md: rem(11.5px);
+  --chip-checked-padding-lg: rem(13px);
+  --chip-checked-padding-xl: rem(15px);
+}
+
+.label {
+  color: var(--mantine-color-text);
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  border-radius: var(--chip-radius);
+  height: var(--chip-size);
+  font-size: var(--chip-fz);
+  line-height: calc(var(--chip-size) - rem(2px));
+  padding-left: var(--_chip-padding, var(--chip-padding));
+  padding-right: var(--_chip-padding, var(--chip-padding));
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+  background-color: red;
+
+  &[data-checked] {
+    --_chip-padding: var(--chip-checked-padding);
+  }
+}
+
+.iconWrapper {
+  width: calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5));
+  max-width: calc(var(--chip-icon-size) + (var(--chip-spacing) / 1.5));
+  height: var(--chip-icon-size);
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.checkIcon {
+  width: var(--chip-icon-size);
+  height: var(--chip-icon-size);
+  display: block;
+}
+
+.input {
+  width: 0;
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  margin: 0;
+}
