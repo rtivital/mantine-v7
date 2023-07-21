@@ -48,6 +48,7 @@ export * from './data/Paper.styles-api';
 export * from './data/Pill.styles-api';
 export * from './data/PillsInput.styles-api';
 export * from './data/Popover.styles-api';
+export * from './data/Progress.styles-api';
 export * from './data/ScrollArea.styles-api';
 export * from './data/SegmentedControl.styles-api';
 export * from './data/Select.styles-api';
