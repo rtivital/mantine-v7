@@ -85,6 +85,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: calc(var(--progress-size) * 0.65);
+  font-size: min(calc(var(--progress-size) * 0.65), rem(18px));
   line-height: 1;
+  padding-left: rem(4px);
+  padding-right: rem(4px);
 }

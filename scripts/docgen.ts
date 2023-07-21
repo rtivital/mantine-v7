@@ -70,6 +70,10 @@ const EXTRA_FILES_PATHS = [
   // Menu
   '../src/mantine-core/src/components/Menu/MenuItem/MenuItem.tsx',
   '../src/mantine-core/src/components/Menu/MenuTarget/MenuTarget.tsx',
+
+  // Progress
+  '../src/mantine-core/src/components/Progress/ProgressSection/ProgressSection.tsx',
+  '../src/mantine-core/src/components/Progress/ProgressRoot/ProgressRoot.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
