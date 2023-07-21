@@ -21,6 +21,7 @@ export * from './Burger';
 export * from './Button';
 export * from './Center';
 export * from './Checkbox';
+export * from './Chip';
 export * from './CloseButton';
 export * from './Code';
 export * from './Collapse';

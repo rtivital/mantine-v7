@@ -180,7 +180,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
   const _checked = contextProps.checked || _value;
 
   return (
-    <Box size={size} {...getStyles('root')} {...styleProps} {...wrapperProps}>
+    <Box size={size} variant={variant} {...getStyles('root')} {...styleProps} {...wrapperProps}>
       <input
         type={type}
         {...getStyles('input')}
