@@ -44,7 +44,7 @@ export function RatingItem({
           onKeyDown={(event) => event.key === ' ' && onChange(value)}
           id={id}
           type="radio"
-          data-active={active}
+          data-active={active || undefined}
           aria-label={getSymbolLabel?.(value)}
           value={value}
           onChange={onChange}

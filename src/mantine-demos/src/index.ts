@@ -53,6 +53,7 @@ export * as PillDemos from './demos/core/Pill';
 export * as PillsInputDemos from './demos/core/PillsInput';
 export * as PopoverDemos from './demos/core/Popover';
 export * as ProgressDemos from './demos/core/Progress';
+export * as RatingDemos from './demos/core/Rating';
 export * as RingProgressDemos from './demos/core/RingProgress';
 export * as ScrollAreaDemos from './demos/core/ScrollArea';
 export * as SegmentedControlDemos from './demos/core/SegmentedControl';

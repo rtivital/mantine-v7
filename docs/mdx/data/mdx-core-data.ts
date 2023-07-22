@@ -838,4 +838,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Chip/Chip.tsx',
     docs: 'core/chip.mdx',
   },
+
+  Rating: {
+    title: 'Rating',
+    package: '@mantine/core',
+    slug: '/core/rating',
+    props: ['Rating'],
+    styles: ['Rating'],
+    description: 'Pick and display rating',
+    import: "import { Rating } from '@mantine/core';",
+    source: 'mantine-core/src/components/Rating/Rating.tsx',
+    docs: 'core/rating.mdx',
+  },
 };

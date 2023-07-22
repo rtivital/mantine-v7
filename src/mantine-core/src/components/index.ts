@@ -58,6 +58,7 @@ export * from './Pill';
 export * from './PillsInput';
 export * from './Portal';
 export * from './Progress';
+export * from './Rating';
 export * from './RingProgress';
 export * from './ScrollArea';
 export * from './SegmentedControl';

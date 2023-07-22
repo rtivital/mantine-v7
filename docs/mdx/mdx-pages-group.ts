@@ -163,6 +163,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Checkbox,
           MDX_DATA.Fieldset,
           MDX_DATA.Chip,
+          MDX_DATA.Rating,
         ],
       },
       {

@@ -277,6 +277,8 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        variant={variant}
+        size={size}
         {...others}
       >
         {items}
@@ -285,4 +287,5 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
   );
 });
 
+Rating.classes = classes;
 Rating.displayName = '@mantine/core/Rating';
