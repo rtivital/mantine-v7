@@ -150,7 +150,7 @@
   opacity: 0;
   margin: 0;
 
-  &:focus-visible + label {
+  &:focus-visible + .label {
     outline: rem(2px) solid var(--mantine-color-primary);
     outline-offset: rem(2px);
   }
