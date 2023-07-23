@@ -9,7 +9,7 @@ import { Styles, ClassNames, GetStylesApiOptions, ClassNamesArray } from '../sty
 
 export interface UseStylesInput<Payload extends FactoryPayload> {
   name: string | (string | undefined)[];
-  classes: Payload['stylesNames'] extends string ? Record<Payload['stylesNames'], string> : never;
+  classes: Payload['stylesNames'] extends string ? Record<string, string> : never;
   props: Payload['props'];
   stylesCtx?: Payload['ctx'];
   className?: string;

@@ -40,7 +40,7 @@ export interface ThemeExtend<Payload extends FactoryPayload> {
 }
 
 export type ComponentClasses<Payload extends FactoryPayload> = {
-  classes: Payload['stylesNames'] extends string ? Record<Payload['stylesNames'], string> : never;
+  classes: Payload['stylesNames'] extends string ? Record<string, string> : never;
 };
 
 export type MantineComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
