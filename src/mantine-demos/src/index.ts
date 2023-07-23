@@ -61,6 +61,7 @@ export * as SelectDemos from './demos/core/Select';
 export * as SimpleGridDemos from './demos/core/SimpleGrid';
 export * as SkeletonDemos from './demos/core/Skeleton';
 export * as SliderDemos from './demos/core/Slider';
+export * as SpaceDemos from './demos/core/Space';
 export * as StackDemos from './demos/core/Stack';
 export * as SwitchDemos from './demos/core/Switch';
 export * as TableDemos from './demos/core/Table';

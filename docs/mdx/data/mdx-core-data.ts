@@ -850,4 +850,14 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Rating/Rating.tsx',
     docs: 'core/rating.mdx',
   },
+
+  Space: {
+    title: 'Space',
+    package: '@mantine/core',
+    slug: '/core/space',
+    description: 'Add horizontal or vertical spacing from theme',
+    import: "import { Space } from '@mantine/core';",
+    source: 'mantine-core/src/components/Space/Space.tsx',
+    docs: 'core/space.mdx',
+  },
 };
