@@ -80,7 +80,7 @@ By adding this import, you will have all styles of `@mantine/core` components in
 ## Import styles per component
 
 If you want to reduce CSS bundle size, you can import styles per component. Note that some components
-have dependencies, for example, [Button](/components/button) component uses [UnstyledButton](/components/unstyled-button)
+have dependencies, for example, [Button](/core/button) component uses [UnstyledButton](/core/unstyled-button)
 component internally, so you need to import styles for both components. You can find a full list of
 exported styles from `@mantine/core` package and additional instructions on [this page](/styles/css-files-list).
 
@@ -93,7 +93,7 @@ import '@mantine/core/styles/Button.css';
 
 You can add styles to most of Mantine components using `className` prop
 – the same way as you would do with a regular HTML element.
-To set properties to your [theme](/theming/theme-object) values, you can use [Mantine CSS variables](/theming/css-variables):
+To set properties to your [theme](/theming/theme-object) values, you can use [Mantine CSS variables](/styles/css-variables):
 
 <Demo data={StylesDemos.className} />
 
