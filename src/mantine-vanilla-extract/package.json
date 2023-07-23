@@ -1,6 +1,6 @@
 {
   "name": "@mantine/vanilla-extract",
-  "version": "7.0.0-alpha.18",
+  "version": "7.0.0-alpha.19",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -27,7 +27,7 @@
     "vanilla-extract"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.18"
+    "@mantine/core": "7.0.0-alpha.19"
   },
   "dependencies": {},
   "devDependencies": {}
