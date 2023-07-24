@@ -40,6 +40,7 @@ export * from './Grid';
 export * from './Group';
 export * from './Highlight';
 export * from './HoverCard';
+export * from './Indicator';
 export * from './Input';
 export * from './InputBase';
 export * from './Kbd';

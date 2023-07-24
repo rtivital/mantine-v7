@@ -19,8 +19,7 @@
   }
 }
 
-.indicator,
-.processing {
+.indicator {
   position: absolute;
   top: var(--indicator-top);
   left: var(--indicator-left);
@@ -30,9 +29,6 @@
   min-width: var(--indicator-size);
   height: var(--indicator-size);
   border-radius: var(--indicator-radius, rem(1000px));
-}
-
-.indicator {
   z-index: var(--indicator-z-index, 200);
   display: flex;
   align-items: center;
@@ -45,6 +41,14 @@
   color: var(--mantine-color-white);
   white-space: nowrap;
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--indicator-color);
+    border-radius: var(--indicator-radius, rem(1000px));
+  }
+
   &[data-with-label] {
     --_indicator-padding: calc(var(--mantine-spacing-xs) / 2);
   }
@@ -52,8 +56,10 @@
   &[data-with-border] {
     --_indicator-border: rem(2px) solid var(--mantine-color-body);
   }
-}
 
-.processing {
-  animation: processing 1000ms linear infinite;
+  &[data-processing] {
+    &::before {
+      animation: processing 1000ms linear infinite;
+    }
+  }
 }

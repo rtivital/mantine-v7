@@ -32,6 +32,7 @@ export * from './data/Grid.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Highlight.styles-api';
 export * from './data/HoverCard.styles-api';
+export * from './data/Indicator.styles-api';
 export * from './data/Input.styles-api';
 export * from './data/InputBase.styles-api';
 export * from './data/Kbd.styles-api';

@@ -27,7 +27,7 @@ export type IndicatorPositionVariables =
   | '--indicator-translate-x'
   | '--indicator-translate-y';
 
-export type IndicatorStylesNames = 'root' | 'indicator' | 'processing';
+export type IndicatorStylesNames = 'root' | 'indicator';
 export type IndicatorCssVariables = {
   root:
     | '--indicator-color'
@@ -117,7 +117,6 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
     position,
     offset,
     inline,
-    size,
     label,
     radius,
     color,
@@ -146,12 +145,11 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
       {!disabled && (
         <>
           <Box
-            mod={{ 'with-label': !!label, 'with-border': withBorder }}
+            mod={{ 'with-label': !!label, 'with-border': withBorder, processing }}
             {...getStyles('indicator')}
           >
             {label}
           </Box>
-          {processing && <div {...getStyles('processing')} />}
         </>
       )}
       {children}
