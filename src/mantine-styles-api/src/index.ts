@@ -66,6 +66,7 @@ export * from './data/Tabs.styles-api';
 export * from './data/TagsInput.styles-api';
 export * from './data/Table.styles-api';
 export * from './data/Text.styles-api';
+export * from './data/Textarea.styles-api';
 export * from './data/TextInput.styles-api';
 export * from './data/Title.styles-api';
 export * from './data/Tooltip.styles-api';
