@@ -47,6 +47,7 @@
     inset: 0;
     background-color: var(--indicator-color);
     border-radius: var(--indicator-radius, rem(1000px));
+    z-index: -1;
   }
 
   &[data-with-label] {

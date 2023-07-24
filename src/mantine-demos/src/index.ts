@@ -38,6 +38,7 @@ export * as GridDemos from './demos/core/Grid';
 export * as GroupDemos from './demos/core/Group';
 export * as HighlightDemos from './demos/core/Highlight';
 export * as HoverCardDemos from './demos/core/HoverCard';
+export * as IndicatorDemos from './demos/core/Indicator';
 export * as InputDemos from './demos/core/Input';
 export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
