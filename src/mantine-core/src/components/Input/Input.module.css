@@ -155,11 +155,11 @@
   color: var(--_input-color);
   border: rem(1px) solid var(--_input-bd);
   background-color: var(--_input-bg);
-  font-family: var(--mantine-font-family);
+  font-family: var(--_input-font-family, var(--mantine-font-family));
   height: var(--_input-size);
   min-height: var(--input-height);
   line-height: var(--_input-line-height);
-  font-size: var(--input-fz);
+  font-size: var(--_input-fz, var(--input-fz));
   border-radius: var(--input-radius);
   padding-left: var(--_input-padding-left);
   padding-right: var(--_input-padding-right);
@@ -171,6 +171,12 @@
   /* Used as data attribute in Textarea component, does not have associated prop on the Input component */
   &[data-no-overflow] {
     --_input-overflow: hidden;
+  }
+
+  /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
+  &[data-monospace] {
+    --_input-font-family: var(--mantine-font-family-monospace);
+    --_input-fz: calc(var(--input-fz) - rem(2px));
   }
 
   &:focus,

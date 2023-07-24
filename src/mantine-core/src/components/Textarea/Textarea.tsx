@@ -4,7 +4,7 @@ import { factory, ElementProps, useProps, Factory } from '../../core';
 import { InputBase, InputBaseProps } from '../InputBase';
 import { __InputStylesNames } from '../Input';
 
-export interface TextareaProps extends InputBaseProps, ElementProps<'input', 'size'> {
+export interface TextareaProps extends InputBaseProps, ElementProps<'textarea', 'size'> {
   /** Determines whether the textarea height should grow with its content, `false` by default */
   autosize?: boolean;
 
