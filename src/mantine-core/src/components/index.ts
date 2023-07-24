@@ -74,6 +74,7 @@ export * from './Table';
 export * from './Tabs';
 export * from './TagsInput';
 export * from './Text';
+export * from './Textarea';
 export * from './TextInput';
 export * from './Title';
 export * from './Tooltip';
