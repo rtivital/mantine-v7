@@ -860,4 +860,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Space/Space.tsx',
     docs: 'core/space.mdx',
   },
+
+  Indicator: {
+    title: 'Indicator',
+    package: '@mantine/core',
+    slug: '/core/indicator',
+    props: ['Indicator'],
+    styles: ['Indicator'],
+    description: 'Display element at the corner of another element',
+    import: "import { Indicator } from '@mantine/core';",
+    source: 'mantine-core/src/components/Indicator/Indicator.tsx',
+    docs: 'core/indicator.mdx',
+  },
 };
