@@ -872,4 +872,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Indicator/Indicator.tsx',
     docs: 'core/indicator.mdx',
   },
+
+  Textarea: {
+    title: 'Textarea',
+    package: '@mantine/core',
+    slug: '/core/textarea',
+    props: ['Textarea'],
+    styles: ['Textarea'],
+    description: 'Autosize or regular textarea',
+    import: "import { Textarea } from '@mantine/core';",
+    source: 'mantine-core/src/components/Textarea/Textarea.tsx',
+    docs: 'core/textarea.mdx',
+  },
 };
