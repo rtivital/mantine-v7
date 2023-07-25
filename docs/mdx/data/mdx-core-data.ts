@@ -884,4 +884,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Textarea/Textarea.tsx',
     docs: 'core/textarea.mdx',
   },
+
+  JsonInput: {
+    title: 'JsonInput',
+    package: '@mantine/core',
+    slug: '/core/json-input',
+    props: ['JsonInput'],
+    styles: ['JsonInput'],
+    description: 'Capture json data from user',
+    import: "import { JsonInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/JsonInput/JsonInput.tsx',
+    docs: 'core/json-input.mdx',
+  },
 };
