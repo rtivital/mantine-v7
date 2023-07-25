@@ -35,6 +35,7 @@ export * from './data/HoverCard.styles-api';
 export * from './data/Indicator.styles-api';
 export * from './data/Input.styles-api';
 export * from './data/InputBase.styles-api';
+export * from './data/JsonInput.styles-api';
 export * from './data/Kbd.styles-api';
 export * from './data/Loader.styles-api';
 export * from './data/Mark.styles-api';
