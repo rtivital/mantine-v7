@@ -50,6 +50,7 @@ export * from './data/Pagination.styles-api';
 export * from './data/Paper.styles-api';
 export * from './data/Pill.styles-api';
 export * from './data/PillsInput.styles-api';
+export * from './data/PinInput.styles-api';
 export * from './data/Popover.styles-api';
 export * from './data/Progress.styles-api';
 export * from './data/Rating.styles-api';
