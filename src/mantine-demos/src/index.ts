@@ -53,6 +53,7 @@ export * as PaginationDemos from './demos/core/Pagination';
 export * as PaperDemos from './demos/core/Paper';
 export * as PillDemos from './demos/core/Pill';
 export * as PillsInputDemos from './demos/core/PillsInput';
+export * as PinInputDemos from './demos/core/PinInput';
 export * as PopoverDemos from './demos/core/Popover';
 export * as ProgressDemos from './demos/core/Progress';
 export * as RatingDemos from './demos/core/Rating';

@@ -839,6 +839,18 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     docs: 'core/chip.mdx',
   },
 
+  PinInput: {
+    title: 'PinInput',
+    package: '@mantine/core',
+    slug: '/core/pin-input',
+    props: ['PinInput'],
+    styles: ['PinInput'],
+    description: 'Capture pin code or one time password from the user',
+    import: "import { PinInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/PinInput/PinInput.tsx',
+    docs: 'core/pin-input.mdx',
+  },
+
   Rating: {
     title: 'Rating',
     package: '@mantine/core',

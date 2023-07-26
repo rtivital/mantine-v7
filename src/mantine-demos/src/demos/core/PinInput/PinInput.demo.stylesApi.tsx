@@ -8,7 +8,7 @@ import { PinInput } from '@mantine/core';
 
 function Demo() {
   return (
-    <PinInput />
+    <PinInput {{props}}/>
   );
 }
 `;

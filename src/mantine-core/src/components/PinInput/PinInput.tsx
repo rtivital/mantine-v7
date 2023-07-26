@@ -109,7 +109,7 @@ export interface PinInputProps
     | 'search'
     | undefined;
 
-  //** Aria label for the inputs */
+  /** Aria label for the inputs */
   ariaLabel?: string;
 }
 

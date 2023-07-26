@@ -10,7 +10,7 @@ export const PinInputStylesApi: StylesApiData<PinInputFactory> = {
 
   vars: {
     root: {
-      '--pininput-size': 'Controls star icon width and height',
+      '--pininput-size': 'Controls pin width and height',
     },
   },
 
