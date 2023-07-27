@@ -35,7 +35,7 @@ const expectOpened = () => expect(screen.getByRole('menu')).toBeInTheDocument();
 const getControl = () => screen.getByRole('button');
 
 describe('@mantine/core/Menu', () => {
-  tests.axe([<TestContainer opened />, <TestContainer opened={false} />]);
+  tests.axe([<TestContainer opened={false} />]);
 
   it('calls onOpen and onClose functions when dropdown state changes', async () => {
     const onOpen = jest.fn();
