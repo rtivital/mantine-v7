@@ -53,7 +53,7 @@ export type ModalRootFactory = Factory<{
 
 const defaultProps: Partial<ModalRootProps> = {
   __staticSelector: 'Modal',
-  yOffset: '5vh',
+  yOffset: '5dvh',
   xOffset: '5vw',
   closeOnClickOutside: true,
   withinPortal: true,
