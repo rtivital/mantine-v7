@@ -25,6 +25,7 @@ export function Search() {
       tagsToIgnore={[]}
       highlightQuery
       clearQueryOnClose
+      radius="md"
       limit={7}
       nothingFound="Nothing found..."
       searchProps={{
