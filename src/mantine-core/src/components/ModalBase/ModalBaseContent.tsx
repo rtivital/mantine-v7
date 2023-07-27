@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import cx from 'clsx';
-import { BoxProps, ElementProps } from '../../core';
+import { BoxProps, ElementProps, MantineRadius, MantineShadow } from '../../core';
 import { Transition, TransitionOverride } from '../Transition';
 import { FocusTrap } from '../FocusTrap';
 import { Paper } from '../Paper';
@@ -10,6 +10,12 @@ import classes from './ModalBase.module.css';
 export interface ModalBaseContentProps extends BoxProps, ElementProps<'div'> {
   /** Props passed down to the `Transition` component */
   transitionProps?: TransitionOverride;
+
+  /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
+  shadow?: MantineShadow | (string & {});
+
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
+  radius?: MantineRadius | number | (string & {});
 }
 
 interface _ModalBaseContentProps extends ModalBaseContentProps {

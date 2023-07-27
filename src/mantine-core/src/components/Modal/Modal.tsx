@@ -81,6 +81,7 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
     withCloseButton,
     closeButtonProps,
     children,
+    radius,
     ...others
   } = useProps('Modal', defaultProps, _props);
 
@@ -89,7 +90,7 @@ export const Modal = factory<ModalFactory>((_props, ref) => {
   return (
     <ModalRoot ref={ref} {...others}>
       {withOverlay && <ModalOverlay {...overlayProps} />}
-      <ModalContent>
+      <ModalContent radius={radius}>
         {hasHeader && (
           <ModalHeader>
             {title && <ModalTitle>{title}</ModalTitle>}
