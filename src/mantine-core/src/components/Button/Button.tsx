@@ -91,6 +91,7 @@ export type ButtonFactory = PolymorphicFactory<{
   defaultComponent: 'button';
   stylesNames: ButtonStylesNames;
   vars: ButtonCssVariables;
+  variant: ButtonVariant;
   staticComponents: {
     Group: typeof ButtonGroup;
   };
