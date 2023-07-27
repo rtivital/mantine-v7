@@ -23,7 +23,7 @@ const defaultProps: TabsProps = {
 };
 
 const TAB_VALUES = ['tab-1', 'tab-2', 'tab-3'] as const;
-type TabValue = typeof TAB_VALUES[number];
+type TabValue = (typeof TAB_VALUES)[number];
 
 const expectActiveTab = (value: TabValue | null) => {
   const hidden = ['tab-1', 'tab-2', 'tab-3'].filter((panel) => panel !== value);

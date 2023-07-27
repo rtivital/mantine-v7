@@ -28,7 +28,7 @@ interface Options<Props extends Record<string, any> = any, Selectors extends str
 
 export function itSupportsStylesApi<
   Props extends Record<string, any>,
-  Selectors extends string = string
+  Selectors extends string = string,
 >(options: Options<Props, Selectors>, name = 'supports styles api') {
   it(`${name}: classNames (inline object)`, () => {
     const classNames = getTestObjectClassNames(options.selectors);

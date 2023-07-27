@@ -17,7 +17,7 @@ export interface GetStylesApiOptions {
 
 export type StylesApiRecord<
   Payload extends FactoryPayload,
-  DataType
+  DataType,
 > = Payload['stylesNames'] extends string
   ?
       | StylesRecord<Payload['stylesNames'], DataType>

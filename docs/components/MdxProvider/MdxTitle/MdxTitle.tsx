@@ -29,5 +29,6 @@ export function MdxTitle({
   );
 }
 
-export const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) =>
-  <MdxTitle order={order} {...props} />;
+export const h = (order: 1 | 2 | 3 | 4 | 5 | 6) => (props: any) => (
+  <MdxTitle order={order} {...props} />
+);

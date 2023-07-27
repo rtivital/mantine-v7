@@ -46,7 +46,7 @@ interface Options<Props extends Record<string, any>, StylesApiSelectors extends 
 
 export function itSupportsSystemProps<
   Props extends Record<string, any>,
-  StylesApiSelectors extends string = string
+  StylesApiSelectors extends string = string,
 >(options: Options<Props, StylesApiSelectors>) {
   describe('supports system properties', () => {
     const splittedDisplayName = options.displayName ? options.displayName.split('/') : [];

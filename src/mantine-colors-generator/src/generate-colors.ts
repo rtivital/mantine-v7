@@ -38,7 +38,7 @@ export type MantineColorsTuple = readonly [
   string,
   string,
   string,
-  ...string[]
+  ...string[],
 ];
 
 export function generateColors(color: string) {
