@@ -25,7 +25,7 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "clsx": "1.1.1",
+    "clsx": "2.0.0",
     "react-imask": "^6.4.3",
     "@mantine/core": "7.0.0-alpha.19",
     "@mantine/hooks": "7.0.0-alpha.19",
