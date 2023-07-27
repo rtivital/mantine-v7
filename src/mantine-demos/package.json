@@ -32,7 +32,7 @@
     "@mantine/styles-api": "7.0.0-alpha.19",
     "@mantine/ds": "7.0.0-alpha.19",
     "@mantine/notifications": "7.0.0-alpha.19",
-    "@tabler/icons-react": "^2.16.0"
+    "@tabler/icons-react": "^2.29.0"
   },
   "dependencies": {},
   "devDependencies": {}

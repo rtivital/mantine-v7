@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@mantine/store": "7.0.0-alpha.19",
-    "react-transition-group": "4.4.2"
+    "react-transition-group": "4.4.5"
   },
   "devDependencies": {}
 }
