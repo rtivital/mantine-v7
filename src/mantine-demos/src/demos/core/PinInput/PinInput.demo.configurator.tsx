@@ -6,7 +6,7 @@ const code = `
 import { PinInput } from '@mantine/core';
 
 function Demo() {
-  return <PinInput {{props}} />
+  return <PinInput{{props}} />
 }
 `;
 
@@ -20,11 +20,10 @@ export const configurator: MantineDemo = {
   code,
   centered: true,
   controls: [
-    { prop: 'size', type: 'size', initialValue: 'md', libraryValue: 'md' },
+    { prop: 'size', type: 'size', initialValue: 'sm', libraryValue: 'sm' },
     { prop: 'length', type: 'number', initialValue: 4, libraryValue: 4, min: 1, max: 10 },
     { prop: 'mask', type: 'boolean', initialValue: false, libraryValue: false },
     { prop: 'placeholder', type: 'string', initialValue: '○', libraryValue: '○' },
-    { prop: 'oneTimeCode', type: 'boolean', initialValue: false, libraryValue: false },
     { prop: 'disabled', type: 'boolean', initialValue: false, libraryValue: false },
     { prop: 'error', type: 'boolean', initialValue: false, libraryValue: false },
     {
@@ -34,6 +33,5 @@ export const configurator: MantineDemo = {
       libraryValue: 'alphanumeric',
       data: ['alphanumeric', 'number'],
     },
-    { prop: 'ariaLabel', type: 'string', initialValue: 'PinInput', libraryValue: 'PinInput' },
   ],
 };

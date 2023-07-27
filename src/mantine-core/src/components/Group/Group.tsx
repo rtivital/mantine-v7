@@ -30,6 +30,8 @@ export interface GroupStylesCtx {
 }
 
 export interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, ElementProps<'div'> {
+  __size?: any;
+
   /** Controls `justify-content` CSS property, `'flex-start'` by default */
   justify?: React.CSSProperties['justifyContent'];
 
@@ -93,6 +95,7 @@ export const Group = factory<GroupFactory>((_props, ref) => {
     preventGrowOverflow,
     vars,
     variant,
+    __size,
     ...others
   } = props;
 
@@ -119,7 +122,14 @@ export const Group = factory<GroupFactory>((_props, ref) => {
   });
 
   return (
-    <Box {...getStyles('root')} ref={ref} variant={variant} mod={{ grow }} {...others}>
+    <Box
+      {...getStyles('root')}
+      ref={ref}
+      variant={variant}
+      mod={{ grow }}
+      size={__size}
+      {...others}
+    >
       {filteredChildren}
     </Box>
   );

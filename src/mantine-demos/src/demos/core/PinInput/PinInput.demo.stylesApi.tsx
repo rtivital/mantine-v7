@@ -8,7 +8,7 @@ import { PinInput } from '@mantine/core';
 
 function Demo() {
   return (
-    <PinInput {{props}}/>
+    <PinInput{{props}} />
   );
 }
 `;
@@ -23,5 +23,4 @@ export const stylesApi: MantineDemo = {
   component: Demo,
   code,
   centered: true,
-  maxWidth: 400,
 };

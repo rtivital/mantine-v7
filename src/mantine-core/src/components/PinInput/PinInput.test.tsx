@@ -12,23 +12,29 @@ describe('@mantine/core/PinInput', () => {
   tests.itSupportsSystemProps<PinInputProps, PinInputStylesNames>({
     component: PinInput,
     props: defaultProps,
-    displayName: '@mantine/core/PinInput',
+    styleProps: true,
+    extend: true,
+    size: true,
+    variant: true,
+    classes: true,
     refType: HTMLDivElement,
-    stylesApiSelectors: ['root', 'pinInput'],
+    displayName: '@mantine/core/PinInput',
+    stylesApiSelectors: ['root', 'pinInput', 'input'],
+    providerStylesApi: false,
   });
 
-  it('renders correct amount of inputs based on length prop', () => {
+  it('renders correct number of inputs based on length prop', () => {
     const { container } = render(<PinInput {...defaultProps} length={5} />);
-    expect(container.querySelectorAll('.mantine-pinInput-input')).toHaveLength(5);
+    expect(container.querySelectorAll('.mantine-PinInput-input')).toHaveLength(5);
   });
 
   it('onComplete is called on last input', () => {
     const spy = jest.fn();
     const { container } = render(<PinInput {...defaultProps} onComplete={spy} />);
 
-    expect(container.querySelectorAll('.mantine-pinInput-input')).toHaveLength(4);
+    expect(container.querySelectorAll('.mantine-PinInput-input')).toHaveLength(4);
 
-    container.querySelectorAll('.mantine-pinInput-input').forEach((element) => {
+    container.querySelectorAll('.mantine-PinInput-input').forEach((element) => {
       fireEvent.change(element, { target: { value: '1' } });
     });
 
@@ -37,37 +43,37 @@ describe('@mantine/core/PinInput', () => {
 
   it('stay focused on last element on initial backspace press', async () => {
     const { container } = render(<PinInput {...defaultProps} length={5} />);
-    expect(container.querySelectorAll('.mantine-pinInput-input')).toHaveLength(5);
+    expect(container.querySelectorAll('.mantine-PinInput-input')).toHaveLength(5);
 
-    container.querySelectorAll('.mantine-pinInput-input').forEach((element, key) => {
+    container.querySelectorAll('.mantine-PinInput-input').forEach((element, key) => {
       fireEvent.change(element, { target: { value: key } });
     });
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[4]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[4]).toHaveFocus();
   });
 
   it('inputs except the last element should not need two backspace press to shift focus to prev element', async () => {
     const { container } = render(<PinInput {...defaultProps} length={5} />);
-    expect(container.querySelectorAll('.mantine-pinInput-input')).toHaveLength(5);
+    expect(container.querySelectorAll('.mantine-PinInput-input')).toHaveLength(5);
 
-    container.querySelectorAll('.mantine-pinInput-input').forEach((element, key) => {
+    container.querySelectorAll('.mantine-PinInput-input').forEach((element, key) => {
       fireEvent.change(element, { target: { value: key } });
     });
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[4]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[4]).toHaveFocus();
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[3]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[3]).toHaveFocus();
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[2]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[2]).toHaveFocus();
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[1]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[1]).toHaveFocus();
 
     await userEvent.keyboard('{Backspace}');
-    expect(container.querySelectorAll('.mantine-pinInput-input')[0]).toHaveFocus();
+    expect(container.querySelectorAll('.mantine-PinInput-input')[0]).toHaveFocus();
   });
 });

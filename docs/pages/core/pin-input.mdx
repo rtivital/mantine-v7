@@ -18,7 +18,7 @@ set `type={/^[0-3]+/}`:
 
 ## One time code
 
-Some operating systems expose last received SMS code to be used by applications like your keyboard.
+Some operating systems expose the last received SMS code to be used by applications like your keyboard.
 If the current form input asks for this code, your keyboard adapts and proposes the code as keyboard-suggestion.
 Prop `oneTimeCode` makes your input setting `autocomplete="one-time-code"` which allows using that feature.
 
@@ -32,7 +32,7 @@ function OneTimeCodeInput() {
 
 ## Accessibility
 
-Inputs do not have associated labels, set `aria-label` to make component visible to screen reader:
+Inputs do not have associated labels, set `aria-label` to make component visible to the screen reader:
 
 ```tsx
 import { PinInput } from '@mantine/core';
@@ -42,8 +42,6 @@ function Accessibility() {
 }
 ```
 
-## Styles API
-
-PinInput supports Styles API, you can add styles to any inner element of the component withclassNames prop. Follow Styles API documentation to learn more.
+<StylesApiSelectors component="PinInput" />
 
 <Demo data={PinInputDemos.stylesApi} />

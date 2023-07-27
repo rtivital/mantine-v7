@@ -1,20 +1,12 @@
 .root {
-  --pininput-size-xs: rem(30px);
-  --pininput-size-sm: rem(36px);
-  --pininput-size-md: rem(42px);
-  --pininput-size-lg: rem(50px);
-  --pininput-size-xl: rem(60px);
+  --pin-input-size-xs: rem(30px);
+  --pin-input-size-sm: rem(36px);
+  --pin-input-size-md: rem(42px);
+  --pin-input-size-lg: rem(50px);
+  --pin-input-size-xl: rem(60px);
 }
 
 .pinInput {
-  width: var(--pininput-size);
-  height: var(--pininput-size);
-  text-align: center;
-  min-height: auto;
-  padding: 0;
-  line-height: var(--pininput-size);
-
-  &:focus {
-    background: transparent;
-  }
+  width: var(--pin-input-size);
+  height: var(--pin-input-size);
 }

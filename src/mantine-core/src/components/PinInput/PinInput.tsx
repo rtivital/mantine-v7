@@ -12,12 +12,14 @@ import {
   factory,
   getSize,
   useProps,
+  useResolvedStylesApi,
   useStyles,
 } from '../../core';
 import { Group } from '../Group';
 import { Input } from '../Input';
 import { createPinArray } from './create-pin-array/create-pin-array';
 import classes from './PinInput.module.css';
+import { InputBase } from '../InputBase';
 
 const regex = {
   number: /^[0-9]+$/,
@@ -27,7 +29,7 @@ const regex = {
 export type PinInputStylesNames = 'root' | 'pinInput' | 'input';
 
 export type PinInputCssVariables = {
-  root: '--pininput-size';
+  root: '--pin-input-size';
 };
 
 export interface PinInputProps
@@ -40,64 +42,64 @@ export interface PinInputProps
   /** Hidden input form attribute */
   form?: string;
 
-  /** Key of theme.spacing or any valid CSS value to set spacing between inputs */
+  /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
   gap?: MantineSpacing | (string & {}) | number;
 
-  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Input width and height */
+  /** Controls inputs `width` and `height`, `'sm'` by default */
   size?: MantineSize;
 
-  /** If set, first input is focused when component is mounted */
+  /** If set, the first input is focused when component is mounted, `false` by default */
   autoFocus?: boolean;
 
-  /** Value for controlled component */
+  /** Controlled component value */
   value?: string;
 
-  /** Default value for uncontrolled component */
+  /** Uncontrolled component default value */
   defaultValue?: string;
 
   /** Called when value changes */
-  onChange?: (value: string) => void;
+  onChange?(value: string): void;
 
-  /** Called when user enters value to all inputs */
+  /** Called when all inputs have value */
   onComplete?(value: string): void;
 
-  /** Placeholder for every input field */
+  /** Inputs placeholder, `'○'` by default */
   placeholder?: string;
 
-  /** Determines whether focus should be moved automatically to the next input once filled */
+  /** Determines whether focus should be moved automatically to the next input once filled, `true` by default */
   manageFocus?: boolean;
 
-  /** Determines whether autocomplete="one-time-code" attribute should be set on all inputs */
+  /** Determines whether `autocomplete="one-time-code"` attribute should be set on all inputs, `true` by default */
   oneTimeCode?: boolean;
 
-  /** The top-level id that is used as a base in all input fields */
+  /** Base id used for all inputs, generated randomly by default */
   id?: string;
 
-  /** Sets inputs disabled attribute */
+  /** Disables all inputs */
   disabled?: boolean;
 
   /** Adds error styles to all inputs */
   error?: boolean;
 
-  /** The type of allowed values */
+  /** Allowed values, `'alphanumeric'` by default */
   type?: 'alphanumeric' | 'number' | RegExp;
 
-  /** Changes input type to "password" */
+  /** Changes input type to `"password"`, `false` by default */
   mask?: boolean;
 
-  /** Number of input boxes */
+  /** Number of input boxes, `4` by default */
   length?: number;
 
-  /** Determines whether the user can edit input content */
+  /** Determines whether input content can be edited */
   readOnly?: boolean;
 
-  /** Inputs type attribute, inferred from type prop if not specified */
+  /** Inputs `type` attribute, inferred from the `type` prop if not specified */
   inputType?: React.HTMLInputTypeAttribute;
 
-  /** inputmode attr, inferred from type prop if not specified */
+  /** `inputmode` attribute, inferred from the `type` prop if not specified */
   inputMode?:
     | 'none'
     | 'text'
@@ -109,7 +111,7 @@ export interface PinInputProps
     | 'search'
     | undefined;
 
-  /** Aria label for the inputs */
+  /** `aria-label` for the inputs */
   ariaLabel?: string;
 }
 
@@ -121,18 +123,19 @@ export type PinInputFactory = Factory<{
 }>;
 
 const defaultProps: Partial<PinInputProps> = {
-  size: 'xs',
+  size: 'sm',
   gap: 'sm',
   length: 4,
   manageFocus: true,
+  oneTimeCode: true,
   placeholder: '○',
   type: 'alphanumeric',
   ariaLabel: 'PinInput',
 };
 
-const varsResolver = createVarsResolver<PinInputFactory>((theme, { size }) => ({
+const varsResolver = createVarsResolver<PinInputFactory>((_, { size }) => ({
   root: {
-    '--pininput-size': getSize(size ?? defaultProps.size, 'pininput-size'),
+    '--pin-input-size': getSize(size ?? defaultProps.size, 'pin-input-size'),
   },
 }));
 
@@ -183,6 +186,12 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
     unstyled,
     vars,
     varsResolver,
+  });
+
+  const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<PinInputFactory>({
+    classNames,
+    styles,
+    props,
   });
 
   const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -296,6 +305,8 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
         ref={ref}
         unstyled={unstyled}
         wrap="nowrap"
+        variant={variant}
+        __size={size}
       >
         {createPinArray(length ?? 0, _value).map((char, index) => (
           <Input
@@ -306,8 +317,10 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
                 '--_input-text-align': 'center',
               } as React.CSSProperties,
             })}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
             size={size}
-            __staticSelector="pinInput"
+            __staticSelector="PinInput"
             id={`${uuid}-${index + 1}`}
             key={`${uuid}-${index}`}
             inputMode={inputMode || (type === 'number' ? 'numeric' : 'text')}
@@ -334,9 +347,11 @@ export const PinInput = factory<PinInputFactory>((props, ref) => {
           />
         ))}
       </Group>
+
       <input type="hidden" name={name} form={form} value={_value} />
     </>
   );
 });
 
+PinInput.classes = { ...classes, ...InputBase.classes };
 PinInput.displayName = '@mantine/core/PinInput';

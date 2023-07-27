@@ -1,16 +1,16 @@
-import { PinInputFactory } from '@mantine/core/src/components/PinInput/PinInput';
+import { PinInputFactory } from '@mantine/core';
 import type { StylesApiData } from '../types';
 
 export const PinInputStylesApi: StylesApiData<PinInputFactory> = {
   selectors: {
     root: 'Root element',
-    pinInput: 'PinInput element',
-    input: 'Item input, hidden by default',
+    pinInput: 'Input item wrapper',
+    input: 'Input element',
   },
 
   vars: {
     root: {
-      '--pininput-size': 'Controls pin width and height',
+      '--pin-input-size': 'Controls input `width` and `height`',
     },
   },
 
