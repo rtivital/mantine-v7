@@ -32,8 +32,8 @@
     "github-slugger": "^2.0.0",
     "highlight.js": "^11.7.0",
     "next": "13.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "remark-slug": "^6.0.0",
     "typescript": "5.1.6"
   },

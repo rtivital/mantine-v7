@@ -29,9 +29,9 @@
     "@mantine/core": "7.0.0-alpha.19",
     "@mantine/hooks": "7.0.0-alpha.19",
     "@mantine/code-highlight": "7.0.0-alpha.19",
-    "@tabler/icons-react": "*",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "@tabler/icons-react": "^2.16.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "clsx": "1.1.1"
