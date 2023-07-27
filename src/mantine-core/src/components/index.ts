@@ -59,6 +59,7 @@ export * from './Pagination';
 export * from './Paper';
 export * from './Pill';
 export * from './PillsInput';
+export * from './PinInput';
 export * from './Portal';
 export * from './Progress';
 export * from './Rating';
