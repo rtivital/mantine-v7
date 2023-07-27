@@ -1,13 +1,19 @@
+.root {
+  &[data-scrollable] {
+    --_spotlight-content-height: 100%;
+  }
+}
+
 .content {
   overflow: hidden;
-  height: 100%;
+  height: var(--_spotlight-content-height, auto);
   max-height: var(--spotlight-max-height);
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: var(--_spotlight-content-height, auto);
 }
 
 .search {

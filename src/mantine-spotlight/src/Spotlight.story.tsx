@@ -41,6 +41,7 @@ export function Compound() {
         onSpotlightOpen={() => console.log('open')}
         onSpotlightClose={() => console.log('close')}
         clearQueryOnClose
+        scrollable
         // fullScreen
         // maxHeight="100vh"
       >
@@ -78,6 +79,32 @@ export function Default() {
           },
           ...actionsData,
         ]}
+        highlightQuery
+        scrollable
+        clearQueryOnClose
+        limit={20}
+        searchProps={{
+          placeholder: 'Search actions',
+          leftSection: <IconSearch stroke={1.5} size={20} />,
+        }}
+      />
+      <Button onClick={actions.open}>Open spotlight</Button>
+    </div>
+  );
+}
+
+export function NotScrollable() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Spotlight
+        store={store}
+        actions={[
+          { id: '1', label: 'Home', description: 'Home page', keywords: 'test' },
+          { id: '2', label: 'About', description: 'About me', keywords: 'ng' },
+          { id: '3', label: 'Contact', description: 'Contact me', keywords: 'react' },
+        ]}
+        // scrollable
+        nothingFound="Nothing found"
         highlightQuery
         clearQueryOnClose
         limit={20}

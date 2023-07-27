@@ -72,8 +72,11 @@ export interface SpotlightRootProps
   /** Determines whether spotlight should be closed when one of the actions is triggered, `true` by default */
   closeOnActionTrigger?: boolean;
 
-  /** Spotlight content max-height, `400` by default */
+  /** Spotlight content max-height. Ignored unless `scrollable` prop is set. `400` by default */
   maxHeight?: React.CSSProperties['maxHeight'];
+
+  /** Determines whether the actions list should be scrollable. If not set, `maxHeight` is ignored, `false` by default */
+  scrollable?: boolean;
 }
 
 export type SpotlightRootFactory = Factory<{
@@ -94,6 +97,7 @@ const defaultProps: Partial<SpotlightRootProps> = {
   closeOnActionTrigger: true,
   shortcut: 'mod + K',
   maxHeight: 400,
+  scrollable: false,
 };
 
 export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
@@ -120,6 +124,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
     forceOpened,
     closeOnActionTrigger,
     maxHeight,
+    scrollable,
     ...others
   } = props;
 
@@ -186,8 +191,9 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props, ref) => {
             transitionProps?.onExited?.();
           },
         }}
-        __vars={{ '--spotlight-max-height': rem(maxHeight) }}
+        __vars={{ '--spotlight-max-height': scrollable ? rem(maxHeight) : undefined }}
         __staticSelector="Spotlight"
+        data-scrollable={scrollable || undefined}
       >
         {children}
       </Modal>
