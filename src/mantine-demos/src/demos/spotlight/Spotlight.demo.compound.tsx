@@ -48,7 +48,7 @@ function Demo() {
     <>
       <Button onClick={spotlight.open}>Open spotlight</Button>
 
-      <Spotlight.Root store={store} query={query} onQueryChange={setQuery}>
+      <Spotlight.Root store={store} query={query} onQueryChange={setQuery} shortcut={null}>
         <Spotlight.Search placeholder="Search..." leftSection={<IconSearch stroke={1.5} />} />
         <Spotlight.ActionsList>
           {items.length > 0 ? items : <Spotlight.Empty>Nothing found...</Spotlight.Empty>}

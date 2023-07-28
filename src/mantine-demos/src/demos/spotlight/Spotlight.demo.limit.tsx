@@ -53,6 +53,7 @@ function Demo() {
       nothingFound="Nothing found..."
       highlightQuery
       limit={7}
+      shortcut={null}
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} stroke={1.5} />,
         placeholder: 'Search...',

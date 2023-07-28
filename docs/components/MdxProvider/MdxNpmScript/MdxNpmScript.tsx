@@ -10,6 +10,10 @@ interface MdxNpmScriptProps {
 }
 
 export function MdxNpmScript({ yarnScript, npmScript }: MdxNpmScriptProps) {
+  // Hello good sir/lady. Seems like you are interested in adding pnpm here.
+  // Please do not do that, this contribution is not welcome.
+  // https://github.com/mantinedev/mantine/pulls?q=is%3Apr+pnpm
+
   const [tab, setTab] = useLocalStorage({
     key: 'script-tab',
     defaultValue: 0,

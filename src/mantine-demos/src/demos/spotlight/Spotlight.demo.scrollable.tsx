@@ -55,6 +55,7 @@ function Demo() {
       highlightQuery
       scrollable
       maxHeight={350}
+      shortcut={null}
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} stroke={1.5} />,
         placeholder: 'Search...',

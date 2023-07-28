@@ -14,6 +14,7 @@ import {
   SimpleGridDemos,
   GridDemos,
   ProgressDemos,
+  SpotlightDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -399,6 +400,19 @@ it works the same way as [style props](/styles/style-props).
 all props now work the same way as [style props](/styles/style-props).
 
 <Demo data={GridDemos.responsive} />
+
+## Spotlight changes
+
+[Spotlight](/others/spotlight) changes:
+
+- The logic is no longer based on React context
+- `SpotlightProvider` was renamed to `Spotlight`
+- `useSpotlight` hook was removed, use `spotlight` object instead
+- `actions` prop now uses different data format
+- It is now possible to have multiple spotlights in the same app
+- `Spotlight` component now uses compound components pattern for advanced customization
+
+<Demo data={SpotlightDemos.compound} />
 
 ## @mantine/prism deprecation
 

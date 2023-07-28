@@ -24,7 +24,7 @@ export type ModalRootCssVariables = {
 export interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalBaseProps {
   __staticSelector?: string;
 
-  /** Top/bottom modal offset, `5vh` by default */
+  /** Top/bottom modal offset, `5dvh` by default */
   yOffset?: React.CSSProperties['marginTop'];
 
   /** Left/right modal offset, `5vw` by default */

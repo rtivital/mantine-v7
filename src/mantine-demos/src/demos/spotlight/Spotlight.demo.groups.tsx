@@ -75,6 +75,7 @@ function Demo() {
       actions={actions}
       nothingFound="Nothing found..."
       highlightQuery
+      shortcut={null}
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} stroke={1.5} />,
         placeholder: 'Search...',

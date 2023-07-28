@@ -35,7 +35,17 @@ export type SpotlightRootStylesNames =
 
 export interface SpotlightRootProps
   extends StylesApiProps<SpotlightRootFactory>,
-    Omit<ModalProps, 'styles' | 'classNames' | 'vars' | 'variant' | 'opened' | 'onClose'> {
+    Omit<
+      ModalProps,
+      | 'styles'
+      | 'classNames'
+      | 'vars'
+      | 'variant'
+      | 'opened'
+      | 'onClose'
+      | 'closeButtonProps'
+      | 'withCloseButton'
+    > {
   /** Spotlight store, can be used to create multiple instances of spotlight */
   store?: SpotlightStore;
 
