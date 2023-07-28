@@ -11,7 +11,7 @@ import { rem, Button } from '@mantine/core';
 import { Spotlight, SpotlightActionData, spotlight } from '@mantine/spotlight';
 import { IconSearch } from '@tabler/icons-react';
 
-const actions: SpotlightActionData[] = Array(100)
+const actions: SpotlightActionData[] = Array(3000)
   .fill(0)
   .map((_, index) => ({
     id: \`action-\${index}\`,
@@ -27,8 +27,7 @@ function Demo() {
         actions={actions}
         nothingFound="Nothing found..."
         highlightQuery
-        scrollable
-        maxHeight={350}
+        limit={7}
         searchProps={{
           leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} stroke={1.5} />,
           placeholder: 'Search...',
@@ -39,7 +38,7 @@ function Demo() {
 }
 `;
 
-const actions: SpotlightActionData[] = Array(100)
+const actions: SpotlightActionData[] = Array(3000)
   .fill(0)
   .map((_, index) => ({
     id: `action-${index}`,
@@ -53,8 +52,7 @@ function Demo() {
       actions={actions}
       nothingFound="Nothing found..."
       highlightQuery
-      scrollable
-      maxHeight={350}
+      limit={7}
       searchProps={{
         leftSection: <IconSearch style={{ width: rem(20), height: rem(20) }} stroke={1.5} />,
         placeholder: 'Search...',
@@ -63,7 +61,7 @@ function Demo() {
   );
 }
 
-export const scrollable: MantineDemo = {
+export const limit: MantineDemo = {
   type: 'code',
   component: Demo,
   code,
