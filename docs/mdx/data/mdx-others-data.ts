@@ -12,4 +12,22 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/notifications.mdx',
   },
+
+  Spotlight: {
+    title: 'Spotlight',
+    package: '@mantine/spotlight',
+    slug: '/others/spotlight',
+    props: [
+      'Spotlight',
+      'SpotlightRoot',
+      'SpotlightAction',
+      'SpotlightActionsGroup',
+      'SpotlightSearch',
+    ],
+    styles: ['Spotlight'],
+    description: 'Command center for your application',
+    source: 'mantine-spotlight/src',
+    license: 'MIT',
+    docs: 'others/spotlight.mdx',
+  },
 };

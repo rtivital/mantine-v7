@@ -269,7 +269,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   },
   {
     group: 'others',
-    pages: [MDX_DATA.Notifications],
+    pages: [MDX_DATA.Notifications, MDX_DATA.Spotlight],
   },
   {
     group: 'changelog',
