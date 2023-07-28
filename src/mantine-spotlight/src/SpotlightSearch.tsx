@@ -34,7 +34,7 @@ const defaultProps: Partial<SpotlightSearchProps> = {
 };
 
 export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
-  const { classNames, styles, onKeyDown, onChange, vars, ...others } = useProps(
+  const { classNames, styles, onKeyDown, onChange, vars, value, ...others } = useProps(
     'SpotlightSearch',
     defaultProps,
     props
@@ -67,8 +67,11 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props, ref) => {
       classNames={[{ input: inputStyles.className }, classNames] as any}
       styles={[{ input: inputStyles.style }, styles] as any}
       {...others}
-      value={ctx.query}
-      onChange={(event) => ctx.setQuery(event.currentTarget.value)}
+      value={value ?? ctx.query}
+      onChange={(event) => {
+        ctx.setQuery(event.currentTarget.value);
+        onChange?.(event);
+      }}
       onKeyDown={handleKeyDown}
     />
   );
