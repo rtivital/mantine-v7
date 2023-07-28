@@ -77,6 +77,13 @@ const EXTRA_FILES_PATHS = [
 
   // Chip
   '../src/mantine-core/src/components/Chip/ChipGroup/ChipGroup.tsx',
+
+  // Spotlight
+  '../src/mantine-spotlight/src/Spotlight.tsx',
+  '../src/mantine-spotlight/src/SpotlightAction.tsx',
+  '../src/mantine-spotlight/src/SpotlightActionsGroup.tsx',
+  '../src/mantine-spotlight/src/SpotlightRoot.tsx',
+  '../src/mantine-spotlight/src/SpotlightSearch.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
