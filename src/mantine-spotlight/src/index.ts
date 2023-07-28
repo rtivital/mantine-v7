@@ -23,6 +23,7 @@ export type {
   SpotlightFactory,
   SpotlightFilterFunction,
   SpotlightActionData,
+  SpotlightActionGroupData,
   SpotlightProps,
   SpotlightStylesNames,
 } from './Spotlight';
