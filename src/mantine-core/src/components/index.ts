@@ -11,6 +11,8 @@ export * from './Group';
 export * from './Loader';
 export * from './Overlay';
 export * from './ModalBase';
+export * from './Input';
+export * from './InputBase';
 
 // regular components
 export * from './Accordion';
@@ -48,8 +50,6 @@ export * from './Highlight';
 export * from './HoverCard';
 export * from './Image';
 export * from './Indicator';
-export * from './Input';
-export * from './InputBase';
 export * from './JsonInput';
 export * from './Kbd';
 export * from './Mark';
@@ -59,6 +59,7 @@ export * from './MultiSelect';
 export * from './NativeSelect';
 export * from './Notification';
 export * from './Pagination';
+export * from './PasswordInput';
 export * from './Pill';
 export * from './PillsInput';
 export * from './PinInput';

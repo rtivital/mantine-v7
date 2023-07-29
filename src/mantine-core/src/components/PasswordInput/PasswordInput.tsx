@@ -20,7 +20,6 @@ import { PasswordToggleIcon } from './PasswordToggleIcon';
 import classes from './PasswordInput.module.css';
 
 export type PasswordInputStylesNames = 'root' | 'visibilityToggle' | 'innerInput';
-export type PasswordInputVariant = string;
 export type PasswordInputCssVariables = {
   root: '--psi-icon-size' | '--psi-button-size';
 };
