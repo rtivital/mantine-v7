@@ -18,6 +18,7 @@ export * as BlockquoteDemos from './demos/core/Blockquote';
 export * as BreadcrumbsDemos from './demos/core/Breadcrumbs';
 export * as BurgerDemos from './demos/core/Burger';
 export * as ButtonDemos from './demos/core/Button';
+export * as CardDemos from './demos/core/Card';
 export * as CenterDemos from './demos/core/Center';
 export * as CheckboxDemos from './demos/core/Checkbox';
 export * as ChipDemos from './demos/core/Chip';

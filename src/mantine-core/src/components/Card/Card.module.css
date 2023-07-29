@@ -5,6 +5,7 @@
   flex-direction: column;
   background-color: var(--_card-bg);
   padding: var(--card-padding);
+  color: var(--mantine-color-text);
 
   @mixin light {
     --_card-bg: var(--mantine-color-white);
