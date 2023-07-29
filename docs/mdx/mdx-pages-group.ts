@@ -168,6 +168,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Rating,
           MDX_DATA.Textarea,
           MDX_DATA.JsonInput,
+          MDX_DATA.PasswordInput,
         ],
       },
       {
