@@ -46,6 +46,7 @@ export * from './FocusTrap';
 export * from './Grid';
 export * from './Highlight';
 export * from './HoverCard';
+export * from './Image';
 export * from './Indicator';
 export * from './Input';
 export * from './InputBase';
