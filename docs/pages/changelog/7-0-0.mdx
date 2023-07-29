@@ -15,6 +15,7 @@ import {
   GridDemos,
   ProgressDemos,
   SpotlightDemos,
+  ImageDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -400,6 +401,17 @@ it works the same way as [style props](/styles/style-props).
 all props now work the same way as [style props](/styles/style-props).
 
 <Demo data={GridDemos.responsive} />
+
+## Image changes
+
+[Image](/core/image) component changes:
+
+- `Image` component no longer includes `figure` and other associated elements
+- `caption` prop is no longer available
+- `width` and `height` props are replaced with `w` and `h` [style props](/styles/style-props)
+- Placeholder functionality was replaced with fallback image
+
+<Demo data={ImageDemos.fallback} />
 
 ## Spotlight changes
 

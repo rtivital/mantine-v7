@@ -46,7 +46,8 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  padding: rem(4px) rem(8px);
+  padding: rem(4px) rem(10px);
+  padding-right: rem(8px);
   border-radius: var(--mantine-radius-xl);
 
   @mixin rtl {

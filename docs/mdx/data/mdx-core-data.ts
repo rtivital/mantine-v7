@@ -908,4 +908,30 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/JsonInput/JsonInput.tsx',
     docs: 'core/json-input.mdx',
   },
+
+  Image: {
+    title: 'Image',
+    package: '@mantine/core',
+    slug: '/core/image',
+    props: ['Image'],
+    styles: ['Image'],
+    polymorphic: true,
+    description: 'Image with optional fallback',
+    import: "import { Image } from '@mantine/core';",
+    source: 'mantine-core/src/components/Image/Image.tsx',
+    docs: 'core/image.mdx',
+  },
+
+  Card: {
+    title: 'Card',
+    package: '@mantine/core',
+    slug: '/core/card',
+    props: ['Card', 'CardSection'],
+    styles: ['Card'],
+    componentPrefix: 'Card',
+    description: 'Card with sections',
+    import: "import { Card } from '@mantine/core';",
+    source: 'mantine-core/src/components/Card/Card.tsx',
+    docs: 'core/card.mdx',
+  },
 };

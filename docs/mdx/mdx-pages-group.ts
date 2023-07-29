@@ -237,6 +237,8 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Avatar,
           MDX_DATA.Accordion,
           MDX_DATA.Indicator,
+          MDX_DATA.Card,
+          MDX_DATA.Image,
         ],
       },
       {

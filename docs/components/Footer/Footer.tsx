@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Text, Group, Box } from '@mantine/core';
+import cx from 'clsx';
+import { Container, Text, Group, Box, RemoveScroll } from '@mantine/core';
 import { TwitterButton, DiscordButton } from '@mantine/ds';
 import { Logo } from '../Logo/Logo';
 import { LinksGroup } from './LinksGroup/LinksGroup';
@@ -18,7 +19,10 @@ export function Footer({ withNavbar }: FooterProps) {
   return (
     <div className={classes.root}>
       <div className={classes.spacer} />
-      <Box mod={{ 'with-navbar': withNavbar }} className={classes.wrapper}>
+      <Box
+        mod={{ 'with-navbar': withNavbar }}
+        className={cx(classes.wrapper, RemoveScroll.classNames.fullWidth)}
+      >
         <Container size={1100}>
           <div className={classes.inner}>
             <div className={classes.logoSection}>

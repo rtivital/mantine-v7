@@ -78,6 +78,9 @@ const EXTRA_FILES_PATHS = [
   // Chip
   '../src/mantine-core/src/components/Chip/ChipGroup/ChipGroup.tsx',
 
+  // Card
+  '../src/mantine-core/src/components/Card/CardSection/CardSection.tsx',
+
   // Spotlight
   '../src/mantine-spotlight/src/Spotlight.tsx',
   '../src/mantine-spotlight/src/SpotlightAction.tsx',
