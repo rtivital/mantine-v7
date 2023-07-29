@@ -13,7 +13,7 @@ import {
   useResolvedStylesApi,
   getSize,
 } from '../../core';
-import { InputBaseProps } from '../InputBase';
+import { InputBase, InputBaseProps } from '../InputBase';
 import { Input, InputVariant } from '../Input';
 import { ActionIcon } from '../ActionIcon';
 import { PasswordToggleIcon } from './PasswordToggleIcon';
@@ -101,6 +101,8 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
     onVisibilityChange,
     visibilityToggleIcon,
     visibilityToggleButtonProps,
+    rightSectionProps,
+    leftSectionProps,
     ...others
   } = props;
 
@@ -174,12 +176,12 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
       __staticSelector={__staticSelector}
       errorProps={errorProps}
       descriptionProps={descriptionProps}
-      labelProps={labelProps}
       unstyled={unstyled}
       withAsterisk={withAsterisk}
       inputWrapperOrder={inputWrapperOrder}
       inputContainer={inputContainer}
       variant={variant}
+      labelProps={{ ...labelProps, htmlFor: uuid }}
       {...getStyles('root')}
       {...styleProps}
       {...wrapperProps}
@@ -200,6 +202,8 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         unstyled={unstyled}
         leftSectionWidth={leftSectionWidth}
         rightSectionPointerEvents="all"
+        rightSectionProps={rightSectionProps}
+        leftSectionProps={leftSectionProps}
       >
         <input
           required={required}
@@ -217,4 +221,5 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
   );
 });
 
+PasswordInput.classes = { ...InputBase.classes, ...classes };
 PasswordInput.displayName = '@mantine/core/PasswordInput';
