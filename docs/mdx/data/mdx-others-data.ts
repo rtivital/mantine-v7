@@ -30,4 +30,16 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/spotlight.mdx',
   },
+
+  Carousel: {
+    title: 'Carousel',
+    package: '@mantine/carousel',
+    slug: '/others/carousel',
+    props: ['Carousel'],
+    styles: ['Carousel'],
+    description: 'Embla based carousel component',
+    source: 'mantine-carousel/src',
+    license: 'MIT',
+    docs: 'others/carousel.mdx',
+  },
 };

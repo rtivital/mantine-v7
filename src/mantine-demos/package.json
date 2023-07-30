@@ -33,7 +33,10 @@
     "@mantine/ds": "7.0.0-alpha.19",
     "@mantine/notifications": "7.0.0-alpha.19",
     "@mantine/spotlight": "7.0.0-alpha.19",
-    "@tabler/icons-react": "^2.29.0"
+    "@mantine/carousel": "7.0.0-alpha.19",
+    "@tabler/icons-react": "^2.29.0",
+    "embla-carousel-autoplay": "^7.0.0",
+    "embla-carousel-react": "^7.0.0"
   },
   "dependencies": {},
   "devDependencies": {}

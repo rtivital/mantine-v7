@@ -19,6 +19,7 @@
     "@mantine/notifications": "link:../src/mantine-notifications",
     "@mantine/store": "link:../src/mantine-store",
     "@mantine/spotlight": "link:../src/mantine-spotlight",
+    "@mantine/carousel": "link:../src/mantine-carousel",
     "@mantine/colors-generator": "link:../src/mantine-colors-generator",
     "@mantine/styles-api": "link:../src/mantine-styles-api",
     "@mdx-js/loader": "^2.3.0",
@@ -34,7 +35,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark-slug": "^6.0.0",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "embla-carousel-autoplay": "^7.0.0",
+    "embla-carousel-react": "^7.0.0"
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.0",

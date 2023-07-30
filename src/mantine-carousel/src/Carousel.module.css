@@ -49,7 +49,7 @@
   bottom: var(--_controls-bottom);
   padding: var(--_controls-padding);
 
-  [data-orientation='vertical'] & {
+  .root[data-orientation='vertical'] & {
     --_controls-left: calc(50% - var(--carousel-control-size) / 2);
     --_controls-top: 0;
     --_controls-bottom: 0;
@@ -57,7 +57,7 @@
     --_controls-padding: var(--carousel-controls-offset) 0;
   }
 
-  [data-orientation='horizontal'] & {
+  .root[data-orientation='horizontal'] & {
     --_controls-left: 0;
     --_controls-right: 0;
     --_controls-top: calc(50% - var(--carousel-control-size) / 2);
@@ -106,14 +106,14 @@
   right: var(--_indicators-right);
   top: var(--_indicators-top);
 
-  [data-orientation='vertical'] & {
+  .root[data-orientation='vertical'] & {
     --_indicators-bottom: 0;
     --_indicators-top: 0;
     --_indicators-right: var(--mantine-spacing-md);
     --_indicators-direction: column;
   }
 
-  [data-orientation='horizontal'] & {
+  .root[data-orientation='horizontal'] & {
     --_indicators-bottom: var(--mantine-spacing-md);
     --_indicators-left: 0;
     --_indicators-right: 0;
@@ -138,12 +138,12 @@
     --_indicator-opacity: 1;
   }
 
-  [data-orientation='vertical'] & {
+  .root[data-orientation='vertical'] & {
     --_indicator-width: rem(5px);
     --_indicator-height: rem(25px);
   }
 
-  [data-orientation='horizontal'] & {
+  .root[data-orientation='horizontal'] & {
     --_indicator-width: rem(25px);
     --_indicator-height: rem(5px);
   }

@@ -52,6 +52,10 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.0.tgz#3acc29138c694d017dc09f1f312c5ffc36e492da"
   integrity sha512-ZSlli/beGZdvoqT3/Y9oOW79XSEpBfxt8UY6vjyWJW0B8d/M+MKlkQ3kBzLKDXaSsB84IVj6QntQfHLzesB4mA==
 
+"@mantine/carousel@link:../src/mantine-carousel":
+  version "0.0.0"
+  uid ""
+
 "@mantine/code-highlight@link:../src/mantine-code-highlight":
   version "0.0.0"
   uid ""
@@ -451,6 +455,23 @@ dom-helpers@^5.0.1:
   dependencies:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
+
+embla-carousel-autoplay@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-autoplay/-/embla-carousel-autoplay-7.1.0.tgz#766a45eb5f21b9e3ff4bd1d91b4c3c578c04d8b6"
+  integrity sha512-nYfgSGn3ek44OzwO0t/Ptuxq4PNPD5l7Y9X7JjLYI/DN1uGjqxz9L73YYqR6YCRDnTYJ88s9fep48dzBnSG4vQ==
+
+embla-carousel-react@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-react/-/embla-carousel-react-7.1.0.tgz#e716f4df7fd31f7ca3e59a3e011158167bc3c468"
+  integrity sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==
+  dependencies:
+    embla-carousel "7.1.0"
+
+embla-carousel@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-7.1.0.tgz#c770dd3ade9285a97f5e3b6bbf705bc35ec0f9b5"
+  integrity sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==
 
 estree-util-attach-comments@^2.0.0:
   version "2.1.1"

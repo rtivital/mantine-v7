@@ -87,6 +87,9 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-spotlight/src/SpotlightActionsGroup.tsx',
   '../src/mantine-spotlight/src/SpotlightRoot.tsx',
   '../src/mantine-spotlight/src/SpotlightSearch.tsx',
+
+  // Carousel
+  '../src/mantine-carousel/src/Carousel.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
