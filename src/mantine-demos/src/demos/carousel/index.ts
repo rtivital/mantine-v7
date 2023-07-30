@@ -14,3 +14,4 @@ export { progress } from './Carousel.demo.progress';
 export { cards } from './Carousel.demo.cards';
 export { animationOffset } from './Carousel.demo.animationOffset';
 export { brokenAnimation } from './Carousel.demo.brokenAnimation';
+export { stylesApi } from './Carousel.demo.stylesApi';
