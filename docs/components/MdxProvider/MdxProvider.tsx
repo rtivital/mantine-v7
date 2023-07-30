@@ -69,7 +69,7 @@ export function MdxProvider({ children }: { children: React.ReactNode }) {
         code: MdxCode,
       }}
     >
-      {children}
+      {children as any}
     </MDXProvider>
   );
 }
