@@ -126,7 +126,10 @@
   }
 
   [data-mantine-color-scheme] &[data-error] {
-    --_input-bd: var(--mantine-color-error);
+    &:not([data-variant='unstyled']) {
+      --_input-bd: var(--mantine-color-error);
+    }
+
     --_input-color: var(--mantine-color-error);
     --_input-placeholder-color: var(--mantine-color-error);
     --_input-section-color: var(--mantine-color-error);
@@ -247,7 +250,11 @@
 
 /* ----- Input.Placeholder ----- */
 .placeholder {
-  color: var(--mantine-color-placeholder);
+  color: var(--_input-placeholder-color, var(--mantine-color-placeholder));
+
+  [data-error] & {
+    --_input-placeholder-color: var(--_input-color, var(--mantine-color-placeholder));
+  }
 }
 
 /* ----- Input.Wrapper ----- */
