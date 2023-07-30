@@ -1,6 +1,6 @@
 {
   "name": "@mantine/colors-generator",
-  "version": "7.0.0-alpha.19",
+  "version": "7.0.0-alpha.20",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
