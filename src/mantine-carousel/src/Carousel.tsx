@@ -215,7 +215,6 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
     skipSnaps,
     containScroll,
     withKeyboardEvents,
-    variant,
     ...others
   } = props;
 
