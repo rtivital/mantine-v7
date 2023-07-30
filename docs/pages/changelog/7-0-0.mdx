@@ -16,6 +16,7 @@ import {
   ProgressDemos,
   SpotlightDemos,
   ImageDemos,
+  CarouselDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -425,6 +426,13 @@ all props now work the same way as [style props](/styles/style-props).
 - `Spotlight` component now uses compound components pattern for advanced customization
 
 <Demo data={SpotlightDemos.compound} />
+
+## Carousel changes
+
+[Carousel](/others/carousel) now uses object format for responsive values in
+`slideSize` and `slideGap` props instead of `breakpoints` prop:
+
+<Demo data={CarouselDemos.breakpoints} />
 
 ## @mantine/prism deprecation
 

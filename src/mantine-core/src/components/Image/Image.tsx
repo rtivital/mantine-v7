@@ -116,4 +116,5 @@ export const Image = polymorphicFactory<ImageFactory>((_props, ref) => {
   );
 });
 
+Image.classes = classes;
 Image.displayName = '@mantine/core/Image';
