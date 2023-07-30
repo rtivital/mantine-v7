@@ -6,8 +6,8 @@ import { assignHeaderVariables } from '../assign-header-variables/assign-header-
 import { assignNavbarVariables } from '../assign-navbar-variables/assign-navbar-variables';
 import { assignPaddingVariables } from '../assign-padding-variables/assign-padding-variables';
 
-export type CSSVariables = Record<`--${string}`, string>;
-export type MediaQueryVariables = Record<string, Record<`--${string}`, string>>;
+export type CSSVariables = Record<`--${string}`, string | undefined>;
+export type MediaQueryVariables = Record<string, Record<`--${string}`, string | undefined>>;
 
 interface GetVariablesInput {
   navbar: AppShellProps['navbar'] | undefined;

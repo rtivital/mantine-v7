@@ -18,7 +18,7 @@ interface GridVariablesProps extends GridProps {
 export function GridVariables({ gutter, selector }: GridVariablesProps) {
   const theme = useMantineTheme();
 
-  const baseStyles: Record<string, string> = filterProps({
+  const baseStyles: Record<string, string | undefined> = filterProps({
     '--grid-gutter': getSpacing(getBaseValue(gutter)),
   });
 
