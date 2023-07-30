@@ -23,7 +23,9 @@
   "peerDependencies": {
     "@mantine/core": "7.0.0-alpha.19",
     "@mantine/hooks": "7.0.0-alpha.19",
-    "@mantine/notifications": "7.0.0-alpha.19"
+    "@mantine/notifications": "7.0.0-alpha.19",
+    "@mantine/spotlight": "7.0.0-alpha.19",
+    "@mantine/carousel": "7.0.0-alpha.19"
   },
   "dependencies": {},
   "devDependencies": {}
