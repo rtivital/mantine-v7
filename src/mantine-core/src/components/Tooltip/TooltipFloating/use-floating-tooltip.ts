@@ -13,7 +13,7 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
 }: UseFloatingTooltip) {
   const [opened, setOpened] = useState(false);
   const boundaryRef = useRef<T>();
-  const { x, y, reference, floating, refs, update, placement } = useFloating({
+  const { x, y, elements, refs, update, placement } = useFloating({
     placement: position,
     middleware: [
       shift({
@@ -38,7 +38,7 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
 
   const handleMouseMove = useCallback(
     ({ clientX, clientY }: MouseEvent | React.MouseEvent<T, MouseEvent>) => {
-      reference({
+      refs.setPositionReference({
         getBoundingClientRect() {
           return {
             width: 0,
@@ -53,7 +53,7 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
         },
       });
     },
-    [reference]
+    [elements.reference]
   );
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function useFloatingTooltip<T extends HTMLElement = any>({
     }
 
     return undefined;
-  }, [reference, refs.floating.current, update, handleMouseMove, opened]);
+  }, [elements.reference, refs.floating.current, update, handleMouseMove, opened]);
 
-  return { handleMouseMove, x, y, opened, setOpened, boundaryRef, floating };
+  return { handleMouseMove, x, y, opened, setOpened, boundaryRef, floating: refs.setFloating };
 }

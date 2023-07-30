@@ -258,17 +258,17 @@ export function Popover(_props: PopoverProps) {
   const reference = useCallback(
     (node: HTMLElement) => {
       setTargetNode(node);
-      popover.floating.reference(node);
+      popover.floating.refs.setReference(node);
     },
-    [popover.floating.reference]
+    [popover.floating.refs.setReference]
   );
 
   const floating = useCallback(
     (node: HTMLElement) => {
       setDropdownNode(node);
-      popover.floating.floating(node);
+      popover.floating.refs.setFloating(node);
     },
-    [popover.floating.floating]
+    [popover.floating.refs.setFloating]
   );
 
   return (
