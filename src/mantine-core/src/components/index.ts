@@ -43,6 +43,7 @@ export * from './Divider';
 export * from './Drawer';
 export * from './Fieldset';
 export * from './FileButton';
+export * from './FileInput';
 export * from './Floating';
 export * from './FocusTrap';
 export * from './Grid';
