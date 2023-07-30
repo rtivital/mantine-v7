@@ -946,4 +946,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/PasswordInput/PasswordInput.tsx',
     docs: 'core/password-input.mdx',
   },
+
+  FileInput: {
+    title: 'FileInput',
+    package: '@mantine/core',
+    slug: '/core/file-input',
+    props: ['FileInput'],
+    styles: ['FileInput'],
+    description: 'Capture files from user',
+    import: "import { FileInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/FileInput/FileInput.tsx',
+    docs: 'core/file-input.mdx',
+  },
 };
