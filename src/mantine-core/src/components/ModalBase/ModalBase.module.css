@@ -29,7 +29,7 @@
   width: 100%;
   top: 0;
   bottom: 0;
-  z-index: calc(var(--mb-z-index) + 1);
+  z-index: calc(var(--mb-z-index));
   pointer-events: none;
 }
 
