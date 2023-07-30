@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.19.1",
+    "@floating-ui/react": "^0.24.8",
     "@mantine/code-highlight": "link:../src/mantine-code-highlight",
     "@mantine/core": "link:../src/mantine-core",
     "@mantine/demos": "link:../src/mantine-demos",

@@ -1,7 +1,7 @@
 {
-  "name": "@mantine/core",
-  "description": "React components library focused on usability, accessibility and developer experience",
-  "version": "7.0.0-alpha.19",
+  "name": "@mantine/carousel",
+  "description": "Embla based carousel",
+  "version": "6.0.17",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -13,15 +13,15 @@
     "./styles/*": "./esm/styles/*"
   },
   "license": "MIT",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "sideEffects": [
     "*.css"
   ],
-  "homepage": "https://mantine.dev/",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "homepage": "https://mantine.dev/others/carousel/",
   "repository": {
     "url": "https://github.com/mantinedev/mantine.git",
     "type": "git",
-    "directory": "src/mantine-core"
+    "directory": "src/mantine-carousel"
   },
   "keywords": [
     "react",
@@ -32,19 +32,16 @@
     "ui-kit",
     "library",
     "frontend",
-    "design"
+    "carousel",
+    "slider",
+    "slick"
   ],
   "peerDependencies": {
+    "@mantine/core": "7.0.0-alpha.19",
     "@mantine/hooks": "7.0.0-alpha.19",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "embla-carousel-react": "^7.0.0",
+    "react": "^18.2.0"
   },
-  "dependencies": {
-    "@floating-ui/react": "^0.24.8",
-    "clsx": "2.0.0",
-    "react-textarea-autosize": "8.5.2",
-    "react-remove-scroll": "^2.5.6",
-    "type-fest": "^4.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
