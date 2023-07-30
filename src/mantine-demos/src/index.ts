@@ -86,5 +86,6 @@ export * as NotificationDemos from './demos/core/Notification';
 
 // Other demos
 export * as NotificationsDemos from './demos/notifications';
+export * as CarouselDemos from './demos/carousel';
 export * as SpotlightDemos from './demos/spotlight';
 export * as HooksDemos from './demos/hooks';

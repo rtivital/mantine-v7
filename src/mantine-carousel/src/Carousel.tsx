@@ -16,6 +16,7 @@ import {
   AccordionChevron,
   useRandomClassName,
   rem,
+  getSpacing,
 } from '@mantine/core';
 import { clamp } from '@mantine/hooks';
 import useEmblaCarousel, { EmblaPluginType, EmblaCarouselType } from 'embla-carousel-react';
@@ -171,7 +172,7 @@ const varsResolver = createVarsResolver<CarouselFactory>(
     root: {
       '--carousel-height': rem(height),
       '--carousel-control-size': rem(controlSize),
-      '--carousel-controls-offset': rem(controlsOffset),
+      '--carousel-controls-offset': getSpacing(controlsOffset),
     },
   })
 );
@@ -333,7 +334,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
     ));
 
   return (
-    <CarouselProvider value={{ getStyles }}>
+    <CarouselProvider value={{ getStyles, orientation }}>
       <CarouselVariables {...props} selector={`.${responsiveClassName}`} />
       <Box
         ref={ref}

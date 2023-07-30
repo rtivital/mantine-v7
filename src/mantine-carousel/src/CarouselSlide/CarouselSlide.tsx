@@ -39,6 +39,7 @@ export const CarouselSlide = factory<CarouselSlideFactory>((props, ref) => {
   return (
     <Box
       ref={ref}
+      mod={{ orientation: ctx.orientation }}
       {...ctx.getStyles('slide', { className, style, classNames, styles })}
       {...others}
     />

@@ -54,7 +54,7 @@
     --_controls-top: 0;
     --_controls-bottom: 0;
     --_controls-direction: column;
-    --_controls-padding: 0 var(--carousel-controls-offset);
+    --_controls-padding: var(--carousel-controls-offset) 0;
   }
 
   [data-orientation='horizontal'] & {
@@ -62,7 +62,7 @@
     --_controls-right: 0;
     --_controls-top: calc(50% - var(--carousel-control-size) / 2);
     --_controls-direction: row;
-    --_controls-padding: var(--carousel-controls-offset) 0;
+    --_controls-padding: 0 var(--carousel-controls-offset);
   }
 }
 
