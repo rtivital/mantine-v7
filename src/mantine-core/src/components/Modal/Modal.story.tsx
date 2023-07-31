@@ -8,13 +8,18 @@ export default { title: 'Modal' };
 
 const lorem =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tenetur, atque animi ducimus tempora iste distinctio harum nostrum eos tempore voluptatem, voluptas dolorem eveniet fugiat pariatur! Repellendus minus nulla non?';
-const content = Array(20)
-  .fill(0)
-  .map((_, index) => (
-    <p key={index} style={{ margin: 0 }}>
-      {lorem}
-    </p>
-  ));
+
+function generateContent(count: number) {
+  return Array(count)
+    .fill(0)
+    .map((_, index) => (
+      <p key={index} style={{ margin: 0 }}>
+        {lorem}
+      </p>
+    ));
+}
+
+const content = generateContent(20);
 
 export function Usage() {
   const [opened, { open, close }] = useDisclosure(true);
@@ -100,6 +105,27 @@ export function AutosizeScrollarea() {
       >
         {content}
       </Modal>
+    </div>
+  );
+}
+
+export function NestedModals() {
+  const [parentOpened, { open: parentOpen, close: parentClose }] = useDisclosure(false);
+  const [nestedOpened, { open: nestedOpen, close: nestedClose }] = useDisclosure(false);
+
+  return (
+    <div style={{ padding: 40 }}>
+      <Modal opened={parentOpened} onClose={parentClose} title="Parent Modal" size={1400} centered>
+        <div>{generateContent(10)}</div>
+
+        <Button onClick={nestedOpen}>Open Nested</Button>
+
+        <Modal opened={nestedOpened} onClose={nestedClose} title="Nested Modal" centered>
+          <div>Nested Content</div>
+        </Modal>
+      </Modal>
+
+      <Button onClick={parentOpen}>Open Parent</Button>
     </div>
   );
 }
