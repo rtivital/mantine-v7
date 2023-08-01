@@ -15,6 +15,7 @@ import {
   MantineRadius,
   getThemeColor,
 } from '../../core';
+import { StepperStep } from './StepperStep/StepperStep';
 import { StepCompleted } from './StepperCompleted/StepperCompleted';
 import { StepperProvider } from './Stepper.context';
 import classes from './Stepper.module.css';
@@ -93,6 +94,10 @@ export type StepperFactory = Factory<{
   stylesNames: StepperStylesNames;
   vars: StepperCssVariables;
   variant: StepperVariant;
+  staticComponents: {
+    Step: typeof StepperStep;
+    Completed: typeof StepCompleted;
+  };
 }>;
 
 const defaultProps: Partial<StepperProps> = {
@@ -220,4 +225,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   );
 });
 
+Stepper.classes = classes;
 Stepper.displayName = '@mantine/core/Stepper';
+Stepper.Completed = StepCompleted;
+Stepper.Step = StepperStep;
