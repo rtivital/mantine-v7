@@ -98,7 +98,11 @@ export type StepperStepFactory = Factory<{
   compound: true;
 }>;
 
-const defaultProps: Partial<StepperStepProps> = {};
+const defaultProps: Partial<StepperStepProps> = {
+  withIcon: true,
+  allowStepClick: true,
+  iconPosition: 'left',
+};
 
 export const StepperStep = factory<StepperStepFactory>((props, ref) => {
   const {
@@ -138,7 +142,8 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
 
   return (
     <UnstyledButton
-      {...ctx.getStyles('step', { className, style, ...stylesApi })}
+      {...ctx.getStyles('step', { className, style, variant: ctx.orientation, ...stylesApi })}
+      mod={{ 'icon-position': iconPosition || ctx.iconPosition, 'allow-click': allowStepClick }}
       ref={ref}
       {...dataAttributes}
       {...others}
@@ -185,7 +190,11 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
       )}
 
       {(label || description) && (
-        <span {...ctx.getStyles('stepBody', stylesApi)}>
+        <span
+          {...ctx.getStyles('stepBody', stylesApi)}
+          data-orientation={ctx.orientation}
+          data-icon-position={iconPosition || ctx.iconPosition}
+        >
           {label && (
             <span {...ctx.getStyles('stepLabel', stylesApi)}>{getStepFragment(label, step)}</span>
           )}

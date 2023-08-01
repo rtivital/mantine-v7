@@ -14,6 +14,11 @@ import {
   MantineSize,
   MantineRadius,
   getThemeColor,
+  rem,
+  getSize,
+  getSpacing,
+  getRadius,
+  getFontSize,
 } from '../../core';
 import { StepperStep } from './StepperStep/StepperStep';
 import { StepCompleted } from './StepperCompleted/StepperCompleted';
@@ -38,7 +43,13 @@ export type StepperStylesNames =
   | 'stepDescription';
 export type StepperVariant = string;
 export type StepperCssVariables = {
-  root: '--step-color';
+  root:
+    | '--stepper-color'
+    | '--stepper-icon-size'
+    | '--stepper-content-padding'
+    | '--stepper-radius'
+    | '--stepper-fz'
+    | '--stepper-spacing';
 };
 
 export interface StepperProps
@@ -109,11 +120,19 @@ const defaultProps: Partial<StepperProps> = {
   allowNextStepsSelect: true,
 };
 
-const varsResolver = createVarsResolver<StepperFactory>((theme, { color }) => ({
-  root: {
-    '--step-color': getThemeColor(color, theme),
-  },
-}));
+const varsResolver = createVarsResolver<StepperFactory>(
+  (theme, { color, iconSize, size, contentPadding, radius }) => ({
+    root: {
+      '--stepper-color': getThemeColor(color, theme),
+      '--stepper-icon-size':
+        iconSize === undefined ? getSize(size, 'stepper-icon-size') : rem(iconSize),
+      '--stepper-content-padding': getSpacing(contentPadding),
+      '--stepper-radius': getRadius(radius),
+      '--stepper-fz': getFontSize(size),
+      '--stepper-spacing': getSpacing(size),
+    },
+  })
+);
 
 export const Stepper = factory<StepperFactory>((_props, ref) => {
   const props = useProps('Stepper', defaultProps, _props);
@@ -216,9 +235,11 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   const content = active > _children.length - 1 ? completedContent : stepContent;
 
   return (
-    <StepperProvider value={{ getStyles }}>
+    <StepperProvider value={{ getStyles, orientation, iconPosition }}>
       <Box {...getStyles('root')} ref={ref} {...others}>
-        <div {...getStyles('steps')}>{items}</div>
+        <Box {...getStyles('steps')} mod={{ orientation, 'icon-position': iconPosition }}>
+          {items}
+        </Box>
         {content && <div {...getStyles('content')}>{content}</div>}
       </Box>
     </StepperProvider>
