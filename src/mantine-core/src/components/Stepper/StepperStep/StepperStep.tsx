@@ -127,7 +127,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
     allowStepSelect,
     iconPosition,
     orientation,
-    variant,
     ...others
   } = useProps('StepperStep', defaultProps, props);
 

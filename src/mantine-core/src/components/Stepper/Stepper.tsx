@@ -21,7 +21,7 @@ import {
   getFontSize,
 } from '../../core';
 import { StepperStep } from './StepperStep/StepperStep';
-import { StepCompleted } from './StepperCompleted/StepperCompleted';
+import { StepperCompleted } from './StepperCompleted/StepperCompleted';
 import { StepperProvider } from './Stepper.context';
 import classes from './Stepper.module.css';
 
@@ -109,7 +109,7 @@ export type StepperFactory = Factory<{
   vars: StepperCssVariables;
   staticComponents: {
     Step: typeof StepperStep;
-    Completed: typeof StepCompleted;
+    Completed: typeof StepperCompleted;
   };
 }>;
 
@@ -178,8 +178,8 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   });
 
   const convertedChildren = Children.toArray(children) as React.ReactElement[];
-  const _children = convertedChildren.filter((child) => child.type !== StepCompleted);
-  const completedStep = convertedChildren.find((item) => item.type === StepCompleted);
+  const _children = convertedChildren.filter((child) => child.type !== StepperCompleted);
+  const completedStep = convertedChildren.find((item) => item.type === StepperCompleted);
 
   const items = _children.reduce<React.ReactElement[]>((acc, item, index) => {
     const state =
@@ -211,10 +211,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
         progressIcon: item.props.progressIcon || progressIcon,
         color: item.props.color || color,
         iconSize,
-        size,
         radius,
-        classNames,
-        styles,
         iconPosition: item.props.iconPosition || iconPosition,
         orientation,
         unstyled,
@@ -241,7 +238,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
 
   return (
     <StepperProvider value={{ getStyles, orientation, iconPosition }}>
-      <Box {...getStyles('root')} ref={ref} {...others}>
+      <Box {...getStyles('root')} ref={ref} size={size} {...others}>
         <Box {...getStyles('steps')} mod={{ orientation, 'icon-position': iconPosition, wrap }}>
           {items}
         </Box>
@@ -253,5 +250,5 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
 
 Stepper.classes = classes;
 Stepper.displayName = '@mantine/core/Stepper';
-Stepper.Completed = StepCompleted;
+Stepper.Completed = StepperCompleted;
 Stepper.Step = StepperStep;

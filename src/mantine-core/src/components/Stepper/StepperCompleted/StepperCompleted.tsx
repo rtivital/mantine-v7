@@ -1,9 +1,9 @@
 import React from 'react';
 
-export interface StepCompletedProps {
+export interface StepperCompletedProps {
   /** Label content */
   children: React.ReactNode;
 }
 
-export const StepCompleted: React.FC<StepCompletedProps> = () => null;
-StepCompleted.displayName = '@mantine/core/StepCompleted';
+export const StepperCompleted: React.FC<StepperCompletedProps> = () => null;
+StepperCompleted.displayName = '@mantine/core/StepperCompleted';

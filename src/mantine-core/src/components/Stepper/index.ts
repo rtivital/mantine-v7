@@ -1,6 +1,6 @@
 export { Stepper } from './Stepper';
 export { StepperStep } from './StepperStep/StepperStep';
-export { StepCompleted } from './StepperCompleted/StepperCompleted';
+export { StepperCompleted } from './StepperCompleted/StepperCompleted';
 
 export type {
   StepFragmentComponent,
@@ -11,4 +11,4 @@ export type {
 } from './Stepper';
 
 export type { StepperStepProps } from './StepperStep/StepperStep';
-export type { StepCompletedProps } from './StepperCompleted/StepperCompleted';
+export type { StepperCompletedProps } from './StepperCompleted/StepperCompleted';
