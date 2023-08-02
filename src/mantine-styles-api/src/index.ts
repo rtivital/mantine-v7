@@ -68,6 +68,7 @@ export * from './data/Skeleton.styles-api';
 export * from './data/Slider.styles-api';
 export * from './data/Spotlight.styles-api';
 export * from './data/Stack.styles-api';
+export * from './data/Stepper.styles-api';
 export * from './data/Switch.styles-api';
 export * from './data/Tabs.styles-api';
 export * from './data/TagsInput.styles-api';
