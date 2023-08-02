@@ -7,6 +7,8 @@ import {
   useProps,
   Factory,
   MantineColor,
+  getThemeColor,
+  useMantineTheme,
 } from '../../../core';
 import { UnstyledButton } from '../../UnstyledButton';
 import { Transition } from '../../Transition';
@@ -131,6 +133,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
   } = useProps('StepperStep', defaultProps, props);
 
   const ctx = useStepperContext();
+  const theme = useMantineTheme();
   const stylesApi = { classNames, styles };
 
   const _icon = state === 'stepCompleted' ? null : state === 'stepProgress' ? progressIcon : icon;
@@ -146,6 +149,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
       ref={ref}
       {...dataAttributes}
       {...others}
+      __vars={{ '--step-color': color ? getThemeColor(color, theme) : undefined }}
       tabIndex={allowStepClick ? 0 : -1}
     >
       {withIcon && (
@@ -159,7 +163,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
                   {loading ? (
                     <Loader
                       color="var(--mantine-color-white)"
-                      size="60%"
+                      size="calc(var(--stepper-icon-size) / 2)"
                       {...ctx.getStyles('stepLoader', stylesApi)}
                     />
                   ) : (
@@ -171,7 +175,11 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
 
             {state !== 'stepCompleted' ? (
               loading ? (
-                <Loader size="60%" color={color} />
+                <Loader
+                  {...ctx.getStyles('stepLoader', stylesApi)}
+                  size="calc(var(--stepper-icon-size) / 2)"
+                  color={color}
+                />
               ) : (
                 getStepFragment(_icon || icon, step)
               )

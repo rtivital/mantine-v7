@@ -239,7 +239,14 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   return (
     <StepperProvider value={{ getStyles, orientation, iconPosition }}>
       <Box {...getStyles('root')} ref={ref} size={size} {...others}>
-        <Box {...getStyles('steps')} mod={{ orientation, 'icon-position': iconPosition, wrap }}>
+        <Box
+          {...getStyles('steps')}
+          mod={{
+            orientation,
+            'icon-position': iconPosition,
+            wrap: wrap && orientation !== 'vertical',
+          }}
+        >
           {items}
         </Box>
         {content && <div {...getStyles('content')}>{content}</div>}

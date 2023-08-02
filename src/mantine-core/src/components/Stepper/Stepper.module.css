@@ -8,13 +8,14 @@
 
 .steps {
   display: flex;
-  flex-wrap: var(--_flex-wrap, nowrap);
-  gap: var(--mantine-spacing-md) 0;
+  flex-wrap: var(--_steps-wrap, nowrap);
+  gap: var(--_steps-gap);
   align-items: var(--_steps-align-items, center);
   flex-direction: var(--_steps-direction);
 
   &[data-wrap] {
-    --_flex-wrap: wrap;
+    --_steps-wrap: wrap;
+    --_steps-gap: var(--mantine-spacing-md) 0;
   }
 
   &[data-orientation='vertical'] {
@@ -97,11 +98,12 @@
 }
 
 .step {
+  --_step-color: var(--step-color, var(--stepper-color));
   display: flex;
   flex-direction: var(--_step-direction);
   cursor: var(--_step-cursor, default);
 
-  &[allow-click] {
+  &[data-allow-click] {
     --_step-cursor: pointer;
   }
 
@@ -194,13 +196,13 @@
   }
 
   [data-mantine-color-scheme] &[data-progress] {
-    --_step-icon-border-color: var(--stepper-color);
+    --_step-icon-border-color: var(--_step-color);
   }
 
   [data-mantine-color-scheme] &[data-completed] {
     --_step-icon-color: var(--mantine-color-white);
-    --_step-icon-bg: var(--stepper-color);
-    --_step-icon-border-color: var(--stepper-color);
+    --_step-icon-bg: var(--_step-color);
+    --_step-icon-border-color: var(--_step-color);
   }
 }
 
