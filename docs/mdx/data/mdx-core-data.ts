@@ -958,4 +958,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/FileInput/FileInput.tsx',
     docs: 'core/file-input.mdx',
   },
+
+  Stepper: {
+    title: 'Stepper',
+    package: '@mantine/core',
+    slug: '/core/stepper',
+    props: ['Stepper', 'StepperStep'],
+    styles: ['Stepper'],
+    componentPrefix: 'Stepper',
+    description: 'Display content divided into a steps sequence',
+    import: "import { Stepper } from '@mantine/core';",
+    source: 'mantine-core/src/components/Stepper/Stepper.tsx',
+    docs: 'core/stepper.mdx',
+  },
 };
