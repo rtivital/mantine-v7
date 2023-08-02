@@ -8,8 +8,14 @@
 
 .steps {
   display: flex;
+  flex-wrap: var(--_flex-wrap, nowrap);
+  gap: var(--mantine-spacing-md) 0;
   align-items: var(--_steps-align-items, center);
   flex-direction: var(--_steps-direction);
+
+  &[data-wrap] {
+    --_flex-wrap: wrap;
+  }
 
   &[data-orientation='vertical'] {
     --_steps-direction: column;
@@ -59,7 +65,7 @@
     --_separator-mr: var(--mantine-spacing-md);
   }
 
-  &[data-oriented='vertical'] {
+  &[data-orientation='vertical'] {
     --_separator-width: rem(2px);
     --_separator-mt: calc(var(--mantine-spacing-xs) / 2);
     --_separator-mb: calc(var(--mantine-spacing-xs) - rem(2px));
@@ -92,16 +98,12 @@
 
 .step {
   display: flex;
+  flex-direction: var(--_step-direction);
   cursor: var(--_step-cursor, default);
 
   &[allow-click] {
     --_step-cursor: pointer;
   }
-}
-
-.step--horizontal {
-  flex-direction: var(--_step-direction);
-  align-items: center;
 
   &[data-icon-position='left'] {
     --_step-direction: row;
@@ -110,6 +112,11 @@
   &[data-icon-position='right'] {
     --_step-direction: row-reverse;
   }
+}
+
+.step--horizontal {
+  flex-direction: var(--_step-direction);
+  align-items: center;
 }
 
 .step--vertical {
@@ -171,7 +178,7 @@
     background-color 150ms ease,
     border-color 150ms ease;
   background-color: var(--_step-icon-bg);
-  border: rem(1px) solid var(--_step-icon-border-color);
+  border: rem(2px) solid var(--_step-icon-border-color);
   color: var(--_step-icon-color);
 
   @mixin light {
@@ -216,43 +223,23 @@
 
   &[data-icon-position='left'] {
     --_step-body-ta: left;
+    --_step-body-ml: var(--mantine-spacing-sm);
 
     @mixin rtl {
       --_step-body-ta: right;
+      --_step-body-ml: 0;
+      --_step-body-mr: var(--mantine-spacing-sm);
     }
   }
 
   &[data-icon-position='right'] {
     --_step-body-ta: right;
+    --_step-body-mr: var(--mantine-spacing-sm);
 
     @mixin rtl {
       --_step-body-ta: left;
-    }
-  }
-
-  &[data-orientation='vertical'] {
-    --_step-body-mt: calc(var(--stepper-icon-size) / 4);
-  }
-
-  &[data-orientation='horizontal'] {
-    &[data-icon-position='left'] {
       --_step-body-ml: var(--mantine-spacing-sm);
       --_step-body-mr: 0;
-
-      @mixin rtl {
-        --_step-body-ml: 0;
-        --_step-body-mr: var(--mantine-spacing-sm);
-      }
-    }
-
-    &[data-icon-position='right'] {
-      --_step-body-ml: 0;
-      --_step-body-mr: var(--mantine-spacing-sm);
-
-      @mixin rtl {
-        --_step-body-ml: var(--mantine-spacing-sm);
-        --_step-body-mr: 0;
-      }
     }
   }
 }

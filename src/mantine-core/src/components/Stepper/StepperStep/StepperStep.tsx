@@ -159,14 +159,12 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
                 >
                   {loading ? (
                     <Loader
-                      color="#fff"
-                      size="var(--stepper-icon-size)"
+                      color="var(--mantine-color-white)"
+                      size="60%"
                       {...ctx.getStyles('stepLoader', stylesApi)}
                     />
                   ) : (
-                    getStepFragment(completedIcon, step) || (
-                      <CheckIcon size="var(--stepper-icon-size)" />
-                    )
+                    getStepFragment(completedIcon, step) || <CheckIcon size="60%" />
                   )}
                 </span>
               )}
@@ -174,7 +172,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
 
             {state !== 'stepCompleted' ? (
               loading ? (
-                <Loader size="var(--stepper-icon-size)" color={color} />
+                <Loader size="60%" color={color} />
               ) : (
                 getStepFragment(_icon || icon, step)
               )

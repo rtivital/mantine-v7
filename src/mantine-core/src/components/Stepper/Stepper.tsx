@@ -97,6 +97,9 @@ export interface StepperProps
 
   /** Determines whether next steps can be selected, `true` by default **/
   allowNextStepsSelect?: boolean;
+
+  /** Determines whether steps should wrap to the next line if no space is available, `true` by default */
+  wrap?: boolean;
 }
 
 export type StepperFactory = Factory<{
@@ -118,6 +121,7 @@ const defaultProps: Partial<StepperProps> = {
   orientation: 'horizontal',
   iconPosition: 'left',
   allowNextStepsSelect: true,
+  wrap: true,
 };
 
 const varsResolver = createVarsResolver<StepperFactory>(
@@ -157,6 +161,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
     size,
     radius,
     allowNextStepsSelect,
+    wrap,
     ...others
   } = props;
 
@@ -222,6 +227,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
         <div
           {...getStyles('separator')}
           data-active={index < active || undefined}
+          data-orientation={orientation}
           key={`separator-${index}`}
         />
       );
@@ -237,7 +243,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
   return (
     <StepperProvider value={{ getStyles, orientation, iconPosition }}>
       <Box {...getStyles('root')} ref={ref} {...others}>
-        <Box {...getStyles('steps')} mod={{ orientation, 'icon-position': iconPosition }}>
+        <Box {...getStyles('steps')} mod={{ orientation, 'icon-position': iconPosition, wrap }}>
           {items}
         </Box>
         {content && <div {...getStyles('content')}>{content}</div>}
