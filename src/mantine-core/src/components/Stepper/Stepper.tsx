@@ -41,7 +41,7 @@ export type StepperStylesNames =
   | 'stepBody'
   | 'stepLabel'
   | 'stepDescription';
-export type StepperVariant = string;
+
 export type StepperCssVariables = {
   root:
     | '--stepper-color'
@@ -107,7 +107,6 @@ export type StepperFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: StepperStylesNames;
   vars: StepperCssVariables;
-  variant: StepperVariant;
   staticComponents: {
     Step: typeof StepperStep;
     Completed: typeof StepCompleted;

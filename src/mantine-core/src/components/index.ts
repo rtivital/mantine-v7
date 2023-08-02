@@ -75,6 +75,7 @@ export * from './Skeleton';
 export * from './Slider';
 export * from './Space';
 export * from './Stack';
+export * from './Stepper';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';
