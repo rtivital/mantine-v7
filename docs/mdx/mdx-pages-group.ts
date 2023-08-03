@@ -243,6 +243,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Indicator,
           MDX_DATA.Card,
           MDX_DATA.Image,
+          MDX_DATA.ThemeIcon,
         ],
       },
       {

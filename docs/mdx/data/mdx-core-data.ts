@@ -983,4 +983,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ColorInput/ColorInput.tsx',
     docs: 'core/color-input.mdx',
   },
+
+  ThemeIcon: {
+    title: 'ThemeIcon',
+    package: '@mantine/core',
+    slug: '/core/theme-icon',
+    props: ['ThemeIcon'],
+    styles: ['ThemeIcon'],
+    description: 'Render icon inside element with theme colors',
+    import: "import { ThemeIcon } from '@mantine/core';",
+    source: 'mantine-core/src/components/ThemeIcon/ThemeIcon.tsx',
+    docs: 'core/theme-icon.mdx',
+  },
 };

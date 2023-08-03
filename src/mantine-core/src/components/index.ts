@@ -84,6 +84,7 @@ export * from './TagsInput';
 export * from './Text';
 export * from './Textarea';
 export * from './TextInput';
+export * from './ThemeIcon';
 export * from './Title';
 export * from './Tooltip';
 export * from './Transition';

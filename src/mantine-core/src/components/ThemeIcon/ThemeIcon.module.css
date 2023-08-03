@@ -1,0 +1,23 @@
+.root {
+  --ti-size-xs: rem(18px);
+  --ti-size-sm: rem(22px);
+  --ti-size-md: rem(28px);
+  --ti-size-lg: rem(34px);
+  --ti-size-xl: rem(44px);
+
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+
+  width: var(--ti-size);
+  height: var(--ti-size);
+  min-width: var(--ti-size);
+  min-height: var(--ti-size);
+  border-radius: var(--ti-radius);
+  background: var(--_ti-bg, var(--ti-bg));
+  color: var(--_ti-color, var(--ti-color));
+  border: var(--ti-bd);
+}

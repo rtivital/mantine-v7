@@ -79,6 +79,7 @@ export * as TagsInputDemos from './demos/core/TagsInput';
 export * as TextDemos from './demos/core/Text';
 export * as TextareaDemos from './demos/core/Textarea';
 export * as TextInputDemos from './demos/core/TextInput';
+export * as ThemeIconDemos from './demos/core/ThemeIcon';
 export * as TitleDemos from './demos/core/Title';
 export * as TooltipDemos from './demos/core/Tooltip';
 export * as TransitionDemos from './demos/core/Transition';
