@@ -971,4 +971,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Stepper/Stepper.tsx',
     docs: 'core/stepper.mdx',
   },
+
+  ColorInput: {
+    title: 'ColorInput',
+    package: '@mantine/core',
+    slug: '/core/color-input',
+    props: ['ColorInput'],
+    styles: ['ColorInput'],
+    description: 'Capture color from user',
+    import: "import { ColorInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/ColorInput/ColorInput.tsx',
+    docs: 'core/color-input.mdx',
+  },
 };
