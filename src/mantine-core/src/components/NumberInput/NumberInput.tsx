@@ -10,22 +10,26 @@ import {
   useStyles,
   createVarsResolver,
   Factory,
+  getSize,
 } from '../../core';
+import { UnstyledButton } from '../UnstyledButton';
 import { InputBase } from '../InputBase';
+import { __BaseInputProps, __InputStylesNames, InputVariant } from '../Input';
+import { NumberInputChevron } from './NumberInputChevron';
 import classes from './NumberInput.module.css';
 
 function isValidNumber(value: number | undefined): value is number {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
-export type NumberInputStylesNames = 'root';
-export type NumberInputVariant = string;
+export type NumberInputStylesNames = 'controls' | 'control' | __InputStylesNames;
 export type NumberInputCssVariables = {
-  root: '--test';
+  controls: '--ni-chevron-size';
 };
 
 export interface NumberInputProps
   extends BoxProps,
+    __BaseInputProps,
     StylesApiProps<NumberInputFactory>,
     ElementProps<'input', 'size' | 'type' | 'onChange'> {
   /** Controlled component value */
@@ -75,6 +79,21 @@ export interface NumberInputProps
 
   /** Controls input `type` attribute, `'text'` by default */
   type?: 'text' | 'tel' | 'password';
+
+  /** A character used to separate thousands */
+  thousandSeparator?: string | boolean;
+
+  /** Minimum possible value */
+  min?: number;
+
+  /** Maximum possible value */
+  max?: number;
+
+  /** Number by which value will be incremented/decremented with up/down controls and keyboard arrows, `1` by default */
+  step?: number;
+
+  /** Determines whether the up/down controls should be hidden, `false` by default */
+  hideControls?: boolean;
 }
 
 export type NumberInputFactory = Factory<{
@@ -82,14 +101,17 @@ export type NumberInputFactory = Factory<{
   ref: HTMLDivElement;
   stylesNames: NumberInputStylesNames;
   vars: NumberInputCssVariables;
-  variant: NumberInputVariant;
+  variant: InputVariant;
 }>;
 
-const defaultProps: Partial<NumberInputProps> = {};
+const defaultProps: Partial<NumberInputProps> = {
+  step: 1,
+  size: 'sm',
+};
 
-const varsResolver = createVarsResolver<NumberInputFactory>(() => ({
-  root: {
-    '--test': 'test',
+const varsResolver = createVarsResolver<NumberInputFactory>((_, { size }) => ({
+  controls: {
+    '--ni-chevron-size': getSize(size, 'ni-chevron-size'),
   },
 }));
 
@@ -106,6 +128,11 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     onValueChange,
     value,
     defaultValue,
+    max,
+    min,
+    step,
+    hideControls,
+    rightSection,
     ...others
   } = props;
 
@@ -134,6 +161,51 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     onValueChange?.(payload, event);
   };
 
+  const increment = () => {
+    if (typeof _value !== 'number' || Number.isNaN(_value)) {
+      setValue(min || 0);
+    } else if (max !== undefined) {
+      setValue(_value + step! <= max ? _value + step! : max);
+    } else {
+      setValue(_value + step!);
+    }
+  };
+
+  const decrement = () => {
+    if (typeof _value !== 'number' || Number.isNaN(_value)) {
+      setValue(max || 0);
+    } else if (min !== undefined) {
+      setValue(_value - step! >= min ? _value - step! : min);
+    } else {
+      setValue(_value - step!);
+    }
+  };
+
+  const controls = (
+    <div {...getStyles('controls')}>
+      <UnstyledButton
+        {...getStyles('control')}
+        tabIndex={-1}
+        aria-hidden
+        disabled={typeof _value === 'number' && max !== undefined && _value >= max}
+        mod={{ direction: 'up' }}
+        onPointerDown={increment}
+      >
+        <NumberInputChevron direction="up" />
+      </UnstyledButton>
+      <UnstyledButton
+        {...getStyles('control')}
+        tabIndex={-1}
+        aria-hidden
+        disabled={typeof _value === 'number' && min !== undefined && _value <= min}
+        mod={{ direction: 'down' }}
+        onPointerDown={decrement}
+      >
+        <NumberInputChevron direction="down" />
+      </UnstyledButton>
+    </div>
+  );
+
   return (
     <InputBase
       component={NumericFormat}
@@ -141,7 +213,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       value={_value}
       getInputRef={ref}
       onValueChange={handleValueChange}
-      isAllowed={(value) => {}}
+      rightSection={hideControls ? rightSection : rightSection || controls}
     />
   );
 });
