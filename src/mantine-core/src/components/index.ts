@@ -35,6 +35,7 @@ export * from './Checkbox';
 export * from './Chip';
 export * from './Code';
 export * from './ColorPicker';
+export * from './ColorInput';
 export * from './ColorSwatch';
 export * from './Combobox';
 export * from './Container';
