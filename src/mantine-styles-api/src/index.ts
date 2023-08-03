@@ -23,6 +23,7 @@ export * from './data/Chip.styles-api';
 export * from './data/CloseButton.styles-api';
 export * from './data/Code.styles-api';
 export * from './data/CodeHighlight.styles-api';
+export * from './data/ColorInput.styles-api';
 export * from './data/ColorPicker.styles-api';
 export * from './data/ColorSwatch.styles-api';
 export * from './data/Combobox.styles-api';
