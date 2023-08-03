@@ -8,10 +8,10 @@ export const ColorInputStylesApi: StylesApiData<ColorInputFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
     ...ColorPickerStylesApi.selectors,
-    dropdown: '',
-    colorPreview: '',
-    eyeDropperButton: '',
-    eyeDropperIcon: '',
+    dropdown: 'Popover dropdown',
+    colorPreview: 'Color swatch preview in input left section',
+    eyeDropperButton: 'Eye dropper button',
+    eyeDropperIcon: 'Default eye dropper icon',
   },
 
   vars: {

@@ -294,8 +294,8 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
             size={inputProps.size}
             focusable={false}
             unstyled={unstyled}
-            styles={resolvedClassNames}
-            classNames={resolvedStyles}
+            styles={resolvedStyles}
+            classNames={resolvedClassNames}
             onColorSwatchClick={() => closeOnColorSwatchClick && setDropdownOpened(false)}
           />
         </Popover.Dropdown>
