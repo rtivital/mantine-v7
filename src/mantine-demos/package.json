@@ -29,6 +29,7 @@
     "react-imask": "^6.4.3",
     "@mantine/core": "7.0.0-alpha.20",
     "@mantine/hooks": "7.0.0-alpha.20",
+    "@mantine/form": "7.0.0-alpha.20",
     "@mantine/styles-api": "7.0.0-alpha.20",
     "@mantine/ds": "7.0.0-alpha.20",
     "@mantine/notifications": "7.0.0-alpha.20",
