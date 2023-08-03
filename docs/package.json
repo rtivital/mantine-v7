@@ -16,6 +16,7 @@
     "@mantine/demos": "link:../src/mantine-demos",
     "@mantine/ds": "link:../src/mantine-ds",
     "@mantine/hooks": "link:../src/mantine-hooks",
+    "@mantine/form": "link:../src/mantine-form",
     "@mantine/notifications": "link:../src/mantine-notifications",
     "@mantine/store": "link:../src/mantine-store",
     "@mantine/spotlight": "link:../src/mantine-spotlight",
