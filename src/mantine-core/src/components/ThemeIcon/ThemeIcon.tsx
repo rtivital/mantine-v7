@@ -106,4 +106,5 @@ export const ThemeIcon = factory<ThemeIconFactory>((_props, ref) => {
   return <Box ref={ref} {...getStyles('root')} {...others} />;
 });
 
+ThemeIcon.classes = classes;
 ThemeIcon.displayName = '@mantine/core/ThemeIcon';
