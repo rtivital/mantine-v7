@@ -171,6 +171,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     onKeyDown,
     handlersRef,
     startValue,
+    disabled,
+    rightSectionPointerEvents,
     ...others
   } = props;
 
@@ -244,7 +246,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         {...getStyles('control')}
         tabIndex={-1}
         aria-hidden
-        disabled={typeof _value === 'number' && max !== undefined && _value >= max}
+        disabled={disabled || (typeof _value === 'number' && max !== undefined && _value >= max)}
         mod={{ direction: 'up' }}
         onPointerDown={increment}
       >
@@ -254,7 +256,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         {...getStyles('control')}
         tabIndex={-1}
         aria-hidden
-        disabled={typeof _value === 'number' && min !== undefined && _value <= min}
+        disabled={disabled || (typeof _value === 'number' && min !== undefined && _value <= min)}
         mod={{ direction: 'down' }}
         onPointerDown={decrement}
       >
@@ -267,6 +269,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     <InputBase
       component={NumericFormat}
       {...others}
+      disabled={disabled}
       value={_value}
       getInputRef={ref}
       onValueChange={handleValueChange}
@@ -277,6 +280,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       __staticSelector="NumberInput"
       decimalScale={allowDecimals ? decimalScale : 0}
       onKeyDown={handleKeyDown}
+      rightSectionPointerEvents={rightSectionPointerEvents ?? disabled ? 'none' : undefined}
       onBlur={(event) => {
         onBlur?.(event);
         if (clampBehavior === 'blur' && typeof _value === 'number') {
