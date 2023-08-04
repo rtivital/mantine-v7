@@ -1,14 +1,20 @@
 import { tests } from '@mantine/tests';
-import { VisuallyHidden, VisuallyHiddenProps } from './VisuallyHidden';
+import { VisuallyHidden, VisuallyHiddenProps, VisuallyHiddenStylesNames } from './VisuallyHidden';
 
 const defaultProps: VisuallyHiddenProps = {};
 
 describe('@mantine/core/VisuallyHidden', () => {
-  tests.itSupportsClassName({ component: VisuallyHidden, props: defaultProps });
-  tests.itRendersChildren({ component: VisuallyHidden, props: defaultProps });
-  tests.itHasClasses({ component: VisuallyHidden });
-
-  it('has correct displayName', () => {
-    expect(VisuallyHidden.displayName).toEqual('@mantine/core/VisuallyHidden');
+  tests.itSupportsSystemProps<VisuallyHiddenProps, VisuallyHiddenStylesNames>({
+    component: VisuallyHidden,
+    props: defaultProps,
+    styleProps: true,
+    children: true,
+    extend: true,
+    variant: true,
+    size: true,
+    classes: true,
+    refType: HTMLSpanElement,
+    displayName: '@mantine/core/VisuallyHidden',
+    stylesApiSelectors: ['root'],
   });
 });
