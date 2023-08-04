@@ -135,6 +135,20 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     ],
   },
   {
+    group: 'form',
+    pages: [
+      MDX_DATA.useForm,
+      MDX_DATA.formValues,
+      MDX_DATA.formErrors,
+      MDX_DATA.formValidation,
+      MDX_DATA.formValidators,
+      MDX_DATA.formNested,
+      MDX_DATA.formStatus,
+      MDX_DATA.createFormContext,
+      MDX_DATA.formRecipes,
+    ],
+  },
+  {
     group: 'mantine-core',
     pages: [
       {

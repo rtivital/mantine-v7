@@ -37,7 +37,8 @@
     "@mantine/carousel": "7.0.0-alpha.20",
     "@tabler/icons-react": "^2.29.0",
     "embla-carousel-autoplay": "^7.0.0",
-    "embla-carousel-react": "^7.0.0"
+    "embla-carousel-react": "^7.0.0",
+    "zod": "^3.21.4"
   },
   "dependencies": {},
   "devDependencies": {}

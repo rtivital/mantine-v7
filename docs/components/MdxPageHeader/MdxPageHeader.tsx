@@ -18,8 +18,9 @@ interface MdxPageHeaderProps {
 export function MdxPageHeader({ meta }: MdxPageHeaderProps) {
   const withTabs = Array.isArray(meta.props);
   const hasLinks = !!(meta.import || meta.source);
+  const withTitle = !!meta.title;
 
-  if (!hasLinks && !withTabs && !meta.release) {
+  if (!hasLinks && !withTabs && !meta.release && !withTitle) {
     return null;
   }
 

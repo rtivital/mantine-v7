@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextProps, ElementProps } from '@mantine/core';
 
-interface HtmlTextProps extends TextProps, ElementProps<'span'> {
+interface HtmlTextProps extends TextProps, ElementProps<'span', 'color'> {
   children: string;
 }
 
