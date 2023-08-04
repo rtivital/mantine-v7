@@ -17,6 +17,7 @@ import {
   SpotlightDemos,
   ImageDemos,
   CarouselDemos,
+  NumberInputDemos,
 } from '@mantine/demos';
 
 export default Layout(MDX_DATA.Changelog700);
@@ -316,6 +317,14 @@ function Demo() {
   );
 }
 ```
+
+## NumberInput changes
+
+[NumberInput](/core/number-input) was migrated to [react-number-format](https://s-yadav.github.io/react-number-format/).
+It now supports more features and had improvements in cursor position management.
+Due to migration, some of the props were renamed – follow the [documentation](/core/number-input) to learn about the changes.
+
+<Demo data={NumberInputDemos.prefixSuffix} />
 
 ## Loader changes
 

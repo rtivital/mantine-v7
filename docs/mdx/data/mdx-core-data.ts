@@ -995,4 +995,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/ThemeIcon/ThemeIcon.tsx',
     docs: 'core/theme-icon.mdx',
   },
+
+  NumberInput: {
+    title: 'NumberInput',
+    package: '@mantine/core',
+    slug: '/core/number-input',
+    props: ['NumberInput'],
+    styles: ['NumberInput'],
+    description: 'Capture number from user',
+    import: "import { NumberInput } from '@mantine/core';",
+    source: 'mantine-core/src/components/NumberInput/NumberInput.tsx',
+    docs: 'core/number-input.mdx',
+  },
 };

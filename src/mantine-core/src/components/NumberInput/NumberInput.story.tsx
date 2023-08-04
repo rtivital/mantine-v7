@@ -47,7 +47,7 @@ export function NoDecimals() {
         label="Number input"
         placeholder="Number input"
         onChange={setValue}
-        allowDecimals={false}
+        allowDecimal={false}
       />
       {typeof value === 'number' ? `${value} number` : `${value === '' ? 'empty' : value} string`}
       <Button onClick={() => setValue(245.32)}>Set value to float</Button>
@@ -65,7 +65,7 @@ export function Handlers() {
         label="Number input"
         placeholder="Number input"
         onChange={setValue}
-        allowDecimals={false}
+        allowDecimal={false}
         handlersRef={handlersRef}
         min={10}
         max={20}
