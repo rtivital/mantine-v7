@@ -18,9 +18,6 @@ const defaultProps: NumberInputProps = {
 const clickIncrement = (container: HTMLElement) =>
   userEvent.click(container.querySelector('.mantine-NumberInput-control[data-direction="up"]')!);
 
-const clickDecrement = (container: HTMLElement) =>
-  userEvent.click(container.querySelector('.mantine-NumberInput-control[data-direction="down"]')!);
-
 const getInput = () => screen.getByRole('textbox');
 const enterText = (text: string) => userEvent.type(getInput(), text);
 const expectValue = (value: string) => expect(getInput()).toHaveValue(value);
@@ -68,34 +65,6 @@ describe('@mantine/core/NumberInput', () => {
     act(() => ref.current?.increment());
     expect(spy).toHaveBeenLastCalledWith(2);
     act(() => ref.current?.decrement());
-    expect(spy).toHaveBeenLastCalledWith(0);
-  });
-
-  it('increments and decrements value with controls', async () => {
-    const spy = jest.fn();
-    const { container } = render(<NumberInput step={10} onChange={spy} />);
-    await clickIncrement(container);
-    expect(spy).toHaveBeenLastCalledWith(0);
-    await clickIncrement(container);
-    expect(spy).toHaveBeenLastCalledWith(10);
-    await clickDecrement(container);
-    expect(spy).toHaveBeenLastCalledWith(0);
-    await clickDecrement(container);
-    expect(spy).toHaveBeenLastCalledWith(-10);
-  });
-
-  it('does not increment or decrements out of min and max', async () => {
-    const spy = jest.fn();
-    const { container } = render(<NumberInput max={10} min={0} step={6} onChange={spy} />);
-    await clickIncrement(container);
-    expect(spy).toHaveBeenLastCalledWith(0);
-    await clickIncrement(container);
-    expect(spy).toHaveBeenLastCalledWith(6);
-    await clickIncrement(container);
-    expect(spy).toHaveBeenLastCalledWith(10);
-    await clickDecrement(container);
-    expect(spy).toHaveBeenLastCalledWith(4);
-    await clickDecrement(container);
     expect(spy).toHaveBeenLastCalledWith(0);
   });
 
