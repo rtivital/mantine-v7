@@ -4,4 +4,5 @@ export type {
   NumberInputFactory,
   NumberInputProps,
   NumberInputStylesNames,
+  NumberInputHandlers,
 } from './NumberInput';

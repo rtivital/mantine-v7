@@ -86,6 +86,7 @@ export * as TransitionDemos from './demos/core/Transition';
 export * as TypographyStylesProviderDemos from './demos/core/TypographyStylesProvider';
 export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
 export * as NotificationDemos from './demos/core/Notification';
+export * as NumberInputDemos from './demos/core/NumberInput';
 
 // Other demos
 export * as NotificationsDemos from './demos/notifications';

@@ -28,6 +28,27 @@ function isValidNumber(value: number | undefined): value is number {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
+interface GetDecrementedValueInput {
+  value: number;
+  min: number | undefined;
+  step: number | undefined;
+  allowNegative: boolean | undefined;
+}
+
+function getDecrementedValue({ value, min, step = 1, allowNegative }: GetDecrementedValueInput) {
+  const nextValue = value - step;
+
+  if (!allowNegative && nextValue < 0 && min === undefined) {
+    return value;
+  }
+
+  if (min !== undefined && min >= 0 && nextValue <= min) {
+    return value;
+  }
+
+  return nextValue;
+}
+
 function isInRange(value: number | undefined, min: number | undefined, max: number | undefined) {
   if (value === undefined) {
     return true;
@@ -116,7 +137,7 @@ export interface NumberInputProps
   clampBehavior?: 'strict' | 'blur' | 'none';
 
   /** Determines whether decimal values are allowed, `true` by default */
-  allowDecimals?: boolean;
+  allowDecimal?: boolean;
 
   /** Increment/decrement handlers */
   handlersRef?: React.ForwardedRef<NumberInputHandlers | undefined>;
@@ -137,7 +158,7 @@ const defaultProps: Partial<NumberInputProps> = {
   step: 1,
   size: 'sm',
   clampBehavior: 'blur',
-  allowDecimals: true,
+  allowDecimal: true,
   startValue: 0,
 };
 
@@ -166,13 +187,14 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     isAllowed,
     clampBehavior,
     onBlur,
-    allowDecimals,
+    allowDecimal,
     decimalScale,
     onKeyDown,
     handlersRef,
     startValue,
     disabled,
     rightSectionPointerEvents,
+    allowNegative,
     ...others
   } = props;
 
@@ -217,10 +239,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   const decrement = () => {
     if (typeof _value !== 'number' || Number.isNaN(_value)) {
       setValue(max ?? clamp(startValue!, min, max));
-    } else if (min !== undefined) {
-      setValue(_value - step! >= min ? _value - step! : min);
     } else {
-      setValue(_value - step!);
+      setValue(getDecrementedValue({ value: _value, min, step, allowNegative }));
     }
   };
 
@@ -278,7 +298,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       styles={resolvedStyles}
       unstyled={unstyled}
       __staticSelector="NumberInput"
-      decimalScale={allowDecimals ? decimalScale : 0}
+      decimalScale={allowDecimal ? decimalScale : 0}
       onKeyDown={handleKeyDown}
       rightSectionPointerEvents={rightSectionPointerEvents ?? disabled ? 'none' : undefined}
       onBlur={(event) => {
