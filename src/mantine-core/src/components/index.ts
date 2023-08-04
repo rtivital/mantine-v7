@@ -60,6 +60,7 @@ export * from './Modal';
 export * from './MultiSelect';
 export * from './NativeSelect';
 export * from './Notification';
+export * from './NumberInput';
 export * from './Pagination';
 export * from './PasswordInput';
 export * from './Pill';

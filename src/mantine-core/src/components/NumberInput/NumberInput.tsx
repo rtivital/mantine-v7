@@ -1,6 +1,6 @@
 import React from 'react';
 import { NumericFormat, OnValueChange, NumberFormatValues } from 'react-number-format';
-import { useUncontrolled } from '@mantine/hooks';
+import { assignRef, clamp, useUncontrolled } from '@mantine/hooks';
 import {
   BoxProps,
   StylesApiProps,
@@ -11,6 +11,7 @@ import {
   createVarsResolver,
   Factory,
   getSize,
+  useResolvedStylesApi,
 } from '../../core';
 import { UnstyledButton } from '../UnstyledButton';
 import { InputBase } from '../InputBase';
@@ -18,8 +19,24 @@ import { __BaseInputProps, __InputStylesNames, InputVariant } from '../Input';
 import { NumberInputChevron } from './NumberInputChevron';
 import classes from './NumberInput.module.css';
 
+export interface NumberInputHandlers {
+  increment(): void;
+  decrement(): void;
+}
+
 function isValidNumber(value: number | undefined): value is number {
   return typeof value === 'number' && !Number.isNaN(value);
+}
+
+function isInRange(value: number | undefined, min: number | undefined, max: number | undefined) {
+  if (value === undefined) {
+    return true;
+  }
+
+  const minValid = min === undefined || value >= min;
+  const maxValid = max === undefined || value <= max;
+
+  return minValid && maxValid;
 }
 
 export type NumberInputStylesNames = 'controls' | 'control' | __InputStylesNames;
@@ -94,6 +111,18 @@ export interface NumberInputProps
 
   /** Determines whether the up/down controls should be hidden, `false` by default */
   hideControls?: boolean;
+
+  /** Controls how value is clamped, `strict` – user is not allowed to enter values that are not in `[min, max]` range, `blur` – user is allowed to enter any values, but the value is clamped when the input loses focus (default behavior), `none` – lifts all restrictions, `[min, max]` range is applied only for controls and up/down keys */
+  clampBehavior?: 'strict' | 'blur' | 'none';
+
+  /** Determines whether decimal values are allowed, `true` by default */
+  allowDecimals?: boolean;
+
+  /** Increment/decrement handlers */
+  handlersRef?: React.ForwardedRef<NumberInputHandlers | undefined>;
+
+  /** Value set to the input when increment/decrement buttons are clicked or up/down arrows pressed if the input is empty, `0` by default */
+  startValue?: number;
 }
 
 export type NumberInputFactory = Factory<{
@@ -107,6 +136,9 @@ export type NumberInputFactory = Factory<{
 const defaultProps: Partial<NumberInputProps> = {
   step: 1,
   size: 'sm',
+  clampBehavior: 'blur',
+  allowDecimals: true,
+  startValue: 0,
 };
 
 const varsResolver = createVarsResolver<NumberInputFactory>((_, { size }) => ({
@@ -119,8 +151,6 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   const props = useProps('NumberInput', defaultProps, _props);
   const {
     classNames,
-    className,
-    style,
     styles,
     unstyled,
     vars,
@@ -133,6 +163,14 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     step,
     hideControls,
     rightSection,
+    isAllowed,
+    clampBehavior,
+    onBlur,
+    allowDecimals,
+    decimalScale,
+    onKeyDown,
+    handlersRef,
+    startValue,
     ...others
   } = props;
 
@@ -140,8 +178,6 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     name: 'NumberInput',
     classes,
     props,
-    className,
-    style,
     classNames,
     styles,
     unstyled,
@@ -149,10 +185,15 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<NumberInputFactory>({
+    classNames,
+    styles,
+    props,
+  });
+
   const [_value, setValue] = useUncontrolled({
     value,
     defaultValue,
-    finalValue: '',
     onChange,
   });
 
@@ -163,7 +204,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
   const increment = () => {
     if (typeof _value !== 'number' || Number.isNaN(_value)) {
-      setValue(min || 0);
+      setValue(min ?? clamp(startValue!, min, max));
     } else if (max !== undefined) {
       setValue(_value + step! <= max ? _value + step! : max);
     } else {
@@ -173,13 +214,29 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
   const decrement = () => {
     if (typeof _value !== 'number' || Number.isNaN(_value)) {
-      setValue(max || 0);
+      setValue(max ?? clamp(startValue!, min, max));
     } else if (min !== undefined) {
       setValue(_value - step! >= min ? _value - step! : min);
     } else {
       setValue(_value - step!);
     }
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(event);
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      increment();
+    }
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      decrement();
+    }
+  };
+
+  assignRef(handlersRef, { increment, decrement });
 
   const controls = (
     <div {...getStyles('controls')}>
@@ -214,8 +271,32 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
       getInputRef={ref}
       onValueChange={handleValueChange}
       rightSection={hideControls ? rightSection : rightSection || controls}
+      classNames={resolvedClassNames}
+      styles={resolvedStyles}
+      unstyled={unstyled}
+      __staticSelector="NumberInput"
+      decimalScale={allowDecimals ? decimalScale : 0}
+      onKeyDown={handleKeyDown}
+      onBlur={(event) => {
+        onBlur?.(event);
+        if (clampBehavior === 'blur' && typeof _value === 'number') {
+          setValue(clamp(_value, min, max));
+        }
+      }}
+      isAllowed={(val) => {
+        if (clampBehavior === 'strict') {
+          if (isAllowed) {
+            return isAllowed(val) && isInRange(val.floatValue, min, max);
+          }
+
+          return isInRange(val.floatValue, min, max);
+        }
+
+        return isAllowed ? isAllowed(val) : true;
+      }}
     />
   );
 });
 
+NumberInput.classes = { ...InputBase.classes, ...classes };
 NumberInput.displayName = '@mantine/core/NumberInput';

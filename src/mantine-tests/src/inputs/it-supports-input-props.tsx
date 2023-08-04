@@ -7,6 +7,7 @@ interface Options<Props = any> {
   component: React.ComponentType<Props>;
   props: Props;
   selector: string;
+  focus?: boolean;
 }
 
 export function itSupportsInputProps<Props>(
@@ -16,6 +17,6 @@ export function itSupportsInputProps<Props>(
   describe(name, () => {
     itSupportsInputWrapperProps(options);
     itSupportsInputSections(options);
-    itSupportsFocusEvents(options);
+    options.focus !== false && itSupportsFocusEvents(options);
   });
 }
