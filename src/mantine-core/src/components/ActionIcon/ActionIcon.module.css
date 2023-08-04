@@ -70,7 +70,6 @@
 
 .group {
   display: flex;
-  background-color: red;
 
   &[data-orientation='horizontal'] {
     flex-direction: row;
