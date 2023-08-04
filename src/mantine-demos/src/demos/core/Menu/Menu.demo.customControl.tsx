@@ -35,7 +35,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
             {name}
           </Text>
 
-          <Text color="dimmed" size="xs">
+          <Text c="dimmed" size="xs">
             {email}
           </Text>
         </div>
@@ -88,7 +88,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
             {name}
           </Text>
 
-          <Text color="dimmed" size="xs">
+          <Text c="dimmed" size="xs">
             {email}
           </Text>
         </div>

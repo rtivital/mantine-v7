@@ -44,7 +44,7 @@ function Demo() {
         </Group>
       </Card.Section>
 
-      <Text mt="sm" color="dimmed" size="sm">
+      <Text mt="sm" c="dimmed" size="sm">
         <Text span inherit c="var(--mantine-color-anchor)">
           200+ images uploaded
         </Text>{' '}
@@ -104,7 +104,7 @@ function Demo() {
         </Group>
       </Card.Section>
 
-      <Text mt="sm" color="dimmed" size="sm">
+      <Text mt="sm" c="dimmed" size="sm">
         <Text span inherit c="var(--mantine-color-anchor)">
           200+ images uploaded
         </Text>{' '}

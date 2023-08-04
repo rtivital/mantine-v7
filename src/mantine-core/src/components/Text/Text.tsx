@@ -14,6 +14,8 @@ import {
   MantineSize,
   getFontSize,
   getLineHeight,
+  MantineColor,
+  getThemeColor,
 } from '../../core';
 import classes from './Text.module.css';
 
@@ -61,6 +63,9 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
 
   /** Shorthand for `component="span"`, `false` by default, default root element is `p` */
   span?: boolean;
+
+  /** @deprecated Use `c` prop instead */
+  color?: MantineColor;
 }
 
 export type TextFactory = PolymorphicFactory<{
@@ -79,12 +84,13 @@ const defaultProps: Partial<TextProps> = {
 };
 
 const varsResolver = createVarsResolver<TextFactory>(
-  (theme, { variant, lineClamp, gradient, size }) => ({
+  (theme, { variant, lineClamp, gradient, size, color }) => ({
     root: {
       '--text-fz': getFontSize(size),
       '--text-lh': getLineHeight(size),
       '--text-gradient': variant === 'gradient' ? getGradient(gradient, theme) : undefined,
       '--text-line-clamp': typeof lineClamp === 'number' ? lineClamp.toString() : undefined,
+      '--text-color': color ? getThemeColor(color, theme) : undefined,
     },
   })
 );

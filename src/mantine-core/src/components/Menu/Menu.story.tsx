@@ -43,7 +43,7 @@ export function Usage() {
           <Menu.Item
             leftSection={<IconSearch size={14} />}
             rightSection={
-              <Text size="xs" color="dimmed">
+              <Text size="xs" c="dimmed">
                 ⌘K
               </Text>
             }

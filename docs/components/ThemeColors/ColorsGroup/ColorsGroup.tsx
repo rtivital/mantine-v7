@@ -16,7 +16,7 @@ export function ColorsGroup({ group }: ColorsGroupProps) {
         <Text size="xs" className={classes.colorName}>
           {group} {index}
         </Text>
-        <Text color="dimmed" size="xs" tt="uppercase" mt={2} fz={10}>
+        <Text c="dimmed" size="xs" tt="uppercase" mt={2} fz={10}>
           {color}
         </Text>
       </Box>

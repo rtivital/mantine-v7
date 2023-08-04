@@ -52,7 +52,7 @@ export function Lists() {
           </Text>
         </Group>
       ) : (
-        <Text color="dimmed" ta="center">
+        <Text c="dimmed" ta="center">
           No one here...
         </Text>
       )}

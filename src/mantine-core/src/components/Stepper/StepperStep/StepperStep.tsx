@@ -204,7 +204,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
             <span {...ctx.getStyles('stepLabel', stylesApi)}>{getStepFragment(label, step)}</span>
           )}
           {description && (
-            <span {...ctx.getStyles('stepDescription', stylesApi)} color="dimmed">
+            <span {...ctx.getStyles('stepDescription', stylesApi)}>
               {getStepFragment(description, step)}
             </span>
           )}

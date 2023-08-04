@@ -21,7 +21,7 @@ function Demo() {
               </Text>
               <Anchor
                 href="https://twitter.com/mantinedev"
-                color="dimmed"
+                c="dimmed"
                 size="xs"
                 style={{ lineHeight: 1 }}
               >
@@ -63,7 +63,7 @@ export function HoverCardHomePageDemo({ children }: { children: React.ReactNode 
             </Text>
             <Anchor
               href="https://twitter.com/mantinedev"
-              color="dimmed"
+              c="dimmed"
               size="xs"
               style={{ lineHeight: 1 }}
             >

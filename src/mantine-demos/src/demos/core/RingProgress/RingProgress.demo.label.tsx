@@ -13,7 +13,7 @@ function Demo() {
       <RingProgress
         sections={[{ value: 40, color: 'blue' }]}
         label={
-          <Text color="blue" fw={700} ta="center" size="xl">
+          <Text c="blue" fw={700} ta="center" size="xl">
             40%
           </Text>
         }
@@ -40,7 +40,7 @@ function Demo() {
       <RingProgress
         sections={[{ value: 40, color: 'blue' }]}
         label={
-          <Text color="blue" fw={700} ta="center" size="xl">
+          <Text c="blue" fw={700} ta="center" size="xl">
             40%
           </Text>
         }

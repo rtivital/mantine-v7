@@ -26,14 +26,14 @@ function Demo() {
       />
 
       <Text size="sm" mt="md">
-        <Text inherit color="dimmed" component="span">
+        <Text inherit c="dimmed" component="span">
           Current value:
         </Text>{' '}
         {value || '[empty string]'}
       </Text>
 
       <Text size="sm">
-        <Text inherit color="dimmed" component="span">
+        <Text inherit c="dimmed" component="span">
           Last valid value:
         </Text>{' '}
         {lastValidValue || '[empty string]'}
@@ -62,14 +62,14 @@ function Demo() {
       />
 
       <Text size="sm" mt="md">
-        <Text inherit color="dimmed" component="span">
+        <Text inherit c="dimmed" component="span">
           Current value:
         </Text>{' '}
         {value || '[empty string]'}
       </Text>
 
       <Text size="sm">
-        <Text inherit color="dimmed" component="span">
+        <Text inherit c="dimmed" component="span">
           Last valid value:
         </Text>{' '}
         {lastValidValue || '[empty string]'}

@@ -144,14 +144,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
           </Text>
         )}
 
-        <Text
-          {...getStyles('description')}
-          color="dimmed"
-          mod={{
-            'data-with-title': !!title,
-          }}
-          size="sm"
-        >
+        <Text {...getStyles('description')} mod={{ 'data-with-title': !!title }} size="sm">
           {children}
         </Text>
       </div>

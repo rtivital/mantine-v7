@@ -36,7 +36,7 @@ function Demo() {
         onChange={(event) => setValue(event.currentTarget.value)}
       />
       <Text mt="sm">
-        <Text component="span" color="dimmed" size="sm">
+        <Text component="span" c="dimmed" size="sm">
           Debounced value:
         </Text>{' '}
         {value.trim() || '[empty string]'}

@@ -41,7 +41,7 @@ function Demo() {
       ) : (
         <Text>Click the button to pick color</Text>
       )}
-      {error && <Text color="red">Error: {error?.message}</Text>}
+      {error && <Text c="red">Error: {error?.message}</Text>}
     </Group>
   );
 }
@@ -78,7 +78,7 @@ function Demo() {
       ) : (
         <Text>Click the button to pick color</Text>
       )}
-      {error && <Text color="red">Error: {error?.message}</Text>}
+      {error && <Text c="red">Error: {error?.message}</Text>}
     </Group>
   );
 }

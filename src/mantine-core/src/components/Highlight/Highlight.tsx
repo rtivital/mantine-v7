@@ -10,7 +10,7 @@ import { Text, TextStylesNames, TextProps, TextVariant } from '../Text';
 import { Mark } from '../Mark';
 import { highlighter } from './highlighter/highlighter';
 
-export interface HighlightProps extends TextProps {
+export interface HighlightProps extends Omit<TextProps, 'color'> {
   /** Substring or an array of substrings to highlight in `children` */
   highlight: string | string[];
 

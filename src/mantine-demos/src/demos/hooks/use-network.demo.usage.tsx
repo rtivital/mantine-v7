@@ -23,7 +23,7 @@ function Demo() {
         <Table.Tr>
           <Table.Td>Online</Table.Td>
           <Table.Td>
-            <Text size="sm" color={networkStatus.online ? 'teal' : 'red'}>
+            <Text size="sm" c={networkStatus.online ? 'teal' : 'red'}>
               {networkStatus.online ? 'Online' : 'Offline'}
             </Text>
           </Table.Td>
@@ -74,7 +74,7 @@ function Demo() {
         <Table.Tr>
           <Table.Td>Online</Table.Td>
           <Table.Td>
-            <Text size="sm" color={networkStatus.online ? 'teal' : 'red'}>
+            <Text size="sm" c={networkStatus.online ? 'teal' : 'red'}>
               {networkStatus.online ? 'Online' : 'Offline'}
             </Text>
           </Table.Td>
