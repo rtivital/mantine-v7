@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   PortalProps,
   OptionalPortal,
@@ -19,9 +18,6 @@ import { Dropzone, DropzoneProps, DropzoneVariant, DropzoneStylesNames } from '.
 import classes from './Dropzone.module.css';
 
 export type DropzoneFullScreenStylesNames = DropzoneStylesNames | 'fullScreen';
-export type DropzoneFullScreenCssVariables = {
-  root: '--test';
-};
 
 export interface DropzoneFullScreenProps
   extends BoxProps,
@@ -45,7 +41,6 @@ export type DropzoneFullScreenFactory = Factory<{
   props: DropzoneFullScreenProps;
   ref: HTMLDivElement;
   stylesNames: DropzoneFullScreenStylesNames;
-  vars: DropzoneFullScreenCssVariables;
   variant: DropzoneVariant;
 }>;
 
@@ -60,12 +55,6 @@ const defaultProps: Partial<DropzoneFullScreenProps> = {
   zIndex: getDefaultZIndex('max'),
   withinPortal: true,
 };
-
-const varsResolver = createVarsResolver<DropzoneFullScreenFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
 
 export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props, ref) => {
   const props = useProps('DropzoneFullScreen', defaultProps, _props);
@@ -94,8 +83,6 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props, re
     classNames,
     styles,
     unstyled,
-    vars,
-    varsResolver,
     rootSelector: 'fullScreen',
   });
 

@@ -30,6 +30,7 @@ export * from './data/Combobox.styles-api';
 export * from './data/Container.styles-api';
 export * from './data/Divider.styles-api';
 export * from './data/Drawer.styles-api';
+export * from './data/Dropzone.styles-api';
 export * from './data/Fieldset.styles-api';
 export * from './data/FileInput.styles-api';
 export * from './data/Grid.styles-api';
