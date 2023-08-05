@@ -93,7 +93,7 @@ export interface AppShellProps
   transitionTimingFunction?: React.CSSProperties['transitionTimingFunction'];
 
   /** `z-index` of all associated elements, `200` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** Determines how Navbar/Aside are arranged relative to Header/Footer, `default` by default */
   layout?: 'default' | 'alt';

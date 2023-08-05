@@ -37,7 +37,7 @@ export interface TooltipBaseProps
   multiline?: boolean;
 
   /** Tooltip z-index, `300` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** If set, tooltip element will not be rendered */
   disabled?: boolean;

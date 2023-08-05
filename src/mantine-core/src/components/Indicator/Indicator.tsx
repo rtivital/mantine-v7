@@ -72,7 +72,7 @@ export interface IndicatorProps
   processing?: boolean;
 
   /** Indicator z-index, `200` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 }
 
 export type IndicatorFactory = Factory<{

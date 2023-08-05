@@ -57,7 +57,7 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
   returnFocus?: boolean;
 
   /** `z-index` CSS property of the root element, `200` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
   shadow?: MantineShadow | (string & {});

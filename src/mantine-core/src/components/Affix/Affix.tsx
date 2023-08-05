@@ -22,7 +22,7 @@ export type AffixCssVariables = {
 
 export interface AffixProps extends BoxProps, StylesApiProps<AffixFactory>, ElementProps<'div'> {
   /** Root element `z-index` property, `200` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** Determines whether component should be rendered within portal, `true` by default */
   withinPortal?: boolean;

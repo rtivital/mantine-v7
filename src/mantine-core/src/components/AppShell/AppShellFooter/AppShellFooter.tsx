@@ -25,7 +25,7 @@ export interface AppShellFooterProps
   withBorder?: boolean;
 
   /** Component `z-index`, by default inherited from the `AppShell` */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 }
 
 export type AppShellFooterFactory = Factory<{

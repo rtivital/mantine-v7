@@ -75,7 +75,7 @@ export interface NotificationsProps
   limit?: number;
 
   /** Notifications container z-index, `400` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** Props passed down to the `Portal` component */
   portalProps?: Omit<PortalProps, 'children'>;

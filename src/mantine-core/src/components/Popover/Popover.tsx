@@ -88,7 +88,7 @@ export interface __PopoverProps {
   portalProps?: Omit<PortalProps, 'children'>;
 
   /** Dropdown `z-index`, `300` by default */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: string | number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
