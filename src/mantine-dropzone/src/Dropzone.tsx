@@ -217,7 +217,6 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
     useFsAccessApi,
     getFilesFromEvent,
     validator,
-    variant,
     rejectColor,
     acceptColor,
     ...others
@@ -290,4 +289,7 @@ export const Dropzone = factory<DropzoneFactory>((_props, ref) => {
 });
 
 Dropzone.classes = classes;
-Dropzone.displayName = '@mantine/core/Dropzone';
+Dropzone.displayName = '@mantine/dropzone/Dropzone';
+Dropzone.Accept = DropzoneAccept;
+Dropzone.Idle = DropzoneIdle;
+Dropzone.Reject = DropzoneReject;

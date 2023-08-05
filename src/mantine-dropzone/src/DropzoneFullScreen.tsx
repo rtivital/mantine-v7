@@ -96,6 +96,7 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props, re
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'fullScreen',
   });
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<DropzoneFullScreenFactory>({
@@ -137,14 +138,10 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props, re
   return (
     <OptionalPortal {...portalProps} withinPortal={withinPortal}>
       <Box
-        {...getStyles('fullScreen')}
+        {...getStyles('fullScreen', {
+          style: { opacity: visible ? 1 : 0, pointerEvents: visible ? 'all' : 'none', zIndex },
+        })}
         ref={ref}
-        style={{
-          ...style,
-          opacity: visible ? 1 : 0,
-          pointerEvents: visible ? 'all' : 'none',
-          zIndex,
-        }}
       >
         <Dropzone
           {...others}
@@ -166,6 +163,7 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props, re
   );
 });
 
-DropzoneFullScreen.displayName = '@mantine/core/DropzoneFullScreen';
+DropzoneFullScreen.classes = classes;
+DropzoneFullScreen.displayName = '@mantine/dropzone/DropzoneFullScreen';
 
 export type DropzoneFullScreenType = typeof DropzoneFullScreen;

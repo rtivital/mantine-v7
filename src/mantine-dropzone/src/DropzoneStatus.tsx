@@ -4,12 +4,13 @@ import { isElement, useProps } from '@mantine/core';
 import { DropzoneContextValue, useDropzoneContext } from './Dropzone.context';
 
 export interface DropzoneStatusProps {
-  // eslint-disable-next-line react/no-unused-prop-types
   children: React.ReactNode;
 }
 
+type DropzoneStatusComponent = React.FC<DropzoneStatusProps>;
+
 function createDropzoneStatus(status: keyof DropzoneContextValue) {
-  const Component = (props: DropzoneStatusProps): React.ReactNode => {
+  const Component: DropzoneStatusComponent = (props) => {
     const { children, ...others } = useProps(`Dropzone${upperFirst(status)}`, {}, props);
 
     const ctx = useDropzoneContext();
