@@ -1,55 +1,38 @@
 import React from 'react';
-import { createStyles } from '@mantine/core';
 import { MantineDemo } from '@mantine/ds';
 import { BaseDemo } from './_base';
+import classes from './Dropzone.disabled.module.css';
 
-const code = `
-import { createStyles } from '@mantine/core';
-import { Dropzone } from '@mantine/dropzone';
+const cssCode = `
+.disabled {
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  cursor: not-allowed;
 
-// Add your own disabled styles
-const useStyles = createStyles((theme) => ({
-  disabled: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-    cursor: 'not-allowed',
-
-    '& *': {
-      color: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[5],
-    },
-  },
-}));
-
-function Demo() {
-  const { classes } = useStyles();
-
-  return (
-    <Dropzone disabled className={classes.disabled}>
-      {/* children, see previous demo */}
-    </Dropzone>
-  );
+  & * {
+    color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+  }
 }
 `;
 
-const useStyles = createStyles((theme) => ({
-  disabled: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2],
-    cursor: 'not-allowed',
-
-    '& *': {
-      color: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[5],
-    },
-  },
-}));
+const code = `
+import { Dropzone } from '@mantine/dropzone';
+import classes from './Demo.module.css';
 
 function Demo() {
-  const { classes } = useStyles();
+  return <BaseDemo disabled className={classes.disabled} />;
+}
+`;
+
+function Demo() {
   return <BaseDemo disabled className={classes.disabled} />;
 }
 
 export const disabled: MantineDemo = {
-  type: 'demo',
+  type: 'code',
   component: Demo,
-  code,
+  code: [
+    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+  ],
 };
