@@ -93,6 +93,10 @@ const EXTRA_FILES_PATHS = [
 
   // Carousel
   '../src/mantine-carousel/src/Carousel.tsx',
+
+  // Dropzone
+  '../src/mantine-dropzone/src/Dropzone.tsx',
+  '../src/mantine-dropzone/src/DropzoneFullscreen.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

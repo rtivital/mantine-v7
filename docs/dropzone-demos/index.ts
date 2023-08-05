@@ -1,3 +1,5 @@
+// For some reason next.js cannot handle dropzone demos in @mantine/demos
+
 export { usage } from './Dropzone.demo.usage';
 export { loading } from './Dropzone.demo.loading';
 export { disabled } from './Dropzone.demo.disabled';

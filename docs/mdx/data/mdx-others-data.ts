@@ -42,4 +42,16 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/carousel.mdx',
   },
+
+  Dropzone: {
+    title: 'Dropzone',
+    package: '@mantine/dropzone',
+    slug: '/others/dropzone',
+    props: ['Dropzone'],
+    styles: ['Dropzone'],
+    description: 'Capture files from user with drag and drop',
+    source: 'mantine-dropzone/src',
+    license: 'MIT',
+    docs: 'others/dropzone.mdx',
+  },
 };

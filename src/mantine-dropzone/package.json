@@ -13,7 +13,9 @@
   },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "homepage": "https://mantine.dev/others/dropzone/",
   "repository": {
     "url": "https://github.com/mantinedev/mantine.git",
@@ -36,8 +38,8 @@
   "peerDependencies": {
     "@mantine/core": "7.0.0-alpha.20",
     "@mantine/hooks": "7.0.0-alpha.20",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "react-dropzone": "14.2.3"

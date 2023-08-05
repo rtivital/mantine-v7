@@ -12,7 +12,9 @@
   },
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "homepage": "https://mantine.dev",
   "repository": {
     "url": "https://github.com/mantinedev/mantine.git",
