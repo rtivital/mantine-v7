@@ -4,7 +4,7 @@ import type { AppShellFactory } from './AppShell';
 export interface AppShellContext {
   getStyles: GetStylesApi<AppShellFactory>;
   withBorder: boolean | undefined;
-  zIndex: string | number;
+  zIndex: string | number | undefined;
   disabled: boolean | undefined;
 }
 

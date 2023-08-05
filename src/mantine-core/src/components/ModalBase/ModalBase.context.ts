@@ -9,7 +9,7 @@ interface ModalBaseContextValue {
   getTitleId(): string;
   getBodyId(): string;
   transitionProps: Partial<TransitionOverride> | undefined;
-  zIndex: string | number;
+  zIndex: string | number | undefined;
 
   opened: boolean;
   onClose(): void;

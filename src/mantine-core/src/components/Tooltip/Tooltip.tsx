@@ -211,7 +211,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
                 style: {
                   ...getStyles('tooltip').style,
                   ...transitionStyles,
-                  zIndex,
+                  zIndex: zIndex as React.CSSProperties['zIndex'],
                   top: tooltip.y ?? 0,
                   left: tooltip.x ?? 0,
                 },

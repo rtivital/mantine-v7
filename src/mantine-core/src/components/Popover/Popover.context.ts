@@ -33,7 +33,7 @@ interface PopoverContext {
   withinPortal: boolean | undefined;
   portalProps?: Omit<PortalProps, 'children'>;
   closeOnEscape: boolean | undefined;
-  zIndex: string | number;
+  zIndex: string | number | undefined;
   radius?: MantineRadius | (string & {}) | number | undefined;
   shadow?: MantineShadow | (string & {}) | undefined;
   onClose?(): void;

@@ -1007,4 +1007,15 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/NumberInput/NumberInput.tsx',
     docs: 'core/number-input.mdx',
   },
+  LoadingOverlay: {
+    title: 'LoadingOverlay',
+    package: '@mantine/core',
+    slug: '/core/loading-overlay',
+    props: ['LoadingOverlay'],
+    styles: ['LoadingOverlay'],
+    description: 'An overlay with centered loader',
+    import: "import { LoadingOverlay } from '@mantine/core';",
+    source: 'mantine-core/src/components/LoadingOverlay/LoadingOverlay.tsx',
+    docs: 'core/loading-overlay.mdx',
+  },
 };
