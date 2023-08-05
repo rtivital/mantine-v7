@@ -47,6 +47,7 @@ export * as InputDemos from './demos/core/Input';
 export * as JsonInputDemos from './demos/core/JsonInput';
 export * as KbdDemos from './demos/core/Kbd';
 export * as LoaderDemos from './demos/core/Loader';
+export * as LoadingOverlayDemos from './demos/core/LoadingOverlay';
 export * as MarkDemos from './demos/core/Mark';
 export * as MenuDemos from './demos/core/Menu';
 export * as ModalDemos from './demos/core/Modal';
