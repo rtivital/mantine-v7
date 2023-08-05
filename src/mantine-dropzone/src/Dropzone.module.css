@@ -59,3 +59,17 @@
     --_dropzone-inner-pointer-events: none;
   }
 }
+
+.fullScreen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--mantine-color-body);
+  display: flex;
+  flex-direction: column;
+  padding: var(--mantine-spacing-xs);
+  transition: opacity 100ms ease;
+
+  & .dropzone {
+    flex: 1;
+  }
+}
