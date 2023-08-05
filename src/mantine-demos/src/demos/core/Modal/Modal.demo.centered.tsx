@@ -29,7 +29,7 @@ function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Authentication" centered>
-        <AuthenticationForm />
+        <AuthenticationForm noPadding noShadow />
       </Modal>
 
       <Button onClick={open}>Open centered Modal</Button>

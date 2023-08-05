@@ -128,20 +128,14 @@ export function AuthenticationForm({
         )}
 
         {error && (
-          <Text color="red" size="sm" mt="sm">
+          <Text c="red" size="sm" mt="sm">
             {error}
           </Text>
         )}
 
         {!noSubmit && (
           <Group justify="space-between" mt="xl">
-            <Anchor
-              component="button"
-              type="button"
-              color="dimmed"
-              onClick={toggleFormType}
-              size="sm"
-            >
+            <Anchor component="button" type="button" c="dimmed" onClick={toggleFormType} size="sm">
               {formType === 'register'
                 ? 'Have an account? Login'
                 : "Don't have an account? Register"}

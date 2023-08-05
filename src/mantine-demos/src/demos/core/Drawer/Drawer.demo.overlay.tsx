@@ -39,7 +39,7 @@ function Demo() {
         title="Authentication"
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       >
-        <AuthenticationForm />
+        <AuthenticationForm noShadow noPadding />
       </Drawer>
 
       <Button onClick={open}>Open drawer</Button>

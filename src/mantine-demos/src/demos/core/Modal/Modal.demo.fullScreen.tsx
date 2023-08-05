@@ -18,6 +18,7 @@ function Demo() {
         onClose={close}
         title="This is a fullscreen modal"
         fullScreen
+        radius={0}
         transitionProps={{ transition: 'fade', duration: 200 }}
       >
         {/* Modal content */}
@@ -39,6 +40,7 @@ function Demo() {
         onClose={close}
         title="This is a fullscreen modal"
         fullScreen
+        radius={0}
         transitionProps={{ transition: 'fade', duration: 200 }}
       >
         <Text mb="xl">
@@ -47,7 +49,7 @@ function Demo() {
           change that with transition prop. Now here is an authentication form used in previous
           examples to see the difference.
         </Text>
-        <AuthenticationForm />
+        <AuthenticationForm noPadding noShadow />
       </Modal>
 
       <Button onClick={open}>Open Modal</Button>

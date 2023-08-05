@@ -29,7 +29,7 @@ function Demo() {
   return (
     <>
       <Drawer opened={opened} onClose={close} title="Authentication">
-        <AuthenticationForm />
+        <AuthenticationForm noShadow noPadding />
       </Drawer>
 
       <Button onClick={open}>Open Drawer</Button>

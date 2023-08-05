@@ -45,7 +45,7 @@ function Demo() {
           blur: 3,
         }}
       >
-        <AuthenticationForm />
+        <AuthenticationForm noShadow noPadding />
       </Modal>
 
       <Button onClick={open}>Open modal</Button>

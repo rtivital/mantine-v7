@@ -29,7 +29,7 @@ function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Authentication">
-        <AuthenticationForm />
+        <AuthenticationForm noShadow noPadding />
       </Modal>
 
       <Button onClick={open}>Open modal</Button>

@@ -40,7 +40,7 @@ function Demo() {
         title="Authentication"
         transitionProps={{ transition: 'rotate-left', duration: 150, timingFunction: 'linear' }}
       >
-        <AuthenticationForm />
+        <AuthenticationForm noShadow noPadding />
       </Drawer>
 
       <Button onClick={open}>Open Drawer</Button>

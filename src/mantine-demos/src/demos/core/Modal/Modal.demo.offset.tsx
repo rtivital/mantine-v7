@@ -29,7 +29,7 @@ function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Authentication" yOffset="1vh" xOffset={0}>
-        <AuthenticationForm />
+        <AuthenticationForm noPadding noShadow />
       </Modal>
 
       <Button onClick={open}>Open modal</Button>

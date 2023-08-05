@@ -30,7 +30,7 @@ function Demo() {
         title="Introduce yourself!"
         size={size}
       >
-        <AuthenticationForm />
+        <AuthenticationForm noPadding noShadow />
       </Modal>
 
       <Group justify="center">{buttons}</Group>
