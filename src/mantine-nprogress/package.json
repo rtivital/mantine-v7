@@ -1,0 +1,33 @@
+{
+  "name": "@mantine/nprogress",
+  "description": "Navigation progress bar",
+  "version": "6.0.17",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./styles.css": "./esm/index.css"
+  },
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "sideEffects": [
+    "*.css"
+  ],
+  "homepage": "https://mantine.dev/others/nprogress/",
+  "repository": {
+    "url": "https://github.com/mantinedev/mantine.git",
+    "type": "git",
+    "directory": "src/mantine-nprogress"
+  },
+  "peerDependencies": {
+    "@mantine/core": "7.0.0-alpha.20",
+    "@mantine/hooks": "7.0.0-alpha.20",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
