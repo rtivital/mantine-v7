@@ -47,7 +47,7 @@ export type DropzoneFullScreenFactory = Factory<{
 const defaultProps: Partial<DropzoneFullScreenProps> = {
   loading: false,
   maxSize: Infinity,
-  activateOnClick: true,
+  activateOnClick: false,
   activateOnDrag: true,
   dragEventsBubbling: true,
   activateOnKeyboard: true,
