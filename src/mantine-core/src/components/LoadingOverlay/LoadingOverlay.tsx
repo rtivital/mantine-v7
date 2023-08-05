@@ -93,6 +93,8 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
     varsResolver,
   });
 
+  const _overlayProps = { ...defaultProps.overlayProps, ...overlayProps };
+
   return (
     <Transition transition="fade" {...transitionProps} mounted={!!visible}>
       {(transitionStyles) => (
@@ -100,7 +102,7 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
           <Loader {...getStyles('loader')} {...loaderProps} />
 
           <Overlay
-            {...overlayProps}
+            {..._overlayProps}
             {...getStyles('overlay')}
             data-light
             unstyled={unstyled}
@@ -108,7 +110,7 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
           />
 
           <Overlay
-            {...overlayProps}
+            {..._overlayProps}
             {...getStyles('overlay')}
             data-dark
             unstyled={unstyled}
