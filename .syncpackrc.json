@@ -15,7 +15,8 @@
         "@mantine/spotlight",
         "@mantine/carousel",
         "@mantine/dropzone",
-        "@mantine/form"
+        "@mantine/form",
+        "@mantine/nprogress"
       ],
       "isIgnored": true
     }
