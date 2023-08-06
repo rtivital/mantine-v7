@@ -2,7 +2,8 @@ import { clamp } from '@mantine/hooks';
 import { createStore, useStore, MantineStore } from '@mantine/store';
 
 function getIntervalProgressValue(currentProgress: number) {
-  let next = 0;
+  let next = 0.5;
+
   if (currentProgress >= 0 && currentProgress <= 20) {
     next = 10;
   } else if (currentProgress >= 20 && currentProgress <= 50) {
@@ -10,7 +11,9 @@ function getIntervalProgressValue(currentProgress: number) {
   } else if (currentProgress >= 50 && currentProgress <= 80) {
     next = 2;
   } else if (currentProgress >= 80 && currentProgress <= 99) {
-    next = 0.5;
+    next = 1;
+  } else if (currentProgress >= 99 && currentProgress <= 100) {
+    next = 0;
   }
 
   return currentProgress + next;
@@ -22,6 +25,7 @@ export interface NprogressState {
   interval: number;
   step: number;
   stepInterval: number;
+  timeouts: number[];
 }
 
 export type NprogressStore = MantineStore<NprogressState>;
@@ -33,6 +37,7 @@ export const createNprogressStore = () =>
     interval: 0,
     step: 1,
     stepInterval: 100,
+    timeouts: [],
   });
 
 export const useNprogress = (store: NprogressStore) => useStore(store);
@@ -45,16 +50,6 @@ export function updateNavigationProgressStateAction(
   store.setState({ ...state, ...update(store.getState()) });
 }
 
-export function incrementNavigationProgressAction(store: NprogressStore) {
-  updateNavigationProgressStateAction((state) => {
-    const nextValue = Math.min(state.progress + state.step, 100);
-    return {
-      progress: Math.min(state.progress + state.step, 100),
-      mounted: nextValue !== 100 && nextValue !== 0,
-    };
-  }, store);
-}
-
 export function decrementNavigationProgressAction(store: NprogressStore) {
   updateNavigationProgressStateAction(
     (state) => ({ progress: Math.max(state.progress - state.step, 0) }),
@@ -63,18 +58,42 @@ export function decrementNavigationProgressAction(store: NprogressStore) {
 }
 
 export function setNavigationProgressAction(value: number, store: NprogressStore) {
-  updateNavigationProgressStateAction(() => ({ progress: clamp(value, 0, 100) }), store);
+  updateNavigationProgressStateAction(
+    () => ({ progress: clamp(value, 0, 100), mounted: true }),
+    store
+  );
 }
 
-export function resetNavigationProgressAction(store: NprogressStore) {
-  updateNavigationProgressStateAction(() => ({ progress: 0, mounted: false }), store);
+export function cleanupNavigationProgressAction(store: NprogressStore) {
+  updateNavigationProgressStateAction((state) => {
+    window.clearInterval(state.interval);
+    state.timeouts.forEach((timeout) => window.clearTimeout(timeout));
+    return { timeouts: [] };
+  }, store);
 }
 
 export function completeNavigationProgressAction(store: NprogressStore) {
-  updateNavigationProgressStateAction(() => ({ progress: 100 }), store);
+  cleanupNavigationProgressAction(store);
+
+  updateNavigationProgressStateAction((state) => {
+    const mountedTimeout = window.setTimeout(() => {
+      updateNavigationProgressStateAction(() => ({ mounted: false }), store);
+    }, 50);
+
+    const resetTimeout = window.setTimeout(() => {
+      updateNavigationProgressStateAction(() => ({ progress: 0 }), store);
+    }, state.stepInterval + 50);
+
+    return { progress: 100, timeouts: [mountedTimeout, resetTimeout] };
+  }, store);
 }
 
 export function startNavigationProgressAction(store: NprogressStore) {
+  updateNavigationProgressStateAction(
+    (s) => ({ progress: getIntervalProgressValue(s.progress), mounted: true }),
+    store
+  );
+
   updateNavigationProgressStateAction((state) => {
     window.clearInterval(state.interval);
 
@@ -96,6 +115,37 @@ export function stopNavigationProgressAction(store: NprogressStore) {
   }, store);
 }
 
+export function resetNavigationProgressAction(store: NprogressStore) {
+  cleanupNavigationProgressAction(store);
+  stopNavigationProgressAction(store);
+  updateNavigationProgressStateAction(() => ({ progress: 0, mounted: false }), store);
+}
+
+export function incrementNavigationProgressAction(store: NprogressStore) {
+  updateNavigationProgressStateAction((state) => {
+    const nextValue = Math.min(state.progress + state.step, 100);
+    const nextMounted = nextValue !== 100 && nextValue !== 0;
+
+    if (!nextMounted) {
+      const timeout = window.setTimeout(
+        () => resetNavigationProgressAction(store),
+        state.stepInterval + 50
+      );
+
+      return {
+        progress: nextValue,
+        mounted: nextMounted,
+        timeouts: [...state.timeouts, timeout],
+      };
+    }
+
+    return {
+      progress: nextValue,
+      mounted: nextMounted,
+    };
+  }, store);
+}
+
 export function createNprogress() {
   const store = createNprogressStore();
   const actions = {
@@ -106,6 +156,7 @@ export function createNprogress() {
     increment: () => incrementNavigationProgressAction(store),
     decrement: () => decrementNavigationProgressAction(store),
     complete: () => completeNavigationProgressAction(store),
+    cleanup: () => cleanupNavigationProgressAction(store),
   };
 
   return [store, actions] as const;
@@ -120,4 +171,5 @@ export const {
   increment: incrementNavigationProgress,
   decrement: decrementNavigationProgress,
   complete: completeNavigationProgress,
+  cleanup: cleanupNavigationProgress,
 } = nprogress;

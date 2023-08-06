@@ -1,62 +1,44 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   OptionalPortal,
   Progress,
-  useMantineTheme,
   getDefaultZIndex,
   MantineColor,
   PortalProps,
+  ElementProps,
 } from '@mantine/core';
-import { useDidUpdate, useReducedMotion } from '@mantine/hooks';
 import {
   NprogressStore,
   nprogressStore,
-  stopNavigationProgressAction,
   resetNavigationProgressAction,
   useNprogress,
 } from './nprogress.store';
+import classes from './NavigationProgress.module.css';
 
-export interface NavigationProgressProps {
+export interface NavigationProgressProps extends ElementProps<'div'> {
+  /** Component store, controls state */
   store?: NprogressStore;
 
-  /** The default progress */
+  /** Initial progress value, `0` by default */
   initialProgress?: number;
 
-  /** Key of theme.colors of any other valid CSS color */
+  /** Key of `theme.colors` of any other valid CSS color, `theme.primaryColor` by default */
   color?: MantineColor;
 
-  /** Height of the progressbar */
+  /** Controls height of the progress bar */
   size?: number;
 
-  /** Called when the progressbar reaches 100% */
-  onFinish?(): void;
-
-  /** Determines whether progress should be automatically reset when 100% is reached */
-  autoReset?: boolean;
-
-  /** Step interval in ms */
+  /** Step interval in ms, `500` by default */
   stepInterval?: number;
 
-  /** Transition duration in ms */
-  transitionDuration?: number;
-
-  /** Number of ms that should elapse before progressbar is hidden after reaching 100% */
-  exitTimeout?: number;
-
-  /** Exit transition duration in ms */
-  exitTransitionDuration?: number;
-
-  /** Determines whether progressbar should be rendered within Portal, defaults to true */
+  /** Determines whether the progress bar should be rendered within `Portal`, `true` by default */
   withinPortal?: boolean;
 
-  /** Props to pass down to the portal when withinPortal is true */
+  /** Props to pass down to the `Portal` when `withinPortal` is `true` */
   portalProps?: Omit<PortalProps, 'children' | 'withinPortal'>;
 
-  /** Progressbar z-index */
+  /** Progressbar z-index, `9999` by default */
   zIndex?: React.CSSProperties['zIndex'];
-
-  /** aria-label for `Progress`*/
-  progressLabel?: string;
 }
 
 export function NavigationProgress({
@@ -64,104 +46,39 @@ export function NavigationProgress({
   color,
   size = 3,
   stepInterval = 500,
-  transitionDuration = 300,
-  exitTimeout = 500,
-  exitTransitionDuration = 400,
-  onFinish,
-  autoReset = false,
   withinPortal = true,
   portalProps,
   zIndex = getDefaultZIndex('max'),
-  progressLabel,
   store = nprogressStore,
+  ...others
 }: NavigationProgressProps) {
-  const theme = useMantineTheme();
-  const shouldReduceMotion = useReducedMotion();
-  const reducedMotion = theme.respectReducedMotion ? shouldReduceMotion : false;
-  const [mounted, setMounted] = useState(true);
-  const resetRef = useRef<number | null>();
-  const unmountRef = useRef<number | null>();
-
   store.initialize({
     mounted: false,
     progress: initialProgress,
     interval: -1,
     step: 1,
     stepInterval,
+    timeouts: [],
   });
 
   const state = useNprogress(store);
 
-  const cancelUnmount = () => {
-    if (unmountRef.current) {
-      window.clearTimeout(unmountRef.current);
-      unmountRef.current = null;
-    }
-    if (resetRef.current) {
-      window.clearTimeout(resetRef.current);
-      resetRef.current = null;
-    }
-
-    setMounted(true);
-  };
-
-  useDidUpdate(() => {
-    if (state.progress >= 100) {
-      stopNavigationProgressAction(store);
-      onFinish?.();
-
-      unmountRef.current = window.setTimeout(() => {
-        unmountRef.current = null;
-        setMounted(false);
-
-        if (autoReset) {
-          resetRef.current = window.setTimeout(
-            () => {
-              resetRef.current = null;
-              resetNavigationProgressAction(store);
-            },
-            reducedMotion ? 0 : exitTransitionDuration
-          );
-        }
-      }, exitTimeout);
-    } else if (!mounted) {
-      cancelUnmount();
-    }
-  }, [state.progress]);
+  useEffect(() => () => resetNavigationProgressAction(store), [store]);
 
   return (
     <OptionalPortal {...portalProps} withinPortal={withinPortal}>
-      {state.mounted && (
-        <Progress
-          radius={0}
-          value={state.progress}
-          size={size}
-          color={color}
-          styles={{
-            root: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              zIndex,
-              backgroundColor: 'transparent',
-              transitionProperty: 'opacity',
-              transitionTimingFunction: 'ease',
-              transitionDuration: `${
-                reducedMotion || state.progress !== 100 ? 0 : exitTransitionDuration
-              }ms`,
-              opacity: mounted ? 1 : 0,
-            },
-            section: {
-              position: 'relative',
-              transitionProperty: 'width',
-              transitionTimingFunction: 'ease',
-              transitionDuration: `${reducedMotion || !mounted ? 0 : transitionDuration}ms`,
-            },
-          }}
-          aria-label={progressLabel}
-        />
-      )}
+      <Progress
+        radius={0}
+        value={state.progress}
+        size={size}
+        color={color}
+        classNames={classes}
+        data-mounted={state.mounted || undefined}
+        __vars={{ '--nprogress-z-index': zIndex?.toString() }}
+        {...others}
+      />
     </OptionalPortal>
   );
 }
+
+NavigationProgress.displayName = '@mantine/nprogress/NavigationProgress';
