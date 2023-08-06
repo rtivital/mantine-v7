@@ -1,7 +1,7 @@
 {
   "name": "@mantine/dropzone",
   "description": "Dropzone component built with Mantine theme and components",
-  "version": "7.0.0-alpha.20",
+  "version": "7.0.0-alpha.21",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -36,8 +36,8 @@
     "upload"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.20",
-    "@mantine/hooks": "7.0.0-alpha.20",
+    "@mantine/core": "7.0.0-alpha.21",
+    "@mantine/hooks": "7.0.0-alpha.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

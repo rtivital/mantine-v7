@@ -1,7 +1,7 @@
 {
   "name": "@mantine/carousel",
   "description": "Embla based carousel",
-  "version": "7.0.0-alpha.20",
+  "version": "7.0.0-alpha.21",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -37,8 +37,8 @@
     "slick"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.20",
-    "@mantine/hooks": "7.0.0-alpha.20",
+    "@mantine/core": "7.0.0-alpha.21",
+    "@mantine/hooks": "7.0.0-alpha.21",
     "embla-carousel-react": "^7.0.0",
     "react": "^18.2.0"
   },
