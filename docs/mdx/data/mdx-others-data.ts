@@ -65,4 +65,16 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/nprogress.mdx',
   },
+
+  CodeHighlight: {
+    title: 'CodeHighlight',
+    package: '@mantine/code-highlight',
+    slug: '/others/code-highlight',
+    props: ['CodeHighlight', 'CodeHighlightTabs', 'InlineCodeHighlight'],
+    styles: ['CodeHighlight', 'CodeHighlightTabs', 'InlineCodeHighlight'],
+    description: 'Highlight code with highlight.js',
+    source: 'mantine-code-highlight/src',
+    license: 'MIT',
+    docs: 'others/code-highlight.mdx',
+  },
 };

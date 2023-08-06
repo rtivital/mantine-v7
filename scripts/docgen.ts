@@ -98,6 +98,11 @@ const EXTRA_FILES_PATHS = [
   '../src/mantine-dropzone/src/Dropzone.tsx',
   '../src/mantine-dropzone/src/DropzoneFullscreen.tsx',
 
+  // CodeHighlight
+  '../src/mantine-code-highlight/src/CodeHighlight.tsx',
+  '../src/mantine-code-highlight/src/CodeHighlightTabs.tsx',
+  '../src/mantine-code-highlight/src/InlineCodeHighlight.tsx',
+
   // Nprogress
   '../src/mantine-nprogress/src/NavigationProgress.tsx',
 ];

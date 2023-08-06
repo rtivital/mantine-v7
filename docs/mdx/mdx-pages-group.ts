@@ -293,6 +293,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'others',
     pages: [
+      MDX_DATA.CodeHighlight,
       MDX_DATA.Notifications,
       MDX_DATA.Spotlight,
       MDX_DATA.Carousel,
