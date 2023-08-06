@@ -92,6 +92,10 @@
   version "0.0.0"
   uid ""
 
+"@mantine/nprogress@link:../src/mantine-nprogress":
+  version "0.0.0"
+  uid ""
+
 "@mantine/spotlight@link:../src/mantine-spotlight":
   version "0.0.0"
   uid ""

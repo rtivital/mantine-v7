@@ -28,6 +28,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@mantine/store": "7.0.0-alpha.20"
+  },
   "devDependencies": {}
 }

@@ -14,6 +14,7 @@
     "@mantine/carousel": "link:../src/mantine-carousel",
     "@mantine/code-highlight": "link:../src/mantine-code-highlight",
     "@mantine/dropzone": "link:../src/mantine-dropzone",
+    "@mantine/nprogress": "link:../src/mantine-nprogress",
     "@mantine/colors-generator": "link:../src/mantine-colors-generator",
     "@mantine/core": "link:../src/mantine-core",
     "@mantine/demos": "link:../src/mantine-demos",

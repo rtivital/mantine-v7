@@ -54,4 +54,15 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/dropzone.mdx',
   },
+
+  Nprogress: {
+    title: 'NavigationProgress',
+    package: '@mantine/nprogress',
+    slug: '/others/nprogress',
+    props: ['NavigationProgress'],
+    description: 'Navigation progress bar',
+    source: 'mantine-nprogress/src',
+    license: 'MIT',
+    docs: 'others/nprogress.mdx',
+  },
 };

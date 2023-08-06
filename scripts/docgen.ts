@@ -97,6 +97,9 @@ const EXTRA_FILES_PATHS = [
   // Dropzone
   '../src/mantine-dropzone/src/Dropzone.tsx',
   '../src/mantine-dropzone/src/DropzoneFullscreen.tsx',
+
+  // Nprogress
+  '../src/mantine-nprogress/src/NavigationProgress.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

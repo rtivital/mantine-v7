@@ -34,6 +34,7 @@
     "@mantine/ds": "7.0.0-alpha.20",
     "@mantine/notifications": "7.0.0-alpha.20",
     "@mantine/dropzone": "7.0.0-alpha.20",
+    "@mantine/nprogress": "7.0.0-alpha.20",
     "@mantine/spotlight": "7.0.0-alpha.20",
     "@mantine/carousel": "7.0.0-alpha.20",
     "@tabler/icons-react": "^2.29.0",
