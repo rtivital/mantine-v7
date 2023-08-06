@@ -1,0 +1,18 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9595],{63335:function(e,n,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/hooks/use-focus-return",function(){return o(78164)}])},78164:function(e,n,o){"use strict";o.r(n);var t=o(85893),s=o(11151),c=o(34940),r=o(61240),u=o(14874);let i=(0,c.A)(r.us.useFocusReturn);function l(e){let n=Object.assign({h2:"h2",p:"p",code:"code",a:"a",pre:"pre"},(0,s.ah)(),e.components),{Demo:o}=n;return o||function(e,n){throw Error("Expected "+(n?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Demo",!0),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(n.h2,{id:"usage",children:"Usage"}),"\n",(0,t.jsxs)(n.p,{children:[(0,t.jsx)(n.code,{children:"use-focus-return"})," automatically returns focus to the last focused element when a given condition is met.\nFor example, it is used in ",(0,t.jsx)(n.a,{href:"/core/modal/",children:"Modal"})," component to restore focus after the modal was closed."]}),"\n",(0,t.jsxs)(n.p,{children:["Close the modal with the ",(0,t.jsx)(n.code,{children:"Escape"})," key and see how focus returns to the button after the modal closes:"]}),"\n",(0,t.jsx)(o,{data:u.j,demoProps:{toggle:!0}}),"\n",(0,t.jsxs)(n.p,{children:["In most cases, you should use this hook with ",(0,t.jsx)(n.a,{href:"/hooks/use-focus-trap/",children:"use-focus-trap"}),"."]}),"\n",(0,t.jsx)(n.pre,{children:(0,t.jsx)(n.code,{className:"language-tsx",children:"useFocusReturn({\n  // Is region with focus trap active?\n  // When it activates hook saves document.activeElement to the internal state\n  // and focuses this element once focus trap is deactivated\n  opened: false,\n\n  // Determines whether focus should be returned automatically, true by default\n  shouldReturnFocus: true,\n});\n"})}),"\n",(0,t.jsxs)(n.p,{children:["If ",(0,t.jsx)(n.code,{children:"shouldReturnFocus"})," option is set to ",(0,t.jsx)(n.code,{children:"false"})," you can call returned function to focus last active element:"]}),"\n",(0,t.jsx)(n.pre,{children:(0,t.jsx)(n.code,{className:"language-tsx",children:"const returnFocus = useFocusReturn({\n  opened: false,\n  shouldReturnFocus: false,\n});\n\n// ... later\nreturnFocus();\n"})}),"\n",(0,t.jsx)(n.h2,{id:"definition",children:"Definition"}),"\n",(0,t.jsx)(n.pre,{children:(0,t.jsx)(n.code,{className:"language-tsx",children:"function useFocusReturn(options: { opened: boolean; shouldReturnFocus?: boolean }): () => void;\n"})})]})}n.default=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return(0,t.jsx)(i,Object.assign({},e,{children:(0,t.jsx)(l,e)}))}},14874:function(e,n,o){"use strict";o.d(n,{j:function(){return l}});var t=o(67294),s=o(31017),c=o(55899),r=o(78901),u=o(20574);let i=`
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+
+function Demo() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  return (
+    <>
+      <Modal opened={opened} onClose={close} title="Authentication">
+        {/* Modal content */}
+      </Modal>
+
+      <Button onClick={open}>Open modal</Button>
+    </>
+  );
+}
+`,l={type:"code",code:i,centered:!0,component:function(){let[e,{open:n,close:o}]=(0,r.q)(!1);return t.createElement(t.Fragment,null,t.createElement(s.u,{opened:e,onClose:o,title:"Authentication"},t.createElement(u._,{noShadow:!0,noPadding:!0})),t.createElement(c.z,{onClick:n},"Open modal"))}}}},function(e){e.O(0,[4940,1757,7252,9774,2888,179],function(){return e(e.s=63335)}),_N_E=e.O()}]);
