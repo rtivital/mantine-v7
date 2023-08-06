@@ -21,7 +21,10 @@ export type TitleCssVariables = {
   root: '--title-fw' | '--title-lh' | '--title-fz';
 };
 
-export interface TitleProps extends BoxProps, StylesApiProps<TitleFactory>, ElementProps<'h1'> {
+export interface TitleProps
+  extends BoxProps,
+    StylesApiProps<TitleFactory>,
+    ElementProps<'h1', 'color'> {
   /** Determines which tag will be used (h1-h6), controls `font-size` style if `size` prop is not set, `1` by default */
   order?: TitleOrder;
 
