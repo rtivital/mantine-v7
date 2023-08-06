@@ -25,6 +25,7 @@
     { "path": "../mantine-hooks" },
     { "path": "../mantine-ds" },
     { "path": "../mantine-notifications" },
+    { "path": "../mantine-code-highlight" },
     { "path": "../mantine-dropzone" },
     { "path": "../mantine-nprogress" },
     { "path": "../mantine-styles-api" },

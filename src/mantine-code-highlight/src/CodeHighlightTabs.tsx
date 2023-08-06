@@ -248,7 +248,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
         mod={{ hidden: _expanded }}
         onClick={() => setExpanded(true)}
       >
-        Expand code
+        {expandCodeLabel}
       </UnstyledButton>
     </Box>
   );
