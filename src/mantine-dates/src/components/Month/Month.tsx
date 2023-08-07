@@ -196,13 +196,11 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     __preventFocus,
     __stopPropagation,
     withCellSpacing,
-    size,
-    variant,
     ...others
   } = props;
 
   const getStyles = useStyles<MonthFactory>({
-    name: 'Month',
+    name: __staticSelector || 'Month',
     classes,
     props,
     className,
@@ -212,6 +210,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'month',
   });
 
   const ctx = useDatesContext();
@@ -307,4 +306,5 @@ export const Month = factory<MonthFactory>((_props, ref) => {
   );
 });
 
+Month.classes = classes;
 Month.displayName = '@mantine/dates/Month';

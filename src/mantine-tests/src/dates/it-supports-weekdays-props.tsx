@@ -1,9 +1,10 @@
 import 'dayjs/locale/ru';
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import dayjs from 'dayjs';
 // @ts-ignore
 import { DatesProvider } from '@mantine/dates';
+import { render } from '../render';
 
 export function expectWeekdaysNames(names: string[]) {
   expect(screen.getAllByRole('columnheader').map((th) => th.textContent)).toStrictEqual(names);

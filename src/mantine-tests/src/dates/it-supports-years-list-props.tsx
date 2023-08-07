@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import React from 'react';
-import { render } from '@testing-library/react';
 // @ts-ignore
 import { DatesProvider } from '@mantine/dates';
+import { render } from '../render';
 
 interface Options {
   component: React.ComponentType<any>;

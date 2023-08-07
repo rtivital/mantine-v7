@@ -213,10 +213,10 @@ export function itSupportsMonthProps(options: Options, name = 'supports month pr
       const days = getDays(container);
 
       expect(days).toHaveLength(35);
-      expect(days[0]).toHaveStyle({ display: 'none' });
-      expect(days[6]).not.toHaveStyle({ display: 'none' });
-      expect(days[33]).not.toHaveStyle({ display: 'none' });
-      expect(days[34]).toHaveStyle({ display: 'none' });
+      expect(days[0]).toHaveAttribute('data-hidden');
+      expect(days[6]).not.toHaveAttribute('data-hidden');
+      expect(days[33]).not.toHaveAttribute('data-hidden');
+      expect(days[34]).toHaveAttribute('data-hidden');
     });
 
     it('supports hideWeekdays', () => {
