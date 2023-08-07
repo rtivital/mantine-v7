@@ -11,7 +11,7 @@ export function useMantineTheme() {
   const ctx = useContext(MantineThemeContext);
   if (!ctx) {
     throw new Error(
-      '@mantine/core: MantineThemeProvider is not found in component tree, make sure you have it in your app'
+      '@mantine/core: MantineProvider was not found in component tree, make sure you have it in your app'
     );
   }
 
