@@ -1,0 +1,26 @@
+.day {
+  width: var(--day-size, rem(36px));
+  height: var(--day-size, rem(36px));
+  font-size: var(--day-fz, var(--mantine-font-size-sm));
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  user-select: var(--_day-user-select, none);
+  cursor: var(--_day-cursor, pointer);
+  background-color: var(--_day-bg, transparent);
+
+  @mixin hover {
+    @mixin light {
+      --_day-bg: var(--mantine-color-gray-0);
+    }
+
+    @mixin dark {
+      --_day-bg: var(--mantine-color-dark-5);
+    }
+  }
+
+  &[data-static] {
+    --_day-user-select: all;
+    --_day-cursor: default;
+  }
+}
