@@ -59,6 +59,7 @@
     --_day-opacity: 0.5;
   }
 
+  &:disabled,
   &[data-disabled] {
     --_day-color: var(--mantine-color-dimmed);
     --_day-cursor: not-allowed;

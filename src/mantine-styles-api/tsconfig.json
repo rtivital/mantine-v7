@@ -15,6 +15,7 @@
       "@mantine/hooks": ["../mantine-hooks/src"],
       "@mantine/notifications": ["../mantine-notifications/src"],
       "@mantine/dropzone": ["../mantine-dropzone/src"],
+      "@mantine/dates": ["../mantine-dates/src"],
       "@mantine/spotlight": ["../mantine-spotlight/src"]
     }
   },
@@ -23,6 +24,7 @@
     { "path": "../mantine-hooks" },
     { "path": "../mantine-notifications" },
     { "path": "../mantine-spotlight" },
+    { "path": "../mantine-dates" },
     { "path": "../mantine-dropzone" },
     { "path": "../mantine-code-highlight" }
   ]
