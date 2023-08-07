@@ -35,6 +35,25 @@ import { itSupportsInputWrapperElements } from './inputs/it-supports-input-wrapp
 import { itHandlesCheckboxState } from './inputs/it-handles-checkbox-state';
 import { itConnectsLabelAndInput } from './inputs/it-connects-label-and-input';
 
+// Dates
+import { itSupportsWeekdaysProps } from './dates/it-supports-weekdays-props';
+import { itSupportsMonthProps } from './dates/it-supports-month-props';
+import { itSupportsHeaderProps } from './dates/it-support-header-props';
+import { itSupportsGetDayRef } from './dates/it-supports-get-day-ref';
+import { itSupportsWithNextPrevious } from './dates/it-supports-with-next-previous';
+import { itSupportsOnDayKeydown } from './dates/it-supports-on-day-keydown';
+import { itSupportsGetControlRef } from './dates/it-supports-get-control-ref';
+import { itSupportsMonthsListProps } from './dates/it-supports-months-list-props';
+import { itSupportsYearsListProps } from './dates/it-supports-years-list-props';
+import { itSupportsOnControlKeydown } from './dates/it-supports-on-control-key-down';
+import { itSupportsOnControlClick } from './dates/it-supports-on-control-click';
+import { itSupportsOnDayClick } from './dates/it-supports-on-day-click';
+import { itHandlesMonthKeyboardEvents } from './dates/it-handles-month-keyboard-events';
+import { itHandlesControlsKeyboardEvents } from './dates/it-handles-controls-keyboard-events';
+import { itSupportsOnControlMouseEnter } from './dates/it-supports-on-control-mouse-enter';
+import { itSupportsClearableProps } from './dates/it-supports-clearable-props';
+import { itSupportsDateInputProps } from './dates/it-supports-date-input-props';
+
 // High level tests
 import { itSupportsSystemProps } from './it-supports-system-props';
 import { itSupportsInputWrapperProps } from './inputs/it-supports-input-wrapper-props';
@@ -78,6 +97,26 @@ export const tests = {
   itSupportsInputWrapperProps,
   itSupportsInputProps,
 
+  dates: {
+    itSupportsWeekdaysProps,
+    itSupportsMonthProps,
+    itSupportsHeaderProps,
+    itSupportsGetDayRef,
+    itSupportsWithNextPrevious,
+    itSupportsOnDayKeydown,
+    itSupportsGetControlRef,
+    itSupportsMonthsListProps,
+    itSupportsYearsListProps,
+    itSupportsOnControlKeydown,
+    itSupportsOnControlClick,
+    itSupportsOnDayClick,
+    itHandlesMonthKeyboardEvents,
+    itHandlesControlsKeyboardEvents,
+    itSupportsOnControlMouseEnter,
+    itSupportsClearableProps,
+    itSupportsDateInputProps,
+  },
+
   axe,
 };
 
@@ -87,5 +126,7 @@ export { patchConsoleError } from './patch-console-error';
 export { createContextContainer } from './create-context-container';
 export { inputDefaultProps, inputStylesApiSelectors } from './inputs/inputs-test-props';
 export * from './queries';
+export * from './dates/date-input-test-helpers';
 export { screen } from '@testing-library/react';
+export { expectWeekdaysNames } from './dates/it-supports-weekdays-props';
 export { userEvent };
