@@ -1,26 +1,108 @@
+.month {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.monthCell {
+  padding: var(--_month-cell-padding, 0);
+
+  &[data-with-spacing] {
+    --_month-cell-padding: rem(0.5px);
+  }
+}
+
+.weekday {
+  color: var(--mantine-color-dimmed);
+  font-weight: normal;
+  font-size: var(--month-fz);
+  text-transform: capitalize;
+  padding-bottom: calc(var(--month-spacing) / 2);
+}
+
 .day {
   width: var(--day-size, rem(36px));
   height: var(--day-size, rem(36px));
   font-size: var(--day-fz, var(--mantine-font-size-sm));
-  display: inline-flex;
+  display: var(--_day-display, inline-flex);
   justify-content: center;
   align-items: center;
   user-select: var(--_day-user-select, none);
   cursor: var(--_day-cursor, pointer);
   background-color: var(--_day-bg, transparent);
+  border-radius: var(--_day-radius, var(--mantine-radius-default));
+  color: var(--_day-color, var(--mantine-color-text));
+  opacity: var(--_day-opacity, 1);
 
   @mixin hover {
-    @mixin light {
-      --_day-bg: var(--mantine-color-gray-0);
-    }
+    &:not([data-static], [data-disabled]) {
+      @mixin light {
+        --_day-bg: var(--mantine-color-gray-0);
+      }
 
-    @mixin dark {
-      --_day-bg: var(--mantine-color-dark-5);
+      @mixin dark {
+        --_day-bg: var(--mantine-color-dark-5);
+      }
     }
   }
 
   &[data-static] {
-    --_day-user-select: all;
+    --_day-user-select: auto;
     --_day-cursor: default;
+  }
+
+  &[data-weekend] {
+    --_day-color: var(--mantine-color-red-6);
+  }
+
+  &[data-outside] {
+    --_day-color: var(--mantine-color-dimmed);
+    --_day-opacity: 0.5;
+  }
+
+  &[data-disabled] {
+    --_day-color: var(--mantine-color-dimmed);
+    --_day-cursor: not-allowed;
+  }
+
+  &[data-hidden] {
+    --_day-display: none;
+  }
+
+  &[data-selected] {
+    --_day-bg: var(--day-selected-bg);
+    --_day-color: var(--day-selected-color);
+
+    @mixin hover {
+      [data-mantine-color-scheme] & {
+        --_day-bg: var(--day-selected-bg-hover);
+      }
+    }
+  }
+
+  &[data-in-range] {
+    --_day-bg: var(--day-range-bg);
+    --_day-radius: 0;
+
+    @mixin hover {
+      [data-mantine-color-scheme] & {
+        --_day-bg: var(--day-range-bg-hover);
+      }
+    }
+  }
+
+  &[data-first-in-range] {
+    --_day-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
+
+    @mixin rtl {
+      --_day-radius: 0 var(--mantine-radius-default) var(--mantine-radius-default) 0;
+    }
+  }
+
+  &[data-last-in-range] {
+    --_day-radius: 0 var(--mantine-radius-default) var(--mantine-radius-default) 0;
+
+    @mixin rtl {
+      --_day-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
+    }
   }
 }

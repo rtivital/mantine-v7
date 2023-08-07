@@ -10,6 +10,8 @@ import {
   createVarsResolver,
   Factory,
   MantineSize,
+  getFontSize,
+  getSpacing,
 } from '@mantine/core';
 import dayjs from 'dayjs';
 import { ControlKeydownPayload, DayOfWeek } from '../../types';
@@ -36,7 +38,14 @@ export type MonthStylesNames =
   | 'monthCell';
 
 export type MonthCssVariables = {
-  root: '--test';
+  month:
+    | '--month-fz'
+    | '--month-spacing'
+    | '--day-selected-bg'
+    | '--day-selected-bg-hover'
+    | '--day-selected-color'
+    | '--day-range-bg'
+    | '--day-range-bg-hover';
 };
 
 export interface MonthSettings {
@@ -130,11 +139,31 @@ const defaultProps: Partial<MonthProps> = {
   withCellSpacing: true,
 };
 
-const varsResolver = createVarsResolver<MonthFactory>(() => ({
-  root: {
-    '--test': 'test',
-  },
-}));
+const varsResolver = createVarsResolver<MonthFactory>((theme, { size }) => {
+  const selectedColors = theme.variantColorResolver({
+    color: theme.primaryColor,
+    theme,
+    variant: 'filled',
+  });
+
+  const rangeColors = theme.variantColorResolver({
+    color: theme.primaryColor,
+    theme,
+    variant: 'light',
+  });
+
+  return {
+    month: {
+      '--month-fz': getFontSize(size),
+      '--month-spacing': getSpacing(size),
+      '--day-selected-bg': selectedColors.background,
+      '--day-selected-color': selectedColors.color,
+      '--day-selected-bg-hover': selectedColors.hover,
+      '--day-range-bg': rangeColors.hover,
+      '--day-range-bg-hover': rangeColors.background,
+    },
+  };
+});
 
 export const Month = factory<MonthFactory>((_props, ref) => {
   const props = useProps('Month', defaultProps, _props);
