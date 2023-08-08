@@ -20,6 +20,10 @@ export function MdxPageHeader({ meta }: MdxPageHeaderProps) {
   const hasLinks = !!(meta.import || meta.source);
   const withTitle = !!meta.title;
 
+  if (meta.hideHeader) {
+    return null;
+  }
+
   if (!hasLinks && !withTabs && !meta.release && !withTitle) {
     return null;
   }

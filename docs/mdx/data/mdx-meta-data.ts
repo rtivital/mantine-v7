@@ -13,6 +13,7 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
     slug: '/about',
     search: 'Browser support, releases cycle, previous versions documentation',
     hideSiblings: true,
+    hideHeader: true,
   },
 
   GettingStarted: {
@@ -21,13 +22,7 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
     search: 'Get started with Mantine',
     hideInSearch: true,
     hideSiblings: true,
-  },
-
-  Maintainers: {
-    title: 'Become a maintainer',
-    slug: '/maintainers',
-    hideInSearch: true,
-    hideSiblings: true,
+    hideHeader: true,
   },
 
   Overview: {
@@ -35,6 +30,7 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
     slug: '/overview',
     search: 'Overview of Mantine components API',
     hideSiblings: true,
+    hideHeader: true,
   },
 
   Contribute: {
@@ -42,6 +38,7 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
     slug: '/contribute',
     search: 'Learn how to contribute to Mantine',
     hideSiblings: true,
+    hideHeader: true,
   },
 
   Changelog700: {
@@ -54,5 +51,6 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
   PreviousChangelogs: {
     title: 'Previous versions',
     slug: '/changelog/previous-versions',
+    hideHeader: true,
   },
 };

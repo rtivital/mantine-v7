@@ -58,6 +58,9 @@ export interface Frontmatter {
 
   /** Determines whether siblings should be hidden */
   hideSiblings?: boolean;
+
+  /** Determines whether page header should be hidden */
+  hideHeader?: boolean;
 }
 
 export interface MdxContent {
