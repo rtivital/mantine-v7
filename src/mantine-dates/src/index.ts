@@ -24,4 +24,4 @@ export * from './components/PickerControl';
 // export * from './components/YearLevelGroup';
 // export * from './components/YearPicker';
 // export * from './components/YearPickerInput';
-// export * from './components/YearsList';
+export * from './components/YearsList';

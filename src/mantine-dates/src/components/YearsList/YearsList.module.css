@@ -1,0 +1,90 @@
+.yearsList {
+  --yl-control-size-xs: rem(30px);
+  --yl-control-size-sm: rem(36px);
+  --yl-control-size-md: rem(42px);
+  --yl-control-size-lg: rem(48px);
+  --yl-control-size-xl: rem(54px);
+
+  border-collapse: collapse;
+  border-width: 0;
+}
+
+.yearsListCell {
+  padding: var(--_cell-padding, 0);
+
+  &[data-with-spacing] {
+    --_cell-padding: rem(0.5px);
+  }
+}
+
+.yearsListControl {
+  font-size: var(--yl-fz);
+  height: var(--yl-control-size);
+  width: calc((var(--yl-control-size) * 7) / 3 + rem(1.5px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: var(--_control-cursor, pointer);
+  background-color: var(--_control-bg, transparent);
+  color: var(--_control-color, var(--mantine-color-text));
+  opacity: var(--_control-opacity, 1);
+  border-radius: var(--_control-radius, var(--mantine-radius-default));
+
+  @mixin hover {
+    &:not([data-disabled]) {
+      @mixin light {
+        --_control-bg: var(--mantine-color-gray-0);
+      }
+
+      @mixin dark {
+        --_control-bg: var(--mantine-color-dark-5);
+      }
+    }
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    --_control-color: var(--mantine-color-dimmed);
+    --_control-cursor: not-allowed;
+    --_control-opacity: 0.5;
+  }
+
+  &[data-selected] {
+    --_control-bg: var(--yl-control-selected-bg);
+    --_control-color: var(--yl-control-selected-color);
+
+    @mixin hover {
+      [data-mantine-color-scheme] & {
+        --_control-bg: var(--yl-control-selected-bg-hover);
+      }
+    }
+  }
+
+  &[data-in-range] {
+    --_control-bg: var(--yl-control-range-bg);
+    --_control-radius: 0;
+
+    @mixin hover {
+      [data-mantine-color-scheme] & {
+        --_control-bg: var(--yl-control-range-bg-hover);
+      }
+    }
+  }
+
+  &[data-first-in-range] {
+    --_control-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
+
+    @mixin rtl {
+      --_control-radius: 0 var(--mantine-radius-default) var(--mantine-radius-default) 0;
+    }
+  }
+
+  &[data-last-in-range] {
+    --_control-radius: 0 var(--mantine-radius-default) var(--mantine-radius-default) 0;
+
+    @mixin rtl {
+      --_control-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
+    }
+  }
+}
