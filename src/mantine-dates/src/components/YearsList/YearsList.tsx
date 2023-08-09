@@ -26,15 +26,17 @@ export type YearsListStylesNames =
   | 'yearsListControl'
   | 'yearsList'
   | 'yearsListCell'
-  | 'yearsListRow'
-  | '--yl-control-selected-bg'
-  | '--yl-control-selected-color'
-  | '--yl-control-selected-bg-hover'
-  | '--yl-control-range-bg'
-  | '--yl-control-range-bg-hover';
+  | 'yearsListRow';
 
 export type YearsListCssVariables = {
-  yearsList: '--yl-control-size' | '--yl-fz';
+  yearsList:
+    | '--yl-control-size'
+    | '--yl-fz'
+    | '--yl-control-selected-bg'
+    | '--yl-control-selected-color'
+    | '--yl-control-selected-bg-hover'
+    | '--yl-control-range-bg'
+    | '--yl-control-range-bg-hover';
 };
 
 export interface YearsListSettings extends ControlsGroupSettings {
@@ -129,8 +131,6 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     __onControlMouseEnter,
     __preventFocus,
     __stopPropagation,
-    size,
-    variant,
     withCellSpacing,
     ...others
   } = props;
@@ -146,6 +146,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     unstyled,
     vars,
     varsResolver,
+    rootSelector: 'yearsList',
   });
 
   const ctx = useDatesContext();
@@ -208,4 +209,5 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
   );
 });
 
+YearsList.classes = classes;
 YearsList.displayName = '@mantine/core/YearsList';
