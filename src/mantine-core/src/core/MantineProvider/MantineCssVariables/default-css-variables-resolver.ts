@@ -41,6 +41,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
 
       // Primary colors
       '--mantine-primary-color-filled': `var(--mantine-color-${theme.primaryColor}-filled)`,
+      '--mantine-primary-color-filled-hover': `var(--mantine-color-${theme.primaryColor}-filled-hover)`,
       '--mantine-primary-color-light': `var(--mantine-color-${theme.primaryColor}-light)`,
       '--mantine-primary-color-light-hover': `var(--mantine-color-${theme.primaryColor}-light-hover)`,
       '--mantine-primary-color-light-color': `var(--mantine-color-${theme.primaryColor}-light-color)`,

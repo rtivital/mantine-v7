@@ -6,6 +6,7 @@ export * from './types';
 // export * from './components/DatePicker';
 // export * from './components/DatePickerInput';
 export * from './components/DatesProvider';
+export * from './components/Day';
 // export * from './components/DateTimePicker';
 // export * from './components/DecadeLevel';
 // export * from './components/DecadeLevelGroup';

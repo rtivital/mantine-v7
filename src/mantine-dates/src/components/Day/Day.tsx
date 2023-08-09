@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {
   BoxProps,
@@ -5,18 +6,21 @@ import {
   factory,
   ElementProps,
   useProps,
+  useStyles,
+  createVarsResolver,
   Factory,
-  MantineRadius,
   MantineSize,
   UnstyledButton,
+  getSize,
 } from '@mantine/core';
-import dayjs from 'dayjs';
-import { useMonthContext } from '../Month.context';
+import classes from './Day.module.css';
 
-export interface DayProps
-  extends BoxProps,
-    StylesApiProps<DayFactory>,
-    ElementProps<'button', 'type'> {
+export type DayStylesNames = 'day';
+export type DayCssVariables = {
+  day: '--day-size';
+};
+
+export interface DayProps extends BoxProps, StylesApiProps<DayFactory>, ElementProps<'button'> {
   __staticSelector?: string;
 
   /** Determines which element should be used as root, `'button'` by default, `'div'` if static prop is set */
@@ -24,9 +28,6 @@ export interface DayProps
 
   /** Date that should be displayed */
   date: Date;
-
-  /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
 
   /** Control width and height of the day, `'sm'` by default */
   size?: MantineSize;
@@ -59,13 +60,17 @@ export interface DayProps
 export type DayFactory = Factory<{
   props: DayProps;
   ref: HTMLButtonElement;
-  compound: true;
+  stylesNames: DayStylesNames;
+  vars: DayCssVariables;
 }>;
 
-const defaultProps: Partial<DayProps> = {
-  tabIndex: 0,
-  size: 'sm',
-};
+const defaultProps: Partial<DayProps> = {};
+
+const varsResolver = createVarsResolver<DayFactory>((_, { size }) => ({
+  day: {
+    '--day-size': getSize(size, 'day-size'),
+  },
+}));
 
 export const Day = factory<DayFactory>((_props, ref) => {
   const props = useProps('Day', defaultProps, _props);
@@ -77,7 +82,6 @@ export const Day = factory<DayFactory>((_props, ref) => {
     unstyled,
     vars,
     date,
-    radius,
     disabled,
     __staticSelector,
     weekend,
@@ -89,16 +93,26 @@ export const Day = factory<DayFactory>((_props, ref) => {
     lastInRange,
     hidden,
     static: isStatic,
-    variant,
-    size,
     ...others
   } = props;
 
-  const ctx = useMonthContext();
+  const getStyles = useStyles<DayFactory>({
+    name: __staticSelector || 'Day',
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver,
+    rootSelector: 'day',
+  });
 
   return (
     <UnstyledButton<any>
-      {...ctx.getStyles('day', { className, style })}
+      {...getStyles('day')}
       component={isStatic ? 'div' : 'button'}
       ref={ref}
       disabled={disabled}
@@ -120,4 +134,5 @@ export const Day = factory<DayFactory>((_props, ref) => {
   );
 });
 
+Day.classes = classes;
 Day.displayName = '@mantine/dates/Day';

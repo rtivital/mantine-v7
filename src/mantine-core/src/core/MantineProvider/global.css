@@ -93,6 +93,7 @@ body {
   --mantine-color-white: #fff;
   --mantine-color-black: #000;
   --mantine-primary-color-filled: var(--mantine-color-blue-filled);
+  --mantine-primary-color-filled-hover: var(--mantine-color-blue-filled-hover);
   --mantine-primary-color-light: var(--mantine-color-blue-light);
   --mantine-primary-color-light-hover: var(--mantine-color-blue-light-hover);
   --mantine-primary-color-light-color: var(--mantine-color-blue-light-color);

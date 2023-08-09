@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {
   Box,
@@ -12,10 +13,10 @@ import {
   MantineSize,
   getFontSize,
   getSpacing,
+  useResolvedStylesApi,
 } from '@mantine/core';
-import dayjs from 'dayjs';
 import { ControlKeydownPayload, DayOfWeek } from '../../types';
-import { Day, DayProps } from './Day/Day';
+import { Day, DayProps, DayStylesNames } from '../Day';
 import { MonthProvider } from './Month.context';
 import { getMonthDays } from './get-month-days/get-month-days';
 import { useDatesContext } from '../DatesProvider';
@@ -30,22 +31,15 @@ export type MonthStylesNames =
   | 'month'
   | 'weekday'
   | 'weekdaysRow'
-  | 'day'
   | 'monthRow'
   | 'month'
   | 'monthThead'
   | 'monthTbody'
-  | 'monthCell';
+  | 'monthCell'
+  | DayStylesNames;
 
 export type MonthCssVariables = {
-  month:
-    | '--month-fz'
-    | '--month-spacing'
-    | '--day-selected-bg'
-    | '--day-selected-bg-hover'
-    | '--day-selected-color'
-    | '--day-range-bg'
-    | '--day-range-bg-hover';
+  month: '--month-fz' | '--month-spacing';
 };
 
 export interface MonthSettings {
@@ -83,7 +77,7 @@ export interface MonthSettings {
   weekendDays?: DayOfWeek[];
 
   /** Adds props to Day component based on date */
-  getDayProps?(date: Date): Partial<DayProps>;
+  getDayProps?(date: Date): Omit<Partial<DayProps>, 'classNames' | 'styles' | 'vars'>;
 
   /** Callback function to determine whether the day should be disabled */
   excludeDate?(date: Date): boolean;
@@ -139,31 +133,12 @@ const defaultProps: Partial<MonthProps> = {
   withCellSpacing: true,
 };
 
-const varsResolver = createVarsResolver<MonthFactory>((theme, { size }) => {
-  const selectedColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: 'filled',
-  });
-
-  const rangeColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: 'light',
-  });
-
-  return {
-    month: {
-      '--month-fz': getFontSize(size),
-      '--month-spacing': getSpacing(size),
-      '--day-selected-bg': selectedColors.background,
-      '--day-selected-color': selectedColors.color,
-      '--day-selected-bg-hover': selectedColors.hover,
-      '--day-range-bg': rangeColors.hover,
-      '--day-range-bg-hover': rangeColors.background,
-    },
-  };
-});
+const varsResolver = createVarsResolver<MonthFactory>((_, { size }) => ({
+  month: {
+    '--month-fz': getFontSize(size),
+    '--month-spacing': getSpacing(size),
+  },
+}));
 
 export const Month = factory<MonthFactory>((_props, ref) => {
   const props = useProps('Month', defaultProps, _props);
@@ -196,6 +171,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     __preventFocus,
     __stopPropagation,
     withCellSpacing,
+    size,
     ...others
   } = props;
 
@@ -226,6 +202,12 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     month
   );
 
+  const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<MonthFactory>({
+    classNames,
+    styles,
+    props,
+  });
+
   const rows = dates.map((row, rowIndex) => {
     const cells = row.map((date, cellIndex) => {
       const outside = !isSameMonth(date, month);
@@ -244,9 +226,13 @@ export const Month = factory<MonthFactory>((_props, ref) => {
           data-with-spacing={withCellSpacing || undefined}
         >
           <Day
+            __staticSelector={__staticSelector || 'Month'}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
             data-mantine-stop-propagation={__stopPropagation || undefined}
             renderDay={renderDay}
             date={date}
+            size={size}
             weekend={ctx.getWeekendDays(weekendDays).includes(date.getDay() as DayOfWeek)}
             outside={outside}
             hidden={hideOutsideDates ? outside : false}
@@ -290,7 +276,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
 
   return (
     <MonthProvider value={{ getStyles }}>
-      <Box component="table" {...getStyles('month')} ref={ref} {...others}>
+      <Box component="table" {...getStyles('month')} size={size} ref={ref} {...others}>
         {!hideWeekdays && (
           <thead {...getStyles('monthThead')}>
             <WeekdaysRow
