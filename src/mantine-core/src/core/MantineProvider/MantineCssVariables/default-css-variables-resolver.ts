@@ -32,13 +32,18 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       '--mantine-moz-font-smoothing': theme.fontSmoothing ? 'grayscale' : 'unset',
       '--mantine-color-white': theme.white,
       '--mantine-color-black': theme.black,
-      '--mantine-color-primary': `var(--mantine-color-${theme.primaryColor}-filled)`,
       '--mantine-line-height': theme.lineHeights.md,
       '--mantine-font-family': theme.fontFamily,
       '--mantine-font-family-monospace': theme.fontFamilyMonospace,
       '--mantine-font-family-headings': theme.headings.fontFamily,
       '--mantine-heading-font-weight': theme.headings.fontWeight,
       '--mantine-radius-default': defaultRadius,
+
+      // Primary colors
+      '--mantine-primary-color-filled': `var(--mantine-color-${theme.primaryColor}-filled)`,
+      '--mantine-primary-color-light': `var(--mantine-color-${theme.primaryColor}-light)`,
+      '--mantine-primary-color-light-hover': `var(--mantine-color-${theme.primaryColor}-light-hover)`,
+      '--mantine-primary-color-light-color': `var(--mantine-color-${theme.primaryColor}-light-color)`,
     },
     light: {
       '--mantine-color-text': theme.black,
@@ -70,9 +75,6 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
   assignSizeVariables(result.variables, theme.lineHeights, 'line-height');
   assignSizeVariables(result.variables, theme.shadows, 'shadow');
   assignSizeVariables(result.variables, theme.radius, 'radius');
-
-  result.light['--mantine-color-primary'] = theme.colors[theme.primaryColor][lightPrimaryShade];
-  result.dark['--mantine-color-primary'] = theme.colors[theme.primaryColor][darkPrimaryShade];
 
   keys(theme.colors).forEach((color) => {
     theme.colors[color].forEach((shade, index) => {

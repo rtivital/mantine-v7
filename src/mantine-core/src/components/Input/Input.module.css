@@ -86,13 +86,13 @@
     &[data-variant='default'] {
       --_input-bd: var(--mantine-color-gray-4);
       --_input-bg: var(--mantine-color-white);
-      --_input-bd-focus: var(--mantine-color-primary);
+      --_input-bd-focus: var(--mantine-primary-color-filled);
     }
 
     &[data-variant='filled'] {
       --_input-bd: transparent;
       --_input-bg: var(--mantine-color-gray-1);
-      --_input-bd-focus: var(--mantine-color-primary);
+      --_input-bd-focus: var(--mantine-primary-color-filled);
     }
 
     &[data-variant='unstyled'] {
@@ -109,13 +109,13 @@
     &[data-variant='default'] {
       --_input-bd: var(--mantine-color-dark-4);
       --_input-bg: var(--mantine-color-dark-6);
-      --_input-bd-focus: var(--mantine-color-primary);
+      --_input-bd-focus: var(--mantine-primary-color-filled);
     }
 
     &[data-variant='filled'] {
       --_input-bd: transparent;
       --_input-bg: var(--mantine-color-dark-5);
-      --_input-bd-focus: var(--mantine-color-primary);
+      --_input-bd-focus: var(--mantine-primary-color-filled);
     }
 
     &[data-variant='unstyled'] {

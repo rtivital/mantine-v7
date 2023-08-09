@@ -73,7 +73,7 @@
   }
 
   &[data-selected] {
-    --_action-bg: var(--mantine-color-primary);
+    --_action-bg: var(--mantine-primary-color-filled);
     --_action-color: var(--mantine-color-white);
     --_action-description-color: var(--mantine-color-white);
     --_action-description-opacity: 0.7;

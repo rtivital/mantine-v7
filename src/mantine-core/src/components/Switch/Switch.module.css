@@ -54,7 +54,9 @@
   height: var(--switch-height);
   min-width: var(--switch-width);
   margin: 0;
-  transition: background-color 150ms ease, border-color 150ms ease;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
   appearance: none;
   display: flex;
   align-items: center;
@@ -67,7 +69,7 @@
   color: var(--_switch-color);
 
   .input:focus-visible + & {
-    outline: rem(2px) solid var(--mantine-color-primary);
+    outline: rem(2px) solid var(--mantine-primary-color-filled);
     outline-offset: rem(2px);
   }
 

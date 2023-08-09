@@ -151,7 +151,7 @@
   margin: 0;
 
   &:focus-visible + .label {
-    outline: rem(2px) solid var(--mantine-color-primary);
+    outline: rem(2px) solid var(--mantine-primary-color-filled);
     outline-offset: rem(2px);
   }
 }

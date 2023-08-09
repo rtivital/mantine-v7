@@ -27,7 +27,7 @@
   word-break: break-word;
 
   &[data-combobox-selected] {
-    --_option-bg: var(--mantine-color-primary);
+    --_option-bg: var(--mantine-primary-color-filled);
     --_option-color: var(--mantine-color-white);
   }
 

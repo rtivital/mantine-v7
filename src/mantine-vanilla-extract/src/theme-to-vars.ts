@@ -78,7 +78,7 @@ export function themeToVars(theme: MantineThemeOverride): MantineVars {
     {
       white: 'var(--mantine-color-white)',
       black: 'var(--mantine-color-black)',
-      primary: 'var(--mantine-color-primary)',
+      primary: 'var(--mantine-primary-color-filled)',
       text: 'var(--mantine-color-text)',
       body: 'var(--mantine-color-body)',
       error: 'var(--mantine-color-error)',
