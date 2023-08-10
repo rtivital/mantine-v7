@@ -15,19 +15,16 @@ export * from './components/YearLevel';
 export * from './components/MonthLevel';
 export * from './components/LevelsGroup';
 export * from './components/DecadeLevelGroup';
+export * from './components/YearLevelGroup';
 
 // export * from './components/Calendar';
 // export * from './components/DateInput';
 // export * from './components/DatePicker';
 // export * from './components/DatePickerInput';
 // export * from './components/DateTimePicker';
-
 // export * from './components/MonthLevelGroup';
 // export * from './components/MonthPicker';
 // export * from './components/MonthPickerInput';
-
 // export * from './components/PickerInputBase';
-
-// export * from './components/YearLevelGroup';
 // export * from './components/YearPicker';
 // export * from './components/YearPickerInput';

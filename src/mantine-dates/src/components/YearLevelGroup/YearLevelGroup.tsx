@@ -1,19 +1,16 @@
 import dayjs from 'dayjs';
 import React, { useRef } from 'react';
 import { BoxProps, StylesApiProps, factory, ElementProps, useProps, Factory } from '@mantine/core';
-import { DecadeLevel, DecadeLevelSettings, DecadeLevelStylesNames } from '../DecadeLevel';
+import { YearLevel, YearLevelSettings, YearLevelStylesNames } from '../YearLevel';
 import { LevelsGroup, LevelsGroupStylesNames } from '../LevelsGroup';
 import { handleControlKeyDown } from '../../utils';
 
-export type DecadeLevelGroupStylesNames = LevelsGroupStylesNames | DecadeLevelStylesNames;
+export type YearLevelGroupStylesNames = YearLevelStylesNames | LevelsGroupStylesNames;
 
-export interface DecadeLevelGroupProps
+export interface YearLevelGroupProps
   extends BoxProps,
-    Omit<StylesApiProps<DecadeLevelGroupFactory>, 'classNames' | 'styles'>,
-    Omit<
-      DecadeLevelSettings,
-      'withPrevious' | 'withNext' | '__onControlKeyDown' | '__getControlRef'
-    >,
+    Omit<YearLevelSettings, 'withPrevious' | 'withNext' | '__onControlKeyDown' | '__getControlRef'>,
+    Omit<StylesApiProps<YearLevelGroupFactory>, 'classNames' | 'styles'>,
     ElementProps<'div'> {
   classNames?: Record<string, string>;
   styles?: Record<string, React.CSSProperties>;
@@ -22,34 +19,34 @@ export interface DecadeLevelGroupProps
   /** Number of columns to render next to each other */
   numberOfColumns?: number;
 
-  /** Decade that is currently displayed */
-  decade: Date;
+  /** Year that is currently displayed */
+  year: Date;
 
   /** Function that returns level control aria-label based on year date */
-  levelControlAriaLabel?: ((decade: Date) => string) | string;
+  levelControlAriaLabel?: ((year: Date) => string) | string;
 }
 
-export type DecadeLevelGroupFactory = Factory<{
-  props: DecadeLevelGroupProps;
+export type YearLevelGroupFactory = Factory<{
+  props: YearLevelGroupProps;
   ref: HTMLDivElement;
-  stylesNames: DecadeLevelGroupStylesNames;
+  stylesNames: YearLevelGroupStylesNames;
 }>;
 
-const defaultProps: Partial<DecadeLevelGroupProps> = {
+const defaultProps: Partial<YearLevelGroupProps> = {
   numberOfColumns: 1,
   size: 'sm',
 };
 
-export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) => {
-  const props = useProps('DecadeLevelGroup', defaultProps, _props);
+export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
+  const props = useProps('YearLevelGroup', defaultProps, _props);
   const {
-    // DecadeLevel settings
-    decade,
+    // YearLevel settings
+    year,
     locale,
     minDate,
     maxDate,
-    yearsListFormat,
-    getYearControlProps,
+    monthsListFormat,
+    getMonthControlProps,
     __onControlClick,
     __onControlMouseEnter,
     withCellSpacing,
@@ -62,8 +59,10 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
     previousLabel,
     onNext,
     onPrevious,
+    onLevelClick,
     nextDisabled,
     previousDisabled,
+    hasNextLevel,
 
     // Other settings
     classNames,
@@ -73,7 +72,7 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
     __stopPropagation,
     numberOfColumns,
     levelControlAriaLabel,
-    decadeLabelFormat,
+    yearLabelFormat,
     size,
     vars,
     ...others
@@ -81,27 +80,26 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
 
   const controlsRef = useRef<HTMLButtonElement[][][]>([]);
 
-  const decades = Array(numberOfColumns)
+  const years = Array(numberOfColumns)
     .fill(0)
-    .map((_, decadeIndex) => {
-      const currentDecade = dayjs(decade)
-        .add(decadeIndex * 10, 'years')
-        .toDate();
+    .map((_, yearIndex) => {
+      const currentYear = dayjs(year).add(yearIndex, 'years').toDate();
 
       return (
-        <DecadeLevel
-          key={decadeIndex}
+        <YearLevel
+          key={yearIndex}
           size={size}
-          yearsListFormat={yearsListFormat}
-          decade={currentDecade}
-          withNext={decadeIndex === numberOfColumns! - 1}
-          withPrevious={decadeIndex === 0}
-          decadeLabelFormat={decadeLabelFormat}
+          monthsListFormat={monthsListFormat}
+          year={currentYear}
+          withNext={yearIndex === numberOfColumns! - 1}
+          withPrevious={yearIndex === 0}
+          yearLabelFormat={yearLabelFormat}
+          __stopPropagation={__stopPropagation}
           __onControlClick={__onControlClick}
           __onControlMouseEnter={__onControlMouseEnter}
           __onControlKeyDown={(event, payload) =>
             handleControlKeyDown({
-              levelIndex: decadeIndex,
+              levelIndex: yearIndex,
               rowIndex: payload.rowIndex,
               cellIndex: payload.cellIndex,
               event,
@@ -109,39 +107,40 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
             })
           }
           __getControlRef={(rowIndex, cellIndex, node) => {
-            if (!Array.isArray(controlsRef.current[decadeIndex])) {
-              controlsRef.current[decadeIndex] = [];
+            if (!Array.isArray(controlsRef.current[yearIndex])) {
+              controlsRef.current[yearIndex] = [];
             }
 
-            if (!Array.isArray(controlsRef.current[decadeIndex][rowIndex])) {
-              controlsRef.current[decadeIndex][rowIndex] = [];
+            if (!Array.isArray(controlsRef.current[yearIndex][rowIndex])) {
+              controlsRef.current[yearIndex][rowIndex] = [];
             }
 
-            controlsRef.current[decadeIndex][rowIndex][cellIndex] = node;
+            controlsRef.current[yearIndex][rowIndex][cellIndex] = node;
           }}
           levelControlAriaLabel={
             typeof levelControlAriaLabel === 'function'
-              ? levelControlAriaLabel(currentDecade)
+              ? levelControlAriaLabel(currentYear)
               : levelControlAriaLabel
           }
           locale={locale}
           minDate={minDate}
           maxDate={maxDate}
           __preventFocus={__preventFocus}
-          __stopPropagation={__stopPropagation}
           nextIcon={nextIcon}
           previousIcon={previousIcon}
           nextLabel={nextLabel}
           previousLabel={previousLabel}
           onNext={onNext}
           onPrevious={onPrevious}
+          onLevelClick={onLevelClick}
           nextDisabled={nextDisabled}
           previousDisabled={previousDisabled}
-          getYearControlProps={getYearControlProps}
-          __staticSelector={__staticSelector || 'DecadeLevelGroup'}
+          hasNextLevel={hasNextLevel}
+          getMonthControlProps={getMonthControlProps}
           classNames={classNames}
           styles={styles}
           unstyled={unstyled}
+          __staticSelector={__staticSelector || 'YearLevelGroup'}
           withCellSpacing={withCellSpacing}
         />
       );
@@ -155,10 +154,10 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
       size={size}
       {...others}
     >
-      {decades}
+      {years}
     </LevelsGroup>
   );
 });
 
-DecadeLevelGroup.classes = { ...LevelsGroup.classes, ...DecadeLevel.classes };
-DecadeLevelGroup.displayName = '@mantine/dates/DecadeLevelGroup';
+YearLevelGroup.classes = { ...YearLevel.classes, ...LevelsGroup.classes };
+YearLevelGroup.displayName = '@mantine/dates/YearLevelGroup';
