@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {
   Box,
@@ -7,13 +8,9 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   MantineSize,
-  getSize,
-  getFontSize,
 } from '@mantine/core';
-import dayjs from 'dayjs';
 import { ControlsGroupSettings } from '../../types';
 import { PickerControl, PickerControlProps } from '../PickerControl';
 import { getYearsData } from './get-years-data/get-years-data';
@@ -27,17 +24,6 @@ export type YearsListStylesNames =
   | 'yearsList'
   | 'yearsListCell'
   | 'yearsListRow';
-
-export type YearsListCssVariables = {
-  yearsList:
-    | '--yl-control-size'
-    | '--yl-fz'
-    | '--yl-control-selected-bg'
-    | '--yl-control-selected-color'
-    | '--yl-control-selected-bg-hover'
-    | '--yl-control-range-bg'
-    | '--yl-control-range-bg-hover';
-};
 
 export interface YearsListSettings extends ControlsGroupSettings {
   /** Prevents focus shift when buttons are clicked */
@@ -74,7 +60,6 @@ export type YearsListFactory = Factory<{
   props: YearsListProps;
   ref: HTMLTableElement;
   stylesNames: YearsListStylesNames;
-  vars: YearsListCssVariables;
 }>;
 
 const defaultProps: Partial<YearsListProps> = {
@@ -82,32 +67,6 @@ const defaultProps: Partial<YearsListProps> = {
   size: 'sm',
   withCellSpacing: true,
 };
-
-const varsResolver = createVarsResolver<YearsListFactory>((theme, { size }) => {
-  const selectedColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: 'filled',
-  });
-
-  const rangeColors = theme.variantColorResolver({
-    color: theme.primaryColor,
-    theme,
-    variant: 'light',
-  });
-
-  return {
-    yearsList: {
-      '--yl-control-size': getSize(size, 'yl-control-size'),
-      '--yl-fz': getFontSize(size),
-      '--yl-control-selected-bg': selectedColors.background,
-      '--yl-control-selected-color': selectedColors.color,
-      '--yl-control-selected-bg-hover': selectedColors.hover,
-      '--yl-control-range-bg': rangeColors.hover,
-      '--yl-control-range-bg-hover': rangeColors.background,
-    },
-  };
-});
 
 export const YearsList = factory<YearsListFactory>((_props, ref) => {
   const props = useProps('YearsList', defaultProps, _props);
@@ -145,7 +104,6 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
     rootSelector: 'yearsList',
   });
 
