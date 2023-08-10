@@ -13,17 +13,7 @@ export const MonthStylesApi: StylesApiData<MonthFactory> = {
     day: 'Month day control',
   },
 
-  vars: {
-    month: {
-      '--day-range-bg': 'Controls day `background` when it is in a range',
-      '--day-range-bg-hover': 'Controls day hover `background` when it is in a range',
-      '--day-selected-bg': 'Controls day `background` when it is selected',
-      '--day-selected-bg-hover': 'Controls day hover `background` when it is selected',
-      '--day-selected-color': 'Controls day `color` when it is selected',
-      '--month-fz': 'Controls `font-size` of all month elements',
-      '--month-spacing': 'Controls `padding` of various elements',
-    },
-  },
+  vars: {},
 
   modifiers: [
     {

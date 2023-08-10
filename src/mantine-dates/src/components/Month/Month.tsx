@@ -8,11 +8,8 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
   MantineSize,
-  getFontSize,
-  getSpacing,
   useResolvedStylesApi,
 } from '@mantine/core';
 import { ControlKeydownPayload, DayOfWeek } from '../../types';
@@ -36,10 +33,6 @@ export type MonthStylesNames =
   | 'monthTbody'
   | 'monthCell'
   | DayStylesNames;
-
-export type MonthCssVariables = {
-  month: '--month-fz' | '--month-spacing';
-};
 
 export interface MonthSettings {
   /** Determines whether propagation for Escape key should be stopped */
@@ -124,20 +117,12 @@ export type MonthFactory = Factory<{
   props: MonthProps;
   ref: HTMLTableElement;
   stylesNames: MonthStylesNames;
-  vars: MonthCssVariables;
 }>;
 
 const defaultProps: Partial<MonthProps> = {
   size: 'sm',
   withCellSpacing: true,
 };
-
-const varsResolver = createVarsResolver<MonthFactory>((_, { size }) => ({
-  month: {
-    '--month-fz': getFontSize(size),
-    '--month-spacing': getSpacing(size),
-  },
-}));
 
 export const Month = factory<MonthFactory>((_props, ref) => {
   const props = useProps('Month', defaultProps, _props);
@@ -184,7 +169,6 @@ export const Month = factory<MonthFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
     rootSelector: 'month',
   });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import type { DayOfWeek } from '../../../../types';
+import type { DayOfWeek } from '../../../types';
 
 interface GetWeekdaysNamesInput {
   locale: string;
