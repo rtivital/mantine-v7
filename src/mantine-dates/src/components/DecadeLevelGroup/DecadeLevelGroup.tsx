@@ -150,6 +150,7 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) =
   return (
     <LevelsGroup
       classNames={classNames}
+      styles={styles}
       __staticSelector={__staticSelector || 'DecadeLevelGroup'}
       ref={ref}
       size={size}

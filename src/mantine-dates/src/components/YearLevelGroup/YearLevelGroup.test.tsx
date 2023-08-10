@@ -21,6 +21,7 @@ describe('@mantine/core/YearLevelGroup', () => {
     refType: HTMLDivElement,
     displayName: '@mantine/dates/YearLevelGroup',
     stylesApiSelectors: [
+      'levelsGroup',
       'calendarHeader',
       'calendarHeaderControl',
       'calendarHeaderControlIcon',

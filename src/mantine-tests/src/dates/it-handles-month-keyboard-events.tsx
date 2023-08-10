@@ -5,6 +5,7 @@ import { render } from '../render';
 interface Options {
   component: React.ComponentType<any>;
   props: Record<string, any>;
+  name: string;
 }
 
 export function itHandlesMonthKeyboardEvents(
@@ -33,7 +34,7 @@ export function itHandlesMonthKeyboardEvents(
 
   it(`${name} (numberOfColumns=2)`, async () => {
     const { container } = render(<options.component {...options.props} numberOfColumns={2} />);
-    const months = container.querySelectorAll('.mantine-Month-month');
+    const months = container.querySelectorAll(`.mantine-${options.name}-month`);
     const firstMonthDays = months[0].querySelectorAll('button');
     const secondMonthDays = months[1].querySelectorAll('button');
 

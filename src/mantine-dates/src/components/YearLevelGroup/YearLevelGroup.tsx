@@ -149,7 +149,8 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
   return (
     <LevelsGroup
       classNames={classNames}
-      __staticSelector={__staticSelector || 'DecadeLevelGroup'}
+      styles={styles}
+      __staticSelector={__staticSelector || 'YearLevelGroup'}
       ref={ref}
       size={size}
       {...others}
