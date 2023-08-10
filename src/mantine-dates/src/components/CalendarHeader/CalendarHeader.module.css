@@ -7,6 +7,7 @@
 
   display: flex;
   max-width: calc(var(--dch-control-size) * 7 + rem(7px));
+  margin-bottom: var(--mantine-spacing-xs);
 }
 
 .calendarHeaderLevel,

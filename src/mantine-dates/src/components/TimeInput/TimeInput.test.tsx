@@ -7,7 +7,7 @@ const defaultProps: TimeInputProps = {
   ...inputDefaultProps,
 };
 
-describe('@mantine/core/TimeInput', () => {
+describe('@mantine/dates/TimeInput', () => {
   tests.axe([
     <TimeInput aria-label="test-label" />,
     <TimeInput label="test-label" />,

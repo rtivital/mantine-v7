@@ -21,7 +21,7 @@ function validateDataAttribute(prop: string) {
   });
 }
 
-describe('@mantine/core/Day', () => {
+describe('@mantine/dates/Day', () => {
   tests.itSupportsSystemProps<DayProps, DayStylesNames>({
     component: Day,
     props: defaultProps,

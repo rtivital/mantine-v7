@@ -6,7 +6,7 @@ const defaultProps: YearsListProps = {
   decade: new Date(2022, 3, 11),
 };
 
-describe('@mantine/core/YearsList', () => {
+describe('@mantine/dates/YearsList', () => {
   tests.itSupportsSystemProps<YearsListProps, YearsListStylesNames>({
     component: YearsList,
     props: defaultProps,
@@ -16,7 +16,7 @@ describe('@mantine/core/YearsList', () => {
     size: true,
     classes: true,
     refType: HTMLTableElement,
-    displayName: '@mantine/core/YearsList',
+    displayName: '@mantine/dates/YearsList',
     stylesApiSelectors: ['yearsList', 'yearsListCell', 'yearsListControl', 'yearsListRow'],
   });
 

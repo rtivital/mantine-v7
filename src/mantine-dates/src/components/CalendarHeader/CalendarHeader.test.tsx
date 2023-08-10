@@ -8,7 +8,7 @@ const defaultProps: CalendarHeaderProps = {
   label: '',
 };
 
-describe('@mantine/core/CalendarHeader', () => {
+describe('@mantine/dates/CalendarHeader', () => {
   tests.itSupportsSystemProps<CalendarHeaderProps, CalendarHeaderStylesNames>({
     component: CalendarHeader,
     props: defaultProps,

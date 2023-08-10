@@ -14,7 +14,7 @@ function Wrapper(props: Partial<WeekdaysRowProps>) {
   );
 }
 
-describe('@mantine/core/WeekdaysRow', () => {
+describe('@mantine/dates/WeekdaysRow', () => {
   beforeAll(patchConsoleError);
   afterAll(patchConsoleError.release);
 

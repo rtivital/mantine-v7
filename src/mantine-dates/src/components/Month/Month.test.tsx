@@ -6,7 +6,7 @@ const defaultProps: MonthProps = {
   month: new Date(2022, 3, 2),
 };
 
-describe('@mantine/core/Month', () => {
+describe('@mantine/dates/Month', () => {
   tests.itSupportsSystemProps<MonthProps, MonthStylesNames>({
     component: Month,
     props: defaultProps,

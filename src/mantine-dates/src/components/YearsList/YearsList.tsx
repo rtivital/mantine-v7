@@ -91,6 +91,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
     __preventFocus,
     __stopPropagation,
     withCellSpacing,
+    size,
     ...others
   } = props;
 
@@ -125,6 +126,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
         >
           <PickerControl
             {...getStyles('yearsListControl')}
+            size={size}
             data-mantine-stop-propagation={__stopPropagation || undefined}
             disabled={isYearDisabled(year, minDate, maxDate)}
             ref={(node) => __getControlRef?.(rowIndex, cellIndex, node!)}
@@ -161,11 +163,11 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
   });
 
   return (
-    <Box component="table" ref={ref} {...getStyles('yearsList')} {...others}>
+    <Box component="table" ref={ref} size={size} {...getStyles('yearsList')} {...others}>
       <tbody>{rows}</tbody>
     </Box>
   );
 });
 
 YearsList.classes = classes;
-YearsList.displayName = '@mantine/core/YearsList';
+YearsList.displayName = '@mantine/dates/YearsList';

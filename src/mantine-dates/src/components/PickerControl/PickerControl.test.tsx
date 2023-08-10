@@ -19,7 +19,7 @@ function validateDataAttribute(prop: string) {
   });
 }
 
-describe('@mantine/core/PickerControl', () => {
+describe('@mantine/dates/PickerControl', () => {
   tests.itSupportsSystemProps<PickerControlProps, PickerControlStylesNames>({
     component: PickerControl,
     props: defaultProps,
