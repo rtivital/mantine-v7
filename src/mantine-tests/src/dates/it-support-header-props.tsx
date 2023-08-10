@@ -31,8 +31,11 @@ export function itSupportsHeaderProps(options: Options, name = 'supports header 
       />
     );
 
-    expect(container.querySelector('[data-next]')).toHaveAttribute('aria-label', 'test-next-label');
-    expect(container.querySelector('[data-previous]')).toHaveAttribute(
+    expect(container.querySelector('button[data-direction="next"]')).toHaveAttribute(
+      'aria-label',
+      'test-next-label'
+    );
+    expect(container.querySelector('button[data-direction="previous"]')).toHaveAttribute(
       'aria-label',
       'test-previous-label'
     );

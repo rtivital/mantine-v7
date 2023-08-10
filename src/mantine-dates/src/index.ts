@@ -9,8 +9,8 @@ export * from './components/Month';
 export * from './components/PickerControl';
 export * from './components/YearsList';
 export * from './components/MonthsList';
+export * from './components/CalendarHeader';
 
-// export * from './components/CalendarHeader';
 // export * from './components/Calendar';
 // export * from './components/DateInput';
 // export * from './components/DatePicker';
