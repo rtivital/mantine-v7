@@ -16,7 +16,7 @@ export * from './components/Month';
 // export * from './components/MonthLevelGroup';
 // export * from './components/MonthPicker';
 // export * from './components/MonthPickerInput';
-// export * from './components/MonthsList';
+export * from './components/MonthsList';
 export * from './components/PickerControl';
 // export * from './components/PickerInputBase';
 // export * from './components/TimeInput';
