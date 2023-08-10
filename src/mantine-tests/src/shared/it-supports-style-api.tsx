@@ -35,7 +35,11 @@ export function itSupportsStylesApi<
     const { container } = render(<options.component {...options.props} classNames={classNames} />);
 
     options.selectors.forEach((selector) => {
-      expect(container.querySelector(`.${classNames[selector]}`)).toBeInTheDocument();
+      try {
+        expect(container.querySelector(`.${classNames[selector]}`)).toBeInTheDocument();
+      } catch (e) {
+        throw new Error(`Missing selector: .mantine-${options.providerName}-${selector}`);
+      }
     });
   });
 

@@ -228,6 +228,7 @@ export const Month = factory<MonthFactory>((_props, ref) => {
             __staticSelector={__staticSelector || 'Month'}
             classNames={resolvedClassNames}
             styles={resolvedStyles}
+            unstyled={unstyled}
             data-mantine-stop-propagation={__stopPropagation || undefined}
             renderDay={renderDay}
             date={date}
@@ -278,10 +279,14 @@ export const Month = factory<MonthFactory>((_props, ref) => {
       {!hideWeekdays && (
         <thead {...getStyles('monthThead')}>
           <WeekdaysRow
+            __staticSelector={__staticSelector || 'Month'}
             locale={locale}
             firstDayOfWeek={firstDayOfWeek}
             weekdayFormat={weekdayFormat}
             size={size}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
           />
         </thead>
       )}
