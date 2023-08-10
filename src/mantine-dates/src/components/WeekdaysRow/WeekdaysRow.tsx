@@ -6,18 +6,29 @@ import {
   factory,
   ElementProps,
   useProps,
+  useStyles,
+  createVarsResolver,
   Factory,
   MantineSize,
+  getFontSize,
+  getSpacing,
 } from '@mantine/core';
-import type { DayOfWeek } from '../../../types';
-import { useDatesContext } from '../../DatesProvider';
-import { useMonthContext } from '../Month.context';
+import type { DayOfWeek } from '../../types';
+import { useDatesContext } from '../DatesProvider';
 import { getWeekdayNames } from './get-weekdays-names/get-weekdays-names';
+import classes from './WeekdaysRow.module.css';
+
+export type WeekdaysRowStylesNames = 'weekday' | 'weekdaysRow';
+export type WeekdaysRowCssVariables = {
+  weekdaysRow: '--wr-fz' | '--wr-spacing';
+};
 
 export interface WeekdaysRowProps
   extends BoxProps,
     StylesApiProps<WeekdaysRowFactory>,
     ElementProps<'tr'> {
+  __staticSelector?: string;
+
   /** Controls size */
   size?: MantineSize;
 
@@ -37,14 +48,18 @@ export interface WeekdaysRowProps
 export type WeekdaysRowFactory = Factory<{
   props: WeekdaysRowProps;
   ref: HTMLTableRowElement;
-  compound: true;
+  stylesNames: WeekdaysRowStylesNames;
+  vars: WeekdaysRowCssVariables;
 }>;
 
-const defaultProps: Partial<WeekdaysRowProps> = {
-  weekdayFormat: 'dd',
-  cellComponent: 'th',
-  size: 'sm',
-};
+const defaultProps: Partial<WeekdaysRowProps> = {};
+
+const varsResolver = createVarsResolver<WeekdaysRowFactory>((_, { size }) => ({
+  weekdaysRow: {
+    '--wr-fz': getFontSize(size),
+    '--wr-spacing': getSpacing(size),
+  },
+}));
 
 export const WeekdaysRow = factory<WeekdaysRowFactory>((_props, ref) => {
   const props = useProps('WeekdaysRow', defaultProps, _props);
@@ -59,29 +74,42 @@ export const WeekdaysRow = factory<WeekdaysRowFactory>((_props, ref) => {
     firstDayOfWeek,
     weekdayFormat,
     cellComponent: CellComponent = 'th',
-    variant,
-    size,
+    __staticSelector,
     ...others
   } = props;
 
-  const datesCtx = useDatesContext();
-  const ctx = useMonthContext();
+  const getStyles = useStyles<WeekdaysRowFactory>({
+    name: __staticSelector || 'WeekdaysRow',
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver,
+    rootSelector: 'weekdaysRow',
+  });
+
+  const ctx = useDatesContext();
 
   const weekdays = getWeekdayNames({
-    locale: datesCtx.getLocale(locale),
+    locale: ctx.getLocale(locale),
     format: weekdayFormat,
-    firstDayOfWeek: datesCtx.getFirstDayOfWeek(firstDayOfWeek),
+    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
   }).map((weekday, index) => (
-    <CellComponent key={index} {...ctx.getStyles('weekday')}>
+    <CellComponent key={index} {...getStyles('weekday')}>
       {weekday}
     </CellComponent>
   ));
 
   return (
-    <Box component="tr" ref={ref} {...ctx.getStyles('weekdaysRow')} {...others}>
+    <Box component="tr" ref={ref} {...getStyles('weekdaysRow')} {...others}>
       {weekdays}
     </Box>
   );
 });
 
-WeekdaysRow.displayName = '@mantine/core/WeekdaysRow';
+WeekdaysRow.classes = classes;
+WeekdaysRow.displayName = '@mantine/dates/WeekdaysRow';

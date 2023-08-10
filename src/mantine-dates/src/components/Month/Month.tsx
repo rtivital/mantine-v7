@@ -17,14 +17,13 @@ import {
 } from '@mantine/core';
 import { ControlKeydownPayload, DayOfWeek } from '../../types';
 import { Day, DayProps, DayStylesNames } from '../Day';
-import { MonthProvider } from './Month.context';
 import { getMonthDays } from './get-month-days/get-month-days';
 import { useDatesContext } from '../DatesProvider';
 import { getDateInTabOrder } from './get-date-in-tab-order/get-date-in-tab-order';
 import { isSameMonth } from './is-same-month/is-same-month';
 import { isBeforeMaxDate } from './is-before-max-date/is-before-max-date';
 import { isAfterMinDate } from './is-after-min-date/is-after-min-date';
-import { WeekdaysRow } from './WeekdaysRow/WeekdaysRow';
+import { WeekdaysRow } from '../WeekdaysRow';
 import classes from './Month.module.css';
 
 export type MonthStylesNames =
@@ -275,20 +274,19 @@ export const Month = factory<MonthFactory>((_props, ref) => {
   });
 
   return (
-    <MonthProvider value={{ getStyles }}>
-      <Box component="table" {...getStyles('month')} size={size} ref={ref} {...others}>
-        {!hideWeekdays && (
-          <thead {...getStyles('monthThead')}>
-            <WeekdaysRow
-              locale={locale}
-              firstDayOfWeek={firstDayOfWeek}
-              weekdayFormat={weekdayFormat}
-            />
-          </thead>
-        )}
-        <tbody {...getStyles('monthTbody')}>{rows}</tbody>
-      </Box>
-    </MonthProvider>
+    <Box component="table" {...getStyles('month')} size={size} ref={ref} {...others}>
+      {!hideWeekdays && (
+        <thead {...getStyles('monthThead')}>
+          <WeekdaysRow
+            locale={locale}
+            firstDayOfWeek={firstDayOfWeek}
+            weekdayFormat={weekdayFormat}
+            size={size}
+          />
+        </thead>
+      )}
+      <tbody {...getStyles('monthTbody')}>{rows}</tbody>
+    </Box>
   );
 });
 

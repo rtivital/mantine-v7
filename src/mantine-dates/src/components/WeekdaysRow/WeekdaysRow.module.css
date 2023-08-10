@@ -1,0 +1,7 @@
+.weekday {
+  color: var(--mantine-color-dimmed);
+  font-weight: normal;
+  font-size: var(--wr-fz);
+  text-transform: capitalize;
+  padding-bottom: calc(var(--wr-spacing) / 2);
+}

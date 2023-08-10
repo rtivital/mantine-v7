@@ -20,7 +20,7 @@ export * from './components/Month';
 export * from './components/PickerControl';
 // export * from './components/PickerInputBase';
 // export * from './components/TimeInput';
-// export * from './components/WeekdaysRow';
+export * from './components/WeekdaysRow';
 // export * from './components/YearLevel';
 // export * from './components/YearLevelGroup';
 // export * from './components/YearPicker';
