@@ -11,6 +11,7 @@ export * from './components/YearsList';
 export * from './components/MonthsList';
 export * from './components/CalendarHeader';
 export * from './components/DecadeLevel';
+export * from './components/YearLevel';
 
 // export * from './components/Calendar';
 // export * from './components/DateInput';
@@ -25,7 +26,7 @@ export * from './components/DecadeLevel';
 // export * from './components/MonthPickerInput';
 
 // export * from './components/PickerInputBase';
-// export * from './components/YearLevel';
+
 // export * from './components/YearLevelGroup';
 // export * from './components/YearPicker';
 // export * from './components/YearPickerInput';
