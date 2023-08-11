@@ -22,8 +22,8 @@ export * from './components/Calendar';
 export * from './components/YearPicker';
 export * from './components/MonthPicker';
 export * from './components/DatePicker';
+export * from './components/DateInput';
 
-// export * from './components/DateInput';
 // export * from './components/DatePickerInput';
 // export * from './components/DateTimePicker';
 // export * from './components/MonthPickerInput';
