@@ -202,7 +202,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
       onClear={() => setValue(null)}
       shouldClear={!!_value}
       value={_value}
-      size={size}
+      size={size!}
       variant={variant}
       dropdownType={dropdownType}
       {...others}

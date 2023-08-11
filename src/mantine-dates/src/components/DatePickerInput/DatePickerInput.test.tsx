@@ -109,8 +109,6 @@ describe('@mantine/dates/DatePickerInput', () => {
       'mantine-DatePickerInput-input'
     );
 
-    expect(container.querySelector('table button')).toHaveClass(
-      'mantine-DatePickerInput-monthsListControl'
-    );
+    expect(container.querySelector('table button')).toHaveClass('mantine-DatePickerInput-day');
   });
 });
