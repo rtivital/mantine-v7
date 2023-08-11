@@ -44,7 +44,7 @@ const getTimeInput = () => screen.getByLabelText('test-time-input');
 const getSubmitButton = () => screen.getByLabelText('test-submit');
 const getClearButton = () => screen.queryAllByLabelText('test-clear')[0];
 
-describe('@mantine/core/DateTimePicker', () => {
+describe('@mantine/dates/DateTimePicker', () => {
   tests.axe([
     <DateTimePicker aria-label="test-label" />,
     <DateTimePicker placeholder="test-placeholder" />,

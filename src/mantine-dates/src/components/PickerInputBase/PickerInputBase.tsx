@@ -16,6 +16,7 @@ import {
   CloseButton,
   InputVariant,
   __InputStylesNames,
+  MantineSize,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { HiddenDatesInput, HiddenDatesInputValue } from '../HiddenDatesInput';
@@ -25,7 +26,7 @@ import classes from './PickerInputBase.module.css';
 export type PickerInputBaseStylesNames = __InputStylesNames;
 
 export interface DateInputSharedProps
-  extends __BaseInputProps,
+  extends Omit<__BaseInputProps, 'size'>,
     ElementProps<'button', 'defaultValue' | 'value' | 'onChange' | 'type'> {
   /** Determines whether dropdown should be closed when date is selected, not applicable when type="multiple", true by default */
   closeOnChange?: boolean;
@@ -70,6 +71,7 @@ export interface PickerInputBaseProps
   shouldClear: boolean;
   value: HiddenDatesInputValue;
   type: DatePickerType;
+  size: MantineSize;
 }
 
 export type PickerInputBaseFactory = Factory<{

@@ -37,7 +37,7 @@ function getInput(container: HTMLElement | null) {
   return container!.querySelector('[data-dates-input]')!;
 }
 
-describe('@mantine/core/DateInput', () => {
+describe('@mantine/dates/DateInput', () => {
   tests.axe([
     <DateInput aria-label="test-label" />,
     <DateInput label="test-label" />,
