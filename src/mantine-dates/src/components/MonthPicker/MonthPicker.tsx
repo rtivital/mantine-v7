@@ -13,9 +13,11 @@ import { useDatesState } from '../../hooks';
 import { DecadeLevelBaseSettings } from '../DecadeLevel';
 import { YearLevelBaseSettings } from '../YearLevel';
 import { PickerBaseProps, DatePickerType, CalendarLevel } from '../../types';
-import { Calendar, CalendarBaseProps, CalendarStylesNames } from '../Calendar';
+import { Calendar, CalendarBaseProps } from '../Calendar';
+import { DecadeLevelGroupStylesNames } from '../DecadeLevelGroup';
+import { YearLevelGroupStylesNames } from '../YearLevelGroup';
 
-export type MonthPickerStylesNames = CalendarStylesNames;
+export type MonthPickerStylesNames = DecadeLevelGroupStylesNames | YearLevelGroupStylesNames;
 
 type MonthPickerLevel = Exclude<CalendarLevel, 'month'>;
 

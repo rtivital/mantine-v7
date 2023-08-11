@@ -12,9 +12,10 @@ import {
 import { useDatesState } from '../../hooks';
 import { DecadeLevelBaseSettings } from '../DecadeLevel';
 import { PickerBaseProps, DatePickerType } from '../../types';
-import { Calendar, CalendarBaseProps, CalendarStylesNames } from '../Calendar';
+import { Calendar, CalendarBaseProps } from '../Calendar';
+import { DecadeLevelGroupStylesNames } from '../DecadeLevelGroup';
 
-export type YearPickerStylesNames = CalendarStylesNames;
+export type YearPickerStylesNames = DecadeLevelGroupStylesNames;
 
 export interface YearPickerBaseProps<Type extends DatePickerType = 'default'>
   extends PickerBaseProps<Type>,

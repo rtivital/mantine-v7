@@ -10,14 +10,14 @@ import {
   __InputStylesNames,
   MantineComponentStaticProperties,
 } from '@mantine/core';
-import { CalendarStylesNames, pickCalendarProps } from '../Calendar';
+import { pickCalendarProps } from '../Calendar';
 import { useDatesInput } from '../../hooks';
-import { YearPicker, YearPickerBaseProps } from '../YearPicker';
+import { YearPicker, YearPickerBaseProps, YearPickerStylesNames } from '../YearPicker';
 import { DatePickerType } from '../../types';
 import { getDefaultClampedDate } from '../../utils';
 import { PickerInputBase, DateInputSharedProps } from '../PickerInputBase';
 
-export type YearPickerInputStylesNames = __InputStylesNames | CalendarStylesNames;
+export type YearPickerInputStylesNames = __InputStylesNames | YearPickerStylesNames;
 
 export interface YearPickerInputProps<Type extends DatePickerType = 'default'>
   extends BoxProps,
