@@ -43,12 +43,13 @@ export type ComponentClasses<Payload extends FactoryPayload> = {
   classes: Payload['stylesNames'] extends string ? Record<string, string> : never;
 };
 
+export type MantineComponentStaticProperties<Payload extends FactoryPayload> =
+  ThemeExtend<Payload> & ComponentClasses<Payload> & StaticComponents<Payload['staticComponents']>;
+
 export type MantineComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
   Payload['props'] & React.RefAttributes<Payload['ref']>
 > &
-  ThemeExtend<Payload> &
-  ComponentClasses<Payload> &
-  StaticComponents<Payload['staticComponents']>;
+  MantineComponentStaticProperties<Payload>;
 
 export function identity<T>(value: T): T {
   return value;
