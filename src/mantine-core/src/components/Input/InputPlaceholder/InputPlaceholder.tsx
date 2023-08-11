@@ -18,6 +18,9 @@ export interface InputPlaceholderProps
     StylesApiProps<InputPlaceholderFactory>,
     ElementProps<'span'> {
   __staticSelector?: string;
+
+  /** If set, the placeholder will have error styles, `false` by default */
+  error?: React.ReactNode;
 }
 
 export type InputPlaceholderFactory = Factory<{
@@ -39,6 +42,7 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) =
     vars,
     __staticSelector,
     variant,
+    error,
     ...others
   } = useProps('InputPlaceholder', defaultProps, props);
 
@@ -55,7 +59,14 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) =
   });
 
   return (
-    <Box {...getStyles('placeholder')} component="span" variant={variant} ref={ref} {...others} />
+    <Box
+      {...getStyles('placeholder')}
+      mod={{ error: !!error }}
+      component="span"
+      variant={variant}
+      ref={ref}
+      {...others}
+    />
   );
 });
 

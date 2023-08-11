@@ -6,8 +6,8 @@ export type HiddenDatesInputValue = DatesRangeValue | DateValue | DateValue[];
 export interface HiddenDatesInputProps {
   value: HiddenDatesInputValue;
   type: DatePickerType;
-  name: string;
-  form: string;
+  name: string | undefined;
+  form: string | undefined;
 }
 
 function formatValue(value: HiddenDatesInputValue, type: DatePickerType) {
