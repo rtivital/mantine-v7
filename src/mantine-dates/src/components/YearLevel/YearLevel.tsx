@@ -31,8 +31,8 @@ export interface YearLevelProps
     YearLevelSettings,
     Omit<StylesApiProps<YearLevelFactory>, 'classNames' | 'styles'>,
     ElementProps<'div'> {
-  classNames?: Record<string, string>;
-  styles?: Record<string, React.CSSProperties>;
+  classNames?: Partial<Record<string, string>>;
+  styles?: Partial<Record<string, React.CSSProperties>>;
   __staticSelector?: string;
 
   /** Year that is currently displayed */

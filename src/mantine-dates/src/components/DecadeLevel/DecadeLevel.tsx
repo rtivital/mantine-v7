@@ -34,8 +34,8 @@ export interface DecadeLevelProps
     DecadeLevelSettings,
     Omit<StylesApiProps<DecadeLevelFactory>, 'classNames' | 'styles'>,
     ElementProps<'div'> {
-  classNames?: Record<string, string>;
-  styles?: Record<string, React.CSSProperties>;
+  classNames?: Partial<Record<string, string>>;
+  styles?: Partial<Record<string, React.CSSProperties>>;
   __staticSelector?: string;
 
   /** Decade that is currently displayed */

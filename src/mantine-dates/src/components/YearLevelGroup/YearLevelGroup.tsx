@@ -12,8 +12,8 @@ export interface YearLevelGroupProps
     Omit<YearLevelSettings, 'withPrevious' | 'withNext' | '__onControlKeyDown' | '__getControlRef'>,
     Omit<StylesApiProps<YearLevelGroupFactory>, 'classNames' | 'styles'>,
     ElementProps<'div'> {
-  classNames?: Record<string, string>;
-  styles?: Record<string, React.CSSProperties>;
+  classNames?: Partial<Record<string, string>>;
+  styles?: Partial<Record<string, React.CSSProperties>>;
   __staticSelector?: string;
 
   /** Number of columns to render next to each other */

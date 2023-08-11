@@ -18,8 +18,8 @@ export * from './components/DecadeLevelGroup';
 export * from './components/YearLevelGroup';
 export * from './components/MonthLevelGroup';
 export * from './components/PickerInputBase';
+export * from './components/Calendar';
 
-// export * from './components/Calendar';
 // export * from './components/DateInput';
 // export * from './components/DatePicker';
 // export * from './components/DatePickerInput';

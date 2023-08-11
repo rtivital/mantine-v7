@@ -59,8 +59,8 @@ export interface PickerInputBaseProps
   extends BoxProps,
     DateInputSharedProps,
     Omit<StylesApiProps<PickerInputBaseFactory>, 'classNames' | 'styles'> {
-  classNames?: Record<string, string>;
-  styles?: Record<string, React.CSSProperties>;
+  classNames?: Partial<Record<string, string>>;
+  styles?: Partial<Record<string, React.CSSProperties>>;
   __staticSelector?: string;
   children: React.ReactNode;
   formattedValue: string | null | undefined;

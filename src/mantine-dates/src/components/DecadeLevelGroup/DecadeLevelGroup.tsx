@@ -15,8 +15,8 @@ export interface DecadeLevelGroupProps
       'withPrevious' | 'withNext' | '__onControlKeyDown' | '__getControlRef'
     >,
     ElementProps<'div'> {
-  classNames?: Record<string, string>;
-  styles?: Record<string, React.CSSProperties>;
+  classNames?: Partial<Record<string, string>>;
+  styles?: Partial<Record<string, React.CSSProperties>>;
   __staticSelector?: string;
 
   /** Number of columns to render next to each other */
