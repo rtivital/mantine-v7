@@ -16,7 +16,7 @@ import {
   OptionsDropdown,
   useCombobox,
   getParsedComboboxData,
-  getOptionsLockup,
+  getOptionsLookup,
   ComboboxLikeProps,
   ComboboxLikeStylesNames,
 } from '../Combobox';
@@ -154,7 +154,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
   } = props;
 
   const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const optionsLookup = getOptionsLookup(parsedData);
 
   const combobox = useCombobox({
     opened: dropdownOpened,
@@ -232,10 +232,10 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         setSearchValue('');
         combobox.updateSelectedOptionIndex('selected');
 
-        if (_value.includes(optionsLockup[val].value)) {
-          setValue(_value.filter((v) => v !== optionsLockup[val].value));
+        if (_value.includes(optionsLookup[val].value)) {
+          setValue(_value.filter((v) => v !== optionsLookup[val].value));
         } else if (_value.length < maxValues!) {
-          setValue([..._value, optionsLockup[val].value]);
+          setValue([..._value, optionsLookup[val].value]);
         }
       }}
       {...comboboxProps}

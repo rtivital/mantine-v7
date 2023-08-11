@@ -16,7 +16,7 @@ import {
   OptionsDropdown,
   useCombobox,
   getParsedComboboxData,
-  getOptionsLockup,
+  getOptionsLookup,
   ComboboxLikeProps,
   ComboboxLikeStylesNames,
 } from '../Combobox';
@@ -80,7 +80,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
   } = props;
 
   const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const optionsLockup = getOptionsLookup(parsedData);
 
   const [_value, setValue] = useUncontrolled({
     value,

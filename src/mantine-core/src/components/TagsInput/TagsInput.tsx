@@ -16,7 +16,7 @@ import {
   OptionsDropdown,
   useCombobox,
   getParsedComboboxData,
-  getOptionsLockup,
+  getOptionsLookup,
   ComboboxLikeProps,
   ComboboxLikeStylesNames,
 } from '../Combobox';
@@ -147,7 +147,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   } = props;
 
   const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const optionsLookup = getOptionsLookup(parsedData);
 
   const combobox = useCombobox({
     opened: dropdownOpened,
@@ -276,7 +276,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
         setSearchValue('');
-        _value.length < maxTags! && setValue([..._value, optionsLockup[val].label]);
+        _value.length < maxTags! && setValue([..._value, optionsLookup[val].label]);
       }}
       {...comboboxProps}
     >

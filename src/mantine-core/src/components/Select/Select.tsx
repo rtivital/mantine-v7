@@ -16,7 +16,7 @@ import {
   OptionsDropdown,
   useCombobox,
   getParsedComboboxData,
-  getOptionsLockup,
+  getOptionsLookup,
   ComboboxLikeProps,
   ComboboxLikeStylesNames,
 } from '../Combobox';
@@ -101,7 +101,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
   } = props;
 
   const parsedData = getParsedComboboxData(data);
-  const optionsLockup = getOptionsLockup(parsedData);
+  const optionsLookup = getOptionsLookup(parsedData);
 
   const [_value, setValue] = useUncontrolled({
     value,
@@ -110,7 +110,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     onChange,
   });
 
-  const selectedOption = _value ? optionsLockup[_value] : undefined;
+  const selectedOption = _value ? optionsLookup[_value] : undefined;
   const [search, setSearch] = useState(selectedOption ? selectedOption.label : '');
 
   const combobox = useCombobox({
@@ -140,8 +140,8 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       setSearch('');
     }
 
-    if (typeof value === 'string' && optionsLockup[value]) {
-      setSearch(optionsLockup[value].label);
+    if (typeof value === 'string' && optionsLookup[value]) {
+      setSearch(optionsLookup[value].label);
     }
   }, [value]);
 
@@ -154,9 +154,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       unstyled={unstyled}
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
-        const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
+        const nextValue = optionsLookup[val].value === _value ? null : optionsLookup[val].value;
         setValue(nextValue);
-        setSearch(nextValue ? optionsLockup[val].label : '');
+        setSearch(nextValue ? optionsLookup[val].label : '');
         combobox.closeDropdown();
       }}
       size={size}
@@ -183,7 +183,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           }}
           onBlur={(event) => {
             searchable && combobox.closeDropdown();
-            setSearch(_value ? optionsLockup[_value].label : '');
+            setSearch(_value ? optionsLookup[_value].label : '');
             onBlur?.(event);
           }}
           onClick={(event) => {
