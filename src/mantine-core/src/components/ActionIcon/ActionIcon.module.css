@@ -5,6 +5,12 @@
   --ai-size-lg: rem(34px);
   --ai-size-xl: rem(44px);
 
+  --ai-size-input-xs: rem(30px);
+  --ai-size-input-sm: rem(36px);
+  --ai-size-input-md: rem(42px);
+  --ai-size-input-lg: rem(50px);
+  --ai-size-input-xl: rem(60px);
+
   line-height: 1;
   display: inline-flex;
   align-items: center;
