@@ -10,12 +10,12 @@ import {
   MantineComponentStaticProperties,
 } from '@mantine/core';
 import { useDatesState } from '../../hooks';
-import { DecadeLevelBaseSettings, DecadeLevelStylesNames } from '../DecadeLevel';
-import { YearLevelBaseSettings, YearLevelStylesNames } from '../YearLevel';
+import { DecadeLevelBaseSettings } from '../DecadeLevel';
+import { YearLevelBaseSettings } from '../YearLevel';
 import { PickerBaseProps, DatePickerType, CalendarLevel } from '../../types';
-import { Calendar, CalendarBaseProps } from '../Calendar';
+import { Calendar, CalendarBaseProps, CalendarStylesNames } from '../Calendar';
 
-export type MonthPickerStylesNames = YearLevelStylesNames | DecadeLevelStylesNames;
+export type MonthPickerStylesNames = CalendarStylesNames;
 
 type MonthPickerLevel = Exclude<CalendarLevel, 'month'>;
 
