@@ -13,7 +13,7 @@ const defaultProps: MonthLevelGroupProps = {
   previousLabel: 'prev',
 };
 
-describe('@mantine/core/MonthLevelGroup', () => {
+describe('@mantine/dates/MonthLevelGroup', () => {
   tests.itSupportsSystemProps<MonthLevelGroupProps, MonthLevelGroupStylesNames>({
     component: MonthLevelGroup,
     props: defaultProps,

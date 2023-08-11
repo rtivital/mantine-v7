@@ -3,7 +3,7 @@ import { LevelsGroup, LevelsGroupProps, LevelsGroupStylesNames } from './LevelsG
 
 const defaultProps: LevelsGroupProps = {};
 
-describe('@mantine/core/LevelsGroup', () => {
+describe('@mantine/dates/LevelsGroup', () => {
   tests.itSupportsSystemProps<LevelsGroupProps, LevelsGroupStylesNames>({
     component: LevelsGroup,
     props: defaultProps,

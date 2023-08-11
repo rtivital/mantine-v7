@@ -5,7 +5,7 @@ import { YearPicker, YearPickerProps, YearPickerStylesNames } from './YearPicker
 
 const defaultProps = {};
 
-describe('@mantine/core/YearPicker', () => {
+describe('@mantine/dates/YearPicker', () => {
   tests.itSupportsSystemProps<YearPickerProps, YearPickerStylesNames>({
     component: YearPicker,
     props: defaultProps,

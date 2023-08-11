@@ -34,7 +34,7 @@ async function clickPrevious(level: 'month' | 'year' | 'decade') {
   await userEvent.click(screen.getByLabelText(`previous-${level}`));
 }
 
-describe('@mantine/core/Calendar', () => {
+describe('@mantine/dates/Calendar', () => {
   tests.itSupportsSystemProps<CalendarProps, CalendarStylesNames>({
     component: Calendar,
     props: defaultProps,

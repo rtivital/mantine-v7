@@ -9,7 +9,7 @@ const defaultProps: YearLevelGroupProps = {
   previousLabel: 'prev',
 };
 
-describe('@mantine/core/YearLevelGroup', () => {
+describe('@mantine/dates/YearLevelGroup', () => {
   tests.itSupportsSystemProps<YearLevelGroupProps, YearLevelGroupStylesNames>({
     component: YearLevelGroup,
     props: defaultProps,

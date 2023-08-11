@@ -13,7 +13,7 @@ function expectLabel(label: string) {
   expect(screen.getByLabelText('level-control')).toHaveTextContent(label);
 }
 
-describe('@mantine/core/MonthLevel', () => {
+describe('@mantine/dates/MonthLevel', () => {
   tests.itSupportsSystemProps<MonthLevelProps, MonthLevelStylesNames>({
     component: MonthLevel,
     props: defaultProps,
