@@ -89,6 +89,19 @@ export * as UnstyledButtonDemos from './demos/core/UnstyledButton';
 export * as NotificationDemos from './demos/core/Notification';
 export * as NumberInputDemos from './demos/core/NumberInput';
 
+// @mantine/dates
+export * as YearPickerDemos from './demos/dates/YearPicker';
+export * as YearPickerInputDemos from './demos/dates/YearPickerInput';
+export * as MonthPickerDemos from './demos/dates/MonthPicker';
+export * as MonthPickerInputDemos from './demos/dates/MonthPickerInput';
+export * as DatePickerDemos from './demos/dates/DatePicker';
+export * as DatePickerInputDemos from './demos/dates/DatePickerInput';
+export * as TimeInputDemos from './demos/dates/TimeInput';
+export * as DatesProviderDemos from './demos/dates/DatesProvider';
+export * as DateTimePickerDemos from './demos/dates/DateTimePicker';
+export * as DateInputDemos from './demos/dates/DateInput';
+export * as CalendarDemos from './demos/dates/Calendar';
+
 // Other demos
 export * as NotificationsDemos from './demos/notifications';
 export * as CarouselDemos from './demos/carousel';

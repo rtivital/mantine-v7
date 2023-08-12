@@ -13,6 +13,7 @@
       "@mantine/core": ["../mantine-core/src"],
       "@mantine/ds": ["../mantine-ds/src"],
       "@mantine/hooks": ["../mantine-hooks/src"],
+      "@mantine/dates": ["../mantine-dates/src"],
       "@mantine/notifications": ["../mantine-notifications/src"],
       "@mantine/dropzone": ["../mantine-dropzone/src"],
       "@mantine/nprogress": ["../mantine-nprogress/src"],
@@ -22,6 +23,7 @@
   },
   "references": [
     { "path": "../mantine-core" },
+    { "path": "../mantine-dates" },
     { "path": "../mantine-hooks" },
     { "path": "../mantine-ds" },
     { "path": "../mantine-notifications" },

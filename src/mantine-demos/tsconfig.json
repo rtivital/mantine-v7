@@ -18,13 +18,14 @@
       "@mantine/dropzone": ["../mantine-dropzone/src"],
       "@mantine/nprogress": ["../mantine-nprogress/src"],
       "@mantine/styles-api": ["../mantine-styles-api/src"],
-      "@mantine/dates": ["../mantine-code-highlight/src"]
+      "@mantine/dates": ["../mantine-dates/src"]
     }
   },
   "references": [
     { "path": "../mantine-core" },
     { "path": "../mantine-hooks" },
     { "path": "../mantine-ds" },
+    { "path": "../mantine-dates" },
     { "path": "../mantine-notifications" },
     { "path": "../mantine-dropzone" },
     { "path": "../mantine-nprogress" },

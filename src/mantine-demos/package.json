@@ -30,6 +30,7 @@
     "@mantine/core": "7.0.0-alpha.21",
     "@mantine/hooks": "7.0.0-alpha.21",
     "@mantine/form": "7.0.0-alpha.21",
+    "@mantine/dates": "7.0.0-alpha.21",
     "@mantine/styles-api": "7.0.0-alpha.21",
     "@mantine/ds": "7.0.0-alpha.21",
     "@mantine/notifications": "7.0.0-alpha.21",
