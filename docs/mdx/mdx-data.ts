@@ -7,6 +7,7 @@ import { MDX_CORE_DATA } from './data/mdx-core-data';
 import { MDX_OTHERS_DATA } from './data/mdx-others-data';
 import { MDX_HOOKS_DATA } from './data/mdx-hooks-data';
 import { MDX_FORM_DATA } from './data/mdx-form-data';
+import { MDX_DATES_DATA } from './data/mdx-dates-data';
 
 export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_META_DATA,
@@ -17,4 +18,5 @@ export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_HOOKS_DATA,
   ...MDX_OTHERS_DATA,
   ...MDX_FORM_DATA,
+  ...MDX_DATES_DATA,
 };

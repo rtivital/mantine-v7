@@ -135,7 +135,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     ],
   },
   {
-    group: 'form',
+    group: 'mantine-form',
     pages: [
       MDX_DATA.useForm,
       MDX_DATA.formValues,
@@ -291,7 +291,23 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     ],
   },
   {
-    group: 'others',
+    group: 'mantine-dates',
+    pages: [
+      MDX_DATA.DatesProvider,
+      MDX_DATA.Calendar,
+      MDX_DATA.DateInput,
+      MDX_DATA.DateTimePicker,
+      MDX_DATA.DatePicker,
+      MDX_DATA.DatePickerInput,
+      MDX_DATA.MonthPicker,
+      MDX_DATA.MonthPickerInput,
+      MDX_DATA.YearPicker,
+      MDX_DATA.YearPickerInput,
+      MDX_DATA.TimeInput,
+    ],
+  },
+  {
+    group: 'other packages',
     pages: [
       MDX_DATA.CodeHighlight,
       MDX_DATA.Notifications,
