@@ -1,5 +1,6 @@
 import React from 'react';
 import { tests, render } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { Month, MonthProps, MonthStylesNames } from './Month';
 
 const defaultProps: MonthProps = {
@@ -20,10 +21,10 @@ describe('@mantine/dates/Month', () => {
     stylesApiSelectors: ['month'],
   });
 
-  tests.dates.itSupportsOnDayClick({ component: Month, props: defaultProps });
-  tests.dates.itSupportsOnDayKeydown({ component: Month, props: defaultProps });
-  tests.dates.itSupportsGetDayRef({ component: Month, props: defaultProps });
-  tests.dates.itSupportsMonthProps({ component: Month, props: defaultProps });
+  datesTests.itSupportsOnDayClick({ component: Month, props: defaultProps });
+  datesTests.itSupportsOnDayKeydown({ component: Month, props: defaultProps });
+  datesTests.itSupportsGetDayRef({ component: Month, props: defaultProps });
+  datesTests.itSupportsMonthProps({ component: Month, props: defaultProps });
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<Month {...defaultProps} />);

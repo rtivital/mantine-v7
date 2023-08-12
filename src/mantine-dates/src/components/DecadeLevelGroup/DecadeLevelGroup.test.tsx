@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import {
   DecadeLevelGroup,
   DecadeLevelGroupProps,
@@ -39,10 +40,10 @@ describe('@mantine/dates/DecadeLevelGroup', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsYearsListProps({ component: DecadeLevelGroup, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: DecadeLevelGroup, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: DecadeLevelGroup, props: defaultProps });
-  tests.dates.itHandlesControlsKeyboardEvents({
+  datesTests.itSupportsYearsListProps({ component: DecadeLevelGroup, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: DecadeLevelGroup, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: DecadeLevelGroup, props: defaultProps });
+  datesTests.itHandlesControlsKeyboardEvents({
     component: DecadeLevelGroup,
     props: defaultProps,
     listSelector: '.mantine-DecadeLevelGroup-yearsList',

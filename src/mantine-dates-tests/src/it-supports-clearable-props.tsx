@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;

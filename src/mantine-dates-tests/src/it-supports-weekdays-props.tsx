@@ -4,7 +4,7 @@ import { screen } from '@testing-library/react';
 import dayjs from 'dayjs';
 // @ts-ignore
 import { DatesProvider } from '@mantine/dates';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 export function expectWeekdaysNames(names: string[]) {
   expect(screen.getAllByRole('columnheader').map((th) => th.textContent)).toStrictEqual(names);

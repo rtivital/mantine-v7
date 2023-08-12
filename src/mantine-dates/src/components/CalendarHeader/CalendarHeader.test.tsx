@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { CalendarHeader, CalendarHeaderProps, CalendarHeaderStylesNames } from './CalendarHeader';
 
 const defaultProps: CalendarHeaderProps = {
@@ -27,8 +28,8 @@ describe('@mantine/dates/CalendarHeader', () => {
     ],
   });
 
-  tests.dates.itSupportsHeaderProps({ component: CalendarHeader, props: defaultProps });
-  tests.dates.itSupportsWithNextPrevious({ component: CalendarHeader, props: defaultProps });
+  datesTests.itSupportsHeaderProps({ component: CalendarHeader, props: defaultProps });
+  datesTests.itSupportsWithNextPrevious({ component: CalendarHeader, props: defaultProps });
 
   it('renders given label', () => {
     render(<CalendarHeader {...defaultProps} label="test-label" />);

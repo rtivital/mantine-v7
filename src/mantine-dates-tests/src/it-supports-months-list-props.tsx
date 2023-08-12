@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import React from 'react';
 // @ts-ignore
 import { DatesProvider } from '@mantine/dates';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;

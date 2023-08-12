@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { YearsList, YearsListProps, YearsListStylesNames } from './YearsList';
 
 const defaultProps: YearsListProps = {
@@ -20,15 +21,15 @@ describe('@mantine/dates/YearsList', () => {
     stylesApiSelectors: ['yearsList', 'yearsListCell', 'yearsListControl', 'yearsListRow'],
   });
 
-  tests.dates.itSupportsGetControlRef({
+  datesTests.itSupportsGetControlRef({
     component: YearsList,
     props: defaultProps,
     numberOfControls: 10,
   });
-  tests.dates.itSupportsYearsListProps({ component: YearsList, props: defaultProps });
-  tests.dates.itSupportsOnControlKeydown({ component: YearsList, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: YearsList, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: YearsList, props: defaultProps });
+  datesTests.itSupportsYearsListProps({ component: YearsList, props: defaultProps });
+  datesTests.itSupportsOnControlKeydown({ component: YearsList, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: YearsList, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: YearsList, props: defaultProps });
 
   it('has correct default __staticSelector', () => {
     render(<YearsList {...defaultProps} />);

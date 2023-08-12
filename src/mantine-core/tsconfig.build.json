@@ -13,9 +13,8 @@
     "jsx": "react-jsx",
     "importHelpers": true,
     "paths": {
-      "@mantine/hooks": ["../mantine-hooks/src"],
-      "@mantine/tests": ["../mantine-tests/src"]
+      "@mantine/hooks": ["../mantine-hooks/src"]
     }
   },
-  "references": [{ "path": "../mantine-hooks" }, { "path": "../mantine-tests" }]
+  "references": [{ "path": "../mantine-hooks" }]
 }

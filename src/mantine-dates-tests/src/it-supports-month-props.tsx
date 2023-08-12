@@ -6,7 +6,7 @@ import { screen } from '@testing-library/react';
 // @ts-ignore
 import { DatesProvider } from '@mantine/dates';
 import { itSupportsWeekdaysProps } from './it-supports-weekdays-props';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;

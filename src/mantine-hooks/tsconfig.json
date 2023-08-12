@@ -12,6 +12,5 @@
     "paths": {
       "@mantine/tests": ["../mantine-tests/src"]
     }
-  },
-  "references": [{ "path": "../mantine-tests" }]
+  }
 }

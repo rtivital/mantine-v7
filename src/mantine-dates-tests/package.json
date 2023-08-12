@@ -1,0 +1,17 @@
+{
+  "name": "@mantine/dates-tests",
+  "private": true,
+  "version": "7.0.0-alpha.21",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
+    }
+  },
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

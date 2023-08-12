@@ -7,13 +7,16 @@ import {
   screen,
   render,
   userEvent,
+} from '@mantine/tests';
+import {
+  datesTests,
   clickInput,
   expectNoModal,
   expectNoPopover,
   expectOpenedModal,
   expectOpenedPopover,
   expectValue,
-} from '@mantine/tests';
+} from '@mantine/dates-tests';
 import { DateTimePicker, DateTimePickerProps } from './DateTimePicker';
 import { DatesProvider } from '../DatesProvider';
 
@@ -72,7 +75,7 @@ describe('@mantine/dates/DateTimePicker', () => {
     selector: 'button',
   });
 
-  tests.dates.itSupportsClearableProps({
+  datesTests.itSupportsClearableProps({
     component: DateTimePicker,
     props: {
       ...defaultProps,
@@ -80,7 +83,7 @@ describe('@mantine/dates/DateTimePicker', () => {
     },
   });
 
-  tests.dates.itSupportsYearsListProps({
+  datesTests.itSupportsYearsListProps({
     component: DateTimePicker,
     props: {
       ...defaultProps,
@@ -90,7 +93,7 @@ describe('@mantine/dates/DateTimePicker', () => {
     },
   });
 
-  tests.dates.itSupportsMonthsListProps({
+  datesTests.itSupportsMonthsListProps({
     component: DateTimePicker,
     props: {
       ...defaultProps,

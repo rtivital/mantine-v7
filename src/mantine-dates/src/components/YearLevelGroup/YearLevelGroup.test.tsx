@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { YearLevelGroup, YearLevelGroupProps, YearLevelGroupStylesNames } from './YearLevelGroup';
 
 const defaultProps: YearLevelGroupProps = {
@@ -35,11 +36,11 @@ describe('@mantine/dates/YearLevelGroup', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsMonthsListProps({ component: YearLevelGroup, props: defaultProps });
-  tests.dates.itSupportsHeaderProps({ component: YearLevelGroup, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: YearLevelGroup, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: YearLevelGroup, props: defaultProps });
-  tests.dates.itHandlesControlsKeyboardEvents({
+  datesTests.itSupportsMonthsListProps({ component: YearLevelGroup, props: defaultProps });
+  datesTests.itSupportsHeaderProps({ component: YearLevelGroup, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: YearLevelGroup, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: YearLevelGroup, props: defaultProps });
+  datesTests.itHandlesControlsKeyboardEvents({
     component: YearLevelGroup,
     props: defaultProps,
     listSelector: '.mantine-YearLevelGroup-monthsList',

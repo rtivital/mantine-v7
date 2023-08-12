@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import {
   MonthLevelGroup,
   MonthLevelGroupProps,
@@ -43,10 +44,10 @@ describe('@mantine/dates/MonthLevelGroup', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsMonthProps({ component: MonthLevelGroup, props: defaultProps });
-  tests.dates.itSupportsHeaderProps({ component: MonthLevelGroup, props: defaultProps });
-  tests.dates.itSupportsOnDayClick({ component: MonthLevelGroup, props: defaultProps });
-  tests.dates.itHandlesMonthKeyboardEvents({
+  datesTests.itSupportsMonthProps({ component: MonthLevelGroup, props: defaultProps });
+  datesTests.itSupportsHeaderProps({ component: MonthLevelGroup, props: defaultProps });
+  datesTests.itSupportsOnDayClick({ component: MonthLevelGroup, props: defaultProps });
+  datesTests.itHandlesMonthKeyboardEvents({
     component: MonthLevelGroup,
     props: defaultProps,
     name: 'MonthLevelGroup',

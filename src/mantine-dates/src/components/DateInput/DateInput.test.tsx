@@ -6,11 +6,14 @@ import {
   render,
   screen,
   userEvent,
+} from '@mantine/tests';
+import {
+  datesTests,
   expectNoPopover,
   expectOpenedPopover,
   expectValue,
   clickControl,
-} from '@mantine/tests';
+} from '@mantine/dates-tests';
 import { __InputStylesNames } from '@mantine/core';
 import { DateInput, DateInputProps } from './DateInput';
 
@@ -65,12 +68,12 @@ describe('@mantine/dates/DateInput', () => {
     selector: 'input',
   });
 
-  tests.dates.itSupportsClearableProps({
+  datesTests.itSupportsClearableProps({
     component: DateInput,
     props: { defaultValue: new Date(2022, 3, 11) },
   });
 
-  tests.dates.itSupportsYearsListProps({
+  datesTests.itSupportsYearsListProps({
     component: DateInput,
     props: {
       ...defaultProps,
@@ -80,7 +83,7 @@ describe('@mantine/dates/DateInput', () => {
     },
   });
 
-  tests.dates.itSupportsMonthsListProps({
+  datesTests.itSupportsMonthsListProps({
     component: DateInput,
     props: {
       ...defaultProps,

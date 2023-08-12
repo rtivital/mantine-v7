@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, userEvent } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { DatePicker, DatePickerProps, DatePickerStylesNames } from './DatePicker';
 
 const defaultProps = {
@@ -30,23 +31,23 @@ describe('@mantine/dates/DatePicker', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsYearsListProps({
+  datesTests.itSupportsYearsListProps({
     component: DatePicker,
     props: { ...defaultProps, defaultLevel: 'decade' },
   });
 
-  tests.dates.itSupportsMonthsListProps({
+  datesTests.itSupportsMonthsListProps({
     component: DatePicker,
     props: { ...defaultProps, level: 'year' },
   });
 
-  tests.dates.itHandlesMonthKeyboardEvents({
+  datesTests.itHandlesMonthKeyboardEvents({
     component: DatePicker,
     props: defaultProps,
     name: 'DatePicker',
   });
 
-  tests.dates.itSupportsMonthProps({
+  datesTests.itSupportsMonthProps({
     component: DatePicker,
     props: defaultProps,
   });

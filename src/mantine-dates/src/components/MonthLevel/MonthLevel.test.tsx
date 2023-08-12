@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { MonthLevel, MonthLevelProps, MonthLevelStylesNames } from './MonthLevel';
 
 const defaultProps: MonthLevelProps = {
@@ -43,12 +44,12 @@ describe('@mantine/dates/MonthLevel', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsHeaderProps({ component: MonthLevel, props: defaultProps });
-  tests.dates.itSupportsMonthProps({ component: MonthLevel, props: defaultProps });
-  tests.dates.itSupportsGetDayRef({ component: MonthLevel, props: defaultProps });
-  tests.dates.itSupportsWithNextPrevious({ component: MonthLevel, props: defaultProps });
-  tests.dates.itSupportsOnDayKeydown({ component: MonthLevel, props: defaultProps });
-  tests.dates.itSupportsOnDayClick({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsHeaderProps({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsMonthProps({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsGetDayRef({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsWithNextPrevious({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsOnDayKeydown({ component: MonthLevel, props: defaultProps });
+  datesTests.itSupportsOnDayClick({ component: MonthLevel, props: defaultProps });
 
   it('renders correct CalendarHeader label', () => {
     render(<MonthLevel {...defaultProps} />);

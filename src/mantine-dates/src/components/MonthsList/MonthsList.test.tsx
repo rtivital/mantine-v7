@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { MonthsList, MonthsListProps, MonthsListStylesNames } from './MonthsList';
 
 const defaultProps: MonthsListProps = {
@@ -20,15 +21,15 @@ describe('@mantine/dates/MonthsList', () => {
     stylesApiSelectors: ['monthsList', 'monthsListCell', 'monthsListControl', 'monthsListRow'],
   });
 
-  tests.dates.itSupportsGetControlRef({
+  datesTests.itSupportsGetControlRef({
     component: MonthsList,
     props: defaultProps,
     numberOfControls: 12,
   });
-  tests.dates.itSupportsMonthsListProps({ component: MonthsList, props: defaultProps });
-  tests.dates.itSupportsOnControlKeydown({ component: MonthsList, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: MonthsList, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsMonthsListProps({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlKeydown({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: MonthsList, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: MonthsList, props: defaultProps });
 
   it('has correct default __staticSelector', () => {
     render(<MonthsList {...defaultProps} />);

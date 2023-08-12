@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, patchConsoleError, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { WeekdaysRow, WeekdaysRowProps, WeekdaysRowStylesNames } from './WeekdaysRow';
 
 const defaultProps: WeekdaysRowProps = {};
@@ -31,7 +32,7 @@ describe('@mantine/dates/WeekdaysRow', () => {
     stylesApiSelectors: ['weekdaysRow', 'weekday'],
   });
 
-  tests.dates.itSupportsWeekdaysProps({ component: WeekdaysRow, props: defaultProps });
+  datesTests.itSupportsWeekdaysProps({ component: WeekdaysRow, props: defaultProps });
 
   it('supports changing cell component', () => {
     render(<Wrapper cellComponent="td" />);

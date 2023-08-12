@@ -10,7 +10,7 @@ import {
   clickControl,
   expectValue,
 } from './date-input-test-helpers';
-import { render } from '../render';
+import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { YearLevel, YearLevelProps, YearLevelStylesNames } from './YearLevel';
 
 const defaultProps: YearLevelProps = {
@@ -39,17 +40,17 @@ describe('@mantine/dates/YearLevel', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsGetControlRef({
+  datesTests.itSupportsGetControlRef({
     component: YearLevel,
     props: defaultProps,
     numberOfControls: 12,
   });
-  tests.dates.itSupportsHeaderProps({ component: YearLevel, props: defaultProps });
-  tests.dates.itSupportsWithNextPrevious({ component: YearLevel, props: defaultProps });
-  tests.dates.itSupportsMonthsListProps({ component: YearLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlKeydown({ component: YearLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: YearLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsHeaderProps({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsWithNextPrevious({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsMonthsListProps({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsOnControlKeydown({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: YearLevel, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: YearLevel, props: defaultProps });
 
   it('renders correct CalendarHeader label', () => {
     render(<YearLevel {...defaultProps} />);

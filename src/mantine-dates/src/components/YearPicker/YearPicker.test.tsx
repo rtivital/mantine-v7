@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import { render, tests, userEvent, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { YearPicker, YearPickerProps, YearPickerStylesNames } from './YearPicker';
 
 const defaultProps = {};
@@ -29,8 +30,8 @@ describe('@mantine/dates/YearPicker', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsYearsListProps({ component: YearPicker, props: defaultProps });
-  tests.dates.itHandlesControlsKeyboardEvents({
+  datesTests.itSupportsYearsListProps({ component: YearPicker, props: defaultProps });
+  datesTests.itHandlesControlsKeyboardEvents({
     component: YearPicker,
     props: defaultProps,
     listSelector: '.mantine-YearPicker-yearsList',

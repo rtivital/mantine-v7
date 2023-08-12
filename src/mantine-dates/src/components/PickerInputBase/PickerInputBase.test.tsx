@@ -1,5 +1,6 @@
 import React from 'react';
-import { tests, userEvent, render, screen } from '@mantine/tests';
+import { userEvent, render, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { PickerInputBase, PickerInputBaseProps } from './PickerInputBase';
 
 const noop = () => {};
@@ -20,7 +21,7 @@ const defaultProps: PickerInputBaseProps = {
 };
 
 describe('@mantine/dates/PickerInputBase', () => {
-  tests.dates.itSupportsClearableProps({ component: PickerInputBase, props: defaultProps });
+  datesTests.itSupportsClearableProps({ component: PickerInputBase, props: defaultProps });
 
   it('opens/toggles dropdown with click events', async () => {
     const toggle = jest.fn();

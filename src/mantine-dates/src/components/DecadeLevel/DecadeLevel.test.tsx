@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, tests, screen } from '@mantine/tests';
+import { datesTests } from '@mantine/dates-tests';
 import { DecadeLevel, DecadeLevelProps, DecadeLevelStylesNames } from './DecadeLevel';
 
 const defaultProps: DecadeLevelProps = {
@@ -38,16 +39,16 @@ describe('@mantine/dates/DecadeLevel', () => {
     providerStylesApi: false,
   });
 
-  tests.dates.itSupportsGetControlRef({
+  datesTests.itSupportsGetControlRef({
     component: DecadeLevel,
     props: defaultProps,
     numberOfControls: 10,
   });
-  tests.dates.itSupportsWithNextPrevious({ component: DecadeLevel, props: defaultProps });
-  tests.dates.itSupportsYearsListProps({ component: DecadeLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlKeydown({ component: DecadeLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlClick({ component: DecadeLevel, props: defaultProps });
-  tests.dates.itSupportsOnControlMouseEnter({ component: DecadeLevel, props: defaultProps });
+  datesTests.itSupportsWithNextPrevious({ component: DecadeLevel, props: defaultProps });
+  datesTests.itSupportsYearsListProps({ component: DecadeLevel, props: defaultProps });
+  datesTests.itSupportsOnControlKeydown({ component: DecadeLevel, props: defaultProps });
+  datesTests.itSupportsOnControlClick({ component: DecadeLevel, props: defaultProps });
+  datesTests.itSupportsOnControlMouseEnter({ component: DecadeLevel, props: defaultProps });
 
   it('renders correct CalendarHeader label', () => {
     render(<DecadeLevel {...defaultProps} />);
