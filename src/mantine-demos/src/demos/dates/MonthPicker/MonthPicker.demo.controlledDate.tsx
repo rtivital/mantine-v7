@@ -3,6 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { MonthPicker } from '@mantine/dates';
 
 const code = `
+import { useState } from 'react';
 import { MonthPicker } from '@mantine/dates';
 
 function Demo() {

@@ -1,55 +1,44 @@
 import React, { useState } from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { MonthPicker } from '@mantine/dates';
+import { MonthPicker, MonthPickerProps } from '@mantine/dates';
 
 const code = `
 import { useState } from 'react';
-import { MonthPicker } from '@mantine/dates';
+import { MonthPicker, MonthPickerProps } from '@mantine/dates';
 
-function Demo() {
-  const [value, setValue] = useState<Date | null>(null);
-  return (
-    <Group position="center">
-      <MonthPicker
-        value={value}
-        onChange={setValue}
-        getYearControlProps={(date) => {
-          if (date.getFullYear() === new Date().getFullYear()) {
-            return {
-              sx: (theme) => ({
-                color: theme.fn.primaryColor(),
-                fontWeight: 700,
-              }),
-            };
-          }
+const getYearControlProps: MonthPickerProps['getYearControlProps'] = (date) => {
+  if (date.getFullYear() === new Date().getFullYear()) {
+    return {
+      style: {
+        color: 'var(--mantine-color-blue-filled)',
+        fontWeight: 700,
+      },
+    };
+  }
 
-          if (date.getFullYear() === new Date().getFullYear() + 1) {
-            return { disabled: true };
-          }
+  if (date.getFullYear() === new Date().getFullYear() + 1) {
+    return { disabled: true };
+  }
 
-          return {};
-        }}
-        getMonthControlProps={(date) => {
-          if (date.getMonth() === 1) {
-            return {
-              sx: (theme) => ({
-                color: theme.fn.primaryColor(),
-                fontWeight: 700,
-              }),
-            };
-          }
+  return {};
+};
 
-          if (date.getMonth() === 5) {
-            return { disabled: true };
-          }
+const getMonthControlProps: MonthPickerProps['getMonthControlProps'] = (date) => {
+  if (date.getMonth() === 1) {
+    return {
+      style: {
+        color: 'var(--mantine-color-blue-filled)',
+        fontWeight: 700,
+      },
+    };
+  }
 
-          return {};
-        }}
-      />
-    </Group>
-  );
-}
-`;
+  if (date.getMonth() === 5) {
+    return { disabled: true };
+  }
+
+  return {};
+};
 
 function Demo() {
   const [value, setValue] = useState<Date | null>(null);
@@ -57,38 +46,55 @@ function Demo() {
     <MonthPicker
       value={value}
       onChange={setValue}
-      getYearControlProps={(date) => {
-        if (date.getFullYear() === new Date().getFullYear()) {
-          return {
-            style: {
-              color: 'var(--mantine-color-blue-filled)',
-              fontWeight: 700,
-            },
-          };
-        }
+      getYearControlProps={getYearControlProps}
+      getMonthControlProps={getMonthControlProps}
+    />
+  );
+}
+`;
 
-        if (date.getFullYear() === new Date().getFullYear() + 1) {
-          return { disabled: true };
-        }
+const getYearControlProps: MonthPickerProps['getYearControlProps'] = (date) => {
+  if (date.getFullYear() === new Date().getFullYear()) {
+    return {
+      style: {
+        color: 'var(--mantine-color-blue-filled)',
+        fontWeight: 700,
+      },
+    };
+  }
 
-        return {};
-      }}
-      getMonthControlProps={(date) => {
-        if (date.getMonth() === 1) {
-          return {
-            style: {
-              color: 'var(--mantine-color-blue-filled)',
-              fontWeight: 700,
-            },
-          };
-        }
+  if (date.getFullYear() === new Date().getFullYear() + 1) {
+    return { disabled: true };
+  }
 
-        if (date.getMonth() === 5) {
-          return { disabled: true };
-        }
+  return {};
+};
 
-        return {};
-      }}
+const getMonthControlProps: MonthPickerProps['getMonthControlProps'] = (date) => {
+  if (date.getMonth() === 1) {
+    return {
+      style: {
+        color: 'var(--mantine-color-blue-filled)',
+        fontWeight: 700,
+      },
+    };
+  }
+
+  if (date.getMonth() === 5) {
+    return { disabled: true };
+  }
+
+  return {};
+};
+
+function Demo() {
+  const [value, setValue] = useState<Date | null>(null);
+  return (
+    <MonthPicker
+      value={value}
+      onChange={setValue}
+      getYearControlProps={getYearControlProps}
+      getMonthControlProps={getMonthControlProps}
     />
   );
 }

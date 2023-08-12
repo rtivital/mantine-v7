@@ -2,6 +2,7 @@
   "name": "@mantine/dates",
   "description": "Calendars, date and time pickers based on Mantine components",
   "version": "7.0.0-alpha.21",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./esm/index.js",
@@ -10,10 +11,10 @@
     },
     "./styles.css": "./esm/index.css"
   },
-  "license": "MIT",
   "sideEffects": [
     "*.css"
   ],
+  "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "homepage": "https://mantine.dev/dates/getting-started/",
   "repository": {

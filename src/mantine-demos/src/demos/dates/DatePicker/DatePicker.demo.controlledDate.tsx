@@ -3,6 +3,7 @@ import { MantineDemo } from '@mantine/ds';
 import { DatePicker } from '@mantine/dates';
 
 const code = `
+import { useState } from 'react';
 import { DatePicker } from '@mantine/dates';
 
 function Demo() {

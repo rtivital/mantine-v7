@@ -82,6 +82,10 @@
     }
   }
 
+  &[data-last-in-range][data-first-in-range] {
+    --_day-radius: var(--mantine-radius-default);
+  }
+
   &[data-selected] {
     --_day-bg: var(--mantine-primary-color-filled);
     --_day-color: var(--mantine-color-white);

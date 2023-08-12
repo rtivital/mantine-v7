@@ -4,6 +4,7 @@ import { MantineDemo } from '@mantine/ds';
 const getCodeTemplate = (component: string) =>
   `import { ${component} } from '@mantine/dates';
 
+
 function Demo() {
   return (
     <${component}
@@ -17,6 +18,8 @@ export function getPickerInputConfiguratorDemo(Component: React.FC<any>): Mantin
   return {
     type: 'configurator',
     component: Component,
+    centered: true,
+    maxWidth: 400,
     code: getCodeTemplate(Component.displayName!.replace('@mantine/dates/', '')),
     controls: [
       { prop: 'placeholder', type: 'string', initialValue: 'Pick date', libraryValue: '__' },
@@ -24,19 +27,19 @@ export function getPickerInputConfiguratorDemo(Component: React.FC<any>): Mantin
         prop: 'label',
         type: 'string',
         initialValue: 'Pick date',
-        libraryValue: '__',
+        libraryValue: '',
       },
       {
         prop: 'description',
         type: 'string',
         initialValue: '',
-        libraryValue: '__',
+        libraryValue: '',
       },
       {
         prop: 'error',
         type: 'string',
         initialValue: '',
-        libraryValue: '__',
+        libraryValue: '',
       },
       {
         prop: 'variant',
@@ -47,7 +50,7 @@ export function getPickerInputConfiguratorDemo(Component: React.FC<any>): Mantin
           { label: 'unstyled', value: 'unstyled' },
         ],
         initialValue: 'default',
-        libraryValue: '__',
+        libraryValue: 'default',
       },
       { prop: 'radius', type: 'size', initialValue: 'sm', libraryValue: 'sm' },
       { prop: 'size', type: 'size', initialValue: 'sm', libraryValue: 'sm' },

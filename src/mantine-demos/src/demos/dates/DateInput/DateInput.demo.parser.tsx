@@ -1,19 +1,21 @@
 import React from 'react';
 import { MantineDemo } from '@mantine/ds';
-import { DateInput } from '@mantine/dates';
+import { DateInput, DateInputProps } from '@mantine/dates';
 
 const code = `
-import { DateInput } from '@mantine/dates';
+import { DateInput, DateInputProps } from '@mantine/dates';
+
+const dateParser: DateInputProps['dateParser'] = (input) => {
+  if (input === 'WW2') {
+    return new Date(1939, 8, 1);
+  }
+  return new Date(input);
+};
 
 function Demo() {
   return (
     <DateInput
-      dateParser={(input) => {
-        if (input === 'WW2') {
-          return new Date(1939, 8, 1);
-        }
-        return new Date(input);
-      }}
+      dateParser={dateParser}
       valueFormat="DD/MM/YYYY"
       label="Type WW2"
       placeholder="Type WW2"
@@ -22,15 +24,17 @@ function Demo() {
 }
 `;
 
+const dateParser: DateInputProps['dateParser'] = (input) => {
+  if (input === 'WW2') {
+    return new Date(1939, 8, 1);
+  }
+  return new Date(input);
+};
+
 function Demo() {
   return (
     <DateInput
-      dateParser={(input) => {
-        if (input === 'WW2') {
-          return new Date(1939, 8, 1);
-        }
-        return new Date(input);
-      }}
+      dateParser={dateParser}
       valueFormat="DD/MM/YYYY"
       label="Type WW2"
       placeholder="Type WW2"

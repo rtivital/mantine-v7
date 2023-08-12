@@ -68,6 +68,10 @@
   version "0.0.0"
   uid ""
 
+"@mantine/dates@link:../src/mantine-dates":
+  version "0.0.0"
+  uid ""
+
 "@mantine/demos@link:../src/mantine-demos":
   version "0.0.0"
   uid ""
@@ -100,10 +104,10 @@
   version "0.0.0"
   uid ""
 
-"@mantine/store@7.0.0-alpha.20":
-  version "7.0.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.20.tgz#32fad3d5c3019bca5c878f2be8c5daf0d67733b7"
-  integrity sha512-mb1BAgtnIuZY79BcHJBEgConuIlPrYqRd332srIXffBa2LHlduFDXtAGqnV7RXij/jfj4rVeb8IrvbMLhqm+Wg==
+"@mantine/store@7.0.0-alpha.21":
+  version "7.0.0-alpha.21"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.0.0-alpha.21.tgz#24bc4e10b6821d5961b6e940b126f1808a3f3f4e"
+  integrity sha512-6EKOVjpt1dpk7guI6T9flbjo9a6Ez01KJmE0t5w+/IdJMczAYVL6TOrG819B3Pxm7akF9c7Z3wM9ct0yxLEHLQ==
 
 "@mantine/store@link:../src/mantine-store":
   version "0.0.0"
@@ -448,7 +452,7 @@ client-only@0.0.1:
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
   integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
 
-clsx@2.0.0:
+clsx@2.0.0, clsx@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.0.0.tgz#12658f3fd98fafe62075595a5c30e43d18f3d00b"
   integrity sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==
@@ -469,6 +473,11 @@ csstype@^3.0.2:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
+
+dayjs@^1.10.5:
+  version "1.11.9"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"
+  integrity sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==
 
 debug@^4.0.0:
   version "4.3.4"

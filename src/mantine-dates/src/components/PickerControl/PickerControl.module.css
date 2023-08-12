@@ -74,4 +74,8 @@
       --_control-radius: var(--mantine-radius-default) 0 0 var(--mantine-radius-default);
     }
   }
+
+  &[data-first-in-range][data-last-in-range] {
+    --_control-radius: var(--mantine-radius-default);
+  }
 }

@@ -6,13 +6,16 @@ import { rem } from '@mantine/core';
 const getCode = (name: string) => `
 import { useState } from 'react';
 import { rem } from '@mantine/core';
+import { IconCalendar } from '@tabler/icons-react';
 import { ${name} } from '@mantine/dates';
 
 function Demo() {
   const [value, setValue] = useState<Date | null>(null);
+  const icon = <IconCalendar style={{ width: rem(18), height: rem(18) }} stroke={1.5} />;
   return (
     <${name}
-      icon={<IconCalendar style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+      leftSection={icon}
+      leftSectionPointerEvents="none"
       label="Pick date"
       placeholder="Pick date"
       value={value}
@@ -27,7 +30,8 @@ function getDemo(Component: React.FC<any>) {
     const [value, setValue] = useState<Date | null>(null);
     return (
       <Component
-        icon={<IconCalendar style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+        leftSection={<IconCalendar style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
+        leftSectionPointerEvents="none"
         label="Pick date"
         placeholder="Pick date"
         value={value}

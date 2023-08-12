@@ -18,6 +18,7 @@ function Demo() {
 
 export const locale: MantineDemo = {
   type: 'code',
+  centered: true,
   component: Demo,
   code,
 };

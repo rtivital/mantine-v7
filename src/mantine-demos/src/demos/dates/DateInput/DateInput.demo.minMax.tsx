@@ -4,6 +4,7 @@ import { MantineDemo } from '@mantine/ds';
 import { DateInput } from '@mantine/dates';
 
 const code = `
+import dayjs from 'dayjs';
 import { DateInput } from '@mantine/dates';
 
 function Demo() {

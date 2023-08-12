@@ -7,6 +7,7 @@ import { rem } from '@mantine/core';
 const code = `
 import { IconClock } from '@tabler/icons-react';
 import { TimeInput } from '@mantine/dates';
+import { rem } from '@mantine/core';
 
 function Demo() {
   return (
