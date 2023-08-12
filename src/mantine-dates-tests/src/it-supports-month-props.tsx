@@ -3,10 +3,9 @@ import dayjs from 'dayjs';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-// @ts-ignore
 import { DatesProvider } from '@mantine/dates';
-import { itSupportsWeekdaysProps } from './it-supports-weekdays-props';
 import { render } from '@mantine/tests';
+import { itSupportsWeekdaysProps } from './it-supports-weekdays-props';
 
 interface Options {
   component: React.ComponentType<any>;

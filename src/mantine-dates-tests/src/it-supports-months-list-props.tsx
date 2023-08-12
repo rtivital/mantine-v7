@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import React from 'react';
-// @ts-ignore
 import { DatesProvider } from '@mantine/dates';
 import { render } from '@mantine/tests';
 

@@ -2,7 +2,6 @@ import 'dayjs/locale/ru';
 import React from 'react';
 import { screen } from '@testing-library/react';
 import dayjs from 'dayjs';
-// @ts-ignore
 import { DatesProvider } from '@mantine/dates';
 import { render } from '@mantine/tests';
 

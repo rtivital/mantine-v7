@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import { render } from '@mantine/tests';
 import {
   getInputValue,
   clickInput,
@@ -10,7 +11,6 @@ import {
   clickControl,
   expectValue,
 } from './date-input-test-helpers';
-import { render } from '@mantine/tests';
 
 interface Options {
   component: React.ComponentType<any>;
