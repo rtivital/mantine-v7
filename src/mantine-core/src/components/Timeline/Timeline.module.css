@@ -165,6 +165,14 @@
 
   &[data-with-child] {
     --_bullet-border-width: var(--tl-line-width);
+
+    @mixin light {
+      --_bullet-bg-color: var(--mantine-color-gray-3);
+    }
+
+    @mixin dark {
+      --_bullet-bg-color: var(--mantine-color-dark-4);
+    }
   }
 
   &[data-active] {
