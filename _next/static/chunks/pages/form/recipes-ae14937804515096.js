@@ -1,0 +1,236 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9517],{4327:function(e,t,r){(window.__NEXT_P=window.__NEXT_P||[]).push(["/form/recipes",function(){return r(84845)}])},84845:function(e,t,r){"use strict";r.r(t),r.d(t,{default:function(){return en}});var o=r(85893),n=r(11151),a=r(19905),l=r(9904),i=r(67294),s=r(61757),p=r(51227),c=r(31577),m=r(56746),u=Object.defineProperty,d=Object.getOwnPropertySymbols,f=Object.prototype.hasOwnProperty,b=Object.prototype.propertyIsEnumerable,v=(e,t,r)=>t in e?u(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,y=(e,t)=>{for(var r in t||(t={}))f.call(t,r)&&v(e,r,t[r]);if(d)for(var r of d(t))b.call(t,r)&&v(e,r,t[r]);return e};let g=`
+import { useEffect } from 'react';
+import { useForm } from '@mantine/form';
+import { TextInput, Checkbox, Box } from '@mantine/core';
+
+interface FormValues {
+  email: string;
+  terms: boolean;
+}
+
+function loadInitialValues(): Promise<FormValues> {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve({ email: 'test@email', terms: true }), 2000);
+  });
+}
+
+function Demo() {
+  const form = useForm<FormValues>({ initialValues: { email: '', terms: false } });
+
+  useEffect(() => {
+    loadInitialValues().then((values) => {
+      form.setValues(values);
+      form.resetDirty(values);
+    });
+  }, []);
+
+  return (
+    <Box maw={320} mx="auto">
+      <TextInput label="Email" placeholder="Email" {...form.getInputProps('email')} />
+      <Checkbox
+        mt="sm"
+        label="I accept terms and conditions"
+        {...form.getInputProps('terms', { type: 'checkbox' })}
+      />
+    </Box>
+  );
+}
+`,h={type:"code",component:function(){let e=(0,s.c)({initialValues:{email:"",terms:!1}});return(0,i.useEffect)(()=>{new Promise(e=>{setTimeout(()=>e({email:"test@email",terms:!0}),2e3)}).then(t=>{e.setValues(t),e.resetDirty(t)})},[]),i.createElement(p.x,{maw:340,mx:"auto"},i.createElement(c.o,y({label:"Email",placeholder:"Email"},e.getInputProps("email"))),i.createElement(m.X,y({mt:"sm",label:"I accept terms and conditions"},e.getInputProps("terms",{type:"checkbox"}))))},code:g};var w=Object.defineProperty,S=Object.getOwnPropertySymbols,P=Object.prototype.hasOwnProperty,E=Object.prototype.propertyIsEnumerable,x=(e,t,r)=>t in e?w(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,I=(e,t)=>{for(var r in t||(t={}))P.call(t,r)&&x(e,r,t[r]);if(S)for(var r of S(t))E.call(t,r)&&x(e,r,t[r]);return e};let O=`
+import { useEffect } from 'react';
+import { useForm } from '@mantine/form';
+import { TextInput, Box } from '@mantine/core';
+
+function Demo() {
+  const form = useForm({ initialValues: { name: '', occupation: '' } });
+
+  useEffect(() => {
+    const storedValue = window.localStorage.getItem('user-form');
+    if (storedValue) {
+      try {
+        form.setValues(JSON.parse(window.localStorage.getItem('user-form')!));
+      } catch (e) {
+        console.log('Failed to parse stored value');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('user-form', JSON.stringify(form.values));
+  }, [form.values]);
+
+  return (
+    <Box maw={340} mx="auto">
+      <TextInput label="Name" placeholder="Name" {...form.getInputProps('name')} />
+      <TextInput
+        mt="md"
+        label="Occupation"
+        placeholder="Occupation"
+        {...form.getInputProps('occupation')}
+      />
+    </Box>
+  );
+}
+`,C={type:"code",component:function(){let e=(0,s.c)({initialValues:{name:"",occupation:""}});return(0,i.useEffect)(()=>{let t=window.localStorage.getItem("user-form");if(t)try{e.setValues(JSON.parse(window.localStorage.getItem("user-form")))}catch(e){console.log("Failed to parse stored value")}},[]),(0,i.useEffect)(()=>{window.localStorage.setItem("user-form",JSON.stringify(e.values))},[e.values]),i.createElement(p.x,{maw:340,mx:"auto"},i.createElement(c.o,I({label:"Name",placeholder:"Name"},e.getInputProps("name"))),i.createElement(c.o,I({mt:"md",label:"Occupation",placeholder:"Occupation"},e.getInputProps("occupation"))))},code:O};var j=r(74378),N=r(56903),D=r(55899),k=r(77048),z=r(2857),T=r(3473),B=r(41428),F=Object.defineProperty,V=Object.defineProperties,_=Object.getOwnPropertyDescriptors,L=Object.getOwnPropertySymbols,G=Object.prototype.hasOwnProperty,Z=Object.prototype.propertyIsEnumerable,J=(e,t,r)=>t in e?F(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,W=(e,t)=>{for(var r in t||(t={}))G.call(t,r)&&J(e,r,t[r]);if(L)for(var r of L(t))Z.call(t,r)&&J(e,r,t[r]);return e},M=(e,t)=>V(e,_(t));let A=`
+import { Group, TextInput, Box, Text, Code, Button, Center } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { IconGripVertical } from '@tabler/icons-react';
+
+function Demo() {
+  const form = useForm({
+    initialValues: {
+      employees: [
+        { name: 'John Doe', email: 'john@mantine.dev' },
+        { name: 'Bill Love', email: 'bill@mantine.dev' },
+        { name: 'Nancy Eagle', email: 'nanacy@mantine.dev' },
+        { name: 'Lim Notch', email: 'lim@mantine.dev' },
+        { name: 'Susan Seven', email: 'susan@mantine.dev' },
+      ],
+    },
+  });
+
+  const fields = form.values.employees.map((_, index) => (
+    <Draggable key={index} index={index} draggableId={index.toString()}>
+      {(provided) => (
+        <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
+          <Center {...provided.dragHandleProps}>
+            <IconGripVertical size="1.2rem" />
+          </Center>
+          <TextInput placeholder="John Doe" {...form.getInputProps(\`employees.\${index}.name\`)} />
+          <TextInput
+            placeholder="example@mail.com"
+            {...form.getInputProps(\`employees.\${index}.email\`)}
+          />
+        </Group>
+      )}
+    </Draggable>
+  ));
+
+  return (
+    <Box maw={500} mx="auto">
+      <DragDropContext
+        onDragEnd={({ destination, source }) =>
+          form.reorderListItem('employees', { from: source.index, to: destination?.index! })
+        }
+      >
+        <Droppable droppableId="dnd-list" direction="vertical">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {fields}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+
+      <Group justify="center" mt="md">
+        <Button onClick={() => form.insertListItem('employees', { name: '', email: '' })}>
+          Add employee
+        </Button>
+      </Group>
+
+      <Text size="sm" fw={500} mt="md">
+        Form values:
+      </Text>
+      <Code block>{JSON.stringify(form.values, null, 2)}</Code>
+    </Box>
+  );
+}
+`,R={type:"code",component:function(){let e=(0,s.c)({initialValues:{employees:[{name:"John Doe",email:"john@mantine.dev"},{name:"Bill Love",email:"bill@mantine.dev"},{name:"Nancy Eagle",email:"nanacy@mantine.dev"},{name:"Lim Notch",email:"lim@mantine.dev"},{name:"Susan Seven",email:"susan@mantine.dev"}]}}),t=e.values.employees.map((t,r)=>i.createElement(T._l,{key:r,index:r,draggableId:r.toString()},t=>i.createElement(j.Z,W({ref:t.innerRef,mt:"xs"},t.draggableProps),i.createElement(N.M,W({},t.dragHandleProps),i.createElement(B.Z,{size:"1.2rem"})),i.createElement(c.o,W({placeholder:"John Doe"},e.getInputProps(`employees.${r}.name`))),i.createElement(c.o,W({placeholder:"example@mail.com"},e.getInputProps(`employees.${r}.email`))))));return i.createElement(p.x,{maw:500,mx:"auto"},i.createElement(T.Z5,{onDragEnd:({destination:t,source:r})=>e.reorderListItem("employees",{from:r.index,to:null==t?void 0:t.index})},i.createElement(T.bK,{droppableId:"dnd-list",direction:"vertical"},e=>i.createElement("div",M(W({},e.droppableProps),{ref:e.innerRef}),t,e.placeholder))),i.createElement(j.Z,{justify:"center",mt:"md"},i.createElement(D.z,{onClick:()=>e.insertListItem("employees",{name:"",email:""})},"Add employee")),i.createElement(k.x,{size:"sm",fw:500,mt:"md"},"Form values:"),i.createElement(z.E,{block:!0},JSON.stringify(e.values,null,2)))},code:A};var H=r(32248),$=r(35535),U=Object.defineProperty,q=Object.getOwnPropertySymbols,X=Object.prototype.hasOwnProperty,K=Object.prototype.propertyIsEnumerable,Q=(e,t,r)=>t in e?U(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,Y=(e,t)=>{for(var r in t||(t={}))X.call(t,r)&&Q(e,r,t[r]);if(q)for(var r of q(t))K.call(t,r)&&Q(e,r,t[r]);return e};let ee=`
+import { useState } from 'react';
+import { Stepper, Button, Group, TextInput, PasswordInput, Code } from '@mantine/core';
+import { useForm } from '@mantine/form';
+
+function Demo() {
+  const [active, setActive] = useState(0);
+
+  const form = useForm({
+    initialValues: {
+      username: '',
+      password: '',
+      name: '',
+      email: '',
+      website: '',
+      github: '',
+    },
+
+    validate: (values) => {
+      if (active === 0) {
+        return {
+          username:
+            values.username.trim().length < 6
+              ? 'Username must include at least 6 characters'
+              : null,
+          password:
+            values.password.length < 6 ? 'Password must include at least 6 characters' : null,
+        };
+      }
+
+      if (active === 1) {
+        return {
+          name: values.name.trim().length < 2 ? 'Name must include at least 2 characters' : null,
+          email: /^\\S+@\\S+$/.test(values.email) ? null : 'Invalid email',
+        };
+      }
+
+      return {};
+    },
+  });
+
+  const nextStep = () =>
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return current;
+      }
+      return current < 3 ? current + 1 : current;
+    });
+
+  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+  return (
+    <>
+      <Stepper active={active}>
+        <Stepper.Step label="First step" description="Profile settings">
+          <TextInput label="Username" placeholder="Username" {...form.getInputProps('username')} />
+          <PasswordInput
+            mt="md"
+            label="Password"
+            placeholder="Password"
+            {...form.getInputProps('password')}
+          />
+        </Stepper.Step>
+
+        <Stepper.Step label="Second step" description="Personal information">
+          <TextInput label="Name" placeholder="Name" {...form.getInputProps('name')} />
+          <TextInput mt="md" label="Email" placeholder="Email" {...form.getInputProps('email')} />
+        </Stepper.Step>
+
+        <Stepper.Step label="Final step" description="Social media">
+          <TextInput label="Website" placeholder="Website" {...form.getInputProps('website')} />
+          <TextInput
+            mt="md"
+            label="GitHub"
+            placeholder="GitHub"
+            {...form.getInputProps('github')}
+          />
+        </Stepper.Step>
+        <Stepper.Completed>
+          Completed! Form values:
+          <Code block mt="xl">
+            {JSON.stringify(form.values, null, 2)}
+          </Code>
+        </Stepper.Completed>
+      </Stepper>
+
+      <Group justify="flex-end" mt="xl">
+        {active !== 0 && (
+          <Button variant="default" onClick={prevStep}>
+            Back
+          </Button>
+        )}
+        {active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+      </Group>
+    </>
+  );
+}
+`,et={type:"code",component:function(){let[e,t]=(0,i.useState)(0),r=(0,s.c)({initialValues:{username:"",password:"",name:"",email:"",website:"",github:""},validate:t=>0===e?{username:t.username.trim().length<6?"Username must include at least 6 characters":null,password:t.password.length<6?"Password must include at least 6 characters":null}:1===e?{name:t.name.trim().length<2?"Name must include at least 2 characters":null,email:/^\S+@\S+$/.test(t.email)?null:"Invalid email"}:{}}),o=()=>t(e=>r.validate().hasErrors?e:e<3?e+1:e),n=()=>t(e=>e>0?e-1:e);return i.createElement(i.Fragment,null,i.createElement(H.v,{active:e},i.createElement(H.v.Step,{label:"First step",description:"Profile settings"},i.createElement(c.o,Y({label:"Username",placeholder:"Username"},r.getInputProps("username"))),i.createElement($.W,Y({mt:"md",label:"Password",placeholder:"Password"},r.getInputProps("password")))),i.createElement(H.v.Step,{label:"Second step",description:"Personal information"},i.createElement(c.o,Y({label:"Name",placeholder:"Name"},r.getInputProps("name"))),i.createElement(c.o,Y({mt:"md",label:"Email",placeholder:"Email"},r.getInputProps("email")))),i.createElement(H.v.Step,{label:"Final step",description:"Social media"},i.createElement(c.o,Y({label:"Website",placeholder:"Website"},r.getInputProps("website"))),i.createElement(c.o,Y({mt:"md",label:"GitHub",placeholder:"GitHub"},r.getInputProps("github")))),i.createElement(H.v.Completed,null,"Completed! Form values:",i.createElement(z.E,{block:!0,mt:"xl"},JSON.stringify(r.values,null,2)))),i.createElement(j.Z,{justify:"flex-end",mt:"xl"},0!==e&&i.createElement(D.z,{variant:"default",onClick:n},"Back"),3!==e&&i.createElement(D.z,{onClick:o},"Next step")))},code:ee},er=(0,a.A)(l.us.formRecipes);function eo(e){let t=Object.assign({h2:"h2"},(0,n.ah)(),e.components),{Demo:r}=t;return r||function(e,t){throw Error("Expected "+(t?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Demo",!0),(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(t.h2,{id:"set-initial-values-with-async-request",children:"Set initial values with async request"}),"\n",(0,o.jsx)(r,{data:h}),"\n",(0,o.jsx)(t.h2,{id:"save-form-values-to-local-storage",children:"Save form values to local storage"}),"\n",(0,o.jsx)(r,{data:C}),"\n",(0,o.jsx)(t.h2,{id:"list-items-reordering",children:"List items reordering"}),"\n",(0,o.jsx)(r,{data:R}),"\n",(0,o.jsx)(t.h2,{id:"form-with-multiple-steps",children:"Form with multiple steps"}),"\n",(0,o.jsx)(r,{data:et})]})}var en=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return(0,o.jsx)(er,Object.assign({},e,{children:(0,o.jsx)(eo,e)}))}},56903:function(e,t,r){"use strict";r.d(t,{M:function(){return h}});var o=r(67294),n={root:"m-4451eb3a"},a=r(70656),l=r(35577),i=r(25637),s=r(51227),p=r(95553),c=Object.defineProperty,m=Object.getOwnPropertySymbols,u=Object.prototype.hasOwnProperty,d=Object.prototype.propertyIsEnumerable,f=(e,t,r)=>t in e?c(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,b=(e,t)=>{for(var r in t||(t={}))u.call(t,r)&&f(e,r,t[r]);if(m)for(var r of m(t))d.call(t,r)&&f(e,r,t[r]);return e},v=(e,t)=>{var r={};for(var o in e)u.call(e,o)&&0>t.indexOf(o)&&(r[o]=e[o]);if(null!=e&&m)for(var o of m(e))0>t.indexOf(o)&&d.call(e,o)&&(r[o]=e[o]);return r};let y={},g=(0,p.Z)((e,{inline:t})=>({root:{"--center-display":t?"inline-flex":"flex"}})),h=(0,a.b)((e,t)=>{let r=(0,l.w)("Center",y,e),{classNames:a,className:p,style:c,styles:m,unstyled:u,vars:d,inline:f}=r,h=v(r,["classNames","className","style","styles","unstyled","vars","inline"]),w=(0,i.y)({name:"Center",props:r,classes:n,className:p,style:c,classNames:a,styles:m,unstyled:u,vars:d,varsResolver:g});return o.createElement(s.x,b(b({ref:t},w("root")),h))});h.classes=n,h.displayName="@mantine/core/Center"},35535:function(e,t,r){"use strict";r.d(t,{W:function(){return k}});var o=r(67294),n=r(40624),a=r(32582),l=r(35179);let i=({reveal:e})=>o.createElement("svg",{viewBox:"0 0 15 15",fill:"none",xmlns:"http://www.w3.org/2000/svg",style:{width:"var(--psi-icon-size)",height:"var(--psi-icon-size)"}},o.createElement("path",{d:e?"M13.3536 2.35355C13.5488 2.15829 13.5488 1.84171 13.3536 1.64645C13.1583 1.45118 12.8417 1.45118 12.6464 1.64645L10.6828 3.61012C9.70652 3.21671 8.63759 3 7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C0.902945 9.08812 2.02314 10.1861 3.36061 10.9323L1.64645 12.6464C1.45118 12.8417 1.45118 13.1583 1.64645 13.3536C1.84171 13.5488 2.15829 13.5488 2.35355 13.3536L4.31723 11.3899C5.29348 11.7833 6.36241 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C14.0971 5.9119 12.9769 4.81391 11.6394 4.06771L13.3536 2.35355ZM9.90428 4.38861C9.15332 4.1361 8.34759 4 7.5 4C4.80285 4 2.52952 5.37816 1.09622 7.50001C1.87284 8.6497 2.89609 9.58106 4.09974 10.1931L9.90428 4.38861ZM5.09572 10.6114L10.9003 4.80685C12.1039 5.41894 13.1272 6.35031 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11C6.65241 11 5.84668 10.8639 5.09572 10.6114Z":"M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z",fill:"currentColor",fillRule:"evenodd",clipRule:"evenodd"}));var s={root:"m-f61ca620",input:"m-ccf8da4c",innerInput:"m-f2d85dd2",visibilityToggle:"m-b1072d44"},p=r(4277),c=r(68267),m=r(95879),u=r(75144),d=r(35577),f=r(25637),b=r(19732),v=r(91090),y=r(95553),g=r(71350),h=Object.defineProperty,w=Object.defineProperties,S=Object.getOwnPropertyDescriptors,P=Object.getOwnPropertySymbols,E=Object.prototype.hasOwnProperty,x=Object.prototype.propertyIsEnumerable,I=(e,t,r)=>t in e?h(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,O=(e,t)=>{for(var r in t||(t={}))E.call(t,r)&&I(e,r,t[r]);if(P)for(var r of P(t))x.call(t,r)&&I(e,r,t[r]);return e},C=(e,t)=>w(e,S(t)),j=(e,t)=>{var r={};for(var o in e)E.call(e,o)&&0>t.indexOf(o)&&(r[o]=e[o]);if(null!=e&&P)for(var o of P(e))0>t.indexOf(o)&&x.call(e,o)&&(r[o]=e[o]);return r};let N={__staticSelector:"PasswordInput",visibilityToggleIcon:i,size:"sm"},D=(0,y.Z)((e,{size:t})=>({root:{"--psi-icon-size":(0,g.ap)(t,"psi-icon-size"),"--psi-button-size":(0,g.ap)(t,"psi-button-size")}})),k=(0,u.d)((e,t)=>{let r=(0,d.w)("PasswordInput",N,e),{classNames:i,className:m,style:u,styles:y,unstyled:g,vars:h,required:w,error:S,leftSection:P,disabled:E,id:x,variant:I,inputContainer:k,description:z,label:T,size:B,__staticSelector:F,errorProps:V,descriptionProps:_,labelProps:L,withAsterisk:G,inputWrapperOrder:Z,wrapperProps:J,radius:W,rightSection:M,rightSectionWidth:A,leftSectionWidth:R,visible:H,defaultVisible:$,onVisibilityChange:U,visibilityToggleIcon:q,visibilityToggleButtonProps:X,rightSectionProps:K,leftSectionProps:Q}=r,Y=j(r,["classNames","className","style","styles","unstyled","vars","required","error","leftSection","disabled","id","variant","inputContainer","description","label","size","__staticSelector","errorProps","descriptionProps","labelProps","withAsterisk","inputWrapperOrder","wrapperProps","radius","rightSection","rightSectionWidth","leftSectionWidth","visible","defaultVisible","onVisibilityChange","visibilityToggleIcon","visibilityToggleButtonProps","rightSectionProps","leftSectionProps"]),ee=(0,a.M)(x),[et,er]=(0,l.C)({value:H,defaultValue:$,finalValue:!1,onChange:U}),eo=()=>er(!et),en=(0,f.y)({name:"PasswordInput",classes:s,props:r,className:m,style:u,classNames:i,styles:y,unstyled:g,vars:h,varsResolver:D}),{resolvedClassNames:ea,resolvedStyles:el}=(0,b.h)({classNames:i,styles:y,props:r}),{styleProps:ei,rest:es}=(0,v.c)(Y),ep=o.createElement(p.A,C(O(C(O({},en("visibilityToggle")),{radius:W,"aria-hidden":!X}),X),{variant:"subtle",color:"gray",unstyled:g,onMouseDown:e=>{e.preventDefault(),eo()},onKeyDown:e=>{" "===e.key&&(e.preventDefault(),eo())}}),o.createElement(q,{reveal:et}));return o.createElement(c.I.Wrapper,O(O(O({required:w,id:ee,label:T,error:S,description:z,size:B,classNames:ea,styles:el,__staticSelector:F,errorProps:V,descriptionProps:_,unstyled:g,withAsterisk:G,inputWrapperOrder:Z,inputContainer:k,variant:I,labelProps:C(O({},L),{htmlFor:ee})},en("root")),ei),J),o.createElement(c.I,{component:"div",error:S,leftSection:P,size:B,classNames:C(O({},ea),{input:(0,n.Z)(s.input,ea.input)}),styles:el,radius:W,disabled:E,__staticSelector:F,rightSectionWidth:A,rightSection:null!=M?M:ep,variant:I,unstyled:g,leftSectionWidth:R,rightSectionPointerEvents:"all",rightSectionProps:K,leftSectionProps:Q},o.createElement("input",C(O(C(O({required:w,"data-invalid":!!S||void 0,"data-with-left-section":!!P||void 0},en("innerInput")),{disabled:E,id:ee,ref:t}),es),{type:et?"text":"password"}))))});k.classes=O(O({},m.M.classes),s),k.displayName="@mantine/core/PasswordInput"},32248:function(e,t,r){"use strict";r.d(t,{v:function(){return $}});var o=r(67294),n=r(16371);let[a,l]=(0,n.R)("Stepper component was not found in tree");var i={root:"m-cbb4ea7e",steps:"m-aaf89d0b",separator:"m-2a371ac9",content:"m-78da155d",step:"m-cbb57068","step--horizontal":"m-f56b1e2c","step--vertical":"m-833edb7e",verticalSeparator:"m-6496b3f3",stepWrapper:"m-818e70b",stepIcon:"m-1959ad01",stepCompletedIcon:"m-a79331dc",stepBody:"m-1956aa2a",stepLabel:"m-12051f6c",stepDescription:"m-164eea74"},s=r(90395),p=r(45493),c=r(35552),m=r(17723),u=r(75144),d=r(35577),f=r(49441),b=r(94975),v=Object.defineProperty,y=Object.defineProperties,g=Object.getOwnPropertyDescriptors,h=Object.getOwnPropertySymbols,w=Object.prototype.hasOwnProperty,S=Object.prototype.propertyIsEnumerable,P=(e,t,r)=>t in e?v(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,E=(e,t)=>{for(var r in t||(t={}))w.call(t,r)&&P(e,r,t[r]);if(h)for(var r of h(t))S.call(t,r)&&P(e,r,t[r]);return e},x=(e,t)=>y(e,g(t)),I=(e,t)=>{var r={};for(var o in e)w.call(e,o)&&0>t.indexOf(o)&&(r[o]=e[o]);if(null!=e&&h)for(var o of h(e))0>t.indexOf(o)&&S.call(e,o)&&(r[o]=e[o]);return r};let O=(e,t)=>"function"==typeof e?o.createElement(e,{step:t||0}):e,C={withIcon:!0,allowStepClick:!0,iconPosition:"left"},j=(0,u.d)((e,t)=>{let r=(0,d.w)("StepperStep",C,e),{classNames:n,className:a,style:i,styles:u,unstyled:v,vars:y,step:g,state:h,color:w,icon:S,completedIcon:P,progressIcon:j,label:N,description:D,withIcon:k,iconSize:z,loading:T,allowStepClick:B,allowStepSelect:F,iconPosition:V,orientation:_}=r,L=I(r,["classNames","className","style","styles","unstyled","vars","step","state","color","icon","completedIcon","progressIcon","label","description","withIcon","iconSize","loading","allowStepClick","allowStepSelect","iconPosition","orientation"]),G=l(),Z=(0,f.rZ)(),J={classNames:n,styles:u},W={"data-progress":"stepProgress"===h||void 0,"data-completed":"stepCompleted"===h||void 0};return o.createElement(s.k,x(E(E(x(E({},G.getStyles("step",E({className:a,style:i,variant:G.orientation},J))),{mod:{"icon-position":V||G.iconPosition,"allow-click":B},ref:t}),W),L),{__vars:{"--step-color":w?(0,b.p)(w,Z):void 0},tabIndex:B?0:-1}),k&&o.createElement("span",E({},G.getStyles("stepWrapper",J)),o.createElement("span",E(E({},G.getStyles("stepIcon",J)),W),o.createElement(p.u,{mounted:"stepCompleted"===h,transition:"pop",duration:200},e=>o.createElement("span",E({},G.getStyles("stepCompletedIcon",E({style:e},J))),T?o.createElement(c.a,E({color:"var(--mantine-color-white)",size:"calc(var(--stepper-icon-size) / 2)"},G.getStyles("stepLoader",J))):O(P,g)||o.createElement(m.n,{size:"60%"}))),"stepCompleted"!==h?T?o.createElement(c.a,x(E({},G.getStyles("stepLoader",J)),{size:"calc(var(--stepper-icon-size) / 2)",color:w})):O(("stepCompleted"===h?null:"stepProgress"===h?j:S)||S,g):null),"vertical"===_&&o.createElement("span",x(E({},G.getStyles("verticalSeparator",J)),{"data-active":"stepCompleted"===h||void 0}))),(N||D)&&o.createElement("span",x(E({},G.getStyles("stepBody",J)),{"data-orientation":G.orientation,"data-icon-position":V||G.iconPosition}),N&&o.createElement("span",E({},G.getStyles("stepLabel",J)),O(N,g)),D&&o.createElement("span",E({},G.getStyles("stepDescription",J)),O(D,g))))});j.classes=i,j.displayName="@mantine/core/StepperStep";let N=()=>null;N.displayName="@mantine/core/StepperCompleted";var D=r(25637),k=r(51227),z=r(95553),T=r(71350),B=r(46393),F=Object.defineProperty,V=Object.defineProperties,_=Object.getOwnPropertyDescriptors,L=Object.getOwnPropertySymbols,G=Object.prototype.hasOwnProperty,Z=Object.prototype.propertyIsEnumerable,J=(e,t,r)=>t in e?F(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r,W=(e,t)=>{for(var r in t||(t={}))G.call(t,r)&&J(e,r,t[r]);if(L)for(var r of L(t))Z.call(t,r)&&J(e,r,t[r]);return e},M=(e,t)=>V(e,_(t)),A=(e,t)=>{var r={};for(var o in e)G.call(e,o)&&0>t.indexOf(o)&&(r[o]=e[o]);if(null!=e&&L)for(var o of L(e))0>t.indexOf(o)&&Z.call(e,o)&&(r[o]=e[o]);return r};let R={contentPadding:"md",size:"md",radius:"xl",orientation:"horizontal",iconPosition:"left",allowNextStepsSelect:!0,wrap:!0},H=(0,z.Z)((e,{color:t,iconSize:r,size:o,contentPadding:n,radius:a})=>({root:{"--stepper-color":(0,b.p)(t,e),"--stepper-icon-size":void 0===r?(0,T.ap)(o,"stepper-icon-size"):(0,B.h)(r),"--stepper-content-padding":(0,T.bG)(n),"--stepper-radius":(0,T.H5)(a),"--stepper-fz":(0,T.yv)(o),"--stepper-spacing":(0,T.bG)(o)}})),$=(0,u.d)((e,t)=>{var r,n,l;let s=(0,d.w)("Stepper",R,e),{classNames:p,className:c,style:m,styles:u,unstyled:f,vars:b,children:v,onStepClick:y,active:g,icon:h,completedIcon:w,progressIcon:S,color:P,iconSize:E,contentPadding:x,orientation:I,iconPosition:O,size:C,radius:j,allowNextStepsSelect:z,wrap:T}=s,B=A(s,["classNames","className","style","styles","unstyled","vars","children","onStepClick","active","icon","completedIcon","progressIcon","color","iconSize","contentPadding","orientation","iconPosition","size","radius","allowNextStepsSelect","wrap"]),F=(0,D.y)({name:"Stepper",classes:i,props:s,className:c,style:m,classNames:p,styles:u,unstyled:f,vars:b,varsResolver:H}),V=o.Children.toArray(v),_=V.filter(e=>e.type!==N),L=V.find(e=>e.type===N),G=_.reduce((e,t,r)=>{let n=g===r?"stepProgress":g>r?"stepCompleted":"stepInactive",a="function"==typeof y&&("boolean"==typeof t.props.allowStepSelect?t.props.allowStepSelect:"stepCompleted"===n||z);return e.push((0,o.cloneElement)(t,{icon:t.props.icon||h||r+1,key:r,step:r,state:n,onClick:()=>a&&(null==y?void 0:y(r)),allowStepClick:a,completedIcon:t.props.completedIcon||w,progressIcon:t.props.progressIcon||S,color:t.props.color||P,iconSize:E,radius:j,iconPosition:t.props.iconPosition||O,orientation:I,unstyled:f})),"horizontal"===I&&r!==_.length-1&&e.push(o.createElement("div",M(W({},F("separator")),{"data-active":r<g||void 0,"data-orientation":I,key:`separator-${r}`}))),e},[]),Z=null==(n=null==(r=_[g])?void 0:r.props)?void 0:n.children,J=null==(l=null==L?void 0:L.props)?void 0:l.children,$=g>_.length-1?J:Z;return o.createElement(a,{value:{getStyles:F,orientation:I,iconPosition:O}},o.createElement(k.x,W(M(W({},F("root")),{ref:t,size:C}),B),o.createElement(k.x,M(W({},F("steps")),{mod:{orientation:I,"icon-position":O,wrap:T&&"vertical"!==I}}),G),$&&o.createElement("div",W({},F("content")),$)))});$.classes=i,$.displayName="@mantine/core/Stepper",$.Completed=N,$.Step=j}},function(e){e.O(0,[8143,6085,9905,1757,9774,2888,179],function(){return e(e.s=4327)}),_N_E=e.O()}]);
