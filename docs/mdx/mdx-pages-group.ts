@@ -261,6 +261,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Card,
           MDX_DATA.Image,
           MDX_DATA.ThemeIcon,
+          MDX_DATA.Timeline,
         ],
       },
       {

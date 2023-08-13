@@ -87,6 +87,9 @@ const EXTRA_FILES_PATHS = [
   // Stepper
   '../src/mantine-core/src/components/Stepper/StepperStep/StepperStep.tsx',
 
+  // Timeline
+  '../src/mantine-core/src/components/Timeline/TimelineItem/TimelineItem.tsx',
+
   // Spotlight
   '../src/mantine-spotlight/src/Spotlight.tsx',
   '../src/mantine-spotlight/src/SpotlightAction.tsx',

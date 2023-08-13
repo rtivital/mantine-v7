@@ -1031,4 +1031,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Radio/Radio.tsx',
     docs: 'core/radio.mdx',
   },
+
+  Timeline: {
+    title: 'Timeline',
+    package: '@mantine/core',
+    slug: '/core/timeline',
+    componentPrefix: 'Timeline',
+    props: ['Timeline', 'TimelineItem'],
+    styles: ['Timeline'],
+    description: 'Display list of events in chronological order',
+    import: "import { Timeline } from '@mantine/core';",
+    source: 'mantine-core/src/components/Timeline/Timeline.tsx',
+    docs: 'core/timeline.mdx',
+  },
 };
