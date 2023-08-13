@@ -1,7 +1,7 @@
 {
   "name": "@mantine/nprogress",
   "description": "Navigation progress bar",
-  "version": "7.0.0-alpha.21",
+  "version": "7.0.0-alpha.22",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -23,13 +23,13 @@
     "directory": "src/mantine-nprogress"
   },
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.21",
-    "@mantine/hooks": "7.0.0-alpha.21",
+    "@mantine/core": "7.0.0-alpha.22",
+    "@mantine/hooks": "7.0.0-alpha.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@mantine/store": "7.0.0-alpha.21"
+    "@mantine/store": "7.0.0-alpha.22"
   },
   "devDependencies": {}
 }
