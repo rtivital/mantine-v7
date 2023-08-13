@@ -83,6 +83,7 @@ export * from './data/Text.styles-api';
 export * from './data/Textarea.styles-api';
 export * from './data/TextInput.styles-api';
 export * from './data/ThemeIcon.styles-api';
+export * from './data/Timeline.styles-api';
 export * from './data/Title.styles-api';
 export * from './data/Tooltip.styles-api';
 export * from './data/TypographyStylesProvider.styles-api';
