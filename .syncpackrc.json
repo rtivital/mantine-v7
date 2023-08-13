@@ -17,7 +17,9 @@
         "@mantine/dropzone",
         "@mantine/form",
         "@mantine/nprogress",
-        "@mantine/dates"
+        "@mantine/dates",
+        "@mantine/modals",
+        "@mantine/tiptap"
       ],
       "isIgnored": true
     }
