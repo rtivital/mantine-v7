@@ -20,7 +20,7 @@ export type AffixCssVariables = {
   root: '--affix-z-index' | '--affix-top' | '--affix-left' | '--affix-bottom' | '--affix-right';
 };
 
-export interface AffixProps extends BoxProps, StylesApiProps<AffixFactory>, ElementProps<'div'> {
+export interface AffixBaseProps {
   /** Root element `z-index` property, `200` by default */
   zIndex?: string | number;
 
@@ -38,6 +38,12 @@ export interface AffixProps extends BoxProps, StylesApiProps<AffixFactory>, Elem
     right?: string | number;
   };
 }
+
+export interface AffixProps
+  extends BoxProps,
+    AffixBaseProps,
+    StylesApiProps<AffixFactory>,
+    ElementProps<'div'> {}
 
 export type AffixFactory = Factory<{
   props: AffixProps;

@@ -20,7 +20,7 @@ export type PaperCssVariables = {
   root: '--paper-radius' | '--paper-shadow';
 };
 
-export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
+export interface PaperBaseProps {
   /** Key of `theme.shadows` or any valid CSS value to set `box-shadow`, `none` by default */
   shadow?: MantineShadow | (string & {});
 
@@ -30,6 +30,8 @@ export interface PaperProps extends BoxProps, StylesApiProps<PaperFactory> {
   /** Determines whether the paper should have border, border color depends on color scheme, `false` by default */
   withBorder?: boolean;
 }
+
+export interface PaperProps extends BoxProps, PaperBaseProps, StylesApiProps<PaperFactory> {}
 
 export type PaperFactory = PolymorphicFactory<{
   props: PaperProps;
