@@ -163,6 +163,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.SimpleGrid,
           MDX_DATA.Grid,
           MDX_DATA.Space,
+          MDX_DATA.Flex,
         ],
       },
       {

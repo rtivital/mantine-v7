@@ -1056,4 +1056,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Dialog/Dialog.tsx',
     docs: 'core/dialog.mdx',
   },
+
+  Flex: {
+    title: 'Flex',
+    package: '@mantine/core',
+    slug: '/core/flex',
+    props: ['Flex'],
+    styles: ['Flex'],
+    description: 'Compose elements in a flex container',
+    import: "import { Flex } from '@mantine/core';",
+    source: 'mantine-core/src/components/Flex/Flex.tsx',
+    docs: 'core/flex.mdx',
+  },
 };
