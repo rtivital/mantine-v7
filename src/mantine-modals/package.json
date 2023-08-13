@@ -1,0 +1,43 @@
+{
+  "name": "@mantine/modals",
+  "description": "Modals manager based on Mantine components",
+  "version": "7.0.0-alpha.21",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./styles.css": "./esm/index.css"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "homepage": "https://mantine.dev/others/modals/",
+  "repository": {
+    "url": "https://github.com/mantinedev/mantine.git",
+    "type": "git",
+    "directory": "src/mantine-modals"
+  },
+  "keywords": [
+    "react",
+    "next",
+    "nextjs",
+    "ui",
+    "components",
+    "ui-kit",
+    "library",
+    "frontend",
+    "modal",
+    "confirm"
+  ],
+  "peerDependencies": {
+    "@mantine/core": "7.0.0-alpha.21",
+    "@mantine/hooks": "7.0.0-alpha.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
