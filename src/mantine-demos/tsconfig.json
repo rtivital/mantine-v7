@@ -17,6 +17,7 @@
       "@mantine/code-highlight": ["../mantine-code-highlight/src"],
       "@mantine/dropzone": ["../mantine-dropzone/src"],
       "@mantine/nprogress": ["../mantine-nprogress/src"],
+      "@mantine/modals": ["../mantine-modals/src"],
       "@mantine/styles-api": ["../mantine-styles-api/src"],
       "@mantine/dates": ["../mantine-dates/src"]
     }
@@ -29,6 +30,7 @@
     { "path": "../mantine-notifications" },
     { "path": "../mantine-dropzone" },
     { "path": "../mantine-nprogress" },
+    { "path": "../mantine-modals" },
     { "path": "../mantine-styles-api" },
     { "path": "../mantine-code-highlight" }
   ]

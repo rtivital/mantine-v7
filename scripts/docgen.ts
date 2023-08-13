@@ -111,6 +111,9 @@ const EXTRA_FILES_PATHS = [
 
   // Nprogress
   '../src/mantine-nprogress/src/NavigationProgress.tsx',
+
+  // Modals
+  '../src/mantine-modals/src/ModalsProvider.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

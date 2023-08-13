@@ -20,6 +20,7 @@
     "@mantine/dates": "link:../src/mantine-dates",
     "@mantine/demos": "link:../src/mantine-demos",
     "@mantine/ds": "link:../src/mantine-ds",
+    "@mantine/modals": "link:../src/mantine-modals",
     "@mantine/form": "link:../src/mantine-form",
     "@mantine/hooks": "link:../src/mantine-hooks",
     "@mantine/notifications": "link:../src/mantine-notifications",

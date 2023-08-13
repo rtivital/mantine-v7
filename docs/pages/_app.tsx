@@ -22,6 +22,7 @@ import { Shell } from '@/components/Shell';
 import { theme } from '../theme';
 import '../styles/variables.css';
 import '../styles/global.css';
+import { ModalsProviderDemo } from '@/components/ModalsProviderDemo';
 
 const excludeShell = ['/', '/combobox', '/app-shell'];
 
@@ -40,16 +41,18 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <MantineProvider theme={theme}>
           <Search />
           <Notifications />
-          <MdxProvider>
-            <HotKeysHandler />
-            {shouldRenderShell ? (
-              <Shell>
+          <ModalsProviderDemo>
+            <MdxProvider>
+              <HotKeysHandler />
+              {shouldRenderShell ? (
+                <Shell>
+                  <Component {...pageProps} />
+                </Shell>
+              ) : (
                 <Component {...pageProps} />
-              </Shell>
-            ) : (
-              <Component {...pageProps} />
-            )}
-          </MdxProvider>
+              )}
+            </MdxProvider>
+          </ModalsProviderDemo>
         </MantineProvider>
       </DirectionProvider>
     </>

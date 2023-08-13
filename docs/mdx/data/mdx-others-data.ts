@@ -77,4 +77,15 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/code-highlight.mdx',
   },
+
+  Modals: {
+    title: 'Modals manager',
+    package: '@mantine/modals',
+    slug: '/others/modals',
+    props: ['ModalsProvider'],
+    description: 'Centralized modals manager with option to handle state of multi-step modals',
+    source: 'mantine-modals/src',
+    license: 'MIT',
+    docs: 'others/modals.mdx',
+  },
 };
