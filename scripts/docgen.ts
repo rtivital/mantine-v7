@@ -30,6 +30,9 @@ const EXTRA_FILES_PATHS = [
   // Checkbox
   '../src/mantine-core/src/components/Checkbox/CheckboxGroup/CheckboxGroup.tsx',
 
+  // Radio
+  '../src/mantine-core/src/components/Radio/RadioGroup/RadioGroup.tsx',
+
   // Tabs
   '../src/mantine-core/src/components/Tabs/TabsTab/TabsTab.tsx',
   '../src/mantine-core/src/components/Tabs/TabsList/TabsList.tsx',

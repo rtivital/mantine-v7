@@ -1018,4 +1018,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/LoadingOverlay/LoadingOverlay.tsx',
     docs: 'core/loading-overlay.mdx',
   },
+
+  Radio: {
+    title: 'Radio',
+    package: '@mantine/core',
+    slug: '/core/radio',
+    componentPrefix: 'Radio',
+    props: ['Radio', 'RadioGroup'],
+    styles: ['Radio', 'RadioGroup'],
+    description: 'Wrapper for input type radio',
+    import: "import { Radio } from '@mantine/core';",
+    source: 'mantine-core/src/components/Radio/Radio.tsx',
+    docs: 'core/radio.mdx',
+  },
 };
