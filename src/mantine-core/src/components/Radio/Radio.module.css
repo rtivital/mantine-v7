@@ -20,7 +20,7 @@
 }
 
 .icon {
-  color: var(--mantine-color-white);
+  color: var(--_radio-icon-color, var(--mantine-color-white));
   opacity: var(--_radio-icon-opacity, 0);
   transform: var(--_radio-icon-transform, scale(0.2) translateY(rem(10px)));
   transition:
@@ -49,7 +49,7 @@
   transition-property: background-color, border-color;
   transition-timing-function: ease;
   transition-duration: 100ms;
-  cursor: var(--mantine-cursor-type);
+  cursor: var(--_cursor, var(--mantine-cursor-type));
 
   @mixin light {
     --_radio-bg: var(--mantine-color-white);
@@ -72,12 +72,14 @@
   }
 
   &:disabled {
+    --_cursor: not-allowed;
+
     @mixin light {
       --_radio-bg: var(--mantine-color-gray-1);
-      --_radio-bd-color: var(--mantine-color-gray-4);
+      --_radio-bd-color: var(--mantine-color-gray-2);
 
       & + .icon {
-        --_radio-icon-color: var(--mantine-color-gray-4);
+        --_radio-icon-color: var(--mantine-color-gray-3);
       }
     }
 
@@ -86,7 +88,7 @@
       --_radio-bd-color: var(--mantine-color-dark-4);
 
       & + .icon {
-        --_radio-icon-color: var(--mantine-color-dark-6);
+        --_radio-icon-color: var(--mantine-color-dark-7);
       }
     }
   }
