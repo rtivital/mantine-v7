@@ -13,6 +13,7 @@ export * from './Overlay';
 export * from './ModalBase';
 export * from './Input';
 export * from './InputBase';
+export * from './Flex';
 
 // regular components
 export * from './Accordion';

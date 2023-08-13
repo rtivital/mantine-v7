@@ -35,6 +35,7 @@ export * from './data/Drawer.styles-api';
 export * from './data/Dropzone.styles-api';
 export * from './data/Fieldset.styles-api';
 export * from './data/FileInput.styles-api';
+export * from './data/Flex.styles-api';
 export * from './data/Grid.styles-api';
 export * from './data/Group.styles-api';
 export * from './data/Highlight.styles-api';
