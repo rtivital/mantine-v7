@@ -69,6 +69,7 @@ export * from './PillsInput';
 export * from './PinInput';
 export * from './Portal';
 export * from './Progress';
+export * from './Radio';
 export * from './Rating';
 export * from './RingProgress';
 export * from './SegmentedControl';

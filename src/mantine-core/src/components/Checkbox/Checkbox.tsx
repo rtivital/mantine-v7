@@ -45,7 +45,7 @@ export interface CheckboxProps
   /** Controls size of all elements */
   size?: MantineSize | (string & {});
 
-  /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
+  /** Key of `theme.radius` or any valid CSS value to set `border-radius,` `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
   /** Props passed down to wrapper element */
