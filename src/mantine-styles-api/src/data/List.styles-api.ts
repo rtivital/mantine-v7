@@ -15,7 +15,6 @@ export const ListStylesApi: StylesApiData<ListFactory> = {
       '--list-fz': 'Controls `font-size`',
       '--list-lh': 'Controls `line-height`',
       '--list-spacing': 'Controls spacing between items',
-      '--list-style-type': 'Controls `list-style-type`',
     },
   },
 

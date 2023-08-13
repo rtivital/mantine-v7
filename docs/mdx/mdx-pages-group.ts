@@ -277,6 +277,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.Text,
           MDX_DATA.Title,
           MDX_DATA.TypographyStylesProvider,
+          MDX_DATA.List,
         ],
       },
       {

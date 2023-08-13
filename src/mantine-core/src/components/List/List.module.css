@@ -1,6 +1,5 @@
 .root {
   list-style-position: inside;
-  list-style-type: var(--list-style-type);
   font-size: var(--list-fz);
   line-height: var(--list-lh);
   margin: 0;

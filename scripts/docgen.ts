@@ -90,6 +90,9 @@ const EXTRA_FILES_PATHS = [
   // Timeline
   '../src/mantine-core/src/components/Timeline/TimelineItem/TimelineItem.tsx',
 
+  // List
+  '../src/mantine-core/src/components/List/ListItem/ListItem.tsx',
+
   // Spotlight
   '../src/mantine-spotlight/src/Spotlight.tsx',
   '../src/mantine-spotlight/src/SpotlightAction.tsx',

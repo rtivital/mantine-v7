@@ -21,7 +21,7 @@ import classes from './List.module.css';
 
 export type ListStylesNames = 'root' | ListItemStylesNames;
 export type ListCssVariables = {
-  root: '--list-fz' | '--list-lh' | '--list-spacing' | '--list-style-type';
+  root: '--list-fz' | '--list-lh' | '--list-spacing';
 };
 
 export interface ListProps
@@ -69,12 +69,11 @@ const defaultProps: Partial<ListProps> = {
   spacing: 0,
 };
 
-const varsResolver = createVarsResolver<ListFactory>((_, { size, listStyleType, spacing }) => ({
+const varsResolver = createVarsResolver<ListFactory>((_, { size, spacing }) => ({
   root: {
     '--list-fz': getFontSize(size),
     '--list-lh': getLineHeight(size),
     '--list-spacing': getSpacing(spacing),
-    '--list-style-type': listStyleType,
   },
 }));
 
@@ -113,7 +112,7 @@ export const List = factory<ListFactory>((_props, ref) => {
   return (
     <ListProvider value={{ center, icon, getStyles }}>
       <Box<any>
-        {...getStyles('root')}
+        {...getStyles('root', { style: { listStyleType } })}
         component={type === 'unordered' ? ('ul' as const) : ('ol' as const)}
         mod={{ 'with-padding': withPadding }}
         ref={ref}

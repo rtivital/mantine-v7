@@ -1068,4 +1068,17 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Flex/Flex.tsx',
     docs: 'core/flex.mdx',
   },
+
+  List: {
+    title: 'List',
+    package: '@mantine/core',
+    slug: '/core/list',
+    componentPrefix: 'List',
+    props: ['List', 'ListItem'],
+    styles: ['List'],
+    description: 'Display ordered or unordered list',
+    import: "import { List } from '@mantine/core';",
+    source: 'mantine-core/src/components/List/List.tsx',
+    docs: 'core/list.mdx',
+  },
 };
