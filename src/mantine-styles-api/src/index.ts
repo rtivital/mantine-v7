@@ -29,6 +29,7 @@ export * from './data/ColorSwatch.styles-api';
 export * from './data/Combobox.styles-api';
 export * from './data/Container.styles-api';
 export * from './data/Dates.styles-api';
+export * from './data/Dialog.styles-api';
 export * from './data/Divider.styles-api';
 export * from './data/Drawer.styles-api';
 export * from './data/Dropzone.styles-api';
