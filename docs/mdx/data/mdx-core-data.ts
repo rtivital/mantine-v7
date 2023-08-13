@@ -1044,4 +1044,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Timeline/Timeline.tsx',
     docs: 'core/timeline.mdx',
   },
+
+  Dialog: {
+    title: 'Dialog',
+    package: '@mantine/core',
+    slug: '/core/dialog',
+    props: ['Dialog'],
+    styles: ['Dialog'],
+    description: 'Display a fixed overlay dialog at any side of the screen',
+    import: "import { Dialog } from '@mantine/core';",
+    source: 'mantine-core/src/components/Dialog/Dialog.tsx',
+    docs: 'core/dialog.mdx',
+  },
 };

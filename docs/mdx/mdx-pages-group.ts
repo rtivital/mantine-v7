@@ -246,6 +246,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
           MDX_DATA.HoverCard,
           MDX_DATA.Menu,
           MDX_DATA.LoadingOverlay,
+          MDX_DATA.Dialog,
         ],
       },
       {
