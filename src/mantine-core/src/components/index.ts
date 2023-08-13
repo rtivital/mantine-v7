@@ -56,6 +56,7 @@ export * from './Image';
 export * from './Indicator';
 export * from './JsonInput';
 export * from './Kbd';
+export * from './List';
 export * from './LoadingOverlay';
 export * from './Mark';
 export * from './Menu';
