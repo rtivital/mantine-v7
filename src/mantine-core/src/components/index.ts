@@ -63,6 +63,7 @@ export * from './Menu';
 export * from './Modal';
 export * from './MultiSelect';
 export * from './NativeSelect';
+export * from './NavLink';
 export * from './Notification';
 export * from './NumberInput';
 export * from './Pagination';

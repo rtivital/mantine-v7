@@ -1093,4 +1093,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/Spoiler/Spoiler.tsx',
     docs: 'core/spoiler.mdx',
   },
+
+  NavLink: {
+    title: 'NavLink',
+    package: '@mantine/core',
+    slug: '/core/nav-link',
+    props: ['NavLink'],
+    styles: ['NavLink'],
+    description: 'Navigation link',
+    import: "import { NavLink } from '@mantine/core';",
+    source: 'mantine-core/src/components/NavLink/NavLink.tsx',
+    docs: 'core/nav-link.mdx',
+  },
 };

@@ -54,6 +54,7 @@ export * from './data/Menu.styles-api';
 export * from './data/Modal.styles-api';
 export * from './data/MultiSelect.styles-api';
 export * from './data/NativeSelect.styles-api';
+export * from './data/NavLink.styles-api';
 export * from './data/Notification.styles-api';
 export * from './data/NumberInput.styles-api';
 export * from './data/Notifications.styles-api';
