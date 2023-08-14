@@ -1081,4 +1081,16 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     source: 'mantine-core/src/components/List/List.tsx',
     docs: 'core/list.mdx',
   },
+
+  Spoiler: {
+    title: 'Spoiler',
+    package: '@mantine/core',
+    slug: '/core/spoiler',
+    props: ['Spoiler'],
+    styles: ['Spoiler'],
+    description: 'Hide long sections of content under a spoiler',
+    import: "import { Spoiler } from '@mantine/core';",
+    source: 'mantine-core/src/components/Spoiler/Spoiler.tsx',
+    docs: 'core/spoiler.mdx',
+  },
 };
