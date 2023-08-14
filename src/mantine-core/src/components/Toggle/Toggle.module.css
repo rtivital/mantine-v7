@@ -1,0 +1,40 @@
+.root {
+  --toggle-size-xs: rem(18px);
+  --toggle-size-sm: rem(22px);
+  --toggle-size-md: rem(28px);
+  --toggle-size-lg: rem(34px);
+  --toggle-size-xl: rem(44px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--_toggle-color, var(--mantine-color-default-color));
+  background-color: var(--_toggle-bg, var(--mantine-color-default));
+  border: rem(1px) solid var(--_toggle-border, var(--mantine-color-default-border));
+  min-width: var(--toggle-size);
+  height: var(--toggle-size);
+  border-radius: var(--toggle-radius);
+  font-size: var(--mantine-font-size-sm);
+  padding: calc(var(--toggle-size) / 6);
+
+  & > svg {
+    display: block;
+  }
+
+  @mixin hover {
+    --_toggle-bg: var(--mantine-color-default-hover);
+  }
+
+  &[data-active] {
+    --_toggle-bg: var(--toggle-bg);
+    --_toggle-color: var(--toggle-color);
+
+    @mixin hover {
+      --_toggle-bg: var(--toggle-hover);
+    }
+  }
+}
+
+.root--filled[data-active] {
+  --_toggle-border: var(--toggle-bg);
+}
