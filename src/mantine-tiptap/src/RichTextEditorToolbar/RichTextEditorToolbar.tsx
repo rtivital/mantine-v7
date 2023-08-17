@@ -7,6 +7,7 @@ import {
   ElementProps,
   useProps,
   Factory,
+  rem,
 } from '@mantine/core';
 import { useRichTextEditorContext } from '../RichTextEditor.context';
 import classes from '../RichTextEditor.module.css';
@@ -45,7 +46,7 @@ export const RichTextEditorToolbar = factory<RichTextEditorToolbarFactory>((_pro
       mod={{ sticky }}
       {...ctx.getStyles('toolbar', { className, style, styles, classNames })}
       {...others}
-      __vars={{ '--rte-sticky-offset': stickyOffset?.toString() }}
+      __vars={{ '--rte-sticky-offset': rem(stickyOffset) }}
     />
   );
 });
