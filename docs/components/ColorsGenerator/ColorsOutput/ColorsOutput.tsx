@@ -27,19 +27,25 @@ function Demo() {
 }
 
 export function ColorsOutput({ colors }: ColorsOutputProps) {
+  // For some reason code highlight does not properly update when colors change without key
+  const keyBase = JSON.stringify(colors);
   return (
     <>
       <Input.Label size="md" labelElement="div" mt="xl">
         Colors array
       </Input.Label>
 
-      <MdxCodeHighlight language="json" code={JSON.stringify(colors, null, 2)} />
+      <MdxCodeHighlight
+        language="json"
+        code={JSON.stringify(colors, null, 2)}
+        key={`${keyBase}-1`}
+      />
 
       <Input.Label size="md" labelElement="div" mt="xl">
         Usage with MantineProvider
       </Input.Label>
 
-      <MdxCodeHighlight language="tsx" code={getProviderCode(colors)} />
+      <MdxCodeHighlight language="tsx" code={getProviderCode(colors)} key={keyBase} />
     </>
   );
 }

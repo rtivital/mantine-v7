@@ -35,7 +35,9 @@ export function ColorsInput({
   const clipboard = useClipboard();
 
   const updateQuery = (color: string) => {
-    router.replace({ query: { ...router.query, color: color.replace('#', '') } });
+    router.replace({ query: { ...router.query, color: color.replace('#', '') } }, undefined, {
+      scroll: false,
+    });
   };
 
   const handleChange = (val: string) => {
