@@ -38,6 +38,24 @@ export function MinMax() {
   );
 }
 
+export function NegativeMin() {
+  const [value, setValue] = useState<number | string>(0);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        onChange={setValue}
+        min={-10}
+        max={-5}
+      />
+      {typeof value === 'number' ? `${value} number` : `${value === '' ? 'empty' : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
 export function NoDecimals() {
   const [value, setValue] = useState<number | string>(15);
   return (

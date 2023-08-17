@@ -38,12 +38,16 @@ interface GetDecrementedValueInput {
 function getDecrementedValue({ value, min, step = 1, allowNegative }: GetDecrementedValueInput) {
   const nextValue = value - step;
 
+  if (min !== undefined && nextValue < min) {
+    return min;
+  }
+
   if (!allowNegative && nextValue < 0 && min === undefined) {
     return value;
   }
 
   if (min !== undefined && min >= 0 && nextValue <= min) {
-    return value;
+    return nextValue;
   }
 
   return nextValue;
@@ -159,6 +163,7 @@ const defaultProps: Partial<NumberInputProps> = {
   size: 'sm',
   clampBehavior: 'blur',
   allowDecimal: true,
+  allowNegative: true,
   startValue: 0,
 };
 
