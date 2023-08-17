@@ -6,6 +6,7 @@ import '@mantine/dropzone/styles.css';
 import '@mantine/nprogress/styles.css';
 import '@mantine/spotlight/styles.css';
 import '@mantine/carousel/styles.css';
+import '@mantine/tiptap/styles.css';
 import '@mantine/ds/styles.css';
 import '@mantine/demos/styles.css';
 

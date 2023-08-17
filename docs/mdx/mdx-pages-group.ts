@@ -323,6 +323,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.Dropzone,
       MDX_DATA.Nprogress,
       MDX_DATA.Modals,
+      MDX_DATA.TipTap,
     ],
   },
   {

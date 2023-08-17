@@ -69,6 +69,7 @@ export * from './data/Popover.styles-api';
 export * from './data/Progress.styles-api';
 export * from './data/Radio.styles-api';
 export * from './data/Rating.styles-api';
+export * from './data/RichTextEditor.styles-api';
 export * from './data/RingProgress.styles-api';
 export * from './data/ScrollArea.styles-api';
 export * from './data/SegmentedControl.styles-api';

@@ -27,6 +27,7 @@
     "@mantine/notifications": "7.0.0-alpha.22",
     "@mantine/spotlight": "7.0.0-alpha.22",
     "@mantine/dropzone": "7.0.0-alpha.22",
+    "@mantine/tiptap": "7.0.0-alpha.22",
     "@mantine/carousel": "7.0.0-alpha.22"
   },
   "dependencies": {},

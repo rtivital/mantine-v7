@@ -117,6 +117,9 @@ const EXTRA_FILES_PATHS = [
 
   // Modals
   '../src/mantine-modals/src/ModalsProvider.tsx',
+
+  // Tiptap
+  '../src/mantine-tiptap/src/RichTextEditor.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [

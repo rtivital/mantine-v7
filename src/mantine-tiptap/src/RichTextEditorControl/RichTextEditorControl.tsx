@@ -33,7 +33,9 @@ export type RichTextEditorControlFactory = Factory<{
   compound: true;
 }>;
 
-const defaultProps: Partial<RichTextEditorControlProps> = {};
+const defaultProps: Partial<RichTextEditorControlProps> = {
+  interactive: true,
+};
 
 export const RichTextEditorControl = factory<RichTextEditorControlFactory>((_props, ref) => {
   const props = useProps('RichTextEditorControl', defaultProps, _props);
@@ -94,7 +96,7 @@ export function createControl({ label, isActive, operation, icon }: CreateContro
         active={isActive?.name ? editor?.isActive(isActive.name, isActive.attributes) : false}
         ref={ref}
         onClick={() => (editor as any)?.chain().focus()[operation.name](operation.attributes).run()}
-        icon={icon}
+        icon={props.icon || icon}
       />
     );
   });

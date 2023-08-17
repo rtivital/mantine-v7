@@ -7,3 +7,16 @@ export * from './RichTextEditorControl';
 export { RichTextEditorControlsGroup } from './RichTextEditorControlsGroup/RichTextEditorControlsGroup';
 export { RichTextEditorControl } from './RichTextEditorControl/RichTextEditorControl';
 export { RichTextEditorContent } from './RichTextEditorContent/RichTextEditorContent';
+
+export type {
+  RichTextEditorProps,
+  RichTextEditorStylesNames,
+  RichTextEditorFactory,
+} from './RichTextEditor';
+export type { RichTextEditorToolbarProps } from './RichTextEditorToolbar/RichTextEditorToolbar';
+export type { RichTextEditorControlProps } from './RichTextEditorControl/RichTextEditorControl';
+export type { RichTextEditorColorControlProps } from './RichTextEditorControl/RichTextEditorColorControl';
+export type { RichTextEditorLinkControlProps } from './RichTextEditorControl/RichTextEditorLinkControl';
+export type { RichTextEditorContentProps } from './RichTextEditorContent/RichTextEditorContent';
+export type { RichTextEditorControlsGroupProps } from './RichTextEditorControlsGroup/RichTextEditorControlsGroup';
+export type { RichTextEditorLabels } from './labels';

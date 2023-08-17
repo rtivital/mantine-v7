@@ -7,7 +7,6 @@ import {
   ElementProps,
   useProps,
   useStyles,
-  createVarsResolver,
   Factory,
 } from '@mantine/core';
 import { Editor } from '@tiptap/react';
@@ -33,10 +32,6 @@ export type RichTextEditorStylesNames =
   | 'linkEditorInput'
   | 'linkEditorExternalControl';
 
-export type RichTextEditorCssVariables = {
-  root: '--rte-control-bg' | '--rte-control-hover' | '--rte-control-color';
-};
-
 export interface RichTextEditorProps
   extends BoxProps,
     StylesApiProps<RichTextEditorFactory>,
@@ -61,7 +56,6 @@ export type RichTextEditorFactory = Factory<{
   props: RichTextEditorProps;
   ref: HTMLDivElement;
   stylesNames: RichTextEditorStylesNames;
-  vars: RichTextEditorCssVariables;
   staticComponents: {
     Content: typeof RichTextEditorContent;
     Control: typeof RichTextEditorControl;
@@ -104,22 +98,6 @@ const defaultProps: Partial<RichTextEditorProps> = {
   withTypographyStyles: true,
 };
 
-const varsResolver = createVarsResolver<RichTextEditorFactory>((theme, { variant, color }) => {
-  const colors = theme.variantColorResolver({
-    color: color || theme.primaryColor,
-    theme,
-    variant: variant!,
-  });
-
-  return {
-    root: {
-      '--rte-control-bg': colors.background,
-      '--rte-control-hover': colors.hover,
-      '--rte-control-color': colors.color,
-    },
-  };
-});
-
 export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
   const props = useProps('RichTextEditor', defaultProps, _props);
   const {
@@ -147,7 +125,6 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
   });
 
   const mergedLabels = useMemo(() => ({ ...DEFAULT_LABELS, ...labels }), [labels]);

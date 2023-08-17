@@ -88,4 +88,16 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     license: 'MIT',
     docs: 'others/modals.mdx',
   },
+
+  TipTap: {
+    title: 'Rich text editor',
+    package: '@mantine/modals',
+    slug: '/others/tiptap',
+    props: ['RichTextEditor'],
+    styles: ['RichTextEditor'],
+    description: 'Tiptap based rich text editor',
+    source: 'mantine-tiptap/src',
+    license: 'MIT',
+    docs: 'others/tiptap.mdx',
+  },
 };
