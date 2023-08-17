@@ -1,6 +1,6 @@
 {
   "name": "@mantine/hooks",
-  "version": "7.0.0-alpha.22",
+  "version": "7.0.0-beta.0",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {

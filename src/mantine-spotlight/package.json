@@ -1,6 +1,6 @@
 {
   "name": "@mantine/spotlight",
-  "version": "7.0.0-alpha.22",
+  "version": "7.0.0-beta.0",
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
@@ -32,13 +32,13 @@
     "command-center"
   ],
   "peerDependencies": {
-    "@mantine/core": "7.0.0-alpha.22",
-    "@mantine/hooks": "7.0.0-alpha.22",
+    "@mantine/core": "7.0.0-beta.0",
+    "@mantine/hooks": "7.0.0-beta.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@mantine/store": "7.0.0-alpha.22"
+    "@mantine/store": "7.0.0-beta.0"
   },
   "devDependencies": {}
 }
