@@ -21,6 +21,7 @@ type MediaQueryCallback = (event: { matches: boolean; media: string }) => void;
 interface UseProviderColorSchemeOptions {
   manager: MantineColorSchemeManager;
   defaultColorScheme: MantineColorScheme;
+  forceColorScheme: 'light' | 'dark' | undefined;
   getRootElement(): HTMLElement | undefined;
 }
 
@@ -28,17 +29,21 @@ export function useProviderColorScheme({
   manager,
   defaultColorScheme,
   getRootElement,
+  forceColorScheme,
 }: UseProviderColorSchemeOptions) {
   const media = useRef<MediaQueryList>();
   const [value, setValue] = useState(() => manager.get(defaultColorScheme));
+  const colorSchemeValue = forceColorScheme || value;
 
   const setColorScheme = useCallback(
     (colorScheme: MantineColorScheme) => {
-      setValue(colorScheme);
-      setColorSchemeAttribute(colorScheme, getRootElement);
-      manager.set(colorScheme);
+      if (!forceColorScheme) {
+        setColorSchemeAttribute(colorScheme, getRootElement);
+        setValue(colorScheme);
+        manager.set(colorScheme);
+      }
     },
-    [manager.set, value]
+    [manager.set, colorSchemeValue, forceColorScheme]
   );
 
   const clearColorScheme = useCallback(() => {
@@ -57,6 +62,11 @@ export function useProviderColorScheme({
   }, []);
 
   useEffect(() => {
+    if (forceColorScheme) {
+      setColorSchemeAttribute(forceColorScheme, getRootElement);
+      return () => {};
+    }
+
     media.current = window.matchMedia('(prefers-color-scheme: dark)');
     const listener: MediaQueryCallback = (event) => {
       if (value === 'auto') {
@@ -68,5 +78,5 @@ export function useProviderColorScheme({
     return () => media.current?.removeEventListener('change', listener);
   }, [value]);
 
-  return { colorScheme: value, setColorScheme, clearColorScheme };
+  return { colorScheme: colorSchemeValue, setColorScheme, clearColorScheme };
 }

@@ -220,3 +220,47 @@ function Demo() {
   );
 }
 ```
+
+## Default color scheme
+
+The default color scheme value is used when the user has not selected any color scheme yet.
+It is required to be set both on [MantineProvider](/theming/mantine-provider/) and
+`ColorSchemeScript`. If `defaultColorScheme` is not set, then `auto` is used –
+your application color scheme will depend on the system color scheme.
+
+```tsx
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+
+function Demo() {
+  return (
+    <>
+      <ColorSchemeScript defaultColorScheme="dark" />
+      <MantineProvider defaultColorScheme="dark">
+        <App />
+      </MantineProvider>
+    </>
+  );
+}
+```
+
+## Force color scheme
+
+You can force the color scheme value to be either `light` or `dark` with `forceColorScheme` prop.
+It is required to be set both on [MantineProvider](/theming/mantine-provider/) and
+`ColorSchemeScript`. If `forceColorScheme` is set, then `defaultColorScheme` and `colorSchemeManager` are ignored.
+When `forceColorScheme` is set, it is not possible to change color scheme value with `setColorScheme` function.
+
+```tsx
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+
+function Demo() {
+  return (
+    <>
+      <ColorSchemeScript forceColorScheme="light" />
+      <MantineProvider forceColorScheme="light">
+        <App />
+      </MantineProvider>
+    </>
+  );
+}
+```

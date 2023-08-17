@@ -22,6 +22,9 @@ export interface MantineProviderProps {
   /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
   defaultColorScheme?: MantineColorScheme;
 
+  /** Forces color scheme value, if set, MantineProvider ignores `colorSchemeManager` and `defaultColorScheme` */
+  forceColorScheme?: 'light' | 'dark';
+
   /** CSS selector to which CSS variables should be added, `:root` by default */
   cssVariablesSelector?: string;
 
@@ -55,9 +58,11 @@ export function MantineProvider({
   defaultColorScheme = 'auto',
   getRootElement = () => document.documentElement,
   cssVariablesResolver,
+  forceColorScheme,
 }: MantineProviderProps) {
   const { colorScheme, setColorScheme, clearColorScheme } = useProviderColorScheme({
     defaultColorScheme,
+    forceColorScheme,
     manager: colorSchemeManager,
     getRootElement,
   });
