@@ -14,12 +14,16 @@ import {
   getSize,
 } from '../../core';
 import { InputBase, InputBaseProps } from '../InputBase';
-import { Input, InputVariant } from '../Input';
+import { Input, InputVariant, __InputStylesNames } from '../Input';
 import { ActionIcon } from '../ActionIcon';
 import { PasswordToggleIcon } from './PasswordToggleIcon';
 import classes from './PasswordInput.module.css';
 
-export type PasswordInputStylesNames = 'root' | 'visibilityToggle' | 'innerInput';
+export type PasswordInputStylesNames =
+  | 'root'
+  | 'visibilityToggle'
+  | 'innerInput'
+  | __InputStylesNames;
 export type PasswordInputCssVariables = {
   root: '--psi-icon-size' | '--psi-button-size';
 };
