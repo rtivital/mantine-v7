@@ -150,6 +150,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     checkIconPosition,
     hidePickedOptions,
     withErrorStyles,
+    name,
+    form,
     ...others
   } = props;
 
@@ -240,6 +242,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       }}
       {...comboboxProps}
     >
+      <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />
       <Combobox.DropdownTarget>
         <PillsInput
           {...styleProps}

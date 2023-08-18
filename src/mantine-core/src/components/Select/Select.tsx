@@ -97,6 +97,8 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     checkIconPosition,
     withCheckIcon,
     nothingFoundMessage,
+    name,
+    form,
     ...others
   } = props;
 
@@ -162,6 +164,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       size={size}
       {...comboboxProps}
     >
+      <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />
       <Combobox.Target targetType={searchable ? 'input' : 'button'}>
         <InputBase
           ref={ref}
