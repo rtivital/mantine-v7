@@ -15,9 +15,12 @@ to learn about all of the available theming and styling features.
 
 ## MantineProvider
 
-[MantineProvider](/theming/mantine-provider) provides context for all Mantine components, it is required
-to be rendered at the root of your application. It adds [theme](/theming/theme-object) context
-[CSS variables](/styles/css-variables) and [color scheme management](/theming/color-schemes/) to your application.
+[MantineProvider](/theming/mantine-provider) is required to be rendered at the root of your application.
+It is responsible for:
+
+- Providing [theme](/theming/theme-object) context
+- Adding [CSS variables](/styles/css-variables) to the document
+- Managing [color scheme](/theming/color-schemes) (light, dark, auto)
 
 ```tsx
 import { MantineProvider } from '@mantine/core';
@@ -36,8 +39,6 @@ function Demo() {
 [Theme object](/theming/theme-object) stores design tokens, components default props, context styles
 and other data that can be accessed by any Mantine component. Most of the `theme` values are exposed as
 [CSS variables](/styles/css-variables) and can be accessed both in JavaScript and CSS.
-
-Configure `theme` with [MantineProvider](/theming/mantine-provider):
 
 ```tsx
 import { MantineProvider, createTheme } from '@mantine/core';
@@ -139,7 +140,7 @@ function Demo() {
 
 ## PostCSS preset
 
-[postcss-preset-mantine](/styles/postcss-preset) provides several CSS functions and mixins to help you write styles.
+[postcss-preset-mantine](/styles/postcss-preset) provides several CSS functions and mixins to simplify your styles.
 It is not required to use it, but highly recommended. All demos that feature styles
 assume that you have this preset installed.
 
@@ -237,7 +238,7 @@ And use [useMantineColorScheme hook](/theming/color-schemes) to create color sch
 ## Unstyled components
 
 You can use Mantine as a [headless UI library](/styles/unstyled). To do that, simply do not import `@mantine/*/styles.css`
-in your application. Then you will be able to apply styles to Mantine components using [Styles API](/styles/styles-api/)
+in your application. Then you will be able to apply styles to Mantine components using the [Styles API](/styles/styles-api/)
 with a styling solution of your choice.
 
 All components also support [unstyled prop](/styles/unstyled)
