@@ -53,15 +53,25 @@ export function NavbarLinksGroup({ data, onNavbarClose }: NavbarLinksGroupProps)
   const [opened, setOpened] = useState(hasActiveLink(data, router.pathname));
   const itemRefs = useRef<Record<string, HTMLAnchorElement>>({});
 
-  useEffect(() => {
-    if (hasActiveLink(data, router.pathname) && itemRefs.current[router.pathname]) {
-      const element = itemRefs.current[router.pathname];
-      const height = typeof window !== 'undefined' ? window.innerHeight : 0;
-      const { top, bottom } = element.getBoundingClientRect();
+  const scrollToLink = (pathname: string) => {
+    const element = itemRefs.current[pathname];
 
-      if (top < 60 || bottom > height) {
-        element.scrollIntoView({ block: 'center' });
-      }
+    if (!element) {
+      return;
+    }
+
+    const height = typeof window !== 'undefined' ? window.innerHeight : 0;
+    const { top, bottom } = element.getBoundingClientRect();
+
+    if (top < 60 || bottom > height) {
+      element.scrollIntoView({ block: 'center' });
+    }
+  };
+
+  useEffect(() => {
+    if (hasActiveLink(data, router.pathname)) {
+      setOpened(true);
+      setTimeout(() => scrollToLink(router.pathname), 10);
     }
   }, [router.pathname]);
 
