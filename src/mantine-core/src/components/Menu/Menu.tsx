@@ -8,6 +8,7 @@ import {
   Factory,
   useStyles,
   useResolvedStylesApi,
+  ExtendComponent,
 } from '../../core';
 import { useDelayedHover } from '../Floating';
 import { Popover, __PopoverProps, PopoverStylesNames } from '../Popover';
@@ -89,6 +90,7 @@ const defaultProps: Partial<MenuProps> = {
   openDelay: 0,
   closeDelay: 100,
 };
+
 export function Menu(_props: MenuProps) {
   const props = useProps('Menu', defaultProps, _props);
   const {
@@ -192,6 +194,8 @@ export function Menu(_props: MenuProps) {
   );
 }
 
+Menu.extend = (input: ExtendComponent<MenuFactory>) => input;
+Menu.classes = classes as Record<string, string>;
 Menu.displayName = '@mantine/core/Menu';
 Menu.Item = MenuItem;
 Menu.Label = MenuLabel;
