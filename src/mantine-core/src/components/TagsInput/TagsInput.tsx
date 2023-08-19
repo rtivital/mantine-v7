@@ -143,6 +143,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     label,
     error,
     withErrorStyles,
+    name,
+    form,
     ...others
   } = props;
 
@@ -280,6 +282,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       }}
       {...comboboxProps}
     >
+      <input type="hidden" name={name} form={form} value={_value.join(',')} disabled={disabled} />
       <Combobox.DropdownTarget>
         <PillsInput
           {...styleProps}
