@@ -1,7 +1,10 @@
 .title {
+  --title-color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+
   display: inline-block;
   position: relative;
   font-family: var(--docs-font-primary);
+  font-size: rem(42px);
   font-weight: 900;
   line-height: 1.1;
   margin: 0;
@@ -11,7 +14,7 @@
   letter-spacing: rem(1px);
   margin-left: rem(22px);
   text-transform: uppercase;
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: var(--title-color);
 
   @mixin rtl {
     margin-left: 0;
@@ -34,28 +37,28 @@
   &::before {
     top: rem(-14px);
     left: rem(-22px);
-    border-left: rem(5px) solid transparent;
-    border-top: rem(5px) solid transparent;
+    border-left: rem(5px) solid var(--title-color);
+    border-top: rem(5px) solid var(--title-color);
 
     @mixin rtl {
       left: auto;
       right: rem(-22px);
       border-left: none;
-      border-right: rem(5px) solid transparent;
+      border-right: rem(5px) solid var(--title-color);
     }
   }
 
   &::after {
     bottom: rem(-14px);
     right: rem(-22px);
-    border-right: rem(5px) solid transparent;
-    border-bottom: rem(5px) solid transparent;
+    border-right: rem(5px) solid var(--title-color);
+    border-bottom: rem(5px) solid var(--title-color);
 
     @mixin rtl {
       right: auto;
       left: rem(-22px);
       border-right: none;
-      border-left: rem(5px) solid transparent;
+      border-left: rem(5px) solid var(--title-color);
     }
   }
 
@@ -87,7 +90,7 @@
   &[data-default] {
     &::before,
     &::after {
-      border-color: inherit;
+      border-color: var(--title-color);
     }
   }
 }

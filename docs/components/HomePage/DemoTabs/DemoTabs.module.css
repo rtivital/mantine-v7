@@ -101,7 +101,7 @@
     padding-left: 0;
   }
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-md) {
     padding-left: 0;
     padding-top: var(--mantine-spacing-xl);
 

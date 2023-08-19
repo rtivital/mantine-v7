@@ -1,3 +1,10 @@
+// Inline demos
+export { AuthenticationForm } from './shared/AuthenticationForm/AuthenticationForm';
+export { AccordionDemo } from './demos/core/Accordion/Accordion.demo.label';
+export { TimelineBase } from './demos/core/Timeline/_base';
+export { HoverCardHomePageDemo } from './demos/core/HoverCard/HoverCard.demo.profile';
+export { CarouselCardsDemos } from './demos/carousel/Carousel.demo.cards';
+
 // System demos
 export * as ThemingDemos from './demos/theming';
 export * as StylesDemos from './demos/styles';

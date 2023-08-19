@@ -3,7 +3,7 @@
   background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
 
   &[data-alt] {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
   }
 }
 
@@ -18,7 +18,7 @@
   }
 
   &[data-alt] {
-    fill: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+    fill: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
     filter: none;
   }
 
