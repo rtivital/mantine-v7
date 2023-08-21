@@ -40,6 +40,9 @@ function useMantineColorScheme(): {
   /** Sets colors scheme to given value */
   setColorScheme: (colorScheme: 'dark' | 'light' | 'auto') => void;
 
+  /** Toggle color scheme to the opposite value, if value is 'auto', color scheme is inferred from the OS settings */
+  toggleColorScheme: () => void;
+
   /** Clears color scheme value from storage and sets it to `defaultColorScheme` */
   clearColorScheme: () => void;
 };

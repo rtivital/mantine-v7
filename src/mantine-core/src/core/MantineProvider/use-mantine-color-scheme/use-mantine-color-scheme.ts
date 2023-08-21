@@ -1,4 +1,5 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useCallback, useContext, useEffect, useRef } from 'react';
+import { useColorScheme } from '@mantine/hooks';
 import { MantineContext } from '../Mantine.context';
 import { MantineColorScheme } from '../theme.types';
 
@@ -41,6 +42,14 @@ export function useMantineColorScheme() {
     }, 10);
   };
 
+  const osColorScheme = useColorScheme('light', { getInitialValueInEffect: false });
+  const computedColorScheme = ctx.colorScheme === 'auto' ? osColorScheme : ctx.colorScheme;
+
+  const toggleColorScheme = useCallback(
+    () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light'),
+    [setColorScheme, computedColorScheme]
+  );
+
   useEffect(
     () => () => {
       clearStylesRef.current?.();
@@ -53,5 +62,6 @@ export function useMantineColorScheme() {
     colorScheme: ctx.colorScheme,
     setColorScheme,
     clearColorScheme,
+    toggleColorScheme,
   };
 }
