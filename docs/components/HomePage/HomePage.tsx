@@ -5,6 +5,7 @@ import { Footer } from '../Footer';
 import { Jumbotron } from './Jumbotron/Jumbotron';
 import { Waves } from './Waves/Waves';
 import { Components } from './Components/Components';
+import { DarkTheme } from './DarkTheme/DarkTheme';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -19,6 +20,7 @@ export function HomePage() {
           <Waves height={40} width={150} />
           <Components />
           <Waves height={42} width={220} flip alt />
+          <DarkTheme />
         </div>
         <Footer />
       </Shell>

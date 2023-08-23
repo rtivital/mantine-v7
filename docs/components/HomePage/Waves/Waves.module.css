@@ -3,7 +3,8 @@
   background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
 
   &[data-alt] {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+    transform: rotate(180deg);
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
   }
 }
 
@@ -12,13 +13,14 @@
   width: var(--waves-width);
   height: var(--waves-height);
   filter: drop-shadow(rem(10px) rem(5px) rem(5px) rgba(0, 0, 0, 0.03));
+  display: block;
 
   &[data-flip] {
     transform: scaleY(-1);
   }
 
   &[data-alt] {
-    fill: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    fill: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
     filter: none;
   }
 

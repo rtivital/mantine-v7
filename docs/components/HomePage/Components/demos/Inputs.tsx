@@ -35,6 +35,7 @@ export function Inputs() {
         label="Searchable select"
         placeholder="Search me"
         searchable
+        nothingFoundMessage="Nothing found..."
         data={['React', 'Angular', 'Svelte', 'Vue']}
       />
       <MultiSelect
