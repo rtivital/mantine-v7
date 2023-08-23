@@ -115,3 +115,7 @@ $jumbotron-breakpoint: em(960px);
     display: block;
   }
 }
+
+.heroSvg {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
