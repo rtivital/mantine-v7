@@ -148,73 +148,75 @@ export const Select = factory<SelectFactory>((_props, ref) => {
   }, [value]);
 
   return (
-    <Combobox
-      store={combobox}
-      __staticSelector="Select"
-      classNames={resolvedClassNames}
-      styles={resolvedStyles}
-      unstyled={unstyled}
-      onOptionSubmit={(val) => {
-        onOptionSubmit?.(val);
-        const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
-        setValue(nextValue);
-        setSearch(nextValue ? optionsLockup[val].label : '');
-        combobox.closeDropdown();
-      }}
-      size={size}
-      {...comboboxProps}
-    >
-      <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />
-      <Combobox.Target targetType={searchable ? 'input' : 'button'}>
-        <InputBase
-          ref={ref}
-          rightSection={rightSection || <Combobox.Chevron size={size} />}
-          {...others}
-          size={size}
-          __staticSelector="Select"
-          disabled={disabled}
-          readOnly={readOnly || !searchable}
-          value={search}
-          onChange={(event) => {
-            setSearch(event.currentTarget.value);
-            combobox.openDropdown();
-            selectFirstOptionOnChange && combobox.selectFirstOption();
-          }}
-          onFocus={(event) => {
-            searchable && combobox.openDropdown();
-            onFocus?.(event);
-          }}
-          onBlur={(event) => {
-            searchable && combobox.closeDropdown();
-            setSearch(_value ? optionsLockup[_value].label : '');
-            onBlur?.(event);
-          }}
-          onClick={(event) => {
-            searchable ? combobox.openDropdown() : combobox.toggleDropdown();
-            onClick?.(event);
-          }}
-          classNames={resolvedClassNames}
-          styles={resolvedStyles}
-          unstyled={unstyled}
-          pointer={!searchable}
+    <>
+      <Combobox
+        store={combobox}
+        __staticSelector="Select"
+        classNames={resolvedClassNames}
+        styles={resolvedStyles}
+        unstyled={unstyled}
+        onOptionSubmit={(val) => {
+          onOptionSubmit?.(val);
+          const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
+          setValue(nextValue);
+          setSearch(nextValue ? optionsLockup[val].label : '');
+          combobox.closeDropdown();
+        }}
+        size={size}
+        {...comboboxProps}
+      >
+        <Combobox.Target targetType={searchable ? 'input' : 'button'}>
+          <InputBase
+            ref={ref}
+            rightSection={rightSection || <Combobox.Chevron size={size} />}
+            {...others}
+            size={size}
+            __staticSelector="Select"
+            disabled={disabled}
+            readOnly={readOnly || !searchable}
+            value={search}
+            onChange={(event) => {
+              setSearch(event.currentTarget.value);
+              combobox.openDropdown();
+              selectFirstOptionOnChange && combobox.selectFirstOption();
+            }}
+            onFocus={(event) => {
+              searchable && combobox.openDropdown();
+              onFocus?.(event);
+            }}
+            onBlur={(event) => {
+              searchable && combobox.closeDropdown();
+              setSearch(_value ? optionsLockup[_value].label : '');
+              onBlur?.(event);
+            }}
+            onClick={(event) => {
+              searchable ? combobox.openDropdown() : combobox.toggleDropdown();
+              onClick?.(event);
+            }}
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
+            pointer={!searchable}
+          />
+        </Combobox.Target>
+        <OptionsDropdown
+          data={parsedData}
+          hidden={readOnly || disabled}
+          filter={filter}
+          search={search}
+          limit={limit}
+          hiddenWhenEmpty={!searchable && !!nothingFoundMessage && search.trim().length !== 0}
+          withScrollArea={withScrollArea}
+          maxDropdownHeight={maxDropdownHeight}
+          filterOptions={searchable && selectedOption?.label !== search}
+          value={_value}
+          checkIconPosition={checkIconPosition}
+          withCheckIcon={withCheckIcon}
+          nothingFoundMessage={nothingFoundMessage}
         />
-      </Combobox.Target>
-      <OptionsDropdown
-        data={parsedData}
-        hidden={readOnly || disabled}
-        filter={filter}
-        search={search}
-        limit={limit}
-        hiddenWhenEmpty={!searchable && !!nothingFoundMessage && search.trim().length !== 0}
-        withScrollArea={withScrollArea}
-        maxDropdownHeight={maxDropdownHeight}
-        filterOptions={searchable && selectedOption?.label !== search}
-        value={_value}
-        checkIconPosition={checkIconPosition}
-        withCheckIcon={withCheckIcon}
-        nothingFoundMessage={nothingFoundMessage}
-      />
-    </Combobox>
+      </Combobox>
+      <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />
+    </>
   );
 });
 

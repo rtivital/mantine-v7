@@ -268,95 +268,97 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
   ));
 
   return (
-    <Combobox
-      store={combobox}
-      classNames={resolvedClassNames}
-      styles={resolvedStyles}
-      unstyled={unstyled}
-      size={size}
-      __staticSelector="TagsInput"
-      onOptionSubmit={(val) => {
-        onOptionSubmit?.(val);
-        setSearchValue('');
-        _value.length < maxTags! && setValue([..._value, optionsLockup[val].label]);
-      }}
-      {...comboboxProps}
-    >
-      <input type="hidden" name={name} form={form} value={_value.join(',')} disabled={disabled} />
-      <Combobox.DropdownTarget>
-        <PillsInput
-          {...styleProps}
-          __staticSelector="TagsInput"
-          classNames={resolvedClassNames}
-          styles={resolvedStyles}
-          unstyled={unstyled}
-          size={size}
-          className={className}
-          style={style}
-          variant={variant}
-          disabled={disabled}
-          radius={radius}
-          rightSection={rightSection}
-          rightSectionWidth={rightSectionWidth}
-          rightSectionPointerEvents={rightSectionPointerEvents}
-          rightSectionProps={rightSectionProps}
-          leftSection={leftSection}
-          leftSectionWidth={leftSectionWidth}
-          leftSectionPointerEvents={leftSectionPointerEvents}
-          leftSectionProps={leftSectionProps}
-          inputContainer={inputContainer}
-          inputWrapperOrder={inputWrapperOrder}
-          withAsterisk={withAsterisk}
-          labelProps={labelProps}
-          descriptionProps={descriptionProps}
-          errorProps={errorProps}
-          wrapperProps={wrapperProps}
-          description={description}
-          label={label}
-          error={error}
-          multiline
-          withErrorStyles={withErrorStyles}
-          __stylesApiProps={{ ...props, multiline: true }}
-        >
-          <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
-            {values}
-            <Combobox.EventsTarget>
-              <PillsInput.Field
-                {...rest}
-                ref={ref}
-                {...getStyles('inputField')}
-                unstyled={unstyled}
-                onKeyDown={handleInputKeydown}
-                onFocus={(event) => {
-                  onFocus?.(event);
-                  combobox.openDropdown();
-                }}
-                onBlur={(event) => {
-                  onBlur?.(event);
-                  combobox.closeDropdown();
-                }}
-                onPaste={handlePaste}
-                value={_searchValue}
-                onChange={(event) => setSearchValue(event.currentTarget.value)}
-                disabled={disabled}
-                readOnly={readOnly}
-              />
-            </Combobox.EventsTarget>
-          </Pill.Group>
-        </PillsInput>
-      </Combobox.DropdownTarget>
+    <>
+      <Combobox
+        store={combobox}
+        classNames={resolvedClassNames}
+        styles={resolvedStyles}
+        unstyled={unstyled}
+        size={size}
+        __staticSelector="TagsInput"
+        onOptionSubmit={(val) => {
+          onOptionSubmit?.(val);
+          setSearchValue('');
+          _value.length < maxTags! && setValue([..._value, optionsLockup[val].label]);
+        }}
+        {...comboboxProps}
+      >
+        <Combobox.DropdownTarget>
+          <PillsInput
+            {...styleProps}
+            __staticSelector="TagsInput"
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
+            size={size}
+            className={className}
+            style={style}
+            variant={variant}
+            disabled={disabled}
+            radius={radius}
+            rightSection={rightSection}
+            rightSectionWidth={rightSectionWidth}
+            rightSectionPointerEvents={rightSectionPointerEvents}
+            rightSectionProps={rightSectionProps}
+            leftSection={leftSection}
+            leftSectionWidth={leftSectionWidth}
+            leftSectionPointerEvents={leftSectionPointerEvents}
+            leftSectionProps={leftSectionProps}
+            inputContainer={inputContainer}
+            inputWrapperOrder={inputWrapperOrder}
+            withAsterisk={withAsterisk}
+            labelProps={labelProps}
+            descriptionProps={descriptionProps}
+            errorProps={errorProps}
+            wrapperProps={wrapperProps}
+            description={description}
+            label={label}
+            error={error}
+            multiline
+            withErrorStyles={withErrorStyles}
+            __stylesApiProps={{ ...props, multiline: true }}
+          >
+            <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
+              {values}
+              <Combobox.EventsTarget>
+                <PillsInput.Field
+                  {...rest}
+                  ref={ref}
+                  {...getStyles('inputField')}
+                  unstyled={unstyled}
+                  onKeyDown={handleInputKeydown}
+                  onFocus={(event) => {
+                    onFocus?.(event);
+                    combobox.openDropdown();
+                  }}
+                  onBlur={(event) => {
+                    onBlur?.(event);
+                    combobox.closeDropdown();
+                  }}
+                  onPaste={handlePaste}
+                  value={_searchValue}
+                  onChange={(event) => setSearchValue(event.currentTarget.value)}
+                  disabled={disabled}
+                  readOnly={readOnly}
+                />
+              </Combobox.EventsTarget>
+            </Pill.Group>
+          </PillsInput>
+        </Combobox.DropdownTarget>
 
-      <OptionsDropdown
-        data={filterPickedTags({ data: parsedData, value: _value })}
-        hidden={readOnly || disabled}
-        filter={filter}
-        search={_searchValue}
-        limit={limit}
-        hiddenWhenEmpty
-        withScrollArea={withScrollArea}
-        maxDropdownHeight={maxDropdownHeight}
-      />
-    </Combobox>
+        <OptionsDropdown
+          data={filterPickedTags({ data: parsedData, value: _value })}
+          hidden={readOnly || disabled}
+          filter={filter}
+          search={_searchValue}
+          limit={limit}
+          hiddenWhenEmpty
+          withScrollArea={withScrollArea}
+          maxDropdownHeight={maxDropdownHeight}
+        />
+      </Combobox>
+      <input type="hidden" name={name} form={form} value={_value.join(',')} disabled={disabled} />
+    </>
   );
 });
 

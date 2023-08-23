@@ -222,119 +222,121 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
   ));
 
   return (
-    <Combobox
-      store={combobox}
-      classNames={resolvedClassNames}
-      styles={resolvedStyles}
-      unstyled={unstyled}
-      size={size}
-      __staticSelector="MultiSelect"
-      onOptionSubmit={(val) => {
-        onOptionSubmit?.(val);
-        setSearchValue('');
-        combobox.updateSelectedOptionIndex('selected');
+    <>
+      <Combobox
+        store={combobox}
+        classNames={resolvedClassNames}
+        styles={resolvedStyles}
+        unstyled={unstyled}
+        size={size}
+        __staticSelector="MultiSelect"
+        onOptionSubmit={(val) => {
+          onOptionSubmit?.(val);
+          setSearchValue('');
+          combobox.updateSelectedOptionIndex('selected');
 
-        if (_value.includes(optionsLockup[val].value)) {
-          setValue(_value.filter((v) => v !== optionsLockup[val].value));
-        } else if (_value.length < maxValues!) {
-          setValue([..._value, optionsLockup[val].value]);
-        }
-      }}
-      {...comboboxProps}
-    >
+          if (_value.includes(optionsLockup[val].value)) {
+            setValue(_value.filter((v) => v !== optionsLockup[val].value));
+          } else if (_value.length < maxValues!) {
+            setValue([..._value, optionsLockup[val].value]);
+          }
+        }}
+        {...comboboxProps}
+      >
+        <Combobox.DropdownTarget>
+          <PillsInput
+            {...styleProps}
+            __staticSelector="MultiSelect"
+            classNames={resolvedClassNames}
+            styles={resolvedStyles}
+            unstyled={unstyled}
+            size={size}
+            className={className}
+            style={style}
+            variant={variant}
+            disabled={disabled}
+            radius={radius}
+            rightSection={rightSection}
+            rightSectionWidth={rightSectionWidth}
+            rightSectionPointerEvents={rightSectionPointerEvents}
+            rightSectionProps={rightSectionProps}
+            leftSection={leftSection}
+            leftSectionWidth={leftSectionWidth}
+            leftSectionPointerEvents={leftSectionPointerEvents}
+            leftSectionProps={leftSectionProps}
+            inputContainer={inputContainer}
+            inputWrapperOrder={inputWrapperOrder}
+            withAsterisk={withAsterisk}
+            labelProps={labelProps}
+            descriptionProps={descriptionProps}
+            errorProps={errorProps}
+            wrapperProps={wrapperProps}
+            description={description}
+            label={label}
+            error={error}
+            multiline
+            withErrorStyles={withErrorStyles}
+            __stylesApiProps={{ ...props, multiline: true }}
+            pointer={!searchable}
+            onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}
+          >
+            <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
+              {values}
+              <Combobox.EventsTarget>
+                <PillsInput.Field
+                  {...rest}
+                  ref={ref}
+                  {...getStyles('inputField')}
+                  unstyled={unstyled}
+                  onFocus={(event) => {
+                    onFocus?.(event);
+                    searchable && combobox.openDropdown();
+                  }}
+                  onBlur={(event) => {
+                    onBlur?.(event);
+                    combobox.closeDropdown();
+                    searchable && combobox.closeDropdown();
+                    setSearchValue('');
+                  }}
+                  onKeyDown={handleInputKeydown}
+                  value={_searchValue}
+                  onChange={(event) => {
+                    setSearchValue(event.currentTarget.value);
+                    searchable && combobox.openDropdown();
+                  }}
+                  disabled={disabled}
+                  readOnly={readOnly || !searchable}
+                  pointer={!searchable}
+                />
+              </Combobox.EventsTarget>
+            </Pill.Group>
+          </PillsInput>
+        </Combobox.DropdownTarget>
+
+        <OptionsDropdown
+          data={
+            hidePickedOptions ? filterPickedValues({ data: parsedData, value: _value }) : parsedData
+          }
+          hidden={readOnly || disabled}
+          filter={filter}
+          search={_searchValue}
+          limit={limit}
+          hiddenWhenEmpty={
+            hidePickedOptions ||
+            !nothingFoundMessage ||
+            (!searchable && _searchValue.trim().length !== 0)
+          }
+          withScrollArea={withScrollArea}
+          maxDropdownHeight={maxDropdownHeight}
+          filterOptions={searchable}
+          value={_value}
+          checkIconPosition={checkIconPosition}
+          withCheckIcon={withCheckIcon}
+          nothingFoundMessage={nothingFoundMessage}
+        />
+      </Combobox>
       <input type="hidden" name={name} value={_value.join(',')} form={form} disabled={disabled} />
-      <Combobox.DropdownTarget>
-        <PillsInput
-          {...styleProps}
-          __staticSelector="MultiSelect"
-          classNames={resolvedClassNames}
-          styles={resolvedStyles}
-          unstyled={unstyled}
-          size={size}
-          className={className}
-          style={style}
-          variant={variant}
-          disabled={disabled}
-          radius={radius}
-          rightSection={rightSection}
-          rightSectionWidth={rightSectionWidth}
-          rightSectionPointerEvents={rightSectionPointerEvents}
-          rightSectionProps={rightSectionProps}
-          leftSection={leftSection}
-          leftSectionWidth={leftSectionWidth}
-          leftSectionPointerEvents={leftSectionPointerEvents}
-          leftSectionProps={leftSectionProps}
-          inputContainer={inputContainer}
-          inputWrapperOrder={inputWrapperOrder}
-          withAsterisk={withAsterisk}
-          labelProps={labelProps}
-          descriptionProps={descriptionProps}
-          errorProps={errorProps}
-          wrapperProps={wrapperProps}
-          description={description}
-          label={label}
-          error={error}
-          multiline
-          withErrorStyles={withErrorStyles}
-          __stylesApiProps={{ ...props, multiline: true }}
-          pointer={!searchable}
-          onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}
-        >
-          <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
-            {values}
-            <Combobox.EventsTarget>
-              <PillsInput.Field
-                {...rest}
-                ref={ref}
-                {...getStyles('inputField')}
-                unstyled={unstyled}
-                onFocus={(event) => {
-                  onFocus?.(event);
-                  searchable && combobox.openDropdown();
-                }}
-                onBlur={(event) => {
-                  onBlur?.(event);
-                  combobox.closeDropdown();
-                  searchable && combobox.closeDropdown();
-                  setSearchValue('');
-                }}
-                onKeyDown={handleInputKeydown}
-                value={_searchValue}
-                onChange={(event) => {
-                  setSearchValue(event.currentTarget.value);
-                  searchable && combobox.openDropdown();
-                }}
-                disabled={disabled}
-                readOnly={readOnly || !searchable}
-                pointer={!searchable}
-              />
-            </Combobox.EventsTarget>
-          </Pill.Group>
-        </PillsInput>
-      </Combobox.DropdownTarget>
-
-      <OptionsDropdown
-        data={
-          hidePickedOptions ? filterPickedValues({ data: parsedData, value: _value }) : parsedData
-        }
-        hidden={readOnly || disabled}
-        filter={filter}
-        search={_searchValue}
-        limit={limit}
-        hiddenWhenEmpty={
-          hidePickedOptions ||
-          !nothingFoundMessage ||
-          (!searchable && _searchValue.trim().length !== 0)
-        }
-        withScrollArea={withScrollArea}
-        maxDropdownHeight={maxDropdownHeight}
-        filterOptions={searchable}
-        value={_value}
-        checkIconPosition={checkIconPosition}
-        withCheckIcon={withCheckIcon}
-        nothingFoundMessage={nothingFoundMessage}
-      />
-    </Combobox>
+    </>
   );
 });
 
