@@ -11,8 +11,11 @@ import {
 import type { GridColProps, ColSpan } from './GridCol';
 import { useGridContext } from '../Grid.context';
 
-interface GridColVariablesProps extends GridColProps {
+interface GridColVariablesProps {
   selector: string;
+  span: GridColProps['span'] | undefined;
+  order?: GridColProps['order'] | undefined;
+  offset?: GridColProps['offset'] | undefined;
 }
 
 const getColumnFlexBasis = (colSpan: ColSpan | undefined, columns: number) => {
