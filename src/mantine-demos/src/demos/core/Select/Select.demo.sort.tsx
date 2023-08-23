@@ -21,6 +21,7 @@ function Demo() {
       placeholder="Pick value"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
+      nothingFoundMessage="Nothing found..."
       searchable
     />
   );
@@ -43,6 +44,7 @@ function Demo() {
       placeholder="Pick value"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
+      nothingFoundMessage="Nothing found..."
       searchable
     />
   );
