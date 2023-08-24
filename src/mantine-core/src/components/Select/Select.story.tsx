@@ -40,3 +40,24 @@ export function Searchable() {
     </div>
   );
 }
+
+export function HiddenDropdown() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="Select something"
+        searchable
+        nothingFoundMessage="Nothing found..."
+      />
+      <Select data={['React', 'Angular', 'Svelte']} placeholder="No message" searchable mt="xl" />
+      <Select
+        data={[]}
+        placeholder="Empty data"
+        searchable
+        // nothingFoundMessage="Nothing found..."
+        mt="xl"
+      />
+    </div>
+  );
+}

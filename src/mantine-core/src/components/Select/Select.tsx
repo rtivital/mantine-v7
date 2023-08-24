@@ -205,7 +205,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           filter={filter}
           search={search}
           limit={limit}
-          hiddenWhenEmpty={!searchable && !!nothingFoundMessage && search.trim().length !== 0}
+          hiddenWhenEmpty={!searchable || !nothingFoundMessage}
           withScrollArea={withScrollArea}
           maxDropdownHeight={maxDropdownHeight}
           filterOptions={searchable && selectedOption?.label !== search}
