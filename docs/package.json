@@ -7,7 +7,7 @@
     "clean": "rm -rf .next",
     "build": "next build && next export && cp CNAME out/CNAME && touch out/.nojekyll",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@floating-ui/react": "^0.24.8",
