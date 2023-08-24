@@ -106,6 +106,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
     visibilityToggleButtonProps,
     rightSectionProps,
     leftSectionProps,
+    leftSectionPointerEvents,
     ...others
   } = props;
 
@@ -207,6 +208,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         rightSectionPointerEvents="all"
         rightSectionProps={rightSectionProps}
         leftSectionProps={leftSectionProps}
+        leftSectionPointerEvents={leftSectionPointerEvents}
       >
         <input
           required={required}
