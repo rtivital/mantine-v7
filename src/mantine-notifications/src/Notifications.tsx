@@ -187,7 +187,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
       setTimeout(() => forceUpdate(), 0);
     }
     previousLength.current = data.notifications.length;
-  }, [notifications]);
+  }, [data.notifications]);
 
   const items = data.notifications.map((notification) => (
     <Transition
