@@ -9,7 +9,7 @@ export interface InputBaseProps
   __staticSelector?: string;
   __stylesApiProps?: Record<string, any>;
 
-  /** Props passed to the root element (`Input.Wrapper` component) */
+  /** Props passed down to the root element (`Input.Wrapper` component) */
   wrapperProps?: Record<string, any>;
 
   /** Determines whether the input can have multiple lines, for example when `component="textarea"`, `false` by default */

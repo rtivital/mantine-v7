@@ -67,7 +67,7 @@ export interface SwitchProps
   radius?: MantineRadius | (string & {}) | number;
 
   /** Props passed down to the wrapper element */
-  wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
+  wrapperProps?: Record<string, any>;
 
   /** Icon inside the thumb of switch */
   thumbIcon?: React.ReactNode;

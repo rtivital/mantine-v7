@@ -48,8 +48,8 @@ export interface CheckboxProps
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` `theme.defaultRadius` by default */
   radius?: MantineRadius | (string & {}) | number;
 
-  /** Props passed down to wrapper element */
-  wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
+  /** Props passed down to the root element */
+  wrapperProps?: Record<string, any>;
 
   /** Position of the label relative to the input, `'right'` by default */
   labelPosition?: 'left' | 'right';

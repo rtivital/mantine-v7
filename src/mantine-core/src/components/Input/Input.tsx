@@ -78,7 +78,7 @@ export interface __InputProps {
   rightSectionPointerEvents?: React.CSSProperties['pointerEvents'];
 
   /** Props added to the root element of the `Input` component */
-  wrapperProps?: React.ComponentPropsWithoutRef<'div'>;
+  wrapperProps?: Record<string, any>;
 
   /** Sets `required` attribute on the `input` element */
   required?: boolean;
