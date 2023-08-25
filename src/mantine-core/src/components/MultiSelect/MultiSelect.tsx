@@ -229,6 +229,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         styles={resolvedStyles}
         unstyled={unstyled}
         size={size}
+        readOnly={readOnly}
         __staticSelector="MultiSelect"
         onOptionSubmit={(val) => {
           onOptionSubmit?.(val);

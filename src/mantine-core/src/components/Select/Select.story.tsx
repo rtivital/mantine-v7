@@ -12,6 +12,14 @@ export function Usage() {
   );
 }
 
+export function ReadOnly() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select data={['React', 'Angular', 'Svelte']} placeholder="Select something" readOnly />
+    </div>
+  );
+}
+
 export function Controlled() {
   const [value, setValue] = useState<string | null>('React');
   return (
@@ -51,13 +59,7 @@ export function HiddenDropdown() {
         nothingFoundMessage="Nothing found..."
       />
       <Select data={['React', 'Angular', 'Svelte']} placeholder="No message" searchable mt="xl" />
-      <Select
-        data={[]}
-        placeholder="Empty data"
-        searchable
-        // nothingFoundMessage="Nothing found..."
-        mt="xl"
-      />
+      <Select data={[]} placeholder="Empty data" searchable mt="xl" />
     </div>
   );
 }

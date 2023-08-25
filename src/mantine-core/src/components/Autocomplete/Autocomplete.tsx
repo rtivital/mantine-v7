@@ -118,6 +118,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       unstyled={unstyled}
+      readOnly={readOnly}
       onOptionSubmit={(val) => {
         onOptionSubmit?.(val);
         setValue(optionsLockup[val].label);

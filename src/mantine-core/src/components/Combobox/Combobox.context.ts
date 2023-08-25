@@ -9,6 +9,7 @@ export interface ComboboxContextValue {
   onOptionSubmit?(value: string, optionProps: ComboboxOptionProps): void;
   size: MantineSize | (string & {});
   resetSelectionOnOptionHover: boolean | undefined;
+  readOnly: boolean | undefined;
 }
 
 export const [ComboboxProvider, useComboboxContext] = createSafeContext<ComboboxContextValue>(

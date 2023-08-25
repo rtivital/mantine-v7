@@ -20,6 +20,10 @@ export function useComboboxTargetProps({
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
 
+    if (ctx.readOnly) {
+      return;
+    }
+
     if (withKeyboardNavigation) {
       if (event.nativeEvent.code === 'ArrowDown') {
         event.preventDefault();

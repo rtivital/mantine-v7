@@ -155,6 +155,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         classNames={resolvedClassNames}
         styles={resolvedStyles}
         unstyled={unstyled}
+        readOnly={readOnly}
         onOptionSubmit={(val) => {
           onOptionSubmit?.(val);
           const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;

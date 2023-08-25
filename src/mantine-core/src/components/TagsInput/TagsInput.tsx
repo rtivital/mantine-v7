@@ -275,6 +275,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         styles={resolvedStyles}
         unstyled={unstyled}
         size={size}
+        readOnly={readOnly}
         __staticSelector="TagsInput"
         onOptionSubmit={(val) => {
           onOptionSubmit?.(val);

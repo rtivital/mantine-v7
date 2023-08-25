@@ -63,6 +63,9 @@ export interface ComboboxProps extends __PopoverProps, StylesApiProps<ComboboxFa
 
   /** Determines whether selection should be reset when option is hovered, `false` by default */
   resetSelectionOnOptionHover?: boolean;
+
+  /** Determines whether Combobox value can be changed */
+  readOnly?: boolean;
 }
 
 export type ComboboxFactory = Factory<{
@@ -123,6 +126,7 @@ export function Combobox(_props: ComboboxProps) {
     dropdownPadding,
     resetSelectionOnOptionHover,
     __staticSelector,
+    readOnly,
     ...others
   } = props;
 
@@ -142,7 +146,14 @@ export function Combobox(_props: ComboboxProps) {
 
   return (
     <ComboboxProvider
-      value={{ getStyles, store, onOptionSubmit, size: size!, resetSelectionOnOptionHover }}
+      value={{
+        getStyles,
+        store,
+        onOptionSubmit,
+        size: size!,
+        resetSelectionOnOptionHover,
+        readOnly,
+      }}
     >
       <Popover
         opened={store.dropdownOpened}
