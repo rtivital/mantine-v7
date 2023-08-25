@@ -21,6 +21,21 @@ export function Usage() {
   );
 }
 
+export function ReadOnly() {
+  const [value, setValue] = useState<number | string>(345);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        readOnly
+        onChange={setValue}
+      />
+    </div>
+  );
+}
+
 export function MinMax() {
   const [value, setValue] = useState<number | string>(15);
   return (
