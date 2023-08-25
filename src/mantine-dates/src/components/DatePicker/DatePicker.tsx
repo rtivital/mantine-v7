@@ -57,7 +57,7 @@ const defaultProps: Partial<DatePickerProps> = {
 };
 
 type DatePickerComponent = (<Type extends DatePickerType = 'default'>(
-  props: DatePickerProps<Type>
+  props: DatePickerProps<Type> & { ref?: React.ForwardedRef<HTMLDivElement> }
 ) => JSX.Element) & { displayName?: string } & MantineComponentStaticProperties<DatePickerFactory>;
 
 export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_props, ref) => {

@@ -42,7 +42,7 @@ const defaultProps: Partial<YearPickerProps> = {
 };
 
 type YearPickerComponent = (<Type extends DatePickerType = 'default'>(
-  props: YearPickerProps<Type>
+  props: YearPickerProps<Type> & { ref?: React.ForwardedRef<HTMLDivElement> }
 ) => JSX.Element) & { displayName?: string } & MantineComponentStaticProperties<YearPickerFactory>;
 
 export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_props, ref) => {
