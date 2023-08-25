@@ -31,7 +31,7 @@ import { ${component} } from '${packageName}';
 
 // Accessible input – it has associated label element
 function Demo() {
-  return <${component} aria-label="My input" />;
+  return <${component} label="My input" />;
 }
 `;
 
