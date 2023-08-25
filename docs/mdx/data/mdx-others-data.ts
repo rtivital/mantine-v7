@@ -91,7 +91,7 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
 
   TipTap: {
     title: 'Rich text editor',
-    package: '@mantine/modals',
+    package: '@mantine/tiptap',
     slug: '/others/tiptap',
     props: ['RichTextEditor'],
     styles: ['RichTextEditor'],
