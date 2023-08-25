@@ -17,7 +17,7 @@ export interface TextareaProps extends InputBaseProps, ElementProps<'textarea', 
 
 export type TextareaFactory = Factory<{
   props: TextareaProps;
-  ref: HTMLInputElement;
+  ref: HTMLTextAreaElement;
   stylesNames: __InputStylesNames;
 }>;
 
