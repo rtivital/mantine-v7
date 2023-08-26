@@ -1,6 +1,15 @@
 import { Frontmatter } from '@/types';
 
 export const MDX_DATES_DATA: Record<string, Frontmatter> = {
+  GettingStartedDates: {
+    title: 'Getting started',
+    package: '@mantine/dates',
+    license: 'MIT',
+    slug: '/dates/getting-started',
+    docs: 'dates/getting-started.mdx',
+    hideInSearch: true,
+  },
+
   Calendar: {
     title: 'Calendar',
     package: '@mantine/dates',
