@@ -120,6 +120,9 @@ const EXTRA_FILES_PATHS = [
 
   // Tiptap
   '../src/mantine-tiptap/src/RichTextEditor.tsx',
+
+  // Notifications
+  '../src/mantine-notifications/src/Notifications.tsx',
 ];
 
 const PATHS: DeclarationPath[] = [
