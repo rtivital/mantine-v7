@@ -7,14 +7,15 @@ interface WavesProps {
   width: number;
   flip?: boolean;
   alt?: boolean;
+  rotate?: boolean;
 }
 
-export function Waves({ height, width, flip, alt }: WavesProps) {
+export function Waves({ height, width, flip, alt, rotate }: WavesProps) {
   return (
     <Box className={classes.root} mod={{ alt }}>
       <Box
         component="svg"
-        mod={{ flip, alt }}
+        mod={{ flip, alt, rotate }}
         __vars={{ '--waves-height': rem(height), '--waves-width': `${width}%` }}
         preserveAspectRatio="none"
         viewBox="0 0 1200 120"

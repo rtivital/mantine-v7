@@ -17,6 +17,10 @@
 
   &[data-flip] {
     transform: scaleY(-1);
+
+    &[data-rotate] {
+      transform: scaleY(1) rotate(180deg);
+    }
   }
 
   &[data-alt] {
