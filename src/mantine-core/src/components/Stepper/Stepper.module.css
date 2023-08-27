@@ -64,6 +64,8 @@
     --_separator-height: rem(2px);
     --_separator-ml: var(--mantine-spacing-md);
     --_separator-mr: var(--mantine-spacing-md);
+    --_separator-mt: 0;
+    --_separator-mb: 0;
   }
 
   &[data-orientation='vertical'] {
