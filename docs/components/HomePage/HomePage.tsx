@@ -7,6 +7,7 @@ import { Waves } from './Waves/Waves';
 import { Components } from './Components/Components';
 import { DarkTheme } from './DarkTheme/DarkTheme';
 import { CustomizeWithProps } from './CustomizeWithProps/CustomizeWithProps';
+import { CustomizeStyles } from './CustomizeStyles/CustomizeStyles';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -25,6 +26,7 @@ export function HomePage() {
           <Waves height={28} width={200} rotate />
           <CustomizeWithProps />
           <Waves height={36} width={110} alt flip />
+          <CustomizeStyles />
         </div>
         <Footer />
       </Shell>
