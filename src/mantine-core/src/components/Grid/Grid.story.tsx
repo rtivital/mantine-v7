@@ -1,4 +1,5 @@
 import React from 'react';
+import { MantineThemeProvider } from '../../core';
 import { Grid } from './Grid';
 import { Button } from '../Button';
 
@@ -52,5 +53,36 @@ export function Order() {
         </Grid.Col>
       </Grid>
     </div>
+  );
+}
+
+export function PxBreakpoints() {
+  return (
+    <MantineThemeProvider
+      theme={{
+        breakpoints: {
+          xs: '400px',
+          sm: '600px',
+          md: '800px',
+          lg: '1000px',
+          xl: '1200px',
+        },
+      }}
+    >
+      <Grid columns={12} bg="pink.3">
+        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+          <Button fullWidth>First</Button>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+          <Button fullWidth>Second</Button>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+          <Button fullWidth>Third</Button>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+          <Button fullWidth>Forth</Button>
+        </Grid.Col>
+      </Grid>
+    </MantineThemeProvider>
   );
 }
