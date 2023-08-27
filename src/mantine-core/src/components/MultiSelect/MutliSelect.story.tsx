@@ -7,7 +7,14 @@ export default { title: 'MultiSelect' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <MultiSelect data={['React', 'Angular', 'Svelte']} placeholder="MultiSelect something" />
+      <MultiSelect
+        placeholder="MultiSelect something"
+        data={[
+          { value: '1', label: 'React' },
+          { value: '2', label: 'Angular' },
+          { value: '3', label: 'Svelte' },
+        ]}
+      />
     </div>
   );
 }
