@@ -22,7 +22,7 @@ const getScript = ({
 `;
 
 export function ColorSchemeScript({
-  defaultColorScheme = 'auto',
+  defaultColorScheme = 'light',
   localStorageKey = 'mantine-color-scheme',
   forceColorScheme,
   ...others

@@ -19,7 +19,7 @@ export interface MantineProviderProps {
   /** Used to retrieve/set color scheme value in external storage, by default uses `window.localStorage` */
   colorSchemeManager?: MantineColorSchemeManager;
 
-  /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `auto` by default */
+  /** Default color scheme value used when `colorSchemeManager` cannot retrieve value from external storage, `light` by default */
   defaultColorScheme?: MantineColorScheme;
 
   /** Forces color scheme value, if set, MantineProvider ignores `colorSchemeManager` and `defaultColorScheme` */
@@ -55,7 +55,7 @@ export function MantineProvider({
   cssVariablesSelector = ':root',
   classNamesPrefix = 'mantine',
   colorSchemeManager = localStorageColorSchemeManager(),
-  defaultColorScheme = 'auto',
+  defaultColorScheme = 'light',
   getRootElement = () => document.documentElement,
   cssVariablesResolver,
   forceColorScheme,

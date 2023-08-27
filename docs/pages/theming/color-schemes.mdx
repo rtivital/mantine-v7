@@ -8,7 +8,7 @@ export default Layout(MDX_DATA.ColorSchemes);
 
 [MantineProvider](/theming/mantine-provider/) manages color scheme context in your application.
 You can configure the default color scheme value with `defaultColorScheme` prop, possible values are `light`,
-`dark` and `auto` (system color scheme is used). The default value is `auto`.
+`dark` and `auto` (system color scheme is used). The default value is `light`.
 
 ```tsx
 import { MantineProvider } from '@mantine/core';
@@ -115,7 +115,7 @@ for example, you can add [nonce](https://developer.mozilla.org/en-US/docs/Web/HT
 import { ColorSchemeScript } from '@mantine/core';
 
 function Demo() {
-  return <ColorSchemeScript nonce="8IBTHwOdqNKAWeKl7plt8g==" />;
+  return <ColorSchemeScript nonce="8IBTHwOdqNKAWeKl7plt8g==" defaultColorScheme="dark" />;
 }
 ```
 
@@ -228,7 +228,7 @@ function Demo() {
 
 The default color scheme value is used when the user has not selected any color scheme yet.
 It is required to be set both on [MantineProvider](/theming/mantine-provider/) and
-`ColorSchemeScript`. If `defaultColorScheme` is not set, then `auto` is used –
+`ColorSchemeScript`. If `defaultColorScheme` is not set, then `light` is used –
 your application color scheme will depend on the system color scheme.
 
 ```tsx
