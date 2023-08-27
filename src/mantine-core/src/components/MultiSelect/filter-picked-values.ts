@@ -13,10 +13,10 @@ export function filterPickedValues({ data, value }: FilterPickedTagsInput) {
       acc.push({
         group: item.group,
         items: item.items.filter(
-          (option) => normalizedValue.indexOf(option.label.toLowerCase().trim()) === -1
+          (option) => normalizedValue.indexOf(option.value.toLowerCase().trim()) === -1
         ),
       });
-    } else if (normalizedValue.indexOf(item.label.toLowerCase().trim()) === -1) {
+    } else if (normalizedValue.indexOf(item.value.toLowerCase().trim()) === -1) {
       acc.push(item);
     }
 

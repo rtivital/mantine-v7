@@ -40,7 +40,11 @@ export function HidePickedOptions() {
   return (
     <div style={{ padding: 40 }}>
       <MultiSelect
-        data={['React', 'Angular', 'Svelte']}
+        data={[
+          { value: 'test 1', label: 'React lib' },
+          { value: 'test 2', label: 'Angular lib' },
+          { value: 'test 3', label: 'Svelte lib' },
+        ]}
         placeholder="MultiSelect something"
         hidePickedOptions
       />
