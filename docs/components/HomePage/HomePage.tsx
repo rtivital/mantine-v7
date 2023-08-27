@@ -8,6 +8,7 @@ import { Components } from './Components/Components';
 import { DarkTheme } from './DarkTheme/DarkTheme';
 import { CustomizeWithProps } from './CustomizeWithProps/CustomizeWithProps';
 import { CustomizeStyles } from './CustomizeStyles/CustomizeStyles';
+import { Theming } from './Theming/Theming';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -27,6 +28,9 @@ export function HomePage() {
           <CustomizeWithProps />
           <Waves height={36} width={110} alt flip />
           <CustomizeStyles />
+          <Waves height={44} width={148} />
+          <Theming />
+          <Waves height={30} width={134} alt flip />
         </div>
         <Footer />
       </Shell>
