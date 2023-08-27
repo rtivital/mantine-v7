@@ -7,14 +7,14 @@ import classes from './DarkTheme.module.css';
 import image from './dark-theme-image.png';
 
 export function DarkTheme() {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { toggleColorScheme } = useMantineColorScheme();
 
   const code = `
 import { MantineProvider } from '@mantine/core';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ colorScheme: '${colorScheme}' }}>
+    <MantineProvider defaultColorScheme="dark">
       <App />
     </MantineProvider>
   );
@@ -34,7 +34,13 @@ function Demo() {
             the box.
           </Text>
 
-          <CodeHighlight language="tsx" withCopyButton={false} mt="xl" code={code} />
+          <CodeHighlight
+            language="tsx"
+            withCopyButton={false}
+            mt="xl"
+            code={code}
+            className={classes.codeHighlight}
+          />
 
           <Group justify="center" mt="xl">
             <Button
