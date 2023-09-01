@@ -14,8 +14,9 @@ import { pickCalendarProps } from '../Calendar';
 import { useDatesInput } from '../../hooks';
 import { YearPicker, YearPickerBaseProps, YearPickerStylesNames } from '../YearPicker';
 import { DatePickerType } from '../../types';
-import { getDefaultClampedDate } from '../../utils';
+import { getDefaultClampedDate, shiftTimezone } from '../../utils';
 import { PickerInputBase, DateInputSharedProps } from '../PickerInputBase';
+import { useDatesContext } from '../DatesProvider';
 
 export type YearPickerInputStylesNames = __InputStylesNames | YearPickerStylesNames;
 
@@ -82,6 +83,7 @@ export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInput
     });
 
     const { calendarProps, others } = pickCalendarProps(rest);
+    const ctx = useDatesContext();
 
     const {
       _value,
@@ -130,8 +132,9 @@ export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInput
           value={_value}
           defaultDate={
             Array.isArray(_value)
-              ? _value[0] || getDefaultClampedDate({ maxDate, minDate })
-              : _value || getDefaultClampedDate({ maxDate, minDate })
+              ? _value[0] ||
+                getDefaultClampedDate({ maxDate, minDate, timezone: ctx.getTimezone() })
+              : _value || getDefaultClampedDate({ maxDate, minDate, timezone: ctx.getTimezone() })
           }
           onChange={setValue}
           locale={locale}
@@ -142,6 +145,8 @@ export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInput
           __stopPropagation={dropdownType === 'popover'}
           minDate={minDate}
           maxDate={maxDate}
+          date={shiftTimezone('add', calendarProps.date, ctx.getTimezone())}
+          __timezoneApplied
         />
       </PickerInputBase>
     );

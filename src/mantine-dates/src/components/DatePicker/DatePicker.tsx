@@ -15,6 +15,8 @@ import { Calendar, CalendarBaseProps, CalendarSettings, CalendarStylesNames } fr
 import { DecadeLevelBaseSettings } from '../DecadeLevel';
 import { YearLevelBaseSettings } from '../YearLevel';
 import { MonthLevelBaseSettings } from '../MonthLevel';
+import { shiftTimezone } from '../../utils';
+import { useDatesContext } from '../DatesProvider';
 
 export type DatePickerStylesNames = CalendarStylesNames;
 
@@ -79,6 +81,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
     hideOutsideDates,
     __onDayMouseEnter,
     __onDayClick,
+    __timezoneApplied,
     ...others
   } = props;
 
@@ -91,6 +94,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
     defaultValue,
     onChange,
     onMouseLeave,
+    applyTimezone: !__timezoneApplied,
   });
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<DatePickerFactory>({
@@ -98,6 +102,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
     styles,
     props,
   });
+  const ctx = useDatesContext();
 
   return (
     <Calendar
@@ -122,6 +127,8 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
         ...getDayProps?.(date),
       })}
       {...others}
+      date={shiftTimezone('add', others.date, ctx.getTimezone(), __timezoneApplied)}
+      __timezoneApplied
     />
   );
 }) as any;

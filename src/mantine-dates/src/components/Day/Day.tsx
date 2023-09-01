@@ -14,6 +14,8 @@ import {
   getSize,
 } from '@mantine/core';
 import classes from './Day.module.css';
+import { shiftTimezone } from '../../utils';
+import { useDatesContext } from '../DatesProvider';
 
 export type DayStylesNames = 'day';
 export type DayCssVariables = {
@@ -110,13 +112,17 @@ export const Day = factory<DayFactory>((_props, ref) => {
     rootSelector: 'day',
   });
 
+  const ctx = useDatesContext();
+
   return (
     <UnstyledButton<any>
       {...getStyles('day')}
       component={isStatic ? 'div' : 'button'}
       ref={ref}
       disabled={disabled}
-      data-today={dayjs(date).isSame(new Date(), 'day') || undefined}
+      data-today={
+        dayjs(date).isSame(shiftTimezone('add', new Date(), ctx.getTimezone()), 'day') || undefined
+      }
       data-hidden={hidden || undefined}
       data-disabled={disabled || undefined}
       data-weekend={(!disabled && !outside && weekend) || undefined}

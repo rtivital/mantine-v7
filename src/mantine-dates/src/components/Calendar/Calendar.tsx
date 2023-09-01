@@ -19,6 +19,9 @@ import { clampLevel } from './clamp-level/clamp-level';
 import { MonthLevelSettings } from '../MonthLevel';
 import { YearLevelSettings } from '../YearLevel';
 import { DecadeLevelSettings } from '../DecadeLevel';
+import { useDatesContext } from '../DatesProvider';
+import { shiftTimezone } from '../../utils';
+import { useUncontrolledDates } from '../../hooks';
 
 export type CalendarStylesNames =
   | MonthLevelGroupStylesNames
@@ -76,6 +79,9 @@ export interface CalendarSettings
 
 export interface CalendarBaseProps {
   __staticSelector?: string;
+
+  /** Internal Variable to check if timezones were applied by parent component */
+  __timezoneApplied?: boolean;
 
   /** Prevents focus shift when buttons are clicked */
   __preventFocus?: boolean;
@@ -219,6 +225,7 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
     onNextMonth,
     onPreviousMonth,
     static: isStatic,
+    __timezoneApplied,
     ...others
   } = props;
 
@@ -235,11 +242,12 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
     onChange: onLevelChange,
   });
 
-  const [_date, setDate] = useUncontrolled({
+  const [_date, setDate] = useUncontrolledDates({
+    type: 'default',
     value: date,
     defaultValue: defaultDate,
-    finalValue: null,
-    onChange: onDateChange,
+    onChange: onDateChange as any,
+    applyTimezone: !__timezoneApplied,
   });
 
   const stylesApiProps = {
@@ -250,8 +258,10 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
     size,
   };
 
+  const ctx = useDatesContext();
+
   const _columnsToScroll = columnsToScroll || numberOfColumns || 1;
-  const currentDate = _date || new Date();
+  const currentDate = _date || shiftTimezone('add', new Date(), ctx.getTimezone());
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(_columnsToScroll, 'month').toDate();

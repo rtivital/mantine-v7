@@ -14,8 +14,9 @@ import { pickCalendarProps } from '../Calendar';
 import { useDatesInput } from '../../hooks';
 import { MonthPicker, MonthPickerBaseProps, MonthPickerStylesNames } from '../MonthPicker';
 import { DatePickerType } from '../../types';
-import { getDefaultClampedDate } from '../../utils';
+import { getDefaultClampedDate, shiftTimezone } from '../../utils';
 import { PickerInputBase, DateInputSharedProps } from '../PickerInputBase';
+import { useDatesContext } from '../DatesProvider';
 
 export type MonthPickerInputStylesNames = __InputStylesNames | MonthPickerStylesNames;
 
@@ -102,6 +103,7 @@ export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerIn
       closeOnChange,
       sortDates,
     });
+    const ctx = useDatesContext();
 
     return (
       <PickerInputBase
@@ -124,6 +126,7 @@ export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerIn
       >
         <MonthPicker
           {...calendarProps}
+          date={shiftTimezone('add', calendarProps.date, ctx.getTimezone())}
           size={size}
           variant={variant}
           type={type}
@@ -142,6 +145,7 @@ export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerIn
           __stopPropagation={dropdownType === 'popover'}
           minDate={minDate}
           maxDate={maxDate}
+          __timezoneApplied
         />
       </PickerInputBase>
     );

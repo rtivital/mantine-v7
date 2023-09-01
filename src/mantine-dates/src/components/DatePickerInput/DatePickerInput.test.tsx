@@ -1,8 +1,9 @@
 import React from 'react';
 import { tests, inputDefaultProps, inputStylesApiSelectors, render } from '@mantine/tests';
 import { __InputStylesNames } from '@mantine/core';
-import { datesTests, expectValue } from '@mantine/dates-tests';
+import { clickControl, clickInput, datesTests, expectValue } from '@mantine/dates-tests';
 import { DatePickerInput, DatePickerInputProps } from './DatePickerInput';
+import { DatesProvider } from '../DatesProvider';
 
 const defaultProps = {
   popoverProps: { withinPortal: false, transitionProps: { duration: 0 } },
@@ -105,5 +106,34 @@ describe('@mantine/dates/DatePickerInput', () => {
     );
 
     expect(container.querySelector('table button')).toHaveClass('mantine-DatePickerInput-day');
+  });
+
+  it('supports controlled state (dropdown click)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatePickerInput {...defaultProps} value={new Date(2022, 3, 11)} onChange={spy} />
+    );
+    await clickInput(container);
+    await clickControl(container, 4);
+    expectValue(container, 'April 11, 2022');
+    expect(spy).toHaveBeenCalledWith(new Date(2022, 3, 1));
+  });
+
+  it('supports controlled state (dropdown click) with timezone', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <DatePickerInput
+          {...defaultProps}
+          date={new Date(2022, 0, 31, 23)}
+          value={new Date(2022, 0, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+    await clickInput(container);
+    await clickControl(container, 4);
+    expectValue(container, 'February 1, 2022');
+    expect(spy).toHaveBeenCalledWith(new Date(2022, 1, 3, 19));
   });
 });
