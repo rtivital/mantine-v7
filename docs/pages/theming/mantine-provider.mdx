@@ -49,6 +49,9 @@ interface MantineProviderProps {
   /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
   withCssVariables?: boolean;
 
+  /** Determines whether Mantine CSS global styles should be added, `true` by default */
+  withGlobalStyles?: boolean;
+
   /** Function to resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?(): HTMLElement | undefined;
 
@@ -166,6 +169,71 @@ function Demo() {
   );
 }
 ```
+
+### withGlobalStyles
+
+`withGlobalStyles` determines whether global styles should be added to the document. By default, it is set to `true`, 
+you should not change it unless you want to manage your global styles manually.
+This can be useful when working with micro front-ends where mantine does not control the entire document.
+.
+
+```tsx
+import { MantineProvider } from '@mantine/core';
+
+function Demo() {
+  return (
+    <MantineProvider withGlobalStyles={false}>
+      <App />
+    </MantineProvider>
+  );
+}
+```
+
+
+Included global styles are:
+```css
+/* ----- CSS reset ----- */
+html,
+body {
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+/* ----- Global styles ----- */
+body {
+    margin: 0;
+    font-family: var(--mantine-font-family);
+    font-size: var(--mantine-font-size-md);
+    line-height: var(--mantine-line-height);
+    background-color: var(--mantine-color-body);
+    color: var(--mantine-color-text);
+
+    -webkit-font-smoothing: var(--mantine-webkit-font-smoothing);
+    -moz-osx-font-smoothing: var(--mantine-moz-font-smoothing);
+
+    @media screen and (max-device-width: 500px) {
+        -webkit-text-size-adjust: 100%;
+    }
+}
+```
+
 
 ### getRootElement
 

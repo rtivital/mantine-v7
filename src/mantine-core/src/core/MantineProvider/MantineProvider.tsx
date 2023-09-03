@@ -1,5 +1,6 @@
 import './global.css';
 import React from 'react';
+import { MantineGlobalStyles } from './MantineGlobalStyles';
 import { suppressNextjsWarning } from './suppress-nextjs-warning';
 import { MantineCssVariables, CSSVariablesResolver } from './MantineCssVariables';
 import { MantineThemeProvider } from './MantineThemeProvider';
@@ -31,6 +32,9 @@ export interface MantineProviderProps {
   /** Determines whether theme CSS variables should be added to given `cssVariablesSelector`, `true` by default */
   withCssVariables?: boolean;
 
+  /** Determines whether Mantine CSS global styles should be added, `true` by default */
+  withGlobalStyles?: boolean;
+
   /** Function to resolve root element to set `data-mantine-color-scheme` attribute, must return undefined on server, `() => document.documentElement` by default */
   getRootElement?(): HTMLElement | undefined;
 
@@ -52,6 +56,7 @@ export function MantineProvider({
   children,
   getStyleNonce,
   withCssVariables = true,
+  withGlobalStyles = true,
   cssVariablesSelector = ':root',
   classNamesPrefix = 'mantine',
   colorSchemeManager = localStorageColorSchemeManager(),
@@ -84,10 +89,13 @@ export function MantineProvider({
         getStyleNonce,
         cssVariablesResolver,
         cssVariablesSelector,
+
       }}
     >
       <MantineThemeProvider theme={theme}>
+        {withGlobalStyles && <MantineGlobalStyles />}
         {withCssVariables && <MantineCssVariables cssVariablesSelector={cssVariablesSelector} />}
+
         <MantineClasses />
         {children}
       </MantineThemeProvider>
