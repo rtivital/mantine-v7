@@ -58,6 +58,9 @@ export interface SelectProps
 
   /** Called when search changes */
   onSearchChange?(value: string): void;
+
+  /** Determines whether it should be possible to deselect value by clicking on the selected option, `true` by default */
+  allowDeselect?: boolean;
 }
 
 export type SelectFactory = Factory<{
@@ -70,6 +73,7 @@ export type SelectFactory = Factory<{
 const defaultProps: Partial<SelectProps> = {
   searchable: false,
   withCheckIcon: true,
+  allowDeselect: true,
   checkIconPosition: 'left',
 };
 
@@ -111,6 +115,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     searchValue,
     defaultSearchValue,
     onSearchChange,
+    allowDeselect,
     ...others
   } = props;
 
@@ -175,7 +180,11 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         readOnly={readOnly}
         onOptionSubmit={(val) => {
           onOptionSubmit?.(val);
-          const nextValue = optionsLockup[val].value === _value ? null : optionsLockup[val].value;
+          const nextValue = allowDeselect
+            ? optionsLockup[val].value === _value
+              ? null
+              : optionsLockup[val].value
+            : optionsLockup[val].value;
           setValue(nextValue);
           setSearch(nextValue ? optionsLockup[val].label : '');
           combobox.closeDropdown();

@@ -29,6 +29,18 @@ export function ControlledSearch() {
   );
 }
 
+export function AllowDeselectFalse() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="Select something"
+        allowDeselect={false}
+      />
+    </div>
+  );
+}
+
 export function ReadOnly() {
   return (
     <div style={{ padding: 40 }}>
