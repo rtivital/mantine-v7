@@ -4,6 +4,7 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
   NotFound: {
     title: '404',
     slug: '/404',
+    hideHeader: true,
     hideInSearch: true,
     hideSiblings: true,
   },
