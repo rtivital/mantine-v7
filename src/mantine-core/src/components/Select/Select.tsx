@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import {
   BoxProps,
@@ -49,6 +49,15 @@ export interface SelectProps
 
   /** Message displayed when no option matched current search query, only applicable when `searchable` prop is set */
   nothingFoundMessage?: React.ReactNode;
+
+  /** Controlled search value */
+  searchValue?: string;
+
+  /** Default search value */
+  defaultSearchValue?: string;
+
+  /** Called when search changes */
+  onSearchChange?(value: string): void;
 }
 
 export type SelectFactory = Factory<{
@@ -99,6 +108,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     nothingFoundMessage,
     name,
     form,
+    searchValue,
+    defaultSearchValue,
+    onSearchChange,
     ...others
   } = props;
 
@@ -113,7 +125,12 @@ export const Select = factory<SelectFactory>((_props, ref) => {
   });
 
   const selectedOption = _value ? optionsLockup[_value] : undefined;
-  const [search, setSearch] = useState(selectedOption ? selectedOption.label : '');
+  const [search, setSearch] = useUncontrolled({
+    value: searchValue,
+    defaultValue: defaultSearchValue,
+    finalValue: selectedOption ? selectedOption.label : '',
+    onChange: onSearchChange,
+  });
 
   const combobox = useCombobox({
     opened: dropdownOpened,

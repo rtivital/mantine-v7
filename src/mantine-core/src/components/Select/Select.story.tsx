@@ -16,6 +16,19 @@ export function Usage() {
   );
 }
 
+export function ControlledSearch() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="Select something"
+        searchable
+        searchValue="Re"
+      />
+    </div>
+  );
+}
+
 export function ReadOnly() {
   return (
     <div style={{ padding: 40 }}>
