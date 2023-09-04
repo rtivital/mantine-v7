@@ -14,16 +14,21 @@ import classes from './Navbar.module.css';
 
 interface NavbarProps {
   navbarOpened: boolean;
+  mobileNavbarOnly: boolean | undefined;
   onNavbarClose(): void;
 }
 
-export function Navbar({ navbarOpened, onNavbarClose }: NavbarProps) {
+export function Navbar({ navbarOpened, onNavbarClose, mobileNavbarOnly }: NavbarProps) {
   const groups = MDX_PAGES_GROUPS.map((group) => (
     <NavbarLinksGroup data={group} onNavbarClose={onNavbarClose} key={group.group} />
   ));
 
   return (
-    <Box component="nav" className={classes.navbar} mod={{ hidden: !navbarOpened }}>
+    <Box
+      component="nav"
+      className={classes.navbar}
+      mod={{ hidden: !navbarOpened, 'mobile-only': mobileNavbarOnly }}
+    >
       <ScrollArea className={classes.scrollarea} type="never" offsetScrollbars={false}>
         <div className={classes.body}>
           <NavbarMainLink

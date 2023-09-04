@@ -28,7 +28,15 @@
 
   &[data-hidden] {
     @media (max-width: $docs-navbar-breakpoint) {
-      display: none;
+      display: none !important;
+    }
+  }
+
+  &[data-mobile-only] {
+    display: none;
+
+    @media (max-width: $docs-navbar-breakpoint) {
+      display: flex;
     }
   }
 

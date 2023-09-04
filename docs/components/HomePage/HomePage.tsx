@@ -17,7 +17,7 @@ export function HomePage() {
       <Head>
         <title>Mantine</title>
       </Head>
-      <Shell withNavbar={false}>
+      <Shell mobileNavbarOnly>
         <div className={classes.root}>
           <Jumbotron />
           <Waves height={40} width={150} />
