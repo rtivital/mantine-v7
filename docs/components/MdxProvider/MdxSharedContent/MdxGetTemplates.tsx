@@ -16,10 +16,10 @@ export function MdxGetTemplates({ type }: MdxGetTemplatesProps) {
       <MdxParagraph>
         The easiest way to get started is to use one of the templates. All templates are configured
         correctly: they include <MdxLink href="/styles/postcss-preset">PostCSS setup</MdxLink>,{' '}
-        <MdxLink href="/styles/color-schemes">ColorSchemeScript</MdxLink> and other essential
+        <MdxLink href="/theming/color-schemes">ColorSchemeScript</MdxLink> and other essential
         features. Some templates also include additional features like{' '}
-        <MdxLink href="/guide/jest">Jest</MdxLink>,{' '}
-        <MdxLink href="/guide/storybook">Storybook</MdxLink> and ESLint.
+        <MdxLink href="/guides/jest">Jest</MdxLink>,{' '}
+        <MdxLink href="/guides/storybook">Storybook</MdxLink> and ESLint.
       </MdxParagraph>
 
       <MdxParagraph>
