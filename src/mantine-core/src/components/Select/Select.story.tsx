@@ -7,7 +7,11 @@ export default { title: 'Select' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Select data={['React', 'Angular', 'Svelte']} placeholder="Select something" />
+      <Select
+        data={['React', 'Angular', 'Svelte']}
+        placeholder="Select something"
+        defaultValue="First"
+      />
     </div>
   );
 }

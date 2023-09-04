@@ -17,8 +17,11 @@ function Demo() {
       description="Description"
       error="Error"
       placeholder="MultiSelect"
-      defaultValue={['First', 'Second']}
-      data={['React', 'Angular']}
+      defaultValue={['React', 'Angular']}
+      data={[
+        { group: 'Frontend', items: ['React', 'Angular'] },
+        { group: 'Backend', items: ['Node', 'Django'] },
+      ]}
     />
   );
 }
@@ -34,7 +37,7 @@ function Demo(props: any) {
       label="MultiSelect"
       description="Description"
       placeholder="MultiSelect"
-      defaultValue={['First', 'Second']}
+      defaultValue={['React', 'Angular']}
       data={[
         { group: 'Frontend', items: ['React', 'Angular'] },
         { group: 'Backend', items: ['Node', 'Django'] },
