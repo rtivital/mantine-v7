@@ -24,8 +24,8 @@
   padding-right: var(--_card-section-padding, 0);
   border-top: var(--_card-section-border-top, unset);
   border-bottom: var(--_card-section-border-bottom, unset);
-  margin-top: var(--_card-section-mt);
-  margin-bottom: var(--_card-section-mb);
+  margin-top: var(--_card-section-mt, 0);
+  margin-bottom: var(--_card-section-mb, 0);
 
   &[data-first-section] {
     --_card-section-mt: calc(var(--card-padding) * -1);
