@@ -2,8 +2,8 @@
 import React from 'react';
 import cx from 'clsx';
 import { IconChevronDown, IconExternalLink } from '@tabler/icons-react';
-import { Code, Group, Burger, RemoveScroll, Menu, UnstyledButton, Text } from '@mantine/core';
-import { HeaderControls, ColorSchemeControl } from '@mantine/ds';
+import { Code, Group, Burger, RemoveScroll, Menu, UnstyledButton, Text, Box } from '@mantine/core';
+import { HeaderControls, ColorSchemeControl, SearchMobileControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
 import { searchHandlers } from '@/components/Search';
 import packageJson from '../../../../package.json';
@@ -67,16 +67,21 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
 
       <header className={cx(classes.header, RemoveScroll.classNames.fullWidth)} data-mobile>
         <Group justify="space-between" w="100%">
-          <Burger
-            opened={navbarOpened}
-            onClick={onNavbarToggle}
-            size="sm"
-            aria-label="Toggle navbar"
-          />
+          <Box miw={80}>
+            <Burger
+              opened={navbarOpened}
+              onClick={onNavbarToggle}
+              size="sm"
+              aria-label="Toggle navbar"
+            />
+          </Box>
 
           <Logo />
 
-          <ColorSchemeControl />
+          <Group gap="sm">
+            <SearchMobileControl onSearch={searchHandlers.open} />
+            <ColorSchemeControl />
+          </Group>
         </Group>
       </header>
     </>
