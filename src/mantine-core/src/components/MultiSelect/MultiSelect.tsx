@@ -217,7 +217,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       onRemove={() => setValue(_value.filter((i) => item !== i))}
       {...getStyles('pill')}
     >
-      {optionsLockup[item].label}
+      {optionsLockup[item]?.label || item}
     </Pill>
   ));
 
