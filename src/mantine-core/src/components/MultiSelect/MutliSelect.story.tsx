@@ -19,6 +19,22 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <MultiSelect
+        placeholder="MultiSelect something"
+        unstyled
+        data={[
+          { value: '1', label: 'React' },
+          { value: '2', label: 'Angular' },
+          { value: '3', label: 'Svelte' },
+        ]}
+      />
+    </div>
+  );
+}
+
 export function Controlled() {
   const [value, setValue] = useState<string[]>(['React']);
   return (

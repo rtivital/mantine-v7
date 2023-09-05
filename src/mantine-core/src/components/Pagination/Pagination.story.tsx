@@ -28,6 +28,16 @@ export function Controlled() {
   );
 }
 
+export function Unstyled() {
+  const [value, setValue] = useState(1);
+  return (
+    <>
+      Current page: {value}
+      <Pagination total={20} value={value} onChange={setValue} withEdges unstyled />
+    </>
+  );
+}
+
 export function Disabled() {
   return <Pagination total={45} disabled />;
 }

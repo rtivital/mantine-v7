@@ -21,6 +21,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <NativeSelect data={['React', 'Angular', 'Vue']} unstyled />
+    </div>
+  );
+}
+
 export function Groups() {
   return (
     <div style={{ padding: 40 }}>

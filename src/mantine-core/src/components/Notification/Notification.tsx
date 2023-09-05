@@ -154,6 +154,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
           iconSize={16}
           color="gray"
           {...closeButtonProps}
+          unstyled={unstyled}
           onClick={onClose}
           {...getStyles('closeButton')}
         />

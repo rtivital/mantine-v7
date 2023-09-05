@@ -21,6 +21,23 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  const [value, setValue] = useState<number | string>(345);
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput
+        value={value}
+        label="Number input"
+        placeholder="Number input"
+        onChange={setValue}
+        unstyled
+      />
+      {typeof value === 'number' ? `${value} number` : `${value === '' ? 'empty' : value} string`}
+      <Button onClick={() => setValue(245.32)}>Set value to float</Button>
+    </div>
+  );
+}
+
 export function ReadOnly() {
   const [value, setValue] = useState<number | string>(345);
   return (

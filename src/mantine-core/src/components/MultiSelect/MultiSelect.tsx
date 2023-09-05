@@ -215,6 +215,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
       key={`${item}-${index}`}
       withRemoveButton={!readOnly}
       onRemove={() => setValue(_value.filter((i) => item !== i))}
+      unstyled={unstyled}
       {...getStyles('pill')}
     >
       {optionsLockup[item]?.label || item}
@@ -281,7 +282,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             pointer={!searchable}
             onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}
           >
-            <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
+            <Pill.Group disabled={disabled} unstyled={unstyled} {...getStyles('pillsList')}>
               {values}
               <Combobox.EventsTarget>
                 <PillsInput.Field

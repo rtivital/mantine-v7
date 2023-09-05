@@ -128,6 +128,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
           radius={radius}
           tabIndex={-1}
           aria-hidden
+          unstyled={unstyled}
           {...removeButtonProps}
           {...getStyles('remove', {
             className: removeButtonProps?.className,

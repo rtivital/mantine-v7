@@ -22,7 +22,7 @@ const defaultProps: Partial<NativeSelectProps> = {
 };
 
 export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
-  const { data, children, size, error, rightSection, ...others } = useProps(
+  const { data, children, size, error, rightSection, unstyled, ...others } = useProps(
     'NativeSelect',
     defaultProps,
     props
@@ -41,7 +41,10 @@ export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
       size={size}
       pointer
       error={error}
-      rightSection={rightSection || <ComboboxChevron size={size!} error={error} />}
+      unstyled={unstyled}
+      rightSection={
+        rightSection || <ComboboxChevron size={size!} error={error} unstyled={unstyled} />
+      }
     >
       {children || options}
     </InputBase>

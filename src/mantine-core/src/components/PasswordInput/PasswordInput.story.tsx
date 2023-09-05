@@ -10,3 +10,11 @@ export function Usage() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 340 }}>
+      <PasswordInput placeholder="Your password" description="Hello" label="There" unstyled />
+    </div>
+  );
+}

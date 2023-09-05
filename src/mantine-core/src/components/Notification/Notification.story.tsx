@@ -193,3 +193,13 @@ export function Usage() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Notification withBorder color="gray" onClose={() => {}} mt="xl" unstyled>
+        Notification with border
+      </Notification>
+    </div>
+  );
+}
