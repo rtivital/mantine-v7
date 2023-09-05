@@ -193,6 +193,7 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
         loop,
         getStyles,
         variant,
+        unstyled,
       }}
     >
       <Box {...getStyles('root')} {...others} variant={variant} data-accordion>

@@ -15,6 +15,7 @@ interface AccordionContext {
   getRegionId(value: string): string;
   getStyles: GetStylesApi<AccordionFactory>;
   variant: string | undefined;
+  unstyled: boolean | undefined;
 }
 
 export const [AccordionProvider, useAccordionContext] = createSafeContext<AccordionContext>(

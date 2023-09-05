@@ -69,6 +69,7 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     <UnstyledButton<'button'>
       {...others}
       {...ctx.getStyles('control', { className, classNames, style, styles, variant: ctx.variant })}
+      unstyled={ctx.unstyled}
       mod={[
         'accordion-control',
         { active: isActive, 'chevron-position': ctx.chevronPosition, disabled },
