@@ -11,3 +11,12 @@ export function Usage() {
     </div>
   );
 }
+
+export function Unstyled() {
+  const [opened, setOpened] = React.useState(false);
+  return (
+    <div style={{ padding: 40 }}>
+      <Burger opened={opened} onClick={() => setOpened((o) => !o)} unstyled />
+    </div>
+  );
+}

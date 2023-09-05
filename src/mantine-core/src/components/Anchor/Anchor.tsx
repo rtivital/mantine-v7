@@ -27,15 +27,16 @@ const defaultProps: Partial<AnchorProps> = {
 };
 
 export const Anchor = polymorphicFactory<AnchorFactory>((props, ref) => {
-  const { underline, className, ...others } = useProps('Anchor', defaultProps, props);
+  const { underline, className, unstyled, ...others } = useProps('Anchor', defaultProps, props);
   return (
     <Text
       component="a"
       ref={ref}
-      className={cx(classes.root, className)}
+      className={cx({ [classes.root]: !unstyled }, className)}
       {...others}
       mod={{ underline }}
       __staticSelector="Anchor"
+      unstyled={unstyled}
     />
   );
 });

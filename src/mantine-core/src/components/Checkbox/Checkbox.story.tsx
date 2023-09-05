@@ -106,3 +106,7 @@ export function Sizes() {
     <Checkbox size={size} defaultChecked label={`Size ${size}`} mt="md" />
   ));
 }
+
+export function Unstyled() {
+  return <Checkbox label="Unstyled checkbox" unstyled />;
+}

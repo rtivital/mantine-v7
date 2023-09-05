@@ -161,6 +161,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
             size={16}
             iconSize={16}
             aria-label={closeButtonLabel}
+            unstyled={unstyled}
           />
         )}
       </div>

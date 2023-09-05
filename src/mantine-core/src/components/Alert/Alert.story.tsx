@@ -31,3 +31,14 @@ export function Variants() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ maxWidth: 500, margin: 'auto', padding: 40 }}>
+      <Alert title="Bummer!" color="red" variant="light" withCloseButton unstyled>
+        Something terrible happened! You made a mistake and there is no going back, your data was
+        lost forever!
+      </Alert>
+    </div>
+  );
+}

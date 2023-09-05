@@ -297,3 +297,13 @@ export function ButtonGroup() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Button unstyled loading>
+        Unstyled
+      </Button>
+    </div>
+  );
+}

@@ -226,3 +226,18 @@ export function ActionIconGroup() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ActionIcon.Group unstyled>
+        <ActionIcon unstyled size="lg" variant="default">
+          $$
+        </ActionIcon>
+        <ActionIcon unstyled size="lg" variant="default">
+          $$
+        </ActionIcon>
+      </ActionIcon.Group>
+    </div>
+  );
+}

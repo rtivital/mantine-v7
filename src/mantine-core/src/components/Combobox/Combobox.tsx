@@ -160,6 +160,7 @@ export function Combobox(_props: ComboboxProps) {
         {...others}
         onClose={store.closeDropdown}
         withRoles={false}
+        unstyled={unstyled}
       >
         {children}
       </Popover>

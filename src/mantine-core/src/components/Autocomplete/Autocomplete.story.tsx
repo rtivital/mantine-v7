@@ -34,6 +34,20 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Autocomplete
+        label="Test"
+        placeholder="Test autocomplete"
+        data={options}
+        dropdownOpened
+        unstyled
+      />
+    </div>
+  );
+}
+
 export function Controlled() {
   const [value, setValue] = useState<string>('React');
   return (

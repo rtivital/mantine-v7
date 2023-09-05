@@ -27,11 +27,12 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
     },
     ref
   ) => {
-    const { getStyles } = useColorPickerContext();
+    const ctx = useColorPickerContext();
 
     const colors = data.map((color, index) => (
       <ColorSwatch
-        {...getStyles('swatch')}
+        {...ctx.getStyles('swatch')}
+        unstyled={ctx.unstyled}
         component="button"
         type="button"
         color={color}
@@ -48,7 +49,7 @@ export const Swatches = forwardRef<HTMLDivElement, SwatchesProps>(
     ));
 
     return (
-      <Box {...getStyles('swatches')} ref={ref} {...others}>
+      <Box {...ctx.getStyles('swatches')} ref={ref} {...others}>
         {colors}
       </Box>
     );

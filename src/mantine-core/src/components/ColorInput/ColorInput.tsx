@@ -174,6 +174,7 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
       variant="subtle"
       color="gray"
       size={inputProps.size}
+      unstyled={unstyled}
       onClick={() =>
         openEyeDropper()
           .then((payload) => {

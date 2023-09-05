@@ -11,6 +11,13 @@ export function Usage() {
     </div>
   );
 }
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Code unstyled>Some code</Code>
+    </div>
+  );
+}
 
 const code = `
 export function Usage() {

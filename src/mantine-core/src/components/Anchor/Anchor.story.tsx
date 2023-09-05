@@ -31,3 +31,11 @@ export function Usage() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <Anchor href="#" unstyled>
+      Unstyled
+    </Anchor>
+  );
+}

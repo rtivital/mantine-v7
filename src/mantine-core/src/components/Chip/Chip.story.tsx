@@ -63,3 +63,13 @@ export function CustomIcon() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Chip type="checkbox" variant="light" unstyled>
+        unstyled
+      </Chip>
+    </div>
+  );
+}

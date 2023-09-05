@@ -92,7 +92,7 @@ export const Card = polymorphicFactory<CardFactory>((_props, ref) => {
 
   return (
     <CardProvider value={{ getStyles }}>
-      <Paper ref={ref} {...getStyles('root')} {...others}>
+      <Paper ref={ref} unstyled={unstyled} {...getStyles('root')} {...others}>
         {content}
       </Paper>
     </CardProvider>

@@ -12,6 +12,7 @@ export function Usage() {
       <CloseButton variant="filled" size="lg" />
       <CloseButton variant="filled" size="xl" />
       <CloseButton variant="filled" size="10rem" iconSize="8rem" />
+      <CloseButton unstyled />
     </div>
   );
 }
