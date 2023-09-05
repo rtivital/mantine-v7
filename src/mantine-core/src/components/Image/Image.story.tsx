@@ -14,6 +14,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Image src={url} h={600} radius="md" unstyled />
+    </div>
+  );
+}
+
 export function Fallback() {
   return (
     <div style={{ padding: 40 }}>

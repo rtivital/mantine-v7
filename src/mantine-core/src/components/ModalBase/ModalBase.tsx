@@ -17,6 +17,8 @@ import { ModalBaseProvider } from './ModalBase.context';
 import { useModal } from './use-modal';
 
 export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
+  unstyled?: boolean;
+
   /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead, `false` by default */
   keepMounted?: boolean;
 
@@ -89,6 +91,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
       shadow,
       padding,
       __vars,
+      unstyled,
       ...others
     },
     ref
@@ -113,6 +116,7 @@ export const ModalBase = forwardRef<HTMLDivElement, ModalBaseProps>(
             trapFocus,
             closeOnEscape,
             zIndex,
+            unstyled,
           }}
         >
           <RemoveScroll enabled={shouldLockScroll && lockScroll}>

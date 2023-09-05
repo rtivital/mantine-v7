@@ -13,6 +13,7 @@ interface MenuContext {
   loop: boolean | undefined;
   trigger: 'click' | 'hover' | undefined;
   opened: boolean;
+  unstyled: boolean | undefined;
   getStyles: GetStylesApi<MenuFactory>;
 }
 

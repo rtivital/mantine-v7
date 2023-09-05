@@ -119,6 +119,7 @@ export const ModalRoot = factory<ModalRootFactory>((_props, ref) => {
         {...getStyles('root')}
         data-full-screen={fullScreen || undefined}
         data-centered={centered || undefined}
+        unstyled={unstyled}
         {...others}
       />
     </ModalProvider>

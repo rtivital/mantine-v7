@@ -7,12 +7,16 @@ export function Usage() {
   const [value, setValue] = React.useState<File | null>(null);
   return (
     <div style={{ padding: 40 }}>
-      <FileInput
-        placeholder="Pick file"
-        value={value}
-        onChange={setValue}
-        className="test-class-ssssssssss"
-      />
+      <FileInput placeholder="Pick file" value={value} onChange={setValue} />
+    </div>
+  );
+}
+
+export function Unstyled() {
+  const [value, setValue] = React.useState<File | null>(null);
+  return (
+    <div style={{ padding: 40 }}>
+      <FileInput placeholder="Pick file" value={value} onChange={setValue} unstyled />
     </div>
   );
 }

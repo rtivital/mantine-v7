@@ -109,6 +109,7 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
         ref={ref}
         {...getStyles('root')}
         transitionProps={{ transition: transitions[position!], ...transitionProps }}
+        unstyled={unstyled}
         {...others}
       />
     </DrawerProvider>

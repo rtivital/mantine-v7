@@ -3,13 +3,22 @@ import cx from 'clsx';
 import { Box, BoxProps, ElementProps } from '../../core';
 import { useModalBodyId } from './use-modal-body-id';
 import classes from './ModalBase.module.css';
+import { useModalBaseContext } from './ModalBase.context';
 
 export interface ModalBaseBodyProps extends BoxProps, ElementProps<'div'> {}
 
 export const ModalBaseBody = forwardRef<HTMLDivElement, ModalBaseBodyProps>(
   ({ className, ...others }, ref) => {
     const bodyId = useModalBodyId();
-    return <Box ref={ref} {...others} id={bodyId} className={cx(classes.body, className)} />;
+    const ctx = useModalBaseContext();
+    return (
+      <Box
+        ref={ref}
+        {...others}
+        id={bodyId}
+        className={cx({ [classes.body]: !ctx.unstyled }, className)}
+      />
+    );
   }
 );
 

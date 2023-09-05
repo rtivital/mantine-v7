@@ -2,6 +2,7 @@ import { createSafeContext } from '../../core';
 import { TransitionOverride } from '../Transition';
 
 interface ModalBaseContextValue {
+  unstyled: boolean | undefined;
   titleMounted: boolean;
   bodyMounted: boolean;
   setTitleMounted(value: boolean): void;

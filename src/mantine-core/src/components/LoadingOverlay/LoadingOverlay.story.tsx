@@ -10,3 +10,11 @@ export function Usage() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <LoadingOverlay visible unstyled />
+    </div>
+  );
+}

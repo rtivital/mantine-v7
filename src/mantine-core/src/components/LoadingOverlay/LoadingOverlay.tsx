@@ -99,7 +99,7 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
     <Transition transition="fade" {...transitionProps} mounted={!!visible}>
       {(transitionStyles) => (
         <Box {...getStyles('root', { style: transitionStyles })} ref={ref} {...others}>
-          <Loader {...getStyles('loader')} {...loaderProps} />
+          <Loader {...getStyles('loader')} unstyled={unstyled} {...loaderProps} />
 
           <Overlay
             {..._overlayProps}

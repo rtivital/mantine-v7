@@ -94,6 +94,7 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
   return (
     <UnstyledButton
       {...others}
+      unstyled={ctx.unstyled}
       tabIndex={-1}
       onFocus={handleFocus}
       {...ctx.getStyles('item', { className, style, styles, classNames })}

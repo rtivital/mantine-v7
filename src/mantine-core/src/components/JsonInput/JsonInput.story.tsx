@@ -27,3 +27,15 @@ export function Controlled() {
     />
   );
 }
+
+export function Unstyled() {
+  return (
+    <JsonInput
+      defaultValue='{ "a": 1, "B": 2 }'
+      label="Controlled"
+      placeholder="Controlled"
+      formatOnBlur
+      unstyled
+    />
+  );
+}

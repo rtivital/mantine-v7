@@ -117,6 +117,7 @@ export const Dialog = factory<DialogFactory>((_props, ref) => {
       ref={ref}
       withinPortal={withinPortal}
       portalProps={portalProps}
+      unstyled={unstyled}
     >
       <Transition keepMounted={keepMounted} mounted={opened} {...transitionProps}>
         {(transitionStyles) => (
@@ -125,7 +126,9 @@ export const Dialog = factory<DialogFactory>((_props, ref) => {
             {...getStyles('root', { style: transitionStyles })}
             {...others}
           >
-            {withCloseButton && <CloseButton onClick={onClose} {...getStyles('closeButton')} />}
+            {withCloseButton && (
+              <CloseButton onClick={onClose} unstyled={unstyled} {...getStyles('closeButton')} />
+            )}
             {children}
           </Paper>
         )}

@@ -173,6 +173,7 @@ export function Menu(_props: MenuProps) {
         closeDropdownImmediately: close,
         loop,
         trigger,
+        unstyled,
       }}
     >
       <Popover

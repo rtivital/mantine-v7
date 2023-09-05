@@ -55,6 +55,7 @@ export const ModalBaseContent = forwardRef<HTMLDivElement, _ModalBaseContentProp
                 ref={ref}
                 style={[style, transitionStyles]}
                 className={cx(classes.content, className)}
+                unstyled={ctx.unstyled}
               >
                 {others.children}
               </Paper>

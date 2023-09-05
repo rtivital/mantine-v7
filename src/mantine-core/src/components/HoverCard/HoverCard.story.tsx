@@ -19,6 +19,20 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <HoverCard unstyled>
+        <HoverCard.Target>
+          <Button>Hover to reveal</Button>
+        </HoverCard.Target>
+
+        <HoverCard.Dropdown>Hello</HoverCard.Dropdown>
+      </HoverCard>
+    </div>
+  );
+}
+
 export function TargetWithTooltip() {
   return (
     <div style={{ padding: 40 }}>

@@ -33,3 +33,11 @@ export function WithoutAria() {
     </div>
   );
 }
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <InputBase label="This is input base" placeholder="test-placeholder" unstyled />
+    </div>
+  );
+}

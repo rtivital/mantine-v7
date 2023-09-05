@@ -15,7 +15,8 @@ export const ModalBaseCloseButton = forwardRef<HTMLButtonElement, ModalBaseClose
         ref={ref}
         {...others}
         onClick={ctx.onClose}
-        className={cx(classes.close, className)}
+        className={cx({ [classes.close]: !ctx.unstyled }, className)}
+        unstyled={ctx.unstyled}
       />
     );
   }
