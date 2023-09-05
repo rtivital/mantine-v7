@@ -42,6 +42,21 @@ export function WithTooltips() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <RingProgress
+        unstyled
+        sections={[
+          { value: 40, color: 'cyan', tooltip: 'Hello' },
+          { value: 20, color: 'blue', tooltip: 'There' },
+          { value: 15, color: 'indigo', tooltip: 'You' },
+        ]}
+      />
+    </div>
+  );
+}
+
 export function WithSectionProps() {
   return (
     <div style={{ padding: 40 }}>

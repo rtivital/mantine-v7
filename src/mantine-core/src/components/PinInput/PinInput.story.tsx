@@ -12,6 +12,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <PinInput unstyled />
+    </div>
+  );
+}
+
 export function OnComplete() {
   const [value, setValue] = useState('');
   return (

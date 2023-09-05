@@ -180,6 +180,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     style,
     vars,
     varsResolver,
+    unstyled,
   });
 
   const { dir } = useDirection();

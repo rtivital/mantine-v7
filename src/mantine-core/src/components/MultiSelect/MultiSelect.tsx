@@ -335,6 +335,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           checkIconPosition={checkIconPosition}
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
+          unstyled={unstyled}
         />
       </Combobox>
       <input type="hidden" name={name} value={_value.join(',')} form={form} disabled={disabled} />

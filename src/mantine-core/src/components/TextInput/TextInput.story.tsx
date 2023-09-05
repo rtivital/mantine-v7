@@ -26,6 +26,20 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput
+        label="Text input"
+        placeholder="This is text input"
+        description="Description"
+        error="Error"
+        unstyled
+      />
+    </div>
+  );
+}
+
 export function WithoutErrorStyles() {
   return (
     <div style={{ padding: 40 }}>

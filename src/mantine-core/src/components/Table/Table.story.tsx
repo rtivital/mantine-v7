@@ -39,6 +39,25 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Table withColumnBorders withRowBorders withTableBorder borderColor="cyan" unstyled>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Element position</Table.Th>
+            <Table.Th>Element name</Table.Th>
+            <Table.Th>Symbol</Table.Th>
+            <Table.Th>Atomic mass</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+        <Table.Caption>Test caption</Table.Caption>
+      </Table>
+    </div>
+  );
+}
+
 export function WithScrollContainer() {
   return (
     <div style={{ padding: 40 }}>

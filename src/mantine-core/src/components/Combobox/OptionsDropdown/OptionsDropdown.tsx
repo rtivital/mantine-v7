@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import { ScrollArea } from '../../ScrollArea/ScrollArea';
 import { CheckIcon } from '../../Checkbox';
 import { Combobox } from '../Combobox';
@@ -23,13 +24,14 @@ interface OptionProps {
   withCheckIcon?: boolean;
   value?: string | string[] | null;
   checkIconPosition?: 'left' | 'right';
+  unstyled: boolean | undefined;
 }
 
 function isValueChecked(value: string | string[] | undefined | null, optionValue: string) {
   return Array.isArray(value) ? value.includes(optionValue) : value === optionValue;
 }
 
-function Option({ data, withCheckIcon, value, checkIconPosition }: OptionProps) {
+function Option({ data, withCheckIcon, value, checkIconPosition, unstyled }: OptionProps) {
   if (!isOptionsGroup(data)) {
     const check = withCheckIcon && isValueChecked(value, data.value) && (
       <CheckIcon className={classes.optionsDropdownCheckIcon} />
@@ -38,7 +40,7 @@ function Option({ data, withCheckIcon, value, checkIconPosition }: OptionProps) 
       <Combobox.Option
         value={data.value}
         disabled={data.disabled}
-        className={classes.optionsDropdownOption}
+        className={cx({ [classes.optionsDropdownOption]: !unstyled })}
         data-reverse={checkIconPosition === 'right' || undefined}
         data-checked={isValueChecked(value, data.value) || undefined}
       >
@@ -49,7 +51,10 @@ function Option({ data, withCheckIcon, value, checkIconPosition }: OptionProps) 
     );
   }
 
-  const options = data.items.map((item) => <Option data={item} key={item.value} />);
+  const options = data.items.map((item) => (
+    <Option data={item} key={item.value} unstyled={unstyled} />
+  ));
+
   return <Combobox.Group label={data.group}>{options}</Combobox.Group>;
 }
 
@@ -67,6 +72,7 @@ export interface OptionsDropdownProps {
   value?: string | string[] | null;
   checkIconPosition?: 'left' | 'right';
   nothingFoundMessage?: React.ReactNode;
+  unstyled: boolean | undefined;
 }
 
 export function OptionsDropdown({
@@ -83,6 +89,7 @@ export function OptionsDropdown({
   value,
   checkIconPosition,
   nothingFoundMessage,
+  unstyled,
 }: OptionsDropdownProps) {
   validateOptions(data);
 
@@ -103,6 +110,7 @@ export function OptionsDropdown({
       withCheckIcon={withCheckIcon}
       value={value}
       checkIconPosition={checkIconPosition}
+      unstyled={unstyled}
     />
   ));
 

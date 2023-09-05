@@ -116,6 +116,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     defaultSearchValue,
     onSearchChange,
     allowDeselect,
+    error,
     ...others
   } = props;
 
@@ -195,7 +196,9 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         <Combobox.Target targetType={searchable ? 'input' : 'button'}>
           <InputBase
             ref={ref}
-            rightSection={rightSection || <Combobox.Chevron size={size} />}
+            rightSection={
+              rightSection || <Combobox.Chevron size={size} error={error} unstyled={unstyled} />
+            }
             {...others}
             size={size}
             __staticSelector="Select"
@@ -224,6 +227,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
             styles={resolvedStyles}
             unstyled={unstyled}
             pointer={!searchable}
+            error={error}
           />
         </Combobox.Target>
         <OptionsDropdown
@@ -240,6 +244,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           checkIconPosition={checkIconPosition}
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
+          unstyled={unstyled}
         />
       </Combobox>
       <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />

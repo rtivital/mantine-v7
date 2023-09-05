@@ -15,6 +15,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 20 }}>
+      <Radio label="React" value="react" name="hello" unstyled />
+    </div>
+  );
+}
+
 export function RadioGroup() {
   return (
     <div style={{ padding: 20 }}>

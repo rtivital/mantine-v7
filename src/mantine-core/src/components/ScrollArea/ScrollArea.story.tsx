@@ -23,6 +23,16 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 300 }}>
+      <ScrollArea h={200} type="always" offsetScrollbars unstyled>
+        <div style={{ width: 600 }}>{content}</div>
+      </ScrollArea>
+    </div>
+  );
+}
+
 export function OnScrollChange() {
   const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
   return (

@@ -24,6 +24,14 @@ export function Striped() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Progress value={56} size="xl" unstyled />
+    </div>
+  );
+}
+
 export function Compound() {
   return (
     <div style={{ padding: 40 }}>

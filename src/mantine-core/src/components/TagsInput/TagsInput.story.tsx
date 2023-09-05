@@ -33,6 +33,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TagsInput defaultValue={['React', 'Angular']} placeholder="Enter tags" unstyled />
+    </div>
+  );
+}
+
 export function Controlled() {
   const [value, setValue] = useState<string[]>(['React']);
   return (

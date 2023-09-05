@@ -261,6 +261,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
       key={`${item}-${index}`}
       withRemoveButton={!readOnly}
       onRemove={() => setValue(_value.filter((i) => item !== i))}
+      unstyled={unstyled}
       {...getStyles('pill')}
     >
       {item}
@@ -319,7 +320,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             withErrorStyles={withErrorStyles}
             __stylesApiProps={{ ...props, multiline: true }}
           >
-            <Pill.Group disabled={disabled} {...getStyles('pillsList')}>
+            <Pill.Group disabled={disabled} unstyled={unstyled} {...getStyles('pillsList')}>
               {values}
               <Combobox.EventsTarget>
                 <PillsInput.Field
@@ -356,6 +357,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           hiddenWhenEmpty
           withScrollArea={withScrollArea}
           maxDropdownHeight={maxDropdownHeight}
+          unstyled={unstyled}
         />
       </Combobox>
       <input type="hidden" name={name} form={form} value={_value.join(',')} disabled={disabled} />

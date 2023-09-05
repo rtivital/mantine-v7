@@ -195,6 +195,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     style,
     vars,
     varsResolver,
+    unstyled,
   });
 
   const { dir } = useDirection();

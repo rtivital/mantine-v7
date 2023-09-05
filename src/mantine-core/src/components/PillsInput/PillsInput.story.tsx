@@ -32,7 +32,6 @@ const getPills = (props: any) => (
     <Pill withRemoveButton {...props}>
       Eighth
     </Pill>
-    {/* <Pill withRemoveButton>Ninth</Pill> */}
   </>
 );
 
@@ -43,6 +42,19 @@ export function Usage() {
         <Pill.Group>
           {getPills({})}
           <PillsInput.Field placeholder="Pills input" />
+        </Pill.Group>
+      </PillsInput>
+    </div>
+  );
+}
+
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <PillsInput unstyled>
+        <Pill.Group unstyled>
+          {getPills({ unstyled: true })}
+          <PillsInput.Field placeholder="Pills input" unstyled />
         </Pill.Group>
       </PillsInput>
     </div>

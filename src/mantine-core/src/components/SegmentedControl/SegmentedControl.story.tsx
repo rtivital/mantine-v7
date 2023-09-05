@@ -28,6 +28,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 0 }}>
+      <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} unstyled />
+    </div>
+  );
+}
+
 export function FullWidth() {
   return (
     <div style={{ padding: 40 }}>

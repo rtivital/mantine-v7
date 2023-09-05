@@ -16,6 +16,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Select data={['React', 'Angular', 'Svelte']} placeholder="Select something" unstyled />
+    </div>
+  );
+}
+
 export function ControlledSearch() {
   return (
     <div style={{ padding: 40 }}>

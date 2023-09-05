@@ -42,6 +42,15 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <Slider defaultValue={45} marks={marks} unstyled />
+      <RangeSlider defaultValue={[45, 55]} marks={marks} unstyled />
+    </div>
+  );
+}
+
 export function SizeSlider() {
   return (
     <div style={{ padding: 40, maxWidth: 300 }}>

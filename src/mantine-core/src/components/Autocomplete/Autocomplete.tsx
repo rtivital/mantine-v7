@@ -167,6 +167,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         hiddenWhenEmpty
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
+        unstyled={unstyled}
       />
     </Combobox>
   );

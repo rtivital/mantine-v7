@@ -21,6 +21,24 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip
+        position="right"
+        label="Tooltip label"
+        withArrow
+        transitionProps={{ duration: 0 }}
+        color="cyan"
+        radius="md"
+        unstyled
+      >
+        <button type="button">target</button>
+      </Tooltip>
+    </div>
+  );
+}
+
 export function Multiline() {
   return (
     <div style={{ padding: 40 }}>

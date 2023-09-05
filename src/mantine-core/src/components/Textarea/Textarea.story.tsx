@@ -10,6 +10,13 @@ export function Usage() {
     </div>
   );
 }
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Textarea label="Default" placeholder="Default textarea" unstyled />
+    </div>
+  );
+}
 
 export function Autosize() {
   return (

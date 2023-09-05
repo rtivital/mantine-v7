@@ -9,6 +9,10 @@ export function ReadOnlyWithDefaultValue() {
   return <Rating defaultValue={2} readOnly />;
 }
 
+export function Unstyled() {
+  return <Rating defaultValue={2} unstyled />;
+}
+
 export function Sizes() {
   return (
     <Stack p="md">
