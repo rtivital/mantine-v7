@@ -187,10 +187,41 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <CodeHighlight code={tsxCode} highlightOnClient unstyled />
+    </div>
+  );
+}
+
 export function Tabs() {
   return (
     <div style={{ padding: 40 }}>
       <CodeHighlightTabs
+        code={[
+          { code: tsxCode, language: 'tsx', icon: <TsIcon />, fileName: 'Component.tsx' },
+          { code: cssCode, language: 'css', icon: <CSSIcon />, fileName: 'Component.module.css' },
+          {
+            code: cssCode,
+            language: 'css',
+            icon: <CSSIcon />,
+            fileName: 'Long-file-name-that-will-break-to-another-line.css',
+          },
+        ]}
+        defaultExpanded={false}
+      >
+        {tsxCode}
+      </CodeHighlightTabs>
+    </div>
+  );
+}
+
+export function TabsUnstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <CodeHighlightTabs
+        unstyled
         code={[
           { code: tsxCode, language: 'tsx', icon: <TsIcon />, fileName: 'Component.tsx' },
           { code: cssCode, language: 'css', icon: <CSSIcon />, fileName: 'Component.module.css' },

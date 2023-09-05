@@ -11,6 +11,14 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Calendar unstyled />
+    </div>
+  );
+}
+
 export function MaxLevel() {
   return (
     <div style={{ padding: 40 }}>

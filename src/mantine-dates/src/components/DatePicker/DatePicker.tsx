@@ -65,7 +65,6 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
   const {
     classNames,
     styles,
-    unstyled,
     vars,
     type,
     defaultValue,

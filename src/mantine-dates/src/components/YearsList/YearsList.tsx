@@ -127,6 +127,7 @@ export const YearsList = factory<YearsListFactory>((_props, ref) => {
           <PickerControl
             {...getStyles('yearsListControl')}
             size={size}
+            unstyled={unstyled}
             data-mantine-stop-propagation={__stopPropagation || undefined}
             disabled={isYearDisabled(year, minDate, maxDate)}
             ref={(node) => __getControlRef?.(rowIndex, cellIndex, node!)}

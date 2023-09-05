@@ -41,7 +41,10 @@ export const ModalBaseContent = forwardRef<HTMLDivElement, _ModalBaseContentProp
         {...transitionProps}
       >
         {(transitionStyles) => (
-          <div {...innerProps} className={cx(classes.inner, innerProps.className)}>
+          <div
+            {...innerProps}
+            className={cx({ [classes.inner]: !ctx.unstyled }, innerProps.className)}
+          >
             <FocusTrap active={ctx.opened && ctx.trapFocus}>
               <Paper
                 {...others}
@@ -54,7 +57,7 @@ export const ModalBaseContent = forwardRef<HTMLDivElement, _ModalBaseContentProp
                 onKeyDown={handleKeyDown}
                 ref={ref}
                 style={[style, transitionStyles]}
-                className={cx(classes.content, className)}
+                className={cx({ [classes.content]: !ctx.unstyled }, className)}
                 unstyled={ctx.unstyled}
               >
                 {others.children}

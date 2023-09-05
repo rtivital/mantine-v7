@@ -180,7 +180,9 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props, ref) => 
               {...others}
             >
               {formattedValue || (
-                <Input.Placeholder error={inputProps.error}>{placeholder}</Input.Placeholder>
+                <Input.Placeholder error={inputProps.error} unstyled={unstyled}>
+                  {placeholder}
+                </Input.Placeholder>
               )}
             </Input>
           </Popover.Target>

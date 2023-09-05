@@ -26,6 +26,16 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 500 }}>
+      <Carousel slideSize="70%" slideGap="md" height={200} unstyled>
+        {slides}
+      </Carousel>
+    </div>
+  );
+}
+
 export function InitialSlide() {
   return (
     <div style={{ padding: 40, maxWidth: 500 }}>

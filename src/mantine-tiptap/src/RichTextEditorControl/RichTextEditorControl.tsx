@@ -54,7 +54,7 @@ export const RichTextEditorControl = factory<RichTextEditorControlFactory>((_pro
       aria-pressed={(active && interactive) || undefined}
       aria-hidden={!interactive || undefined}
       ref={ref}
-      unstyled={unstyled}
+      unstyled={ctx.unstyled}
     />
   );
 });

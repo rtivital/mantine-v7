@@ -19,6 +19,20 @@ export function Usage() {
   );
 }
 
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <DatePickerInput
+        label="Date picker input"
+        placeholder="Pick date"
+        numberOfColumns={3}
+        allowDeselect
+        unstyled
+      />
+    </div>
+  );
+}
+
 export function MaxDateBeforeToday() {
   return (
     <div style={{ padding: 40, maxWidth: 400 }}>

@@ -17,6 +17,13 @@ export function Usage() {
     </div>
   );
 }
+export function Unstyled() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <DateInput placeholder="Enter date" defaultDate={new Date(2022, 3, 11)} unstyled />
+    </div>
+  );
+}
 
 export function LocaleChanges() {
   const [locale, setLocale] = useState('en');

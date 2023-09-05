@@ -67,7 +67,6 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
   const {
     classNames,
     styles,
-    unstyled,
     vars,
     type,
     defaultValue,

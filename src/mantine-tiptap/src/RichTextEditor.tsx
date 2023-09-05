@@ -137,6 +137,7 @@ export const RichTextEditor = factory<RichTextEditorFactory>((_props, ref) => {
         labels: mergedLabels,
         withCodeHighlightStyles,
         withTypographyStyles,
+        unstyled,
       }}
     >
       <Box {...getStyles('root')} {...others} ref={ref}>

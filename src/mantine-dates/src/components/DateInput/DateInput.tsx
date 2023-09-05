@@ -254,6 +254,7 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
           position="bottom-start"
           disabled={readOnly}
           withRoles={false}
+          unstyled={unstyled}
           {...popoverProps}
         >
           <Popover.Target>

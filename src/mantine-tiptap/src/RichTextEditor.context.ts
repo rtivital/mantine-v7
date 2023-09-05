@@ -9,6 +9,7 @@ interface RichTextEditorContext {
   labels: RichTextEditorLabels;
   withCodeHighlightStyles: boolean | undefined;
   withTypographyStyles: boolean | undefined;
+  unstyled: boolean | undefined;
 }
 
 export const [RichTextEditorProvider, useRichTextEditorContext] =

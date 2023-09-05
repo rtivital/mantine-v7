@@ -37,6 +37,7 @@ export const RichTextEditorContent = factory<RichTextEditorContentFactory>((_pro
     return (
       <TypographyStylesProvider
         {...ctx.getStyles('typographyStylesProvider', { className, style, styles, classNames })}
+        unstyled={ctx.unstyled}
         ref={ref}
       >
         <Box

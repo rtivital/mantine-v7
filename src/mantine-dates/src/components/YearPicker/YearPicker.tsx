@@ -50,7 +50,6 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
   const {
     classNames,
     styles,
-    unstyled,
     vars,
     type,
     defaultValue,
