@@ -219,6 +219,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
           id={uuid}
           ref={ref}
           {...rest}
+          autoComplete={rest.autoComplete || 'off'}
           type={_visible ? 'text' : 'password'}
         />
       </Input>
