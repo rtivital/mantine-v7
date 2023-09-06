@@ -127,3 +127,12 @@ export function Handlers() {
     </div>
   );
 }
+
+export function Disabled() {
+  return (
+    <div style={{ padding: 40 }}>
+      <NumberInput disabled value={4000} label="Disabled with value" rightSection="$$" />
+      <NumberInput disabled placeholder="Test value" label="Disabled with placeholder" />
+    </div>
+  );
+}
