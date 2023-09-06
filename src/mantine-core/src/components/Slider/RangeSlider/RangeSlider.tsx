@@ -263,6 +263,9 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
       }
     }
 
+    clone[0] = getFloatingValue(clone[0], precision);
+    clone[1] = getFloatingValue(clone[1], precision);
+
     _setValue(clone);
 
     if (triggerChangeEnd) {
