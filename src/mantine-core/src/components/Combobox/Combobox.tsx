@@ -9,6 +9,8 @@ import {
   getFontSize,
   rem,
   getSize,
+  ExtendComponent,
+  MantineThemeComponent,
 } from '../../core';
 import { __PopoverProps, Popover } from '../Popover';
 import { useCombobox, ComboboxStore } from './use-combobox/use-combobox';
@@ -168,6 +170,9 @@ export function Combobox(_props: ComboboxProps) {
   );
 }
 
+const extendCombobox = (c: ExtendComponent<ComboboxFactory>): MantineThemeComponent => c;
+
+Combobox.extend = extendCombobox;
 Combobox.classes = classes;
 Combobox.displayName = '@mantine/core/Combobox';
 Combobox.Target = ComboboxTarget;
