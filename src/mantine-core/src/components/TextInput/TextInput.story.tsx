@@ -26,6 +26,20 @@ export function Usage() {
   );
 }
 
+export function DisabledWithRightSection() {
+  return (
+    <div style={{ padding: 40 }}>
+      <TextInput
+        label="Text input"
+        placeholder="This is text input"
+        description="Description"
+        disabled
+        rightSection="$$$"
+      />
+    </div>
+  );
+}
+
 export function Unstyled() {
   return (
     <div style={{ padding: 40 }}>
