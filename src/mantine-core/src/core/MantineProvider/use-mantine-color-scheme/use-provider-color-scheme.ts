@@ -76,7 +76,7 @@ export function useProviderColorScheme({
 
     media.current?.addEventListener('change', listener);
     return () => media.current?.removeEventListener('change', listener);
-  }, [value]);
+  }, [value, forceColorScheme]);
 
   return { colorScheme: colorSchemeValue, setColorScheme, clearColorScheme };
 }
