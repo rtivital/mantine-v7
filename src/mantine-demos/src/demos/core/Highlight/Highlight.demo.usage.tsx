@@ -25,7 +25,7 @@ export const usage: MantineDemo = {
   centered: true,
   maxWidth: '100%',
   controls: [
-    { prop: 'highlightColor', type: 'color', initialValue: 'yellow', libraryValue: 'yellow' },
+    { prop: 'color', type: 'color', initialValue: 'yellow', libraryValue: 'yellow' },
     { prop: 'highlight', type: 'string', initialValue: 'this', libraryValue: null },
     {
       prop: 'children',
