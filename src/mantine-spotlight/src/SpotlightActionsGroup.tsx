@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type SpotlightActionsGroupStylesNames = 'actionsGroup';
 
 export interface SpotlightActionsGroupProps
   extends BoxProps,
-    StylesApiProps<SpotlightActionsGroupFactory>,
+    CompoundStylesApiProps<SpotlightActionsGroupFactory>,
     ElementProps<'div'> {
   /** `Spotlight.Action` components */
   children?: React.ReactNode;

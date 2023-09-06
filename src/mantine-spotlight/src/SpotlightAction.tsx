@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -24,7 +24,7 @@ export type SpotlightActionStylesNames =
 
 export interface SpotlightActionProps
   extends BoxProps,
-    StylesApiProps<SpotlightActionFactory>,
+    CompoundStylesApiProps<SpotlightActionFactory>,
     ElementProps<'button'> {
   /** Action label, pass string to use in default filter */
   label?: string;

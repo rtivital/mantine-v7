@@ -1,5 +1,12 @@
 import React from 'react';
-import { BoxProps, StylesApiProps, factory, ElementProps, useProps, Factory } from '../../../core';
+import {
+  BoxProps,
+  CompoundStylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+} from '../../../core';
 import { UnstyledButton } from '../../UnstyledButton';
 import { usePaginationContext } from '../Pagination.context';
 import classes from '../Pagination.module.css';
@@ -8,7 +15,7 @@ export type PaginationControlStylesNames = 'control';
 
 export interface PaginationControlProps
   extends BoxProps,
-    StylesApiProps<PaginationControlFactory>,
+    CompoundStylesApiProps<PaginationControlFactory>,
     ElementProps<'button'> {
   /** Determines whether control should have active styles */
   active?: boolean;
@@ -30,18 +37,8 @@ const defaultProps: Partial<PaginationControlProps> = {
 
 export const PaginationControl = factory<PaginationControlFactory>((_props, ref) => {
   const props = useProps('PaginationControl', defaultProps, _props);
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    active,
-    disabled,
-    withPadding,
-    ...others
-  } = props;
+  const { classNames, className, style, styles, vars, active, disabled, withPadding, ...others } =
+    props;
 
   const ctx = usePaginationContext();
   const _disabled = disabled || ctx.disabled;

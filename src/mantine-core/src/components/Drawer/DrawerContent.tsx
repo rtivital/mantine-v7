@@ -1,5 +1,5 @@
 import React from 'react';
-import { StylesApiProps, factory, useProps, Factory } from '../../core';
+import { CompoundStylesApiProps, factory, useProps, Factory } from '../../core';
 import { ModalBaseContent, ModalBaseContentProps, NativeScrollArea } from '../ModalBase';
 import { useDrawerContext } from './Drawer.context';
 import classes from './Drawer.module.css';
@@ -8,7 +8,7 @@ export type DrawerContentStylesNames = 'content' | 'inner';
 
 export interface DrawerContentProps
   extends ModalBaseContentProps,
-    StylesApiProps<DrawerContentFactory> {}
+    CompoundStylesApiProps<DrawerContentFactory> {}
 
 export type DrawerContentFactory = Factory<{
   props: DrawerContentProps;

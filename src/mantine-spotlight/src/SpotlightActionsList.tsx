@@ -1,7 +1,7 @@
 import React, { useEffect, useId } from 'react';
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ export type SpotlightActionsListStylesNames = 'actionsList' | 'actionsListInner'
 
 export interface SpotlightActionsListProps
   extends BoxProps,
-    StylesApiProps<SpotlightActionsListFactory>,
+    CompoundStylesApiProps<SpotlightActionsListFactory>,
     ElementProps<'div'> {}
 
 export type SpotlightActionsListFactory = Factory<{

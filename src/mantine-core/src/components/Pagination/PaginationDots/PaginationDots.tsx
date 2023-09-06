@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ export type PaginationDotsStylesNames = 'dots';
 
 export interface PaginationDotsProps
   extends BoxProps,
-    StylesApiProps<PaginationDotsFactory>,
+    CompoundStylesApiProps<PaginationDotsFactory>,
     ElementProps<'div'> {
   /** Custom dots icon component, must accept svg element props and size prop */
   icon?: React.FC<PaginationIconProps>;
@@ -35,7 +35,7 @@ const defaultProps: Partial<PaginationDotsProps> = {
 
 export const PaginationDots = factory<PaginationDotsFactory>((_props, ref) => {
   const props = useProps('PaginationDots', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, icon, ...others } = props;
+  const { classNames, className, style, styles, vars, icon, ...others } = props;
   const ctx = usePaginationContext();
   const Icon = icon!;
 

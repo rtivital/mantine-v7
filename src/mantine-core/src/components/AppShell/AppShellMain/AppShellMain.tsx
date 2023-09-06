@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type AppShellMainStylesNames = 'main';
 
 export interface AppShellMainProps
   extends BoxProps,
-    StylesApiProps<AppShellMainFactory>,
+    CompoundStylesApiProps<AppShellMainFactory>,
     ElementProps<'main'> {}
 
 export type AppShellMainFactory = Factory<{
@@ -29,7 +29,7 @@ const defaultProps: Partial<AppShellMainProps> = {};
 
 export const AppShellMain = factory<AppShellMainFactory>((_props, ref) => {
   const props = useProps('AppShellMain', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, vars, ...others } = props;
   const ctx = useAppShellContext();
 
   return (

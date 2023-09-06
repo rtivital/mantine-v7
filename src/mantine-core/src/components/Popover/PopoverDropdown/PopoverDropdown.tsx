@@ -3,7 +3,7 @@ import { useFocusReturn, useMergedRef } from '@mantine/hooks';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -21,7 +21,7 @@ import classes from '../Popover.module.css';
 
 export interface PopoverDropdownProps
   extends BoxProps,
-    StylesApiProps<PopoverDropdownFactory>,
+    CompoundStylesApiProps<PopoverDropdownFactory>,
     ElementProps<'div'> {}
 
 export type PopoverDropdownFactory = Factory<{
@@ -38,7 +38,6 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
   const {
     className,
     style,
-    unstyled,
     vars,
     children,
     onKeyDownCapture,

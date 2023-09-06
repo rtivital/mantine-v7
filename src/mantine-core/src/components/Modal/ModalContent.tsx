@@ -1,5 +1,5 @@
 import React from 'react';
-import { StylesApiProps, factory, useProps, Factory, rem } from '../../core';
+import { CompoundStylesApiProps, factory, useProps, Factory, rem } from '../../core';
 import { ModalBaseContent, ModalBaseContentProps, NativeScrollArea } from '../ModalBase';
 import { useModalContext } from './Modal.context';
 import classes from './Modal.module.css';
@@ -8,7 +8,7 @@ export type ModalContentStylesNames = 'content' | 'inner';
 
 export interface ModalContentProps
   extends ModalBaseContentProps,
-    StylesApiProps<ModalContentFactory> {}
+    CompoundStylesApiProps<ModalContentFactory> {}
 
 export type ModalContentFactory = Factory<{
   props: ModalContentProps;

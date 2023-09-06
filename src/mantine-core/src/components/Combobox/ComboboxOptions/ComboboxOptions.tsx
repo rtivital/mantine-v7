@@ -3,7 +3,7 @@ import { useId } from '@mantine/hooks';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ export type ComboboxOptionsStylesNames = 'options';
 
 export interface ComboboxOptionsProps
   extends BoxProps,
-    StylesApiProps<ComboboxOptionsFactory>,
+    CompoundStylesApiProps<ComboboxOptionsFactory>,
     ElementProps<'div'> {}
 
 export type ComboboxOptionsFactory = Factory<{
@@ -30,7 +30,7 @@ const defaultProps: Partial<ComboboxOptionsProps> = {};
 
 export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => {
   const props = useProps('ComboboxOptions', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, id, onMouseDown, ...others } = props;
+  const { classNames, className, style, styles, id, onMouseDown, ...others } = props;
   const ctx = useComboboxContext();
   const _id = useId(id);
 

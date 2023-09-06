@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type ComboboxFooterStylesNames = 'footer';
 
 export interface ComboboxFooterProps
   extends BoxProps,
-    StylesApiProps<ComboboxFooterFactory>,
+    CompoundStylesApiProps<ComboboxFooterFactory>,
     ElementProps<'div'> {}
 
 export type ComboboxFooterFactory = Factory<{
@@ -28,7 +28,7 @@ export type ComboboxFooterFactory = Factory<{
 const defaultProps: Partial<ComboboxFooterProps> = {};
 
 export const ComboboxFooter = factory<ComboboxFooterFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'ComboboxFooter',
     defaultProps,
     props

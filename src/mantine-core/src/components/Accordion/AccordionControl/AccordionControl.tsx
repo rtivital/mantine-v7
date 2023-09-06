@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -18,7 +18,7 @@ export type AccordionControlStylesNames = 'control' | 'chevron' | 'label' | 'ite
 
 export interface AccordionControlProps
   extends BoxProps,
-    StylesApiProps<AccordionControlFactory>,
+    CompoundStylesApiProps<AccordionControlFactory>,
     ElementProps<'button'> {
   /** Disables control button */
   disabled?: boolean;
@@ -48,7 +48,6 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     className,
     style,
     styles,
-    unstyled,
     vars,
     chevron,
     icon,

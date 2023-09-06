@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   useProps,
   Factory,
@@ -30,7 +30,7 @@ export type RichTextEditorLinkControlStylesNames =
 export interface RichTextEditorLinkControlProps
   extends BoxProps,
     Omit<RichTextEditorControlBaseProps, 'classNames' | 'styles' | 'vars'>,
-    StylesApiProps<RichTextEditorLinkControlFactory> {
+    CompoundStylesApiProps<RichTextEditorLinkControlFactory> {
   /** Props passed down to Popover component */
   popoverProps?: Partial<PopoverProps>;
 
@@ -62,7 +62,6 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
       className,
       style,
       styles,
-      unstyled,
       vars,
       icon,
       popoverProps,
@@ -125,7 +124,6 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
         onClose={handleClose}
         offset={-44}
         zIndex={10000}
-        unstyled={unstyled}
         {...popoverProps}
       >
         <Popover.Target>
@@ -136,7 +134,6 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
             title={ctx.labels.linkControlLabel}
             onClick={handleOpen}
             active={ctx.editor?.isActive('link')}
-            unstyled={unstyled}
             ref={ref}
             classNames={resolvedClassNames}
             styles={resolvedStyles}
@@ -155,7 +152,6 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
               onChange={setUrl}
               classNames={{ input: ctx.getStyles('linkEditorInput', stylesApiProps).className }}
               onKeyDown={handleInputKeydown}
-              unstyled={unstyled}
               rightSection={
                 <Tooltip
                   label={
@@ -165,14 +161,12 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
                   withinPortal
                   withArrow
                   disabled={disableTooltips}
-                  unstyled={unstyled}
                   zIndex={10000}
                 >
                   <UnstyledButton
                     onClick={() => setExternal((e) => !e)}
                     data-active={external || undefined}
                     {...ctx.getStyles('linkEditorExternalControl', stylesApiProps)}
-                    unstyled={unstyled}
                   >
                     <IconExternalLink style={{ width: rem(14), height: rem(14) }} stroke={1.5} />
                   </UnstyledButton>
@@ -184,7 +178,6 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
               variant="default"
               onClick={setLink}
               {...ctx.getStyles('linkEditorSave', stylesApiProps)}
-              unstyled={unstyled}
             >
               {ctx.labels.linkEditorSave}
             </Button>

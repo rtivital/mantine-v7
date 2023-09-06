@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type ComboboxHeaderStylesNames = 'header';
 
 export interface ComboboxHeaderProps
   extends BoxProps,
-    StylesApiProps<ComboboxHeaderFactory>,
+    CompoundStylesApiProps<ComboboxHeaderFactory>,
     ElementProps<'div'> {}
 
 export type ComboboxHeaderFactory = Factory<{
@@ -28,7 +28,7 @@ export type ComboboxHeaderFactory = Factory<{
 const defaultProps: Partial<ComboboxHeaderProps> = {};
 
 export const ComboboxHeader = factory<ComboboxHeaderFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'ComboboxHeader',
     defaultProps,
     props

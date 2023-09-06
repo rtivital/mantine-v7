@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ import classes from '../RichTextEditor.module.css';
 export type RichTextEditorContentStylesNames = 'root';
 export interface RichTextEditorContentProps
   extends BoxProps,
-    StylesApiProps<RichTextEditorContentFactory>,
+    CompoundStylesApiProps<RichTextEditorContentFactory>,
     ElementProps<'div'> {}
 
 export type RichTextEditorContentFactory = Factory<{
@@ -30,7 +30,7 @@ const defaultProps: Partial<RichTextEditorContentProps> = {};
 
 export const RichTextEditorContent = factory<RichTextEditorContentFactory>((_props, ref) => {
   const props = useProps('RichTextEditorContent', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, vars, ...others } = props;
   const ctx = useRichTextEditorContext();
 
   if (ctx.withTypographyStyles) {

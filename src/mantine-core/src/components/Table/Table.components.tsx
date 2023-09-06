@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   ElementProps,
   factory,
   useProps,
@@ -15,7 +15,7 @@ import classes from './Table.module.css';
 
 export interface TableElementProps<Selector extends string>
   extends BoxProps,
-    StylesApiProps<Omit<TableFactory, 'stylesNames'> & { stylesNames: Selector }> {}
+    CompoundStylesApiProps<Omit<TableFactory, 'stylesNames'> & { stylesNames: Selector }> {}
 
 export interface TableThProps extends TableElementProps<'th'>, ElementProps<'th'> {}
 export interface TableTdProps extends TableElementProps<'td'>, ElementProps<'td'> {}
@@ -119,7 +119,7 @@ export function tableElement<Factory extends FactoryPayload>(
   const name = `Table${element.charAt(0).toUpperCase()}${element.slice(1)}`;
   const Component = factory<Factory>((_props, ref) => {
     const props = useProps(name, {}, _props);
-    const { classNames, className, style, styles, unstyled, ...others } = props;
+    const { classNames, className, style, styles, ...others } = props;
 
     const ctx = useTableContext();
 

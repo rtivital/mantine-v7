@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import {
   UnstyledButton,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -17,7 +17,7 @@ export type RichTextEditorControlStylesNames = 'control';
 
 export interface RichTextEditorControlProps
   extends BoxProps,
-    StylesApiProps<RichTextEditorControlFactory>,
+    CompoundStylesApiProps<RichTextEditorControlFactory>,
     ElementProps<'button'> {
   /** Determines whether the control should have active state, false by default */
   active?: boolean;
@@ -39,8 +39,7 @@ const defaultProps: Partial<RichTextEditorControlProps> = {
 
 export const RichTextEditorControl = factory<RichTextEditorControlFactory>((_props, ref) => {
   const props = useProps('RichTextEditorControl', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, interactive, active, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, interactive, active, ...others } = props;
   const ctx = useRichTextEditorContext();
 
   return (

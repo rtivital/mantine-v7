@@ -1,12 +1,14 @@
 import React from 'react';
-import { StylesApiProps, factory, useProps, Factory } from '../../core';
+import { CompoundStylesApiProps, factory, useProps, Factory } from '../../core';
 import { ModalBaseTitle, ModalBaseTitleProps } from '../ModalBase';
 import { useDrawerContext } from './Drawer.context';
 import classes from './Drawer.module.css';
 
 export type DrawerTitleStylesNames = 'title';
 
-export interface DrawerTitleProps extends ModalBaseTitleProps, StylesApiProps<DrawerTitleFactory> {}
+export interface DrawerTitleProps
+  extends ModalBaseTitleProps,
+    CompoundStylesApiProps<DrawerTitleFactory> {}
 
 export type DrawerTitleFactory = Factory<{
   props: DrawerTitleProps;
@@ -19,7 +21,7 @@ const defaultProps: Partial<DrawerTitleProps> = {};
 
 export const DrawerTitle = factory<DrawerTitleFactory>((_props, ref) => {
   const props = useProps('DrawerTitle', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useDrawerContext();
 

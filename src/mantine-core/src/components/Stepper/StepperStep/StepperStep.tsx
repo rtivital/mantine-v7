@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -42,7 +42,7 @@ export type StepperStepStylesNames =
 
 export interface StepperStepProps
   extends BoxProps,
-    StylesApiProps<StepperStepFactory>,
+    CompoundStylesApiProps<StepperStepFactory>,
     ElementProps<'button'> {
   /** Step index, controlled by Stepper component **/
   step?: number;
@@ -112,7 +112,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     step,
     state,

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   polymorphicFactory,
   useProps,
   PolymorphicFactory,
@@ -12,7 +12,7 @@ import classes from '../Card.module.css';
 
 export type CardSectionStylesNames = 'section';
 
-export interface CardSectionProps extends BoxProps, StylesApiProps<CardSectionFactory> {
+export interface CardSectionProps extends BoxProps, CompoundStylesApiProps<CardSectionFactory> {
   /** Determines whether the section should have a border, `false` by default */
   withBorder?: boolean;
 
@@ -32,17 +32,8 @@ const defaultProps: Partial<CardSectionProps> = {};
 
 export const CardSection = polymorphicFactory<CardSectionFactory>((_props, ref) => {
   const props = useProps('CardSection', defaultProps, _props);
-  const {
-    classNames,
-    className,
-    style,
-    styles,
-    unstyled,
-    vars,
-    withBorder,
-    inheritPadding,
-    ...others
-  } = props;
+  const { classNames, className, style, styles, vars, withBorder, inheritPadding, ...others } =
+    props;
   const ctx = useCardContext();
 
   return (

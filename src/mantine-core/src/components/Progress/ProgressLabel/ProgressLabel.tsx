@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type ProgressLabelStylesNames = 'label';
 
 export interface ProgressLabelProps
   extends BoxProps,
-    StylesApiProps<ProgressLabelFactory>,
+    CompoundStylesApiProps<ProgressLabelFactory>,
     ElementProps<'div'> {}
 
 export type ProgressLabelFactory = Factory<{
@@ -28,7 +28,7 @@ export type ProgressLabelFactory = Factory<{
 const defaultProps: Partial<ProgressLabelProps> = {};
 
 export const ProgressLabel = factory<ProgressLabelFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'ProgressLabel',
     defaultProps,
     props

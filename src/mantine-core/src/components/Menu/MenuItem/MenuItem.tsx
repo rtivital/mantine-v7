@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useMergedRef } from '@mantine/hooks';
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   polymorphicFactory,
   useProps,
   PolymorphicFactory,
@@ -18,7 +18,7 @@ import classes from '../Menu.module.css';
 
 export type MenuItemStylesNames = 'item' | 'itemLabel' | 'itemSection';
 
-export interface MenuItemProps extends BoxProps, StylesApiProps<MenuItemFactory> {
+export interface MenuItemProps extends BoxProps, CompoundStylesApiProps<MenuItemFactory> {
   /** Item label */
   children?: React.ReactNode;
 
@@ -54,7 +54,6 @@ export const MenuItem = polymorphicFactory<MenuItemFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     color,
     closeMenuOnClick,

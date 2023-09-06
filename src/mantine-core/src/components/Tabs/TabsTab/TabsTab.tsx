@@ -8,7 +8,7 @@ import {
   useDirection,
   useMantineTheme,
   getThemeColor,
-  StylesApiProps,
+  CompoundStylesApiProps,
   Factory,
 } from '../../../core';
 import { UnstyledButton, UnstyledButtonProps } from '../../UnstyledButton';
@@ -19,7 +19,7 @@ export type TabsTabStylesNames = 'tab' | 'tabSection' | 'tabLabel';
 
 export interface TabsTabProps
   extends Omit<UnstyledButtonProps, 'classNames' | 'styles' | 'vars'>,
-    StylesApiProps<TabsTabFactory>,
+    CompoundStylesApiProps<TabsTabFactory>,
     ElementProps<'button'> {
   /** Value of associated panel */
   value: string;

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type MenuLabelStylesNames = 'label';
 
 export interface MenuLabelProps
   extends BoxProps,
-    StylesApiProps<MenuLabelFactory>,
+    CompoundStylesApiProps<MenuLabelFactory>,
     ElementProps<'div'> {}
 
 export type MenuLabelFactory = Factory<{
@@ -28,7 +28,7 @@ export type MenuLabelFactory = Factory<{
 const defaultProps: Partial<MenuLabelProps> = {};
 
 export const MenuLabel = factory<MenuLabelFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'MenuLabel',
     defaultProps,
     props

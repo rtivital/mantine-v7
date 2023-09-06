@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -16,7 +16,7 @@ export type AccordionItemStylesNames = 'item';
 
 export interface AccordionItemProps
   extends BoxProps,
-    StylesApiProps<AccordionItemFactory>,
+    CompoundStylesApiProps<AccordionItemFactory>,
     ElementProps<'div'> {
   /** Value that is used to manage accordion state */
   value: string;
@@ -32,7 +32,7 @@ export type AccordionItemFactory = Factory<{
 const defaultProps: Partial<AccordionItemProps> = {};
 
 export const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, value, ...others } = useProps(
+  const { classNames, className, style, styles, vars, value, ...others } = useProps(
     'AccordionItem',
     defaultProps,
     props

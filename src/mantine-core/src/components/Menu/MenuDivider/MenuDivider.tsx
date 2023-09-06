@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type MenuDividerStylesNames = 'divider';
 
 export interface MenuDividerProps
   extends BoxProps,
-    StylesApiProps<MenuDividerFactory>,
+    CompoundStylesApiProps<MenuDividerFactory>,
     ElementProps<'div'> {}
 
 export type MenuDividerFactory = Factory<{
@@ -28,7 +28,7 @@ export type MenuDividerFactory = Factory<{
 const defaultProps: Partial<MenuDividerProps> = {};
 
 export const MenuDivider = factory<MenuDividerFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'MenuDivider',
     defaultProps,
     props

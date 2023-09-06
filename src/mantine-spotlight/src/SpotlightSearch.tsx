@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -19,7 +19,7 @@ export type SpotlightSearchStylesNames = InputStylesNames;
 export interface SpotlightSearchProps
   extends BoxProps,
     Omit<InputProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
-    StylesApiProps<SpotlightSearchFactory>,
+    CompoundStylesApiProps<SpotlightSearchFactory>,
     ElementProps<'input', 'size'> {}
 
 export type SpotlightSearchFactory = Factory<{

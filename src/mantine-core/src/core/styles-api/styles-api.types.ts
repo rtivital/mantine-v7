@@ -18,7 +18,11 @@ export interface GetStylesApiOptions {
 export type StylesApiRecord<
   Payload extends FactoryPayload,
   DataType,
-> = Payload['stylesNames'] extends string
+> = Payload['compound'] extends true
+  ? Payload['stylesNames'] extends string
+    ? StylesRecord<Payload['stylesNames'], DataType>
+    : never
+  : Payload['stylesNames'] extends string
   ?
       | StylesRecord<Payload['stylesNames'], DataType>
       | ((
@@ -46,3 +50,6 @@ export interface StylesApiProps<Payload extends FactoryPayload> {
   styles?: Styles<Payload>;
   vars?: PartialVarsResolver<Payload>;
 }
+
+export interface CompoundStylesApiProps<Payload extends FactoryPayload>
+  extends Omit<StylesApiProps<Payload>, 'unstyled'> {}

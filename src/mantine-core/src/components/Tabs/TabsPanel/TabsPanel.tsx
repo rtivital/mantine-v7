@@ -5,7 +5,7 @@ import {
   useProps,
   factory,
   ElementProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   Factory,
 } from '../../../core';
 import { useTabsContext } from '../Tabs.context';
@@ -15,7 +15,7 @@ export type TabsPanelStylesNames = 'panel';
 
 export interface TabsPanelProps
   extends BoxProps,
-    StylesApiProps<TabsPanelFactory>,
+    CompoundStylesApiProps<TabsPanelFactory>,
     ElementProps<'div'> {
   /** Panel content */
   children: React.ReactNode;

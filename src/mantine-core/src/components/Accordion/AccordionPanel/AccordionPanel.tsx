@@ -1,5 +1,12 @@
 import React from 'react';
-import { BoxProps, StylesApiProps, factory, ElementProps, useProps, Factory } from '../../../core';
+import {
+  BoxProps,
+  CompoundStylesApiProps,
+  factory,
+  ElementProps,
+  useProps,
+  Factory,
+} from '../../../core';
 import { Collapse } from '../../Collapse';
 import { useAccordionContext } from '../Accordion.context';
 import { useAccordionItemContext } from '../AccordionItem.context';
@@ -9,7 +16,7 @@ export type AccordionPanelStylesNames = 'panel' | 'content';
 
 export interface AccordionPanelProps
   extends BoxProps,
-    StylesApiProps<AccordionPanelFactory>,
+    CompoundStylesApiProps<AccordionPanelFactory>,
     ElementProps<'div', 'onTransitionEnd'> {}
 
 export type AccordionPanelFactory = Factory<{
@@ -22,7 +29,7 @@ export type AccordionPanelFactory = Factory<{
 const defaultProps: Partial<AccordionPanelProps> = {};
 
 export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, children, ...others } = useProps(
+  const { classNames, className, style, styles, vars, children, ...others } = useProps(
     'AccordionPanel',
     defaultProps,
     props

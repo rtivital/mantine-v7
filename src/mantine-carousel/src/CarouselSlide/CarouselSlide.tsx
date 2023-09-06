@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -15,7 +15,7 @@ export type CarouselSlideStylesNames = 'slide';
 
 export interface CarouselSlideProps
   extends BoxProps,
-    StylesApiProps<CarouselSlideFactory>,
+    CompoundStylesApiProps<CarouselSlideFactory>,
     ElementProps<'div'> {}
 
 export type CarouselSlideFactory = Factory<{
@@ -28,7 +28,7 @@ export type CarouselSlideFactory = Factory<{
 const defaultProps: Partial<CarouselSlideProps> = {};
 
 export const CarouselSlide = factory<CarouselSlideFactory>((props, ref) => {
-  const { classNames, className, style, styles, unstyled, vars, ...others } = useProps(
+  const { classNames, className, style, styles, vars, ...others } = useProps(
     'CarouselSlide',
     defaultProps,
     props

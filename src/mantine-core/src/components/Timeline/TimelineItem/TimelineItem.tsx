@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -25,7 +25,7 @@ export type TimelineItemStylesNames =
 
 export interface TimelineItemProps
   extends BoxProps,
-    StylesApiProps<TimelineItemFactory>,
+    CompoundStylesApiProps<TimelineItemFactory>,
     ElementProps<'div', 'title'> {
   /** Determines whether the item should be highlighted, controlled by the parent `Timeline` component  */
   __active?: boolean;
@@ -71,7 +71,6 @@ export const TimelineItem = factory<TimelineItemFactory>((_props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     __active,
     __align,

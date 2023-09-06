@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -18,7 +18,7 @@ export type ProgressSectionStylesNames = 'section';
 
 export interface ProgressSectionProps
   extends BoxProps,
-    StylesApiProps<ProgressSectionFactory>,
+    CompoundStylesApiProps<ProgressSectionFactory>,
     ElementProps<'div'> {
   /** Value of the section in 0–100 range  */
   value: number;
@@ -53,7 +53,6 @@ export const ProgressSection = factory<ProgressSectionFactory>((props, ref) => {
     className,
     style,
     styles,
-    unstyled,
     vars,
     value,
     withAria,

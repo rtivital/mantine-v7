@@ -1,5 +1,5 @@
 import React from 'react';
-import { StylesApiProps, factory, useProps, Factory } from '../../core';
+import { CompoundStylesApiProps, factory, useProps, Factory } from '../../core';
 import { ModalBaseCloseButton, ModalBaseCloseButtonProps } from '../ModalBase';
 import { useDrawerContext } from './Drawer.context';
 import classes from './Drawer.module.css';
@@ -8,7 +8,7 @@ export type DrawerCloseButtonStylesNames = 'close';
 
 export interface DrawerCloseButtonProps
   extends ModalBaseCloseButtonProps,
-    StylesApiProps<DrawerCloseButtonFactory> {}
+    CompoundStylesApiProps<DrawerCloseButtonFactory> {}
 
 export type DrawerCloseButtonFactory = Factory<{
   props: DrawerCloseButtonProps;
@@ -21,7 +21,7 @@ const defaultProps: Partial<DrawerCloseButtonProps> = {};
 
 export const DrawerCloseButton = factory<DrawerCloseButtonFactory>((_props, ref) => {
   const props = useProps('DrawerCloseButton', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, vars, ...others } = props;
 
   const ctx = useDrawerContext();
 

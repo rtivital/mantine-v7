@@ -3,7 +3,7 @@ import cx from 'clsx';
 import {
   Box,
   BoxProps,
-  StylesApiProps,
+  CompoundStylesApiProps,
   factory,
   ElementProps,
   useProps,
@@ -20,7 +20,7 @@ export type ColSpan = number | 'auto' | 'content';
 
 export interface GridColProps
   extends BoxProps,
-    StylesApiProps<GridColFactory>,
+    CompoundStylesApiProps<GridColFactory>,
     ElementProps<'div'> {
   /** Column span, `12` by default */
   span?: StyleProp<ColSpan>;
@@ -45,8 +45,7 @@ const defaultProps: Partial<GridColProps> = {
 
 export const GridCol = factory<GridColFactory>((_props, ref) => {
   const props = useProps('GridCol', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, span, order, offset, ...others } =
-    props;
+  const { classNames, className, style, styles, vars, span, order, offset, ...others } = props;
   const ctx = useGridContext();
   const responsiveClassName = useRandomClassName();
   return (
