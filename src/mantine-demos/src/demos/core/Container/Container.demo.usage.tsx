@@ -20,7 +20,7 @@ function Demo() {
         xs Container
       </Container>
 
-      <Container px={0} size="30rem" {...demoProps} mt="md">
+      <Container px={0} size="30rem" {...demoProps}>
         30rem Container without padding
       </Container>
     </>
@@ -43,7 +43,7 @@ function Demo() {
       <Container size="xs" {...demoProps}>
         xs Container
       </Container>
-      <Container px={0} size="30rem" {...demoProps} mt="md">
+      <Container px={0} size="30rem" {...demoProps}>
         30rem Container without padding
       </Container>
     </>
