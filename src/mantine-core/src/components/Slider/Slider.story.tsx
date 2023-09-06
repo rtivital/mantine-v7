@@ -96,3 +96,19 @@ export function Sizes() {
     </div>
   );
 }
+
+export function WithDecimalValue() {
+  return (
+    <div style={{ padding: 40, maxWidth: 400 }}>
+      <RangeSlider
+        minRange={0.1}
+        step={0.1}
+        precision={1}
+        defaultValue={[0.2, 0.4]}
+        min={0}
+        max={1}
+      />
+      <Slider step={0.1} precision={1} defaultValue={0.2} min={0} max={1} />
+    </div>
+  );
+}

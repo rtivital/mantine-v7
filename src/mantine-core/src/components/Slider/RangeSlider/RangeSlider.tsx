@@ -451,7 +451,11 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             value={scale!(_value[0])}
             position={positions[0]}
             dragging={active}
-            label={typeof label === 'function' ? label(scale!(_value[0])) : label}
+            label={
+              typeof label === 'function'
+                ? label(getFloatingValue(scale!(_value[0]), precision))
+                : label
+            }
             ref={(node) => {
               thumbs.current[0] = node!;
             }}
@@ -471,7 +475,11 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             value={scale!(_value[1])}
             position={positions[1]}
             dragging={active}
-            label={typeof label === 'function' ? label(scale!(_value[1])) : label}
+            label={
+              typeof label === 'function'
+                ? label(getFloatingValue(scale!(_value[1]), precision))
+                : label
+            }
             ref={(node) => {
               thumbs.current[1] = node!;
             }}
