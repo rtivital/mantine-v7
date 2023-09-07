@@ -25,14 +25,7 @@ export function Uncontrolled() {
             <button type="button">Toggle popover</button>
           </Popover.Target>
 
-          <Popover.Dropdown
-            data-test="orange"
-            styles={(_, props: Record<string, any>) => ({
-              dropdown: { background: props['data-test'] },
-            })}
-          >
-            Dropdown
-          </Popover.Dropdown>
+          <Popover.Dropdown>Dropdown</Popover.Dropdown>
         </Popover>
       </div>
     </MantineThemeProvider>
