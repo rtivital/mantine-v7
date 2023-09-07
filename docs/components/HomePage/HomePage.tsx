@@ -12,6 +12,7 @@ import { Theming } from './Theming/Theming';
 import { Banner } from './Banner/Banner';
 import { Hooks } from './Hooks/Hooks';
 import { Usage } from './Usage/Usage';
+import { JoinCommunity } from './JoinCommunity/JoinCommunity';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -37,6 +38,8 @@ export function HomePage() {
           <Hooks />
           <Waves height={42} width={220} rotate flip alt />
           <Usage />
+          <Waves height={48} width={180} />
+          <JoinCommunity />
         </div>
         <Footer />
       </Shell>
