@@ -11,6 +11,7 @@ import { CustomizeStyles } from './CustomizeStyles/CustomizeStyles';
 import { Theming } from './Theming/Theming';
 import { Banner } from './Banner/Banner';
 import { Hooks } from './Hooks/Hooks';
+import { Usage } from './Usage/Usage';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -34,6 +35,8 @@ export function HomePage() {
           <Theming />
           <Banner />
           <Hooks />
+          <Waves height={42} width={220} rotate flip alt />
+          <Usage />
         </div>
         <Footer />
       </Shell>
