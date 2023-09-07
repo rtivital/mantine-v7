@@ -56,7 +56,7 @@ export interface AppShellProps
   withBorder?: boolean;
 
   /** Main content section padding, `0` by default */
-  padding?: MantineSpacing | AppShellSize | AppShellResponsiveSize;
+  padding?: MantineSpacing | AppShellResponsiveSize;
 
   /** Navbar configuration */
   navbar?: {

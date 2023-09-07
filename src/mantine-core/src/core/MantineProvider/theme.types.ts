@@ -73,7 +73,7 @@ export interface MantineTheme {
   radius: MantineRadiusValues;
 
   /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-  defaultRadius: MantineRadius | number | (string & {});
+  defaultRadius: MantineRadius;
 
   /** Object of values that are used to set various CSS properties that control spacing between elements */
   spacing: MantineSpacingValues;
@@ -150,9 +150,9 @@ export type MantineLineHeightValues = Record<MantineSize, string>;
 
 export type MantineBreakpoint = keyof MantineBreakpointsValues;
 export type MantineFontSize = keyof MantineFontSizesValues;
-export type MantineRadius = keyof MantineRadiusValues;
-export type MantineSpacing = keyof MantineSpacingValues;
-export type MantineShadow = keyof MantineShadowsValues;
+export type MantineRadius = keyof MantineRadiusValues | (string & {}) | number;
+export type MantineSpacing = keyof MantineSpacingValues | (string & {}) | number;
+export type MantineShadow = keyof MantineShadowsValues | (string & {});
 export type MantineLineHeight = keyof MantineLineHeightValues;
 
 export type MantineThemeOther = Record<string, any>;

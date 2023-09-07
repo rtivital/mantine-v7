@@ -16,7 +16,7 @@ export interface SliderRootProps extends BoxProps, ElementProps<'div'> {
   disabled: boolean | undefined;
   variant?: string;
   thumbSize: string | number | undefined;
-  radius: MantineRadius | (string & {}) | number | undefined;
+  radius: MantineRadius | undefined;
 }
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(

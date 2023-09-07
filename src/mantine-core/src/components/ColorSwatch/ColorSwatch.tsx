@@ -32,7 +32,7 @@ export interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFa
   size?: React.CSSProperties['width'];
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Determines whether the swatch should have inner `box-shadow`, `true` by default */
   withShadow?: boolean;

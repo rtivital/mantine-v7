@@ -78,7 +78,7 @@ export interface AccordionProps<Multiple extends boolean = false>
   chevron?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 }
 
 export type AccordionFactory = Factory<{

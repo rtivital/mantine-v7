@@ -44,7 +44,7 @@ export interface ListProps
   icon?: React.ReactNode;
 
   /** Key of `theme.spacing` or any valid CSS value to set spacing between items, `0` by default */
-  spacing?: MantineSpacing | (string & {}) | number;
+  spacing?: MantineSpacing;
 
   /** Determines whether items must be centered with their icon, `false` by default */
   center?: boolean;

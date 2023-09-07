@@ -91,10 +91,10 @@ export interface __PopoverProps {
   zIndex?: string | number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Key of `theme.shadows` or any other valid CSS `box-shadow` value */
-  shadow?: MantineShadow | (string & {});
+  shadow?: MantineShadow;
 
   /** If set, popover dropdown will not be rendered */
   disabled?: boolean;

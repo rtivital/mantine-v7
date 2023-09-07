@@ -34,7 +34,7 @@ export interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalB
   scrollAreaComponent?: ScrollAreaComponent;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Determines whether the modal should be centered vertically, `false` by default */
   centered?: boolean;

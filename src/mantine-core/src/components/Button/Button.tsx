@@ -67,7 +67,7 @@ export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
   fullWidth?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Gradient configuration used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;

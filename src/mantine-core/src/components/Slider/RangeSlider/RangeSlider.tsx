@@ -40,7 +40,7 @@ export interface RangeSliderProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Controls size of the track, `'md'` by default */
   size?: MantineSize | (string & {}) | number;

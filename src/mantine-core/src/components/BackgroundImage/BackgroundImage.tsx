@@ -20,7 +20,7 @@ export type BackgroundImageCssVariables = {
 
 export interface BackgroundImageProps extends BoxProps, StylesApiProps<BackgroundImageFactory> {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `0` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Image url */
   src: string;

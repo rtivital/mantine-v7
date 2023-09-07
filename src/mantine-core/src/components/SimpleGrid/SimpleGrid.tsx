@@ -25,10 +25,10 @@ export interface SimpleGridProps
   cols?: StyleProp<number>;
 
   /** Spacing between columns, `'md'` by default */
-  spacing?: StyleProp<MantineSpacing | (string & {}) | number>;
+  spacing?: StyleProp<MantineSpacing>;
 
   /** Spacing between rows, `'md'` by default */
-  verticalSpacing?: StyleProp<MantineSpacing | (string & {}) | number>;
+  verticalSpacing?: StyleProp<MantineSpacing>;
 }
 
 export type SimpleGridFactory = Factory<{

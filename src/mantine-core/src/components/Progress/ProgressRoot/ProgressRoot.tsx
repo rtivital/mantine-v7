@@ -27,7 +27,7 @@ export interface __ProgressRootProps extends BoxProps, ElementProps<'div'> {
   size?: MantineSize | (string & {}) | number;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 }
 
 export interface ProgressRootProps

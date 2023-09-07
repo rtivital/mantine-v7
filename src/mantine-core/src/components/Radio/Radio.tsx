@@ -58,7 +58,7 @@ export interface RadioProps
   error?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 }
 
 export type RadioFactory = Factory<{

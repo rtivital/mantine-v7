@@ -25,7 +25,7 @@ export type GridCssVariables = {
 
 export interface GridProps extends BoxProps, StylesApiProps<GridFactory>, ElementProps<'div'> {
   /** Gutter between columns, key of `theme.spacing` or any valid CSS value, `'md'` by default */
-  gutter?: StyleProp<MantineSpacing | (string & {}) | number>;
+  gutter?: StyleProp<MantineSpacing>;
 
   /** Determines whether columns in the last row should expand to fill all available space, `false` by default */
   grow?: boolean;

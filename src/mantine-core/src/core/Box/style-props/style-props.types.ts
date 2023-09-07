@@ -8,24 +8,22 @@ import type {
 
 export type StyleProp<Value> = Value | Partial<Record<MantineBreakpoint | (string & {}), Value>>;
 
-export type StylePropSpacingValue = MantineSpacing | number | (string & {});
-
 export interface MantineStyleProps {
-  m?: StyleProp<StylePropSpacingValue>;
-  my?: StyleProp<StylePropSpacingValue>;
-  mx?: StyleProp<StylePropSpacingValue>;
-  mt?: StyleProp<StylePropSpacingValue>;
-  mb?: StyleProp<StylePropSpacingValue>;
-  ml?: StyleProp<StylePropSpacingValue>;
-  mr?: StyleProp<StylePropSpacingValue>;
+  m?: StyleProp<MantineSpacing>;
+  my?: StyleProp<MantineSpacing>;
+  mx?: StyleProp<MantineSpacing>;
+  mt?: StyleProp<MantineSpacing>;
+  mb?: StyleProp<MantineSpacing>;
+  ml?: StyleProp<MantineSpacing>;
+  mr?: StyleProp<MantineSpacing>;
 
-  p?: StyleProp<StylePropSpacingValue>;
-  py?: StyleProp<StylePropSpacingValue>;
-  px?: StyleProp<StylePropSpacingValue>;
-  pt?: StyleProp<StylePropSpacingValue>;
-  pb?: StyleProp<StylePropSpacingValue>;
-  pl?: StyleProp<StylePropSpacingValue>;
-  pr?: StyleProp<StylePropSpacingValue>;
+  p?: StyleProp<MantineSpacing>;
+  py?: StyleProp<MantineSpacing>;
+  px?: StyleProp<MantineSpacing>;
+  pt?: StyleProp<MantineSpacing>;
+  pb?: StyleProp<MantineSpacing>;
+  pl?: StyleProp<MantineSpacing>;
+  pr?: StyleProp<MantineSpacing>;
 
   bg?: StyleProp<MantineColor>;
   c?: StyleProp<MantineColor>;

@@ -43,7 +43,7 @@ export interface ThemeIconProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Gradient data used when `variant="gradient"`, default value is `theme.defaultGradient` */
   gradient?: MantineGradient;

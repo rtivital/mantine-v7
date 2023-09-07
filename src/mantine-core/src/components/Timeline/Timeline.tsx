@@ -38,7 +38,7 @@ export interface TimelineProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Controls size of the bullet, `20` by default */
   bulletSize?: number | string;

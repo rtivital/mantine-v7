@@ -21,7 +21,7 @@ export type StackCssVariables = {
 
 export interface StackProps extends BoxProps, StylesApiProps<StackFactory>, ElementProps<'div'> {
   /** Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem, `'md'` by default */
-  gap?: MantineSpacing | (string & {}) | number;
+  gap?: MantineSpacing;
 
   /** Controls `align-items` CSS property, `'stretch'` by default */
   align?: React.CSSProperties['alignItems'];

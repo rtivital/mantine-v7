@@ -69,13 +69,13 @@ export interface CarouselProps
   controlSize?: React.CSSProperties['width'];
 
   /** Controls position of the next and previous controls, key of `theme.spacing` or any valid CSS value, `'sm'` by default */
-  controlsOffset?: MantineSpacing | (string & {}) | number;
+  controlsOffset?: MantineSpacing;
 
   /** Controls slide width based on viewport width, `'100%'` by default */
   slideSize?: StyleProp<string | number>;
 
   /** Key of theme.spacing or number to set gap between slides */
-  slideGap?: StyleProp<MantineSpacing | (string & {}) | number>;
+  slideGap?: StyleProp<MantineSpacing>;
 
   /** Carousel orientation, `'horizontal'` by default */
   orientation?: 'horizontal' | 'vertical';

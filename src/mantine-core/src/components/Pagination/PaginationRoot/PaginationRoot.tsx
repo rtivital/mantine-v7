@@ -63,7 +63,7 @@ export interface PaginationRootProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Called when next page control is clicked */
   onNextPage?(): void;

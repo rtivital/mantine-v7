@@ -38,7 +38,7 @@ export interface BlockquoteProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Reference to a cited quote */
   cite?: React.ReactNode;

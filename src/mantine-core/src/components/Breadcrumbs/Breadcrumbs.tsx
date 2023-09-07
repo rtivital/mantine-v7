@@ -28,7 +28,7 @@ export interface BreadcrumbsProps
   separator?: React.ReactNode;
 
   /** Controls spacing between separator and breadcrumb, `'xs'` by default */
-  separatorMargin?: MantineSpacing | (string & {}) | number;
+  separatorMargin?: MantineSpacing;
 
   /** React nodes that should be separated with `separator` */
   children: React.ReactNode;

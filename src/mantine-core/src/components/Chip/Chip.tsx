@@ -45,7 +45,7 @@ export interface ChipProps
     StylesApiProps<ChipFactory>,
     ElementProps<'input', 'size' | 'onChange'> {
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `'xl'` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Controls various properties, `'sm'` by default */
   size?: MantineSize;

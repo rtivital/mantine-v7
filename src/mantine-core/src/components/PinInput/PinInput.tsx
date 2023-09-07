@@ -43,10 +43,10 @@ export interface PinInputProps
   form?: string;
 
   /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem, `'md'` by default */
-  gap?: MantineSpacing | (string & {}) | number;
+  gap?: MantineSpacing;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Controls inputs `width` and `height`, `'sm'` by default */
   size?: MantineSize;

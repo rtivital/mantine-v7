@@ -36,7 +36,7 @@ export interface AlertProps
     StylesApiProps<AlertFactory>,
     ElementProps<'div', 'title'> {
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Key of `theme.colors` or any valid CSS color, default value is `theme.primaryColor`  */
   color?: MantineColor;

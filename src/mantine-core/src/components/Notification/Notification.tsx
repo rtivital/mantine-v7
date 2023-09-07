@@ -44,7 +44,7 @@ export interface NotificationProps
   color?: MantineColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Notification icon, replaces color line */
   icon?: React.ReactNode;

@@ -46,7 +46,7 @@ export interface TimelineItemProps
   bullet?: React.ReactNode;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `'xl'` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Key of `theme.colors` or any valid CSS color to control active item colors, `theme.primaryColor` by default */
   color?: MantineColor;

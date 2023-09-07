@@ -62,10 +62,10 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
   zIndex?: string | number;
 
   /** Key of `theme.shadows` or any valid CSS box-shadow value, 'xl' by default */
-  shadow?: MantineShadow | (string & {});
+  shadow?: MantineShadow;
 
   /** Key of `theme.spacing` or any valid CSS value to set content, header and footer padding, `'md'` by default */
-  padding?: MantineSpacing | (string & {}) | number;
+  padding?: MantineSpacing;
 
   /** Controls width of the content area, `'md'` by default */
   size?: MantineSize | (string & {}) | number;

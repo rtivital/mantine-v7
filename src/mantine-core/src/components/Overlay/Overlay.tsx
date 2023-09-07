@@ -38,7 +38,7 @@ export interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
   zIndex?: string | number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius, `0` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Content inside overlay */
   children?: React.ReactNode;

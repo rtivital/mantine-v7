@@ -74,7 +74,7 @@ export interface SegmentedControlProps
   size?: MantineSize | (string & {});
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem, `theme.defaultRadius` by default */
-  radius?: MantineRadius | (string & {}) | number;
+  radius?: MantineRadius;
 
   /** Indicator `transition-duration` in ms, set `0` to turn off transitions, `200` by default */
   transitionDuration?: number;
