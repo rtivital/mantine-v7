@@ -9,6 +9,7 @@ import { DarkTheme } from './DarkTheme/DarkTheme';
 import { CustomizeWithProps } from './CustomizeWithProps/CustomizeWithProps';
 import { CustomizeStyles } from './CustomizeStyles/CustomizeStyles';
 import { Theming } from './Theming/Theming';
+import { Banner } from './Banner/Banner';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -30,7 +31,7 @@ export function HomePage() {
           <CustomizeStyles />
           <Waves height={44} width={148} />
           <Theming />
-          <Waves height={30} width={134} alt flip />
+          <Banner />
         </div>
         <Footer />
       </Shell>
