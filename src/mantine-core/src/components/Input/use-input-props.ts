@@ -64,6 +64,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     inputWrapperOrder,
     withAsterisk,
     variant,
+    id,
     ..._wrapperProps,
   };
 
@@ -83,6 +84,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
       __stylesApiProps: __stylesApiProps || props,
       error,
       variant,
+      id,
     },
   };
 }

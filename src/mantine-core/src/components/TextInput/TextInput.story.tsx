@@ -21,6 +21,7 @@ export function Usage() {
         placeholder="This is text input"
         description="Description"
         error="Error"
+        id="test-id"
       />
     </div>
   );
