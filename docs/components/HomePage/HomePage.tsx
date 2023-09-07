@@ -10,6 +10,7 @@ import { CustomizeWithProps } from './CustomizeWithProps/CustomizeWithProps';
 import { CustomizeStyles } from './CustomizeStyles/CustomizeStyles';
 import { Theming } from './Theming/Theming';
 import { Banner } from './Banner/Banner';
+import { Hooks } from './Hooks/Hooks';
 import classes from './HomePage.module.css';
 
 export function HomePage() {
@@ -32,6 +33,7 @@ export function HomePage() {
           <Waves height={44} width={148} />
           <Theming />
           <Banner />
+          <Hooks />
         </div>
         <Footer />
       </Shell>
