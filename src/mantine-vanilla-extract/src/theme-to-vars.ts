@@ -39,7 +39,7 @@ export function themeToVars(theme: MantineThemeOverride): MantineVars {
   const radius = getSizesVariables<Radius>(mergedTheme, 'radius', 'radius');
   const spacing = getSizesVariables<Spacing>(mergedTheme, 'spacing', 'spacing');
 
-  const headings = Object.keys(mergedTheme.headings).reduce(
+  const headings = Object.keys(mergedTheme.headings.sizes).reduce(
     (acc: Record<string, Heading>, heading) => {
       acc[heading] = {
         fontSize: `var(--mantine-${heading}-font-size)`,
