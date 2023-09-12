@@ -16,41 +16,43 @@ export function ComponentsPreview({ colors }: ComponentsPreviewProps) {
       </Input.Label>
 
       <MantineProvider theme={{ colors: { '__colors-generator__': debouncedColors } }}>
-        <Table withTableBorder withColumnBorders>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th ta="center">Filled</Table.Th>
-              <Table.Th ta="center">Light</Table.Th>
-              <Table.Th ta="center">Outline</Table.Th>
-              <Table.Th ta="center">Subtle</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
+        <Table.ScrollContainer minWidth={600}>
+          <Table withTableBorder withColumnBorders>
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th ta="center">Filled</Table.Th>
+                <Table.Th ta="center">Light</Table.Th>
+                <Table.Th ta="center">Outline</Table.Th>
+                <Table.Th ta="center">Subtle</Table.Th>
+              </Table.Tr>
+            </Table.Thead>
 
-          <Table.Tbody>
-            <Table.Tr>
-              <Table.Td>
-                <Button color="__colors-generator__" fullWidth>
-                  Button
-                </Button>
-              </Table.Td>
-              <Table.Td>
-                <Button color="__colors-generator__" variant="light" fullWidth>
-                  Button
-                </Button>
-              </Table.Td>
-              <Table.Td>
-                <Button color="__colors-generator__" variant="outline" fullWidth>
-                  Button
-                </Button>
-              </Table.Td>
-              <Table.Td>
-                <Button color="__colors-generator__" variant="subtle" fullWidth>
-                  Button
-                </Button>
-              </Table.Td>
-            </Table.Tr>
-          </Table.Tbody>
-        </Table>
+            <Table.Tbody>
+              <Table.Tr>
+                <Table.Td>
+                  <Button color="__colors-generator__" fullWidth>
+                    Button
+                  </Button>
+                </Table.Td>
+                <Table.Td>
+                  <Button color="__colors-generator__" variant="light" fullWidth>
+                    Button
+                  </Button>
+                </Table.Td>
+                <Table.Td>
+                  <Button color="__colors-generator__" variant="outline" fullWidth>
+                    Button
+                  </Button>
+                </Table.Td>
+                <Table.Td>
+                  <Button color="__colors-generator__" variant="subtle" fullWidth>
+                    Button
+                  </Button>
+                </Table.Td>
+              </Table.Tr>
+            </Table.Tbody>
+          </Table>
+        </Table.ScrollContainer>
       </MantineProvider>
     </>
   );
