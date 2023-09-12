@@ -24,6 +24,14 @@ export function Variants() {
   );
 }
 
+export function WithinGroup() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Badge>Single badge within group</Badge>
+    </div>
+  );
+}
+
 export function Unstyled() {
   return (
     <div style={{ padding: 40 }}>

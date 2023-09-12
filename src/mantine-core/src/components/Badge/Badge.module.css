@@ -27,7 +27,7 @@
   display: var(--_badge-display, inline-flex);
   align-items: center;
   justify-content: center;
-  width: var(--_badge-width, auto);
+  width: var(--_badge-width, fit-content);
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: rem(0.25px);
