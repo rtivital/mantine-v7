@@ -2,6 +2,7 @@ import React from 'react';
 import { MantineThemeProvider } from '../../core';
 import { Checkbox } from './Checkbox';
 import { Stack } from '../Stack';
+import { Tooltip } from '../Tooltip';
 
 export default { title: 'Checkbox' };
 
@@ -21,6 +22,16 @@ export function Usage() {
       <Checkbox label="Default" defaultChecked />
       <Checkbox label="Disabled" checked disabled mt="xl" />
       <Checkbox label="Indeterminate" indeterminate mt="xl" />
+    </div>
+  );
+}
+
+export function WithTooltip() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip label="Tooltip" refProp="rootRef" position="bottom-start">
+        <Checkbox label="With tooltip" defaultChecked />
+      </Tooltip>
     </div>
   );
 }

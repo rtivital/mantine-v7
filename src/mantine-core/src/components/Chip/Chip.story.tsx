@@ -1,8 +1,19 @@
 import React from 'react';
 import { IconCheck } from '@tabler/icons-react';
 import { Chip } from './Chip';
+import { Tooltip } from '../Tooltip';
 
 export default { title: 'Chip' };
+
+export function WithTooltip() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Tooltip label="Tooltip" refProp="rootRef" position="bottom-start">
+        <Chip defaultChecked>With tooltip</Chip>
+      </Tooltip>
+    </div>
+  );
+}
 
 export function Usage() {
   return (

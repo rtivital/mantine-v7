@@ -76,6 +76,9 @@ export interface ChipProps
 
   /** Replaces default icon */
   icon?: React.ReactNode;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type ChipFactory = Factory<{
@@ -141,6 +144,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     size,
     variant,
     icon,
+    rootRef,
     ...others
   } = props;
 
@@ -179,7 +183,14 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
   const _checked = contextProps.checked || _value;
 
   return (
-    <Box size={size} variant={variant} {...getStyles('root')} {...styleProps} {...wrapperProps}>
+    <Box
+      size={size}
+      variant={variant}
+      ref={rootRef}
+      {...getStyles('root')}
+      {...styleProps}
+      {...wrapperProps}
+    >
       <input
         type={type}
         {...getStyles('input')}

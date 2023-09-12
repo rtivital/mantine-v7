@@ -59,6 +59,9 @@ export interface RadioProps
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius,` "xl" by default */
   radius?: MantineRadius;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type RadioFactory = Factory<{
@@ -106,6 +109,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
     disabled,
     wrapperProps,
     icon: Icon = RadioIcon,
+    rootRef,
     ...others
   } = props;
 
@@ -155,6 +159,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
+      ref={rootRef}
       {...styleProps}
       {...wrapperProps}
     >

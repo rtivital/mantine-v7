@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render, tests, screen } from '@mantine/tests';
 import { Checkbox, CheckboxProps, CheckboxStylesNames } from './Checkbox';
 
@@ -70,5 +70,11 @@ describe('@mantine/core/Checkbox', () => {
 
     rerender(<Checkbox disabled={false} />);
     expect(screen.getByRole('checkbox')).not.toBeDisabled();
+  });
+
+  it('supports rootRef', () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Checkbox {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });

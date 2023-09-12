@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render, tests } from '@mantine/tests';
 import { Chip, ChipProps, ChipStylesNames } from './Chip';
 
@@ -37,5 +37,11 @@ describe('@mantine/core/Chip', () => {
 
     rerender(<Chip {...defaultProps} checked={false} />);
     expect(container.querySelectorAll('.mantine-Chip-checkIcon')).toHaveLength(0);
+  });
+
+  it('supports rootRef', () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Chip {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });

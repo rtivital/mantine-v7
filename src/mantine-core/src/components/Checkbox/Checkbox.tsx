@@ -65,6 +65,9 @@ export interface CheckboxProps
 
   /** Icon rendered when checkbox has checked or indeterminate state */
   icon?: React.FC<{ indeterminate: boolean | undefined; className: string }>;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type CheckboxFactory = Factory<{
@@ -115,6 +118,7 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
     variant,
     indeterminate,
     icon,
+    rootRef,
     ...others
   } = props;
 
@@ -162,6 +166,7 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
+      ref={rootRef}
       {...styleProps}
       {...wrapperProps}
     >
