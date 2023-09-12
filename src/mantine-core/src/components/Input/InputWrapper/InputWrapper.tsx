@@ -176,7 +176,7 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
   const isRequired = typeof withAsterisk === 'boolean' ? withAsterisk : required;
   const errorId = errorProps?.id || `${idBase}-error`;
   const descriptionId = descriptionProps?.id || `${idBase}-description`;
-  const inputId = `${idBase}-input`;
+  const inputId = idBase;
   const hasError = !!error && typeof error !== 'boolean';
   const hasDescription = !!description;
   const _describedBy = `${hasError ? errorId : ''} ${hasDescription ? descriptionId : ''}`;
