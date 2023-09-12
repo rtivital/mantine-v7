@@ -67,6 +67,7 @@
   opacity: var(--_file-opacity);
   background-color: var(--_file-bg);
   white-space: nowrap;
+  margin: 0;
 
   @mixin hover {
     --_file-opacity: 1;
