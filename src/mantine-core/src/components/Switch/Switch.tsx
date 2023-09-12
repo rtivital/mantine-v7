@@ -80,6 +80,9 @@ export interface SwitchProps
 
   /** Error displayed below the label */
   error?: React.ReactNode;
+
+  /** Assigns ref of the root element, can be used with `Tooltip` and other similar components */
+  rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
 export type SwitchFactory = Factory<{
@@ -137,6 +140,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     error,
     disabled,
     variant,
+    rootRef,
     ...others
   } = props;
 
@@ -189,6 +193,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
       unstyled={unstyled}
       data-checked={contextProps.checked || undefined}
       variant={variant}
+      ref={rootRef}
       {...styleProps}
       {...wrapperProps}
     >

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render, tests, screen } from '@mantine/tests';
 import { Switch, SwitchProps, SwitchStylesNames } from './Switch';
 import { SwitchGroup } from './SwitchGroup/SwitchGroup';
@@ -62,5 +62,11 @@ describe('@mantine/core/Switch', () => {
 
   it('exposes SwitchGroup component', () => {
     expect(Switch.Group).toBe(SwitchGroup);
+  });
+
+  it('supports rootRef', () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<Switch {...defaultProps} rootRef={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 });
