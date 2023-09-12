@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://v7.mantine.dev/
+
+# Sitemaps
+Sitemap: https://v7.mantine.dev/sitemap.xml
