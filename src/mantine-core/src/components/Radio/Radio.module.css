@@ -50,6 +50,7 @@
   transition-timing-function: ease;
   transition-duration: 100ms;
   cursor: var(--_cursor, var(--mantine-cursor-type));
+  -webkit-tap-highlight-color: transparent;
 
   @mixin light {
     --_radio-bg: var(--mantine-color-white);

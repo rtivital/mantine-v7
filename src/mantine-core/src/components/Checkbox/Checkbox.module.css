@@ -27,8 +27,11 @@
   padding: 0;
   display: block;
   margin: 0;
-  transition: border-color 100ms ease, background-color 100ms ease;
+  transition:
+    border-color 100ms ease,
+    background-color 100ms ease;
   cursor: var(--_checkbox-cursor, var(--mantine-cursor-type));
+  -webkit-tap-highlight-color: transparent;
 
   @mixin light {
     --_checkbox-bg: var(--mantine-color-white);
@@ -94,5 +97,7 @@
   pointer-events: none;
   transform: var(--_checkbox-icon-transform, translateY(rem(5px)) scale(0.5));
   opacity: var(--_checkbox-icon-opacity, 0);
-  transition: transform 100ms ease, opacity 100ms ease;
+  transition:
+    transform 100ms ease,
+    opacity 100ms ease;
 }
