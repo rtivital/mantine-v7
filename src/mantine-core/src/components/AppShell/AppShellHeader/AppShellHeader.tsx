@@ -1,4 +1,6 @@
+import cx from 'clsx';
 import React from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
 import {
   Box,
   BoxProps,
@@ -53,7 +55,12 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
       component="header"
       ref={ref}
       mod={{ 'with-border': withBorder ?? ctx.withBorder }}
-      {...ctx.getStyles('header', { className, classNames, styles, style })}
+      {...ctx.getStyles('header', {
+        className: cx(RemoveScroll.classNames.zeroRight, className),
+        classNames,
+        styles,
+        style,
+      })}
       {...others}
       __vars={{ '--app-shell-header-z-index': (zIndex ?? ctx.zIndex)?.toString() }}
     />

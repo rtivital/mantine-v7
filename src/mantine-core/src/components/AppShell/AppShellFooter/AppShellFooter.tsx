@@ -1,4 +1,6 @@
+import cx from 'clsx';
 import React from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
 import {
   Box,
   BoxProps,
@@ -53,7 +55,12 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
       component="footer"
       ref={ref}
       mod={{ 'with-border': withBorder ?? ctx.withBorder }}
-      {...ctx.getStyles('footer', { className, classNames, styles, style })}
+      {...ctx.getStyles('footer', {
+        className: cx(RemoveScroll.classNames.zeroRight, className),
+        classNames,
+        styles,
+        style,
+      })}
       {...others}
       __vars={{ '--app-shell-footer-z-index': (zIndex ?? ctx.zIndex)?.toString() }}
     />
