@@ -22,7 +22,7 @@
   --_input-padding-left: var(--_input-padding);
   --_input-padding-right: var(--_input-padding);
   --_input-placeholder-color: var(--mantine-color-placeholder);
-  --_input-color: inherit;
+  --_input-color: var(--mantine-color-text);
   --_input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - rem(2px)));
   --_input-right-section-size: var(
     --input-right-section-width,
