@@ -111,14 +111,14 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
     result.dark[`--mantine-color-${color}-filled-hover`] = darkFilledHover;
     result.dark[`--mantine-color-${color}-light`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.1
+      0.15
     );
     result.dark[`--mantine-color-${color}-light-hover`] = rgba(
       theme.colors[color][Math.max(0, darkPrimaryShade - 2)],
-      0.12
+      0.2
     );
     result.dark[`--mantine-color-${color}-light-color`] =
-      theme.colors[color][Math.max(darkPrimaryShade - 3, 0)];
+      theme.colors[color][Math.max(darkPrimaryShade - 5, 0)];
     result.dark[`--mantine-color-${color}-outline`] =
       theme.colors[color][Math.max(darkPrimaryShade - 4, 0)];
     result.dark[`--mantine-color-${color}-outline-hover`] = rgba(
