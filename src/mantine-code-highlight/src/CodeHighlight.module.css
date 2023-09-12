@@ -153,6 +153,10 @@
 .root {
   margin-top: 0;
   position: relative;
+
+  &[data-collapsed] :global(.mantine-ScrollArea-viewport > div) {
+    display: block !important;
+  }
 }
 
 .fileIcon {
