@@ -1,3 +1,4 @@
+import React from 'react';
 import { MantineDemo } from '@mantine/ds';
 import { Switch } from '@mantine/core';
 
@@ -8,6 +9,7 @@ import { Switch } from '@mantine/core';
 function Demo() {
   return (
     <Switch
+      defaultChecked
       {{props}}
     />
   );
@@ -16,7 +18,7 @@ function Demo() {
 
 export const configurator: MantineDemo = {
   type: 'configurator',
-  component: Switch,
+  component: (props: any) => <Switch defaultChecked {...props} />,
   code,
   centered: true,
   controls: [
