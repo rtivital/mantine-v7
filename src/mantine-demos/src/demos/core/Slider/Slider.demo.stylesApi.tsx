@@ -20,6 +20,7 @@ function Demo(props: any) {
       ]}
       defaultValue={40}
       labelAlwaysOn
+      mb={40}
       {...props}
     />
   );

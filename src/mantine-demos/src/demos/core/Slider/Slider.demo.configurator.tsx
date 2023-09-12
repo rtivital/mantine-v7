@@ -6,6 +6,7 @@ function Wrapper(props: any) {
   return (
     <Slider
       defaultValue={40}
+      mb={40}
       marks={[
         { value: 20, label: '20%' },
         { value: 50, label: '50%' },
