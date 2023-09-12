@@ -72,17 +72,25 @@ export function MdxComboboxData({ component }: MdxComboboxDataProps) {
 
       <MdxCodeHighlight language="tsx" code={getStringArrayCode(component)} />
 
-      <MdxParagraph>
-        Array of object with <MdxCode>value</MdxCode>, <MdxCode>label</MdxCode> and optional{' '}
-        <MdxCode>disabled</MdxCode> keys:
-      </MdxParagraph>
-      <MdxCodeHighlight language="tsx" code={getArrayCode(component)} />
+      {component !== 'Autocomplete' && (
+        <>
+          <MdxParagraph>
+            Array of object with <MdxCode>value</MdxCode>, <MdxCode>label</MdxCode> and optional{' '}
+            <MdxCode>disabled</MdxCode> keys:
+          </MdxParagraph>
+          <MdxCodeHighlight language="tsx" code={getArrayCode(component)} />
+        </>
+      )}
 
       <MdxParagraph>Array of groups with string options:</MdxParagraph>
       <MdxCodeHighlight language="tsx" code={getStringGroupsCode(component)} />
 
-      <MdxParagraph>Array of groups with object options:</MdxParagraph>
-      <MdxCodeHighlight language="tsx" code={getGroupsCode(component)} />
+      {component !== 'Autocomplete' && (
+        <>
+          <MdxParagraph>Array of groups with object options:</MdxParagraph>
+          <MdxCodeHighlight language="tsx" code={getGroupsCode(component)} />
+        </>
+      )}
     </>
   );
 }
