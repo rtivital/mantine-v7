@@ -39,7 +39,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       </Head>
       <FontsStyle />
       <DirectionProvider initialDirection="ltr" detectDirection={false}>
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} defaultColorScheme="light">
           <Search />
           <Notifications />
           <ModalsProviderDemo>
