@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from './Image';
+import { Group } from '../Group';
 
 export default { title: 'Image' };
 
@@ -11,6 +12,14 @@ export function Usage() {
     <div style={{ padding: 40 }}>
       <Image src={url} h={600} radius="md" />
     </div>
+  );
+}
+
+export function WithinGroup() {
+  return (
+    <Group style={{ padding: 40 }}>
+      <Image src={url} h={200} radius="md" />
+    </Group>
   );
 }
 
