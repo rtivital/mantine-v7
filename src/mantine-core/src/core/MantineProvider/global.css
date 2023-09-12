@@ -320,6 +320,7 @@ body {
 }
 
 :root[data-mantine-color-scheme='dark'] {
+  --mantine-color-bright: var(--mantine-color-white);
   --mantine-color-text: var(--mantine-color-dark-0);
   --mantine-color-body: #1a1b1e;
   --mantine-color-error: #c92a2a;
@@ -431,6 +432,7 @@ body {
 }
 
 :root[data-mantine-color-scheme='light'] {
+  --mantine-color-bright: var(--mantine-color-black);
   --mantine-color-text: #000;
   --mantine-color-body: #fff;
   --mantine-color-error: #fa5252;

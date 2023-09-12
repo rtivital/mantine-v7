@@ -7,5 +7,9 @@ export function colorResolver(color: unknown, theme: MantineTheme) {
     return 'var(--mantine-color-dimmed)';
   }
 
+  if (parsedColor.color === 'bright') {
+    return 'var(--mantine-color-bright)';
+  }
+
   return parsedColor.variable ? `var(${parsedColor.variable})` : parsedColor.color;
 }

@@ -47,6 +47,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       '--mantine-primary-color-light-color': `var(--mantine-color-${theme.primaryColor}-light-color)`,
     },
     light: {
+      '--mantine-color-bright': 'var(--mantine-color-black)',
       '--mantine-color-text': theme.black,
       '--mantine-color-body': theme.white,
       '--mantine-color-error': theme.colors.red[6],
@@ -58,6 +59,7 @@ export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
       '--mantine-color-default-border': theme.colors.gray[4],
     },
     dark: {
+      '--mantine-color-bright': 'var(--mantine-color-white)',
       '--mantine-color-text': 'var(--mantine-color-dark-0)',
       '--mantine-color-body': theme.colors.dark[7],
       '--mantine-color-error': theme.colors.red[9],
