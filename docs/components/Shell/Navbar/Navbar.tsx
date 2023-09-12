@@ -61,6 +61,13 @@ export function Navbar({ navbarOpened, onNavbarClose, mobileNavbarOnly }: Navbar
           >
             Colors generator
           </NavbarMainLink>
+          <NavbarMainLink
+            external
+            icon={<IconBrandMantine style={{ width: rem(22), height: rem(22) }} stroke={1.5} />}
+            href="https://ui.mantine.dev"
+          >
+            Mantine UI
+          </NavbarMainLink>
           <div className={classes.groups}>{groups}</div>
         </div>
       </ScrollArea>
