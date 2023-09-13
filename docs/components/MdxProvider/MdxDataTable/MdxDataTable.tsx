@@ -7,9 +7,22 @@ interface DataTableProps {
   head?: string[];
 }
 
+function getTransformedScaledValue(value: unknown) {
+  if (typeof value !== 'string' || !value.includes('var(--mantine-scale)')) {
+    return value as string;
+  }
+
+  return value
+    .match(/^calc\((.*?)\)$/)?.[1]
+    .split('*')[0]
+    .trim();
+}
+
 export function MdxDataTable({ data, head }: DataTableProps) {
   const rows = data.map((row, index) => {
-    const cells = row.map((cell, cellIndex) => <Table.Td key={cellIndex}>{cell}</Table.Td>);
+    const cells = row.map((cell, cellIndex) => (
+      <Table.Td key={cellIndex}>{getTransformedScaledValue(cell)}</Table.Td>
+    ));
     return <Table.Tr key={index}>{cells}</Table.Tr>;
   });
 
