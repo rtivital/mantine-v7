@@ -50,6 +50,12 @@
   padding-right: var(--mantine-spacing-lg);
   background-color: transparent;
 
+  @media (max-width: $docs-mdx-breakpoint) {
+    font-size: var(--mantine-font-size-sm);
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+  }
+
   &[data-active] {
     background-color: var(--mantine-color-body);
 
