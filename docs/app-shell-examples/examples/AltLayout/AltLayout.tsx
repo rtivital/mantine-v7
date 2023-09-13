@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { AppShell, Burger, Group, Skeleton } from '@mantine/core';
+import { AppShell, Burger, Group, Skeleton, Text } from '@mantine/core';
 import { MantineLogo } from '@mantine/ds';
 
 export function AltLayout() {
@@ -22,7 +22,10 @@ export function AltLayout() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        Navbar
+        <Group>
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Text>Navbar</Text>
+        </Group>
         {Array(15)
           .fill(0)
           .map((_, index) => (
