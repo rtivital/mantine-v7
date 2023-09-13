@@ -17,7 +17,11 @@ function Demo() {
 function Demo() {
   return (
     <DatesProvider settings={{ timezone: 'America/New_York' }}>
-      <DateTimePicker label="Pick a Date" placeholder="Pick a Date" defaultValue={new Date('2000-10-03 02:10:00Z')} />
+      <DateTimePicker
+        label="Pick a Date"
+        placeholder="Pick a Date"
+        defaultValue={new Date('2000-10-03 02:10:00Z')}
+      />
     </DatesProvider>
   );
 }
