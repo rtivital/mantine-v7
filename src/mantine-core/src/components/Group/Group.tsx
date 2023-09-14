@@ -60,9 +60,6 @@ export type GroupFactory = Factory<{
 }>;
 
 const defaultProps: Partial<GroupProps> = {
-  justify: 'flex-start',
-  align: 'center',
-  gap: 'md',
   preventGrowOverflow: true,
 };
 
@@ -101,9 +98,10 @@ export const Group = factory<GroupFactory>((_props, ref) => {
 
   const filteredChildren = filterFalsyChildren(children);
   const childrenCount = filteredChildren.length;
-  const childWidth = `calc(${100 / childrenCount}% - (${getSpacing(gap)} - ${getSpacing(
-    gap
-  )} / ${childrenCount}))`;
+  const resolvedGap = getSpacing(gap ?? 'md');
+  const childWidth = `calc(${
+    100 / childrenCount
+  }% - (${resolvedGap} - ${resolvedGap} / ${childrenCount}))`;
 
   const stylesCtx: GroupStylesCtx = { childWidth };
 
