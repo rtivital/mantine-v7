@@ -36,7 +36,7 @@ const defaultProps: Partial<AspectRatioProps> = {};
 
 const varsResolver = createVarsResolver<AspectRatioFactory>((_, { ratio }) => ({
   root: {
-    '--ar-ratio': (ratio ?? 1).toString(),
+    '--ar-ratio': ratio?.toString(),
   },
 }));
 
