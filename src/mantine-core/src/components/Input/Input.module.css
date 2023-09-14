@@ -15,29 +15,38 @@
   --input-padding-y-lg: rem(10px);
   --input-padding-y-xl: rem(13px);
 
+  --_input-height: var(--input-height, var(--input-height-sm));
+  --_input-radius: var(--input-radius, var(--mantine-radius-default));
+
   --_input-cursor: text;
   --_input-text-align: left;
-  --_input-line-height: calc(var(--input-height) - rem(2px));
-  --_input-padding: calc(var(--input-height) / 3);
+  --_input-line-height: calc(var(--_input-height) - rem(2px));
+  --_input-padding: calc(var(--_input-height) / 3);
   --_input-padding-left: var(--_input-padding);
   --_input-padding-right: var(--_input-padding);
   --_input-placeholder-color: var(--mantine-color-placeholder);
   --_input-color: var(--mantine-color-text);
-  --_input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - rem(2px)));
+
+  --_input-left-section-size: var(
+    --input-left-section-width,
+    calc(var(--_input-height) - rem(2px))
+  );
+
   --_input-right-section-size: var(
     --input-right-section-width,
-    calc(var(--input-height) - rem(2px))
+    calc(var(--_input-height) - rem(2px))
   );
-  --_input-size: var(--input-height);
+
+  --_input-size: var(--_input-height);
 
   --_section-y: rem(1px);
   --_left-section-left: rem(1px);
   --_left-section-right: unset;
-  --_left-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+  --_left-section-border-radius: var(--_input-radius) 0 0 var(--_input-radius);
 
   --_right-section-left: unset;
   --_right-section-right: rem(1px);
-  --_right-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+  --_right-section-border-radius: 0 var(--_input-radius) var(--_input-radius) 0;
 
   &[data-variant='unstyled'] {
     --input-padding: 0;
@@ -139,10 +148,10 @@
     --_input-text-align: right;
     --_left-section-left: unset;
     --_left-section-right: rem(1px);
-    --_left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    --_left-section-border-radius: 0 var(--_input-radius) var(--_input-radius) 0;
     --_right-section-left: rem(1px);
     --_right-section-right: unset;
-    --_right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
+    --_right-section-border-radius: var(--_input-radius) 0 0 var(--_input-radius);
   }
 }
 
@@ -162,8 +171,8 @@
   height: var(--_input-size);
   min-height: var(--input-height);
   line-height: var(--_input-line-height);
-  font-size: var(--_input-fz, var(--input-fz));
-  border-radius: var(--input-radius);
+  font-size: var(--_input-fz, var(--input-fz, var(--mantine-font-size-sm)));
+  border-radius: var(--_input-radius);
   padding-left: var(--_input-padding-left);
   padding-right: var(--_input-padding-right);
   padding-top: var(--input-padding-y, 0rem);
@@ -179,7 +188,7 @@
   /* Used as data attribute in JsonInput component, does not have associated prop on the Input component */
   &[data-monospace] {
     --_input-font-family: var(--mantine-font-family-monospace);
-    --_input-fz: calc(var(--input-fz) - rem(2px));
+    --_input-fz: calc(var(--input-fz, var(--mantine-font-size-sm)) - rem(2px));
   }
 
   &:focus,
