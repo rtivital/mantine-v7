@@ -6,7 +6,7 @@ export default { title: 'Stack' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Stack variant="test" align="center">
+      <Stack>
         <button type="button">First</button>
         <button type="button">Second</button>
         <button type="button">Third</button>
