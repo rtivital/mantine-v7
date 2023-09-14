@@ -105,7 +105,7 @@ const varsResolver = createVarsResolver<ButtonFactory>(
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant!,
+      variant: variant || 'filled',
     });
 
     return {
