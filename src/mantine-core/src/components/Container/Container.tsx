@@ -49,7 +49,7 @@ const varsResolver = createVarsResolver<ContainerFactory>((_, { size, fluid }) =
 
 export const Container = factory<ContainerFactory>((_props, ref) => {
   const props = useProps('Container', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
+  const { classNames, className, style, styles, unstyled, vars, fluid, ...others } = props;
 
   const getStyles = useStyles<ContainerFactory>({
     name: 'Container',
