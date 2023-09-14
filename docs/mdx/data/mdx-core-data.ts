@@ -1,6 +1,16 @@
 import { Frontmatter } from '@/types';
 
 export const MDX_CORE_DATA: Record<string, Frontmatter> = {
+  Box: {
+    title: 'Box',
+    package: '@mantine/core',
+    slug: '/core/box',
+    description: 'Base component for all Mantine components',
+    import: "import { Box } from '@mantine/core';",
+    source: 'mantine-core/src/components/Box/Box.tsx',
+    docs: 'core/button.mdx',
+  },
+
   Button: {
     title: 'Button',
     package: '@mantine/core',
