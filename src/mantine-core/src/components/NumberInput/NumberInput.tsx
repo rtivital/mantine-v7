@@ -298,6 +298,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
   return (
     <InputBase
       component={NumericFormat}
+      allowNegative={allowNegative}
       {...others}
       readOnly={readOnly}
       disabled={disabled}
