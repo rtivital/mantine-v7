@@ -16,7 +16,9 @@ export function GaScript() {
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-4Z4NNVLRH5"
       />
-      <Script strategy="afterInteractive">{gaScript}</Script>
+      <Script id="ga" strategy="afterInteractive">
+        {gaScript}
+      </Script>
     </>
   );
 }
