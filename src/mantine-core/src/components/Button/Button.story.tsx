@@ -4,6 +4,14 @@ import { DEFAULT_THEME, rem } from '../../core';
 
 export default { title: 'Button' };
 
+export function SingleButton() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Button>Button</Button>
+    </div>
+  );
+}
+
 export function WithinDisabledFieldset() {
   return (
     <fieldset disabled style={{ padding: 40 }}>

@@ -97,10 +97,7 @@ export type ButtonFactory = PolymorphicFactory<{
   };
 }>;
 
-const defaultProps: Partial<ButtonProps> = {
-  size: 'sm',
-  variant: 'filled',
-};
+const defaultProps: Partial<ButtonProps> = {};
 
 const varsResolver = createVarsResolver<ButtonFactory>(
   (theme, { radius, color, gradient, variant, size, justify }) => {
@@ -119,11 +116,11 @@ const varsResolver = createVarsResolver<ButtonFactory>(
         '--button-fz': size?.includes('compact')
           ? getFontSize(size.replace('compact-', ''))
           : getFontSize(size),
-        '--button-radius': getRadius(radius),
-        '--button-bg': colors.background,
-        '--button-hover': colors.hover,
-        '--button-color': colors.color,
-        '--button-bd': colors.border,
+        '--button-radius': radius ? getRadius(radius) : undefined,
+        '--button-bg': color || variant ? colors.background : undefined,
+        '--button-hover': color || variant ? colors.hover : undefined,
+        '--button-color': color || variant ? colors.color : undefined,
+        '--button-bd': color || variant ? colors.border : undefined,
       },
     };
   }

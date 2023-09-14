@@ -32,14 +32,14 @@
   width: var(--_button-width, auto);
   cursor: var(--_button-cursor, pointer);
   display: var(--_button-display, inline-block);
-  border-radius: var(--button-radius);
-  font-size: var(--button-fz);
-  background: var(--_button-bg, var(--button-bg));
-  border: var(--_button-bd, var(--button-bd));
-  color: var(--_button-color, var(--button-color));
-  height: var(--button-height);
-  padding-left: var(--_button-padding-left, var(--button-padding-x));
-  padding-right: var(--_button-padding-right, var(--button-padding-x));
+  border-radius: var(--button-radius, var(--mantine-radius-default));
+  font-size: var(--button-fz, var(--mantine-font-size-sm));
+  background: var(--_button-bg, var(--button-bg, var(--mantine-primary-color-filled)));
+  border: var(--_button-bd, var(--button-bd, rem(1px) solid transparent));
+  color: var(--_button-color, var(--button-color, var(--mantine-color-white)));
+  height: var(--button-height, var(--button-height-sm));
+  padding-left: var(--_button-padding-left, var(--button-padding-x, var(--button-padding-x-sm)));
+  padding-right: var(--_button-padding-right, var(--button-padding-x, var(--button-padding-x-sm)));
 
   &[data-block] {
     --_button-display: block;
@@ -88,7 +88,7 @@
 
   @mixin hover {
     &:not([data-loading]):not(:disabled):not([data-disabled]) {
-      --_button-bg: var(--button-hover);
+      --_button-bg: var(--button-hover, var(--mantine-primary-color-filled-hover));
     }
   }
 
