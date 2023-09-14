@@ -206,9 +206,16 @@
     -moz-appearance: textfield;
   }
 
-  &:has(input:disabled),
   &:disabled,
   &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: var(--_input-disabled-bg);
+    color: var(--_input-disabled-color);
+  }
+
+  /* Required to be a separate selector to work in Firefox, can be merged with &:disabled once :has is supported */
+  &:has(input:disabled) {
     cursor: not-allowed;
     opacity: 0.6;
     background-color: var(--_input-disabled-bg);
