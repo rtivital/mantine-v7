@@ -1,3 +1,7 @@
+.root {
+  --_accordion-radius: var(--accordion-radius, var(--mantine-radius-default));
+}
+
 .panel {
   word-break: break-word;
 }
@@ -80,11 +84,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  transition: transform var(--accordion-transition-duration) ease;
+  transition: transform var(--accordion-transition-duration, 200ms) ease;
   margin-right: var(--_chevron-margin-right);
   margin-left: var(--_chevron-margin-left);
-  width: var(--accordion-chevron-size);
-  min-width: var(--accordion-chevron-size);
+  width: var(--accordion-chevron-size, rem(15px));
+  min-width: var(--accordion-chevron-size, rem(15px));
   transform: var(--_chevron-transform, rotate(0deg));
 
   &[data-rotate] {
@@ -165,22 +169,22 @@
   }
 
   &:first-of-type {
-    border-top-left-radius: var(--accordion-radius);
-    border-top-right-radius: var(--accordion-radius);
+    border-top-left-radius: var(--_accordion-radius);
+    border-top-right-radius: var(--_accordion-radius);
 
     & > [data-accordion-control] {
-      border-top-left-radius: var(--accordion-radius);
-      border-top-right-radius: var(--accordion-radius);
+      border-top-left-radius: var(--_accordion-radius);
+      border-top-right-radius: var(--_accordion-radius);
     }
   }
 
   &:last-of-type {
-    border-bottom-left-radius: var(--accordion-radius);
-    border-bottom-right-radius: var(--accordion-radius);
+    border-bottom-left-radius: var(--_accordion-radius);
+    border-bottom-right-radius: var(--_accordion-radius);
 
     & > [data-accordion-control] {
-      border-bottom-left-radius: var(--accordion-radius);
-      border-bottom-right-radius: var(--accordion-radius);
+      border-bottom-left-radius: var(--_accordion-radius);
+      border-bottom-right-radius: var(--_accordion-radius);
     }
   }
 
@@ -190,7 +194,7 @@
 }
 
 .item--filled {
-  border-radius: var(--accordion-radius);
+  border-radius: var(--_accordion-radius);
 
   &[data-active] {
     --_item-bg: var(--_item-filled-color);
@@ -200,7 +204,7 @@
 .item--separated {
   --_item-bg: var(--_item-filled-color);
 
-  border-radius: var(--accordion-radius);
+  border-radius: var(--_accordion-radius);
   border: rem(1px) solid var(--__item-border-color, transparent);
   transition: background-color 150ms ease;
 

@@ -44,7 +44,7 @@ export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
       {...ctx.getStyles('panel', { className, classNames, style, styles })}
       {...others}
       in={ctx.isItemActive(value)}
-      transitionDuration={ctx.transitionDuration}
+      transitionDuration={ctx.transitionDuration ?? 200}
       role="region"
       id={ctx.getRegionId(value)}
       aria-labelledby={ctx.getControlId(value)}

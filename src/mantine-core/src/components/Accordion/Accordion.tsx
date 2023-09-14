@@ -92,19 +92,18 @@ export type AccordionFactory = Factory<{
 const defaultProps: Partial<AccordionProps> = {
   multiple: false,
   disableChevronRotation: false,
-  transitionDuration: 200,
   chevronPosition: 'right',
   variant: 'default',
-  chevronSize: 15,
   chevron: <AccordionChevron />,
 };
 
 const varsResolver = createVarsResolver<AccordionFactory>(
   (_, { transitionDuration, chevronSize, radius }) => ({
     root: {
-      '--accordion-transition-duration': `${transitionDuration}ms`,
-      '--accordion-chevron-size': rem(chevronSize),
-      '--accordion-radius': getRadius(radius),
+      '--accordion-transition-duration':
+        transitionDuration === undefined ? undefined : `${transitionDuration}ms`,
+      '--accordion-chevron-size': chevronSize === undefined ? undefined : rem(chevronSize),
+      '--accordion-radius': radius === undefined ? undefined : getRadius(radius),
     },
   })
 );

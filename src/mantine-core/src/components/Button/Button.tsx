@@ -116,7 +116,7 @@ const varsResolver = createVarsResolver<ButtonFactory>(
         '--button-fz': size?.includes('compact')
           ? getFontSize(size.replace('compact-', ''))
           : getFontSize(size),
-        '--button-radius': radius ? getRadius(radius) : undefined,
+        '--button-radius': radius === undefined ? undefined : getRadius(radius),
         '--button-bg': color || variant ? colors.background : undefined,
         '--button-hover': color || variant ? colors.hover : undefined,
         '--button-color': color || variant ? colors.color : undefined,
