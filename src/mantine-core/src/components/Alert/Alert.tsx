@@ -65,23 +65,21 @@ export type AlertFactory = Factory<{
   variant: AlertVariant;
 }>;
 
-const defaultProps: Partial<AlertProps> = {
-  variant: 'light',
-};
+const defaultProps: Partial<AlertProps> = {};
 
 const varsResolver = createVarsResolver<AlertFactory>((theme, { radius, color, variant }) => {
   const colors = theme.variantColorResolver({
     color: color || theme.primaryColor,
     theme,
-    variant: variant!,
+    variant: variant || 'light',
   });
 
   return {
     root: {
-      '--alert-radius': getRadius(radius),
-      '--alert-bg': colors.background,
-      '--alert-color': colors.color,
-      '--alert-bd': colors.border,
+      '--alert-radius': radius === undefined ? undefined : getRadius(radius),
+      '--alert-bg': color || variant ? colors.background : undefined,
+      '--alert-color': color || variant ? colors.color : undefined,
+      '--alert-bd': color || variant ? colors.border : undefined,
     },
   };
 });

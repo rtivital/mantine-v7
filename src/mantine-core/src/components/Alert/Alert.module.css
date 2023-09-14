@@ -1,15 +1,15 @@
 .root {
-  background-color: var(--alert-bg);
   padding: var(--mantine-spacing-md) var(--mantine-spacing-xl);
-  border-radius: var(--alert-radius);
+  border-radius: var(--alert-radius, var(--mantine-radius-default));
   position: relative;
   overflow: hidden;
-  border: var(--alert-bd);
-  color: var(--alert-color);
+  background-color: var(--alert-bg, var(--mantine-primary-color-light));
+  border: var(--alert-bd, rem(1px) solid transparent);
+  color: var(--alert-color, var(--mantine-primary-color-light-color));
 }
 
 .root--filled {
-  --_message-color: var(--alert-color);
+  --_message-color: var(--alert-color, var(--mantine-primary-color-light-color));
 }
 
 .root--white {
@@ -74,5 +74,5 @@
   height: rem(20px);
   margin-right: calc(var(--mantine-spacing-md) * -1);
   margin-top: calc(var(--mantine-spacing-sm) * -0.5);
-  color: var(--alert-color);
+  color: var(--alert-color, var(--mantine-primary-color-light-color));
 }
