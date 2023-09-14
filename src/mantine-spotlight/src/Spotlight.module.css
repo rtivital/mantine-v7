@@ -102,6 +102,10 @@
   &[data-position='right'] {
     --_action-section-ml: var(--mantine-spacing-md);
   }
+
+  & > svg {
+    display: block;
+  }
 }
 
 .actionLabel {
