@@ -117,6 +117,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     onSearchChange,
     allowDeselect,
     error,
+    rightSectionPointerEvents,
     ...others
   } = props;
 
@@ -199,6 +200,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
             rightSection={
               rightSection || <Combobox.Chevron size={size} error={error} unstyled={unstyled} />
             }
+            rightSectionPointerEvents={rightSectionPointerEvents || 'none'}
             {...others}
             size={size}
             __staticSelector="Select"
