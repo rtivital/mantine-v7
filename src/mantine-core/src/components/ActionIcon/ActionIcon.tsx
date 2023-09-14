@@ -75,10 +75,7 @@ export type ActionIconFactory = PolymorphicFactory<{
   };
 }>;
 
-const defaultProps: Partial<ActionIconProps> = {
-  variant: 'filled',
-  size: 'md',
-};
+const defaultProps: Partial<ActionIconProps> = {};
 
 const varsResolver = createVarsResolver<ActionIconFactory>(
   (theme, { size, radius, variant, gradient, color }) => {
@@ -86,17 +83,17 @@ const varsResolver = createVarsResolver<ActionIconFactory>(
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant!,
+      variant: variant || 'filled',
     });
 
     return {
       root: {
         '--ai-size': getSize(size, 'ai-size'),
-        '--ai-radius': getRadius(radius),
-        '--ai-bg': colors.background,
-        '--ai-hover': colors.hover,
-        '--ai-color': colors.color,
-        '--ai-bd': colors.border,
+        '--ai-radius': radius === undefined ? undefined : getRadius(radius),
+        '--ai-bg': color || variant ? colors.background : undefined,
+        '--ai-hover': color || variant ? colors.hover : undefined,
+        '--ai-color': color || variant ? colors.color : undefined,
+        '--ai-bd': color || variant ? colors.border : undefined,
       },
     };
   }

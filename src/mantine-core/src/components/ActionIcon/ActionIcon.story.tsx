@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionIcon, ActionIconProps } from './ActionIcon';
-import { DEFAULT_THEME, rem } from '../../core';
+import { DEFAULT_THEME, MantineThemeProvider, rem } from '../../core';
 
 export default { title: 'ActionIcon' };
 
@@ -16,6 +16,26 @@ function Colors({ index, ...others }: ActionIconProps & { index?: number }) {
     </ActionIcon>
   ));
   return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
+}
+
+export function SingleButton() {
+  return (
+    <div style={{ padding: 40 }}>
+      <MantineThemeProvider
+        theme={{
+          components: {
+            ActionIcon: ActionIcon.extend({
+              defaultProps: {
+                // color: 'red',
+              },
+            }),
+          },
+        }}
+      >
+        <ActionIcon>$$</ActionIcon>
+      </MantineThemeProvider>
+    </div>
+  );
 }
 
 export function WithinDisabledFieldset() {

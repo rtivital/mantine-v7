@@ -11,6 +11,8 @@
   --ai-size-input-lg: rem(50px);
   --ai-size-input-xl: rem(60px);
 
+  --_ai-size: var(--ai-size, var(--ai-size-md));
+
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -18,19 +20,19 @@
   position: relative;
   user-select: none;
 
-  width: var(--ai-size);
-  height: var(--ai-size);
-  min-width: var(--ai-size);
-  min-height: var(--ai-size);
-  border-radius: var(--ai-radius);
-  background: var(--_ai-bg, var(--ai-bg));
-  color: var(--_ai-color, var(--ai-color));
-  border: var(--ai-bd);
+  width: var(--_ai-size);
+  height: var(--_ai-size);
+  min-width: var(--_ai-size);
+  min-height: var(--_ai-size);
+  border-radius: var(--ai-radius, var(--mantine-radius-default));
+  background: var(--_ai-bg, var(--ai-bg, var(--mantine-primary-color-filled)));
+  color: var(--_ai-color, var(--ai-color, var(--mantine-color-white)));
+  border: var(--ai-bd, rem(1px) solid transparent);
   cursor: var(--_ai-cursor, pointer);
 
   @mixin hover {
     &:not([data-loading]):not(:disabled):not([data-disabled]) {
-      --_ai-bg: var(--ai-hover);
+      --_ai-bg: var(--ai-hover, var(--mantine-primary-color-filled-hover));
     }
   }
 
@@ -53,7 +55,7 @@
       content: '';
       position: absolute;
       inset: rem(-1px);
-      border-radius: var(--ai-radius);
+      border-radius: var(--ai-radius, var(--mantine-radius-default));
       background-color: var(--_ai-loading-overlay-bg);
     }
   }
