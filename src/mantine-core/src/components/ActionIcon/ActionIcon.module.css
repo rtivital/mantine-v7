@@ -77,6 +77,7 @@
 }
 
 .group {
+  --ai-border-width: rem(1px);
   display: flex;
 
   &[data-orientation='horizontal'] {

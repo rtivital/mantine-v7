@@ -35,9 +35,7 @@ export type AvatarGroupFactory = Factory<{
   vars: AvatarGroupCssVariables;
 }>;
 
-const defaultProps: Partial<AvatarGroupProps> = {
-  spacing: 'sm',
-};
+const defaultProps: Partial<AvatarGroupProps> = {};
 
 const varsResolver = createVarsResolver<AvatarGroupFactory>((_, { spacing }) => ({
   group: {

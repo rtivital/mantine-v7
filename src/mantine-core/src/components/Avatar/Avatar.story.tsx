@@ -9,6 +9,14 @@ import { Avatar } from './Avatar';
 
 export default { title: 'Avatar' };
 
+export function Usage() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Avatar>AN</Avatar>
+    </div>
+  );
+}
+
 export function CustomComponent() {
   return (
     <div style={{ padding: 40 }}>

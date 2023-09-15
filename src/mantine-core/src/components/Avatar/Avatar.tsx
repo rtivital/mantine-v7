@@ -72,29 +72,24 @@ export type AvatarFactory = PolymorphicFactory<{
   };
 }>;
 
-const defaultProps: Partial<AvatarProps> = {
-  size: 'md',
-  radius: '100%',
-  color: 'gray',
-  variant: 'light',
-};
+const defaultProps: Partial<AvatarProps> = {};
 
 const varsResolver = createVarsResolver<AvatarFactory>(
   (theme, { size, radius, variant, gradient, color }) => {
     const colors = theme.variantColorResolver({
-      color: color || theme.primaryColor,
+      color: color || 'gray',
       theme,
       gradient,
-      variant: variant!,
+      variant: variant || 'light',
     });
 
     return {
       root: {
         '--avatar-size': getSize(size, 'avatar-size'),
-        '--avatar-radius': getRadius(radius),
-        '--avatar-bg': colors.background,
-        '--avatar-color': colors.color,
-        '--avatar-bd': colors.border,
+        '--avatar-radius': radius === undefined ? undefined : getRadius(radius),
+        '--avatar-bg': color || variant ? colors.background : undefined,
+        '--avatar-color': color || variant ? colors.color : undefined,
+        '--avatar-bd': color || variant ? colors.border : undefined,
       },
     };
   }
