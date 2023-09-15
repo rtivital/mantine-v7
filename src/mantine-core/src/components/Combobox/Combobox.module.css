@@ -1,5 +1,7 @@
 .dropdown {
-  padding: var(--combobox-padding);
+  --_combobox-padding: var(--combobox-padding, rem(4px));
+
+  padding: var(--_combobox-padding);
 
   &[data-hidden] {
     display: none;
@@ -14,11 +16,13 @@
   --combobox-option-padding-md: rem(8px) rem(12px);
   --combobox-option-padding-lg: rem(10px) rem(16px);
   --combobox-option-padding-xl: rem(14px) rem(20px);
+
+  --_combobox-option-padding: var(--combobox-option-padding, var(--combobox-option-padding-sm));
 }
 
 .option {
-  padding: var(--combobox-option-padding);
-  font-size: var(--combobox-option-fz);
+  padding: var(--_combobox-option-padding);
+  font-size: var(--combobox-option-fz, var(--mantine-font-size-sm));
   border-radius: var(--mantine-radius-default);
   background-color: var(--_option-bg, transparent);
   color: var(--_option-color, inherit);
@@ -50,16 +54,16 @@
 }
 
 .search {
-  margin-left: calc(var(--combobox-padding) * -1);
-  margin-right: calc(var(--combobox-padding) * -1);
-  margin-top: calc(var(--combobox-padding) * -1);
-  width: calc(100% + var(--combobox-padding) * 2);
+  margin-left: calc(var(--_combobox-padding) * -1);
+  margin-right: calc(var(--_combobox-padding) * -1);
+  margin-top: calc(var(--_combobox-padding) * -1);
+  width: calc(100% + var(--_combobox-padding) * 2);
   border-top-width: 0;
   border-right-width: 0;
   border-left-width: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  margin-bottom: var(--combobox-padding);
+  margin-bottom: var(--_combobox-padding);
   background-color: var(--_search_background);
   position: relative;
   z-index: 1000;
@@ -81,19 +85,19 @@
 }
 
 .empty {
-  font-size: var(--combobox-option-fz);
+  font-size: var(--combobox-option-fz, var(--mantine-font-size-sm));
   text-align: center;
-  padding: var(--combobox-option-padding);
+  padding: var(--_combobox-option-padding);
   color: var(--mantine-color-dimmed);
 }
 
 .header,
 .footer {
-  font-size: var(--combobox-option-fz);
+  font-size: var(--combobox-option-fz, var(--mantine-font-size-sm));
   border: 0 solid var(--_footer-border-color);
-  margin-left: calc(var(--combobox-padding) * -1);
-  margin-right: calc(var(--combobox-padding) * -1);
-  padding: var(--combobox-option-padding);
+  margin-left: calc(var(--_combobox-padding) * -1);
+  margin-right: calc(var(--_combobox-padding) * -1);
+  padding: var(--_combobox-option-padding);
 
   @mixin light {
     --_footer-border-color: var(--mantine-color-gray-2);
@@ -106,14 +110,14 @@
 
 .footer {
   border-top-width: rem(1px);
-  margin-top: var(--combobox-padding);
-  margin-bottom: calc(var(--combobox-padding) * -1);
+  margin-top: var(--_combobox-padding);
+  margin-bottom: calc(var(--_combobox-padding) * -1);
 }
 
 .header {
   border-bottom-width: rem(1px);
-  margin-bottom: var(--combobox-padding);
-  margin-top: calc(var(--combobox-padding) * -1);
+  margin-bottom: var(--_combobox-padding);
+  margin-top: calc(var(--_combobox-padding) * -1);
 }
 
 .group {
@@ -124,8 +128,8 @@
 
 .groupLabel {
   color: var(--mantine-color-dimmed);
-  font-size: calc(var(--combobox-option-fz) * 0.85);
-  padding: var(--combobox-option-padding);
+  font-size: calc(var(--combobox-option-fz, var(--mantine-font-size-sm)) * 0.85);
+  padding: var(--_combobox-option-padding);
   font-weight: 500;
   position: relative;
   display: flex;
@@ -181,10 +185,10 @@
 
 /* ------- OptionsDropdown ------- */
 .optionsDropdownScrollArea {
-  margin-right: calc(var(--combobox-padding) * -1);
+  margin-right: calc(var(--_combobox-padding) * -1);
 
   @mixin rtl {
-    margin-left: calc(var(--combobox-padding) * -1);
+    margin-left: calc(var(--_combobox-padding) * -1);
     margin-right: 0;
   }
 }

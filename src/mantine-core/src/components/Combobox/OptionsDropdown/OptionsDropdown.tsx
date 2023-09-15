@@ -121,7 +121,7 @@ export function OptionsDropdown({
           <ScrollArea.Autosize
             mah={maxDropdownHeight ?? 220}
             type="scroll"
-            scrollbarSize="var(--combobox-padding)"
+            scrollbarSize="var(--_combobox-padding)"
             offsetScrollbars="y"
             className={classes.optionsDropdownScrollArea}
           >
