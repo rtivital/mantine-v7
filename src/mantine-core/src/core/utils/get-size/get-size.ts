@@ -35,7 +35,7 @@ export function getLineHeight(size: unknown) {
 
 export function getShadow(size: unknown) {
   if (!size) {
-    return 'none';
+    return undefined;
   }
 
   return getSize(size, 'mantine-shadow');

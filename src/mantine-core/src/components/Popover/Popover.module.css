@@ -4,7 +4,7 @@
   border: rem(1px) solid var(--_popover-bd);
   padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
   box-shadow: var(--popover-shadow, none);
-  border-radius: var(--popover-radius);
+  border-radius: var(--popover-radius, var(--mantine-radius-default));
 
   &:focus {
     outline: none;

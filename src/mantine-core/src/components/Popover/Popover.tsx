@@ -167,7 +167,7 @@ const defaultProps: Partial<PopoverProps> = {
 
 const varsResolver = createVarsResolver<PopoverFactory>((_, { radius, shadow }) => ({
   dropdown: {
-    '--popover-radius': getRadius(radius),
+    '--popover-radius': radius === undefined ? undefined : getRadius(radius),
     '--popover-shadow': getShadow(shadow),
   },
 }));
