@@ -17,8 +17,12 @@
   --badge-padding-x-lg: rem(12px);
   --badge-padding-x-xl: rem(16px);
 
+  --badge-height: var(--badge-height-md);
+  --badge-fz: var(--badge-fz-md);
+  --badge-padding-x: var(--badge-padding-x-md);
+
   font-size: var(--badge-fz);
-  border-radius: var(--badge-radius);
+  border-radius: var(--badge-radius, rem(10000px));
   height: var(--badge-height);
   -webkit-tap-highlight-color: transparent;
   line-height: calc(var(--badge-height) - rem(2px));
@@ -35,9 +39,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
 
-  color: var(--badge-color);
-  background: var(--badge-bg);
-  border: var(--badge-bd);
+  color: var(--badge-color, var(--mantine-color-white));
+  background: var(--badge-bg, var(--mantine-primary-color-filled));
+  border: var(--badge-bd, rem(1px) solid transparent);
 
   &[data-block] {
     --_badge-display: flex;

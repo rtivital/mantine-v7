@@ -4,6 +4,14 @@ import { Badge } from './Badge';
 
 export default { title: 'Badge' };
 
+export function Usage() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Badge>Badge</Badge>
+    </div>
+  );
+}
+
 export function Variants() {
   return (
     <Group p={40}>
