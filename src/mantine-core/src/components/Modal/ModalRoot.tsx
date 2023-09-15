@@ -53,8 +53,6 @@ export type ModalRootFactory = Factory<{
 
 const defaultProps: Partial<ModalRootProps> = {
   __staticSelector: 'Modal',
-  yOffset: '5dvh',
-  xOffset: '5vw',
   closeOnClickOutside: true,
   withinPortal: true,
   lockScroll: true,
@@ -63,16 +61,13 @@ const defaultProps: Partial<ModalRootProps> = {
   closeOnEscape: true,
   keepMounted: false,
   zIndex: getDefaultZIndex('modal'),
-  padding: 'md',
-  size: 'md',
-  shadow: 'xl',
   transitionProps: { duration: 200, transition: 'pop' },
 };
 
 const varsResolver = createVarsResolver<ModalRootFactory>(
   (_, { radius, size, yOffset, xOffset }) => ({
     root: {
-      '--modal-radius': getRadius(radius),
+      '--modal-radius': radius === undefined ? undefined : getRadius(radius),
       '--modal-size': getSize(size, 'modal-size'),
       '--modal-y-offset': rem(yOffset),
       '--modal-x-offset': rem(xOffset),

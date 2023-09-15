@@ -59,18 +59,19 @@ export type OverlayFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<OverlayProps> = {
-  color: '#000',
-  backgroundOpacity: 0.6,
   zIndex: getDefaultZIndex('modal'),
-  radius: 0,
 };
 
 const varsResolver = createVarsResolver<OverlayFactory>(
   (_, { gradient, color, backgroundOpacity, blur, radius, zIndex }) => ({
     root: {
-      '--overlay-bg': gradient || rgba(color || '#000', backgroundOpacity ?? 0.6),
+      '--overlay-bg':
+        gradient ||
+        ((color !== undefined || backgroundOpacity !== undefined) &&
+          rgba(color || '#000', backgroundOpacity ?? 0.6)) ||
+        undefined,
       '--overlay-filter': blur ? `blur(${rem(blur)})` : undefined,
-      '--overlay-radius': getRadius(radius),
+      '--overlay-radius': radius === undefined ? undefined : getRadius(radius),
       '--overlay-z-index': zIndex?.toString(),
     },
   })

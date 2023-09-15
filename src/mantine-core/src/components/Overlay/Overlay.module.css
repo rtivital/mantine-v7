@@ -1,9 +1,9 @@
 .root {
   inset: 0;
   position: var(--_overlay-position, absolute);
-  background: var(--overlay-bg);
+  background: var(--overlay-bg, rgba(0, 0, 0, 0.6));
   backdrop-filter: var(--overlay-filter);
-  border-radius: var(--overlay-radius);
+  border-radius: var(--overlay-radius, 0);
   z-index: var(--overlay-z-index);
 
   &[data-fixed] {

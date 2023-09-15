@@ -4,13 +4,13 @@
   display: block;
   touch-action: manipulation;
   text-decoration: none;
-  border-radius: var(--paper-radius);
-  box-shadow: var(--paper-shadow);
+  border-radius: var(--paper-radius, var(--mantine-radius-default));
+  box-shadow: var(--paper-shadow, none);
   background-color: var(--mantine-color-body);
   border: var(--_paper-border-width, 0) solid var(--_paper-border-color, transparent);
 
   &[data-with-border] {
-    --_paper-border-width: 1px;
+    --_paper-border-width: rem(1px);
 
     @mixin light {
       --_paper-border-color: var(--mantine-color-gray-3);

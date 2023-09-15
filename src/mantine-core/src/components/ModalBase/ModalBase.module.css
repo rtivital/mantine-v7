@@ -10,17 +10,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--mb-padding);
-  padding-right: var(--_pr, calc(var(--mb-padding) - rem(5px)));
-  padding-left: var(--_pl, var(--mb-padding));
+  padding: var(--mb-padding, var(--mantine-spacing-md));
+  padding-right: var(--_pr, calc(var(--mb-padding, var(--mantine-spacing-md)) - rem(5px)));
+  padding-left: var(--_pl, var(--mb-padding, var(--mantine-spacing-md)));
   position: sticky;
   top: 0;
   background-color: var(--mantine-color-body);
   z-index: 1000;
 
   @mixin rtl {
-    --_pr: var(--mb-padding);
-    --_pl: calc(var(--mb-padding) - rem(5px));
+    --_pr: var(--mb-padding, var(--mantine-spacing-md));
+    --_pl: calc(var(--mb-padding, var(--mantine-spacing-md)) - rem(5px));
   }
 }
 
@@ -35,7 +35,7 @@
 
 .content {
   pointer-events: all;
-  box-shadow: var(--mb-shadow);
+  box-shadow: var(--mb-shadow, var(--mantine-shadow-xl));
 }
 
 .close {
@@ -49,8 +49,8 @@
 }
 
 .body {
-  padding: var(--mb-padding);
-  padding-top: var(--_pt, var(--mb-padding));
+  padding: var(--mb-padding, var(--mantine-spacing-md));
+  padding-top: var(--_pt, var(--mb-padding, var(--mantine-spacing-md)));
 
   &:not(:only-child) {
     --_pt: 0;
