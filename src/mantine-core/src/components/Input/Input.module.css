@@ -284,12 +284,11 @@
   word-break: break-word;
   cursor: default;
   -webkit-tap-highlight-color: transparent;
-
-  font-size: var(--input-label-size);
+  font-size: var(--input-label-size, var(--mantine-font-size-sm));
 }
 
 .required {
-  color: var(--input-asterisk-color);
+  color: var(--input-asterisk-color, var(--mantine-color-red-filled));
 }
 
 .error,
@@ -303,10 +302,10 @@
 
 .error {
   color: var(--mantine-color-error);
-  font-size: var(--input-error-size);
+  font-size: var(--input-error-size, calc(var(--mantine-font-size-sm) - rem(2px)));
 }
 
 .description {
   color: var(--mantine-color-dimmed);
-  font-size: var(--input-description-size);
+  font-size: var(--input-description-size, calc(var(--mantine-font-size-sm) - rem(2px)));
 }

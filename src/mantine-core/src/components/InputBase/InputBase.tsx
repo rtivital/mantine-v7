@@ -28,7 +28,6 @@ export type InputBaseFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<InputBaseProps> = {
-  size: 'sm',
   __staticSelector: 'InputBase',
   withAria: true,
 };
