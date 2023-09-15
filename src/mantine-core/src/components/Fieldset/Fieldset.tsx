@@ -45,7 +45,7 @@ const defaultProps: Partial<FieldsetProps> = {
 
 const varsResolver = createVarsResolver<FieldsetFactory>((_, { radius }) => ({
   root: {
-    '--fieldset-radius': getRadius(radius),
+    '--fieldset-radius': radius === undefined ? undefined : getRadius(radius),
   },
 }));
 

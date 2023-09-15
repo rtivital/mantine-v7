@@ -4,7 +4,6 @@
   --label-lh-md: rem(24px);
   --label-lh-lg: rem(30px);
   --label-lh-xl: rem(36px);
-
   --label-lh: var(--label-lh-sm);
 
   &[data-label-position='left'] {

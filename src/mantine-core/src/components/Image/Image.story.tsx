@@ -10,7 +10,7 @@ const url =
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Image src={url} h={600} radius="md" />
+      <Image src={url} h={600} />
     </div>
   );
 }

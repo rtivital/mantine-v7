@@ -43,13 +43,11 @@ export type ImageFactory = PolymorphicFactory<{
   vars: ImageCssVariables;
 }>;
 
-const defaultProps: Partial<ImageProps> = {
-  radius: 0,
-};
+const defaultProps: Partial<ImageProps> = {};
 
 const varsResolver = createVarsResolver<ImageFactory>((_, { radius, fit }) => ({
   root: {
-    '--image-radius': getRadius(radius),
+    '--image-radius': radius === undefined ? undefined : getRadius(radius),
     '--image-object-fit': fit,
   },
 }));

@@ -89,15 +89,14 @@ const defaultProps: Partial<IndicatorProps> = {
   withBorder: false,
   disabled: false,
   processing: false,
-  size: 10,
 };
 
 const varsResolver = createVarsResolver<IndicatorFactory>(
   (theme, { color, position, offset, size, radius, zIndex }) => ({
     root: {
-      '--indicator-color': getThemeColor(color, theme),
+      '--indicator-color': color ? getThemeColor(color, theme) : undefined,
       '--indicator-size': rem(size),
-      '--indicator-radius': typeof radius !== 'undefined' ? getRadius(radius) : undefined,
+      '--indicator-radius': radius === undefined ? undefined : getRadius(radius),
       '--indicator-z-index': zIndex?.toString(),
       ...getPositionVariables(position, offset),
     },

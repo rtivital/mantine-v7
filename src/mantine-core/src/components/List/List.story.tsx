@@ -8,7 +8,7 @@ export default { title: 'List' };
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>
-      <List type="ordered" size="lg" withPadding>
+      <List type="ordered">
         <List.Item>Clone or download repository from GitHub</List.Item>
         <List.Item>Install dependencies with yarn</List.Item>
         <List.Item>To start development server run npm start command</List.Item>

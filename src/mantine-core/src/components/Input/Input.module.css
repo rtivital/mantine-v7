@@ -14,6 +14,7 @@
   --input-padding-y-md: rem(8px);
   --input-padding-y-lg: rem(10px);
   --input-padding-y-xl: rem(13px);
+  --input-padding-y: var(--input-padding-y-sm);
 
   --_input-height: var(--input-height, var(--input-height-sm));
   --_input-radius: var(--input-radius, var(--mantine-radius-default));

@@ -11,6 +11,9 @@
 }
 
 .root {
+  --indicator-size: rem(10px);
+  --indicator-color: var(--mantine-primary-color-filled);
+
   position: relative;
   display: var(--_indicator-display, block);
 

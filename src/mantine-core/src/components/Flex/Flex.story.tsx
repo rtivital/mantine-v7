@@ -7,7 +7,7 @@ export default { title: 'Flex' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Flex gap="2em" direction={{ base: 'column', sm: 'row' }}>
+      <Flex>
         <Button>First</Button>
         <Button>Second</Button>
       </Flex>

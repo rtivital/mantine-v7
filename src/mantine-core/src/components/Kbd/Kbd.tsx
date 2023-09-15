@@ -31,9 +31,7 @@ export type KbdFactory = Factory<{
   vars: KbdCssVariables;
 }>;
 
-const defaultProps: Partial<KbdProps> = {
-  size: 'sm',
-};
+const defaultProps: Partial<KbdProps> = {};
 
 const varsResolver = createVarsResolver<KbdFactory>((_, { size }) => ({
   root: {

@@ -1,7 +1,7 @@
 .root {
   padding: var(--mantine-spacing-lg);
   padding-top: var(--mantine-spacing-xs);
-  border-radius: var(--fieldset-radius);
+  border-radius: var(--fieldset-radius, var(--mantine-radius-default));
 }
 
 .root--default {

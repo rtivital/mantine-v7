@@ -1,7 +1,7 @@
 .root {
   list-style-position: inside;
-  font-size: var(--list-fz);
-  line-height: var(--list-lh);
+  font-size: var(--list-fz, var(--mantine-fz-md));
+  line-height: var(--list-lh, var(--mantine-line-height-md));
   margin: 0;
   padding: 0;
   padding-left: var(--_list-pl, 0);
@@ -33,7 +33,7 @@
   }
 
   &:not(:first-of-type) {
-    --_item-mt: var(--list-spacing);
+    --_item-mt: var(--list-spacing, 0);
   }
 
   &[data-centered] {
