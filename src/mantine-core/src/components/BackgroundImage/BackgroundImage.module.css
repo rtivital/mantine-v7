@@ -5,5 +5,5 @@
   width: 100%;
   border: 0;
   text-decoration: none;
-  border-radius: var(--bi-radius);
+  border-radius: var(--bi-radius, 0);
 }
