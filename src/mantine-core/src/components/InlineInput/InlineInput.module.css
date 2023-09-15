@@ -5,6 +5,8 @@
   --label-lh-lg: rem(30px);
   --label-lh-xl: rem(36px);
 
+  --label-lh: var(--label-lh-sm);
+
   &[data-label-position='left'] {
     --_label-order: 1;
     --_offset-right: var(--mantine-spacing-sm);
@@ -36,7 +38,7 @@
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
   flex-direction: column;
-  font-size: var(--label-fz);
+  font-size: var(--label-fz, var(--mantine-font-size-sm));
   line-height: var(--label-lh);
   cursor: var(--mantine-cursor-type);
   order: var(--_label-order);

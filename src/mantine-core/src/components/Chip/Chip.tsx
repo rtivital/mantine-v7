@@ -94,9 +94,6 @@ export type ChipFactory = Factory<{
 
 const defaultProps: Partial<ChipProps> = {
   type: 'checkbox',
-  size: 'sm',
-  radius: 'xl',
-  variant: 'outline',
 };
 
 const varsResolver = createVarsResolver<ChipFactory>((theme, { size, radius, variant, color }) => {
@@ -110,14 +107,14 @@ const varsResolver = createVarsResolver<ChipFactory>((theme, { size, radius, var
     root: {
       '--chip-fz': getFontSize(size),
       '--chip-size': getSize(size, 'chip-size'),
-      '--chip-radius': getRadius(radius),
+      '--chip-radius': radius === undefined ? undefined : getRadius(radius),
       '--chip-checked-padding': getSize(size, 'chip-checked-padding'),
       '--chip-padding': getSize(size, 'chip-padding'),
       '--chip-icon-size': getSize(size, 'chip-icon-size'),
-      '--chip-bg': colors.background,
-      '--chip-hover': colors.hover,
-      '--chip-color': colors.color,
-      '--chip-bd': colors.border,
+      '--chip-bg': color || variant ? colors.background : undefined,
+      '--chip-hover': color || variant ? colors.hover : undefined,
+      '--chip-color': color || variant ? colors.color : undefined,
+      '--chip-bd': color || variant ? colors.border : undefined,
       '--chip-spacing': getSize(size, 'chip-spacing'),
     },
   };
@@ -208,7 +205,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
         htmlFor={uuid}
         data-checked={_checked || undefined}
         data-disabled={disabled || undefined}
-        {...getStyles('label', { variant })}
+        {...getStyles('label', { variant: variant || 'filled' })}
       >
         {_checked && (
           <span {...getStyles('iconWrapper')}>

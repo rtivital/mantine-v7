@@ -53,18 +53,15 @@ export type BurgerFactory = Factory<{
   vars: BurgerCssVariables;
 }>;
 
-const defaultProps: Partial<BurgerProps> = {
-  size: 'md',
-  transitionDuration: 300,
-  transitionTimingFunction: 'ease',
-};
+const defaultProps: Partial<BurgerProps> = {};
 
 const varsResolver = createVarsResolver<BurgerFactory>(
   (theme, { color, size, transitionDuration, transitionTimingFunction }) => ({
     root: {
       '--burger-color': color ? getThemeColor(color, theme) : undefined,
       '--burger-size': getSize(size, 'burger-size'),
-      '--burger-transition-duration': `${transitionDuration}ms`,
+      '--burger-transition-duration':
+        transitionDuration === undefined ? undefined : `${transitionDuration}ms`,
       '--burger-transition-timing-function': transitionTimingFunction,
     },
   })

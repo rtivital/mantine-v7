@@ -6,15 +6,11 @@ import {
   polymorphicFactory,
   useProps,
   useStyles,
-  createVarsResolver,
   PolymorphicFactory,
 } from '../../core';
 import classes from './Center.module.css';
 
 export type CenterStylesNames = 'root';
-export type CenterCssVariables = {
-  root: '--center-display';
-};
 
 export interface CenterProps extends BoxProps, StylesApiProps<CenterFactory> {
   /** Content that should be centered vertically and horizontally */
@@ -29,14 +25,9 @@ export type CenterFactory = PolymorphicFactory<{
   defaultRef: HTMLDivElement;
   defaultComponent: 'div';
   stylesNames: CenterStylesNames;
-  vars: CenterCssVariables;
 }>;
 
 const defaultProps: Partial<CenterProps> = {};
-
-const varsResolver = createVarsResolver<CenterFactory>((_, { inline }) => ({
-  root: { '--center-display': inline ? 'inline-flex' : 'flex' },
-}));
 
 export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
   const props = useProps('Center', defaultProps, _props);
@@ -52,10 +43,9 @@ export const Center = polymorphicFactory<CenterFactory>((_props, ref) => {
     styles,
     unstyled,
     vars,
-    varsResolver,
   });
 
-  return <Box ref={ref} {...getStyles('root')} {...others} />;
+  return <Box ref={ref} mod={{ inline }} {...getStyles('root')} {...others} />;
 });
 
 Center.classes = classes;

@@ -28,15 +28,25 @@
   --chip-spacing-md: rem(16px);
   --chip-spacing-lg: rem(20px);
   --chip-spacing-xl: rem(22px);
+
+  --chip-size: var(--chip-size-sm);
+  --chip-icon-size: var(--chip-icon-size-sm);
+  --chip-padding: var(--chip-padding-sm);
+  --chip-spacing: var(--chip-spacing-sm);
+  --chip-checked-padding: var(--chip-checked-padding-sm);
+  --chip-bg: var(--mantine-primary-color-filled);
+  --chip-hover: var(--mantine-primary-color-filled-hover);
+  --chip-color: var(--mantine-color-white);
+  --chip-bd: rem(1px) solid transparent;
 }
 
 .label {
   display: inline-flex;
   align-items: center;
   user-select: none;
-  border-radius: var(--chip-radius);
+  border-radius: var(--chip-radius, rem(1000px));
   height: var(--chip-size);
-  font-size: var(--chip-fz);
+  font-size: var(--chip-fz, var(--mantine-font-size-sm));
   line-height: calc(var(--chip-size) - rem(2px));
   padding-left: var(--_chip-padding, var(--chip-padding));
   padding-right: var(--_chip-padding, var(--chip-padding));

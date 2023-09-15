@@ -5,7 +5,7 @@ export default { title: 'ColorPicker' };
 
 export function Usage() {
   return (
-    <div style={{ padding: 40 }}>
+    <div style={{ padding: 40, maxWidth: 300 }}>
       <ColorPicker
         swatches={[
           '#25262b',

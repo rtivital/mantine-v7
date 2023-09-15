@@ -10,8 +10,8 @@
 }
 
 .separator {
-  margin-left: var(--bc-separator-margin);
-  margin-right: var(--bc-separator-margin);
+  margin-left: var(--bc-separator-margin, var(--mantine-spacing-xs));
+  margin-right: var(--bc-separator-margin, var(--mantine-spacing-xs));
   color: var(--_separator-color);
   line-height: 1;
   display: flex;

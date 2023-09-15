@@ -1,4 +1,6 @@
 .root {
+  --card-padding: var(--mantine-spacing-md);
+
   position: relative;
   overflow: hidden;
   display: flex;

@@ -61,7 +61,6 @@ const defaultProps: Partial<DialogProps> = {
   shadow: 'md',
   p: 'md',
   withBorder: false,
-  size: 'md',
   transitionProps: { transition: 'pop-top-right', duration: 200 },
   position: {
     bottom: 30,

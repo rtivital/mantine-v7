@@ -1,5 +1,9 @@
 .root {
-  display: var(--center-display);
+  display: var(--_center-display, flex);
   align-items: center;
   justify-content: center;
+
+  &[data-inline] {
+    --_center-display: inline-flex;
+  }
 }

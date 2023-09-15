@@ -25,7 +25,6 @@ export type CloseButtonFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps: Partial<CloseButtonProps> = {
-  iconSize: '70%',
   variant: 'subtle',
   color: 'gray',
 };

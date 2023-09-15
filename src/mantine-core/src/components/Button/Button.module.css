@@ -160,6 +160,7 @@
 
 .group {
   display: flex;
+  --button-border-width: rem(1px);
 
   &[data-orientation='horizontal'] {
     flex-direction: row;

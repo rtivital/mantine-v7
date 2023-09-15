@@ -43,7 +43,6 @@ export type BreadcrumbsFactory = Factory<{
 
 const defaultProps: Partial<BreadcrumbsProps> = {
   separator: '/',
-  separatorMargin: 'xs',
 };
 
 const varsResolver = createVarsResolver<BreadcrumbsFactory>((_, { separatorMargin }) => ({

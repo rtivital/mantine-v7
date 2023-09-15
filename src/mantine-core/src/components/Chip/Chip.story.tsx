@@ -17,14 +17,14 @@ export function WithTooltip() {
 
 export function Usage() {
   return (
-    <div style={{ padding: 40 }}>
-      <Chip type="checkbox" variant="light">
+    <div style={{ padding: 40, display: 'flex', gap: 40 }}>
+      <Chip type="checkbox" variant="light" defaultChecked>
         Light
       </Chip>
-      <Chip type="checkbox" variant="filled">
+      <Chip type="checkbox" defaultChecked>
         Filled
       </Chip>
-      <Chip type="checkbox" variant="outline">
+      <Chip type="checkbox" variant="outline" defaultChecked>
         Outline
       </Chip>
     </div>

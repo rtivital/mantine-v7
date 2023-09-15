@@ -81,7 +81,6 @@ export type CheckboxFactory = Factory<{
 }>;
 
 const defaultProps: Partial<CheckboxProps> = {
-  size: 'sm',
   labelPosition: 'right',
   icon: CheckboxIcon,
 };
@@ -89,8 +88,8 @@ const defaultProps: Partial<CheckboxProps> = {
 const varsResolver = createVarsResolver<CheckboxFactory>((theme, { radius, color, size }) => ({
   root: {
     '--checkbox-size': getSize(size, 'checkbox-size'),
-    '--checkbox-radius': getRadius(radius),
-    '--checkbox-color': getThemeColor(color, theme),
+    '--checkbox-radius': radius === undefined ? undefined : getRadius(radius),
+    '--checkbox-color': color ? getThemeColor(color, theme) : undefined,
   },
 }));
 

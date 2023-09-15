@@ -6,7 +6,7 @@ export default { title: 'CloseButton' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <CloseButton variant="filled" size="xs" />
+      <CloseButton />
       <CloseButton variant="filled" size="sm" />
       <CloseButton variant="filled" size="md" />
       <CloseButton variant="filled" size="lg" />

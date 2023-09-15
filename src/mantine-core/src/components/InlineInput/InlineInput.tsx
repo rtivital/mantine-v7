@@ -58,7 +58,7 @@ export const InlineInput = forwardRef<HTMLDivElement, InlineInputProps>(
       id,
       disabled,
       error,
-      size = 'sm',
+      size,
       labelPosition = 'left',
       variant,
       style,

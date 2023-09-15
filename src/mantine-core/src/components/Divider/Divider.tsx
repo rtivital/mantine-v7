@@ -51,7 +51,6 @@ export type DividerFactory = Factory<{
 }>;
 
 const defaultProps: Partial<DividerProps> = {
-  size: 'xs',
   orientation: 'horizontal',
 };
 

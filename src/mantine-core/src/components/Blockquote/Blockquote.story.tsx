@@ -10,7 +10,6 @@ export function Usage() {
     <div style={{ padding: 40, maxWidth: 820 }}>
       <Blockquote
         icon={<IconInfoCircle style={{ width: rem(32), height: rem(32) }} stroke={1.5} />}
-        color="#F0000E"
       >
         <b>Hello there</b>
         <p>

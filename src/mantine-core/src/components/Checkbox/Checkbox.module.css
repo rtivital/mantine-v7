@@ -4,6 +4,9 @@
   --checkbox-size-md: rem(24px);
   --checkbox-size-lg: rem(30px);
   --checkbox-size-xl: rem(36px);
+
+  --checkbox-size: var(--checkbox-size-sm);
+  --checkbox-color: var(--mantine-primary-color-filled);
 }
 
 .inner {
@@ -23,7 +26,7 @@
   border: rem(1px) solid var(--_checkbox-bd-color);
   width: var(--checkbox-size);
   height: var(--checkbox-size);
-  border-radius: var(--checkbox-radius);
+  border-radius: var(--checkbox-radius, var(--mantine-radius-default));
   padding: 0;
   display: block;
   margin: 0;

@@ -113,24 +113,21 @@ export type ColorPickerFactory = Factory<{
 
 const defaultProps: Partial<ColorPickerProps> = {
   swatchesPerRow: 7,
-  size: 'sm',
   withPicker: true,
   focusable: true,
   __staticSelector: 'ColorPicker',
 };
 
-const varsResolver = createVarsResolver<ColorPickerFactory>(
-  (_, { size, fullWidth, swatchesPerRow }) => ({
-    wrapper: {
-      '--cp-preview-size': getSize(size, 'cp-preview-size'),
-      '--cp-width': fullWidth ? '100%' : getSize(size, 'cp-width'),
-      '--cp-body-spacing': getSpacing(size),
-      '--cp-swatch-size': `${100 / swatchesPerRow!}%`,
-      '--cp-thumb-size': getSize(size, 'cp-thumb-size'),
-      '--cp-saturation-height': getSize(size, 'cp-saturation-height'),
-    },
-  })
-);
+const varsResolver = createVarsResolver<ColorPickerFactory>((_, { size, swatchesPerRow }) => ({
+  wrapper: {
+    '--cp-preview-size': getSize(size, 'cp-preview-size'),
+    '--cp-width': getSize(size, 'cp-width'),
+    '--cp-body-spacing': getSpacing(size),
+    '--cp-swatch-size': `${100 / swatchesPerRow!}%`,
+    '--cp-thumb-size': getSize(size, 'cp-thumb-size'),
+    '--cp-saturation-height': getSize(size, 'cp-saturation-height'),
+  },
+}));
 
 export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
   const props = useProps('ColorPicker', defaultProps, _props);
@@ -224,7 +221,13 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
   return (
     <ColorPickerProvider value={{ getStyles, unstyled }}>
-      <Box ref={ref} {...getStyles('wrapper')} size={size} {...others}>
+      <Box
+        ref={ref}
+        {...getStyles('wrapper')}
+        size={size}
+        mod={{ 'full-width': fullWidth }}
+        {...others}
+      >
         {withPicker && (
           <>
             <Saturation
