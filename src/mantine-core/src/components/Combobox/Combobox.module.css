@@ -165,6 +165,7 @@
   --combobox-chevron-size-md: rem(20px);
   --combobox-chevron-size-lg: rem(24px);
   --combobox-chevron-size-xl: rem(28px);
+  --combobox-chevron-size: var(--combobox-chevron-size-sm);
 
   width: var(--combobox-chevron-size);
   height: var(--combobox-chevron-size);

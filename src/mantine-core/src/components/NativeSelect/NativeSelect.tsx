@@ -17,7 +17,6 @@ export type NativeSelectFactory = Factory<{
 }>;
 
 const defaultProps: Partial<NativeSelectProps> = {
-  size: 'sm',
   rightSectionPointerEvents: 'none',
 };
 
@@ -43,7 +42,7 @@ export const NativeSelect = factory<NativeSelectFactory>((props, ref) => {
       error={error}
       unstyled={unstyled}
       rightSection={
-        rightSection || <ComboboxChevron size={size!} error={error} unstyled={unstyled} />
+        rightSection || <ComboboxChevron size={size} error={error} unstyled={unstyled} />
       }
     >
       {children || options}

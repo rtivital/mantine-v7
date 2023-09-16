@@ -35,7 +35,6 @@ export type ComboboxChevronFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ComboboxChevronProps> = {
-  size: 'sm',
   error: null,
 };
 
