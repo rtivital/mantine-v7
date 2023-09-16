@@ -3,6 +3,7 @@ import React from 'react';
 import { render, tests, userEvent, screen } from '@mantine/tests';
 import { datesTests } from '@mantine/dates-tests';
 import { YearPicker, YearPickerProps, YearPickerStylesNames } from './YearPicker';
+import { DatesProvider } from '../DatesProvider';
 
 const defaultProps = {};
 
@@ -44,6 +45,28 @@ describe('@mantine/dates/YearPicker', () => {
     expect(container.querySelector('[data-selected]')!.textContent).toBe('2020');
   });
 
+  it('can be uncontrolled (type="default") with timezone (UTC)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <YearPicker {...defaultProps} date={new Date(2019, 11, 31, 23)} />
+      </DatesProvider>
+    );
+    expect(container.querySelector('[data-selected]')).toBe(null);
+    await userEvent.click(container.querySelector('table button')!);
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2020');
+  });
+
+  it('can be uncontrolled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
+        <YearPicker {...defaultProps} date={new Date(2020, 11, 31, 23)} />
+      </DatesProvider>
+    );
+    expect(container.querySelector('[data-selected]')).toBe(null);
+    await userEvent.click(container.querySelector('table button')!);
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2020');
+  });
+
   it('can be controlled (type="default")', async () => {
     const spy = jest.fn();
     const { container } = render(
@@ -61,9 +84,83 @@ describe('@mantine/dates/YearPicker', () => {
     expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1));
   });
 
+  it('can be controlled (type="default") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <YearPicker
+          {...defaultProps}
+          date={new Date(2019, 11, 31, 23)}
+          value={new Date(2022, 11, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2023');
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith(new Date(2019, 11, 31, 19));
+  });
+
+  it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
+        <YearPicker
+          {...defaultProps}
+          date={new Date(2020, 10, 31, 23)}
+          value={new Date(2022, 11, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2022');
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith(new Date(2020, 0, 1, 3));
+  });
+
   it('can be uncontrolled (type="multiple")', async () => {
     const { container } = render(
       <YearPicker {...defaultProps} type="multiple" date={new Date(2022, 3, 11)} />
+    );
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(0);
+    await userEvent.click(container.querySelectorAll('table button')[0]);
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(1);
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2020');
+
+    await userEvent.click(container.querySelectorAll('table button')[1]);
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll('[data-selected]')).map((node) => node.textContent)
+    ).toStrictEqual(['2020', '2021']);
+  });
+
+  it('can be uncontrolled (type="multiple") with timezone (UTC)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <YearPicker {...defaultProps} type="multiple" date={new Date(2022, 3, 11)} />
+      </DatesProvider>
+    );
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(0);
+    await userEvent.click(container.querySelectorAll('table button')[0]);
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(1);
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('2020');
+
+    await userEvent.click(container.querySelectorAll('table button')[1]);
+    expect(container.querySelectorAll('[data-selected]')).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll('[data-selected]')).map((node) => node.textContent)
+    ).toStrictEqual(['2020', '2021']);
+  });
+
+  it('can be uncontrolled (type="multiple") with timezone (America/Los_Angeles)', async () => {
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
+        <YearPicker {...defaultProps} type="multiple" date={new Date(2022, 3, 11)} />
+      </DatesProvider>
     );
     expect(container.querySelectorAll('[data-selected]')).toHaveLength(0);
     await userEvent.click(container.querySelectorAll('table button')[0]);
@@ -91,6 +188,42 @@ describe('@mantine/dates/YearPicker', () => {
 
     await userEvent.click(container.querySelector('table button')!);
     expect(spy).toHaveBeenCalledWith([new Date(2023, 3, 11), new Date(2020, 0, 1)]);
+  });
+
+  it('can be controlled (type="multiple") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+          value={[new Date(2023, 3, 11)]}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith([new Date(2023, 3, 11), new Date(2019, 11, 31, 19)]);
+  });
+
+  it('can be controlled (type="multiple") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
+        <YearPicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 3, 11)}
+          value={[new Date(2023, 3, 11)]}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith([new Date(2023, 3, 11), new Date(2020, 0, 1, 3)]);
   });
 
   it('can be uncontrolled (type="range")', async () => {

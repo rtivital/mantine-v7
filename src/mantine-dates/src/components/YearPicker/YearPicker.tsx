@@ -14,6 +14,8 @@ import { DecadeLevelBaseSettings } from '../DecadeLevel';
 import { PickerBaseProps, DatePickerType } from '../../types';
 import { Calendar, CalendarBaseProps } from '../Calendar';
 import { DecadeLevelGroupStylesNames } from '../DecadeLevelGroup';
+import { shiftTimezone } from '../../utils';
+import { useDatesContext } from '../DatesProvider';
 
 export type YearPickerStylesNames = DecadeLevelGroupStylesNames;
 
@@ -62,6 +64,7 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
     onMouseLeave,
     onYearSelect,
     __updateDateOnYearSelect,
+    __timezoneApplied,
     ...others
   } = props;
 
@@ -74,6 +77,7 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
     defaultValue,
     onChange,
     onMouseLeave,
+    applyTimezone: !__timezoneApplied,
   });
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<YearPickerFactory>({
@@ -81,6 +85,7 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
     styles,
     props,
   });
+  const ctx = useDatesContext();
 
   return (
     <Calendar
@@ -101,6 +106,8 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       {...others}
+      date={shiftTimezone('add', others.date, ctx.getTimezone(), __timezoneApplied)}
+      __timezoneApplied
     />
   );
 }) as any;

@@ -15,7 +15,7 @@ import {
   CloseButton,
   MantineSize,
 } from '@mantine/core';
-import { useUncontrolled, useDidUpdate } from '@mantine/hooks';
+import { useDidUpdate } from '@mantine/hooks';
 import dayjs from 'dayjs';
 import { Calendar, CalendarBaseProps, CalendarStylesNames, pickCalendarProps } from '../Calendar';
 import { DecadeLevelSettings } from '../DecadeLevel';
@@ -27,6 +27,7 @@ import { DateValue, CalendarLevel } from '../../types';
 import { useDatesContext } from '../DatesProvider';
 import { isDateValid } from './is-date-valid/is-date-valid';
 import { dateStringParser } from './date-string-parser/date-string-parser';
+import { useUncontrolledDates } from '../../hooks';
 
 export type DateInputStylesNames = __InputStylesNames | CalendarStylesNames;
 
@@ -138,7 +139,9 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   const ctx = useDatesContext();
   const defaultDateParser = (val: string) => {
     const parsedDate = dayjs(val, valueFormat, ctx.getLocale(locale)).toDate();
-    return Number.isNaN(parsedDate.getTime()) ? dateStringParser(val) : parsedDate;
+    return Number.isNaN(parsedDate.getTime())
+      ? dateStringParser(val, ctx.getTimezone())
+      : parsedDate;
   };
 
   const _dateParser = dateParser || defaultDateParser;
@@ -147,18 +150,18 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
   const formatValue = (val: Date) =>
     val ? dayjs(val).locale(ctx.getLocale(locale)).format(valueFormat) : '';
 
-  const [_value, setValue, controlled] = useUncontrolled({
+  const [_value, setValue, controlled] = useUncontrolledDates({
+    type: 'default',
     value,
     defaultValue,
-    finalValue: null,
     onChange,
   });
 
-  const [_date, setDate] = useUncontrolled({
+  const [_date, setDate] = useUncontrolledDates({
+    type: 'default',
     value: date,
     defaultValue: defaultValue || defaultDate,
-    finalValue: null,
-    onChange: onDateChange,
+    onChange: onDateChange as any,
   });
 
   useEffect(() => {
@@ -277,6 +280,7 @@ export const DateInput = factory<DateInputFactory>((_props, ref) => {
           <Popover.Dropdown onMouseDown={(event) => event.preventDefault()} data-dates-dropdown>
             <Calendar
               __staticSelector="DateInput"
+              __timezoneApplied
               {...calendarProps}
               classNames={classNames}
               styles={styles}
