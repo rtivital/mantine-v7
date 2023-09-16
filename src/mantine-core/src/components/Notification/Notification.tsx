@@ -16,7 +16,6 @@ import {
 } from '../../core';
 import classes from './Notification.module.css';
 import { Loader } from '../Loader';
-import { Text } from '../Text';
 import { CloseButton } from '../CloseButton';
 
 export type NotificationStylesNames =
@@ -81,8 +80,8 @@ const defaultProps: Partial<NotificationProps> = {
 
 const varsResolver = createVarsResolver<NotificationFactory>((theme, { radius, color }) => ({
   root: {
-    '--notification-radius': getRadius(radius),
-    '--notification-color': getThemeColor(color, theme),
+    '--notification-radius': radius === undefined ? undefined : getRadius(radius),
+    '--notification-color': color ? getThemeColor(color, theme) : undefined,
   },
 }));
 
@@ -138,15 +137,11 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
       {loading && <Loader size={28} color={color} {...getStyles('loader')} />}
 
       <div {...getStyles('body')}>
-        {title && (
-          <Text {...getStyles('title')} size="sm" fw={500}>
-            {title}
-          </Text>
-        )}
+        {title && <div {...getStyles('title')}>{title}</div>}
 
-        <Text {...getStyles('description')} mod={{ 'data-with-title': !!title }} size="sm">
+        <Box {...getStyles('description')} mod={{ 'data-with-title': !!title }}>
           {children}
-        </Text>
+        </Box>
       </div>
 
       {withCloseButton && (

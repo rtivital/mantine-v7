@@ -10,6 +10,16 @@ import { Notification } from './Notification';
 
 export default { title: 'Notification' };
 
+export function SingleNotification() {
+  return (
+    <div style={{ padding: 40, maxWidth: 500 }}>
+      <Notification onClose={() => {}} title="Notification title">
+        Notification body
+      </Notification>
+    </div>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 60 }}>

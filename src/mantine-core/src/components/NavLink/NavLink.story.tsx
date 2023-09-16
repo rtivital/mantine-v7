@@ -6,6 +6,26 @@ import { NavLink } from './NavLink';
 
 export default { title: 'NavLink' };
 
+export function SingleButton() {
+  return (
+    <div style={{ padding: 40, maxWidth: 320 }}>
+      <NavLink
+        label="Navigation link"
+        description="Some description here"
+        leftSection={<IconHome2 size={16} stroke={1.5} />}
+        rightSection={<IconChevronRight size={16} stroke={1.5} />}
+      />
+      <NavLink
+        label="Navigation link"
+        description="Some description here"
+        leftSection={<IconHome2 size={16} stroke={1.5} />}
+        rightSection={<IconChevronRight size={16} stroke={1.5} />}
+        active
+      />
+    </div>
+  );
+}
+
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 320 }}>

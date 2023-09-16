@@ -88,24 +88,21 @@ export type NavLinkFactory = PolymorphicFactory<{
   variant: NavLinkVariant;
 }>;
 
-const defaultProps: Partial<NavLinkProps> = {
-  variant: 'light',
-  childrenOffset: 'lg',
-};
+const defaultProps: Partial<NavLinkProps> = {};
 
 const varsResolver = createVarsResolver<NavLinkFactory>(
   (theme, { variant, color, childrenOffset }) => {
     const colors = theme.variantColorResolver({
       color: color || theme.primaryColor,
       theme,
-      variant: variant!,
+      variant: variant || 'light',
     });
 
     return {
       root: {
-        '--nl-bg': colors.background,
-        '--nl-hover': colors.hover,
-        '--nl-color': colors.color,
+        '--nl-bg': color || variant ? colors.background : undefined,
+        '--nl-hover': color || variant ? colors.hover : undefined,
+        '--nl-color': color || variant ? colors.color : undefined,
       },
 
       children: {

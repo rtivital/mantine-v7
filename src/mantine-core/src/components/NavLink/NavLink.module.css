@@ -1,4 +1,8 @@
 .root {
+  --nl-bg: var(--mantine-primary-color-light);
+  --nl-hover: var(--mantine-primary-color-light-hover);
+  --nl-color: var(--mantine-primary-color-light-color);
+
   display: flex;
   align-items: center;
   width: 100%;
@@ -103,12 +107,12 @@
 }
 
 .children {
-  padding-left: var(--_children-pl, var(--nl-offset));
+  padding-left: var(--_children-pl, var(--nl-offset, var(--mantine-spacing-lg)));
   padding-right: var(--_children-pr, 0);
 
   @mixin rtl {
     --_children-pl: 0;
-    --_children-pr: var(--nl-offset);
+    --_children-pr: var(--nl-offset, var(--mantine-spacing-lg));
   }
 }
 
