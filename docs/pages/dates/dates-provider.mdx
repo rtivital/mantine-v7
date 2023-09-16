@@ -28,13 +28,13 @@ The `timezone` parameter sets the timezone context for all components integrated
 that all date and time-related data displayed within your application will adhere to the specified timezone. This simplifies
 the process of maintaining consistency in how dates and times are presented to users across various parts of your application.
 
-### Accessing the Timezone Information
+## Accessing the timezone information
 
 If you need to access the current timezone information from other parts of your application, you can leverage the
 `getTimezone()` function provided by the `useDatesContext()` hook. This function allows you to retrieve the active
 timezone setting and use it as needed.
 
-### Date Format Considerations
+## Date format considerations
 
 It's important to note that the `DatesProvider` system supports the provision of dates in the user's local timezone.
 However, many backend systems and data sources use Coordinated Universal Time (UTC) timestamps. In such cases, you can
