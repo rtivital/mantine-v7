@@ -19,7 +19,7 @@ import classes from './CloseButton.module.css';
 
 export type CloseButtonVariant = 'subtle' | 'transparent';
 export type CloseButtonStylesNames = 'root';
-export type ActionIconCssVariables = {
+export type CloseButtonCssVariables = {
   root: '--cb-icon-size' | '--cb-size' | '--cb-radius';
 };
 
@@ -48,6 +48,7 @@ export type CloseButtonFactory = PolymorphicFactory<{
   defaultRef: HTMLButtonElement;
   stylesNames: CloseButtonStylesNames;
   variant: CloseButtonVariant;
+  vars: CloseButtonCssVariables;
 }>;
 
 const defaultProps: Partial<CloseButtonProps> = {

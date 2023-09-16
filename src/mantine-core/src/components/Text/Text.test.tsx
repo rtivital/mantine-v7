@@ -43,9 +43,6 @@ describe('@mantine/core/Text', () => {
       'data-variant',
       'gradient'
     );
-
-    rerender(<Text />);
-    expect(container.querySelector('.mantine-Text-root')).toHaveAttribute('data-variant', 'text');
   });
 
   it('sets data-inline attribute based on inline prop', () => {

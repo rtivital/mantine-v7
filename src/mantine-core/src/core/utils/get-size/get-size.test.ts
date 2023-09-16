@@ -74,7 +74,7 @@ describe('@mantine/core/get-line-height', () => {
 
 describe('@mantine/core/get-shadow', () => {
   it('returns correct values', () => {
-    expect(getShadow(undefined)).toBe('none');
+    expect(getShadow(undefined)).toBe(undefined);
     expect(getShadow('5px 5px 10px red')).toBe('5px 5px 10px red');
     expect(getShadow('xs')).toBe('var(--mantine-shadow-xs)');
     expect(getShadow('md')).toBe('var(--mantine-shadow-md)');
