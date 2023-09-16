@@ -2,6 +2,7 @@ import React from 'react';
 import { render, tests, userEvent } from '@mantine/tests';
 import { datesTests } from '@mantine/dates-tests';
 import { DatePicker, DatePickerProps, DatePickerStylesNames } from './DatePicker';
+import { DatesProvider } from '../DatesProvider';
 
 const defaultProps = {
   defaultDate: new Date(2022, 3, 11),
@@ -76,6 +77,44 @@ describe('@mantine/dates/DatePicker', () => {
     expect(spy).toHaveBeenCalledWith(new Date(2022, 2, 28));
   });
 
+  it('can be controlled (type="default") with timezone (UTC)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <DatePicker
+          {...defaultProps}
+          date={new Date(2022, 0, 31, 23)}
+          value={new Date(2022, 0, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('1');
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith(new Date(2022, 0, 30, 19));
+  });
+
+  it('can be controlled (type="default") with timezone (America/Los_Angeles)', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'America/Los_Angeles' }}>
+        <DatePicker
+          {...defaultProps}
+          date={new Date(2022, 0, 31, 23)}
+          value={new Date(2022, 0, 31, 23)}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    expect(container.querySelector('[data-selected]')!.textContent).toBe('31');
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith(new Date(2021, 11, 27, 3));
+  });
+
   it('can be uncontrolled (type="multiple")', async () => {
     const { container } = render(
       <DatePicker {...defaultProps} type="multiple" date={new Date(2022, 3, 11)} />
@@ -106,6 +145,24 @@ describe('@mantine/dates/DatePicker', () => {
 
     await userEvent.click(container.querySelector('table button')!);
     expect(spy).toHaveBeenCalledWith([new Date(2022, 3, 11), new Date(2022, 2, 28)]);
+  });
+
+  it('can be controlled (type="multiple") with timezone', async () => {
+    const spy = jest.fn();
+    const { container } = render(
+      <DatesProvider settings={{ timezone: 'UTC' }}>
+        <DatePicker
+          {...defaultProps}
+          type="multiple"
+          date={new Date(2022, 0, 31, 23)}
+          value={[new Date(2022, 0, 31, 23)]}
+          onChange={spy}
+        />
+      </DatesProvider>
+    );
+
+    await userEvent.click(container.querySelector('table button')!);
+    expect(spy).toHaveBeenCalledWith([new Date(2022, 0, 31, 23), new Date(2022, 0, 30, 19)]);
   });
 
   it('can be uncontrolled (type="range")', async () => {

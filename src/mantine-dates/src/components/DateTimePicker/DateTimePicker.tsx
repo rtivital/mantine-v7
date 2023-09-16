@@ -13,8 +13,8 @@ import {
   ActionIcon,
   CheckIcon,
 } from '@mantine/core';
-import { useDisclosure, useUncontrolled, useDidUpdate, useMergedRef } from '@mantine/hooks';
-import { assignTime } from '../../utils';
+import { useDisclosure, useDidUpdate, useMergedRef } from '@mantine/hooks';
+import { assignTime, shiftTimezone } from '../../utils';
 import { TimeInput, TimeInputProps } from '../TimeInput';
 import {
   pickCalendarProps,
@@ -31,6 +31,7 @@ import {
 import { DateValue } from '../../types';
 import { useDatesContext } from '../DatesProvider';
 import classes from './DateTimePicker.module.css';
+import { useUncontrolledDates } from '../../hooks';
 
 export type DateTimePickerStylesNames =
   | 'timeWrapper'
@@ -128,10 +129,10 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
   } = pickCalendarProps(rest);
 
   const ctx = useDatesContext();
-  const [_value, setValue] = useUncontrolled({
+  const [_value, setValue] = useUncontrolledDates({
+    type: 'default',
     value,
     defaultValue,
-    finalValue: null,
     onChange,
   });
 
@@ -153,11 +154,11 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
 
     if (val) {
       const [hours, minutes, seconds] = val.split(':').map(Number);
-      const timeDate = new Date();
+      const timeDate = shiftTimezone('add', new Date(), ctx.getTimezone());
       timeDate.setHours(hours);
       timeDate.setMinutes(minutes);
       seconds !== undefined && timeDate.setSeconds(seconds);
-      setValue(assignTime(timeDate, _value || new Date()));
+      setValue(assignTime(timeDate, _value || shiftTimezone('add', new Date(), ctx.getTimezone())));
     }
   };
 
@@ -228,6 +229,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
           setCurrentLevel(_level);
           calendarProps.onLevelChange?.(_level);
         }}
+        __timezoneApplied
       />
 
       {currentLevel === 'month' && (

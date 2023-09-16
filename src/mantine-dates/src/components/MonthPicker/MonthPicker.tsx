@@ -16,6 +16,8 @@ import { PickerBaseProps, DatePickerType, CalendarLevel } from '../../types';
 import { Calendar, CalendarBaseProps } from '../Calendar';
 import { DecadeLevelGroupStylesNames } from '../DecadeLevelGroup';
 import { YearLevelGroupStylesNames } from '../YearLevelGroup';
+import { shiftTimezone } from '../../utils';
+import { useDatesContext } from '../DatesProvider';
 
 export type MonthPickerStylesNames = DecadeLevelGroupStylesNames | YearLevelGroupStylesNames;
 
@@ -79,6 +81,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
     onMouseLeave,
     onMonthSelect,
     __updateDateOnMonthSelect,
+    __timezoneApplied,
     ...others
   } = props;
 
@@ -91,6 +94,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
     defaultValue,
     onChange,
     onMouseLeave,
+    applyTimezone: !__timezoneApplied,
   });
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<MonthPickerFactory>({
@@ -98,6 +102,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
     styles,
     props,
   });
+  const ctx = useDatesContext();
 
   return (
     <Calendar
@@ -118,6 +123,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
       classNames={resolvedClassNames}
       styles={resolvedStyles}
       {...others}
+      date={shiftTimezone('add', others.date, ctx.getTimezone(), __timezoneApplied)}
     />
   );
 }) as any;
