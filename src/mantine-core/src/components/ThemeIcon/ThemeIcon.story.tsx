@@ -18,6 +18,14 @@ function Colors({ index, ...others }: ThemeIconProps & { index?: number }) {
   return <div style={{ display: 'flex', gap: 20, padding: 40 }}>{colors}</div>;
 }
 
+export function SingleElement() {
+  return (
+    <div style={{ padding: 40 }}>
+      <ThemeIcon>$$</ThemeIcon>
+    </div>
+  );
+}
+
 export function Usage() {
   return (
     <>

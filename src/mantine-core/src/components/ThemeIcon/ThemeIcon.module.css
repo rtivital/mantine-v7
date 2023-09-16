@@ -4,6 +4,7 @@
   --ti-size-md: rem(28px);
   --ti-size-lg: rem(34px);
   --ti-size-xl: rem(44px);
+  --ti-size: var(--ti-size-md);
 
   line-height: 1;
   display: inline-flex;
@@ -16,8 +17,8 @@
   height: var(--ti-size);
   min-width: var(--ti-size);
   min-height: var(--ti-size);
-  border-radius: var(--ti-radius);
-  background: var(--_ti-bg, var(--ti-bg));
-  color: var(--_ti-color, var(--ti-color));
-  border: var(--ti-bd);
+  border-radius: var(--ti-radius, var(--mantine-radius-default));
+  background: var(--ti-bg, var(--mantine-primary-color-filled));
+  color: var(--ti-color, var(--mantine-color-white));
+  border: var(--ti-bd, rem(1px) solid transparent);
 }

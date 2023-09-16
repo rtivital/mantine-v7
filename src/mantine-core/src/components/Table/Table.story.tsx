@@ -23,7 +23,7 @@ const rows = elements.map((element) => (
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Table withColumnBorders withRowBorders withTableBorder borderColor="cyan">
+      <Table>
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Element position</Table.Th>

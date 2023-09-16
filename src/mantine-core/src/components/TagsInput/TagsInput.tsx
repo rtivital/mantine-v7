@@ -81,7 +81,6 @@ const defaultProps: Partial<TagsInputProps> = {
   maxTags: Infinity,
   allowDuplicates: false,
   splitChars: [','],
-  size: 'sm',
 };
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {

@@ -60,10 +60,7 @@ export type ThemeIconFactory = Factory<{
   variant: ThemeIconVariant;
 }>;
 
-const defaultProps: Partial<ThemeIconProps> = {
-  variant: 'filled',
-  size: 'md',
-};
+const defaultProps: Partial<ThemeIconProps> = {};
 
 const varsResolver = createVarsResolver<ThemeIconFactory>(
   (theme, { size, radius, variant, gradient, color }) => {
@@ -71,16 +68,16 @@ const varsResolver = createVarsResolver<ThemeIconFactory>(
       color: color || theme.primaryColor,
       theme,
       gradient,
-      variant: variant!,
+      variant: variant || 'filled',
     });
 
     return {
       root: {
         '--ti-size': getSize(size, 'ti-size'),
-        '--ti-radius': getRadius(radius),
-        '--ti-bg': colors.background,
-        '--ti-color': colors.color,
-        '--ti-bd': colors.border,
+        '--ti-radius': radius === undefined ? undefined : getRadius(radius),
+        '--ti-bg': color || variant ? colors.background : undefined,
+        '--ti-color': color || variant ? colors.color : undefined,
+        '--ti-bd': color || variant ? colors.border : undefined,
       },
     };
   }

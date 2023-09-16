@@ -4,7 +4,7 @@
   line-height: var(--mantine-line-height);
   font-size: var(--mantine-font-size-sm);
   table-layout: var(--table-layout, auto);
-  caption-side: var(--table-caption-side);
+  caption-side: var(--table-caption-side, bottom);
   border: var(--_table-border, none);
 
   @mixin light {
@@ -47,7 +47,7 @@
 
 .td,
 .th {
-  padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
+  padding: var(--table-vertical-spacing) var(--table-horizontal-spacing, var(--mantine-spacing-xs));
   border-left: var(--_border-left);
   border-right: var(--_border-right);
 

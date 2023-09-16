@@ -65,10 +65,7 @@ export type TimelineFactory = Factory<{
 
 const defaultProps: Partial<TimelineProps> = {
   active: -1,
-  radius: 'xl',
-  bulletSize: 20,
   align: 'left',
-  lineWidth: 4,
   reverseActive: false,
 };
 
@@ -77,8 +74,8 @@ const varsResolver = createVarsResolver<TimelineFactory>(
     root: {
       '--tl-bullet-size': rem(bulletSize),
       '--tl-line-width': rem(lineWidth),
-      '--tl-radius': getRadius(radius),
-      '--tl-color': getThemeColor(color, theme),
+      '--tl-radius': radius === undefined ? undefined : getRadius(radius),
+      '--tl-color': color ? getThemeColor(color, theme) : undefined,
     },
   })
 );

@@ -41,7 +41,7 @@ const defaultProps: Partial<TooltipFloatingProps> = {
 
 const varsResolver = createVarsResolver<TooltipFloatingFactory>((theme, { radius, color }) => ({
   tooltip: {
-    '--tooltip-radius': getRadius(radius),
+    '--tooltip-radius': radius === undefined ? undefined : getRadius(radius),
     '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
   },
 }));

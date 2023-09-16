@@ -105,7 +105,7 @@ const defaultProps: Partial<TooltipProps> = {
 
 const varsResolver = createVarsResolver<TooltipFactory>((theme, { radius, color }) => ({
   tooltip: {
-    '--tooltip-radius': getRadius(radius),
+    '--tooltip-radius': radius === undefined ? undefined : getRadius(radius),
     '--tooltip-bg': color ? getThemeColor(color, theme) : undefined,
   },
 }));

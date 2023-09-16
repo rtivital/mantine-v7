@@ -12,8 +12,8 @@ export default { title: 'Timeline' };
 
 export function Usage() {
   return (
-    <div style={{ margin: 40, background: 'pink' }}>
-      <Timeline active={1} bulletSize={24} lineWidth={2}>
+    <div style={{ margin: 40 }}>
+      <Timeline active={1}>
         <Timeline.Item bullet={<IconGitBranch size={12} />} title="New branch">
           <Text c="dimmed" size="sm">
             You&apos;ve created new branch{' '}

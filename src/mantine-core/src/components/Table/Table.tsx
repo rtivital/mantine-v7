@@ -104,10 +104,8 @@ export type TableFactory = Factory<{
 }>;
 
 const defaultProps: Partial<TableProps> = {
-  captionSide: 'bottom',
   withRowBorders: true,
   verticalSpacing: 7,
-  horizontalSpacing: 'xs',
 };
 
 const varsResolver = createVarsResolver<TableFactory>(
