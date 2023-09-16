@@ -19,5 +19,14 @@ export const usage: MantineDemo = {
   component: Wrapper,
   code,
   centered: true,
-  controls: [{ prop: 'size', type: 'size', initialValue: 'md', libraryValue: 'md' }],
+  controls: [
+    { prop: 'size', type: 'size', initialValue: 'md', libraryValue: 'md' },
+    {
+      prop: 'variant',
+      type: 'segmented',
+      data: ['transparent', 'subtle'],
+      libraryValue: 'subtle',
+      initialValue: 'subtle',
+    },
+  ],
 };

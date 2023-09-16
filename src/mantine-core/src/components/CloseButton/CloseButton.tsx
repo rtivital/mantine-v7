@@ -1,19 +1,45 @@
 import React from 'react';
-import { polymorphicFactory, useProps, rem, PolymorphicFactory } from '../../core';
 import {
-  ActionIcon,
-  ActionIconProps,
-  ActionIconVariant,
-  ActionIconStylesNames,
-} from '../ActionIcon';
+  polymorphicFactory,
+  useProps,
+  rem,
+  PolymorphicFactory,
+  MantineSize,
+  MantineRadius,
+  BoxProps,
+  StylesApiProps,
+  getSize,
+  getRadius,
+  createVarsResolver,
+  useStyles,
+} from '../../core';
+import { UnstyledButton } from '../UnstyledButton';
 import { CloseIcon } from './CloseIcon';
+import classes from './CloseButton.module.css';
 
-export type CloseButtonVariant = ActionIconVariant;
-export type CloseButtonStylesNames = ActionIconStylesNames;
+export type CloseButtonVariant = 'subtle' | 'transparent';
+export type CloseButtonStylesNames = 'root';
+export type ActionIconCssVariables = {
+  root: '--cb-icon-size' | '--cb-size' | '--cb-radius';
+};
 
-export interface CloseButtonProps extends ActionIconProps {
+export interface CloseButtonProps extends BoxProps, StylesApiProps<CloseButtonFactory> {
+  'data-disabled'?: boolean;
+
+  /** Controls width and height of the button. Numbers are converted to rem. `'md'` by default. */
+  size?: MantineSize | (string & {}) | number;
+
+  /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. `theme.defaultRadius` by default. */
+  radius?: MantineRadius;
+
+  /** Sets `disabled` and `data-disabled` attributes on the button element */
+  disabled?: boolean;
+
   /** `X` icon `width` and `height`, `80%` by default */
   iconSize?: number | string;
+
+  /** Content rendered inside the button, for example `VisuallyHidden` with label for screen readers */
+  children?: React.ReactNode;
 }
 
 export type CloseButtonFactory = PolymorphicFactory<{
@@ -26,24 +52,62 @@ export type CloseButtonFactory = PolymorphicFactory<{
 
 const defaultProps: Partial<CloseButtonProps> = {
   variant: 'subtle',
-  color: 'gray',
 };
+
+const varsResolver = createVarsResolver<CloseButtonFactory>((_, { size, radius, iconSize }) => ({
+  root: {
+    '--cb-size': getSize(size, 'cb-size'),
+    '--cb-radius': radius === undefined ? undefined : getRadius(radius),
+    '--cb-icon-size': rem(iconSize),
+  },
+}));
 
 export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, ref) => {
   const props = useProps('CloseButton', defaultProps, _props);
-  const { iconSize, children, vars, ...others } = props;
+  const {
+    iconSize,
+    children,
+    vars,
+    radius,
+    className,
+    classNames,
+    style,
+    styles,
+    unstyled,
+    'data-disabled': dataDisabled,
+    disabled,
+    variant,
+    ...others
+  } = props;
+
+  const getStyles = useStyles<CloseButtonFactory>({
+    name: 'CloseButton',
+    props,
+    className,
+    style,
+    classes,
+    classNames,
+    styles,
+    unstyled,
+    vars,
+    varsResolver,
+  });
+
   return (
-    <ActionIcon
+    <UnstyledButton
       ref={ref}
       {...others}
-      __vars={{ '--cb-icon-size': rem(iconSize) }}
-      __staticSelector="CloseButton"
+      unstyled={unstyled}
+      variant={variant}
+      disabled={disabled}
+      mod={{ disabled: disabled || dataDisabled }}
+      {...getStyles('root', { variant, active: true })}
     >
       <CloseIcon />
       {children}
-    </ActionIcon>
+    </UnstyledButton>
   );
 });
 
-CloseButton.classes = ActionIcon.classes;
+CloseButton.classes = classes;
 CloseButton.displayName = '@mantine/core/CloseButton';
