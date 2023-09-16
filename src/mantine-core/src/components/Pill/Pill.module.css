@@ -11,6 +11,9 @@
   --pill-height-lg: rem(28px);
   --pill-height-xl: rem(32px);
 
+  --pill-fz: var(--pill-fz-sm);
+  --pill-height: var(--pill-height-sm);
+
   font-size: var(--pill-fz);
   flex: 0;
   height: var(--pill-height);
@@ -18,7 +21,7 @@
   padding-right: var(--_pill-padding-right, 0.8em);
   display: inline-flex;
   align-items: center;
-  border-radius: var(--pill-radius);
+  border-radius: var(--pill-radius, rem(1000px));
   background-color: var(--_pill-bg);
   line-height: 1;
   white-space: nowrap;
@@ -112,6 +115,7 @@
   --pg-gap-md: rem(10px);
   --pg-gap-lg: rem(12px);
   --pg-gap-xl: rem(12px);
+  --pg-gap: var(--pg-gap-sm);
 
   display: flex;
   align-items: center;

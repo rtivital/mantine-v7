@@ -4,6 +4,17 @@ import { Pill } from './Pill';
 
 export default { title: 'Pill' };
 
+export function SinglePill() {
+  return (
+    <div style={{ padding: 40 }}>
+      <Pill.Group size="xl">
+        <Pill withRemoveButton>Pill</Pill>
+        <Pill withRemoveButton>Pill 2</Pill>
+      </Pill.Group>
+    </div>
+  );
+}
+
 export function Usage() {
   return (
     <>

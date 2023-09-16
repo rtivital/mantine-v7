@@ -52,14 +52,13 @@ export type PillFactory = Factory<{
   stylesNames: PillStylesNames;
   vars: PillCssVariables;
   variant: PillVariant;
-  ctx: { size: MantineSize | (string & {}) };
+  ctx: { size: MantineSize | (string & {}) | undefined };
   staticComponents: {
     Group: typeof PillGroup;
   };
 }>;
 
 const defaultProps: Partial<PillProps> = {
-  radius: 'xl',
   variant: 'default',
 };
 
@@ -67,7 +66,7 @@ const varsResolver = createVarsResolver<PillFactory>((_, { radius }, { size }) =
   root: {
     '--pill-fz': getSize(size, 'pill-fz'),
     '--pill-height': getSize(size, 'pill-height'),
-    '--pill-radius': getRadius(radius),
+    '--pill-radius': radius === undefined ? undefined : getRadius(radius),
   },
 }));
 
@@ -93,7 +92,7 @@ export const Pill = factory<PillFactory>((_props, ref) => {
 
   const ctx = usePillGroupContext();
   const pillsInputCtx = usePillsInputContext();
-  const _size = size || ctx?.size || 'sm';
+  const _size = size || ctx?.size || undefined;
   const _variant = pillsInputCtx?.variant === 'filled' ? 'contrast' : variant || 'default';
 
   const getStyles = useStyles<PillFactory>({
@@ -123,7 +122,6 @@ export const Pill = factory<PillFactory>((_props, ref) => {
       <span {...getStyles('label')}>{children}</span>
       {withRemoveButton && (
         <CloseButton
-          iconSize="70%"
           variant="transparent"
           radius={radius}
           tabIndex={-1}

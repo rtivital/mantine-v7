@@ -84,7 +84,6 @@ export type MultiSelectFactory = Factory<{
 
 const defaultProps: Partial<MultiSelectProps> = {
   maxValues: Infinity,
-  size: 'sm',
   withCheckIcon: true,
   checkIconPosition: 'left',
 };
