@@ -34,7 +34,6 @@ export type YearLevelGroupFactory = Factory<{
 
 const defaultProps: Partial<YearLevelGroupProps> = {
   numberOfColumns: 1,
-  size: 'sm',
 };
 
 export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
@@ -77,6 +76,8 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
     vars,
     ...others
   } = props;
+
+  console.log({ size });
 
   const controlsRef = useRef<HTMLButtonElement[][][]>([]);
 

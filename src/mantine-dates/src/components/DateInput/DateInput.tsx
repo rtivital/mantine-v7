@@ -96,7 +96,6 @@ const defaultProps: Partial<DateInputProps> = {
   valueFormat: 'MMMM D, YYYY',
   fixOnBlur: true,
   preserveTime: true,
-  size: 'sm',
 };
 
 export const DateInput = factory<DateInputFactory>((_props, ref) => {

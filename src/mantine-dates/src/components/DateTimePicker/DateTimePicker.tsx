@@ -75,7 +75,6 @@ export type DateTimePickerFactory = Factory<{
 }>;
 
 const defaultProps: Partial<DateTimePickerProps> = {
-  size: 'sm',
   dropdownType: 'popover',
 };
 
@@ -251,7 +250,7 @@ export const DateTimePicker = factory<DateTimePickerFactory>((_props, ref) => {
 
           <ActionIcon<'button'>
             variant="default"
-            size={`input-${size}`}
+            size={`input-${size || 'sm'}`}
             {...getStyles('submitButton', {
               className: submitButtonProps?.className,
               style: submitButtonProps?.style,

@@ -41,7 +41,6 @@ const defaultProps: Partial<DatePickerInputProps> = {
   closeOnChange: true,
   sortDates: true,
   dropdownType: 'popover',
-  size: 'sm',
 };
 
 type DatePickerInputComponent = (<Type extends DatePickerType = 'default'>(

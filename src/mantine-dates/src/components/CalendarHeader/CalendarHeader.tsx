@@ -99,7 +99,6 @@ const defaultProps: Partial<CalendarHeaderProps> = {
   hasNextLevel: true,
   withNext: true,
   withPrevious: true,
-  size: 'sm',
 };
 
 const varsResolver = createVarsResolver<CalendarHeaderFactory>((_, { size }) => ({

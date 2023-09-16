@@ -50,7 +50,6 @@ export type YearLevelFactory = Factory<{
 
 const defaultProps: Partial<YearLevelProps> = {
   yearLabelFormat: 'YYYY',
-  size: 'sm',
 };
 
 export const YearLevel = factory<YearLevelFactory>((_props, ref) => {

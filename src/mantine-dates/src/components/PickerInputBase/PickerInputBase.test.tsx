@@ -17,7 +17,6 @@ const defaultProps: PickerInputBaseProps = {
   shouldClear: true,
   type: 'default',
   value: null,
-  size: 'sm',
 };
 
 describe('@mantine/dates/PickerInputBase', () => {

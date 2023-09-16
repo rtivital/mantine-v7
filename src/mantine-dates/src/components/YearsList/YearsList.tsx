@@ -64,7 +64,6 @@ export type YearsListFactory = Factory<{
 
 const defaultProps: Partial<YearsListProps> = {
   yearsListFormat: 'YYYY',
-  size: 'sm',
   withCellSpacing: true,
 };
 

@@ -71,7 +71,7 @@ export interface PickerInputBaseProps
   shouldClear: boolean;
   value: HiddenDatesInputValue;
   type: DatePickerType;
-  size: MantineSize;
+  size?: MantineSize;
 }
 
 export type PickerInputBaseFactory = Factory<{
@@ -120,7 +120,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props, ref) => 
         variant="transparent"
         onClick={onClear}
         unstyled={unstyled}
-        size={inputProps.size}
+        size={inputProps.size || 'sm'}
         {...clearButtonProps}
       />
     ) : null);

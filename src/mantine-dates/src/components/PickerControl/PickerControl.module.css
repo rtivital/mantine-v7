@@ -4,8 +4,9 @@
   --dpc-size-md: rem(42px);
   --dpc-size-lg: rem(48px);
   --dpc-size-xl: rem(54px);
+  --dpc-size: var(--dpc-size-sm);
 
-  font-size: var(--dpc-fz);
+  font-size: var(--dpc-fz, var(--mantine-font-size-sm));
   height: var(--dpc-size);
   width: calc((var(--dpc-size) * 7) / 3 + rem(1.5px));
   display: flex;

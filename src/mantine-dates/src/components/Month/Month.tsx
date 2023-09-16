@@ -120,7 +120,6 @@ export type MonthFactory = Factory<{
 }>;
 
 const defaultProps: Partial<MonthProps> = {
-  size: 'sm',
   withCellSpacing: true,
 };
 

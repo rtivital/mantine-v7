@@ -41,7 +41,6 @@ const defaultProps: Partial<YearPickerInputProps> = {
   closeOnChange: true,
   sortDates: true,
   dropdownType: 'popover',
-  size: 'sm',
 };
 
 type YearPickerInputComponent = (<Type extends DatePickerType = 'default'>(

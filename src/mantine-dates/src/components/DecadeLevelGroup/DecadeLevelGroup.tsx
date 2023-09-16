@@ -37,7 +37,6 @@ export type DecadeLevelGroupFactory = Factory<{
 
 const defaultProps: Partial<DecadeLevelGroupProps> = {
   numberOfColumns: 1,
-  size: 'sm',
 };
 
 export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props, ref) => {

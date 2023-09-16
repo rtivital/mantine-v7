@@ -4,6 +4,7 @@
   --dch-control-size-md: rem(42px);
   --dch-control-size-lg: rem(48px);
   --dch-control-size-xl: rem(54px);
+  --dch-control-size: var(--dch-control-size-sm);
 
   display: flex;
   max-width: calc(var(--dch-control-size) * 7 + rem(7px));
@@ -47,7 +48,7 @@
 
 .calendarHeaderLevel {
   flex: 1;
-  font-size: var(--dch-fz);
+  font-size: var(--dch-fz, var(--mantine-font-size-sm));
   font-weight: 500;
   text-transform: capitalize;
 }
