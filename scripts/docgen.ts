@@ -105,7 +105,7 @@ const EXTRA_FILES_PATHS = [
 
   // Dropzone
   '../src/mantine-dropzone/src/Dropzone.tsx',
-  '../src/mantine-dropzone/src/DropzoneFullscreen.tsx',
+  '../src/mantine-dropzone/src/DropzoneFullScreen.tsx',
 
   // CodeHighlight
   '../src/mantine-code-highlight/src/CodeHighlight.tsx',
