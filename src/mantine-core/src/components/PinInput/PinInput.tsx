@@ -123,7 +123,6 @@ export type PinInputFactory = Factory<{
 }>;
 
 const defaultProps: Partial<PinInputProps> = {
-  size: 'sm',
   gap: 'sm',
   length: 4,
   manageFocus: true,

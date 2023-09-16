@@ -77,8 +77,6 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props, ref) => {
     ...others
   } = props;
 
-  console.log({ size });
-
   const controlsRef = useRef<HTMLButtonElement[][][]>([]);
 
   const years = Array(numberOfColumns)
