@@ -29,6 +29,14 @@
   --switch-track-label-padding-lg: rem(3px);
   --switch-track-label-padding-xl: rem(3px);
 
+  --switch-height: var(--switch-height-sm);
+  --switch-width: var(--switch-width-sm);
+  --switch-thumb-size: var(--switch-thumb-size-sm);
+  --switch-label-font-size: var(--switch-label-font-size-sm);
+  --switch-track-label-padding: var(--switch-track-label-padding-sm);
+  --switch-radius: rem(1000px);
+  --switch-color: var(--mantine-primary-color-filled);
+
   position: relative;
 }
 

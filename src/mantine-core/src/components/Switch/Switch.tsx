@@ -96,20 +96,18 @@ export type SwitchFactory = Factory<{
 }>;
 
 const defaultProps: Partial<SwitchProps> = {
-  size: 'sm',
-  radius: 'xl',
   labelPosition: 'right',
 };
 
 const varsResolver = createVarsResolver<SwitchFactory>((theme, { radius, color, size }) => ({
   root: {
-    '--switch-radius': getRadius(radius),
+    '--switch-radius': radius === undefined ? undefined : getRadius(radius),
     '--switch-height': getSize(size, 'switch-height'),
     '--switch-width': getSize(size, 'switch-width'),
     '--switch-thumb-size': getSize(size, 'switch-thumb-size'),
     '--switch-label-font-size': getSize(size, 'switch-label-font-size'),
     '--switch-track-label-padding': getSize(size, 'switch-track-label-padding'),
-    '--switch-color': getThemeColor(color, theme),
+    '--switch-color': color ? getThemeColor(color, theme) : undefined,
   },
 }));
 

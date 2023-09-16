@@ -11,7 +11,7 @@ export function Usage() {
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <>
+    <div style={{ padding: 40 }}>
       <Stepper active={active} onStepClick={setActive}>
         <Stepper.Step label="First step" description="Create an account">
           Step 1 content: Create an account
@@ -31,7 +31,7 @@ export function Usage() {
         </Button>
         <Button onClick={nextStep}>Next step</Button>
       </Group>
-    </>
+    </div>
   );
 }
 

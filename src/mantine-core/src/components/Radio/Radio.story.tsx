@@ -7,10 +7,10 @@ export default { title: 'Radio' };
 
 export function Usage() {
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, display: 'flex', gap: 40 }}>
       <Radio label="React" value="react" name="hello" />
-      <Radio label="Angular" value="nu" name="hello" mt="xs" />
-      <Radio label="Svelte" value="sv" disabled={false} name="hello" mt="xs" />
+      <Radio label="Angular" value="nu" name="hello" />
+      <Radio label="Svelte" value="sv" disabled={false} name="hello" />
     </div>
   );
 }

@@ -4,6 +4,7 @@
   --ni-chevron-size-md: rem(16px);
   --ni-chevron-size-lg: rem(18px);
   --ni-chevron-size-xl: rem(20px);
+  --ni-chevron-size: var(--ni-chevron-size-sm);
 
   display: flex;
   flex-direction: column;

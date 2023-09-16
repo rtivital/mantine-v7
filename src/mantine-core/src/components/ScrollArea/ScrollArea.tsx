@@ -69,7 +69,6 @@ export type ScrollAreaFactory = Factory<{
 }>;
 
 const defaultProps: Partial<ScrollAreaProps> = {
-  scrollbarSize: 12,
   scrollHideDelay: 1000,
   type: 'hover',
 };

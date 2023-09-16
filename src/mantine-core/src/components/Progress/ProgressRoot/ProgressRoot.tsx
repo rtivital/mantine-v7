@@ -41,14 +41,12 @@ export type ProgressRootFactory = Factory<{
   vars: ProgressRootCssVariables;
 }>;
 
-const defaultProps: Partial<ProgressRootProps> = {
-  size: 'md',
-};
+const defaultProps: Partial<ProgressRootProps> = {};
 
 const varsResolver = createVarsResolver<ProgressRootFactory>((_, { size, radius }) => ({
   root: {
     '--progress-size': getSize(size, 'progress-size'),
-    '--progress-radius': getRadius(radius),
+    '--progress-radius': radius === undefined ? undefined : getRadius(radius),
   },
 }));
 

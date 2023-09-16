@@ -96,19 +96,16 @@ export type SegmentedControlFactory = Factory<{
   vars: SegmentedControlCssVariables;
 }>;
 
-const defaultProps: Partial<SegmentedControlProps> = {
-  size: 'sm',
-  transitionDuration: 200,
-  transitionTimingFunction: 'ease',
-};
+const defaultProps: Partial<SegmentedControlProps> = {};
 
 const varsResolver = createVarsResolver<SegmentedControlFactory>(
   (theme, { radius, color, transitionDuration, size, transitionTimingFunction }) => ({
     root: {
-      '--sc-radius': getRadius(radius),
+      '--sc-radius': radius === undefined ? undefined : getRadius(radius),
       '--sc-color': color ? getThemeColor(color, theme) : undefined,
       '--sc-shadow': color ? undefined : 'var(--mantine-shadow-xs)',
-      '--sc-transition-duration': `${transitionDuration}ms`,
+      '--sc-transition-duration':
+        transitionDuration === undefined ? undefined : `${transitionDuration}ms`,
       '--sc-transition-timing-function': transitionTimingFunction,
       '--sc-padding': getSize(size, 'sc-padding'),
       '--sc-font-size': getFontSize(size),

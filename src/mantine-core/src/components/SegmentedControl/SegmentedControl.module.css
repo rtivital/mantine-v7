@@ -5,12 +5,17 @@
   --sc-padding-lg: rem(9px) rem(16px);
   --sc-padding-xl: rem(12px) rem(20px);
 
+  --sc-transition-duration: 200ms;
+  --sc-padding: var(--sc-padding-sm);
+  --sc-transition-timing-function: ease;
+  --sc-font-size: var(--mantine-font-size-sm);
+
   position: relative;
   display: var(--_display, inline-flex);
   flex-direction: var(--_flex-direction, row);
   width: var(--_width, auto);
   background-color: var(--_bg);
-  border-radius: var(--sc-radius);
+  border-radius: var(--sc-radius, var(--mantine-radius-default));
   overflow: hidden;
   padding: 4px; /* px required for correct indicator calculations */
 
@@ -41,12 +46,13 @@
   position: absolute;
   display: block;
   z-index: 1;
-  border-radius: var(--sc-radius);
+  border-radius: var(--sc-radius, var(--mantine-radius-default));
   box-shadow: var(--_box-shadow);
   width: var(--sc-indicator-width);
   height: var(--sc-indicator-height);
   transform: var(--sc-indicator-transform);
-  transition: transform var(--sc-transition-duration) var(--sc-transition-timing-function),
+  transition:
+    transform var(--sc-transition-duration) var(--sc-transition-timing-function),
     width var(--sc-transition-duration) var(--sc-transition-timing-function);
   background-color: var(--_bg);
 
@@ -70,7 +76,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
-  border-radius: var(--sc-radius);
+  border-radius: var(--sc-radius, var(--mantine-radius-default));
   font-size: var(--sc-font-size);
   padding: var(--sc-padding);
   transition: color var(--sc-transition-duration) var(--sc-transition-timing-function);

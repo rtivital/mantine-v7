@@ -22,10 +22,10 @@ export function WithinDisabledFieldset() {
   return (
     <fieldset disabled style={{ padding: 40 }}>
       <legend>Disabled fieldset</legend>
-      <Slider defaultValue={45} size="lg" />
-      <Slider defaultValue={45} size="lg" inverted />
-      <Slider defaultValue={45} size="lg" disabled mt="xl" />
-      <RangeSlider defaultValue={[45, 80]} size="lg" />
+      <Slider defaultValue={45} />
+      <Slider defaultValue={45} inverted />
+      <Slider defaultValue={45} disabled mt="xl" />
+      <RangeSlider defaultValue={[45, 80]} />
     </fieldset>
   );
 }
@@ -37,7 +37,7 @@ export function Usage() {
       <Slider defaultValue={45} disabled mt={60} />
       <Slider defaultValue={45} inverted mt="xl" />
       <Slider defaultValue={45} inverted disabled mt="xl" />
-      <Slider defaultValue={45} radius={0} mt="xl" labelAlwaysOn />
+      <Slider defaultValue={45} mt="xl" labelAlwaysOn />
     </div>
   );
 }

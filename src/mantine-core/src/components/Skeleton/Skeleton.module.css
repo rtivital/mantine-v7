@@ -10,9 +10,9 @@
 }
 
 .root {
-  height: var(--skeleton-height);
-  width: var(--skeleton-width);
-  border-radius: var(--skeleton-radius);
+  height: var(--skeleton-height, auto);
+  width: var(--skeleton-width, 100%);
+  border-radius: var(--skeleton-radius, var(--mantine-radius-default));
   position: relative;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);

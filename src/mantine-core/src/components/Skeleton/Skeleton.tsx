@@ -50,8 +50,6 @@ export type SkeletonFactory = Factory<{
 }>;
 
 const defaultProps: Partial<SkeletonProps> = {
-  width: '100%',
-  height: 'auto',
   visible: true,
   animate: true,
 };
@@ -61,7 +59,7 @@ const varsResolver = createVarsResolver<SkeletonFactory>(
     root: {
       '--skeleton-height': rem(height),
       '--skeleton-width': circle ? rem(height) : rem(width),
-      '--skeleton-radius': circle ? '1000000px' : getRadius(radius),
+      '--skeleton-radius': circle ? '1000px' : radius === undefined ? undefined : getRadius(radius),
     },
   })
 );

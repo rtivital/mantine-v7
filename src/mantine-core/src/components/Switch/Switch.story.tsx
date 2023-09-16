@@ -19,9 +19,16 @@ export function WithinDisabledFieldset() {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
+      <Switch label="Default Switch" defaultChecked />
+    </div>
+  );
+}
+
+export function Sizes() {
+  return (
+    <div style={{ padding: 40 }}>
       <Switch size="xs" label="xs" variant="test" />
       <Switch size="sm" label="sm" />
-      <Switch disabled label="disabled" />
       <Switch size="md" label="md" />
       <Switch size="lg" label="lg" />
       <Switch size="xl" label="xl" />

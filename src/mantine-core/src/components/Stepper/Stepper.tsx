@@ -114,9 +114,6 @@ export type StepperFactory = Factory<{
 }>;
 
 const defaultProps: Partial<StepperProps> = {
-  contentPadding: 'md',
-  size: 'md',
-  radius: 'xl',
   orientation: 'horizontal',
   iconPosition: 'left',
   allowNextStepsSelect: true,
@@ -126,11 +123,11 @@ const defaultProps: Partial<StepperProps> = {
 const varsResolver = createVarsResolver<StepperFactory>(
   (theme, { color, iconSize, size, contentPadding, radius }) => ({
     root: {
-      '--stepper-color': getThemeColor(color, theme),
+      '--stepper-color': color ? getThemeColor(color, theme) : undefined,
       '--stepper-icon-size':
         iconSize === undefined ? getSize(size, 'stepper-icon-size') : rem(iconSize),
       '--stepper-content-padding': getSpacing(contentPadding),
-      '--stepper-radius': getRadius(radius),
+      '--stepper-radius': radius === undefined ? undefined : getRadius(radius),
       '--stepper-fz': getFontSize(size),
       '--stepper-spacing': getSpacing(size),
     },

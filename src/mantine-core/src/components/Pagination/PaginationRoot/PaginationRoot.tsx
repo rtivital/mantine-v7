@@ -91,16 +91,15 @@ export type PaginationRootFactory = Factory<{
 const defaultProps: Partial<PaginationRootProps> = {
   siblings: 1,
   boundaries: 1,
-  size: 'md',
 };
 
 const varsResolver = createVarsResolver<PaginationRootFactory>(
   (theme, { size, radius, color }) => ({
     root: {
-      '--pagination-control-radius': getRadius(radius),
+      '--pagination-control-radius': radius === undefined ? undefined : getRadius(radius),
       '--pagination-control-size': getSize(size, 'pagination-control-size'),
       '--pagination-control-fz': getFontSize(size),
-      '--pagination-active-bg': getThemeColor(color, theme),
+      '--pagination-active-bg': color ? getThemeColor(color, theme) : undefined,
     },
   })
 );

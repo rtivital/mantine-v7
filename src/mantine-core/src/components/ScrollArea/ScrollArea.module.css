@@ -1,6 +1,7 @@
 .root {
   position: relative;
   overflow: hidden;
+  --scrollarea-scrollbar-size: rem(12px);
 }
 
 .viewport {
@@ -43,7 +44,9 @@
   user-select: none;
   touch-action: none;
   box-sizing: border-box;
-  transition: background-color 150ms ease, opacity 150ms ease;
+  transition:
+    background-color 150ms ease,
+    opacity 150ms ease;
 
   padding: calc(var(--scrollarea-scrollbar-size) / 5);
   display: var(--_scrollbar-display, flex);

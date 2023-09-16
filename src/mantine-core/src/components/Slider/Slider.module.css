@@ -5,6 +5,10 @@
   --slider-size-lg: rem(10px);
   --slider-size-xl: rem(12px);
 
+  --slider-size: var(--slider-size-md);
+  --slider-radius: rem(1000px);
+  --slider-color: var(--mantine-primary-color-filled);
+
   -webkit-tap-highlight-color: transparent;
   outline: none;
   height: calc(var(--slider-size) * 2);
@@ -63,7 +67,9 @@
   border-radius: var(--slider-radius);
   align-items: center;
   justify-content: center;
-  transition: box-shadow 100ms ease, transform 100ms ease;
+  transition:
+    box-shadow 100ms ease,
+    transform 100ms ease;
   z-index: 3;
   user-select: none;
   touch-action: none;

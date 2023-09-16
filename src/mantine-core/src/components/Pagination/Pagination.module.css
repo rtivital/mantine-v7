@@ -4,6 +4,9 @@
   --pagination-control-size-md: rem(32px);
   --pagination-control-size-lg: rem(38px);
   --pagination-control-size-xl: rem(44px);
+  --pagination-control-size: var(--pagination-control-size-md);
+  --pagination-control-fz: var(--mantine-font-size-md);
+  --pagination-active-bg: var(--mantine-primary-color-filled);
 }
 
 .control {
@@ -19,7 +22,7 @@
   padding: var(--_control-padding, 0);
   line-height: 1;
   background-color: var(--_control-bg-color);
-  border-radius: var(--pagination-control-radius);
+  border-radius: var(--pagination-control-radius, var(--mantine-radius-default));
   opacity: var(--_control-opacity, 1);
 
   &[data-with-padding] {

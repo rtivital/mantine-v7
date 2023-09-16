@@ -6,12 +6,7 @@ export default { title: 'Progress' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <Progress value={56} size="xs" />
-      <Progress value={56} size="sm" mt="md" />
-      <Progress value={56} size="md" mt="md" />
-      <Progress value={56} size="lg" mt="md" />
-      <Progress value={56} size="xl" mt="md" />
-      <Progress value={56} size={50} mt="md" />
+      <Progress value={56} />
     </div>
   );
 }

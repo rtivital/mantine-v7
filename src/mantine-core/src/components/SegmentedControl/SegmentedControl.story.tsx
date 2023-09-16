@@ -22,7 +22,7 @@ export function WithinDisabledFieldset() {
 
 export function Usage() {
   return (
-    <div style={{ padding: 0 }}>
+    <div style={{ padding: 40 }}>
       <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} />
     </div>
   );

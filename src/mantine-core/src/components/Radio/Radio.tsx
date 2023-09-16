@@ -75,16 +75,14 @@ export type RadioFactory = Factory<{
 }>;
 
 const defaultProps: Partial<RadioProps> = {
-  size: 'sm',
   labelPosition: 'right',
-  radius: 'xl',
 };
 
 const varsResolver = createVarsResolver<RadioFactory>((theme, { size, radius, color }) => ({
   root: {
     '--radio-size': getSize(size, 'radio-size'),
-    '--radio-radius': getRadius(radius),
-    '--radio-color': getThemeColor(color, theme),
+    '--radio-radius': radius === undefined ? undefined : getRadius(radius),
+    '--radio-color': color ? getThemeColor(color, theme) : undefined,
   },
 }));
 

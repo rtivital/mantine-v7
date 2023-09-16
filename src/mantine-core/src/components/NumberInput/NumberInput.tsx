@@ -160,7 +160,6 @@ export type NumberInputFactory = Factory<{
 
 const defaultProps: Partial<NumberInputProps> = {
   step: 1,
-  size: 'sm',
   clampBehavior: 'blur',
   allowDecimal: true,
   allowNegative: true,
