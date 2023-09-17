@@ -37,15 +37,14 @@ This change improves performance, reduces bundle size of the library and allows 
 in environments where CSS-in-JS is not supported (or supported with limitations), for example,
 Next.js app directory.
 
-Notable breaking changes:
+Important breaking changes:
 
 - `createStyles` function is no longer available, use [CSS modules](/styles/css-modules) or any other styling solution of your choice instead
 - Components no longer support `sx` prop. You can use `className` or `style` props instead.
 - `styles` prop no longer supports nested selectors
 
 It is now recommended to use [CSS modules](/styles/css-modules) to style Mantine components.
-To update your project to [CSS modules](/styles/css-modules)
-follow the [6.x → 7.x migration guide](/guides/6x-to-7x).
+To update your project to [CSS modules](/styles/css-modules), follow the [6.x → 7.x migration guide](/guides/6x-to-7x).
 
 ## Vanilla extract integration
 
@@ -56,12 +55,30 @@ with [Vanilla extract](/styles/vanilla-extract).
 ## System color scheme support
 
 All components now support system color scheme – when `colorScheme` value is `auto`,
-components will use `prefers-color-scheme` media query to determine if user prefers light or dark color scheme.
+components will use `prefers-color-scheme` media query to determine if the user prefers light or dark color scheme.
+
+Note that `auto` is not the default value. You need to set it manually to enable system color scheme support
+both on [MantineProvider](/theming/mantine-provider) and in [ColorSchemeScript](/theming/color-schemes#colorschemescript):
+
+```tsx
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+
+function Demo() {
+  return (
+    <>
+      <ColorSchemeScript defaultColorScheme="auto" />
+      <MantineProvider defaultColorScheme="auto">
+        <App />
+      </MantineProvider>
+    </>
+  );
+}
+```
 
 ## Built-in color scheme manager
 
-[MantineProvider](/theming/mantine-provider) now comes with built-in color scheme manager.
-It is no longer required to use any other components to setup color scheme logic.
+[MantineProvider](/theming/mantine-provider) now comes with a built-in color scheme manager.
+It is no longer required to use any other components to set up color scheme logic.
 Color scheme can be changed with [useMantineColorScheme hook](/theming/color-schemes#use-mantine-color-scheme-hook):
 
 <Demo data={ThemingDemos.colorScheme} />
@@ -84,7 +101,7 @@ rest of the library.
 
 ## Mantine as a headless UI library
 
-You can now use Mantine as a [headless](/styles/unstyled) library. To do that, just do not import
+You can now use Mantine as a [headless](/styles/unstyled) library. To achieve that, just do not import
 `@mantine/*/styles.css` in your application. Then you will be able to apply styles with
 [Styles API](/styles/styles-api).
 
@@ -112,7 +129,7 @@ function Demo() {
 
 ## Components extend functions
 
-All components now have static `extend` function which allows getting autocomplete when customizing
+All components that support [default props](/theming/default-props) or [Styles API](/styles/styles-api) now have a static `extend` function which allows getting autocomplete when customizing
 [defaultProps](/theming/default-props), [classNames and styles](/styles/styles-api) of the component
 on [theme](/theming/theme-object):
 
@@ -167,14 +184,14 @@ For example, it can be used to add new [sizes](/styles/variants-sizes):
 
 ## New variants system
 
-All components now have `data-variant` attribute on the root element, even if component does not have any predefined variants.
+All components now have `data-variant` attribute on the root element, even if the component does not have any predefined variants.
 You can use it to apply styles to all components of the same type on [theme](/theming/theme-object):
 
 <Demo data={StylesDemos.customVariant} />
 
 ## New sizes system
 
-There are multiple way to customize component sizes:
+There are multiple ways to customize component sizes:
 
 - With `data-size` attribute
 - With component [CSS variables](/styles/styles-api)
@@ -187,7 +204,7 @@ Example of customizing [Button](/core/button) size with `data-size` attribute:
 ## theme.variantColorResolver
 
 [Button](/core/button), [Badge](/core/badge), [ActionIcon](/core/action-icon), [ThemeIcon](/core/theme-icon) and other
-components support custom variants with [variantColorResolver](/theming/colors#colors-variant-resolver)
+components now support custom variants with [variantColorResolver](/theming/colors#colors-variant-resolver)
 – it supports both changing colors of existing variants and adding new variants.
 
 <Demo data={ThemingDemos.variantColorsResolver} />
@@ -195,7 +212,7 @@ components support custom variants with [variantColorResolver](/theming/colors#c
 ## rem units scaling
 
 It is now possible to scale [rem](/styles/rem#rem-units-scaling) units. It is useful when you want to change
-font-size of `html`/`:root` element and preserve Mantine components sizes. For example, if you want to set `html` font-size to `10px` and scale Mantine components accordingly, you need
+font-size of `html`/`:root` element and preserve Mantine components sizes. For example, if you would like to set `html` font-size to `10px` and scale Mantine components accordingly, you need
 to set `scale` to `1 / (10 / 16)` (16 – default font-size) = `1 / 0.625` = `1.6`:
 
 ```css
@@ -252,7 +269,7 @@ function Demo() {
 
 ## Theme object changes
 
-- `theme.lineHeight` is now `theme.lineHeights` – it is now possible to specify multiple line heights. `theme.lineHeights` values are used in [Text](/core/text) component.
+- `theme.lineHeight` is now `theme.lineHeights` – it is now possible to specify multiple line heights. `theme.lineHeights` values are used in the [Text](/core/text) component.
 - `theme.colorScheme` is no longer available, use [useMantineColorScheme](/theming/color-schemes#use-mantine-color-scheme-hook) to get color scheme value
 - `theme.dir` is no longer needed, direction is now managed by [DirectionProvider](/styles/rtl)
 - `theme.loader` was removed, you can now configure default loader with [default props](/theming/default-props) of [Loader](/core/loader) component
@@ -263,7 +280,7 @@ function Demo() {
 - `theme.fn` functions were removed, some of the functions are available as [standalone utilities](/styles/color-functions)
 - New [theme.scale](/styles/rem#rem-units-scaling) property controls rem units scaling
 - New `theme.fontSmoothing` property determines whether font smoothing styles should be applied to the body element
-- New [theme.variantColorResolver](/theming/colors#colors-variant-resolver) property allows to customize component colors per variant
+- New [theme.variantColorResolver](/theming/colors#colors-variant-resolver) property allows customizing component colors per variant
 
 ## Colors generator
 
@@ -292,15 +309,15 @@ function Demo() {
 
 ## New setup for RTL
 
-`@mantine/core` package now exports [DirectionProvider](/styles/rtl) component which should be used to configure direction of the application.
+`@mantine/core` package now exports [DirectionProvider](/styles/rtl) component, which should be used to configure the direction of the application.
 `useDirection` hook can be used to toggle direction. All components now include RTL styles by default, it is no
-longer required to setup additional plugins. See [RTL documentation](/styles/rtl) to learn more.
+longer required to set up additional plugins. See [RTL documentation](/styles/rtl) to learn more.
 
 ## React 18+ only
 
-Starting from version 7.0 Mantine no longer supports older React versions. Minimum supported version is now React 18.
+Starting from version 7.0 Mantine no longer supports older React versions. The minimum supported version is now React 18.
 It is required because Mantine components now use [useId](https://react.dev/reference/react/useId) and [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore)
-hooks which are available only in React 18.
+hooks, which are available only in React 18.
 
 ## left and right section
 
@@ -322,7 +339,7 @@ function Demo() {
 ## NumberInput changes
 
 [NumberInput](/core/number-input) was migrated to [react-number-format](https://s-yadav.github.io/react-number-format/).
-It now supports more features and had improvements in cursor position management.
+It now supports more features and has improvements in cursor position management.
 Due to migration, some of the props were renamed – follow the [documentation](/core/number-input) to learn about the changes.
 
 <Demo data={NumberInputDemos.prefixSuffix} />
@@ -334,8 +351,8 @@ HTML output of the component.
 
 <Demo data={LoaderDemos.configurator} />
 
-[Theme](/theming/theme-object) object no longer supports `theme.loader` prop –
-it is also now possible to add custom loaders on [theme](/theming/theme-object) with [default prop](/theming/default-props).
+[Theme](/theming/theme-object) object no longer supports `theme.loader` property –
+it is also now possible to add custom loaders on [theme](/theming/theme-object) with [default props](/theming/default-props).
 Specified [Loader](/core/loader) will be used in all components that use it under the hood ([LoadingOverlay](/core/loading-overlay), [Button](/core/button), [ActionIcon](/core/action-icon), [Stepper](/core/stepper), etc.).
 
 <Demo data={LoaderDemos.cssLoader} />
@@ -369,7 +386,7 @@ compound components instead.
 - `position` prop was renamed to `justify` – it now supports all `justify-content` values
 - `noWrap` prop was replaced with `wrap="nowrap"`, `wrap` prop now supports all `flex-wrap` values
 - `spacing` prop was replaced with `gap`
-- `Group` now supports new `preventGrowOverflow` prop which allows to customize how group items will behave when they grow larger than their dedicated space
+- `Group` now supports new `preventGrowOverflow` prop which allows customizing how group items will behave when they grow larger than their dedicated space
 
 <Demo data={GroupDemos.usage} />
 
@@ -385,7 +402,7 @@ compound components instead.
 - `compact` prop was removed, use `size="compact-XXX"` instead
 - `leftIcon` and `rightIcon` props were renamed to `leftSection` and `rightSection`
 - `uppercase` prop was removed, use `tt` [style prop](/styles/style-props) instead
-- `loaderPosition` prop was removed, [Loader](/core/loader) is now always rendered on the center to prevent layout shifts
+- `loaderPosition` prop was removed, [Loader](/core/loader) is now always rendered in the center to prevent layout shifts
 - Styles API selectors were changed, see [Button Styles API](/core/button?t=styles-api) documentation for more details
 
 ## AppShell changes
@@ -395,7 +412,7 @@ compound components instead.
 - `AppShell` now uses compound components pattern: `Navbar`, `Aside`, `Header` and `Footer` are no longer exported from `@mantine/core` package. Instead, use `AppShell.Navbar`, `AppShell.Aside`, etc.
 - `AppShell` now supports animations when navbar/aside are opened/closed
 - Navbar/aside can now be collapsed on desktop – state is handled separately for mobile and desktop
-- Header/footer can now be collapsed the same way as navbar/aside. For example, header can be collapsed based on scroll position or direction.
+- Header/footer can now be collapsed the same way as navbar/aside. For example, the header can be collapsed based on scroll position or direction.
 - `AppShell` no longer supports `fixed` prop – all components have `position: fixed` styles, static positioning is no longer supported
 - The documentation was updated, it now includes [10+ examples on a separate page](/app-shell?e=BasicAppShell)
 
@@ -431,7 +448,7 @@ all props now work the same way as [style props](/styles/style-props).
 - The logic is no longer based on React context
 - `SpotlightProvider` was renamed to `Spotlight`
 - `useSpotlight` hook was removed, use `spotlight` object instead
-- `actions` prop now uses different data format
+- `actions` prop now uses a different data format
 - It is now possible to have multiple spotlights in the same app
 - `Spotlight` component now uses compound components pattern for advanced customization
 
@@ -446,7 +463,7 @@ all props now work the same way as [style props](/styles/style-props).
 
 ## @mantine/prism deprecation
 
-`@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [New package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
+`@mantine/prism` package was deprecated in favor of `@mantine/code-highlight` package. [The new package](/others/code-highlight) uses [highlight.js](https://highlightjs.org/) instead of [Prism](https://prismjs.com/).
 
 <Demo data={CodeHighlightDemos.tabsGetIcons} />
 
@@ -458,7 +475,7 @@ New [Fieldset](/core/fieldset) component:
 
 ## Combobox component
 
-New [Combobox](/core/combobox) component allows building custom select, autocomplete, tags input, multiselect and other
+The new [Combobox](/core/combobox) component allows building custom select, autocomplete, tags input, multiselect and other
 similar components. It is used as a base for updated [Autocomplete](/core/autocomplete), [Select](/core/select),
 [TagsInput](/core/tags-input) and [MultiSelect](/core/multi-select) components.
 
@@ -466,7 +483,7 @@ similar components. It is used as a base for updated [Autocomplete](/core/autoco
 Advanced features that were previously implemented in [Autocomplete](/core/autocomplete), [Select](/core/select)
 and [MultiSelect](/core/multi-select) are now supposed to be implemented with [Combobox](/core/combobox) instead.
 
-You can find 50+ `Combobox` examples on [this page](/combobox)
+You can find 50+ `Combobox` examples on [this page](/combobox).
 
 <Demo data={ComboboxDemos.select} />
 
@@ -479,9 +496,9 @@ The component is similar to [MultiSelect](/core/multi-select) but allows enterin
 
 ## withErrorStyles prop
 
-All inputs now support `withErrorStyles` prop which allows removing error styles from the input.
-It can be used to apply custom error styles without override or use other techniques to
-indicate error state. For example, it can be used to render icon in the right section:
+All inputs now support `withErrorStyles` prop, which allows removing error styles from the input.
+It can be used to apply custom error styles without override, or use other techniques to
+indicate error state. For example, it can be used to render an icon in the right section:
 
 <Demo data={InputDemos.error} />
 
@@ -501,7 +518,7 @@ viewport width is less than or greater than the specified breakpoint:
 - All transitions are now disabled during color scheme change
 - `theme.respectReducedMotion` is now set to `false` by default – it caused a lot of confusion for users who did not know about it
 - [Notifications system](/others/notifications) now exports `notifications.updateState` function to update notifications state with a given callback
-- [Blockquote](/core/blockquote) components has new design
+- [Blockquote](/core/blockquote) component has new design
 - [Breadcrumbs](/core/breadcrumbs) component now supports `separatorMargin` prop
 - [Tooltip](/core/tooltip) component now supports `mainAxis` and `crossAxis` offset configuration
 - [Slider and RangeSlider](/core/slider) components `radius` prop now affects thumb as well as track
@@ -520,7 +537,7 @@ viewport width is less than or greater than the specified breakpoint:
 - [Stack](/core/stack) component `spacing` prop was renamed to `gap`
 - [Input](/core/input) and other `Input` based components `icon` prop was renamed to `leftSection`
 - [Loader](/core/loader) component `variant` prop was renamed to `type`
-- `@mantine/core` package no longer depends on [Radix UI ScrollArea](https://www.radix-ui.com/docs/primitives/components/scroll-area#scroll-area), [ScrollArea](/core/scroll-area) component is now a native Mantine component – it reduces bundle size, allows to set CSP for styles and improves performance (all styles are now applied with classes instead of inline `<style />` tags)
+- `@mantine/core` package no longer depends on [Radix UI ScrollArea](https://www.radix-ui.com/docs/primitives/components/scroll-area#scroll-area), [ScrollArea](/core/scroll-area) component is now a native Mantine component – it reduces bundle size, allows setting CSP for styles and improves performance (all styles are now applied with classes instead of inline `<style />` tags)
 - [Overlay](/core/overlay) `opacity` prop was renamed to `backgroundOpacity` to avoid collision with `opacity` [style prop](/styles/style-props)
 - [Badge](/core/badge) Styles API selectors were changed, see [Badge Styles API](/core/badge?t=styles-api) documentation for more details
 - [Slider](/core/slider) Styles API selectors were changed, see [Slider Styles API](/core/slider?t=styles-api) documentation for more details
@@ -535,4 +552,4 @@ viewport width is less than or greater than the specified breakpoint:
 - [LoadingOverlay](/core/loading-overlay) props are now grouped by the component they are passed down to: `overlayProps`, `loaderProps` and `transitionProps` now replace props that were previously passed to `LoadingOverlay` directly
 - [Dropzone](/others/dropzone) component no longer supports `padding` prop, use `p` style prop instead
 - [Dialog](/core/dialog) component now supports all [Paper](/core/paper) and [Affix](/core/affix) props, `transitionDuration`, `transition` and other transition related props were replaced with `transitionProps`
-- [Checkbox](/core/checkbox), [Radio](/core/radio), [Chip](/core/chip) and [Switch](/core/switch) components now support `rootRef` prop which allows to use them with [Tooltip](/core/tooltip) and other similar components
+- [Checkbox](/core/checkbox), [Radio](/core/radio), [Chip](/core/chip) and [Switch](/core/switch) components now support `rootRef` prop which allows using them with [Tooltip](/core/tooltip) and other similar components
