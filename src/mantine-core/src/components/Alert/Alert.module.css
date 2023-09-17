@@ -1,5 +1,5 @@
 .root {
-  padding: var(--mantine-spacing-md) var(--mantine-spacing-xl);
+  padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
   border-radius: var(--alert-radius, var(--mantine-radius-default));
   position: relative;
   overflow: hidden;
@@ -34,6 +34,11 @@
 
   &[data-with-clos-button] {
     padding-right: var(--mantine-spacing-md);
+
+    @mixin rtl {
+      padding-left: var(--mantine-spacing-md);
+      padding-right: 0;
+    }
   }
 }
 
@@ -52,6 +57,11 @@
   justify-content: flex-start;
   margin-right: var(--mantine-spacing-md);
   margin-top: rem(1px);
+
+  @mixin rtl {
+    margin-right: 0;
+    margin-left: var(--mantine-spacing-md);
+  }
 }
 
 .message {
@@ -72,7 +82,6 @@
 .closeButton {
   width: rem(20px);
   height: rem(20px);
-  margin-right: calc(var(--mantine-spacing-md) * -1);
   margin-top: calc(var(--mantine-spacing-sm) * -0.5);
   color: var(--alert-color, var(--mantine-primary-color-light-color));
 }
