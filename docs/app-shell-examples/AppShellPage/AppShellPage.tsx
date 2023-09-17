@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { CodeHighlightTabs } from '@mantine/code-highlight';
 import { getCodeFileIcon } from '@mantine/ds';
-import Head from 'next/head';
+import { PageHead } from '@/components/PageHead';
 import { ExamplesDrawer } from './ExamplesDrawer/ExamplesDrawer';
 import { APP_SHELL_EXAMPLES_COMPONENTS } from '../examples';
 
@@ -25,9 +25,10 @@ export function AppShellPage() {
 
   return (
     <>
-      <Head>
-        <title>AppShell examples | Mantine</title>
-      </Head>
+      <PageHead
+        title="AppShell examples"
+        description="10+ examples of using Mantine AppShell component"
+      />
 
       <div>
         {state === 'code' ? (

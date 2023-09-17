@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from 'next/head';
 import { Frontmatter } from '@/types';
 import { MdxPage } from '@/components/MdxPage';
+import { PageHead } from '../PageHead';
 
 interface MdxLayoutProps {
   meta: Frontmatter;
@@ -11,9 +11,7 @@ interface MdxLayoutProps {
 export function MdxLayout({ meta, children }: MdxLayoutProps) {
   return (
     <>
-      <Head>
-        <title>{`${meta.title} | Mantine`}</title>
-      </Head>
+      <PageHead title={meta.title} description={meta.description} />
       <MdxPage meta={meta}>{children}</MdxPage>
     </>
   );

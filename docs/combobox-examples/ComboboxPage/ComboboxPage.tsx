@@ -1,14 +1,15 @@
 import React from 'react';
-import Head from 'next/head';
 import { ComboboxShell } from '../ComboboxShell/ComboboxShell';
 import { ComboboxDemo } from '../ComboboxDemo/ComboboxDemo';
+import { PageHead } from '@/components/PageHead';
 
 export function ComboboxPage() {
   return (
     <>
-      <Head>
-        <title>Combobox examples | Mantine</title>
-      </Head>
+      <PageHead
+        title="Combobox examples"
+        description="50+ examples of using Mantine Combobox component"
+      />
       <ComboboxShell>
         <ComboboxDemo />
       </ComboboxShell>
