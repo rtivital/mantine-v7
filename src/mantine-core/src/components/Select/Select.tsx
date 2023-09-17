@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useUncontrolled } from '@mantine/hooks';
+import { useId, useUncontrolled } from '@mantine/hooks';
 import {
   BoxProps,
   StylesApiProps,
@@ -118,11 +118,13 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     allowDeselect,
     error,
     rightSectionPointerEvents,
+    id,
     ...others
   } = props;
 
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
+  const _id = useId();
 
   const [_value, setValue] = useUncontrolled({
     value,
@@ -196,6 +198,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
       >
         <Combobox.Target targetType={searchable ? 'input' : 'button'}>
           <InputBase
+            id={_id}
             ref={ref}
             rightSection={
               rightSection || <Combobox.Chevron size={size} error={error} unstyled={unstyled} />
@@ -247,6 +250,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
           unstyled={unstyled}
+          labelId={`${_id}-label`}
         />
       </Combobox>
       <input type="hidden" name={name} value={_value || ''} form={form} disabled={disabled} />

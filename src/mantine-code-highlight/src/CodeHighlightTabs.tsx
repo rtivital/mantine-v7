@@ -216,6 +216,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
                 <ActionIcon
                   onClick={() => setExpanded(!_expanded)}
                   variant="none"
+                  aria-label={_expanded ? collapseCodeLabel : expandCodeLabel}
                   {...getStyles('control')}
                 >
                   <ExpandIcon expanded={_expanded} />
@@ -226,7 +227,12 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props, ref)
             <CopyButton value={currentCode.code.trim()}>
               {({ copied, copy }) => (
                 <Tooltip label={copied ? copiedLabel : copyLabel} fz="sm" position="left">
-                  <ActionIcon onClick={copy} variant="none" {...getStyles('control')}>
+                  <ActionIcon
+                    onClick={copy}
+                    variant="none"
+                    {...getStyles('control')}
+                    aria-label={copied ? copiedLabel : copyLabel}
+                  >
                     <CopyIcon copied={copied} />
                   </ActionIcon>
                 </Tooltip>

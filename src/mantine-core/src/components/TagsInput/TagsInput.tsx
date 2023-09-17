@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUncontrolled } from '@mantine/hooks';
+import { useUncontrolled, useId } from '@mantine/hooks';
 import {
   BoxProps,
   StylesApiProps,
@@ -144,9 +144,11 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    id,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -318,6 +320,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             multiline
             withErrorStyles={withErrorStyles}
             __stylesApiProps={{ ...props, multiline: true }}
+            id={_id}
           >
             <Pill.Group disabled={disabled} unstyled={unstyled} {...getStyles('pillsList')}>
               {values}
@@ -341,6 +344,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                   onChange={(event) => setSearchValue(event.currentTarget.value)}
                   disabled={disabled}
                   readOnly={readOnly}
+                  id={_id}
                 />
               </Combobox.EventsTarget>
             </Pill.Group>
@@ -357,6 +361,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
           withScrollArea={withScrollArea}
           maxDropdownHeight={maxDropdownHeight}
           unstyled={unstyled}
+          labelId={`${_id}-label`}
         />
       </Combobox>
       <input type="hidden" name={name} form={form} value={_value.join(',')} disabled={disabled} />

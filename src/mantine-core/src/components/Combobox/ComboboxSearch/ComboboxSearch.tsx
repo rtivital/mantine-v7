@@ -48,6 +48,7 @@ export const ComboboxSearch = factory<ComboboxSearchFactory>((_props, ref) => {
     targetType: 'input',
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute: false,
     onKeyDown,
   });
 

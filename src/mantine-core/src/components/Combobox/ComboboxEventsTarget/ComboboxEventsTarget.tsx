@@ -17,6 +17,9 @@ export interface ComboboxEventsTargetProps {
   /** Determines whether the target should have `aria-` attributes, `true` by default */
   withAriaAttributes?: boolean;
 
+  /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+  withExpandedAttribute?: boolean;
+
   /** Determines which events should be handled by the target element.
    * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
    * `input` by default.
@@ -29,6 +32,7 @@ const defaultProps: Partial<ComboboxEventsTargetProps> = {
   targetType: 'input',
   withKeyboardNavigation: true,
   withAriaAttributes: true,
+  withExpandedAttribute: false,
 };
 
 export type ComboboxEventsTargetFactory = Factory<{
@@ -38,8 +42,15 @@ export type ComboboxEventsTargetFactory = Factory<{
 }>;
 
 export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props, ref) => {
-  const { children, refProp, withKeyboardNavigation, withAriaAttributes, targetType, ...others } =
-    useProps('ComboboxEventsTarget', defaultProps, props);
+  const {
+    children,
+    refProp,
+    withKeyboardNavigation,
+    withAriaAttributes,
+    withExpandedAttribute,
+    targetType,
+    ...others
+  } = useProps('ComboboxEventsTarget', defaultProps, props);
 
   if (!isElement(children)) {
     throw new Error(
@@ -52,6 +63,7 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props,
     targetType,
     withAriaAttributes,
     withKeyboardNavigation,
+    withExpandedAttribute,
     onKeyDown: children.props.onKeyDown,
   });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUncontrolled } from '@mantine/hooks';
+import { useId, useUncontrolled } from '@mantine/hooks';
 import {
   BoxProps,
   StylesApiProps,
@@ -151,9 +151,11 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     withErrorStyles,
     name,
     form,
+    id,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -282,6 +284,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             __stylesApiProps={{ ...props, multiline: true }}
             pointer={!searchable}
             onClick={() => (searchable ? combobox.openDropdown() : combobox.toggleDropdown())}
+            id={_id}
           >
             <Pill.Group disabled={disabled} unstyled={unstyled} {...getStyles('pillsList')}>
               {values}
@@ -289,6 +292,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                 <PillsInput.Field
                   {...rest}
                   ref={ref}
+                  id={_id}
                   {...getStyles('inputField')}
                   unstyled={unstyled}
                   onFocus={(event) => {
@@ -337,6 +341,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
           withCheckIcon={withCheckIcon}
           nothingFoundMessage={nothingFoundMessage}
           unstyled={unstyled}
+          labelId={`${_id}-label`}
         />
       </Combobox>
       <input type="hidden" name={name} value={_value.join(',')} form={form} disabled={disabled} />

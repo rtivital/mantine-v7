@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useUncontrolled } from '@mantine/hooks';
+import { useUncontrolled, useId } from '@mantine/hooks';
 import {
   BoxProps,
   StylesApiProps,
@@ -76,9 +76,11 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     withScrollArea,
     maxDropdownHeight,
     size,
+    id,
     ...others
   } = props;
 
+  const _id = useId(id);
   const parsedData = getParsedComboboxData(data);
   const optionsLockup = getOptionsLockup(parsedData);
 
@@ -156,6 +158,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
           classNames={resolvedClassNames}
           styles={resolvedStyles}
           unstyled={unstyled}
+          id={_id}
         />
       </Combobox.Target>
       <OptionsDropdown
@@ -168,6 +171,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         withScrollArea={withScrollArea}
         maxDropdownHeight={maxDropdownHeight}
         unstyled={unstyled}
+        labelId={`${_id}-label`}
       />
     </Combobox>
   );

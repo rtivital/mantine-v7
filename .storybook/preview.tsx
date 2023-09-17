@@ -41,6 +41,7 @@ function DirectionWrapper({ children }: { children: React.ReactNode }) {
         right={20}
         onClick={toggleDirection}
         style={{ zIndex: 1000 }}
+        aria-label="Toggle text direction"
       >
         {dir === 'ltr' ? <IconTextDirectionLtr /> : <IconTextDirectionRtl />}
       </ActionIcon>

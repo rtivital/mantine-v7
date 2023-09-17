@@ -5,6 +5,7 @@ interface UseComboboxTargetPropsInput {
   targetType: 'input' | 'button' | undefined;
   withAriaAttributes: boolean | undefined;
   withKeyboardNavigation: boolean | undefined;
+  withExpandedAttribute: boolean | undefined;
   onKeyDown: React.KeyboardEventHandler<HTMLInputElement> | undefined;
 }
 
@@ -12,6 +13,7 @@ export function useComboboxTargetProps({
   onKeyDown,
   withKeyboardNavigation,
   withAriaAttributes,
+  withExpandedAttribute,
   targetType,
 }: UseComboboxTargetPropsInput) {
   const ctx = useComboboxContext();
@@ -73,7 +75,8 @@ export function useComboboxTargetProps({
   const ariaAttributes = withAriaAttributes
     ? {
         'aria-haspopup': 'listbox',
-        'aria-expanded': ctx.store.listId ? ctx.store.dropdownOpened : undefined,
+        'aria-expanded':
+          (withExpandedAttribute && !!(ctx.store.listId && ctx.store.dropdownOpened)) || undefined,
         'aria-controls': ctx.store.listId,
         'aria-activedescendant': ctx.store.dropdownOpened
           ? selectedOptionId || undefined

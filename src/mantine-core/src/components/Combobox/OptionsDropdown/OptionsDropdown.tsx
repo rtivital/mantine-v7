@@ -43,6 +43,7 @@ function Option({ data, withCheckIcon, value, checkIconPosition, unstyled }: Opt
         className={cx({ [classes.optionsDropdownOption]: !unstyled })}
         data-reverse={checkIconPosition === 'right' || undefined}
         data-checked={isValueChecked(value, data.value) || undefined}
+        aria-selected={isValueChecked(value, data.value)}
       >
         {checkIconPosition === 'left' && check}
         {data.label}
@@ -73,6 +74,7 @@ export interface OptionsDropdownProps {
   checkIconPosition?: 'left' | 'right';
   nothingFoundMessage?: React.ReactNode;
   unstyled: boolean | undefined;
+  labelId: string;
 }
 
 export function OptionsDropdown({
@@ -90,6 +92,7 @@ export function OptionsDropdown({
   checkIconPosition,
   nothingFoundMessage,
   unstyled,
+  labelId,
 }: OptionsDropdownProps) {
   validateOptions(data);
 
@@ -116,7 +119,7 @@ export function OptionsDropdown({
 
   return (
     <Combobox.Dropdown hidden={hidden || (hiddenWhenEmpty && isEmpty)}>
-      <Combobox.Options>
+      <Combobox.Options labelledBy={labelId}>
         {withScrollArea ? (
           <ScrollArea.Autosize
             mah={maxDropdownHeight ?? 220}
