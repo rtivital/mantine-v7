@@ -4,7 +4,7 @@ import CSS_FILES_LIST from '@/.docgen/css-exports.json';
 import { MdxDataTable } from '../MdxProvider';
 
 export function CssFilesList() {
-  const files = CSS_FILES_LIST.modules.map((file) => [
+  const files = ['global.css', ...CSS_FILES_LIST.modules].map((file) => [
     file.replace('.css', ''),
     <Code style={{ whiteSpace: 'nowrap' }}>{`import '@mantine/core/styles/${file}';`}</Code>,
   ]);

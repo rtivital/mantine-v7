@@ -24,6 +24,15 @@ Some components like [Select](/core/select/) do not have any styles on their own
 on top of other components. To find out which components are used in a particular component, check
 the component source code.
 
+## Global styles
+
+All Mantine components depend on global styles, you need to import them before
+all other styles:
+
+```tsx
+import '@mantine/core/styles/global.css';
+```
+
 ## Import order
 
 It is important to keep correct styles import order. For example, if you want to use
