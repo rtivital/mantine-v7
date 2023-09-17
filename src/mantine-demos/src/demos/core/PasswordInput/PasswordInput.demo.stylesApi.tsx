@@ -17,7 +17,6 @@ function Demo() {
       error="Error"
       withAsterisk
       leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} />}
-      autosize
       {{props}}
     />
   );
@@ -33,7 +32,6 @@ function Demo(props: any) {
       error="Error"
       withAsterisk
       leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} />}
-      autosize
       {...props}
     />
   );
