@@ -31,6 +31,7 @@ function Demo() {
       <Group justify="center">
         <textarea
           ref={ref}
+          aria-label="Resize me"
           style={{
             width: rem(400),
             height: rem(120),

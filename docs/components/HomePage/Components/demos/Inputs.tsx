@@ -24,6 +24,7 @@ export function Inputs() {
         defaultValue="rgba(34, 138, 230, 0.8)"
         format="rgba"
         placeholder="What other library has that?"
+        eyeDropperButtonProps={{ 'aria-label': 'Pick color' }}
       />
       <NativeSelect label="Native select" data={['React', 'Angular', 'Svelte', 'Vue']} />
       <Select

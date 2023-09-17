@@ -11,7 +11,7 @@ export interface HeaderControlProps extends BoxProps {
 function _HeaderControl({ tooltip, className, ...others }: HeaderControlProps) {
   return (
     <Tooltip label={tooltip}>
-      <UnstyledButton className={cx(classes.control, className)} {...others} />
+      <UnstyledButton className={cx(classes.control, className)} aria-label={tooltip} {...others} />
     </Tooltip>
   );
 }

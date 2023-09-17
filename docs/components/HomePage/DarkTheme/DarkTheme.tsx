@@ -25,7 +25,7 @@ function Demo() {
     <PageSection title="Dark color scheme" alt>
       <SimpleGrid cols={{ base: 1, sm: 2 }} mt={30} spacing={{ base: 30, sm: 60 }} pb={60}>
         <div>
-          <Image src={image.src} radius="md" className={classes.image} />
+          <Image src={image.src} alt="Dark and light theme" radius="md" className={classes.image} />
         </div>
         <div>
           <Text size="lg">

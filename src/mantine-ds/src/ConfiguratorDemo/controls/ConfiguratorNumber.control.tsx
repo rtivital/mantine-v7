@@ -28,7 +28,7 @@ export function ConfiguratorNumberControl({
 }: ConfiguratorNumberControlProps) {
   return (
     <Input.Wrapper labelElement="div" label={getControlLabel(prop)} {...others}>
-      <Slider value={value} onChange={onChange} step={step} min={min} max={max} />
+      <Slider value={value} onChange={onChange} step={step} min={min} max={max} thumbLabel="Size" />
     </Input.Wrapper>
   );
 }

@@ -37,6 +37,7 @@ export function ConfiguratorSizeControl({
         step={25}
         marks={MARKS}
         styles={{ markLabel: { display: 'none' } }}
+        thumbLabel="Size"
       />
     </Input.Wrapper>
   );

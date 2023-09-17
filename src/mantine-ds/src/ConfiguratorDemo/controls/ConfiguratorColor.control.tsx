@@ -52,6 +52,7 @@ export function ConfiguratorColorControl({
         onClick={() => onChange(color)}
         radius="sm"
         className={classes.swatch}
+        aria-label={color}
       >
         {value === color && <CheckIcon className={classes.check} />}
       </ColorSwatch>
@@ -63,7 +64,7 @@ export function ConfiguratorColorControl({
         {colors}
         <Popover radius="md" position="bottom-end" shadow="md">
           <Popover.Target>
-            <UnstyledButton className={classes.colorControl}>
+            <UnstyledButton className={classes.colorControl} aria-label="Pick color">
               <ColorWheelIcon />
             </UnstyledButton>
           </Popover.Target>
