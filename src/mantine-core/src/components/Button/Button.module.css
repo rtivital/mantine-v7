@@ -23,6 +23,10 @@
   --button-padding-x-compact-lg: rem(12px);
   --button-padding-x-compact-xl: rem(14px);
 
+  --button-height: var(--button-height-sm);
+  --button-padding-x: var(--button-padding-x-sm);
+  --button-color: var(--mantine-color-white);
+
   user-select: none;
   font-weight: 600;
   position: relative;

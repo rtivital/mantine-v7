@@ -1,25 +1,13 @@
 import React from 'react';
 import { Button, ButtonProps } from './Button';
-import { DEFAULT_THEME, rem, MantineThemeProvider } from '../../core';
+import { DEFAULT_THEME, rem } from '../../core';
 
 export default { title: 'Button' };
 
 export function SingleButton() {
   return (
     <div style={{ padding: 40 }}>
-      <MantineThemeProvider
-        theme={{
-          components: {
-            Button: Button.extend({
-              defaultProps: {
-                color: 'red',
-              },
-            }),
-          },
-        }}
-      >
-        <Button>Button</Button>
-      </MantineThemeProvider>
+      <Button loading>Button</Button>
     </div>
   );
 }
