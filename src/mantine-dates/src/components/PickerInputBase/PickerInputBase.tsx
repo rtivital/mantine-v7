@@ -163,6 +163,7 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props, ref) => 
         >
           <Popover.Target>
             <Input
+              aria-label={formattedValue || placeholder}
               data-dates-input
               data-read-only={readOnly || undefined}
               disabled={disabled}
