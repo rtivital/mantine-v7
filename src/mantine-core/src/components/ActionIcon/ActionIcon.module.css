@@ -11,7 +11,8 @@
   --ai-size-input-lg: rem(50px);
   --ai-size-input-xl: rem(60px);
 
-  --_ai-size: var(--ai-size, var(--ai-size-md));
+  --ai-size: var(--ai-size-md);
+  --ai-color: var(--mantine-color-white);
 
   line-height: 1;
   display: inline-flex;
@@ -20,10 +21,10 @@
   position: relative;
   user-select: none;
 
-  width: var(--_ai-size);
-  height: var(--_ai-size);
-  min-width: var(--_ai-size);
-  min-height: var(--_ai-size);
+  width: var(--ai-size);
+  height: var(--ai-size);
+  min-width: var(--ai-size);
+  min-height: var(--ai-size);
   border-radius: var(--ai-radius, var(--mantine-radius-default));
   background: var(--_ai-bg, var(--ai-bg, var(--mantine-primary-color-filled)));
   color: var(--_ai-color, var(--ai-color, var(--mantine-color-white)));

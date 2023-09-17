@@ -32,7 +32,7 @@ export function SingleButton() {
           },
         }}
       >
-        <ActionIcon>$$</ActionIcon>
+        <ActionIcon loading>$$</ActionIcon>
       </MantineThemeProvider>
     </div>
   );
