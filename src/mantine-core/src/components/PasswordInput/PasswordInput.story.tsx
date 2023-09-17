@@ -6,7 +6,7 @@ export default { title: 'PasswordInput' };
 export function Usage() {
   return (
     <div style={{ padding: 40, maxWidth: 340 }}>
-      <PasswordInput placeholder="Your password" description="Hello" label="There" />
+      <PasswordInput placeholder="Your password" label="Your password" />
     </div>
   );
 }
