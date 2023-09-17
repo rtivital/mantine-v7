@@ -78,6 +78,10 @@
   text-overflow: ellipsis;
   padding-top: var(--mantine-spacing-sm);
   padding-bottom: var(--mantine-spacing-sm);
+
+  @mixin rtl {
+    text-align: right;
+  }
 }
 
 .chevron {
