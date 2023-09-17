@@ -15,7 +15,7 @@ interface HeaderProps {
 }
 
 const versions = [
-  { v: 'v6', name: '6.0.20', link: 'https://v6.mantine.dev/' },
+  { v: 'v6', name: '6.0.21', link: 'https://v6.mantine.dev/' },
   { v: 'v5', name: '5.10.5', link: 'https://v5.mantine.dev/' },
   { v: 'v4', name: '4.2.12', link: 'https://v4.mantine.dev/' },
   { v: 'v3', name: '3.6.14', link: 'https://v3.mantine.dev/' },
