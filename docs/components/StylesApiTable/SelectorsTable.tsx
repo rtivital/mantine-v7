@@ -25,15 +25,17 @@ export function SelectorsTable({ data, component, ...others }: SelectorsTablePro
   ));
 
   return (
-    <Table {...others}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Selector</Table.Th>
-          <Table.Th>Static selector</Table.Th>
-          <Table.Th>Description</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <Table.ScrollContainer minWidth={600}>
+      <Table {...others}>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Selector</Table.Th>
+            <Table.Th>Static selector</Table.Th>
+            <Table.Th>Description</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </Table.ScrollContainer>
   );
 }

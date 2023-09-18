@@ -35,16 +35,18 @@ export function ModifiersTable({ data, ...others }: ModifiersTableProps) {
     )) || [];
 
   return (
-    <Table {...others}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Selector</Table.Th>
-          <Table.Th>Attribute</Table.Th>
-          {hasConditions && <Table.Th>Condition</Table.Th>}
-          {hasValues && <Table.Th>Value</Table.Th>}
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <Table.ScrollContainer minWidth={600}>
+      <Table {...others}>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Selector</Table.Th>
+            <Table.Th>Attribute</Table.Th>
+            {hasConditions && <Table.Th>Condition</Table.Th>}
+            {hasValues && <Table.Th>Value</Table.Th>}
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </Table.ScrollContainer>
   );
 }
