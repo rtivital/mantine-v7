@@ -22,10 +22,11 @@ export function SimpleGridVariables({
   selector,
 }: SimpleGridVariablesProps) {
   const theme = useMantineTheme();
+  const _verticalSpacing = verticalSpacing === undefined ? spacing : verticalSpacing;
 
   const baseStyles: Record<string, string | undefined> = filterProps({
     '--sg-spacing-x': getSpacing(getBaseValue(spacing)),
-    '--sg-spacing-y': getSpacing(getBaseValue(verticalSpacing)),
+    '--sg-spacing-y': getSpacing(getBaseValue(_verticalSpacing)),
     '--sg-cols': getBaseValue(cols)?.toString(),
   });
 
@@ -39,8 +40,8 @@ export function SimpleGridVariables({
         acc[breakpoint]['--sg-spacing-x'] = getSpacing(spacing[breakpoint]);
       }
 
-      if (typeof verticalSpacing === 'object' && verticalSpacing[breakpoint] !== undefined) {
-        acc[breakpoint]['--sg-spacing-y'] = getSpacing(verticalSpacing[breakpoint]);
+      if (typeof _verticalSpacing === 'object' && _verticalSpacing[breakpoint] !== undefined) {
+        acc[breakpoint]['--sg-spacing-y'] = getSpacing(_verticalSpacing[breakpoint]);
       }
 
       if (typeof cols === 'object' && cols[breakpoint] !== undefined) {

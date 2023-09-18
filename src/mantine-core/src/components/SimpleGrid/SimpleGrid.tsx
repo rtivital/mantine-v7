@@ -40,7 +40,6 @@ export type SimpleGridFactory = Factory<{
 const defaultProps: Partial<SimpleGridProps> = {
   cols: 1,
   spacing: 'md',
-  verticalSpacing: 'md',
 };
 
 export const SimpleGrid = factory<SimpleGridFactory>((_props, ref) => {

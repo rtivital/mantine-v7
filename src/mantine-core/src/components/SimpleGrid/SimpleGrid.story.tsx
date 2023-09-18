@@ -7,7 +7,7 @@ export default { title: 'SimpleGrid' };
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <SimpleGrid cols={{ sm: 2, md: 5 }} spacing={{ base: 10, sm: 'md' }} verticalSpacing={0}>
+      <SimpleGrid cols={{ sm: 2, md: 5 }} spacing={{ sm: 100 }} verticalSpacing={{ sm: 10 }}>
         {Array(10)
           .fill(0)
           .map((_, index) => (
