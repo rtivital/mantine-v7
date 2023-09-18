@@ -11,7 +11,7 @@ $jumbotron-breakpoint: em(960px);
   padding-bottom: rem(180px);
 
   @media (max-width: $jumbotron-breakpoint) {
-    padding-top: rem(100px);
+    padding-top: rem(60px);
     padding-bottom: rem(90px);
   }
 }
@@ -23,6 +23,7 @@ $jumbotron-breakpoint: em(960px);
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
 
   @media (max-width: $jumbotron-breakpoint) {
+    margin-top: var(--mantine-spacing-lg);
     font-size: rem(18px);
   }
 }

@@ -22,7 +22,14 @@ function StepperDemo() {
 
   return (
     <>
-      <Stepper active={active} onStepClick={setActive}>
+      <Stepper active={active} onStepClick={setActive} visibleFrom="sm">
+        <Stepper.Step label="First step" description="Create an account" />
+        <Stepper.Step label="Second step" description="Verify email" />
+        <Stepper.Step label="Final step" description="Get full access" />
+        <Stepper.Completed>Completed, click back button to get to previous step</Stepper.Completed>
+      </Stepper>
+
+      <Stepper active={active} onStepClick={setActive} hiddenFrom="sm" orientation="vertical">
         <Stepper.Step label="First step" description="Create an account" />
         <Stepper.Step label="Second step" description="Verify email" />
         <Stepper.Step label="Final step" description="Get full access" />
@@ -121,7 +128,7 @@ export function Overlays() {
 
       <StepperDemo />
 
-      <Box hiddenFrom="sm">
+      <Box visibleFrom="sm">
         <Text mb="sm" mt={40} size="lg" fw={700} style={{ fontFamily: 'var(--docs-font-primary)' }}>
           Pagination component
         </Text>
