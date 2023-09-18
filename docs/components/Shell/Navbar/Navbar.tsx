@@ -60,7 +60,7 @@ export function Navbar({ navbarOpened, onNavbarClose, mobileNavbarOnly }: Navbar
             Contribute
           </NavbarMainLink>
           <NavbarMainLink
-            icon={<IconPalette style={{ width: rem(22), height: rem(22) }} stroke={1.5} />}
+            icon={<IconPalette style={{ width: rem(25), height: rem(25) }} stroke={1.5} />}
             href="/colors-generator"
             onNavbarClose={onNavbarClose}
           >
