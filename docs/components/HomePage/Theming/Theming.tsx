@@ -41,6 +41,7 @@ export function Theming() {
           size="lg"
           pt={3}
           style={{ fontFamily: 'var(--docs-font-primary)' }}
+          styles={{ label: { display: 'flex', alignItems: 'center' } }}
         >
           Bright pink badge
         </Badge>
