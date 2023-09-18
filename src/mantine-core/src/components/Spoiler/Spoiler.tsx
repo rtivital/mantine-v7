@@ -77,6 +77,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
     showLabel,
     children,
     controlRef,
+    transitionDuration,
     ...others
   } = props;
 
