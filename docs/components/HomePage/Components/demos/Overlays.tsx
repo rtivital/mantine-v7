@@ -76,7 +76,7 @@ export function Overlays() {
       <Drawer
         opened={drawerOpened}
         onClose={() => setDrawerOpened(false)}
-        padding="xl"
+        padding="md"
         size={440}
         withCloseButton={false}
       >
