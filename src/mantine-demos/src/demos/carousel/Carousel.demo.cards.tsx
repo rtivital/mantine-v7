@@ -21,6 +21,7 @@ const cssCode = `.card {
   line-height: 1.2;
   font-size: rem(32px);
   margin-top: var(--mantine-spacing-xs);
+  cursor: default;
 }
 
 .category {
@@ -28,6 +29,7 @@ const cssCode = `.card {
   opacity: 0.7;
   font-weight: 700;
   text-transform: uppercase;
+  cursor: default;
 }
 `;
 
