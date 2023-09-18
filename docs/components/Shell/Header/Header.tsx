@@ -66,7 +66,7 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
       </header>
 
       <header className={cx(classes.header, RemoveScroll.classNames.fullWidth)} data-mobile>
-        <Group justify="space-between" w="100%">
+        <Group justify="space-between" w="100%" wrap="nowrap">
           <Box miw={80}>
             <Burger
               opened={navbarOpened}
