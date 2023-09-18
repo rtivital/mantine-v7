@@ -73,6 +73,8 @@ export default async function createPackageConfig(config: PkgConfigInput): Promi
     externals = [
       'dayjs/locale/ru',
       'dayjs/plugin/customParseFormat',
+      'dayjs/plugin/utc',
+      'dayjs/plugin/timezone',
       'klona/full',
       'highlight.js/lib/languages/typescript',
       'prism-react-renderer/themes/duotoneDark',
