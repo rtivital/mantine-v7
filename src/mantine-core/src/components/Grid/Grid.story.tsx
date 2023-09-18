@@ -8,17 +8,17 @@ export default { title: 'Grid' };
 export function Usage() {
   return (
     <div style={{ padding: 0 }}>
-      <Grid columns={12} bg="pink.3">
-        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+      <Grid bg="pink.3">
+        <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>First</Button>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+        <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>Second</Button>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+        <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>Third</Button>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+        <Grid.Col span={{ sm: 6, md: 3 }}>
           <Button fullWidth>Forth</Button>
         </Grid.Col>
       </Grid>

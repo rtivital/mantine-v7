@@ -57,7 +57,8 @@ export function GridColVariables({ span, order, offset, selector }: GridColVaria
   const theme = useMantineTheme();
   const ctx = useGridContext();
 
-  const baseSpan = getBaseValue(span);
+  const baseValue = getBaseValue(span);
+  const baseSpan = baseValue === undefined ? 12 : getBaseValue(span);
 
   const baseStyles: Record<string, string | undefined> = filterProps({
     '--col-order': getBaseValue(order)?.toString(),
