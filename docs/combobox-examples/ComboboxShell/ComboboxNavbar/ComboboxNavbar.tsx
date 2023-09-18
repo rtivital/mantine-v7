@@ -9,9 +9,10 @@ import classes from './ComboboxNavbar.module.css';
 
 interface ComboboxNavbarProps {
   opened: boolean;
+  onClose(): void;
 }
 
-export function ComboboxNavbar({ opened }: ComboboxNavbarProps) {
+export function ComboboxNavbar({ opened, onClose }: ComboboxNavbarProps) {
   const [search, setSearch] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const splittedSearch = search
@@ -40,7 +41,12 @@ export function ComboboxNavbar({ opened }: ComboboxNavbarProps) {
   const groupedData = getGroupedData(filteredData);
 
   const groups = groupedData.map((item) => (
-    <ComboboxLinksGroup data={item} key={item.group} searchQuery={splittedSearch} />
+    <ComboboxLinksGroup
+      data={item}
+      key={item.group}
+      searchQuery={splittedSearch}
+      onClose={onClose}
+    />
   ));
 
   useHotkeys([['mod + shift + k', () => searchInputRef.current?.focus()]], []);

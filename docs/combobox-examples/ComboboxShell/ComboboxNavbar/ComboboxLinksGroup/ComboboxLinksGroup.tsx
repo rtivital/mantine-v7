@@ -10,9 +10,10 @@ import classes from './ComboboxLinksGroup.module.css';
 interface ComboboxLinksGroupProps {
   data: ComboboxExamplesGroup;
   searchQuery: string | string[];
+  onClose(): void;
 }
 
-export function ComboboxLinksGroup({ data, searchQuery }: ComboboxLinksGroupProps) {
+export function ComboboxLinksGroup({ data, searchQuery, onClose }: ComboboxLinksGroupProps) {
   const router = useRouter();
   const [opened, { toggle, open }] = useDisclosure(true);
 
@@ -28,6 +29,7 @@ export function ComboboxLinksGroup({ data, searchQuery }: ComboboxLinksGroupProp
       key={item.id}
       className={classes.link}
       data-navbar-link-active={router.query.e === item.id || undefined}
+      onClick={onClose}
     >
       <Highlight className={classes.linkTitle} highlight={searchQuery}>
         {item.name}

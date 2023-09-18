@@ -13,7 +13,7 @@ export function ComboboxShell({ children }: ComboboxShellProps) {
   return (
     <div className={classes.root}>
       <Shell withNavbar={false} navbarOpened={opened} onNavbarOpenedChange={setNavbarOpened}>
-        <ComboboxNavbar opened={opened} />
+        <ComboboxNavbar opened={opened} onClose={() => setNavbarOpened(false)} />
         <main className={classes.main}>{children}</main>
       </Shell>
     </div>
