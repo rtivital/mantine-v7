@@ -78,21 +78,7 @@ const data = [
 
 export function Hooks() {
   return (
-    <Box
-      className={classes.demo}
-      // sx={(theme) => ({
-      //   '& .mantine-Prism-code': {
-      //     backgroundColor: `${
-      //       theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white
-      //     } !important`,
-      //   },
-
-      //   '& .mantine-CodeDemo-root': {
-      //     marginTop: 0,
-      //     boxShadow: theme.shadows.md,
-      //   },
-      // })}
-    >
+    <Box className={classes.demo}>
       <DemoTabs data={data} title="Hooks library" />
     </Box>
   );

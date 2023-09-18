@@ -52,8 +52,6 @@ function Demo() {
       termsOfService: false,
     },
 
-    validateInputOnBlur: ['email'],
-
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
     },
